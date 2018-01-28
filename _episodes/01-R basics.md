@@ -95,11 +95,11 @@ All programming languages allow the programmer to include comments in their code
 Anything to the right of the '#' sign up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments
 or include them after and code on the line.
 
-~~~~
+~~~
 area_hectares <- 1.0			# land area in hectares
 area_acres <- area_hectares * 2.5	# convert to acres
 area_acres				# print land area in acres.
-~~~~
+~~~
 
 > ## Exercise
 > create two variables 'length' and 'width' and assign the values
