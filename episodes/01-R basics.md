@@ -27,6 +27,16 @@ keypoints:
 
 ## Preliminaries
 
+In this lesson we we be using 3 data files;
+
+SAFI_results.csv contains survey data relating to farming in Mozambique and Tanzania. It can be downloaded from [here](../data/SAFI_results.csv)
+SN7577.csv which is the UKDS datset relating to political engagement. It can be downloaded from [here](../data/SN7577.csv)
+SN7577.tab as above but in tab delimited format. It can be downloaded from [here](../data/SN7577.tab)
+
+You may also want to download the data dictionary associated with the SN7577 dataset from [here](../data/SN7577.csv)
+
+You should place the 3 data files in a folder where you intend to do your R work.
+
 In order to follow along with the examples in this episode you should start RStudio and create a new RScript file either from
 the File menu item or the toolbar icon immediately below it.
 
