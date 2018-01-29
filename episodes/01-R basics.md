@@ -33,7 +33,7 @@ SAFI_results.csv contains survey data relating to farming in Mozambique and Tanz
 SN7577.csv which is the UKDS datset relating to political engagement. It can be downloaded from [here](../data/SN7577.csv)
 SN7577.tab as above but in tab delimited format. It can be downloaded from [here](../data/SN7577.tab)
 
-You may also want to download the data dictionary associated with the SN7577 dataset from [here](../data/SN7577.csv)
+You may also want to download the data dictionary associated with the SN7577 dataset from [here](../data/audit_of_political_engagement_11_ukda_data_dictionary.rtf)
 
 You should place the 3 data files in a folder where you intend to do your R work.
 
