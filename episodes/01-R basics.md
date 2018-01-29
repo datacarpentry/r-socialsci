@@ -30,7 +30,9 @@ keypoints:
 In this lesson we we be using 3 data files;
 
 SAFI_results.csv contains survey data relating to farming in Mozambique and Tanzania. It can be downloaded from [here](../data/SAFI_results.csv)
+
 SN7577.csv which is the UKDS datset relating to political engagement. It can be downloaded from [here](../data/SN7577.csv)
+
 SN7577.tab as above but in tab delimited format. It can be downloaded from [here](../data/SN7577.tab)
 
 You may also want to download the data dictionary associated with the SN7577 dataset from [here](../data/audit_of_political_engagement_11_ukda_data_dictionary.rtf)
