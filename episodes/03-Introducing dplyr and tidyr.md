@@ -155,12 +155,13 @@ Note that the final data frame is the leftmost part of this expression.
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > SN7577_lt65 <- SN7577 %>%
 > >   filter(numage < 65) %>%
 > >   select( sex, age, numage)
 > > 
 > > SN7577_lt65
-> > 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
@@ -212,11 +213,12 @@ SN7577 %>%
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > SN7577 %>%
 > >  filter(numage >= 18) %>%
 > >  mutate(voting_years = numage - 18) %>%
 > >  select(voting_years, numage)
-> > 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
@@ -252,6 +254,7 @@ SN7577 %>%
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage, na.rm = TRUE))
@@ -269,6 +272,7 @@ SN7577 %>%
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage)) 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
@@ -351,11 +355,12 @@ If you go done to the bottom of the listing you will see that the 6 NAs are also
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > SN7577 %>%
 > >   group_by(Q2) %>%
 > >   summarize(avg_age = mean(numage, na.rm = TRUE),
 > >             count_age = n())
-> > 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
@@ -441,6 +446,7 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 >
 > > ## Solution
 > > 
+> > ~~~
 > > \# Spread, create dummy variable to use as values
 > > SAFI_roof_spread <- SAFI_results %>%
 > >   mutate(mycount = 1) %>%
@@ -452,7 +458,7 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 > >   gather(key = C01_respondent_roof_type, value = C01_count, grass:mabatisloping) %>%
 > >   filter(C01_count == 1) %>%
 > >   select(-C01_count)
-> > 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
