@@ -283,7 +283,6 @@ plot(SAFI_results$C01_respondent_roof_type)
 
 The bar chart plot appears in the plots pane. In this case there are the expected 3 bars one for each differnet roof type. Using simple plots like this gives a quick indication of the spread of the data.
 
-[Need Challenge]
 
 ## Formatting Dates
 
