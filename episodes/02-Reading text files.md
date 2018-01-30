@@ -193,6 +193,7 @@ feature to get the full and correct column name
 >
 > > ## Solution
 > > 
+> > ~~~
 > > SN7577_200 <- SN7577_csv[200, ]
 > > SN7577_200
 > > SN7577_last <- SN7577_csv[nrow(SN7577_csv), ]
@@ -201,7 +202,7 @@ feature to get the full and correct column name
 > > SN7577_middle
 > > SN7577_head <- SN7577_csv[-c(7:nrow(SN7577_csv)),]
 > > SN7577_head 
-> > 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
@@ -348,9 +349,11 @@ View(SAFI_results)
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > SAFI_results$A01_year <- year(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
 > > SAFI_results$A01_month <- month(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
 > > SAFI_results$A01_day <- day(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
