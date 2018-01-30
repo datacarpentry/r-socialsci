@@ -225,6 +225,7 @@ Initially the dataset is loaded without any Factors, all the the string like col
 str(SAFI_results$C01_respondent_roof_type)
 str(SAFI_results$C02_respondent_wall_type) 
 str(SAFI_results$C03_respondent_floor_type) 
+~~~
 
 You can see from the output of the 'str' functions that these columns appear to have only a few different string values, suggesting that they are better considered categorical.
 
