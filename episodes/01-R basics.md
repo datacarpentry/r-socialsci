@@ -282,9 +282,11 @@ When we look at the class of the vector it is the type of the individual element
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > mix <- c("bicycle", 22, "television")
 > > mix
 > > class(mix)
+> > ~~~
 > > 
 > > The numeric values are converted to character values
 > > 
@@ -297,6 +299,7 @@ When we look at the class of the vector it is the type of the individual element
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > num_char1 <- c(1, 2, 3, "a")
 > > class(num_char1)
 > > num_char2 <- c(1, 2, 3, "4")
@@ -305,7 +308,7 @@ When we look at the class of the vector it is the type of the individual element
 > > class(num_logical)
 > > char_logical <- c("a", "b", "c", TRUE)
 > > class(char_logical)
-> > 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
@@ -511,11 +514,12 @@ In some datasets you wish to analyse you may find the genuinely missing values h
 > 
 > > ## Solution
 > > 
+> > ~~~
 > > test <- c(12,-99, 21, 34, -99, -99, 53, 32, 90, -99)
 > > test[test == -99] <- NA
 > > test
 > > mean(test,na.rm = TRUE)
-> > 
+> > ~~~
 > > 
 > {: .solution}
 {: .challenge}
