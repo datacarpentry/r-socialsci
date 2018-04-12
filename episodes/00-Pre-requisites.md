@@ -68,7 +68,7 @@ There are shortcut alternatives to many of the RStudio menu and toolbar items. T
 When you select code for execution be careful that you either select the whole line or lines. If you are just running a single line, simply place the cursor in the line. If you select part of a line, then only that part will be executed.
 
 ##Installing additional packages using the packages tab
-In addition to the core R installation, there are in excess of 10,000 additional packages which can be used to extend the functionality of R. Many of these packages have been written by R users and have been made available in central repositories, like the one hosted at CRAN for anyone to download and install into their own R environment. In the course of this lesson, we will be making use of several of these packages.  For instnce, ggplot2 and dplyr. 
+In addition to the core R installation, there are in excess of 10,000 additional packages which can be used to extend the functionality of R. Many of these packages have been written by R users and have been made available in central repositories, like the one hosted at CRAN for anyone to download and install into their own R environment. In the course of this lesson, we will be making use of several of these packages.  For instance, ggplot2 and dplyr. 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab click the ‘Install’ icon and start typing the name of the package you want in the text box. As you type, packages matching your starting characters will be displayed in a drop down list from where they can be selected.
 
@@ -86,7 +86,7 @@ There is a check box for ‘Install’ dependencies at the bottom of the Install
 > > Depending on what packages have previously been installed in your R environment, the install of ‘tidyverse’ could be very quick or could take several minutes.
 > > As the install proceeds messages relating to the progress will be written to the console. You will be able to see all of the packages which are actually being installed.
 > {: .solution}
-{: .challenge}
+{: .challenge}  
 The install process accesses the repository at CRAN, and therefoe you will need an Internet connection to install packages in this way.
 It is also possible to install packages from other repositories as well as Github or the local file system, but we won’t be looking at these options in this lesson.
 
