@@ -8,18 +8,17 @@ questions:
 - "How can I install additional packages using either the RStudio environment or simple R code"
 
 objectives:
-- "Install latest version of R" 
-- "Install latest version of RStudio" 
+- "Install latest version of R"
+- "Install latest version of RStudio"
 - "Navigate the RStudio GUI"
 - "Install additional packages using the packages tab"
-- "Install additional packages using R code" 
+- "Install additional packages using R code"
 
 keypoints:
 - "First key point."
 ---
 
 ## R and RStudio
-
 R is an open source programming language originally designed and implemented by statisticians for statistical analysis. It includes high quality graphics capabilities and tools for basic data analysis and reading and writing data to/from files.
 R has a very large selection of free 3rd party add-on libraries which can be easily added to the core R system making even more analysis techniques available because it is open source and supported by a large community of developers and users.  
 R is a scripted language. Rather than pointing and clicking in a GUI environment, you write code statements to ask R to perform tasks for you. This is advantageous becuase it provides a permanent record of what was done and allows for peer review of the work.
@@ -32,6 +31,7 @@ In the remainder of this episode we will go through the steps of first installin
 The latest version of R can be downloaded from [The Comprehensive R Archive Network]( https://cran.r-project.org/). On this page, you will find download links for Linux, Mac, and Windows versions of R. You should choose the environment link appropriate to your machine's operating system. In each case, you will be guided through to a particular download for your machine. 
 Having completed the download, you should install using the normal technique for your operating environment. If you are using a Windows machine you can double click the downloaded executable file.  You can default all of the prompts presented by the install wizard. By default both the 32 and 64 bit versions of R will be installed and icons for them will be available on your desktop.
 These icons are shortcuts for a simple R GUI called RGui. RGui will allow you to create and run R Scripts among other things, but it is not as sophisticated as RStudio. 
+
 ## Installing RStudio
 The latest version of RStudio can be downloaded from the [RStudio.com]( https://www.rstudio.com/) website.
 Like R installations, there are versions for Mac, Linux, and Windows. Select the one appropriate for your machine, download the file and install it. You can accept the defaults for all of the options presented by the install wizard.
@@ -68,6 +68,7 @@ There are shortcut alternatives to many of the RStudio menu and toolbar items. T
 When you select code for execution be careful that you either select the whole line or lines. If you are just running a single line, simply place the cursor in the line. If you select part of a line, then only that part will be executed.
 
 ##Installing additional packages using the packages tab
+
 In addition to the core R installation, there are in excess of 10,000 additional packages which can be used to extend the functionality of R. Many of these packages have been written by R users and have been made available in central repositories, like the one hosted at CRAN for anyone to download and install into their own R environment. In the course of this lesson, we will be making use of several of these packages.  For instance, ggplot2 and dplyr. 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab click the ‘Install’ icon and start typing the name of the package you want in the text box. As you type, packages matching your starting characters will be displayed in a drop down list from where they can be selected.
@@ -78,11 +79,11 @@ There is a check box for ‘Install’ dependencies at the bottom of the Install
 
 > ## Exercise
 > Use the install option from the packages tab to install the package ‘tidyverse’
-> 
-> 
+>
+>
 > > ## Solution
 > > From the packages tab, click ‘Install’ from the toolbar and type ‘tidyverse’ into the textbox then click ‘install’
-> > The ‘tidyverse’ package is really a package of packages, including ggplot2 and dplyr, both of which require other packages to run correctly. All of these packages will be installed automatically. 
+> > The ‘tidyverse’ package is really a package of packages, including ggplot2 and dplyr, both of which require other packages to run correctly. All of these packages will be installed automatically.
 > > Depending on what packages have previously been installed in your R environment, the install of ‘tidyverse’ could be very quick or could take several minutes.
 > > As the install proceeds messages relating to the progress will be written to the console. You will be able to see all of the packages which are actually being installed.
 > {: .solution}
@@ -97,7 +98,9 @@ If you were watching the console window when you starting the install of ‘tidy
 ~~~
 install.packages("tidyverse")
 ~~~
+{: .language-r}
 
 was written to the console. 
 This is standard R code. The function ‘install.packages’ is called and passed a single parameter.  That parameter is the name of the package you want to install.
 Rather than using the Rstudio GUI functionality, you can write the code yourself in the console or include it as part of a script.
+
