@@ -166,9 +166,9 @@ Notice in the last example that we see that colour is now specified *inside*
 of an `aes` function. Why didn't we have to do that when we wanted our 
 points to be blue? Because the colour is going to be dependent on something in 
 our dataset, we need to include it as a component of our mapping. The same way 
-that x represents the `A11_years_farm` column and y represents the 
-`B16_years_liv` column, our colour is going to represent a third dimension on 
-our coordinate system.
+that our `A11_years_farm` column is represented by x and our `B16_years_liv` 
+column is represented by y, the colour of each point is going to represent a 
+third dimension on our coordinate system.
 
 > ## Exercise
 >
