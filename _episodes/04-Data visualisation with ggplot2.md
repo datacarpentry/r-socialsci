@@ -34,7 +34,7 @@ expressed from the same set of components:
 * a coordinate system ("mapping")
 * a geom (the visual representation of the data)
 
-Before we learn more about the details, let's load the 'ggplot2' package and 
+Before we learn more about the details, let's load the `ggplot2` package and 
 import a dataset. For this episode we will be using the `SAFI_results` data, 
 which is stored in our current working directory. `ggplot2` uses data stored in 
 the 'long' format; i.e. with a column for every dimension and a row for every 
@@ -76,11 +76,11 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv))
 
 When you run this line of code, you will still get a blank canvas in the Plots 
 pane, but you'll notice that labels for the x and y axis have been added. This 
-is because we specified in `aes` that the x axis should be the variable 
-`A11_years_farm` and the y axis should be the variable `B16_years_liv`, each 
-found within `SAFI_results` data frame.
+is because we specified in `aes` that the x axis should represent the variable 
+`A11_years_farm` and the y axis should represent the variable `B16_years_liv`, 
+each found within `SAFI_results` data frame.
 
-The final component of the plot that needs to be specified is the geom, or 
+The final component of the plot that needs to be specified is the 'geom', or 
 visual representation of the data. We need to decide if we want our data to be 
 expressed as points, bars, boxplots, etc. `ggplot2` offers many different geom 
 options. Some of the common ones include:
@@ -92,7 +92,7 @@ options. Some of the common ones include:
 Because, in this instance, we are looking at two continuous variables (*number 
 of years farming in area* and *number of years living in area*), let's opt to 
 display the data using a scatterplot. To add a geom (in this case, 
-`geom_point()`) to the plot we'll be adding a new layer using the `+` operator.
+`geom_point()`) to the plot, we'll add a new layer using the `+` operator.
 
 ~~~
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) + geom_point()
@@ -120,25 +120,26 @@ ggplot(data = SAFI_results) +
       geom_point(aes(x = A11_years_farm, y = B16_years_liv))
 ~~~
 
-Note: Typically, deciding whether to include mapping as a global setting or 
-independently within geoms is a personal preference. However, if, for example, 
-you are adding several geom layers using the same mapping settings, including 
-`aes` in the `ggplot` function will save you time and minimize the risk of typos.
+Note: Often, deciding whether to include mapping as a global setting or 
+independently within geoms is a personal preference or habit. However, if, for 
+example, you are adding several geom layers using the same mapping settings, 
+including `aes` in the `ggplot` function will save you time and minimize the risk 
+of typos.
 
 ## Building Plots Iteratively
 
 Building plots with `ggplot2` is typically an iterative process. We start by
-defining the dataset we want to use, identify our mapping aesthetics, and 
-choose a geom.
+defining the dataset we want to use, identifing our mapping aesthetics, and 
+choosing a geom.
 
 ~~~
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
   geom_point() 
 ~~~
 
-Then, we may want to start modifying this plot to better visualize more 
-information. For instance, we can define the transparency of our points using 
-`alpha` to avoid overplotting.
+Next, we may want to start modifying this plot to make it more visualy appealing 
+or include more information. For instance, we can define the transparency of our 
+points using `alpha` to avoid overplotting.
 
 ~~~
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
