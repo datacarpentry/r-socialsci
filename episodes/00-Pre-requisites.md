@@ -34,7 +34,7 @@ Having completed the download, you should install using the normal technique for
 These icons are shortcuts for a simple R GUI called RGui. RGui will allow you to create and run R Scripts among other things, but it is not as sophisticated as RStudio. 
 ## Installing RStudio
 The latest version of RStudio can be downloaded from the [RStudio.com]( https://www.rstudio.com/) website.
-Like R installations, there are versions for Mac, Linux and Windows. Select the one appropriate for your machine, download the file and install it. You can accept the defaults for all of the options presented by the install wizard.
+Like R installations, there are versions for Mac, Linux, and Windows. Select the one appropriate for your machine, download the file and install it. You can accept the defaults for all of the options presented by the install wizard.
 
 In the latest versions of Windows, RStudio is not automatically placed on the desktop. To start RStudio in Windows, type ‘RStudio’ into the search bar next to the Windows Start icon in the bottom left hand corner of the screen. When the desktop app appears in the list of programs you can run it directly by selecting it or you can choose to have the icon added to the Start menu or taskbar. 
 
