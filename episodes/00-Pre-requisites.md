@@ -20,8 +20,8 @@ keypoints:
 
 ## R and RStudio
 
-R is an open source programming language originally designed and implemented by statisticians for statistical analysis. It includes high quality graphics capabilities, tools for basic data analysis, and reading and writing data to/from files.
-R has a very large selection of freely available 3rd party add-on libraries available which can be easily added to the core R system making even more analysis techniques available because it is open source and supported by a large community of developers and users.  
+R is an open source programming language originally designed and implemented by statisticians for statistical analysis. It includes high quality graphics capabilities and tools for basic data analysis and reading and writing data to/from files.
+R has a very large selection of free 3rd party add-on libraries which can be easily added to the core R system making even more analysis techniques available because it is open source and supported by a large community of developers and users.  
 R is a scripted language. Rather than pointing and clicking in a GUI environment, you write code statements to ask R to perform tasks for you. This is advantageous becuase it provides a permanent record of what was done and allows for peer review of the work.
 Having this written record, something which is increasingly required as part of a publication submission, is also an aid when seeking help with problems. 
 There are many online resources, such as [stackoverflow ]( https://stackoverflow.com/questions/tagged/r),  which will allow you to seek help from the online R community. You can search in the normal Internet way of doing things by providing keywords in a free format search request, but you can also post specific questions. Questions supported by code snippets are more likely to attract knowledgeable responses.
@@ -29,7 +29,7 @@ Although R is a scripted language, there is still a place for the GUI (Graphical
 In the remainder of this episode we will go through the steps of first installing R, then RStudio, and finish with a brief tour of some of the RStudio facilities.
 
 ## Installing R
-The latest version of R can be downloaded from [The Comprehensive R Archive Network]( https://cran.r-project.org/). On this page, you will find download links for Linux, Mac and Windows versions of R. You should choose the environment link appropriate to your machine's operating system. In each case, you will be guided through to a particular download for your machine. 
+The latest version of R can be downloaded from [The Comprehensive R Archive Network]( https://cran.r-project.org/). On this page, you will find download links for Linux, Mac, and Windows versions of R. You should choose the environment link appropriate to your machine's operating system. In each case, you will be guided through to a particular download for your machine. 
 Having completed the download, you should install using the normal technique for your operating environment. If you are using a Windows machine you can double click the downloaded executable file.  You can default all of the prompts presented by the install wizard. By default both the 32 and 64 bit versions of R will be installed and icons for them will be available on your desktop.
 These icons are shortcuts for a simple R GUI called RGui. RGui will allow you to create and run R Scripts among other things, but it is not as sophisticated as RStudio. 
 ## Installing RStudio
