@@ -64,7 +64,7 @@ Connect to the SQLite database specified by `dbfile`, above, using the `dbConnec
 mydb <- dbConnect(dbDriver("SQLite"), dbfile)
 ~~~
 
-Here, `mydb` represents the connection to the database. It will be specified everytime we need to access the database.
+Here, `mydb` represents the connection to the database. It will be specified every time we need to access the database.
 
 Now that we have a connection, we can get a list of the tables in the database.
 
@@ -133,7 +133,7 @@ dbClearResult(results)
 > 
 > > ## Solution
 > > 
-> > An error message is reurned from SQLite. 
+> > An error message is returned from SQLite. 
 > > Notice that R is just the conduit; it cannot check the SQL syntax.
 > > 
 > > 
