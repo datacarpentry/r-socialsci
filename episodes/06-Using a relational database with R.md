@@ -20,78 +20,84 @@ keypoints:
 
 ## Introduction
 
-So far, we have dealt with small datasets that easily fit into your computer's memory. But what about datasets that are too large for your computer to handle as a whole? In this case, storing the data outside of R and organizing it in a database is helpful. 
+A common problem with R in that all operations are conducted in-memory and thus 
+the amount of data you can work with is limited by available memory. So far, we have used small datasets 
+that can easily fit into your computer's memory. But what about datasets that are too large for your 
+computer to handle as a whole?
 
-By creating a connection to a database, SQL queries can be be sent directly to the database and only the results are returned to the R environment.
+In this case, it is helpful to organze the data into a database stored outside of R before creating 
+a connection to the database itself. This connection will essentially remove the limitation of memory 
+because SQL queries can be sent directly from R to the database and return to R only the results that you 
+have identified as being neccessary for your analysis.
 
-We shall be using an SQLite database and we can connect to in such a way as to allow us to send strings containing SQL statements directly and get the results . Additionally we can connect to the database in such a was as to allow 'dplyr' functions to operate directly on the database tables.
+Once we have made the connection to the database, much of what we do will look familiar because the code we will be using is very similar to what we saw in the SQL lesson and earlier episodes of this R lesson.
 
-This addresses a common problem with R in that all operations are conducted
-in-memory and thus the amount of data you can work with is limited by available
-memory. The database connections essentially remove that limitation in that you
-can connect to a database of many hundreds of GB, conduct queries on it directly, and pull
-back into R only what you need for analysis.
+In this lesson, we will be connecting to an SQLite database, which allows us to send strings containing SQL statements directly from R to the database and recieve the results. In addition, we will be connecting to the database in such a way that we can use 'dplyr' functions to operate directly on the database tables.
 
-Once we have made the connectio, much of what we do will look very familiar as the coding is very similar to what we saw in the SQL lesson and an early episode of this R lesson.
 
 ## Prelminaries 
 
-First of all we will install the libraries we are going to use. You may need to install the `RSQLite` library with
+First, install and load the neccessary packages. You can install the `RSQLite` package with
 
 ~~~
 install.packages("RSQLite")
 ~~~
 
-we then need to load the libraries
+Load the packages with
 
 ~~~
-library("RSQLite")
+library(RSQLite)
 library(dplyr)
 ~~~
 
-and create a variable to contain the location of the SQLite database we are going to use.
-
-Here we are assuming that it is in the current working directory.
+Next, create a variable that contains the location of the SQLite database we are going to use. Here, we are assuming that it is in the current working directory.
 
 ~~~
 dbfile <- "SN7577.sqlite"
 ~~~
 
-## Connecting to an SQLite database using `dbConnect`
+## Connecting to an SQLite Database
 
-This can be done in a single line of code
+Connect to the SQLite database specified by `dbfile`, above, using the `dbConnect` function.
 
 ~~~
 mydb <- dbConnect(dbDriver("SQLite"), dbfile)
 ~~~
 
-'mydb' represents the connection to the database. It will be specified everytime we need to access the database.
+Here, `mydb` represents the connection to the database. It will be specified every time we need to access the database.
 
-Now that we have a connection we can start writing queries. But first lets get a list of the tables in the database.
+Now that we have a connection, we can get a list of the tables in the database.
 
 ~~~
 dbListTables(mydb)
 ~~~
 
-To get data requires us to send a query to the database and then ask for the results 
+Our objective here is to bring data from the database into R by sending a query to the database and then asking for the results of that query. 
 
 ~~~
- # Assign the results of a SQL query to an SQLiteResult object
+# Assign the results of a SQL query to an SQLiteResult object
 results <- dbSendQuery(mydb, "SELECT * FROM Question1")
 
- # Return results from a custom object to a data.frame
-data = fetch(results)
+# Return results from a custom object to a dataframe
+data <- fetch(results)
 ~~~
 
-`data` is a standard R dataframe which we can manipulate in the usual ways.
+`data` is a standard R dataframe that can be explored and manipulated.
 
 ~~~
+# Return column names
 names(data)
+
+# Return description of dataframe structure
 str(data)
 
+# Return the second column
 data[,2]
 
+# Return the value of the second column, fourth row
 data[4,2]
+
+# Return the second column where the value of the column 'key' is greater than 7
 data[data$key > 7,2]
 ~~~
 
@@ -102,7 +108,7 @@ dbClearResult(results)
 ~~~
 
 In addition to sending simple queries we can send complex one like a join.
-You may want to set this up in a concateneted string first for readability
+You may want to set this up in a concateneted string first for readability.
 
 ~~~
 SQL_query <- paste("SELECT q.value,",
@@ -114,42 +120,39 @@ SQL_query <- paste("SELECT q.value,",
 
 results <- dbSendQuery(mydb, SQL_query)
 
-data = fetch(results)
+data <- fetch(results)
 
 data
 
 dbClearResult(results)
-
-
 ~~~
 
 > ## Exercise
 >
-> What happens if you send invalid SQL?
+> What happens if you send invalid SQL syntax?
 > 
 > > ## Solution
 > > 
-> > An error message is reurned from SQLite, R is just the conduit, it cannot check the SQL syntax.
+> > An error message is returned from SQLite. 
+> > Notice that R is just the conduit; it cannot check the SQL syntax.
 > > 
 > > 
 > {: .solution}
 {: .challenge}
 
-
-We can also create a new database and add tables to it
+We can also create a new database and add tables to it. Let's base this new dataframe on the Question1 table that can be found in our existing database.
 
 ~~~
-
-# first use the existing connection to put the Question1 table into a dataframe
-
+# First, use a SQL query to extract the Question1 table from the existing database
 results = dbSendQuery(mydb, "SELECT * from Question1")
+
+# Then, store it as a dataframe
 Q1 <- fetch(results)
 ~~~
 
-Now we create the new database and add data to it, either from an external file of from a local dataframe.
+Now, we can create the new database and add data to it, either from an external file or a local dataframe.
 
 ~~~
-
 dbfile_new = "a_newdb.sqlite"
 mydb_new = dbConnect(dbDriver("SQLite"), dbfile_new)
 
@@ -162,34 +165,38 @@ dbWriteTable(conn = mydb_new , name = "Q1", value = Q1,
 dbListTables(mydb_new)
 ~~~
 
-## Connecting to a database for `dplyr` use
+## Connecting to a Database for `dplyr` Use
 
-When we want to use `dplyr` to access a database the a different connection method is used.
+When we want to use `dplyr` functions to operate directly on the database tables, 
+a different connection method is used.
 
 ~~~
 mydb_dplyr <- src_sqlite(path="SN7577.sqlite")
 ~~~
 
-as is the mthod for running queries. However using the 'tbl' functionwe still need to provide avalid SQL string.
+as is the mthod for running queries. However using the 'tbl' functionwe still need to provide avalid SQL string. (?)
 
 ~~~
 tbl(mydb_dplyr, sql("SELECT count(*) from SN7577"))
 ~~~
 
-The real advantage of using the `dplyr` interface is however, that we can use the `dplyr` methods as a substitute for the SQL statements once we have downloaded the table.
+The real advantage of using `dplyr` is that once we have stored the table as an object 
+(here, `SN7577_d`), we can use `dplyr` functions instead of SQL statements.
 
 ~~~
+# Store the table as an object
 SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
 
+# Explore the object
+head(SN7577_d, n = 10)
+nrow(SN7577_d)
+
+# Apply dplyr functions to the object
 SN7577_d %>%
   filter(numage > 60) %>%
   select(sex, age, numage) %>%
   group_by(sex, age) %>%
   summarize(avg_age = mean(numage))
-
-head(SN7577_d, n = 10)
-
-nrow(SN7577_d)
 ~~~
 
 Notice that on the `nrow` command we get NA rather than a count of rows. Thisis because `dplyr` doesn't hold the full table even after the 'Select * ...' 
@@ -203,20 +210,20 @@ SN7577_d %>%
 
 > ## Exercise
 >
-> Download the SN7577 table for `dplyr` use
-> write a query using dplyr methods which will give the average age (agenum) by sex for all of the records where
-> the response for Q2 is missing.
+> Store the SN7577 table as an object for `dplyr` use.
+>
+> Write a query using `dplyr` functions that will return the average age (`numage`) by sex for all records where
+> the response for Q2 is missing (missing values are indicated by a value of -1).
 > 
 > > ## Solution
-> > 
-> > SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
-> > 
+> >
 > > ~~~
+> > SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
+> >
 > > SN7577_d %>%
-> >   select(Q2, sex, numage) %>%
 > >   filter(Q2 == -1)   %>%
 > >   group_by(sex)   %>%
-> >   summarize(count = n())
+> >   summarize(avg_age = mean(numage))
 > > ~~~
 > > 
 > {: .solution}
