@@ -87,7 +87,7 @@ There is a check box for ‘Install’ dependencies at the bottom of the Install
 > > As the install proceeds messages relating to the progress will be written to the console. You will be able to see all of the packages which are actually being installed.
 > {: .solution}
 {: .challenge}  
-The install process accesses the repository at CRAN, and therefoe you will need an Internet connection to install packages in this way.
+The install process accesses the repository at CRAN, and therefore you will need an Internet connection to install packages in this way.
 It is also possible to install packages from other repositories as well as Github or the local file system, but we won’t be looking at these options in this lesson.
 
 
