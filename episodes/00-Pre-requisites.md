@@ -99,5 +99,5 @@ install.packages("tidyverse")
 ~~~
 
 was written to the console. 
-This is standard R code. the function ‘install.packages’ is called and passed a single parameter.  That parameter is the name of the package you want to install.
+This is standard R code. The function ‘install.packages’ is called and passed a single parameter.  That parameter is the name of the package you want to install.
 Rather than using the Rstudio GUI functionality, you can simply write the code yourself in the console or include it as part of a script.
