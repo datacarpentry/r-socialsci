@@ -18,6 +18,13 @@ keypoints:
 - "First key point."
 ---
 
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("04-")
+```
+
+
 ## Plotting with `ggplot2`
 
 `ggplot2` is a plotting package that makes breaks down the plotting process into three distinct parts.

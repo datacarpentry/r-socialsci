@@ -18,6 +18,12 @@ keypoints:
 - "First key point."
 ---
 
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("00-")
+```
+
+
 ## R and RStudio
 
 R is an open source programming language originally designed and implemented by statisticians primarily for statistical analysis. It includes high quality graphics capabilities and tools for basic data analysis and reading and writing data to/from files.

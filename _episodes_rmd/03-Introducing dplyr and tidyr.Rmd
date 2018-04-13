@@ -24,6 +24,12 @@ keypoints:
 ---
 
 
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("03-")
+```
+
+
 ## What are 'dplyr' and 'tidyr'?
 
 `dplyr` is a package, part of the 'tidyverse' package, for
