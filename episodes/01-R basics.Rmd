@@ -25,6 +25,13 @@ keypoints:
 - "First key point."
 ---
 
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("01-")
+```
+
+
 ## Preliminaries
 
 In this lesson we we be using 3 data files;
