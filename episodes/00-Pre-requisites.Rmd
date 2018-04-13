@@ -36,11 +36,13 @@ In the remainder of this episode we will go through the steps of installing firs
 
 ## Installing R
 
+
 The latest version of R can be downloaded from [The Comprehensive R Archive Network]( https://cran.r-project.org/) . You will find download links for Linux, Mac and Windows versions of R. You should choose the environment appropriate to your machines operating system. In each case you will be guided through to a particular download for your machine. 
 Having completed the download, you should install using the normal technique for your operating environment. If you are using a Windows machine you can simple double click the downloaded executable file.  You can default all of the prompts presented by the install wizard. By default both the 32 and 64 bit versions of R will be installed and icons for them will be available on your desktop.
 These icons are in fact for a simple R GUI called RGui. It will allow you to create and run R Scripts among other things, but it is not as sophisticated as RStudio. 
 
 ## Installing RStudio
+
 
 The latest version of RStudio can be downloaded from the [RStudio.com]( https://www.rstudio.com/) website.
 Like R There are versions for Mac, Linux and Windows, simply select the one you need, download the file and install in the usual manner for your operating system. You can take the defaults for all of the options presented by the install wizard.
@@ -64,7 +66,10 @@ Help -  The initial help page provides a set of links to a variety of Help relat
 
 These include basic manuals on R  as well as reference materials on the installed packages. The RStudio Cheat Sheets are small pdf documents which can be downloaded and provide summary information on how to use key packages in R like dplyr and ggplot2 both of which we will be using extensively in this lesson.
 In the toolbar there is a search text box where you can type what you are looking for.
+
+
 ### Creating a Script file
+
 In order to follow along with the examples in this episode you should start RStudio and create a new RScript file either from the File menu item or the toolbar icon immediately below it.
 
 If you intend to save the script you may wish to name it. If you click the save icon on the toolbar a standard save as dialog will appear.
@@ -102,6 +107,7 @@ It is also possible to install packages from other repositories as well as Githu
 
 ## Installing additional packages using R code
 
+
 If you were watching the console window when you starting the install of ‘tidyverse’ you may have noticed that before the start of the installation messages, the line
 
 ```{r, eval=FALSE}
@@ -109,6 +115,6 @@ install.packages("tidyverse")
 ```
 
 was written to the console. 
-This is standard R code. the function ‘install.packages’ is called and passed a single parameter which is the name of the package you want to install.
-Rather than using the Rstudio GUI functionality, you can simply write the code yourself in the console or include it a s part of a script.
+This is standard R code. the function `install.packages()` is called and passed a single parameter which is the name of the package you want to install.
+Rather than using the Rstudio GUI functionality, you can simply write the code yourself in the console or include it as part of a script.
 

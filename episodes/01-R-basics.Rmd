@@ -46,11 +46,12 @@ You may also want to download the data dictionary associated with the SN7577 dat
 
 You should place the 3 data files in a folder where you intend to do your R work.
 
-In order to follow along with the examples in this episode you should start RStudio and create a new RScript file either from
-the File menu item or the toolbar icon immediately below it.
+In order to follow along with the examples in this episode you should start
+RStudio and create a new RScript file either from the File menu item or the
+toolbar icon immediately below it.
 
-If you intend to save the script you may wish to name it. If you click the save icon on the toolbar a standard save as 
-dialog will appear.
+If you intend to save the script you may wish to name it. If you click the save
+icon on the toolbar a standard save as dialog will appear.
 
 Although we will routinely refer to using the console in this episode, and you can in fact type all of the code directly into the console, we will assume that you will write all of your code to the script file first and then select the code and either click the `run` button on the toolbar or use the keyboard shortcut of `ctrl+Enter`.
 
@@ -68,10 +69,11 @@ In order to save the result for further use it is necessary to assign the value 
 
 ## Creating variables and assigning values
 
-Varaibles are usually given short but meaningful names starting with an alphabetic character. You can use uppercase characters if ou want, but remember that R is case sensitive so that you must be consistent. You can also use numbers as part of a variable name but you cannot start with a digit. There are some words which cannot be used as variable names such as 'if' or 'funtion'. You can get a complete list of these words using the `help("reserved")` or `?reserved` commands from the console.
+Variables are usually given short but meaningful names starting with an alphabetic character. You can use uppercase characters if you want, but remember that R is case sensitive so that you must be consistent. You can also use numbers as part of a variable name but you cannot start with a digit. There are some words which cannot be used as variable names such as `if` or `function`. You can get a complete list of these words using the `help("reserved")` or `?reserved` commands from the console.
 
-You can use the '.' caharacter as part of the name but this is not recommended. If you wish make longer variable names more readable, using the '_' 
-character helps. 
+You can use the `.` character as part of the name but this is not recommended.
+If you wish make longer variable names more readable, using the `_` character
+helps.
 
 ```{r}
 Age <- 60
@@ -82,9 +84,9 @@ will create two seperate variables.
 
 The  `<-` symbol is used in R to denote assignment to a variable. You can read the above assignment as 'Age is assigned the value of 60'.
 
-The '=' symbol can also be used and you will see it in some code examples on the Internet but '<-' is by far the more common.
+The `=` symbol can also be used and you will see it in some code examples on the Internet but `<-` is by far the more common.
 
-If you type these two lines in at the console or run them (one at a time) from a script, you will just recieve the standard '>' prompt as a response.
+If you type these two lines in at the console or run them (one at a time) from a script, you will just receive the standard `>` prompt as a response.
 
 If you want to know what the value of a variable is, you can just type the name of the variable.
 
@@ -105,7 +107,7 @@ area_acres <- area_hectares * 2.5
 area_acres
 ```
 
-If the value assigned to 'area_hectares is now changed, it will not effect the value of 'area_acres
+If the value assigned to `area_hectares` is now changed, it will not effect the value of `area_acres`
 
 
 ## Comments
