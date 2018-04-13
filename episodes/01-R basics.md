@@ -54,16 +54,16 @@ When you select code for execution, be careful that you either select the whole 
 
 ## Using the console in RStudio
 
-If you type simple arithmetic expressions into the console it will be evaluated and the result displayed immedediately below.
+If you type simple arithmetic expressions into the console it will be evaluated and the result displayed immediately below.
 
 In order to save the result for further use it is necessary to assign the value of the expression to a variable.
 
 
 ## Creating variables and assigning values
 
-Varaibles are usually given short but meaningful names. You can use uppercase characters if you want, but remember that R is case sensitive, so that you must be consistent when calling the variable later. You can also use numbers as part of a variable name but you cannot start the name with a number. There are some words which cannot be used as variable names such as 'if' or 'function'. You can get a complete list of these words using the `help("reserved")` or `?reserved` commands from the console.
+Variables are usually given short but meaningful names. You can use uppercase characters if you want, but remember that R is case sensitive, so that you must be consistent when calling the variable later. You can also use numbers as part of a variable name but you cannot start the name with a number. There are some words which cannot be used as variable names such as 'if' or 'function'. You can get a complete list of these words using the `help("reserved")` or `?reserved` commands from the console.
 
-You can use the `.` caharacter as part of the name but this is not recommended. If you wish to make longer variable names more readable, using the `_` character helps. 
+You can use the `.` character as part of the name but this is not recommended. If you wish to make longer variable names more readable, using the `_` character helps. 
 
 ~~~
 Age <- 60
@@ -78,7 +78,7 @@ The  `<-` symbol is used in R to denote assignment to a variable. You can read t
 
 The `=` symbol can also be used in place of `<-`.
 
-If you type the above two lines in at the console or run them (one at a time) from a script, you will just recieve the standard `>` prompt as a response.
+If you type the above two lines in at the console or run them (one at a time) from a script, you will just receive the standard `>` prompt as a response.
 
 If you want to know what the value of a variable is, you can just type the name of the variable.
 
@@ -93,7 +93,7 @@ age
 {: .output}
 
 In which case the current value of the `age` variable will be printed to the console.
-Once a variable has been created, you can give it different values either directly or by some calculation. Often you will give a varaible a value based on the value of other variables.
+Once a variable has been created, you can give it different values either directly or by some calculation. Often you will give a variable a value based on the value of other variables.
 
 ~~~
 age <- 55
@@ -124,7 +124,7 @@ If the value assigned to `area_hectares` is changed, it will not effect the valu
 ## Comments
 
 All programming languages allow the programmer to include comments in their code. To do this in R we use the `#` character.
-Anything to the right of the `#` sign up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments or include them after code on the line.
+Anything to the right of the `#` sign and up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments or include them after code on the line.
 
 ~~~
 area_hectares <- 1.0			# land area in hectares
@@ -179,7 +179,7 @@ area_acres				# print land area in acres.
 
 ## Using functions
 
-A function is a pre-defined piece of R code. It allows more complicated or repetited sections of code to be pre-built and then subsequently used and reused wherever needed. As a programmer you can write your own functions but much of the time you rely on functions which are built into the R environment as part of base R or are added in from a 3rd party R package.
+A function is a pre-defined piece of R code. It allows more complicated or repetitious sections of code to be pre-built and then subsequently used and reused wherever needed. As a programmer you can write your own functions, but much of the time you rely on functions which are built into the R environment as part of base R or are added in from a 3rd party R package.
 
 Simple repetition of code can be useful, but it is more likely that you wish to perform the same actions using a different set of variables.
 Because of this, most functions allow the user of the function to provide parameters representing variables, which you can change each time you call the function.
@@ -259,7 +259,7 @@ a
 > 
 > > ## Solution
 > > 
-> > It rounds down a number to the nearest integer value with 0.5 being rounded up.
+> > It rounds a number to the nearest integer value. In R, 5s are rounded to even digits, following IEC 60559, such that 12.5 and 11.5 will both round to 12.
 > > 
 > > 
 > {: .solution}
@@ -323,7 +323,7 @@ You can find what an object is [here](https://cran.r-project.org/doc/manuals/r-r
 
 In R you do not have to specify the type associated with your variables it is assumed by the values you assign to the variable although R may not assume what you expect.
 
-The simple types avaialbe in R are
+The simple types available in R are
 
 Numeric,
 Character,
@@ -334,7 +334,7 @@ Raw
 
 We will not be using the Complex (for complex numbers) or Raw (for binary datastreams, like audio or video) in this lesson.
 
-You can find out the type of a variable (or the class of an object) by using the 'class' function which takes tha single parameter of an variable/object name)
+You can find out the type of a variable (or the class of an object) by using the 'class' function which takes the single parameter of a variable/object name)
 
 ~~~
 name <- "peter"
@@ -480,7 +480,7 @@ When we look at the class of the vector it is the type of the individual element
 
 > ## Exercise
 > Here are some more 'mixtures' to try.
-> Can you explain the results
+> Can you explain the results?
 >
 > > ## Solution
 > >
@@ -545,7 +545,7 @@ possessions
 You can find the structure of a vector by using the `str` function
 
 ~~~
-str(posessions)
+str(possessions)
 ~~~
 {: .language-r}
 
@@ -586,9 +586,9 @@ ages_2
 {: .output}
 
 ~~~
-# extract 3rd elecment from the posessions vector
-posessions
-poss_3 <- posessions[3]
+# extract 3rd element from the possessions vector
+possessions
+poss_3 <- possessions[3]
 poss_3
 ~~~
 {: .language-r}
@@ -599,7 +599,7 @@ poss_3
 {: .output}
 
 ~~~
-# we can also re-assign specific elecments
+# we can also re-assign specific elements
 possessions[3] <- "Mobile Phone"
 possessions
 ~~~
@@ -656,7 +656,7 @@ class(ages_77765136)
 {: .output}
 
 ## Conditional subsetting
-Another common way of subsetting is by using a logical vector. TRUE will select the element with the same index, while FALSE will not:
+Another common way of subsetting is by using a logical vector. A value of TRUE will select the element in the same location, while FALSE will not:
 
 ~~~
 some_possessions <- possessions[c(TRUE, FALSE, TRUE, FALSE)]
@@ -684,9 +684,9 @@ logical_vector
 {: .output}
 
 The expression 'ages > 50' applies the test '> 50' to each element of the ages vector in turn.
-The expression 'ages > 50' doesn't return the values of elements in the ages vector which are greater than fifty. Instead it returns a logical vector of the same size(number of elements) as the ages vector, with a value of TRUE to indicate condition has been met, and FALSE to indicate that it has not.
+The expression 'ages > 50' doesn't return the values of elements in the ages vector which are greater than fifty. Instead it returns a logical vector of the same size (number of elements) as the ages vector, with a value of TRUE to indicate when the condition is met, and FALSE to indicate that it has not.
 
-So now that we know that 'ages > 50' returns or creates a logical vector we can use the expression directly to obtain a vector of all of the values which match the indices of the TRUE values in the logical vector.
+So now that we know that 'ages > 50' returns or creates a logical vector, we can use the expression directly to obtain a vector of all of the values which match the indices of the TRUE values in the logical vector.
 
 ~~~
 ages_gt_50 <- ages[ages > 50]
@@ -703,7 +703,7 @@ The expression does not have to be as simple as the one we have used. All of the
 
 >, <, >=, <= , ==, !=  
 
-Notice the test for equality is '==' not judt '='
+Notice the test for equality is '==' and not '='
 
 You can combine multiple tests using & (both conditions are true, AND) or | (at least one of the conditions is true, OR)
 
@@ -718,7 +718,7 @@ ages_60_to_90
 ~~~
 {: .output}
 
-A common task is to search for certain strings in a vector. One could use the “or” operator | to test for equality to multiple values, but this can quickly become tedious. The %in% operator (it is really a function called match) allows you to test if any of the elements of a search vector are found
+A common task is to search for certain strings in a vector. One could use the “or” operator, |, to test for equality to multiple values, but this can quickly become tedious. The %in% operator (it is really a function called match) allows you to test if any of the elements of a search vector are found
 
 ~~~
 possessions
@@ -731,7 +731,7 @@ possessions
 {: .output}
 
 ~~~
-electrical <- c('dish washer', 'hair dryer', 'Mobile Phone','television','washing machine')
+electrical <- c('dish washer', 'hair dryer', 'Mobile Phone', 'television', 'washing machine')
 electrical_possessions <- possessions[possessions %in% electrical]
 electrical_possessions
 ~~~
@@ -744,9 +744,9 @@ electrical_possessions
 
 ## Missing data
 
-It is very common for datasets to have data missing. As R a language is designed for data analysis, it has to have ways of dealing with missing data.
+It is very common for datasets to have data missing. As R is a language designed for data analysis, it has to have ways of dealing with missing data.
 
-In a vector Missing data is represented by 'NA' (Not Available)
+In a vector missing data is represented by 'NA' (Not Available)
 
 Although the 'NA' are normally inserted automatically by R when we read data from a dataset, for demonstration purposes we can deliberately create a vector with missing values. This can be done directly using the 'c' function and specifying 'NA' (without the quotes) as an element value or in our
 case we will modify and element of the ages vector
@@ -785,7 +785,7 @@ ages
 ~~~
 {: .output}
 
-When adding 1 to each element of the vector the results (i.e the values of the elements) are not effected by the NA element (adding 1 to NA is still NA)
+When adding 1 to each element of the vector the results (i.e. the values of the elements) are not effected by the NA element (adding 1 to NA is still NA)
 
 However there are many other statistical functions where the overall result is affected by missing values.
 
@@ -810,7 +810,7 @@ max(ages)
 {: .output}
 
 By default if any of the elements are NA then the result will be NA
-We can overide this by setting the 'na.rm' parameter to TRUE
+We can override this by setting the 'na.rm' parameter to TRUE
 
 ~~~
 mean(ages, na.rm = TRUE)
@@ -872,7 +872,7 @@ ages[complete.cases(ages)]
 ~~~
 {: .output}
 
-All of the above will remove missing data. You need to take care when using them because in a dataset of data with many rows, only the rows without any missing data will be retained. It could bethat the missing data was only in element that you were not hoping to analyse anyway, so their presenece wouldn't be a problem.
+All of the above will remove missing data. You need to take care when using them because in a dataset of data with many rows, only the rows without any missing data will be retained. It could be that the missing data was only in element that you were not hoping to analyse anyway, so their presence wouldn't be a problem.
 
 
 ## Replacing missing values
@@ -925,7 +925,7 @@ mean(ages)
 ~~~
 {: .output}
 
-In some datasets you wish to analyse you may find the genuinely missing values have been replaced with values such as -99 or -999. In such cases you want to deliberately change these to NA and ten use the `na.rm = TRUE` option for you calculations.
+In some datasets you wish to analyse you may find the genuinely missing values have been replaced with values such as -99 or -999. In such cases you will want to deliberately change these to NA and then use the `na.rm = TRUE` option for your calculations. Otherwise, these values may causes issues, for example, in statistical calculations.
 
 > ## Exercise
 > for the vector c(12,-99, 21, 34, -99, -99, 53, 32, 90, -99) calculate the mean of the 6 non-Missing values
