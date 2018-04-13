@@ -10,7 +10,7 @@ questions:
 - "How can I change the format of a data frame from wide to long and vice versa?"
 
 objectives:
-- "Use select to choose columns from a data frame" 
+- "Use select to choose columns from a data frame"
 - "Use filter to choose rows from a data frame"
 - "Use the pipe (%>%) operator to combine commands"
 - "Use mutate to create new columns in a data frame"
@@ -22,12 +22,6 @@ objectives:
 keypoints:
 - "First key point."
 ---
-
-
-```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("03-")
-```
 
 
 ## What are 'dplyr' and 'tidyr'?
@@ -70,7 +64,7 @@ We have in fact already noticed these effects when we have previously used 'str'
 ## Selecting columns and filtering rows
 
 We're going to learn some of the most common **`dplyr`** functions: `select()`,
-`filter()`, `mutate()`, `group_by()`, and `summarize()`. 
+`filter()`, `mutate()`, `group_by()`, and `summarize()`.
 To select columns of a data frame, use `select()`. The first argument to this function is the data
 frame (`SN7577`), and the subsequent arguments are the columns to keep.
 
@@ -104,7 +98,6 @@ This is readable, but can clutter up your workspace with lots of objects that yo
 
 You can also nest functions (i.e. one function inside of another), like this:
 
-
 ```{r}
 SN7577_b <- select(filter(SN7577, numage == 90), sex, age, numage)
 SN7577_b
@@ -119,13 +112,13 @@ The last option, *pipes*, are a recent addition to R. Pipes let you take
 the output of one function and send it directly to the next, which is useful
 when you need to do many things to the same dataset.  Pipes in R look like
 `%>%` and are made available via the `magrittr` package, installed automatically
-with `dplyr`. 
+with `dplyr`.
 
 
 ```{r}
 SN7577 %>%
-    filter(numage == 90) %>%
-    select( sex, age, numage)
+  filter(numage == 90) %>%
+  select( sex, age, numage)
 ```
 
 In the above code, we use the pipe to send the `SN7577` dataset first through
@@ -147,8 +140,8 @@ can assign it a new name:
 
 ```{r}
 SN7577_90 <- SN7577 %>%
-    filter(numage == 90) %>%
-    select( sex, age, numage)
+  filter(numage == 90) %>%
+  select( sex, age, numage)
 
 SN7577_90
 ```
@@ -156,23 +149,23 @@ SN7577_90
 Note that the final data frame is the leftmost part of this expression.
 
 > ## Exercise
-> 
+>
 >  Using pipes, subset the `SN7577` data to include rows where the numage is  less than 65
 >  and retain only the columns `sex`, `age` and `numage.
-> 
+>
 > > ## Solution
-> > 
+> >
 > > ```{r}
 > > SN7577_lt65 <- SN7577 %>%
 > >   filter(numage < 65) %>%
 > >   select( sex, age, numage)
-> > 
+> >
 > > SN7577_lt65
 > > ```
-> > 
+> >
 > {: .solution}
 {: .challenge}
- 
+
 
 ### Mutate
 
@@ -193,8 +186,8 @@ You can also create a second new column based on the first new column within the
 ```{r}
 tax_rate <- 0.2
 SN7577 %>%
-    mutate(income_000 = income * 1000, income_taxed = income_000 * ( 1 - tax_rate)) %>%
-    select( income_000, income, income_taxed)
+  mutate(income_000 = income * 1000, income_taxed = income_000 * ( 1 - tax_rate)) %>%
+  select( income_000, income, income_taxed)
 ```
 
 
@@ -211,22 +204,22 @@ SN7577 %>%
 
 > ## Exercise
 >
-> 
+>
 >  Create a new data frame from the `SN7577` data that meets the following
 >  criteria: contains only the `numage` column and a new column called
 >  `voting years` containing values that are the `numage ` values minus 18.
->  Ensure that the `voting years` column has no -ve values. 
+>  Ensure that the `voting years` column has no -ve values.
 >  Return only the voting_years and numage columns.
-> 
+>
 > > ## Solution
-> > 
+> >
 > > ```{r}
 > > SN7577 %>%
 > >  filter(numage >= 18) %>%
 > >  mutate(voting_years = numage - 18) %>%
 > >  select(voting_years, numage)
 > > ```
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
@@ -254,49 +247,49 @@ SN7577 %>%
 
 > ## Exercise
 >
-> The 'na.rm = TRUE' in the summarize clause in the mean function isn't really needed for the SN7577 data as there are no NA values. 
+> The 'na.rm = TRUE' in the summarize clause in the mean function isn't really needed for the SN7577 data as there are no NA values.
 > 1. Try removing it and running the code again and confirm that the answers are the same.
-> 2. There ar however 6 rows with 'numage' = 0. These are effectively missing data. Change these values to NA and run the 
+> 2. There ar however 6 rows with 'numage' = 0. These are effectively missing data. Change these values to NA and run the
 >  code again, both with and without the 'na.rm = True' parameter
-> 
+>
 > > ## Solution
-> > 
+> >
 > > ```{r}
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage, na.rm = TRUE))
-> > 
+> >
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage))
-> > 
+> >
 > > SN7577$numage[SN7577$numage == 0] <- NA
-> > 
+> >
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage, na.rm = TRUE))
-> > 
+> >
 > > SN7577 %>%
 > >   group_by(Q1) %>%
-> >   summarize(avg_age = mean(numage)) 
+> >   summarize(avg_age = mean(numage))
 > > ```
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
 If we know that there are 'NA's in a column we could filter them out in advance of any other processing.
 
 ```{r}
-# Are there any NAs in numage?
+# Art there any NAs in numage?
 SN7577 %>%
-    filter(is.na(numage))
+  filter(is.na(numage))
 
 # use '!' to exclude them
 SN7577 %>%
   filter(!is.na(numage)) %>%
   group_by(Q1) %>%
   summarize(avg_age = mean(numage))
-```		
+```
 
 
 You can also group by multiple columns. 'age' is an age grouping variable from 1 to 7, 'sex' uses integers 1 and 2 to denote Male and Female.
@@ -306,7 +299,6 @@ SN7577 %>%
   group_by(sex, age) %>%
   summarize(avg_age = mean(numage, na.rm = TRUE))
 ```
-
 
 If we ran a similar piece of code, but this time going back to usoing 'Q1'
 
@@ -455,13 +447,13 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 > > ## Solution
 > >
 > > ```{r}
-> > # Spread, create dummy variable to use as values
+> > \# Spread, create dummy variable to use as values
 > > SAFI_roof_spread <- SAFI_results %>%
 > >   mutate(mycount = 1) %>%
 > >   spread(key = C01_respondent_roof_type, value = mycount, fill = 0)
 > > SAFI_roof_spread
 > >
-> > # Gather + filter out excess rows and unneeded colum
+> > \# Gather + filter out excess rows and unneeded colum
 > > SAFI_gather <- SAFI_roof_spread %>%
 > >   gather(key = C01_respondent_roof_type, value = C01_count, grass:mabatisloping) %>%
 > >   filter(C01_count == 1) %>%
@@ -490,3 +482,4 @@ write_csv(SN7577_papers, path = "SN7577_papers.csv")
 
 The filename is passed to the path parameter, as the name suggests you could specify a full path + the filename. If you do not , then the current working directory will be assumed.
 
+```{r}
