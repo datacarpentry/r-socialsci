@@ -50,7 +50,7 @@ To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want
 We will start by loading our SN7577 dataset
 
 ```{r}
-SN7577 <- read_csv("SN7577.csv")
+SN7577 <- read_csv("data/SN7577.csv")
 
 ## inspect the data
 str(SN7577)
@@ -380,7 +380,7 @@ To look at the 'gather' and 'spread' functions we will use the SAFI_results data
 
 ```{r}
 library(readr)
-SAFI_results <- read_csv("SAFI_results.csv")
+SAFI_results <- read_csv("data/SAFI_results.csv")
 ```
 
 Within the SAFI_results data isa column, C02_respondent_wall_type, which records the material used make the walls of the houses. We can see from the following that there are only 4 different values.
