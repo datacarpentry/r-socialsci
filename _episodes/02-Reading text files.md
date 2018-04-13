@@ -24,9 +24,9 @@ keypoints:
 
 ## Loading a datafile into the R environment
 
-In most practical scenarios you will want to read data into the R environment from a dataset. 
+In most practical scenarios you will want to read data into the R environment from a dataset.
 
-RStudio provides an interface for reading a variety of commonly avaiable data formats produced by other commercial statisical packages such as SPSS and Stata.
+RStudio provides an interface for reading a variety of commonly available data formats produced by other commercial statistical packages such as SPSS and Stata.
 
 We will demonstrate this functionality by importing the SN7577 dataset in both the tab delimited (SN7577.tab) and the SPSS (SN7577_spss.sav) formats.
 
@@ -40,7 +40,7 @@ The import dataset option is available from the toolbar in the environment tab.
 
 There is no option to import a tab delimited file so we choose the csv option.
 
-The wizard guides you through selecting a file and allows you to set or change various characteristics of the data. 
+The wizard guides you through selecting a file and allows you to set or change various characteristics of the data.
 
 In our case although we are using the import csv option the file itself is a tab delimitted dataset so we need to change the seperator from ',' to '\t'.
 Notice how changing this option makes the 'mess' in the preview pane change to a nicely formatted table structure.
@@ -55,9 +55,10 @@ To import the tab delimitted version of the SN7577 file the following code was p
 library(readr)
 SN7577_tab <- read_delim("SN7577.tab", "\t", escape_double = FALSE, trim_ws = TRUE)
 ~~~
+{: .language-r}
 
-The 'library(readr)' line tells the R environment to import the 'readr' library of functions for use. the 'read.delim' function is part of the 'readr' library.
-The `read_delim()` function is a generalised version of the read_csv(). There are also a 'read_tsv' functions which is also derived from 'read_delim' and we could have used this directly from the console.
+The 'library(readr)' line tells the R environment to import the 'readr' library of functions for use. the `read.delim` function is part of the `readr` library.
+The `read_delim()` function is a generalised version of the read_csv(). There are also a `read_tsv` functions which is also derived from `read_delim` and we could have used this directly from the console.
 
 ~~~
 library(readr)
@@ -65,7 +66,8 @@ SN7577_csv <- read_delim("SN7577.tab", "\t")
 
 SN7577_csv <- read_tsv("SN7577.tab")
 ~~~
-
+{: .language-r
+}
 > ## Exercise
 >
 > Use the import dataset wizard to import the SN7577>spss.sav dataset.
@@ -75,10 +77,10 @@ SN7577_csv <- read_tsv("SN7577.tab")
 > When the data is imported, compare it with the SN7577_csv data.
 > Can you find two very clear differences in how the data is shown?
 > > ## Solution
-> > 
+> >
 > > 1. On the csv file the headers are just the question numbers and on the spss file they include the question itself.
 > > 2. On the spss file missing data is denoted as NA, however in the csv version missing data is typically shown as -1.
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
@@ -92,11 +94,15 @@ If use 'class(SN7577_csv)' to find the type of this cariable, you will see that 
 
 ~~~
 class(SN7577_spss)
-[1] "tbl_df"     "tbl"        "data.frame" 
+~~~
+{: .language-r}
 
 ~~~
+[1] "tbl_df"     "tbl"        "data.frame"
+~~~
+{: .output}
 
-It is the las t one "data.frame" that we are going to look art in detail.
+It is the last one "data.frame" that we are going to look art in detail.
 
 ## Data frames
 
@@ -108,7 +114,6 @@ A data frame is the representation of data in the format of a table, very much a
 Apart from viewing or partially viewing the data by typing the variable name into the console there are several other functions which can be used to find out bits of information about a dataframe.
 
 ~~~
-
 dim(SN7577_csv)        # no of rows and columns
 nrow(SN7577_csv)       # number of rows
 ncol(SN7577_csv)       # number of columns
@@ -117,21 +122,20 @@ head(SN7577_csv)       # shows first 6 rows (but truncates the variables)
 tail(SN7577_csv)       # shows last 6 rows (but truncates the variables)
 
 names(SN7577_csv)      # lists all of the column names
-names(SN7577_spss)     # Despite the extra text in the 'View' the column names for the spss variable 
+names(SN7577_spss)     # Despite the extra text in the 'View' the column names for the spss variable
                        # are the same as the csv version
 rownames(SN7577_csv)   # list the column names, esentialy index numbers which we don't really need
 
-str(SN7577_csv)        # Show the overall structure of the variable, similar byt more complex to what
+str(SN7577_csv)        # Show the overall structure of the variable, similar but more complex to what
                        # what we have seen for other variables.
 summary(SN7577_csv)    # displays summary statistics for the different columns.
-
 ~~~
-
+{: .language-r}
 
 ## Slicing and Dicing a dataframe
 
-Dataframes are 2-dimensional, we describe them as having rows and columns. 
-If we want to extract some specific data from a dataframe we need to specify the "coordinates" 
+Dataframes are 2-dimensional, we describe them as having rows and columns.
+If we want to extract some specific data from a dataframe we need to specify the "coordinates"
 of the data. We give the row numbers first and then the column numbers. (Unfortunately this is the opposite to Excel, where we normally give the column letter and then the row number)
 
 There are a variety of ways of indicating the rows and columns of interest. How you specify can effect the datatype of the data returned
@@ -192,7 +196,7 @@ feature to get the full and correct column name
 >    dataset.
 >
 > > ## Solution
-> > 
+> >
 > > ~~~
 > > SN7577_200 <- SN7577_csv[200, ]
 > > SN7577_200
@@ -201,14 +205,14 @@ feature to get the full and correct column name
 > > SN7577_middle <- SN7577_csv[nrow(SN7577_csv)/2, ]
 > > SN7577_middle
 > > SN7577_head <- SN7577_csv[-c(7:nrow(SN7577_csv)),]
-> > SN7577_head 
+> > SN7577_head
 > > ~~~
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
 
-## Factors 
+## Factors
 
 Factors are used to represent categorical data. Factors can be ordered or
 unordered, and understanding them is necessary for statistical analysis and for
@@ -217,15 +221,15 @@ plotting.
 Although the mjority of the data in the SN7577_csv is in fact categorical data, as it has all been represented as numerical values, using it to discuss Factors would be confusing. So instead we wil load a copy of our SAFI dataset and use that .
 
 ~~~
-SAFI_results <- read_csv("SAFI_results.csv") 
+SAFI_results <- read_csv("SAFI_results.csv")
 ~~~
 
 Initially the dataset is loaded without any Factors, all the the string like columns as defined as characters.
 
 ~~~
 str(SAFI_results$C01_respondent_roof_type)
-str(SAFI_results$C02_respondent_wall_type) 
-str(SAFI_results$C03_respondent_floor_type) 
+str(SAFI_results$C02_respondent_wall_type)
+str(SAFI_results$C03_respondent_floor_type)
 ~~~
 
 You can see from the output of the 'str' functions that these columns appear to have only a few different string values, suggesting that they are better considered categorical.
@@ -238,13 +242,13 @@ SAFI_results$C02_respondent_wall_type <- as.factor(SAFI_results$C02_respondent_w
 SAFI_results$C03_respondent_floor_type <- as.factor(SAFI_results$C03_respondent_floor_type)
 
 str(SAFI_results$C01_respondent_roof_type)
-str(SAFI_results$C02_respondent_wall_type) 
-str(SAFI_results$C03_respondent_floor_type) 
+str(SAFI_results$C02_respondent_wall_type)
+str(SAFI_results$C03_respondent_floor_type)
 ~~~
 
 (If you wanted to convert a string Factor to a character string, you can use the 'as.character' function.)
 
-Notice the output of the 'str' function. It tells you how many 'levels' (unique values) there are, what they are, although this is usally truncated, and which rows have which level. 
+Notice the output of the 'str' function. It tells you how many 'levels' (unique values) there are, what they are, although this is usally truncated, and which rows have which level.
 
 This last point may not be obvious as all you see isa list of integers.
 When the Factors are created, they are stored in alphabetical order and allocated an integer value starting at one for the first and so on. It is these integers values that you see displayed, one per record, that you see displayed at the end of the 'str' output. Again this is normally truncated.
@@ -264,7 +268,7 @@ analysis. Here, one way to reorder our levels in the `sex` vector would be
 ~~~
 levels(SAFI_results$C02_respondent_wall_type)   # before
 
-SAFI_results$C02_respondent_wall_type <- factor(SAFI_results$C02_respondent_wall_type, 
+SAFI_results$C02_respondent_wall_type <- factor(SAFI_results$C02_respondent_wall_type,
                                       levels = c("muddaub", "sunbricks", "burntbricks", "cement"))
 
 levels(SAFI_results$C02_respondent_wall_type)   # after
@@ -274,7 +278,7 @@ levels(SAFI_results$C02_respondent_wall_type)   # after
 
 When your data is stored as a factor, you can use the `plot()` function to get a
 quick glance at the number of observations represented by each factor
-level. 
+level.
 
 ~~~
 ## bar plot of the different roof types:
@@ -312,7 +316,7 @@ What we want to do is to extract the various parts of the date and time from the
 
 To make this job very easy, we are going to use the functions provided by a library called 'lubridate'. This library is part of the 'tidyverse' library, so if you have installed 'tidyverse' it will be available.
 
-Within this library there are a set of appropriately named functions to extract date and time parts. 
+Within this library there are a set of appropriately named functions to extract date and time parts.
 
 ~~~
 
@@ -344,23 +348,23 @@ View(SAFI_results)
 > ## Exercise
 >
 > Use appropriate functions from lubridate to add three new columns to the SAFI_results dataframe representing the
-> day, month and year of the A01_interview_date column 
-> 
+> day, month and year of the A01_interview_date column
+>
 > > ## Solution
-> > 
+> >
 > > ~~~
 > > SAFI_results$A01_year <- year(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
 > > SAFI_results$A01_month <- month(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
 > > SAFI_results$A01_day <- day(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
 > > ~~~
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
 
 If we want to go the other way, that is combine seperate components into a date format, we can do that as well.
 
-Again using functions from 'lubridate' 
+Again using functions from 'lubridate'
 
 ~~~
 
@@ -383,7 +387,3 @@ To combine our seperate components we can use the 'paste' function. We need to c
 ~~~
 SAFI_results$A01_next_day <-  1 + dmy(paste(SAFI_results$A01_day, SAFI_results$A01_month, SAFI_results$A01_year, sep = '-'))
 ~~~
-
-
-
-
