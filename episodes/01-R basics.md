@@ -29,18 +29,18 @@ keypoints:
 
 In this lesson we we be using 3 data files;
 
-SAFI_results.csv contains survey data relating to farming in Mozambique and Tanzania. It can be downloaded from [here](../data/SAFI_results.csv)
+SAFI_results.csv contains survey data related to farming in Mozambique and Tanzania. It can be downloaded from [here](../data/SAFI_results.csv)
 
-SN7577.csv which is the UKDS datset relating to political engagement. It can be downloaded from [here](../data/SN7577.csv)
+SN7577.csv is a UKDS datset related to political engagement. It can be downloaded from [here](../data/SN7577.csv)
 
-SN7577.tab as above but in tab delimited format. It can be downloaded from [here](../data/SN7577.tab)
+SN7577.tab is the same as above but in tab delimited format. It can be downloaded from [here](../data/SN7577.tab)
 
 You may also want to download the data dictionary associated with the SN7577 dataset from [here](../data/audit_of_political_engagement_11_ukda_data_dictionary.rtf)
 
-You should place the 3 data files in a folder where you intend to do your R work.
+You should save the 3 data files in a folder where you intend to do your R work.
 
 In order to follow along with the examples in this episode you should start RStudio and create a new RScript file either from
-the File menu item or the toolbar icon immediately below it.
+the File menu or the toolbar icon immediately below it.
 
 If you intend to save the script you may wish to name it. If you click the save icon on the toolbar a standard save as
 dialog will appear.
@@ -49,21 +49,21 @@ Although we will routinely refer to using the console in this episode, and you c
 
 There are shortcut alternatives to many of the RStudio menu and toolbar items. The RStudio article [Editing and Executing Code](https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code) explains many of them.
 
-When you select code for execution be careful that you either select the whole line or lines or if you are just running a single line, simply place the cursor in the line. If s=you select part of a line, that is what will be run.
+When you select code for execution, be careful that you either select the whole line or lines. If you are just running a single line, simply place the cursor in the line. If you select part of a line, only that part will be executed.
 
 
 ## Using the console in RStudio
 
-If you type simple arithmetic expressions into the console it will be evalated and the result displayed immedediately below.
+If you type simple arithmetic expressions into the console it will be evaluated and the result displayed immedediately below.
 
 In order to save the result for further use it is necessary to assign the value of the expression to a variable.
 
 
 ## Creating variables and assigning values
 
-Varaibles are usually given short but meaningful names starting with an alphabetic character. You can use uppercase characters if ou want, but remember that R is case sensitive so that you must be consistent. You can also use numbers as part of a variable name but you cannot start with a digit. There are some words which cannot be used as variable names such as 'if' or 'funtion'. You can get a complete list of these words using the `help("reserved")` or `?reserved` commands from the console.
+Varaibles are usually given short but meaningful names. You can use uppercase characters if you want, but remember that R is case sensitive, so that you must be consistent when calling the variable later. You can also use numbers as part of a variable name but you cannot start the name with a number. There are some words which cannot be used as variable names such as 'if' or 'function'. You can get a complete list of these words using the `help("reserved")` or `?reserved` commands from the console.
 
-You can use the '.' character as part of the name but this is not recommended. If you wish make longer variable names more readable, using the '_' character helps.
+You can use the `.` caharacter as part of the name but this is not recommended. If you wish to make longer variable names more readable, using the `_` character helps. 
 
 ~~~
 Age <- 60
@@ -75,9 +75,10 @@ will create two separate variables.
 
 The  `<-` symbol is used in R to denote assignment to a variable. You can read the above assignment as 'Age is assigned the value of 60'.
 
-The `=` symbol can also be used and you will see it in some code examples on the Internet but `<-` is by far the more common.
 
-If you type these two lines in at the console or run them (one at a time) from a script, you will just receive the standard `>` prompt as a response.
+The `=` symbol can also be used in place of `<-`.
+
+If you type the above two lines in at the console or run them (one at a time) from a script, you will just recieve the standard `>` prompt as a response.
 
 If you want to know what the value of a variable is, you can just type the name of the variable.
 
@@ -91,9 +92,8 @@ age
 ~~~
 {: .output}
 
-In which case the current value of the 'age' variable will be printed to the console.
-Once a variable has been created, you can give it different values either directly or by some calculate. More often than not you will
-give a varaibla a value based on the value of other variables.
+In which case the current value of the `age` variable will be printed to the console.
+Once a variable has been created, you can give it different values either directly or by some calculation. Often you will give a varaible a value based on the value of other variables.
 
 ~~~
 age <- 55
@@ -119,14 +119,12 @@ area_acres
 {: .output}
 
 
-If the value assigned to `area_hectares` is now changed, it will not effect the value of `area_acres`
-
+If the value assigned to `area_hectares` is changed, it will not effect the value of `area_acres`.
 
 ## Comments
 
 All programming languages allow the programmer to include comments in their code. To do this in R we use the `#` character.
-Anything to the right of the `#` sign up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments
-or include them after and code on the line.
+Anything to the right of the `#` sign up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments or include them after code on the line.
 
 ~~~
 area_hectares <- 1.0			# land area in hectares
@@ -141,10 +139,10 @@ area_acres				# print land area in acres.
 {: .output}
 
 > ## Exercise
-> Create two variables `length` and `width` and assign them values.
-> Create a third variable `area` and give it a value based on the current values of `length` and `width`.
-> Show that changing the values of either`length` and `width` does not effect the value of `area`.
->
+> Create two variables `length` and `width` and assign them the values `2.5` and `3.2` respectively. 
+> Create a third variable `area` and assign it a value based on the current values of `length` and `width`. 
+> Show that changing the values of `length` and `width` does not effect the value of `area`.
+> 
 > > ## Solution
 > >
 > > ~~~
@@ -181,17 +179,15 @@ area_acres				# print land area in acres.
 
 ## Using functions
 
-A function is a pre-defined piece of R code. It allows more complicated or repetitive sections of code to be pre-built and then subsequently used
-wherever needed. As a programmer you can write your own functions but much of the time you rely on functions which are built into the R environment as part of the basic R configuration or are included as part of a 3rd party R package.
+A function is a pre-defined piece of R code. It allows more complicated or repetited sections of code to be pre-built and then subsequently used and reused wherever needed. As a programmer you can write your own functions but much of the time you rely on functions which are built into the R environment as part of base R or are added in from a 3rd party R package.
 
-Simple repetition of code can be useful, but it is more likely that you wish to perform the same actions, but using a different set of variables.
-Because of this most functions allow the user of the function to provide parameters represent variable values, which you can change exh time
-you call the function.
+Simple repetition of code can be useful, but it is more likely that you wish to perform the same actions using a different set of variables.
+Because of this, most functions allow the user of the function to provide parameters representing variables, which you can change each time you call the function.
 
-You call a function by providing the name of the function and a set of parameters - possibly only one, in brackets following the name.
-In most cases the function call will be on the right hand side of the assignment. The value(S) returned by the function are assigned to the variable on the left hand side.
+You call a function by providing the name of the function and a set of parameters - possibly only one, in brackets (also called parentheses) following the name.
+In most cases, the function call will be on the right hand side of the assignment. The value(s) returned by the function are assigned to the variable on the left hand side.
 
-for example there is a builtin function which calculates the (positive) square root of a number
+For example there is a builtin function which calculates the (positive) square root of a number.
 
 ~~~
 a <- sqrt(4)
@@ -207,8 +203,6 @@ a
 The square root of 4 is calculated and assigned to the variable `a`
 
 The sqrt function only take a single parameter. It doesn't have to be a literal value like '4' it could be a variable name or
-even an expression. An expression itself can contain functions.
-
 
 ~~~
 x <- 12
@@ -260,19 +254,19 @@ a
 {: .output}
 
 > ## Exercise
-> Based on the answers to the last two code segments, what do you think the `round()` function does?
->
->
+> Based on the answers to the last two code segments, what do you think the `round` function does?
+> 
+> 
 > > ## Solution
-> >
-> > It rounds down a number to the nearest integer value with values above 0.5 being rounded up.
-> >
-> >
+> > 
+> > It rounds down a number to the nearest integer value with 0.5 being rounded up.
+> > 
+> > 
 > {: .solution}
 {: .challenge}
 
-As we have used 'sqrt' and 'round', we have only provided a single parameter in each case, and the way we have used them it makes sense to do.
-If you are using a function that you are not familiar with, you can find out what parameters can be used by using the 'args' function. This is a function which takes the name of another function as a parameter and provides you with a list of all of the parameters associated with the function.
+So far we have used `sqrt` and `round` functions, and we have only provided a single parameter in each case.  The `sqrt` function only takes a single parameter and `round` can take one or two parameters. Other functions can take more than two parameters. 
+If you are using a function that you are not familiar with, you can find out what parameters can be used with the function by using the `args` function. The `args` function takes the name of another function as a parameter and provides you with a list of all of the parameters associated with the function.
 
 ~~~
 args(sqrt)
@@ -308,7 +302,7 @@ NULL
 {: .output}
 
 
-You can see from this that 'sqrt' only has the one parameter, but 'round' has two. The second parameter is called 'digits'. It has been given a default value of 0. It is because a default value has been given (when the function was created) that we do not have to provide a value when we call the function, and in fact we didn't. The first parameter, 'x' has no default value and therefore has to be specified when the function is called. This makes sense because whenever we use 'round' we are wanting to round some number of our choice.
+You can see from this that 'sqrt' only has the one parameter, but 'round' has two. The second parameter is called 'digits'. It has been given a default value of 0. It is because a default value has been given (when the function was created) and therefore we are not required to provide a value when we call the function, and in fact we didn't. The first parameter, 'x' has no default value and therefore has to be specified when the function is called. This makes sense because whenever we use 'round' we want to round some number of our choice.
 
 > ## Exercise
 >
@@ -318,10 +312,10 @@ You can see from this that 'sqrt' only has the one parameter, but 'round' has tw
 >
 {: .challenge}
 
-## Variables and Objects
-We have been happily creating things which we have called variables by assigning values to them. Variables are used in almost all programming languages. In R the more accurate term is 'Object'. Everything in R is an object. There are situation where the difference between an Object and a VAriable is significant, but for the majority of the work that we will be doing in this lesson you can treat the terms as synonymous.
+## Variables and Objects 
+We have been happily creating things which we have called variables by assigning values to them. Variables are used in almost all programming languages. In R the more accurate term is 'Object'. Everything in R is an object. There are situations where the difference between an Object and a Variable is significant, but for the majority of the work that we will be doing in this lesson, you can treat the terms as synonymous.
 
-You can find full details of what an Object is at this link: https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects if you wish to.
+You can find what an object is [here](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
 
 
 
