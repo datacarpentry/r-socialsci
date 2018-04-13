@@ -46,18 +46,11 @@ In this lesson, we will be connecting to an SQLite database, which allows us to 
 First, install and load the neccessary packages. You can install the `RSQLite` package with
 
 
+
 ~~~
 install.packages("RSQLite")
 ~~~
 {: .language-r}
-
-
-
-~~~
-Installing package into '/home/francois/.R/library'
-(as 'lib' is unspecified)
-~~~
-{: .output}
 
 Load the packages with
 
@@ -67,32 +60,6 @@ library(RSQLite)
 library(dplyr)
 ~~~
 {: .language-r}
-
-
-
-~~~
-
-Attaching package: 'dplyr'
-~~~
-{: .output}
-
-
-
-~~~
-The following objects are masked from 'package:stats':
-
-    filter, lag
-~~~
-{: .output}
-
-
-
-~~~
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-~~~
-{: .output}
 
 Next, create a variable that contains the location of the SQLite database we are going to use. Here, we are assuming that it is in the current working directory.
 
@@ -464,7 +431,7 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
     }
     invisible(names)
 }
-<bytecode: 0x55f2746e3f70>
+<bytecode: 0x559fba42a3c8>
 <environment: namespace:utils>
 ~~~
 {: .output}
