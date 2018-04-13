@@ -415,7 +415,7 @@ Further arguments include `fill` which, if set, fills in missing values with
 the value provided.
 
 ```{r}
-\# Spread, create dummy variable to use as values
+# Spread, create dummy variable to use as values
 SAFI_wall_spread <- SAFI_results %>%
   mutate(mycount = 1) %>%
   spread(key = C02_respondent_wall_type, value = mycount, fill = 0)
