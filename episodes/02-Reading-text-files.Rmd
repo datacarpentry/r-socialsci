@@ -62,14 +62,14 @@ To import the tab delimitted version of the SN7577 file the following code was p
 
 ```{r}
 library(readr)
-SN7577_tab <- read_delim("SN7577.tab", "\t", escape_double = FALSE, trim_ws = TRUE)
+SN7577_tab <- read_delim("data/SN7577.tab", "\t", escape_double = FALSE, trim_ws = TRUE, col_types = cols())
 ```
 
 The `library(readr)` line tells the R environment to import the 'readr' library of functions for use. the `read.delim()` function is part of the 'readr' library, and is a generalised version of the `read_csv()` function. There is also a `read_tsv()` function which we could have used as well.
 
 ```{r}
-SN7577_csv <- read_delim("SN7577.tab", "\t")
-SN7577_csv <- read_tsv("SN7577.tab")
+SN7577_csv <- read_delim("data/SN7577.tab", "\t")
+SN7577_csv <- read_tsv("data/SN7577.tab")
 ```
 
 > ## Exercise
@@ -166,7 +166,6 @@ SN7577_tab$Q2          # Result is a vector
 ```
 
 For our purposes, the last three notations are equivalent. If you run the code you will notice differences in the display.
->>>>>>> 9c0d83130e7eab175966f19e2b6cecd3804abea7:_episodes_rmd/02-Reading text files.Rmd
 
 RStudio knows about the columns in your data.frame, so you can take advantage of the auto-completion feature (pressing the "tab" key on your keyboard with only the first few characters entered) to get the full and correct column name
 
@@ -214,7 +213,7 @@ Factors are used to represent categorical data. Factors can be ordered or unorde
 Although the mjority of the data in the `SN7577_tab` data.frame are in fact categorical data, it is represented as numerical values. Instead, we will load a copy of our SAFI dataset and use that to discuss factors.
 
 ```{r}
-SAFI_results <- read_csv("SAFI_results.csv")
+SAFI_results <- read_csv("data/SAFI_results.csv")
 ```
 
 Initially the dataset is loaded without any of the columns designated as factors; all the columns containing text are defined as characters.
@@ -305,7 +304,10 @@ To make this job easier, we are going to use the functions provided by a library
 
 Within this library there are a set of appropriately named functions to extract date and time parts.
 
+
+
 ```{r}
+library(lubridate)
 year(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 month(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 day(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))

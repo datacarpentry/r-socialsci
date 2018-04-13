@@ -46,7 +46,8 @@ In this lesson, we will be connecting to an SQLite database, which allows us to 
 
 First, install and load the neccessary packages. You can install the `RSQLite` package with
 
-```{r}
+
+```{r, eval=FALSE}
 install.packages("RSQLite")
 ```
 

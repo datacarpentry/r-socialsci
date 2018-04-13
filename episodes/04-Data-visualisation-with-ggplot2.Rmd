@@ -48,7 +48,7 @@ Before we start we need to load the 'ggplot2' library and some data. For this ep
 ```{r}
 library(ggplot2)
 library(readr)
-SAFI_results <- read_csv("SAFI_results.csv")
+SAFI_results <- read_csv("data/SAFI_results.csv")
 ```
 
 To build a ggplot, we need to:
