@@ -484,11 +484,11 @@ or summarize your raw data, you may want to export these new data sets for futur
 Similar to the `read_csv()` function used for reading CSV files into R, the tidyverse includes a `write_csv()` function that generates CSV files from data frames.
 
 
-Use of 'write_csv' is straightforward you onlty need to provide the name of the dataframe you wish to write out and the name of the file that you wish to use.
+Use of `write_csv` is straightforward you need to provide the name of the dataframe you wish to write out and the name of the file that you wish to use.
 
 We will save our SN7577_papers dataframe.
 
-```{r}
+```{r, eval=FALSE}
 write_csv(SN7577_papers, path = "SN7577_papers.csv")
 ```
 
