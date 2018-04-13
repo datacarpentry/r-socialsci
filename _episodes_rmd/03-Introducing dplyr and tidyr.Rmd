@@ -3,21 +3,21 @@ title: "Introducing dplyr and tidyr"
 teaching: 0
 exercises: 0
 questions:
-- "How can I select specific columns from a data frame using dplyr?"
-- "How can I select specific rows from a data frame using dplyr?"
+- "How can I select specific columns from a data.frame using dplyr?"
+- "How can I select specific rows from a data.frame using dplyr?"
 - "What is ‘piping’ and what are the advantages of using it?"
-- "How can create new columns or remove existing columns from a data frame?"
-- "How can I change the format of a data frame from wide to long and vice versa?"
+- "How can create new columns or remove existing columns from a data.frame?"
+- "How can I change the format of a data.frame from wide to long and vice versa?"
 
 objectives:
-- "Use select to choose columns from a data frame" 
-- "Use filter to choose rows from a data frame"
+- "Use select to choose columns from a data.frame" 
+- "Use filter to choose rows from a data.frame"
 - "Use the pipe (%>%) operator to combine commands"
-- "Use mutate to create new columns in a data frame"
-- "Use group_by and summarise commands to aggregate data in a data frame"
+- "Use mutate to create new columns in a data.frame"
+- "Use group_by and summarise commands to aggregate data in a data.frame"
 - "Use spread to change the data format from long to wide"
 - "Use gather to change the data format from wide to long"
-- "Use write.csv to save a data frame to a csv file"
+- "Use write.csv to save a data.frame to a csv file"
 
 keypoints:
 - "First key point."
@@ -26,33 +26,27 @@ keypoints:
 
 ## What are 'dplyr' and 'tidyr'?
 
-`dplyr` is a package, part of the 'tidyverse' package, for
-making tabular data manipulation easier. It pairs nicely with `tidyr` which enables you to conveniently convert between different data formats which can be useful for plotting and some types of analysis.
+'dplyr' is a package, part of the 'tidyverse' package, for making tabular data manipulation easier. It pairs nicely with 'tidyr', which enables you to conveniently convert between different data formats. These transformations can be especially useful for plotting and certain types of analysis.
 
-The package `dplyr` provides easy tools for the most common data manipulation
-tasks. It is built to work directly with data frames, with many common tasks
-optimized for faster execution. An additional feature is the
-ability to work directly with data stored in an external database. We will look at this in a later episode.
+The package 'dplyr' provides easy tools for the most common data manipulation tasks. It is built to work directly with data.frames, with many common tasks optimized for faster execution. An additional feature is the ability to work directly with data stored in an external database. We will look at this in a later episode.
 
+The package 'tidyr' addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data.frame where each measurement type has its own column, and rows are instead more aggregated groups - like plots or aquaria. Moving back and forth between these formats is nontrivial, and 'tidyr' gives you tools for this and more sophisticated forms of data manipulation.
 
-The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups - like plots or aquaria. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
-
-To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
-[handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
-
+To learn more about 'dplyr' and 'tidyr' after the workshop, you may want to check out this
+[handy data transformation with 'dplyr' cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about 'tidyr'](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
 
 We will start by loading our SN7577 dataset
 
-~~~
+```{r}
 SN7577 <- read_csv("SN7577.csv")
 
 ## inspect the data
 str(SN7577)
-~~~
+```
 
-Previously we noted that the SN7577 variable appeared to be in 3 different classes. WE were happy to think of it as a data frame as that was what we were talking about.  Now it is convenient to think of it as having a class of  `tbl_df`.
+Previously we noted that the SN7577 variable appeared to be in 3 different classes. WE were happy to think of it as a data.frame as that was what we were talking about.  Now it is convenient to think of it as having a class of  `tbl_df`.
 This is referred to as a "tibble".
-Tibbles are almost identical to R's standard data frames, but they tweak some of the old behaviors of data frames. For our purposes the only differences between data frames and tibbles are that:
+Tibbles are almost identical to R's standard data.frames, but they tweak some of the old behaviors of data.frames. For our purposes the only differences between data.frames and tibbles are that:
 
 1. When you print a tibble, R displays the data type of each column under its name; it prints only the first few rows of data and only as many columns as fit
 on one screen.
@@ -65,7 +59,7 @@ We have in fact already noticed these effects when we have previously used 'str'
 
 We're going to learn some of the most common **`dplyr`** functions: `select()`,
 `filter()`, `mutate()`, `group_by()`, and `summarize()`. 
-To select columns of a data frame, use `select()`. The first argument to this function is the data
+To select columns of a data.frame, use `select()`. The first argument to this function is the data
 frame (`SN7577`), and the subsequent arguments are the columns to keep.
 
 ~~~
@@ -85,7 +79,7 @@ filter(SN7577, numage == 90)
 What if you want to select and filter at the same time? There are three
 ways to do this: use intermediate steps, nested functions, or pipes.
 
-With intermediate steps, you create a temporary data frame and use
+With intermediate steps, you create a temporary data.frame and use
 that as input to the next function, like this:'
 
 ~~~
@@ -125,15 +119,15 @@ In the above code, we use the pipe to send the `SN7577` dataset first through
 `filter()` to keep rows where `numage` equals 90, then through `select()`
 to keep only the `sex`, `age` and `numage` columns. Since `%>%` takes
 the object on its left and passes it as the first argument to the function on
-its right, we don't need to explicitly include the data frame as an argument
+its right, we don't need to explicitly include the data.frame as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we took the data frame `SN7577`, *then* we `filter`ed
+in the above example, we took the data.frame `SN7577`, *then* we `filter`ed
 for rows with `numage == 90`, *then* we `select`ed columns `sex`, `age`
 and `numage`. The `dplyr` functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
-more complex manipulations of data frames.
+more complex manipulations of data.frames.
 
 If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
@@ -146,7 +140,7 @@ SN7577_90 <- SN7577 %>%
 SN7577_90
 ~~~
 
-Note that the final data frame is the leftmost part of this expression.
+Note that the final data.frame is the leftmost part of this expression.
 
 > ## Exercise
 > 
@@ -205,7 +199,7 @@ SN7577 %>%
 > ## Exercise
 >
 > 
->  Create a new data frame from the `SN7577` data that meets the following
+>  Create a new data.frame from the `SN7577` data that meets the following
 >  criteria: contains only the `numage` column and a new column called
 >  `voting years` containing values that are the `numage ` values minus 18.
 >  Ensure that the `voting years` column has no -ve values. 
@@ -469,7 +463,7 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 Now that you have learned how to use `dplyr` to extract information from
 or summarize your raw data, you may want to export these new data sets for future use.
 
-Similar to the `read_csv()` function used for reading CSV files into R, the tidyverse includes a `write_csv()` function that generates CSV files from data frames.
+Similar to the `read_csv()` function used for reading CSV files into R, the tidyverse includes a `write_csv()` function that generates CSV files from data.frames.
 
 
 Use of 'write_csv' is straightforward you onlty need to provide the name of the dataframe you wish to write out and the name of the file that you wish to use.
