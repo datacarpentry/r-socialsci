@@ -48,16 +48,46 @@ Before we start we need to load the 'ggplot2' library and some data. For this ep
 ~~~
 library(ggplot2)
 library(readr)
-SAFI_results <- read_csv("SAFI_results.csv")
+SAFI_results <- read_csv("data/SAFI_results.csv")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: 'SAFI_results.csv' does not exist in current working directory ('/home/francois/git/r-socialsci/_episodes_rmd').
+Parsed with column specification:
+cols(
+  .default = col_character(),
+  Column1 = col_integer(),
+  A03_quest_no = col_integer(),
+  A04_start = col_datetime(format = ""),
+  A05_end = col_datetime(format = ""),
+  A11_years_farm = col_integer(),
+  B16_years_liv = col_integer(),
+  B_no_membrs = col_integer(),
+  C05_buildings_in_compound = col_integer(),
+  C06_rooms = col_integer(),
+  D_plots_count = col_integer(),
+  E19_period_use = col_integer(),
+  E_no_group_count = col_integer(),
+  E_yes_group_count = col_integer(),
+  F_liv_count = col_integer(),
+  G01_no_meals = col_integer(),
+  `_members_count` = col_integer(),
+  `gps:Accuracy` = col_double(),
+  `gps:Altitude` = col_integer(),
+  `gps:Latitude` = col_double(),
+  `gps:Longitude` = col_double()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+See spec(...) for full column specifications.
+~~~
+{: .output}
 
 To build a ggplot, we need to:
 
@@ -70,12 +100,7 @@ ggplot(data = SAFI_results)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
 
 If you run this line of code you will get a blank canvas in the plots pane. There is nothing wrong with the caode sofar, there is just nothing to show.
 
@@ -114,12 +139,7 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
 
 No we have a complete graph!
 
@@ -132,31 +152,14 @@ plot can also be generated with code like this:
 ~~~
 # Assign plot to a variable
 SAFI_plot <- ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv))
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)): object 'SAFI_results' not found
-~~~
-{: .error}
-
-
-
-~~~
 # Draw the plot
 SAFI_plot +
     geom_point()
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'SAFI_plot' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" />
 
 **Notes:**
 
@@ -174,12 +177,7 @@ ggplot(data = SAFI_results) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" />
 
 - The `+` sign used to add layers must be placed at the end of each line containing
 a layer. If, instead, the `+` sign is added in the line before the other layer,
@@ -198,12 +196,7 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" />
 
 Then, we start modifying this plot to extract more information from it. For
 instance, we can add transparency (`alpha`) to avoid overplotting:
@@ -215,12 +208,7 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" />
 
 We can also add colors for all the points:
 
@@ -231,12 +219,7 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-10-1.png" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" style="display: block; margin: auto;" />
 
 Or to color each species in the plot differently:
 
@@ -247,12 +230,7 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
 
 
 > ## Exercise
@@ -316,9 +294,11 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B_no_membrs)) +
 
 
 ~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B_no_membrs)): object 'SAFI_results' not found
+Warning: Continuous x aesthetic -- did you forget aes(group=...)?
 ~~~
 {: .error}
+
+<img src="../fig/rmd-04-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
@@ -352,19 +332,7 @@ wall_types <- SAFI_results %>%
   select(C02_respondent_wall_type) %>%
   group_by(C02_respondent_wall_type) %>%
   tally()
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in eval(lhs, parent, parent): object 'SAFI_results' not found
-~~~
-{: .error}
-
-
-
-~~~
 # create a bar chart of the wall types
 ggplot(data = wall_types, aes(x = C02_respondent_wall_type, y = count_of_type)) +
   geom_bar(stat="identity")
@@ -374,9 +342,11 @@ ggplot(data = wall_types, aes(x = C02_respondent_wall_type, y = count_of_type)) 
 
 
 ~~~
-Error in ggplot(data = wall_types, aes(x = C02_respondent_wall_type, y = count_of_type)): object 'wall_types' not found
+Error in FUN(X[[i]], ...): object 'count_of_type' not found
 ~~~
 {: .error}
+
+<img src="../fig/rmd-04-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
 
 
 
@@ -390,12 +360,7 @@ ggplot(data=SAFI_results, aes(x=C02_respondent_wall_type)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
 
 Apart from the `dplyr` work involved before creating the first plot, there are a couple of signifcant differences between the two approaches.
 
@@ -412,12 +377,7 @@ ggplot(data=SAFI_results, aes(x=A11_years_farm)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = A11_years_farm)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
 
 By default all of plots so far have had the labels on the axis determined by the variable we have used. As you might expect, these can be easily changed. You can add your own x any axis labels as well as an overall plot title.
 
@@ -431,12 +391,7 @@ ggplot(data=SAFI_results, aes(x=factor(C02_respondent_wall_type))) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = factor(C02_respondent_wall_type))): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
@@ -453,14 +408,7 @@ Error in ggplot(data = SAFI_results, aes(x = factor(C02_respondent_wall_type))):
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = SAFI_results, aes(x = C01_respondent_roof_type)): object 'SAFI_results' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
+> > <img src="../fig/rmd-04-unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 > > 
 > > ~~~
 > > ggplot(data=SAFI_results, aes(x=B_no_membrs)) +
@@ -468,12 +416,7 @@ Error in ggplot(data = SAFI_results, aes(x = factor(C02_respondent_wall_type))):
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = SAFI_results, aes(x = B_no_membrs)): object 'SAFI_results' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-04-unnamed-chunk-19-2.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}
@@ -499,12 +442,7 @@ ggplot(data=SAFI_results, aes(x=C02_respondent_wall_type)) +
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-04-unnamed-chunk-20-1.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
@@ -524,12 +462,7 @@ Error in ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)): object 
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in ggplot(data = SAFI_results, aes(x = A09_village)): object 'SAFI_results' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-04-unnamed-chunk-21-1.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}

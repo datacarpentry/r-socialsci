@@ -62,45 +62,54 @@ To import the tab delimitted version of the SN7577 file the following code was p
 
 ~~~
 library(readr)
-SN7577_tab <- read_delim("SN7577.tab", "\t", escape_double = FALSE, trim_ws = TRUE)
+SN7577_tab <- read_delim("data/SN7577.tab", "\t", escape_double = FALSE, trim_ws = TRUE, col_types = cols())
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error: 'SN7577.tab' does not exist in current working directory ('/home/francois/git/r-socialsci/_episodes_rmd').
-~~~
-{: .error}
 
 The `library(readr)` line tells the R environment to import the 'readr' library of functions for use. the `read.delim()` function is part of the 'readr' library, and is a generalised version of the `read_csv()` function. There is also a `read_tsv()` function which we could have used as well.
 
 
 ~~~
-SN7577_csv <- read_delim("SN7577.tab", "\t")
+SN7577_csv <- read_delim("data/SN7577.tab", "\t")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: 'SN7577.tab' does not exist in current working directory ('/home/francois/git/r-socialsci/_episodes_rmd').
+Parsed with column specification:
+cols(
+  .default = col_integer(),
+  wts = col_double()
+)
 ~~~
-{: .error}
+{: .output}
 
 
 
 ~~~
-SN7577_csv <- read_tsv("SN7577.tab")
+See spec(...) for full column specifications.
+~~~
+{: .output}
+
+
+
+~~~
+SN7577_csv <- read_tsv("data/SN7577.tab")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: 'SN7577.tab' does not exist in current working directory ('/home/francois/git/r-socialsci/_episodes_rmd').
+Parsed with column specification:
+cols(
+  .default = col_integer(),
+  wts = col_double()
+)
+See spec(...) for full column specifications.
 ~~~
-{: .error}
+{: .output}
 
 > ## Exercise
 >
@@ -158,9 +167,9 @@ dim(SN7577_tab)        # number of rows and columns
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+[1] 1286  202
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -172,9 +181,9 @@ nrow(SN7577_tab)       # number of rows
 
 
 ~~~
-Error in nrow(SN7577_tab): object 'SN7577_tab' not found
+[1] 1286
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -186,9 +195,9 @@ ncol(SN7577_tab)       # number of columns
 
 
 ~~~
-Error in ncol(SN7577_tab): object 'SN7577_tab' not found
+[1] 202
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -200,9 +209,38 @@ head(SN7577_tab)       # shows first 6 rows (but truncates the variables)
 
 
 ~~~
-Error in head(SN7577_tab): object 'SN7577_tab' not found
+# A tibble: 6 x 202
+     Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+  <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+1     1    -1     1     8     0     0      0     1     0     0      0
+2     3    -1     1     4     0     0      0     0     0     0      0
+3    10     3     2     6     0     0      0     0     0     0      0
+4     9    -1    10    10     0     0      0     0     0     0      0
+5    10     2     6     1     0     0      0     1     0     0      0
+6     1    -1     1     1     0     0      0     0     0     0      0
+# ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+#   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+#   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+#   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+#   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+#   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+#   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+#   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+#   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+#   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+#   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+#   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+#   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+#   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+#   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+#   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+#   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+#   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+#   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+#   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -214,9 +252,38 @@ tail(SN7577_tab)       # shows last 6 rows (but truncates the variables)
 
 
 ~~~
-Error in tail(SN7577_tab): object 'SN7577_tab' not found
+# A tibble: 6 x 202
+     Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+  <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+1    10     2     3     4     0     0      0     0     1     0      0
+2     2    -1     3     6     0     0      0     0     0     0      0
+3    10    10     2    10     0     0      0     0     0     0      0
+4     9    -1     8     9     0     0      0     0     0     0      0
+5    11    11     1     2     0     0      0     1     1     0      0
+6    10     6     6     6     0     0      0     0     0     0      0
+# ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+#   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+#   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+#   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+#   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+#   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+#   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+#   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+#   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+#   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+#   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+#   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+#   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+#   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+#   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+#   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+#   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+#   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+#   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+#   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -228,9 +295,26 @@ names(SN7577_tab)      # lists all of the column names
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+  [1] "Q1"       "Q2"       "Q3"       "Q4"       "Q5ai"     "Q5aii"   
+  [7] "Q5aiii"   "Q5aiv"    "Q5av"     "Q5avi"    "Q5avii"   "Q5aviii" 
+ [13] "Q5aix"    "Q5ax"     "Q5axi"    "Q5axii"   "Q5axiii"  "Q5axiv"  
+ [19] "Q5axv"    "Q5bi"     "Q5bii"    "Q5biii"   "Q5biv"    "Q5bv"    
+ [25] "Q5bvi"    "Q5bvii"   "Q5bviii"  "Q5bix"    "Q5bx"     "Q5bxi"   
+ [31] "Q5bxii"   "Q5bxiii"  "Q5bxiv"   "Q5bxv"    "Q6"       "Q7a"     
+ [37] "Q7b"      "Q8"       "Q9"       "Q10a"     "Q10b"     "Q10c"    
+ [43] "Q10d"     "Q11a"     "Q11b"     "Q12a"     "Q12b"     "Q13i"    
+ [49] "Q13ii"    "Q13iii"   "Q13iv"    "Q14"      "Q15"      "Q16a"    
+ [55] "Q16b"     "Q16c"     "Q16d"     "Q16e"     "Q16f"     "Q16g"    
+ [61] "Q16h"     "Q17a"     "Q17b"     "Q17c"     "Q17d"     "Q17e"    
+ [67] "Q17f"     "Q17g"     "Q18ai"    "Q18aii"   "Q18aiii"  "Q18aiv"  
+ [73] "Q18av"    "Q18avi"   "Q18avii"  "Q18aviii" "Q18aix"   "Q18bi"   
+ [79] "Q18bii"   "Q18biii"  "Q18biv"   "Q18bv"    "Q18bvi"   "Q18bvii" 
+ [85] "Q18bviii" "Q18bix"   "Q19a"     "Q19b"     "Q19c"     "Q19d"    
+ [91] "access1"  "access2"  "access3"  "access4"  "access5"  "access6" 
+ [97] "access7"  "web1"     "web2"     "web3"    
+ [ reached getOption("max.print") -- omitted 102 entries ]
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -257,9 +341,19 @@ rownames(SN7577_tab)   # list the column names, esentialy index numbers which we
 
 
 ~~~
-Error in rownames(SN7577_tab): object 'SN7577_tab' not found
+  [1] "1"   "2"   "3"   "4"   "5"   "6"   "7"   "8"   "9"   "10"  "11" 
+ [12] "12"  "13"  "14"  "15"  "16"  "17"  "18"  "19"  "20"  "21"  "22" 
+ [23] "23"  "24"  "25"  "26"  "27"  "28"  "29"  "30"  "31"  "32"  "33" 
+ [34] "34"  "35"  "36"  "37"  "38"  "39"  "40"  "41"  "42"  "43"  "44" 
+ [45] "45"  "46"  "47"  "48"  "49"  "50"  "51"  "52"  "53"  "54"  "55" 
+ [56] "56"  "57"  "58"  "59"  "60"  "61"  "62"  "63"  "64"  "65"  "66" 
+ [67] "67"  "68"  "69"  "70"  "71"  "72"  "73"  "74"  "75"  "76"  "77" 
+ [78] "78"  "79"  "80"  "81"  "82"  "83"  "84"  "85"  "86"  "87"  "88" 
+ [89] "89"  "90"  "91"  "92"  "93"  "94"  "95"  "96"  "97"  "98"  "99" 
+[100] "100"
+ [ reached getOption("max.print") -- omitted 1186 entries ]
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -271,9 +365,313 @@ str(SN7577_tab)        # Show the overall structure of the variable, similar but
 
 
 ~~~
-Error in str(SN7577_tab): object 'SN7577_tab' not found
+Classes 'tbl_df', 'tbl' and 'data.frame':	1286 obs. of  202 variables:
+ $ Q1         : int  1 3 10 9 10 1 1 1 9 2 ...
+ $ Q2         : int  -1 -1 3 -1 2 -1 -1 -1 -1 -1 ...
+ $ Q3         : int  1 1 2 10 6 1 1 1 10 1 ...
+ $ Q4         : int  8 4 6 10 1 1 8 1 10 1 ...
+ $ Q5ai       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aii      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aiii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aiv      : int  1 0 0 0 1 0 0 0 0 0 ...
+ $ Q5av       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5avi      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5avii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aviii    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aix      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5ax       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axi      : int  0 0 0 0 0 1 0 0 0 0 ...
+ $ Q5axii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axiii    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axiv     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axv      : int  0 1 1 1 0 0 1 1 1 1 ...
+ $ Q5bi       : int  1 0 1 0 1 1 0 1 1 1 ...
+ $ Q5bii      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5biii     : int  0 0 0 0 0 0 0 1 0 1 ...
+ $ Q5biv      : int  1 0 0 0 0 0 1 1 0 0 ...
+ $ Q5bv       : int  0 0 0 0 0 0 0 1 0 0 ...
+ $ Q5bvi      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bvii     : int  1 0 0 0 0 0 1 1 0 1 ...
+ $ Q5bviii    : int  0 0 1 0 0 0 0 1 0 0 ...
+ $ Q5bix      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bx       : int  0 0 0 0 0 0 0 1 0 0 ...
+ $ Q5bxi      : int  0 1 1 0 0 1 1 1 0 1 ...
+ $ Q5bxii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bxiii    : int  0 0 1 0 0 1 0 1 0 0 ...
+ $ Q5bxiv     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bxv      : int  0 0 0 1 0 0 0 0 0 0 ...
+ $ Q6         : int  3 2 2 3 3 2 2 2 4 2 ...
+ $ Q7a        : int  3 2 2 3 2 2 2 2 4 2 ...
+ $ Q7b        : int  3 2 2 3 3 2 2 3 3 2 ...
+ $ Q8         : int  2 3 3 5 3 2 4 3 3 3 ...
+ $ Q9         : int  3 3 4 4 4 4 5 2 4 4 ...
+ $ Q10a       : int  3 4 6 3 3 3 4 4 2 4 ...
+ $ Q10b       : int  4 5 4 3 3 4 4 2 4 4 ...
+ $ Q10c       : int  1 1 2 2 2 1 1 4 2 2 ...
+ $ Q10d       : int  4 1 3 2 2 3 2 4 3 2 ...
+ $ Q11a       : int  2 4 3 4 3 4 2 3 4 4 ...
+ $ Q11b       : int  2 4 3 4 4 4 3 4 4 4 ...
+ $ Q12a       : int  2 3 3 4 3 3 2 2 4 3 ...
+ $ Q12b       : int  2 3 3 4 3 4 3 2 4 3 ...
+ $ Q13i       : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ Q13ii      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q13iii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q13iv      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q14        : int  3 3 3 4 4 2 2 2 4 2 ...
+ $ Q15        : int  2 3 1 3 3 2 2 2 4 2 ...
+ $ Q16a       : int  3 2 2 6 1 3 3 2 3 5 ...
+ $ Q16b       : int  3 4 4 6 3 5 4 4 3 5 ...
+ $ Q16c       : int  1 1 1 6 1 1 3 1 2 1 ...
+ $ Q16d       : int  4 4 3 6 2 3 3 2 3 5 ...
+ $ Q16e       : int  2 4 4 6 2 2 3 3 2 1 ...
+ $ Q16f       : int  3 3 4 6 2 4 2 2 3 4 ...
+ $ Q16g       : int  2 1 2 6 4 1 2 1 3 1 ...
+ $ Q16h       : int  4 5 5 6 4 5 3 5 3 5 ...
+ $ Q17a       : int  4 5 4 3 4 3 2 5 4 5 ...
+ $ Q17b       : int  2 1 2 2 2 1 2 2 1 2 ...
+ $ Q17c       : int  2 4 2 3 3 1 2 1 1 1 ...
+ $ Q17d       : int  2 1 2 2 1 1 2 2 1 1 ...
+ $ Q17e       : int  4 3 3 2 2 2 2 5 5 5 ...
+ $ Q17f       : int  2 1 3 3 2 2 2 2 2 2 ...
+ $ Q17g       : int  1 2 2 5 1 3 2 1 1 1 ...
+ $ Q18ai      : int  1 1 1 1 0 0 0 0 0 0 ...
+ $ Q18aii     : int  0 0 0 1 0 0 0 0 1 1 ...
+ $ Q18aiii    : int  1 1 1 0 1 0 1 1 1 1 ...
+ $ Q18aiv     : int  0 1 1 1 1 1 1 1 1 1 ...
+ $ Q18av      : int  0 0 0 0 0 0 1 1 0 0 ...
+ $ Q18avi     : int  1 0 0 0 1 1 0 0 0 0 ...
+ $ Q18avii    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18aviii   : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18aix     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18bi      : int  1 0 1 1 0 1 0 0 0 0 ...
+ $ Q18bii     : int  0 1 0 0 0 0 0 1 1 1 ...
+ $ Q18biii    : int  0 0 1 0 1 0 0 1 1 0 ...
+ $ Q18biv     : int  0 1 1 0 1 1 1 1 1 1 ...
+ $ Q18bv      : int  0 0 0 0 0 0 0 0 0 1 ...
+ $ Q18bvi     : int  0 0 0 0 1 0 1 0 0 0 ...
+ $ Q18bvii    : int  0 1 0 0 0 0 1 0 0 0 ...
+ $ Q18bviii   : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18bix     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q19a       : int  1 2 2 4 1 2 2 2 2 2 ...
+ $ Q19b       : int  3 2 2 4 1 2 2 2 2 2 ...
+ $ Q19c       : int  2 2 2 4 2 1 2 2 2 2 ...
+ $ Q19d       : int  2 1 2 4 1 1 2 1 5 1 ...
+ $ access1    : int  1 1 0 1 0 1 1 1 1 1 ...
+ $ access2    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ access3    : int  0 0 0 0 1 0 0 0 0 0 ...
+ $ access4    : int  0 1 0 1 0 0 0 0 0 1 ...
+ $ access5    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ access6    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ access7    : int  0 0 1 0 0 0 0 0 0 0 ...
+ $ web1       : int  1 1 -1 1 1 1 1 1 1 1 ...
+ $ web2       : int  1 0 -1 1 0 1 1 1 1 1 ...
+  [list output truncated]
+ - attr(*, "spec")=List of 2
+  ..$ cols   :List of 202
+  .. ..$ Q1         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q2         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q3         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q4         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5ai       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aii      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aiii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aiv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5av       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5avi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5avii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aviii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aix      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5ax       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axiii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axiv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bi       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bii      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5biii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5biv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bv       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bvi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bvii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bviii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bix      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bx       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxiii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxiv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q6         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q7a        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q7b        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q8         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q9         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q11a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q11b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q12a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q12b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13i       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13ii      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13iii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13iv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q14        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q15        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16e       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16f       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16g       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16h       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17e       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17f       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17g       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18ai      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aiii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aiv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18av      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18avi     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18avii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aviii   : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aix     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18biii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18biv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bvi     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bvii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bviii   : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bix     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access1    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access2    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access3    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access4    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access5    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access6    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access7    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ web1       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ web2       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. .. [list output truncated]
+  ..$ default: list()
+  .. ..- attr(*, "class")= chr  "collector_guess" "collector"
+  ..- attr(*, "class")= chr "col_spec"
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -286,9 +684,60 @@ summary(SN7577_tab)    # displays summary statistics for the different columns.
 
 
 ~~~
-Error in summary(SN7577_tab): object 'SN7577_tab' not found
+       Q1               Q2               Q3              Q4       
+      Q5ai            Q5aii             Q5aiii            Q5aiv       
+      Q5av            Q5avi            Q5avii           Q5aviii       
+     Q5aix              Q5ax             Q5axi            Q5axii       
+    Q5axiii            Q5axiv             Q5axv             Q5bi       
+     Q5bii            Q5biii           Q5biv             Q5bv       
+     Q5bvi            Q5bvii          Q5bviii           Q5bix        
+      Q5bx            Q5bxi            Q5bxii          Q5bxiii      
+     Q5bxiv            Q5bxv             Q6             Q7a      
+      Q7b              Q8              Q9             Q10a      
+      Q10b            Q10c            Q10d            Q11a     
+      Q11b            Q12a            Q12b            Q13i       
+     Q13ii             Q13iii           Q13iv              Q14       
+      Q15             Q16a            Q16b            Q16c     
+      Q16d            Q16e            Q16f            Q16g      
+      Q16h            Q17a            Q17b            Q17c      
+      Q17d            Q17e            Q17f            Q17g      
+     Q18ai            Q18aii          Q18aiii           Q18aiv      
+     Q18av            Q18avi          Q18avii           Q18aviii      
+     Q18aix            Q18bi            Q18bii          Q18biii      
+     Q18biv           Q18bv            Q18bvi          Q18bvii       
+    Q18bviii           Q18bix             Q19a            Q19b      
+      Q19c            Q19d          access1          access2      
+    access3           access4          access5           access6       
+    access7            web1              web2              web3        
+      web4              web5                 web6        
+      web7               web8               web9         
+     web10              web11             web12              web13        
+     web14             web15              web16         
+     web17              web18             dbroad           intten      
+     netfq            daily1      daily2            daily3       
+     daily4            daily5             daily6            daily7        
+     daily8            daily9           daily10           daily11      
+    daily12          daily13           daily14     daily15     daily16 
+    daily17     daily18           daily19           daily20       
+    daily21          daily22          daily23          daily24      
+    daily25            sunday1           sunday2           sunday3       
+    sunday4           sunday5           sunday6           sunday7        
+    sunday8          sunday9     sunday10        sunday11      
+    sunday12    sunday13           sunday14           sunday15     
+    sunday16         sunday17          sunday18        sunday19     
+    sunday20            press1            press2         broadsheet1    
+  broadsheet2      broadsheet3        popular1         popular2     
+    popular3         popular4        popular5           sex       
+      age          agegroups         numage          class      
+     sgrade           work             gor              qual      
+     ethnic         ethnicity          party             cie       
+     wrkcie           income          tenure          tennet      
+     lstage           maritl          numhhd          numkid     
+    numkid2         numkid31         numkid32          numkid33     
+    numkid34       numkid35         numkid36      wts        
+ [ reached getOption("max.print") -- omitted 6 rows ]
 ~~~
-{: .error}
+{: .output}
 
 ## Slicing and Dicing a Data.frame
 
@@ -307,9 +756,12 @@ SN7577_tab[1, 1]   # 1st column of the 1st row of the data.frame (as a vector)
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+# A tibble: 1 x 1
+     Q1
+  <int>
+1     1
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -321,9 +773,12 @@ SN7577_tab[1, 6]   # the 6th column in 1st row (as a vector)
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+# A tibble: 1 x 1
+  Q5aii
+  <int>
+1     0
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -335,9 +790,22 @@ SN7577_tab[, 1]    # all of the 1st column values in the data.frame (as a vector
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+# A tibble: 1,286 x 1
+      Q1
+   <int>
+ 1     1
+ 2     3
+ 3    10
+ 4     9
+ 5    10
+ 6     1
+ 7     1
+ 8     1
+ 9     9
+10     2
+# ... with 1,276 more rows
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -349,9 +817,22 @@ SN7577_tab[1]      # all of the 1st column values in the data.frame (as a data.f
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+# A tibble: 1,286 x 1
+      Q1
+   <int>
+ 1     1
+ 2     3
+ 3    10
+ 4     9
+ 5    10
+ 6     1
+ 7     1
+ 8     1
+ 9     9
+10     2
+# ... with 1,276 more rows
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -363,9 +844,14 @@ SN7577_tab[1:3, 7] # the 7th column from the 1st three rows in the data.frame (a
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+# A tibble: 3 x 1
+  Q5aiii
+   <int>
+1      0
+2      0
+3      0
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -377,9 +863,33 @@ SN7577_tab[3, ]    # all of the columns in the 3rd row of the data.frame (as a d
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_tab' not found
+# A tibble: 1 x 202
+     Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+  <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+1    10     3     2     6     0     0      0     0     0     0      0
+# ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+#   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+#   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+#   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+#   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+#   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+#   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+#   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+#   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+#   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+#   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+#   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+#   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+#   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+#   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+#   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+#   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+#   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+#   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+#   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
-{: .error}
+{: .output}
 
 `:` is a special function that creates numeric vectors of integers in increasing
 or decreasing order, test `1:10` and `10:1` for instance.
@@ -406,7 +916,6 @@ SN7577_tab$Q2          # Result is a vector
 {: .language-r}
 
 For our purposes, the last three notations are equivalent. If you run the code you will notice differences in the display.
->>>>>>> 9c0d83130e7eab175966f19e2b6cecd3804abea7:_episodes_rmd/02-Reading text files.Rmd
 
 RStudio knows about the columns in your data.frame, so you can take advantage of the auto-completion feature (pressing the "tab" key on your keyboard with only the first few characters entered) to get the full and correct column name
 
@@ -455,16 +964,46 @@ Although the mjority of the data in the `SN7577_tab` data.frame are in fact cate
 
 
 ~~~
-SAFI_results <- read_csv("SAFI_results.csv")
+SAFI_results <- read_csv("data/SAFI_results.csv")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: 'SAFI_results.csv' does not exist in current working directory ('/home/francois/git/r-socialsci/_episodes_rmd').
+Parsed with column specification:
+cols(
+  .default = col_character(),
+  Column1 = col_integer(),
+  A03_quest_no = col_integer(),
+  A04_start = col_datetime(format = ""),
+  A05_end = col_datetime(format = ""),
+  A11_years_farm = col_integer(),
+  B16_years_liv = col_integer(),
+  B_no_membrs = col_integer(),
+  C05_buildings_in_compound = col_integer(),
+  C06_rooms = col_integer(),
+  D_plots_count = col_integer(),
+  E19_period_use = col_integer(),
+  E_no_group_count = col_integer(),
+  E_yes_group_count = col_integer(),
+  F_liv_count = col_integer(),
+  G01_no_meals = col_integer(),
+  `_members_count` = col_integer(),
+  `gps:Accuracy` = col_double(),
+  `gps:Altitude` = col_integer(),
+  `gps:Latitude` = col_double(),
+  `gps:Longitude` = col_double()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+See spec(...) for full column specifications.
+~~~
+{: .output}
 
 Initially the dataset is loaded without any of the columns designated as factors; all the columns containing text are defined as characters.
 
@@ -477,9 +1016,9 @@ str(SAFI_results$C01_respondent_roof_type)
 
 
 ~~~
-Error in str(SAFI_results$C01_respondent_roof_type): object 'SAFI_results' not found
+ chr [1:131] "grass" "grass" "mabatisloping" "mabatisloping" "grass" ...
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -491,9 +1030,9 @@ str(SAFI_results$C02_respondent_wall_type)
 
 
 ~~~
-Error in str(SAFI_results$C02_respondent_wall_type): object 'SAFI_results' not found
+ chr [1:131] "muddaub" "muddaub" "burntbricks" "burntbricks" ...
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -505,9 +1044,9 @@ str(SAFI_results$C03_respondent_floor_type)
 
 
 ~~~
-Error in str(SAFI_results$C03_respondent_floor_type): object 'SAFI_results' not found
+ chr [1:131] "earth" "earth" "cement" "earth" "earth" "earth" "earth" ...
 ~~~
-{: .error}
+{: .output}
 
 You can see from the output of the `str()` functions that these columns appear to have only a few different string values, suggesting that they are better considered categorical.
 
@@ -516,47 +1055,9 @@ We can explicitly change them from characters to factors using the `as.factor()`
 
 ~~~
 SAFI_results$C01_respondent_roof_type <- as.factor(SAFI_results$C01_respondent_roof_type)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in is.factor(x): object 'SAFI_results' not found
-~~~
-{: .error}
-
-
-
-~~~
 SAFI_results$C02_respondent_wall_type <- as.factor(SAFI_results$C02_respondent_wall_type)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in is.factor(x): object 'SAFI_results' not found
-~~~
-{: .error}
-
-
-
-~~~
 SAFI_results$C03_respondent_floor_type <- as.factor(SAFI_results$C03_respondent_floor_type)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in is.factor(x): object 'SAFI_results' not found
-~~~
-{: .error}
-
-
-
-~~~
 str(SAFI_results$C01_respondent_roof_type)
 ~~~
 {: .language-r}
@@ -564,9 +1065,9 @@ str(SAFI_results$C01_respondent_roof_type)
 
 
 ~~~
-Error in str(SAFI_results$C01_respondent_roof_type): object 'SAFI_results' not found
+ Factor w/ 3 levels "grass","mabatipitched",..: 1 1 3 3 1 1 1 3 1 3 ...
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -578,9 +1079,9 @@ str(SAFI_results$C02_respondent_wall_type)
 
 
 ~~~
-Error in str(SAFI_results$C02_respondent_wall_type): object 'SAFI_results' not found
+ Factor w/ 4 levels "burntbricks",..: 3 3 1 1 1 3 3 1 1 1 ...
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -592,9 +1093,9 @@ str(SAFI_results$C03_respondent_floor_type)
 
 
 ~~~
-Error in str(SAFI_results$C03_respondent_floor_type): object 'SAFI_results' not found
+ Factor w/ 2 levels "cement","earth": 2 2 1 2 2 2 2 1 2 1 ...
 ~~~
-{: .error}
+{: .output}
 
 (If you want to convert a factor into a character string, you can use the `as.character()` function.)
 
@@ -613,9 +1114,9 @@ nlevels(SAFI_results$C02_respondent_wall_type)
 
 
 ~~~
-Error in levels(x): object 'SAFI_results' not found
+[1] 4
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -627,9 +1128,9 @@ levels(SAFI_results$C02_respondent_wall_type)
 
 
 ~~~
-Error in levels(SAFI_results$C02_respondent_wall_type): object 'SAFI_results' not found
+[1] "burntbricks" "cement"      "muddaub"     "sunbricks"  
 ~~~
-{: .error}
+{: .output}
 
 Sometimes, the order of the factors does not matter, other times you might want to specify the order because it is meaningful (e.g., "low", "medium", "high"), it improves your visualization, or it is required by a particular type of analysis. Here, one way to reorder our levels in the `sex` vector would be
 
@@ -642,28 +1143,16 @@ levels(SAFI_results$C02_respondent_wall_type)   # before
 
 
 ~~~
-Error in levels(SAFI_results$C02_respondent_wall_type): object 'SAFI_results' not found
+[1] "burntbricks" "cement"      "muddaub"     "sunbricks"  
 ~~~
-{: .error}
+{: .output}
 
 
 
 ~~~
 SAFI_results$C02_respondent_wall_type <- factor(SAFI_results$C02_respondent_wall_type,
                                       levels = c("muddaub", "sunbricks", "burntbricks", "cement"))
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in factor(SAFI_results$C02_respondent_wall_type, levels = c("muddaub", : object 'SAFI_results' not found
-~~~
-{: .error}
-
-
-
-~~~
 levels(SAFI_results$C02_respondent_wall_type)   # after
 ~~~
 {: .language-r}
@@ -671,9 +1160,9 @@ levels(SAFI_results$C02_respondent_wall_type)   # after
 
 
 ~~~
-Error in levels(SAFI_results$C02_respondent_wall_type): object 'SAFI_results' not found
+[1] "muddaub"     "sunbricks"   "burntbricks" "cement"     
 ~~~
-{: .error}
+{: .output}
 
 ### Plotting factors
 
@@ -686,12 +1175,7 @@ plot(SAFI_results$C01_respondent_roof_type)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in plot(SAFI_results$C01_respondent_roof_type): object 'SAFI_results' not found
-~~~
-{: .error}
+<img src="../fig/rmd-02-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
 
 
 The bar chart plot appears in the plots pane. In this case there are the expected 3 bars one for each differnet roof type. Using simple plots like this gives a quick indication of the spread of the data.
@@ -719,9 +1203,9 @@ str(SAFI_results$A01_interview_date)
 
 
 ~~~
-Error in str(SAFI_results$A01_interview_date): object 'SAFI_results' not found
+ chr [1:131] "17/11/2016" "17/11/2016" "17/11/2016" "17/11/2016" ...
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -733,9 +1217,9 @@ str(SAFI_results$A04_start)
 
 
 ~~~
-Error in str(SAFI_results$A04_start): object 'SAFI_results' not found
+ POSIXct[1:131], format: "2017-03-23 09:49:57" "2017-04-02 09:48:16" ...
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -747,9 +1231,9 @@ str(SAFI_results$A05_end)
 
 
 ~~~
-Error in str(SAFI_results$A05_end): object 'SAFI_results' not found
+ POSIXct[1:131], format: "2017-04-02 17:29:08" "2017-04-02 17:26:19" ...
 ~~~
-{: .error}
+{: .output}
 
 we can see that the first is a character string and the other two are of a type called 'POSIXct', but they look like stings. As humans we have no difficulty in reading the dates and date/times. To get a computer to read them we need to be a bit more specific about the layout.
 
@@ -762,6 +1246,32 @@ To make this job easier, we are going to use the functions provided by a library
 Within this library there are a set of appropriately named functions to extract date and time parts.
 
 
+
+
+~~~
+library(lubridate)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+Attaching package: 'lubridate'
+~~~
+{: .output}
+
+
+
+~~~
+The following object is masked from 'package:base':
+
+    date
+~~~
+{: .output}
+
+
+
 ~~~
 year(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 ~~~
@@ -770,9 +1280,17 @@ year(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 
 
 ~~~
-Error in year(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "year"
+  [1] 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017
+ [15] 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017
+ [29] 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017
+ [43] 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017
+ [57] 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017
+ [71] 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017
+ [85] 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017 2017
+ [99] 2017 2017
+ [ reached getOption("max.print") -- omitted 31 entries ]
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -784,9 +1302,12 @@ month(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 
 
 ~~~
-Error in month(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "month"
+  [1] 3 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+ [36] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+ [71] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+ [ reached getOption("max.print") -- omitted 31 entries ]
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -798,9 +1319,14 @@ day(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 
 
 ~~~
-Error in day(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "day"
+  [1] 23  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3  3  3
+ [24]  3  4  4  5  5  5  5  5  5  5  5  5  5  5  5  6  6  6  6  6  6  6  6
+ [47]  7  7  7  7  7  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  9
+ [70]  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9 26 26 26
+ [93] 27 27 27 27 27 28 28 28
+ [ reached getOption("max.print") -- omitted 31 entries ]
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -812,9 +1338,14 @@ hour(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 
 
 ~~~
-Error in hour(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "hour"
+  [1]  9  9 14 14 15 15 15 15 16 17  3  3  3  4  5  5  5 12 12 14 14 16 16
+ [24] 17  4  4  4  5  5  6  6  6  8 16 16 16 17 17  8  8  9  9  9 14 14 15
+ [47] 14 14 14 14 15  4  5  5  5  6  6  8  8  9 10 13 13 13 14 21 21 21 22
+ [70] 22 15  5  5  5  6  6  6  7  8  8  9 15 15 16 18 18 19 19 19 15 16 16
+ [93] 12 12 16 16 17  6  7  9
+ [ reached getOption("max.print") -- omitted 31 entries ]
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -826,9 +1357,14 @@ minute(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 
 
 ~~~
-Error in minute(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "minute"
+  [1] 49 48 35 55 10 27 38 59 23  3 16 31 58 19 12 29 41 27 40  4 24 28 41
+ [24] 19  1 30 59 14 37  5 21 38  8  0 22 50 17 28 31 44  3 14 31 44 53 19
+ [47]  5 19 43 56 27 44  3 36 52  5 26 25 52  3 47 27 41 52  2  9 34 49  8
+ [70] 21  0 16 27 47 16 35 54 59 23 43  8 20 48 13  0 32 15 31 48 46 13 45
+ [93] 27 58 11 42 38 27  9  1
+ [ reached getOption("max.print") -- omitted 31 entries ]
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -840,9 +1376,14 @@ second(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 
 
 ~~~
-Error in second(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "second"
+  [1] 57 16 26 18 35 25  1 52 36 28 15 13 43 57 17 24 42  4 14 50 58 52  4
+ [24] 49 58 19 42 49 30 58 20 55 19 47 13 48 48 12 17 51 50 22 56 32  4 41
+ [47] 25 49  9  1 45  9  8 55 32 59 22 49  5  1 11 58 39 30 49 38 23 40  7
+ [70] 23 19  6 46 31 49 16 49 49  5  8  4 26 14 19 41  9 21 47  9 24 50 28
+ [93] 31  2 23  2 53  7 39 47
+ [ reached getOption("max.print") -- omitted 31 entries ]
 ~~~
-{: .error}
+{: .output}
 
 Although `A04_start` has been recognised as a 'POSIXct' type, we still use the `as.POSIXCT()` function because we need to specify the format that the date field is in.
 
@@ -855,99 +1396,14 @@ Having split the components of the date and time, we can add them as new columns
 
 ~~~
 SAFI_results$A04_year <- year(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in year(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "year"
-~~~
-{: .error}
-
-
-
-~~~
 SAFI_results$A04_month <- month(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in month(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "month"
-~~~
-{: .error}
-
-
-
-~~~
 SAFI_results$A04_day <- day(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in day(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "day"
-~~~
-{: .error}
-
-
-
-~~~
 SAFI_results$A04_hour <- hour(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in hour(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "hour"
-~~~
-{: .error}
-
-
-
-~~~
 SAFI_results$A04_minute <- minute(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in minute(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "minute"
-~~~
-{: .error}
-
-
-
-~~~
 SAFI_results$A04_second <- second(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in second(as.POSIXct(SAFI_results$A04_start, format = "%Y-%m-%d %H:%M:%S")): could not find function "second"
-~~~
-{: .error}
-
-
-
-~~~
 View(SAFI_results)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in as.data.frame(x): object 'SAFI_results' not found
-~~~
-{: .error}
 
 > ## Exercise
 >
@@ -958,43 +1414,10 @@ Error in as.data.frame(x): object 'SAFI_results' not found
 > > 
 > > ~~~
 > > SAFI_results$A01_year <- year(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in year(as.POSIXct(SAFI_results$A01_interview_date, format = "%d/%m/%Y")): could not find function "year"
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > SAFI_results$A01_month <- month(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in month(as.POSIXct(SAFI_results$A01_interview_date, format = "%d/%m/%Y")): could not find function "month"
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > SAFI_results$A01_day <- day(as.POSIXct(SAFI_results$A01_interview_date,format="%d/%m/%Y"))
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in day(as.POSIXct(SAFI_results$A01_interview_date, format = "%d/%m/%Y")): could not find function "day"
-> > ~~~
-> > {: .error}
 > >
 > {: .solution}
 {: .challenge}
@@ -1008,19 +1431,6 @@ Again using functions from 'lubridate', we can create dates in a variety of form
 
 ~~~
 my_date <- ymd("2018-01-29")
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in ymd("2018-01-29"): could not find function "ymd"
-~~~
-{: .error}
-
-
-
-~~~
 str(my_date)
 ~~~
 {: .language-r}
@@ -1028,27 +1438,14 @@ str(my_date)
 
 
 ~~~
-Error in str(my_date): object 'my_date' not found
+ Date[1:1], format: "2018-01-29"
 ~~~
-{: .error}
+{: .output}
 
 
 
 ~~~
 my_date <- dmy("30-01-2018")
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in dmy("30-01-2018"): could not find function "dmy"
-~~~
-{: .error}
-
-
-
-~~~
 str(my_date)
 ~~~
 {: .language-r}
@@ -1056,27 +1453,14 @@ str(my_date)
 
 
 ~~~
-Error in str(my_date): object 'my_date' not found
+ Date[1:1], format: "2018-01-30"
 ~~~
-{: .error}
+{: .output}
 
 
 
 ~~~
 my_date <- mdy("01-31-2018")
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in mdy("01-31-2018"): could not find function "mdy"
-~~~
-{: .error}
-
-
-
-~~~
 str(my_date)
 ~~~
 {: .language-r}
@@ -1084,9 +1468,9 @@ str(my_date)
 
 
 ~~~
-Error in str(my_date): object 'my_date' not found
+ Date[1:1], format: "2018-01-31"
 ~~~
-{: .error}
+{: .output}
 
 To combine our seperate components together, we can use the `paste()` function. We need to choose the 'lubridate' function which matches the order in which we have combined the individual components. Finally, just to make it interesting, we will increment the date to the following day by adding 1 to it.
 
@@ -1096,10 +1480,3 @@ To combine our seperate components together, we can use the `paste()` function. 
 SAFI_results$A01_next_day <-  1 + dmy(paste(SAFI_results$A01_day, SAFI_results$A01_month, SAFI_results$A01_year, sep = '-'))
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in dmy(paste(SAFI_results$A01_day, SAFI_results$A01_month, SAFI_results$A01_year, : could not find function "dmy"
-~~~
-{: .error}
