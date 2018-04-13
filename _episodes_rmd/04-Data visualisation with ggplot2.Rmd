@@ -12,17 +12,11 @@ objectives:
 - "Define the grammar of graphics and its components"
 - "Use ggplot2 to create scatter, histograms and box plots"
 - "Add aesthetic components to plots"
-- "Use facets to produce multiple plots" 
+- "Use facets to produce multiple plots"
 
 keypoints:
 - "First key point."
 ---
-
-
-```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("04-")
-```
 
 ## Plotting with `ggplot2`
 
@@ -323,4 +317,3 @@ ggplot(data=SAFI_results, aes(x=C02_respondent_wall_type)) +
 > >
 > {: .solution}
 {: .challenge}
-

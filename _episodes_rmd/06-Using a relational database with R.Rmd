@@ -18,13 +18,6 @@ keypoints:
 - "First key point."
 ---
 
-
-```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("06-")
-```
-
-
 ## Introduction
 
 A common problem with R in that all operations are conducted in-memory and thus

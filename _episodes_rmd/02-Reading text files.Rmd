@@ -22,13 +22,6 @@ keypoints:
 - "First key point."
 ---
 
-
-```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("02-")
-```
-
-
 ## Loading a datafile into the R environment
 
 In most practical scenarios you will want to read data into the R environment from a dataset.
@@ -40,7 +33,6 @@ We will demonstrate this functionality by importing the SN7577 dataset in both t
 Full details of the SN7577 dataset are available [here]
 
 
-
 The import dataset option is available from the toolbar in the environment tab.
 
 ![Import Dataset](../fig/R_02_Import_Dataset_01.png)
@@ -50,7 +42,7 @@ There is no option to import a tab delimited file so we choose the csv option.
 
 The wizard guides you through selecting a file and allows you to set or change various characteristics of the data.
 
-In our case although we are using the import csv option the file itself is a tab delimitted dataset so we need to change the seperator from `,` to `\t`.
+In our case although we are using the import csv option the file itself is a tab delimitted dataset so we need to change the seperator from ',' to '\t'.
 Notice how changing this option makes the 'mess' in the preview pane change to a nicely formatted table structure.
 
 RStudio performs the import by generating valid R code based on your options and copying the code to the console and running it. You can see the code that it will use in the bottom left pane of the Wizard window.
@@ -64,11 +56,14 @@ library(readr)
 SN7577_tab <- read_delim("SN7577.tab", "\t", escape_double = FALSE, trim_ws = TRUE)
 ```
 
-The `library(readr)` line tells the R environment to import the `readr` package. The `read.delim` function is part of the `readr` library.
+
+The 'library(readr)' line tells the R environment to import the 'readr' library of functions for use. the `read.delim` function is part of the `readr` library.
 The `read_delim()` function is a generalised version of the read_csv(). There are also a `read_tsv` functions which is also derived from `read_delim` and we could have used this directly from the console.
 
 ```{r}
+library(readr)
 SN7577_csv <- read_delim("SN7577.tab", "\t")
+
 SN7577_csv <- read_tsv("SN7577.tab")
 ```
 
@@ -90,11 +85,11 @@ SN7577_csv <- read_tsv("SN7577.tab")
 
 For the rest of this episode we will focus only the the SN7577_csv version.
 
-When we imported the dataset the wizard automatically include a `View(SN7577_csv)` line of code. This shows (part of) the contents of the variable as tabular data in a grid in the top pane.
+When we imported the dataset the wizard automatically include a 'View(SN7577_csv)' line of code. This shows (part of) the contents of the variable as tabular data in a grid in the top pane.
 
 You could also just type the variable name into the console to see the data (or part of it).
 
-If use `class(SN7577_csv)` to find the type of this cariable, you will see that it appears to have 3 different types.
+If use 'class(SN7577_csv)' to find the type of this cariable, you will see that it appears to have 3 different types.
 
 ```{r}
 class(SN7577_spss)
@@ -128,6 +123,7 @@ str(SN7577_csv)        # Show the overall structure of the variable, similar but
                        # what we have seen for other variables.
 summary(SN7577_csv)    # displays summary statistics for the different columns.
 ```
+
 
 ## Slicing and Dicing a dataframe
 
@@ -315,14 +311,15 @@ To make this job very easy, we are going to use the functions provided by a libr
 
 Within this library there are a set of appropriately named functions to extract date and time parts.
 
-
 ```{r}
+
 year(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 month(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 day(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 hour(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 minute(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
 second(as.POSIXct(SAFI_results$A04_start, format="%Y-%m-%d %H:%M:%S"))
+
 ```
 
 Although A04_start has been recognised as a POSIXct type, we still use the 'as.POSIXCT' function because we need to specify the format that the date field is in. Trying to coerce a type into a type it already is, doesn't cause an error.
@@ -363,6 +360,7 @@ If we want to go the other way, that is combine seperate components into a date 
 Again using functions from 'lubridate'
 
 ```{r}
+
 my_date <- ymd("2018-01-29")
 str(my_date)
 
@@ -371,6 +369,7 @@ str(my_date)
 
 my_date <- mdy("01-31-2018")
 str(my_date)
+
 ```
 
 we can create dates in a variety of formats.
@@ -380,4 +379,4 @@ To combine our seperate components we can use the 'paste' function. We need to c
 
 ```{r}
 SAFI_results$A01_next_day <-  1 + dmy(paste(SAFI_results$A01_day, SAFI_results$A01_month, SAFI_results$A01_year, sep = '-'))
-```
+```{r}

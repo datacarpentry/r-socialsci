@@ -25,13 +25,6 @@ keypoints:
 - "First key point."
 ---
 
-
-```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("01-")
-```
-
-
 ## Preliminaries
 
 In this lesson we we be using 3 data files;
@@ -46,12 +39,11 @@ You may also want to download the data dictionary associated with the SN7577 dat
 
 You should place the 3 data files in a folder where you intend to do your R work.
 
-In order to follow along with the examples in this episode you should start
-RStudio and create a new RScript file either from the File menu item or the
-toolbar icon immediately below it.
+In order to follow along with the examples in this episode you should start RStudio and create a new RScript file either from
+the File menu item or the toolbar icon immediately below it.
 
-If you intend to save the script you may wish to name it. If you click the save
-icon on the toolbar a standard save as dialog will appear.
+If you intend to save the script you may wish to name it. If you click the save icon on the toolbar a standard save as
+dialog will appear.
 
 Although we will routinely refer to using the console in this episode, and you can in fact type all of the code directly into the console, we will assume that you will write all of your code to the script file first and then select the code and either click the `run` button on the toolbar or use the keyboard shortcut of `ctrl+Enter`.
 
@@ -71,9 +63,7 @@ In order to save the result for further use it is necessary to assign the value 
 
 Variables are usually given short but meaningful names starting with an alphabetic character. You can use uppercase characters if you want, but remember that R is case sensitive so that you must be consistent. You can also use numbers as part of a variable name but you cannot start with a digit. There are some words which cannot be used as variable names such as `if` or `function`. You can get a complete list of these words using the `help("reserved")` or `?reserved` commands from the console.
 
-You can use the `.` character as part of the name but this is not recommended.
-If you wish make longer variable names more readable, using the `_` character
-helps.
+You can use the `.` character as part of the name but this is not recommended. If you wish make longer variable names more readable, using the `_` character helps.
 
 ```{r}
 Age <- 60
@@ -95,7 +85,7 @@ age
 ```
 
 In which case the current value of the 'age' variable will be printed to the console.
-Once a variable has been created, you can give it different values either directly or by some calculate. More often than not you will 
+Once a variable has been created, you can give it different values either directly or by some calculate. More often than not you will
 give a varaibla a value based on the value of other variables.
 
 ```{r}
@@ -107,7 +97,7 @@ area_acres <- area_hectares * 2.5
 area_acres
 ```
 
-If the value assigned to `area_hectares` is now changed, it will not effect the value of `area_acres`
+If the value assigned to 'area_hectares is now changed, it will not effect the value of 'area_acres
 
 
 ## Comments
@@ -123,14 +113,12 @@ area_acres				# print land area in acres.
 ```
 
 > ## Exercise
->
 > create two variables 'length' and 'width' and assign the values
-> create a third variable 'area' and give it a value based on the current values of 'length' and 'width' 
+> create a third variable 'area' and give it a value based on the current values of 'length' and 'width'
 > show that changing the values of either 'length' and 'width' does not effect the value of 'area'
-> 
+>
 > > ## Solution
-> > 
-> > ```{r}
+> >
 > > length <- 2.5
 > > width <- 3.2
 > > area <- length * width
@@ -140,8 +128,7 @@ area_acres				# print land area in acres.
 > > width <- 6.5
 > > # the value of area isn't changed
 > > area
-> > ```
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
@@ -192,17 +179,17 @@ a
 
 > ## Exercise
 > Based on the answers to the last two code segments, what do you think the 'round' function does?
-> 
-> 
+>
+>
 > > ## Solution
-> > 
+> >
 > > It rounds down a number to the nearest integer value with 0.5 being rouded up.
-> > 
-> > 
+> >
+> >
 > {: .solution}
 {: .challenge}
 
-As we have used 'sqrt' and 'round', we have only provided a single parameter in each case, and the way we have used them it makes sense to do. 
+As we have used 'sqrt' and 'round', we have only provided a single parameter in each case, and the way we have used them it makes sense to do.
 If you are using a function that you are not familiar with, you can find out what parameters can be used by using the 'args' function. This is a function which takes the name of another function as a parameter and provides you with a list of all of the parameters associated with the function.
 
 ```{r}
@@ -221,15 +208,14 @@ You can see from this that 'sqrt' only has the one parameter, but 'round' has tw
 >
 {: .challenge}
 
-## Variables and Objects 
-
+## Variables and Objects
 We have been happily creating things which we have called variables by assigning values to them. Variables are used in almost all programming languages. In R the more accurate term is 'Object'. Everything in R is an object. There are situation where the difference between an Object and a VAriable is significant, but for the majority of the work that we will be doing in this lesson you can treat the terms as synonymous.
 
 You can find full details of what an Object is at this link: https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects if you wish to.
 
 
 
-## R datatypes 
+## R datatypes
 
 In R you do not have to specify the type associated with your variables it is assumed by the values you assign to the variable although R may not assume what you expect.
 
@@ -248,7 +234,7 @@ You can find out the type of a variable (or the class of an object) by using the
 
 ```{r}
 name <- "peter"
-class(name) 
+class(name)
 
 length <- 2.5
 class(length)
@@ -272,7 +258,7 @@ class(int_val2)
 
 ## Vectors
 
-A vector is the most common and basic data type in R. A vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the 'c' function. 
+A vector is the most common and basic data type in R. A vector is composed by a series of values, which can be either numbers or characters. We can assign a series of values to a vector using the 'c' function.
 
 ```{r}
 # a vector of ages
@@ -284,6 +270,7 @@ ages
 posessions <- c("bicycle", "radio", "television")
 class(possessions)
 posessions
+
 ```
 
 When we look at the class of the vector it is the type of the individual elements which is returned.
@@ -291,26 +278,26 @@ When we look at the class of the vector it is the type of the individual element
 > ## Exercise
 >
 > What happens if we try to create a vector with a mixture of character and Numeric elements
-> 
+>
 > > ## Solution
-> > 
+> >
 > > ```{r}
 > > mix <- c("bicycle", 22, "television")
 > > mix
 > > class(mix)
 > > ```
-> > 
+> >
 > > The numeric values are converted to character values
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
 > ## Exercise
 > Here are some more 'mixtures' to try.
 > Can you explain the results
-> 
+>
 > > ## Solution
-> > 
+> >
 > > ```{r}
 > > num_char1 <- c(1, 2, 3, "a")
 > > class(num_char1)
@@ -321,7 +308,7 @@ When we look at the class of the vector it is the type of the individual element
 > > char_logical <- c("a", "b", "c", TRUE)
 > > class(char_logical)
 > > ```
-> > 
+> >
 > {: .solution}
 {: .challenge}
 
@@ -341,6 +328,7 @@ ages <- c(ages, 55, 63, 25, 72, 56, 57, 78, 89, 21, 100 )
 
 posessions <- c("washing machine", posessions )
 posessions
+
 ```
 
 You can find the structure of a vector by using the 'str' function
@@ -353,14 +341,14 @@ str(ages)
 The output will tell you the type of the elements, how many elements there are and will list upto the first 10 element values.
 
 
-## Extracting subsets from vectors 
+## Extracting subsets from vectors
 
 If we want to extract a specific element from a vector we use an indexing system. In R indexing always start from 1. In some other languages like Python, they alway s start from 0.
 
 We specify an index by useof square brackets ('[]').
 
-
 ```{r}
+
 # extract 2nd element from the ages vector
 ages_2 <- ages[2]
 ages_2
@@ -415,7 +403,7 @@ ages_gt_50 <- ages[ages > 50]
 ages_gt_50
 ```
 
-The expression does not have to be as simple as the one we have used. All of the usual comparison operators are available. 
+The expression does not have to be as simple as the one we have used. All of the usual comparison operators are available.
 
 >, <, >=, <= , ==, !=  
 
@@ -434,8 +422,8 @@ A common task is to search for certain strings in a vector. One could use the â€
 ```{r}
 posessions
 electrical <- c('dish washer', 'hair dryer', 'Mobile Phone','television','washing machine')
-electrical_posessions <- posessions[posessions %in% electrical] 
-electrical_posessions 
+electrical_posessions <- posessions[posessions %in% electrical]
+electrical_posessions
 ```
 
 ## Missing data
@@ -477,13 +465,12 @@ mean(ages, na.rm = TRUE)
 max(ages, na.rm = TRUE)
 ```
 
-
 Now reults are returned. 'na.rm = TRUE' removes any NA values before the calculation is performed so the result of the mean calculation is based on 13 values in the vector not 14.
 
 If your data include missing values, you may want to become familiar with the functions is.na(), na.omit(), and complete.cases(). See below for examples.
 
-
 ```{r}
+
 # Extract those elements which are not missing values.
 ages[!is.na(ages)]
 
@@ -491,9 +478,9 @@ ages[!is.na(ages)]
 na.omit(ages)
 
 ages
-
 # Extract those elements which are complete cases. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 ages[complete.cases(ages)]
+
 ```
 
 All of the above will remove missing data. You need to take care when using them because in a dataset of data with many rows, only the rows without any missing data will be retained. It could bethat the missing data was only in element that you were not hoping to analyse anyway, so their presenece wouldn't be a problem.
@@ -508,14 +495,12 @@ You can replace missing values in much the same way as we set the NA value. If y
 ages
 ages[c(2,4,6)] <- NA
 ages
-
 # get the mean of the non missing values
 mean(ages, na.rm = TRUE)
 
 # set the missing values to 0
 ages[is.na(ages)] <- 0
 ages
-
 # get the mean - the result is now based on 14 values 3 of which have been set to 0
 mean(ages)
 ```
@@ -523,19 +508,17 @@ mean(ages)
 In some datasets you wish to analyse you may find the genuinely missing values have been replaced with values such as -99 or -999. In such cases you want to deliberatley change these to NA and ten use the 'na.rm = TRUE' option for you calculations.
 
 > ## Exercise
+> for the vector c(12,-99, 21, 34, -99, -99, 53, 32, 90, -99) calculate the mean of the 6 non-Missing values
 >
-> for the vector `c(12,-99, 21, 34, -99, -99, 53, 32, 90, -99)` calculate the
-> mean of the 6 non-Missing values
-> 
-> 
+>
 > > ## Solution
-> > 
+> >
 > > ```{r}
 > > test <- c(12,-99, 21, 34, -99, -99, 53, 32, 90, -99)
 > > test[test == -99] <- NA
 > > test
 > > mean(test,na.rm = TRUE)
 > > ```
-> > 
+> >
 > {: .solution}
 {: .challenge}
