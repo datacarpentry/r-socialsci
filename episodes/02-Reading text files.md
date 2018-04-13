@@ -112,9 +112,13 @@ If use 'class(SN7577_tab)' to find the type of this variable, you will see that 
 
 ~~~
 class(SN7577_spss)
-[1] "tbl_df"     "tbl"        "data.frame" 
+~~~
+{: .language-r}
 
 ~~~
+[1] "tbl_df"     "tbl"        "data.frame" 
+~~~
+{: .output}
 
 It is the last one "data.frame" that we are going to look at in detail.
 
@@ -147,7 +151,7 @@ summary(SN7577_tab)    # displays summary statistics for the different columns.
 {: .language-r}
 
 
-## Slicing and Dicing a data.frame
+## Slicing and Dicing a Data.frame
 
 Data.frames are 2-dimensional; we describe them as having rows and columns. 
 If we want to extract some specific data from a data.frame we need to specify the "coordinates" of the data. We give the row numbers first and then the column numbers. (Unfortunately this is the opposite to Excel, where we normally give the column letter and then the row number.)
@@ -233,21 +237,59 @@ Factors are used to represent categorical data. Factors can be ordered or
 unordered, and understanding them is necessary for statistical analysis and for
 plotting.
 
-Although the mjority of the data in the SN7577_tab is in fact categorical data, as it has all been represented as numerical values, using it to discuss Factors would be confusing. So instead we wil load a copy of our SAFI dataset and use that .
+Although the majority of the data in the SN7577_tab is in fact categorical data, it is represented as numerical values. Instead, we will load a copy of our SAFI dataset and use that to discuss factors.
 
 ~~~
 SAFI_results <- read_csv("SAFI_results.csv") 
 ~~~
+{: .language-r}
 
-Initially the dataset is loaded without any Factors, all the the string like columns as defined as characters.
+~~~
+Parsed with column specification:
+cols(
+  .default = col_character(),
+  Column1 = col_integer(),
+  A03_quest_no = col_integer(),
+  A04_start = col_datetime(format = ""),
+  A05_end = col_datetime(format = ""),
+  A11_years_farm = col_integer(),
+  B16_years_liv = col_integer(),
+  B_no_membrs = col_integer(),
+  C05_buildings_in_compound = col_integer(),
+  C06_rooms = col_integer(),
+  D_plots_count = col_integer(),
+  E19_period_use = col_integer(),
+  E_no_group_count = col_integer(),
+  E_yes_group_count = col_integer(),
+  F_liv_count = col_integer(),
+  G01_no_meals = col_integer(),
+  `_members_count` = col_integer(),
+  `gps:Accuracy` = col_double(),
+  `gps:Altitude` = col_integer(),
+  `gps:Latitude` = col_double(),
+  `gps:Longitude` = col_double()
+)
+See spec(...) for full column specifications.
+~~~
+{: .output}
+
+Initially the dataset is loaded without any of the columns designated as factors; all the the columns that appear to be text are defined as characters.
 
 ~~~
 str(SAFI_results$C01_respondent_roof_type)
 str(SAFI_results$C02_respondent_wall_type) 
 str(SAFI_results$C03_respondent_floor_type) 
 ~~~
+{: .language-r}
 
-You can see from the output of the 'str' functions that these columns appear to have only a few different string values, suggesting that they are better considered categorical.
+~~~
+chr [1:131] "grass" "grass" "mabatisloping" "mabatisloping" "grass" ...
+chr [1:131] "muddaub" "muddaub" "burntbricks" "burntbricks" "burntbricks" ...
+chr [1:131] "earth" "earth" "cement" "earth" "earth" "earth" "earth" ...
+~~~
+{: .output}
+
+You can see from the output of the `str()` functions that these columns appear to have only a few different string values, suggesting that they are better considered categorical.
 
 We can explicitly change them from characters to Factors using the 'as.factor' function.
 
