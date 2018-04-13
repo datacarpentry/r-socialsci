@@ -3,7 +3,7 @@ title: "Reading text files"
 teaching: 0
 exercises: 0
 questions:
-- "What is a data frame?"
+- "What is a data.frame?"
 - "How can I read a complete csv file into R?"
 - "How can I get basic summary information about my dataset?"
 - "How can I change the way R treats strings in my dataset?"
@@ -11,9 +11,9 @@ questions:
 - "How are dates represented in R and how can I change the format?"
 
 objectives:
-- "Understand what a data frame is"
-- "Use read_csv to read a csv file into an R data frame"
-- "Examine the structure and contents of a data frame"
+- "Understand what a data.frame is"
+- "Use read_csv to read a csv file into an R data.frame"
+- "Examine the structure and contents of a data.frame"
 - "Differentiate between a factor and a string"
 - "Indicate that R should treat strings as factors or treat factors as strings"
 - "Examine and change date formats in R"
@@ -26,7 +26,7 @@ keypoints:
 
 In most practical scenarios you will want to read data into the R environment from a dataset. 
 
-RStudio provides an interface for reading a variety of commonly avaiable data formats produced by other commercial statisical packages such as SPSS and Stata.
+RStudio provides an interface for reading a variety of commonly available data formats produced by other commercial statistical packages such as SPSS and Stata.
 
 We will demonstrate this functionality by importing the SN7577 dataset in both the tab delimited (SN7577.tab) and the SPSS (SN7577_spss.sav) formats.
 
@@ -42,53 +42,73 @@ There is no option to import a tab delimited file so we choose the csv option.
 
 The wizard guides you through selecting a file and allows you to set or change various characteristics of the data. 
 
-In our case although we are using the import csv option the file itself is a tab delimitted dataset so we need to change the seperator from ',' to '\t'.
-Notice how changing this option makes the 'mess' in the preview pane change to a nicely formatted table structure.
+In our case although we are using the import csv option, the file itself is a tab delimited dataset; thus we need to change the separator character from ',' to '\t'.
+Notice how changing this option fixes the display in the preview pane and reveals a nicely formatted table structure.
 
 RStudio performs the import by generating valid R code based on your options and copying the code to the console and running it. You can see the code that it will use in the bottom left pane of the Wizard window.
 
 When you click the import button, the dataset is imported. The code used is copied to to the console window and executed.
 
-To import the tab delimitted version of the SN7577 file the following code was produced and ran
+To import the tab delimited version of the SN7577 file the following code was produced and ran
 
 ~~~
 library(readr)
 SN7577_tab <- read_delim("SN7577.tab", "\t", escape_double = FALSE, trim_ws = TRUE)
 ~~~
+{: .language-r}
 
-The 'library(readr)' line tells the R environment to import the 'readr' library of functions for use. the 'read_delim' function is part of the 'readr' library.
-The `read_delim()` function is a generalised version of the read_csv(). There are also a 'read_tsv' functions which is also derived from 'read_delim' and we could have used this directly from the console.
+~~~
+Parsed with column specification:
+cols(
+  .default = col_integer(),
+  wts = col_double()
+)
+See spec(...) for full column specifications.
+~~~
+{: .output}
+
+
+The `library(readr)` line tells the R environment to import the 'readr' library of functions for use. The `read_delim()` function is part of the 'readr' library, and is a generalised version of the `read_csv()` function. There is also a `read_tsv()` function which we could have used as well.
 
 ~~~
 library(readr)
-SN7577_csv <- read_delim("SN7577.tab", "\t")
-
-SN7577_csv <- read_tsv("SN7577.tab")
+SN7577_tab <- read_tsv("SN7577.tab")
 ~~~
+{: .language-r}
+
+~~~
+Parsed with column specification:
+cols(
+  .default = col_integer(),
+  wts = col_double()
+)
+See spec(...) for full column specifications.
+~~~
+{: .output}
 
 > ## Exercise
 >
-> Use the import dataset wizard to import the SN7577>spss.sav dataset.
+> Use the import dataset wizard to import the SN7577_spss.sav dataset.
 > Notice the different library being used.
 > Notice that there are far fewer option to play with
 >
-> When the data is imported, compare it with the SN7577_csv data.
-> Can you find two very clear differences in how the data is shown?
+> When the data is imported, compare it with the SN7577_tab data.
+> Can you find two differences in how the data is shown?
 > > ## Solution
 > > 
-> > 1. On the csv file the headers are just the question numbers and on the spss file they include the question itself.
-> > 2. On the spss file missing data is denoted as NA, however in the csv version missing data is typically shown as -1.
+> > 1. On the tab file the headers are just the question numbers and on the spss file they include the question itself.
+> > 2. On the spss file missing data is denoted as NA, however in the tab version missing data is typically shown as -1.
 > > 
 > {: .solution}
 {: .challenge}
 
-For the rest of this episode we will focus only the the SN7577_csv version.
+For the rest of this episode we will focus only the the SN7577_tab version.
 
-When we imported the dataset the wizard automatically include a 'View(SN7577_csv)' line of code. This shows (part of) the contents of the variable as tabular data in a grid in the top pane.
+When we imported the dataset the wizard automatically include a 'View()' line of code. This shows (part of) the contents of the variable as tabular data in a grid in the top pane.
 
 You could also just type the variable name into the console to see the data (or part of it).
 
-If use 'class(SN7577_csv)' to find the type of this cariable, you will see that it appears to have 3 different types.
+If use 'class(SN7577_tab)' to find the type of this variable, you will see that it appears to have 3 different types.
 
 ~~~
 class(SN7577_spss)
@@ -96,114 +116,113 @@ class(SN7577_spss)
 
 ~~~
 
-It is the las t one "data.frame" that we are going to look art in detail.
+It is the last one "data.frame" that we are going to look at in detail.
 
-## Data frames
+## Data.frames
 
 
-Data frames are the de facto data structure for most tabular data, and what we use for statistics and plotting.
-A data frame can be created by hand, but most commonly they are generated by the functions read_csv(), read_delim(). read_tsv or read_table(); in other words, when importing external datasets into the R environment.
-A data frame is the representation of data in the format of a table, very much as you see in a spreadsheet, where the columns are vectors that all have the same length and are of the same type.
+Data.frames are the de facto data structure for most tabular data, and what we use for statistics and plotting.
+A data.frame can be created by hand, but most commonly they are generated by the functions `read_csv()`, `read_delim()`, `read_tsv()` or `read_table()`; in other words, when importing external datasets into the R environment.
+A data.frame is the representation of data in the format of a table, very much as you see in a spreadsheet, where the columns are vectors that all have the same length and are of the same type.
 
-Apart from viewing or partially viewing the data by typing the variable name into the console there are several other functions which can be used to find out bits of information about a dataframe.
+Apart from viewing the data by typing the variable name into the console there are several other functions which can be used to find out information about a data.frame.
 
 ~~~
+dim(SN7577_tab)        # number of rows and columns
+nrow(SN7577_tab)       # number of rows
+ncol(SN7577_tab)       # number of columns
 
-dim(SN7577_csv)        # no of rows and columns
-nrow(SN7577_csv)       # number of rows
-ncol(SN7577_csv)       # number of columns
+head(SN7577_tab)       # shows first 6 rows (but truncates the variables)
+tail(SN7577_tab)       # shows last 6 rows (but truncates the variables)
 
-head(SN7577_csv)       # shows first 6 rows (but truncates the variables)
-tail(SN7577_csv)       # shows last 6 rows (but truncates the variables)
-
-names(SN7577_csv)      # lists all of the column names
+names(SN7577_tab)      # lists all of the column names
 names(SN7577_spss)     # Despite the extra text in the 'View' the column names for the spss variable 
-                       # are the same as the csv version
-rownames(SN7577_csv)   # list the column names, esentialy index numbers which we don't really need
+                       # are the same as the tab version
+rownames(SN7577_tab)   # list the column names, essentialy index numbers which we don't really need
 
-str(SN7577_csv)        # Show the overall structure of the variable, similar byt more complex to what
+str(SN7577_tab)        # Show the overall structure of the variable, similar but more complex than what
                        # what we have seen for other variables.
-summary(SN7577_csv)    # displays summary statistics for the different columns.
+summary(SN7577_tab)    # displays summary statistics for the different columns.
+~~~
+{: .language-r}
+
+
+## Slicing and Dicing a data.frame
+
+Data.frames are 2-dimensional; we describe them as having rows and columns. 
+If we want to extract some specific data from a data.frame we need to specify the "coordinates" of the data. We give the row numbers first and then the column numbers. (Unfortunately this is the opposite to Excel, where we normally give the column letter and then the row number.)
+
+There are a variety of ways of indicating the rows and columns of interest. How you specify can affect the datatype of the data returned.
 
 ~~~
-
-
-## Slicing and Dicing a dataframe
-
-Dataframes are 2-dimensional, we describe them as having rows and columns. 
-If we want to extract some specific data from a dataframe we need to specify the "coordinates" 
-of the data. We give the row numbers first and then the column numbers. (Unfortunately this is the opposite to Excel, where we normally give the column letter and then the row number)
-
-There are a variety of ways of indicating the rows and columns of interest. How you specify can effect the datatype of the data returned
-
+SN7577_tab[1, 1]   # first column of the first row of the data.frame (as a vector)
+SN7577_tab[1, 6]   # the 6th column in the first row (as a vector)
+SN7577_tab[, 1]    # all of the first column values in the data.frame (as a vector)
+SN7577_tab[1]      # all of the first column values in the data.frame (as a data.frame)
+SN7577_tab[1:3, 7] # the 7th column from the first three rows in the data.frame (as a vector)
+SN7577_tab[3, ]    # all of the columns in the 3rd row of the data.frame (as a data.frame)
 ~~~
-SN7577_csv[1, 1]   # first column of the first of the data frame (as a vector)
-SN7577_csv[1, 6]   # the 6th column  in first row(as a vector)
-SN7577_csv[, 1]    # all of the first column values in the data frame (as a vector)
-SN7577_csv[1]      # all of the first column values in the data frame (as a data.frame)
-SN7577_csv[1:3, 7] # the 7th column from the first three rows in the dataframe (as a vector)
-SN7577_csv[3, ]    # all of the columns in the 3rd row of the dataframe (as a data.frame)
-~~~
-
+{: .language-r}
 
 `:` is a special function that creates numeric vectors of integers in increasing
 or decreasing order, test `1:10` and `10:1` for instance.
 
-You can also exclude certain parts of a data frame using the "`-`" sign:
+You can also exclude certain parts of a data.frame using the `-` sign:
 
 ~~~
-SN7577_csv[,-1]          # The whole data frame, except the first column
-SN7577_csv[-c(7:34786),] # Equivalent to head(surveys)
+SN7577_tab[, -1]          # The whole data.frame, except the first column
+SN7577_tab[-c(7:34786), ] # Equivalent to head(surveys)
 ~~~
+{: .language-r}
 
 As well as using numeric values to subset a `data.frame` (or `matrix`), columns
 can be called by name, using one of the four following notations:
 
 ~~~
-SN7577_csv["Q2"]       # Result is a data.frame
-SN7577_csv[, "Q2"]     # Result is a vector
-SN7577_csv[["Q2"]]     # Result is a vector
-SN7577_csv$Q2          # Result is a vector
+SN7577_tab["Q2"]       # Result is a data.frame
+SN7577_tab[, "Q2"]     # Result is a vector
+SN7577_tab[["Q2"]]     # Result is a vector
+SN7577_tab$Q2          # Result is a vector
 ~~~
+{: .language-r}
 
-For our purposes, the last three notations are equivalent. Although if you run the code you will notice differences in the display.
-RStudio knows about the columns in your data frame, so you can take advantage of the autocompletion
-feature to get the full and correct column name
+For our purposes, the last three notations are equivalent, although if you run the code you will notice differences in the display.
+RStudio knows about the columns in your data.frame, so you can take advantage of the autocompletion feature (pressing the "tab" key on your keyboard with only the first few characters entered) to get the full and correct column name.
 
 
 > ## Exercise
 >
 > 1. Create a `data.frame` (`SN7577_200`) containing only the observations from
->    row 200 of the `SN7577_csv` dataset.
+>    row 200 of the `SN7577_tab` dataset.
 >
 > 2. Notice how `nrow()` gave you the number of rows in a `data.frame`?
 >
->      * Use that number to pull out just that last row in the data frame.
+>      * Use that number to pull out just that last row in the data.frame.
 >      * Compare that with what you see as the last row using `tail()` to make
 >        sure it's meeting expectations.
 >      * Pull out that last row using `nrow()` instead of the row number.
->      * Create a new data frame object (`surveys_last`) from that last row.
+>      * Create a new data.frame object (`surveys_last`) from that last row.
 >
 > 3. Use `nrow()` to extract the row that is in the middle of the data
 >    frame. Store the content of this row in an object named `SN7577_middle`.
 >
 > 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
->    `head(SN7577_csv)` keeping just the first through 6th rows of the SN7577_csv
+>    `head(SN7577_tab)` keeping just the 1st through 6th rows of the SN7577_tab
 >    dataset.
 >
 > > ## Solution
 > > 
 > > ~~~
-> > SN7577_200 <- SN7577_csv[200, ]
+> > SN7577_200 <- SN7577_tab[200, ]
 > > SN7577_200
-> > SN7577_last <- SN7577_csv[nrow(SN7577_csv), ]
+> > SN7577_last <- SN7577_tab[nrow(SN7577_tab), ]
 > > SN7577_last
-> > SN7577_middle <- SN7577_csv[nrow(SN7577_csv)/2, ]
+> > SN7577_middle <- SN7577_tab[nrow(SN7577_tab)/2, ]
 > > SN7577_middle
-> > SN7577_head <- SN7577_csv[-c(7:nrow(SN7577_csv)),]
+> > SN7577_head <- SN7577_tab[-c(7:nrow(SN7577_tab)),]
 > > SN7577_head 
 > > ~~~
-> > 
+> > {: .language-r}
 > {: .solution}
 {: .challenge}
 
@@ -214,7 +233,7 @@ Factors are used to represent categorical data. Factors can be ordered or
 unordered, and understanding them is necessary for statistical analysis and for
 plotting.
 
-Although the mjority of the data in the SN7577_csv is in fact categorical data, as it has all been represented as numerical values, using it to discuss Factors would be confusing. So instead we wil load a copy of our SAFI dataset and use that .
+Although the mjority of the data in the SN7577_tab is in fact categorical data, as it has all been represented as numerical values, using it to discuss Factors would be confusing. So instead we wil load a copy of our SAFI dataset and use that .
 
 ~~~
 SAFI_results <- read_csv("SAFI_results.csv") 
@@ -383,7 +402,3 @@ To combine our seperate components we can use the 'paste' function. We need to c
 ~~~
 SAFI_results$A01_next_day <-  1 + dmy(paste(SAFI_results$A01_day, SAFI_results$A01_month, SAFI_results$A01_year, sep = '-'))
 ~~~
-
-
-
-
