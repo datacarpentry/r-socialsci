@@ -75,6 +75,10 @@ To select columns of a data frame, use `select()`. The first argument to this fu
 frame (`SN7577`), and the subsequent arguments are the columns to keep.
 
 ```{r}
+library(dplyr)
+```
+
+```{r}
 select(SN7577, sex, age, numage)
 ```
 
