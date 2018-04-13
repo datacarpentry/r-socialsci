@@ -50,16 +50,27 @@ We will start by loading our SN7577 dataset
 
 
 ~~~
-SN7577 <- read_csv("SN7577.csv")
+SN7577 <- read_csv("data/SN7577.csv")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: 'SN7577.csv' does not exist in current working directory ('/home/francois/git/r-socialsci/_episodes_rmd').
+Parsed with column specification:
+cols(
+  .default = col_integer(),
+  wts = col_double()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+See spec(...) for full column specifications.
+~~~
+{: .output}
 
 
 
@@ -72,9 +83,313 @@ str(SN7577)
 
 
 ~~~
-Error in str(SN7577): object 'SN7577' not found
+Classes 'tbl_df', 'tbl' and 'data.frame':	1286 obs. of  202 variables:
+ $ Q1         : int  1 3 10 9 10 1 1 1 9 2 ...
+ $ Q2         : int  -1 -1 3 -1 2 -1 -1 -1 -1 -1 ...
+ $ Q3         : int  1 1 2 10 6 1 1 1 10 1 ...
+ $ Q4         : int  8 4 6 10 1 1 8 1 10 1 ...
+ $ Q5ai       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aii      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aiii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aiv      : int  1 0 0 0 1 0 0 0 0 0 ...
+ $ Q5av       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5avi      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5avii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aviii    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aix      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5ax       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axi      : int  0 0 0 0 0 1 0 0 0 0 ...
+ $ Q5axii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axiii    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axiv     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5axv      : int  0 1 1 1 0 0 1 1 1 1 ...
+ $ Q5bi       : int  1 0 1 0 1 1 0 1 1 1 ...
+ $ Q5bii      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5biii     : int  0 0 0 0 0 0 0 1 0 1 ...
+ $ Q5biv      : int  1 0 0 0 0 0 1 1 0 0 ...
+ $ Q5bv       : int  0 0 0 0 0 0 0 1 0 0 ...
+ $ Q5bvi      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bvii     : int  1 0 0 0 0 0 1 1 0 1 ...
+ $ Q5bviii    : int  0 0 1 0 0 0 0 1 0 0 ...
+ $ Q5bix      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bx       : int  0 0 0 0 0 0 0 1 0 0 ...
+ $ Q5bxi      : int  0 1 1 0 0 1 1 1 0 1 ...
+ $ Q5bxii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bxiii    : int  0 0 1 0 0 1 0 1 0 0 ...
+ $ Q5bxiv     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5bxv      : int  0 0 0 1 0 0 0 0 0 0 ...
+ $ Q6         : int  3 2 2 3 3 2 2 2 4 2 ...
+ $ Q7a        : int  3 2 2 3 2 2 2 2 4 2 ...
+ $ Q7b        : int  3 2 2 3 3 2 2 3 3 2 ...
+ $ Q8         : int  2 3 3 5 3 2 4 3 3 3 ...
+ $ Q9         : int  3 3 4 4 4 4 5 2 4 4 ...
+ $ Q10a       : int  3 4 6 3 3 3 4 4 2 4 ...
+ $ Q10b       : int  4 5 4 3 3 4 4 2 4 4 ...
+ $ Q10c       : int  1 1 2 2 2 1 1 4 2 2 ...
+ $ Q10d       : int  4 1 3 2 2 3 2 4 3 2 ...
+ $ Q11a       : int  2 4 3 4 3 4 2 3 4 4 ...
+ $ Q11b       : int  2 4 3 4 4 4 3 4 4 4 ...
+ $ Q12a       : int  2 3 3 4 3 3 2 2 4 3 ...
+ $ Q12b       : int  2 3 3 4 3 4 3 2 4 3 ...
+ $ Q13i       : int  1 1 1 1 1 1 1 1 1 1 ...
+ $ Q13ii      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q13iii     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q13iv      : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q14        : int  3 3 3 4 4 2 2 2 4 2 ...
+ $ Q15        : int  2 3 1 3 3 2 2 2 4 2 ...
+ $ Q16a       : int  3 2 2 6 1 3 3 2 3 5 ...
+ $ Q16b       : int  3 4 4 6 3 5 4 4 3 5 ...
+ $ Q16c       : int  1 1 1 6 1 1 3 1 2 1 ...
+ $ Q16d       : int  4 4 3 6 2 3 3 2 3 5 ...
+ $ Q16e       : int  2 4 4 6 2 2 3 3 2 1 ...
+ $ Q16f       : int  3 3 4 6 2 4 2 2 3 4 ...
+ $ Q16g       : int  2 1 2 6 4 1 2 1 3 1 ...
+ $ Q16h       : int  4 5 5 6 4 5 3 5 3 5 ...
+ $ Q17a       : int  4 5 4 3 4 3 2 5 4 5 ...
+ $ Q17b       : int  2 1 2 2 2 1 2 2 1 2 ...
+ $ Q17c       : int  2 4 2 3 3 1 2 1 1 1 ...
+ $ Q17d       : int  2 1 2 2 1 1 2 2 1 1 ...
+ $ Q17e       : int  4 3 3 2 2 2 2 5 5 5 ...
+ $ Q17f       : int  2 1 3 3 2 2 2 2 2 2 ...
+ $ Q17g       : int  1 2 2 5 1 3 2 1 1 1 ...
+ $ Q18ai      : int  1 1 1 1 0 0 0 0 0 0 ...
+ $ Q18aii     : int  0 0 0 1 0 0 0 0 1 1 ...
+ $ Q18aiii    : int  1 1 1 0 1 0 1 1 1 1 ...
+ $ Q18aiv     : int  0 1 1 1 1 1 1 1 1 1 ...
+ $ Q18av      : int  0 0 0 0 0 0 1 1 0 0 ...
+ $ Q18avi     : int  1 0 0 0 1 1 0 0 0 0 ...
+ $ Q18avii    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18aviii   : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18aix     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18bi      : int  1 0 1 1 0 1 0 0 0 0 ...
+ $ Q18bii     : int  0 1 0 0 0 0 0 1 1 1 ...
+ $ Q18biii    : int  0 0 1 0 1 0 0 1 1 0 ...
+ $ Q18biv     : int  0 1 1 0 1 1 1 1 1 1 ...
+ $ Q18bv      : int  0 0 0 0 0 0 0 0 0 1 ...
+ $ Q18bvi     : int  0 0 0 0 1 0 1 0 0 0 ...
+ $ Q18bvii    : int  0 1 0 0 0 0 1 0 0 0 ...
+ $ Q18bviii   : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q18bix     : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q19a       : int  1 2 2 4 1 2 2 2 2 2 ...
+ $ Q19b       : int  3 2 2 4 1 2 2 2 2 2 ...
+ $ Q19c       : int  2 2 2 4 2 1 2 2 2 2 ...
+ $ Q19d       : int  2 1 2 4 1 1 2 1 5 1 ...
+ $ access1    : int  1 1 0 1 0 1 1 1 1 1 ...
+ $ access2    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ access3    : int  0 0 0 0 1 0 0 0 0 0 ...
+ $ access4    : int  0 1 0 1 0 0 0 0 0 1 ...
+ $ access5    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ access6    : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ access7    : int  0 0 1 0 0 0 0 0 0 0 ...
+ $ web1       : int  1 1 -1 1 1 1 1 1 1 1 ...
+ $ web2       : int  1 0 -1 1 0 1 1 1 1 1 ...
+  [list output truncated]
+ - attr(*, "spec")=List of 2
+  ..$ cols   :List of 202
+  .. ..$ Q1         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q2         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q3         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q4         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5ai       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aii      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aiii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aiv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5av       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5avi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5avii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aviii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aix      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5ax       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axiii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axiv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5axv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bi       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bii      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5biii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5biv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bv       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bvi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bvii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bviii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bix      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bx       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxiii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxiv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5bxv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q6         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q7a        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q7b        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q8         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q9         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q10d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q11a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q11b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q12a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q12b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13i       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13ii      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13iii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q13iv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q14        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q15        : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16e       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16f       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16g       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q16h       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17e       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17f       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q17g       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18ai      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aiii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aiv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18av      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18avi     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18avii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aviii   : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18aix     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bi      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bii     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18biii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18biv     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bv      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bvi     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bvii    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bviii   : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q18bix     : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19a       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19b       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19c       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q19d       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access1    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access2    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access3    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access4    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access5    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access6    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ access7    : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ web1       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ web2       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. .. [list output truncated]
+  ..$ default: list()
+  .. ..- attr(*, "class")= chr  "collector_guess" "collector"
+  ..- attr(*, "class")= chr "col_spec"
 ~~~
-{: .error}
+{: .output}
 
 Previously we noted that the SN7577 variable appeared to be in 3 different classes. WE were happy to think of it as a data frame as that was what we were talking about.  Now it is convenient to think of it as having a class of  `tbl_df`.
 This is referred to as a "tibble".
@@ -96,6 +411,47 @@ frame (`SN7577`), and the subsequent arguments are the columns to keep.
 
 
 ~~~
+library(dplyr)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+Attaching package: 'dplyr'
+~~~
+{: .output}
+
+
+
+~~~
+The following objects are masked from 'package:lubridate':
+
+    intersect, setdiff, union
+~~~
+{: .output}
+
+
+
+~~~
+The following objects are masked from 'package:stats':
+
+    filter, lag
+~~~
+{: .output}
+
+
+
+~~~
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+~~~
+{: .output}
+
+
+~~~
 select(SN7577, sex, age, numage)
 ~~~
 {: .language-r}
@@ -103,9 +459,22 @@ select(SN7577, sex, age, numage)
 
 
 ~~~
-Error in select(SN7577, sex, age, numage): could not find function "select"
+# A tibble: 1,286 x 3
+     sex   age numage
+   <int> <int>  <int>
+ 1     2     6     64
+ 2     1     2     25
+ 3     2     7     90
+ 4     2     4     48
+ 5     1     4     48
+ 6     2     4     54
+ 7     2     7     74
+ 8     2     7     79
+ 9     2     7     65
+10     1     6     62
+# ... with 1,276 more rows
 ~~~
-{: .error}
+{: .output}
 
 To choose rows based on a specific criteria, use `filter()`:
 
@@ -118,9 +487,34 @@ filter(SN7577, numage == 90)
 
 
 ~~~
-Error in as.ts(x): object 'SN7577' not found
+# A tibble: 2 x 202
+     Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+  <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+1    10     3     2     6     0     0      0     0     0     0      0
+2    10     6     3     4     1     0      0     0     0     0      0
+# ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+#   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+#   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+#   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+#   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+#   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+#   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+#   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+#   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+#   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+#   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+#   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+#   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+#   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+#   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+#   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+#   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+#   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+#   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+#   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -135,33 +529,7 @@ that as input to the next function, like this:'
 
 ~~~
 SN7577_a <- filter(SN7577, numage == 90)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in as.ts(x): object 'SN7577' not found
-~~~
-{: .error}
-
-
-
-~~~
 SN7577_b <- select(SN7577_a, sex, age, numage)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in select(SN7577_a, sex, age, numage): could not find function "select"
-~~~
-{: .error}
-
-
-
-~~~
 SN7577_b
 ~~~
 {: .language-r}
@@ -169,9 +537,13 @@ SN7577_b
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_b' not found
+# A tibble: 2 x 3
+    sex   age numage
+  <int> <int>  <int>
+1     2     7     90
+2     1     7     90
 ~~~
-{: .error}
+{: .output}
 
 This is readable, but can clutter up your workspace with lots of objects that you have to name individually. With multiple steps, that can be hard to keep track of.
 
@@ -181,19 +553,6 @@ You can also nest functions (i.e. one function inside of another), like this:
 
 ~~~
 SN7577_b <- select(filter(SN7577, numage == 90), sex, age, numage)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in select(filter(SN7577, numage == 90), sex, age, numage): could not find function "select"
-~~~
-{: .error}
-
-
-
-~~~
 SN7577_b
 ~~~
 {: .language-r}
@@ -201,9 +560,13 @@ SN7577_b
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_b' not found
+# A tibble: 2 x 3
+    sex   age numage
+  <int> <int>  <int>
+1     2     7     90
+2     1     7     90
 ~~~
-{: .error}
+{: .output}
 
 This is handy, but can be difficult to read if too many functions are nested, as
 R evaluates the expression from the inside out (in this case, filtering, then selecting). So if you want to work what is going on you have to start in the middle and work your way out to the side.
@@ -228,9 +591,13 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 2 x 3
+    sex   age numage
+  <int> <int>  <int>
+1     2     7     90
+2     1     7     90
 ~~~
-{: .error}
+{: .output}
 
 In the above code, we use the pipe to send the `SN7577` dataset first through
 `filter()` to keep rows where `numage` equals 90, then through `select()`
@@ -254,19 +621,7 @@ can assign it a new name:
 SN7577_90 <- SN7577 %>%
     filter(numage == 90) %>%
     select( sex, age, numage)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
-~~~
-{: .error}
-
-
-
-~~~
 SN7577_90
 ~~~
 {: .language-r}
@@ -274,9 +629,13 @@ SN7577_90
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_90' not found
+# A tibble: 2 x 3
+    sex   age numage
+  <int> <int>  <int>
+1     2     7     90
+2     1     7     90
 ~~~
-{: .error}
+{: .output}
 
 Note that the final data frame is the leftmost part of this expression.
 
@@ -292,19 +651,7 @@ Note that the final data frame is the leftmost part of this expression.
 > > SN7577_lt65 <- SN7577 %>%
 > >   filter(numage < 65) %>%
 > >   select( sex, age, numage)
-> > ~~~
-> > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > SN7577_lt65
 > > ~~~
 > > {: .language-r}
@@ -312,9 +659,22 @@ Note that the final data frame is the leftmost part of this expression.
 > > 
 > > 
 > > ~~~
-> > Error in eval(expr, envir, enclos): object 'SN7577_lt65' not found
+> > # A tibble: 982 x 3
+> >      sex   age numage
+> >    <int> <int>  <int>
+> >  1     2     6     64
+> >  2     1     2     25
+> >  3     2     4     48
+> >  4     1     4     48
+> >  5     2     4     54
+> >  6     1     6     62
+> >  7     1     6     62
+> >  8     1     4     53
+> >  9     2     3     41
+> > 10     2     3     35
+> > # ... with 972 more rows
 > > ~~~
-> > {: .error}
+> > {: .output}
 > > 
 > {: .solution}
 {: .challenge}
@@ -339,9 +699,22 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 1,286 x 2
+   income_000 income
+        <dbl>  <int>
+ 1     12000.     12
+ 2     16000.     16
+ 3     17000.     17
+ 4     17000.     17
+ 5     16000.     16
+ 6     12000.     12
+ 7     17000.     17
+ 8     17000.     17
+ 9     16000.     16
+10     17000.     17
+# ... with 1,276 more rows
 ~~~
-{: .error}
+{: .output}
 
 You can also create a second new column based on the first new column within the same call of `mutate()`:
 
@@ -357,9 +730,22 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 1,286 x 3
+   income_000 income income_taxed
+        <dbl>  <int>        <dbl>
+ 1     12000.     12        9600.
+ 2     16000.     16       12800.
+ 3     17000.     17       13600.
+ 4     17000.     17       13600.
+ 5     16000.     16       12800.
+ 6     12000.     12        9600.
+ 7     17000.     17       13600.
+ 8     17000.     17       13600.
+ 9     16000.     16       12800.
+10     17000.     17       13600.
+# ... with 1,276 more rows
 ~~~
-{: .error}
+{: .output}
 
 
 If this runs off your screen and you just want to see the first few rows, you
@@ -378,9 +764,17 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 6 x 2
+  income_000 income
+       <dbl>  <int>
+1     12000.     12
+2     16000.     16
+3     17000.     17
+4     17000.     17
+5     16000.     16
+6     12000.     12
 ~~~
-{: .error}
+{: .output}
 
 > ## Exercise
 >
@@ -405,9 +799,22 @@ Error in eval(lhs, parent, parent): object 'SN7577' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577' not found
+> > # A tibble: 1,280 x 2
+> >    voting_years numage
+> >           <dbl>  <int>
+> >  1          46.     64
+> >  2           7.     25
+> >  3          72.     90
+> >  4          30.     48
+> >  5          30.     48
+> >  6          36.     54
+> >  7          56.     74
+> >  8          61.     79
+> >  9          47.     65
+> > 10          44.     62
+> > # ... with 1,270 more rows
 > > ~~~
-> > {: .error}
+> > {: .output}
 > > 
 > {: .solution}
 {: .challenge}
@@ -438,9 +845,22 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 11 x 2
+      Q1 avg_age
+   <int>   <dbl>
+ 1     1    55.7
+ 2     2    47.2
+ 3     3    52.8
+ 4     4    56.4
+ 5     5    44.5
+ 6     6    56.2
+ 7     7    42.5
+ 8     8    45.6
+ 9     9    40.5
+10    10    46.4
+11    11    48.8
 ~~~
-{: .error}
+{: .output}
 
 
 > ## Exercise
@@ -463,9 +883,22 @@ Error in eval(lhs, parent, parent): object 'SN7577' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577' not found
+> > # A tibble: 11 x 2
+> >       Q1 avg_age
+> >    <int>   <dbl>
+> >  1     1    55.7
+> >  2     2    47.2
+> >  3     3    52.8
+> >  4     4    56.4
+> >  5     5    44.5
+> >  6     6    56.2
+> >  7     7    42.5
+> >  8     8    45.6
+> >  9     9    40.5
+> > 10    10    46.4
+> > 11    11    48.8
 > > ~~~
-> > {: .error}
+> > {: .output}
 > > 
 > > 
 > > 
@@ -479,27 +912,28 @@ Error in eval(lhs, parent, parent): object 'SN7577' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577' not found
+> > # A tibble: 11 x 2
+> >       Q1 avg_age
+> >    <int>   <dbl>
+> >  1     1    55.7
+> >  2     2    47.2
+> >  3     3    52.8
+> >  4     4    56.4
+> >  5     5    44.5
+> >  6     6    56.2
+> >  7     7    42.5
+> >  8     8    45.6
+> >  9     9    40.5
+> > 10    10    46.4
+> > 11    11    48.8
 > > ~~~
-> > {: .error}
+> > {: .output}
 > > 
 > > 
 > > 
 > > ~~~
 > > SN7577$numage[SN7577$numage == 0] <- NA
-> > ~~~
-> > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in SN7577$numage[SN7577$numage == 0] <- NA: object 'SN7577' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage, na.rm = TRUE))
@@ -509,9 +943,22 @@ Error in eval(lhs, parent, parent): object 'SN7577' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577' not found
+> > # A tibble: 11 x 2
+> >       Q1 avg_age
+> >    <int>   <dbl>
+> >  1     1    55.7
+> >  2     2    47.4
+> >  3     3    52.8
+> >  4     4    56.4
+> >  5     5    44.5
+> >  6     6    56.2
+> >  7     7    42.5
+> >  8     8    45.6
+> >  9     9    40.7
+> > 10    10    46.7
+> > 11    11    50.7
 > > ~~~
-> > {: .error}
+> > {: .output}
 > > 
 > > 
 > > 
@@ -525,9 +972,22 @@ Error in eval(lhs, parent, parent): object 'SN7577' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577' not found
+> > # A tibble: 11 x 2
+> >       Q1 avg_age
+> >    <int>   <dbl>
+> >  1     1    55.7
+> >  2     2    NA  
+> >  3     3    52.8
+> >  4     4    56.4
+> >  5     5    44.5
+> >  6     6    56.2
+> >  7     7    42.5
+> >  8     8    45.6
+> >  9     9    NA  
+> > 10    10    NA  
+> > 11    11    NA  
 > > ~~~
-> > {: .error}
+> > {: .output}
 > > 
 > {: .solution}
 {: .challenge}
@@ -545,9 +1005,38 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 6 x 202
+     Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+  <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+1    10    10     2     6     0     0      0     0     0     0      0
+2    11    11    10    10     0     0      0     1     0     0      0
+3    11    11     8    10     0     0      0     0     0     0      0
+4     9    -1    11     6     0     0      0     0     0     0      0
+5     2    -1     9    11     0     0      0     0     0     0      0
+6    10    10     4     6     0     0      0     0     0     0      0
+# ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+#   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+#   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+#   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+#   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+#   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+#   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+#   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+#   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+#   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+#   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+#   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+#   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+#   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+#   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+#   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+#   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+#   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+#   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+#   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -563,9 +1052,22 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 11 x 2
+      Q1 avg_age
+   <int>   <dbl>
+ 1     1    55.7
+ 2     2    47.4
+ 3     3    52.8
+ 4     4    56.4
+ 5     5    44.5
+ 6     6    56.2
+ 7     7    42.5
+ 8     8    45.6
+ 9     9    40.7
+10    10    46.7
+11    11    50.7
 ~~~
-{: .error}
+{: .output}
 
 
 You can also group by multiple columns. 'age' is an age grouping variable from 1 to 7, 'sex' uses integers 1 and 2 to denote Male and Female.
@@ -581,9 +1083,26 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 14 x 3
+# Groups:   sex [?]
+     sex   age avg_age
+   <int> <int>   <dbl>
+ 1     1     1    20.6
+ 2     1     2    29.6
+ 3     1     3    39.8
+ 4     1     4    49.0
+ 5     1     5    56.9
+ 6     1     6    62.1
+ 7     1     7    73.3
+ 8     2     1    21.3
+ 9     2     2    29.7
+10     2     3    39.6
+11     2     4    50.4
+12     2     5    57.0
+13     2     6    62.4
+14     2     7    73.1
 ~~~
-{: .error}
+{: .output}
 
 
 If we ran a similar piece of code, but this time going back to usoing 'Q1'
@@ -600,9 +1119,23 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 22 x 3
+# Groups:   sex [?]
+     sex    Q1 avg_age
+   <int> <int>   <dbl>
+ 1     1     1    55.9
+ 2     1     2    48.4
+ 3     1     3    50.1
+ 4     1     4    56.3
+ 5     1     5    36.4
+ 6     1     6    58.5
+ 7     1     7    45.0
+ 8     1     8    44.0
+ 9     1     9    39.4
+10     1    10    46.9
+# ... with 12 more rows
 ~~~
-{: .error}
+{: .output}
 
 All of the results are not displayed. This is because 'Q1' can have 11 different values and as we noted earlier, 'dplyr' restrict the output.
 
@@ -621,9 +1154,34 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 22 x 3
+# Groups:   sex [?]
+     sex    Q1 avg_age
+   <int> <int>   <dbl>
+ 1     1     1    55.9
+ 2     1     2    48.4
+ 3     1     3    50.1
+ 4     1     4    56.3
+ 5     1     5    36.4
+ 6     1     6    58.5
+ 7     1     7    45.0
+ 8     1     8    44.0
+ 9     1     9    39.4
+10     1    10    46.9
+11     1    11    48.9
+12     2     1    55.5
+13     2     2    46.2
+14     2     3    55.4
+15     2     4    56.6
+16     2     5    51.7
+17     2     6    48.8
+18     2     7    40.0
+19     2     8    47.0
+20     2     9    41.9
+21     2    10    46.5
+22     2    11    52.6
 ~~~
-{: .error}
+{: .output}
 
 
 We can also have more than one summary at a time.
@@ -642,9 +1200,34 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 22 x 4
+# Groups:   sex [?]
+     sex    Q1 avg_age count_age
+   <int> <int>   <dbl>     <int>
+ 1     1     1    55.9       102
+ 2     1     2    48.4       202
+ 3     1     3    50.1        25
+ 4     1     4    56.3        24
+ 5     1     5    36.4         9
+ 6     1     6    58.5        35
+ 7     1     7    45.0         2
+ 8     1     8    44.0         5
+ 9     1     9    39.4        78
+10     1    10    46.9       147
+11     1    11    48.9        26
+12     2     1    55.5        77
+13     2     2    46.2       176
+14     2     3    55.4        27
+15     2     4    56.6        17
+16     2     5    51.7        10
+17     2     6    48.8        11
+18     2     7    40.0         2
+19     2     8    47.0         6
+20     2     9    41.9        88
+21     2    10    46.5       186
+22     2    11    52.6        25
 ~~~
-{: .error}
+{: .output}
 
 the 'n' function counts the number of rows in each group. This is something which is very commonly done that it has its own funtion'tally' in 'dplyr'
 
@@ -662,9 +1245,88 @@ SN7577 %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SN7577' not found
+# A tibble: 77 x 2
+   numage     n
+    <int> <int>
+ 1     18    16
+ 2     19    35
+ 3     20    30
+ 4     21    29
+ 5     22    17
+ 6     23    20
+ 7     24    25
+ 8     25    16
+ 9     26    19
+10     27    15
+11     28    23
+12     29    23
+13     30    17
+14     31    16
+15     32    19
+16     33    20
+17     34    24
+18     35    24
+19     36    16
+20     37    15
+21     38    19
+22     39    14
+23     40    27
+24     41    21
+25     42    27
+26     43    19
+27     44    22
+28     45    20
+29     46    15
+30     47    19
+31     48    23
+32     49    22
+33     50    19
+34     51    18
+35     52    25
+36     53    23
+37     54    25
+38     55    20
+39     56    18
+40     57    21
+41     58    17
+42     59    17
+43     60    21
+44     61    16
+45     62    16
+46     63    21
+47     64    32
+48     65    33
+49     66    19
+50     67    22
+51     68    18
+52     69    21
+53     70    18
+54     71    15
+55     72    15
+56     73    16
+57     74    11
+58     75    15
+59     76    12
+60     77    10
+61     78     9
+62     79     7
+63     80    12
+64     81     8
+65     82    16
+66     83     2
+67     84     8
+68     85     5
+69     86     3
+70     87     1
+71     89     2
+72     90     2
+73     91     1
+74     92     1
+75     94     1
+76     95     1
+77     NA     6
 ~~~
-{: .error}
+{: .output}
 
 If you go done to the bottom of the listing you will see that the 6 NAs are also accounted for.
 
@@ -687,9 +1349,21 @@ If you go done to the bottom of the listing you will see that the 6 NAs are also
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577' not found
+> > # A tibble: 10 x 3
+> >       Q2 avg_age count_age
+> >    <int>   <dbl>     <int>
+> >  1    -1    48.9       898
+> >  2     1    55.1        42
+> >  3     2    48.8        70
+> >  4     3    52.3        22
+> >  5     4    55.1         7
+> >  6     5    55.4         5
+> >  7     6    56.8        11
+> >  8     9    41.6         8
+> >  9    10    41.9       184
+> > 10    11    54.3        39
 > > ~~~
-> > {: .error}
+> > {: .output}
 > >
 > {: .solution}
 {: .challenge}
@@ -702,16 +1376,46 @@ To look at the 'gather' and 'spread' functions we will use the SAFI_results data
 
 ~~~
 library(readr)
-SAFI_results <- read_csv("SAFI_results.csv")
+SAFI_results <- read_csv("data/SAFI_results.csv")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: 'SAFI_results.csv' does not exist in current working directory ('/home/francois/git/r-socialsci/_episodes_rmd').
+Parsed with column specification:
+cols(
+  .default = col_character(),
+  Column1 = col_integer(),
+  A03_quest_no = col_integer(),
+  A04_start = col_datetime(format = ""),
+  A05_end = col_datetime(format = ""),
+  A11_years_farm = col_integer(),
+  B16_years_liv = col_integer(),
+  B_no_membrs = col_integer(),
+  C05_buildings_in_compound = col_integer(),
+  C06_rooms = col_integer(),
+  D_plots_count = col_integer(),
+  E19_period_use = col_integer(),
+  E_no_group_count = col_integer(),
+  E_yes_group_count = col_integer(),
+  F_liv_count = col_integer(),
+  G01_no_meals = col_integer(),
+  `_members_count` = col_integer(),
+  `gps:Accuracy` = col_double(),
+  `gps:Altitude` = col_integer(),
+  `gps:Latitude` = col_double(),
+  `gps:Longitude` = col_double()
+)
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+See spec(...) for full column specifications.
+~~~
+{: .output}
 
 Within the SAFI_results data isa column, C02_respondent_wall_type, which records the material used make the walls of the houses. We can see from the following that there are only 4 different values.
 
@@ -727,9 +1431,15 @@ SAFI_results %>%
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'SAFI_results' not found
+# A tibble: 4 x 2
+  C02_respondent_wall_type     n
+  <chr>                    <int>
+1 burntbricks                 67
+2 cement                       1
+3 muddaub                     46
+4 sunbricks                   17
 ~~~
-{: .error}
+{: .output}
 
 
 Rather than having the single column, we may prefer to have individual columns for each type of wall and an indication if a particular house (= observation) has that type of wall material.
@@ -751,7 +1461,7 @@ the value provided.
 
 
 ~~~
-\# Spread, create dummy variable to use as values
+# Spread, create dummy variable to use as values
 SAFI_wall_spread <- SAFI_results %>%
   mutate(mycount = 1) %>%
   spread(key = C02_respondent_wall_type, value = mycount, fill = 0)
@@ -761,9 +1471,7 @@ SAFI_wall_spread <- SAFI_results %>%
 
 
 ~~~
-Error: <text>:1:1: unexpected input
-1: \
-    ^
+Error in spread(., key = C02_respondent_wall_type, value = mycount, fill = 0): could not find function "spread"
 ~~~
 {: .error}
 
@@ -825,7 +1533,7 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SAFI_results' not found
+> > Error in spread(., key = C01_respondent_roof_type, value = mycount, fill = 0): could not find function "spread"
 > > ~~~
 > > {: .error}
 > > 
@@ -873,7 +1581,7 @@ or summarize your raw data, you may want to export these new data sets for futur
 Similar to the `read_csv()` function used for reading CSV files into R, the tidyverse includes a `write_csv()` function that generates CSV files from data frames.
 
 
-Use of 'write_csv' is straightforward you onlty need to provide the name of the dataframe you wish to write out and the name of the file that you wish to use.
+Use of `write_csv` is straightforward you need to provide the name of the dataframe you wish to write out and the name of the file that you wish to use.
 
 We will save our SN7577_papers dataframe.
 
@@ -882,13 +1590,6 @@ We will save our SN7577_papers dataframe.
 write_csv(SN7577_papers, path = "SN7577_papers.csv")
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in is.data.frame(x): object 'SN7577_papers' not found
-~~~
-{: .error}
 
 The filename is passed to the path parameter, as the name suggests you could specify a full path + the filename. If you do not , then the current working directory will be assumed.
 
