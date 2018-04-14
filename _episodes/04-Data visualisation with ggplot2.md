@@ -195,10 +195,10 @@ third dimension on our coordinate system.
 > {: .solution}
 {: .challenge}
 
-
 ## Boxplot
 
-We can use boxplots to visualize the distribution of weight within each species:
+We can use boxplots to visualize the distribution of a continuous variable 
+among a categorical variable. For example, the weight recorded for each species:
 
 ~~~
 
@@ -206,12 +206,22 @@ ggplot(data = surveys_complete, aes(x = species_id, y = weight)) +
     geom_boxplot()
 ~~~
 
-By adding points to boxplot, we can have a better idea of the number of
-measurements and of their distribution:
+We can get a better idea of the number and distribution of points by adding a 
+layer of points over the boxplots.
 
 ~~~
-ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B_no_membrs)) +
- geom_boxplot(alpha = 0) +
+ggplot(data = SAFI_results, aes(x = species_id, y = weight)) +
+ geom_boxplot() +
+ geom_point()
+~~~
+
+This isn't particularly pretty; rather than use `geom_point` here, we can 
+use `geom_jitter` to jitter or spread out the points. We can also make the 
+points slightly transparent using `alpha` and change their colour.
+
+~~~
+ggplot(data = SAFI_results, aes(x = species_id, y = weight)) +
+ geom_boxplot() +
  geom_jitter(alpha = 0.3, color = "tomato")
 ~~~
 
@@ -219,126 +229,136 @@ ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B_no_membrs)) +
 >
 > Boxplots are useful summaries, but hide the *shape* of the distribution. For
 > example, if the distribution is bimodal, we would not see it in a
-> boxplot. An alternative to the boxplot is the violin plot where the shape (of the density of points) is drawn.
+> boxplot. An alternative to the boxplot is the violin plot, which displays 
+> the shape of the density of points.
 >
 > Replace the box plot with a violin plot; see `geom_violin()`. 
 > 
 > > ## Solution
 > > 
-> > ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B_no_membrs)) +
+> > ggplot(data = SAFI_results, aes(x = species_id, y = weight)) +
 > >   geom_violin() +
-> >   geom_jitter( color = "tomato")
+> >   geom_jitter(alpha = 0.3, color = "tomato")
 > > 
 > > 
 > {: .solution}
 {: .challenge}
 
-## Bar plots
+## Barplots
 
-Bar plots are useful for comparing categorical data.
-
-We looked at a simple bar chart in the dplyr episode. we can recreate this in ggplot.
+Barplots are also useful for visualizing categorical data. By default,
+`geom_bar` accepts a variable for x, and plots the number of instances 
+each value of x (in this case, wall type) appears in the dataset.
 
 ~~~
+ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
+  geom_bar()
+~~~
 
-# create a small dataframe of the wall types and their counts
+But what if we wanted to plot the average value of a second variable 
+for each wall type? We would need to first generate a dataframe with 
+the appropriate information.
 
-wall_types <- SAFI_results %>%
-  select(C02_respondent_wall_type) %>%
+~~~
+# Generate a dataframe of average number of years farming (A11_years_farm) 
+# by wall type
+
+wall_avs <- SAFI_results %>%
   group_by(C02_respondent_wall_type) %>%
-  tally()
-
-# create a bar chart of the wall types
-ggplot(data = wall_types, aes(x = C02_respondent_wall_type, y = count_of_type)) +
-  geom_bar(stat="identity")
-
+  summarise(av = mean(A11_years_farm))
 ~~~
 
-
-
-The barchart can however be constructed direectly from  the SAFI_results data.
-
-~~~
-# create bar chaart directly from SAFI_results
-ggplot(data=SAFI_results, aes(x=C02_respondent_wall_type)) +
-  geom_bar(stat="count")
+Now we can use this dataframe to build a barplot. Instead of only defining 
+the x axis variable (`CO2_respondent_wall_type`), we will also 
+define the y axis variable (`av`), and tell `geom_bar` that we want the actual 
+values of y to be plotted by including the argument `stat = identity`.
 
 ~~~
-
-Apart from the `dplyr` work involved before creating the first plot, there are a couple of signifcant differences between the two approaches.
-
-In the second, more direct approach, we do not specify a 'y' value. This is because the default 'stat=count' in the call to 'geom_bar' will atomatically produce counts for the x axis items and is used on the y axis .
-
-Although you might think that the items along the x axis need to be Factors, as this is essentially how we treat them, they don't. The wall, floor and roof types are all string variables. 
-
-We can even the 'same' code to produce barcharts fro numeric values  on the x axis. 
-
-~~~
-ggplot(data=SAFI_results, aes(x=A11_years_farm)) +
-  geom_bar(stat="count")
+ggplot(data = wall_types, aes(x = C02_respondent_wall_type, y = av)) +
+  geom_bar(stat = "identity")
 ~~~
 
-By default all of plots so far have had the labels on the axis determined by the variable we have used. As you might expect, these can be easily changed. You can add your own x any axis labels as well as an overall plot title.
+Note that `geom_bar` treats the x variable as a factor; this means that we 
+can use the same code to produce a barplot that displays unique values of a 
+numeric variable along the x axis.
 
 ~~~
-ggplot(data=SAFI_results, aes(x=factor(C02_respondent_wall_type))) +
-  geom_bar(stat="count") +
-  ylab("count of each wall type") +  
-  xlab("wall types") +
-  ggtitle("SAFI Building wall types")
+ggplot(data = SAFI_results, aes(x = A11_years_farm)) +
+  geom_bar()
+~~~
+
+If you are trying to visualize the frequency of a continuous variable, you 
+should use the `geom_histogram` function rather than `geom_bar`.
+~~~
+ggplot(data = SAFI_results, aes(x = weight)) +
+  geom_histogram()
+~~~
+
+## Adding Labels and Titles
+
+By default, the axes labels are determined by the name of the variable 
+being plotted. However, `ggplot2` offers lots of cusomization options, 
+like specifing the axes labels, and adding a title to the plot with 
+relatively little code.
+
+~~~
+ggplot(data = SAFI_results, aes(x = factor(C02_respondent_wall_type))) +
+  geom_bar() +
+  ylab("Frequency") +  
+  xlab("Wall Type") +
+  ggtitle("Frequency of SAFI Building Wall Types")
 ~~~
 
 > ## Exercise
 >
-> Create a bar chart showing the number and types of the different roof types (C01_respondent_roof_type)
-> Create a bar chart showing a count of the different household sizes (B_no_membrs).
-> Provide suitable labels and titles.
+> Create a barplot of the number of records for each type of roof (`C01_respondent_roof_type`).
+> Create a barplot of the average weight of each species (`species_id`).
+> Provide suitable axes labels and titles for each.
 > 
 > > ## Solution
 > > 
 > > ~~~
-> > ggplot(data=SAFI_results, aes(x=C01_respondent_roof_type)) +
-> >   geom_bar(stat="count")
-> > ggplot(data=SAFI_results, aes(x=B_no_membrs)) +
-> >   geom_bar(stat="count")
+> > ggplot(data = SAFI_results, aes(x = C01_respondent_roof_type)) +
+> >   geom_bar() +
+> >   xlab("Roof Type") +
+> >   ylab("Frequency") +
+> >   ggtitle("Frequency of SAFI Building Roof Types")
+> >
+> > av_weights < -SAFI_results %>%
+> >   group_by(species_id) %>%
+> >   summarise(av=mean(weights))
+> >
+> > ggplot(data = av_weights, aes(x=species_id, y=av)) +
+> >   geom_bar(stat="identity") +
+> >   xlab("Species") +
+> >   ylab("Average Weight") +
+> >   ggtitle("Average Weight by Species")
 > > ~~~
 > > 
 > {: .solution}
 {: .challenge}
 
- 
-
 ## Faceting
 
-ggplot has a special technique called *faceting* that allows the user to split one plot
-into multiple plots based on a factor included in the dataset. 
+What if, instead of wanting to visualize the frequency of wall types across 
+the entire data set, we wanted to visualize the frequency of wall types by 
+village? One method to do this would be to make a subset of the 
+data for each village and create a plot for each individual subset. But, 
+this would likely be tedious and time-consuming.
 
-Instead of looking at the wall types across all of the data, we can split it up based on the values in some other variable. Here is the wall type split by village.
+Instead, `ggplot2` has a built-in method of doing this, called *facetting*. The 
+`facet_wrap` function allows the user to split one plot into multiple plots 
+based on a factor included in the dataset.
+
+We'll use this to create a barplot for each village.
 
 ~~~
-# facet wrap by village
-ggplot(data=SAFI_results, aes(x=C02_respondent_wall_type)) +
-  geom_bar(stat="count") +
-  ylab("count of wall types") +  
-  xlab("wall types") +
-  ggtitle("SAFI Building wall types") +
+ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
+  geom_bar() +
+  ylab("Frequency") +  
+  xlab("wall Type") +
+  ggtitle("Frequency of SAFI Building Wall Types by Village") +
   facet_wrap(~ A09_village )
-~~~
-
-Interestingly, `ggplot2` figures can be stored as objects. This is 
-particularly useful because you can modify existing `ggplot2` objects using `+`.  
-
-For example, you are able to create a plot template and ....
-conveniently explore different types of plots, so the above
-plot can also be generated with code like this:
-
-~~~
-# Assign plot to a variable
-SAFI_plot <- ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv))
-
-# Draw the plot
-SAFI_plot + 
-    geom_point()
 ~~~
 
 > ## Exercise
@@ -346,16 +366,33 @@ SAFI_plot +
 > Create a facetted set of plots which show the different the different villages use differnet
 > roof types (C01_respondent_roof_type) 
 > 
+> For an extra challenge, try to create a facetted set of barplots of the average
+> weight by species and village.
+> 
 > > ## Solution
 > > 
 > > ~~~
-> > ggplot(data=SAFI_results, aes(x=A09_village)) +
-> >   geom_bar(stat="count") +
-> >   ylab("count of roof types") +  
-> >   xlab("villages") +
-> >   ggtitle("SAFI Building roof types") +
-> >   facet_wrap(~ C01_respondent_roof_type ) + coord_flip()
+> > ggplot(data = SAFI_results, aes(x = C01_respondent_roof_type)) +
+> >   geom_bar() +
+> >   ylab("Frequency") +  
+> >   xlab("Roof Type") +
+> >   ggtitle("Frequency of SAFI Building Roof Types by Village") +
+> >   facet_wrap(~ village)
+> >
+> > # Challenge Solution:
+> > weight_av_vil <- SAFI_results %>%
+> >   group_by(A09_village, species_id) %>%
+> >   summarise(av = mean(weight))
+> >
+> > ggplot(weight_av_vil, aes(x = species_id, y = av) +
+> >   geom_bar(stat = "identity") +
+> >   xlab("Species") +
+> >   ylab("Average Weight") +
+> >   ggtitle("Average Weight of Species by Village") +
+> >   facet_wrap(~ A09_village)
+> >
 > > ~~~
 > >
 > {: .solution}
 {: .challenge}
+
