@@ -375,4 +375,3 @@ ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
 > >
 > {: .solution}
 {: .challenge}
-
