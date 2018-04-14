@@ -47,7 +47,7 @@ observation. Well-structured data will save you lots of time when making figures
 
 ~~~
 library(ggplot2)
-SAFI_results <- read.csv("SAFI_results.csv")
+SAFI_results <- read.csv("data/SAFI_results.csv")
 ~~~
 
 ## Plotting with `ggplot2`
