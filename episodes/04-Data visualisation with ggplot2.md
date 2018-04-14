@@ -3,19 +3,24 @@ title: "Data visualisation with ggplot2"
 teaching: 0
 exercises: 0
 questions:
-- "What is the grammar of graphics?"
+- "What are the components of a ggplot?"
 - "How do I create scatterplots, boxplots, and histogram?"
-- "How can I add additional aesthetics to my plots?"
-- "How can I use the data in a data frame to produced summary plots?"
+- "How can I change the aesthetics (ex. colour, transparency) of my plot?"
+- "How can I create multiple plots at once?"
 
 objectives:
-- "Define the grammar of graphics and its components"
-- "Use ggplot2 to create scatterplots, boxplots, and histograms"
-- "Add aesthetic components to plots"
-- "Use facets to produce multiple plots" 
+- "Describe the three components of a ggplot"
+- "Use `ggplot2` to create scatterplots, boxplots, and histograms"
+- "Modify the aesthetics of a ggplot"
+- "Use `facet_wrap` to produce multiple plots" 
 
 keypoints:
-- "First key point."
+- "`ggplot2` is a flexible and useful tool for creating plots in R"
+- "the data set and coordinate system can be defined using the `ggplot` function"
+- "additional layers, including geoms, are added using the `+` operator"
+- "boxplots are useful for visualizing the distribuion of a continuous variable"
+- "barplot are useful for visualizing categorical data"
+- "facetting allows you to generate multiple plots based on a categorical variable"
 ---
 
 ## What is `ggplot2`?
