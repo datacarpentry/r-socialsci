@@ -24,6 +24,12 @@ keypoints:
 ---
 
 
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("03-")
+```
+
+
 ## What are 'dplyr' and 'tidyr'?
 
 `dplyr` is a package, part of the 'tidyverse' package, for
@@ -43,12 +49,12 @@ To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want
 
 We will start by loading our SN7577 dataset
 
-~~~
-SN7577 <- read_csv("SN7577.csv")
+```{r}
+SN7577 <- read_csv("data/SN7577.csv")
 
 ## inspect the data
 str(SN7577)
-~~~
+```
 
 Previously we noted that the SN7577 variable appeared to be in 3 different classes. WE were happy to think of it as a data frame as that was what we were talking about.  Now it is convenient to think of it as having a class of  `tbl_df`.
 This is referred to as a "tibble".
@@ -68,15 +74,19 @@ We're going to learn some of the most common **`dplyr`** functions: `select()`,
 To select columns of a data frame, use `select()`. The first argument to this function is the data
 frame (`SN7577`), and the subsequent arguments are the columns to keep.
 
-~~~
+```{r}
+library(dplyr)
+```
+
+```{r}
 select(SN7577, sex, age, numage)
-~~~
+```
 
 To choose rows based on a specific criteria, use `filter()`:
 
-~~~
+```{r}
 filter(SN7577, numage == 90)
-~~~
+```
 
 
 
@@ -88,20 +98,21 @@ ways to do this: use intermediate steps, nested functions, or pipes.
 With intermediate steps, you create a temporary data frame and use
 that as input to the next function, like this:'
 
-~~~
+```{r}
 SN7577_a <- filter(SN7577, numage == 90)
 SN7577_b <- select(SN7577_a, sex, age, numage)
 SN7577_b
-~~~
+```
 
 This is readable, but can clutter up your workspace with lots of objects that you have to name individually. With multiple steps, that can be hard to keep track of.
 
 You can also nest functions (i.e. one function inside of another), like this:
 
-~~~
+
+```{r}
 SN7577_b <- select(filter(SN7577, numage == 90), sex, age, numage)
 SN7577_b
-~~~
+```
 
 This is handy, but can be difficult to read if too many functions are nested, as
 R evaluates the expression from the inside out (in this case, filtering, then selecting). So if you want to work what is going on you have to start in the middle and work your way out to the side.
@@ -115,11 +126,11 @@ when you need to do many things to the same dataset.  Pipes in R look like
 with `dplyr`. 
 
 
-~~~
+```{r}
 SN7577 %>%
-  filter(numage == 90) %>%
-  select( sex, age, numage)
-~~~
+    filter(numage == 90) %>%
+    select( sex, age, numage)
+```
 
 In the above code, we use the pipe to send the `SN7577` dataset first through
 `filter()` to keep rows where `numage` equals 90, then through `select()`
@@ -138,13 +149,13 @@ more complex manipulations of data frames.
 If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
 
-~~~
+```{r}
 SN7577_90 <- SN7577 %>%
-  filter(numage == 90) %>%
-  select( sex, age, numage)
+    filter(numage == 90) %>%
+    select( sex, age, numage)
 
 SN7577_90
-~~~
+```
 
 Note that the final data frame is the leftmost part of this expression.
 
@@ -155,13 +166,13 @@ Note that the final data frame is the leftmost part of this expression.
 > 
 > > ## Solution
 > > 
-> > ~~~
+> > ```{r}
 > > SN7577_lt65 <- SN7577 %>%
 > >   filter(numage < 65) %>%
 > >   select( sex, age, numage)
 > > 
 > > SN7577_lt65
-> > ~~~
+> > ```
 > > 
 > {: .solution}
 {: .challenge}
@@ -175,32 +186,32 @@ columns. For this we'll use `mutate()`.
 
 To create a new column of weight in kg:
 
-~~~
+```{r}
 SN7577 %>%
   mutate(income_000 = income * 1000) %>%
   select( income_000, income)
-~~~
+```
 
 You can also create a second new column based on the first new column within the same call of `mutate()`:
 
-~~~
+```{r}
 tax_rate <- 0.2
 SN7577 %>%
-  mutate(income_000 = income * 1000, income_taxed = income_000 * ( 1 - tax_rate)) %>%
-  select( income_000, income, income_taxed)
-~~~
+    mutate(income_000 = income * 1000, income_taxed = income_000 * ( 1 - tax_rate)) %>%
+    select( income_000, income, income_taxed)
+```
 
 
 If this runs off your screen and you just want to see the first few rows, you
 can use a pipe to view the `head()` of the data. (Pipes work with non-`dplyr`
 functions, too, as long as the `dplyr` or `magrittr` package is loaded).
 
-~~~
+```{r}
 SN7577 %>%
   mutate(income_000 = income * 1000) %>%
   select( income_000, income) %>%
   head()
-~~~
+```
 
 > ## Exercise
 >
@@ -213,12 +224,12 @@ SN7577 %>%
 > 
 > > ## Solution
 > > 
-> > ~~~
+> > ```{r}
 > > SN7577 %>%
 > >  filter(numage >= 18) %>%
 > >  mutate(voting_years = numage - 18) %>%
 > >  select(voting_years, numage)
-> > ~~~
+> > ```
 > > 
 > {: .solution}
 {: .challenge}
@@ -238,11 +249,11 @@ group into a single-row summary of that group.  `group_by()` takes as arguments
 the column names that contain the **categorical** variables for which you want
 to calculate the summary statistics. So to compute the average `numage` by `Q1` (voting intentions):
 
-~~~
+```{r}
 SN7577 %>%
   group_by(Q1) %>%
   summarize(avg_age = mean(numage, na.rm = TRUE))
-~~~
+```
 
 
 > ## Exercise
@@ -254,7 +265,7 @@ SN7577 %>%
 > 
 > > ## Solution
 > > 
-> > ~~~
+> > ```{r}
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage, na.rm = TRUE))
@@ -272,79 +283,80 @@ SN7577 %>%
 > > SN7577 %>%
 > >   group_by(Q1) %>%
 > >   summarize(avg_age = mean(numage)) 
-> > ~~~
+> > ```
 > > 
 > {: .solution}
 {: .challenge}
 
 If we know that there are 'NA's in a column we could filter them out in advance of any other processing.
 
-~~~
-# Art there any NAs in numage?
+```{r}
+# Are there any NAs in numage?
 SN7577 %>%
-  filter(is.na(numage))
+    filter(is.na(numage))
 
 # use '!' to exclude them
 SN7577 %>%
   filter(!is.na(numage)) %>%
   group_by(Q1) %>%
   summarize(avg_age = mean(numage))
-~~~
+```		
 
 
 You can also group by multiple columns. 'age' is an age grouping variable from 1 to 7, 'sex' uses integers 1 and 2 to denote Male and Female.
 
-~~~
+```{r}
 SN7577 %>%
   group_by(sex, age) %>%
   summarize(avg_age = mean(numage, na.rm = TRUE))
-~~~
+```
+
 
 If we ran a similar piece of code, but this time going back to usoing 'Q1'
 
-~~~
+```{r}
 SN7577 %>%
   filter(!is.na(numage)) %>%
   group_by(sex, Q1) %>%
   summarize(avg_age = mean(numage))
-~~~
+```
 
 All of the results are not displayed. This is because 'Q1' can have 11 different values and as we noted earlier, 'dplyr' restrict the output.
 
 We can get round this by explictly adding a call to the 'print' function at the end of our pipeline.
 
-~~~
+```{r}
 
 SN7577 %>%
   filter(!is.na(numage)) %>%
   group_by(sex, Q1) %>%
   summarize(avg_age = mean(numage)) %>%
   print(n =22)
-~~~
+```
 
 
 We can also have more than one summary at a time.
 
-~~~
+```{r}
 
 SN7577 %>%
   filter(!is.na(numage)) %>%
   group_by(sex, Q1) %>%
-  summarize(avg_age = mean(numage), 
+  summarize(avg_age = mean(numage),
             count_age = n())    %>%
   print(n = 22)
-~~~
+```
 
 the 'n' function counts the number of rows in each group. This is something which is very commonly done that it has its own funtion'tally' in 'dplyr'
 
 If we wanted to know how many of each age the respondents were we could use:
 
-~~~
+```{r}
 SN7577 %>%
   group_by(numage) %>%
   tally() %>%
   print(n = 100)
-~~~
+```
 
 If you go done to the bottom of the listing you will see that the 6 NAs are also accounted for.
 
@@ -352,16 +364,16 @@ If you go done to the bottom of the listing you will see that the 6 NAs are also
 >
 > Q2 in SN7577 is an indication of who the respondent is inclined to vote for. Missing data is denoted by a value
 > of -1. Find the average age and number of respondents in each of the Q2 categories.
-> 
+>
 > > ## Solution
-> > 
-> > ~~~
+> >
+> > ```{r}
 > > SN7577 %>%
 > >   group_by(Q2) %>%
 > >   summarize(avg_age = mean(numage, na.rm = TRUE),
 > >             count_age = n())
-> > ~~~
-> > 
+> > ```
+> >
 > {: .solution}
 {: .challenge}
 
@@ -370,19 +382,19 @@ If you go done to the bottom of the listing you will see that the 6 NAs are also
 
 To look at the 'gather' and 'spread' functions we will use the SAFI_results data.
 
-~~~
+```{r}
 library(readr)
-SAFI_results <- read_csv("SAFI_results.csv")
-~~~
+SAFI_results <- read_csv("data/SAFI_results.csv")
+```
 
 Within the SAFI_results data isa column, C02_respondent_wall_type, which records the material used make the walls of the houses. We can see from the following that there are only 4 different values.
 
-~~~
+```{r}
 SAFI_results %>%
   select (C02_respondent_wall_type) %>%
   group_by(C02_respondent_wall_type) %>%
   tally()
-~~~
+```
 
 
 Rather than having the single column, we may prefer to have individual columns for each type of wall and an indication if a particular house (= observation) has that type of wall material.
@@ -395,19 +407,19 @@ To perform this action we are going to use the `spread` function.
 
 `spread()` takes three principal arguments:
 
-1. the data 
+1. the data
 2. the *key* column variable whose values will become new column names.  
 3. the *value* column variable whose values will fill the new column variables.
 
-Further arguments include `fill` which, if set, fills in missing values with 
+Further arguments include `fill` which, if set, fills in missing values with
 the value provided.
 
-~~~
-\# Spread, create dummy variable to use as values
+```{r}
+# Spread, create dummy variable to use as values
 SAFI_wall_spread <- SAFI_results %>%
   mutate(mycount = 1) %>%
   spread(key = C02_respondent_wall_type, value = mycount, fill = 0)
-~~~
+```
 
 In the code above a new variable called mycount is created with a value of 1 for each observation. This is only done to use as a column for the 'value' parameter. In the `spread` function the Key is the existing column containing the wall types which will become the new columns and they will be given a value od either 1 if the observation has tat walltype and 0 otherwise (the fill value).
 
@@ -420,19 +432,19 @@ If you have data which is in this wide format and need to convert it to 'long' f
 
 1. the data
 2. the *key* column variable we wish to create from column names.
-3. the *values* column variable we wish to create and fill with values 
+3. the *values* column variable we wish to create and fill with values
 associated with the key.
 4. the names of the columns we use to fill the key variable (or to drop).
 
-For our key we will re-create the original column name of C02_respondent_wall_type, we will create a dummy variable called mycount to pass to the `value` parameter. 
+For our key we will re-create the original column name of C02_respondent_wall_type, we will create a dummy variable called mycount to pass to the `value` parameter.
 We also need to passin the list of column names to be used to populate the key. As they are contiguous we can use the the ':' operator to specify the start and last column names.
 
-~~~
+```{r}
 SAFI_gather <- SAFI_wall_spread %>%
   gather(key = C02_respondent_wall_type, value = C02_count, burntbricks:sunbricks) %>%
   filter(C02_count == 1) %>%
   select(-C02_count)
-~~~
+```
 
 After the gather, as we are re-creating our original dataframe we are only interested in rows the C02_count value is 1. The others were created as a result of the fill=0 option in the spread function. Having filtered on CO2_count, we can now delete it as it wasn't in the original dataframe.
 
@@ -441,25 +453,25 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 > ## Exercise
 >
 > 1. Use the `spread` function to create new columns for all of the different roof types (C01_respondent_roof_type)
-> 
+>
 >  2. Reverse the operation using the `gather` function
 >
 > > ## Solution
-> > 
-> > ~~~
-> > \# Spread, create dummy variable to use as values
+> >
+> > ```{r}
+> > # Spread, create dummy variable to use as values
 > > SAFI_roof_spread <- SAFI_results %>%
 > >   mutate(mycount = 1) %>%
 > >   spread(key = C01_respondent_roof_type, value = mycount, fill = 0)
 > > SAFI_roof_spread
-> > 
-> > \# Gather + filter out excess rows and unneeded colum
+> >
+> > # Gather + filter out excess rows and unneeded colum
 > > SAFI_gather <- SAFI_roof_spread %>%
 > >   gather(key = C01_respondent_roof_type, value = C01_count, grass:mabatisloping) %>%
 > >   filter(C01_count == 1) %>%
 > >   select(-C01_count)
-> > ~~~
-> > 
+> > ```
+> >
 > {: .solution}
 {: .challenge}
 
@@ -472,16 +484,13 @@ or summarize your raw data, you may want to export these new data sets for futur
 Similar to the `read_csv()` function used for reading CSV files into R, the tidyverse includes a `write_csv()` function that generates CSV files from data frames.
 
 
-Use of 'write_csv' is straightforward you onlty need to provide the name of the dataframe you wish to write out and the name of the file that you wish to use.
+Use of `write_csv` is straightforward you need to provide the name of the dataframe you wish to write out and the name of the file that you wish to use.
 
 We will save our SN7577_papers dataframe.
 
-~~~
+```{r, eval=FALSE}
 write_csv(SN7577_papers, path = "SN7577_papers.csv")
-~~~
+```
 
 The filename is passed to the path parameter, as the name suggests you could specify a full path + the filename. If you do not , then the current working directory will be assumed.
-
-~~~
-
 
