@@ -30,7 +30,7 @@ knitr_fig_path("03-")
 ```
 
 
-## What are 'dplyr' and 'tidyr'?
+## What are `dplyr` and `tidyr`?
 
 Both `dplyr` and `tidyr` are part of Tidyverse, which is a collection of R 
 packages designed for data science that share an underlying design 
