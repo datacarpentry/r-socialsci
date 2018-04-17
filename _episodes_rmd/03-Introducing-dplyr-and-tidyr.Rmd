@@ -32,19 +32,29 @@ knitr_fig_path("03-")
 
 ## What are 'dplyr' and 'tidyr'?
 
-`dplyr` is a package, part of the 'tidyverse' package, for
-making tabular data manipulation easier. It pairs nicely with `tidyr` which enables you to conveniently convert between different data formats which can be useful for plotting and some types of analysis.
+Both `dplyr` and `tidyr` packages from Tidyverse, which is a collection of R 
+packages designed for data science that share an underlying design 
+philosophy, grammar, and data structure.
 
-The package `dplyr` provides easy tools for the most common data manipulation
-tasks. It is built to work directly with data frames, with many common tasks
-optimized for faster execution. An additional feature is the
-ability to work directly with data stored in an external database. We will look at this in a later episode.
+Specifically, `dplyr` is used to manipulate tabular data, and provides 
+user-friendly functions for common manipulation tasks, like subsetting and / or 
+summarising data. It works directly with data framess, and is optimized to be 
+computationally efficient. In addition, `dplyr` can be used to communicate and 
+work with data stored in an external database; we will learn more about this in 
+a later episode. 
 
+The `tidyr` package assists with the often tedious task of reshaping data, which 
+is often required before plotting or analyzing data. For example, you may need 
+each sample represented by a single row, with each variable related to that sample 
+in an individual column. Alternatively, some functions may instead require a sample 
+to be spread across multiple rows, each representing one measured variable. Moving 
+back and forth between these types of formats is non-trivial, and `tidyr` provides 
+functions to achieve these and more sophisticated data shaping processes.
 
-The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups - like plots or aquaria. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
-
-To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
-[handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+Together, these packages can be useful for plotting and many types of analyses. To 
+learn more about `dplyr` and `tidyr` after the workshop, you may want to check out 
+this [cheatsheet about `dplyr`](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) 
+and this [cheatsheet about `tidyr`](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
 
 
 We will start by loading our SN7577 dataset
