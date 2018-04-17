@@ -12,4 +12,7 @@ FIXME: home page introduction
 
 
 test:
+
+```
 {{ site.github | jsonify }} 
+```
