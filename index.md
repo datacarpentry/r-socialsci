@@ -8,3 +8,8 @@ FIXME: home page introduction
 >
 > FIXME
 {: .prereq}
+
+
+
+test:
+{{ site.github | jsonify }} 
