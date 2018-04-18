@@ -216,7 +216,7 @@ each floor type (`C03_respondent_floor_type`).
 
 ```{r}
 ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs)) + 
-      geom_boxplot()
+    geom_boxplot()
 ```
 
 We can get a better idea of the number and distribution of points by adding a 
@@ -224,8 +224,8 @@ layer of points over the boxplots.
 
 ```{r}
 ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs)) + 
-      geom_boxplot() +
-      geom_point()
+    geom_boxplot() +
+    geom_point()
 ```
 
 This isn't particularly pretty; rather than use `geom_point` here, we can 
@@ -248,10 +248,12 @@ ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs))
 > Replace the box plot with a violin plot; see `geom_violin()`.
 >
 > > ## Solution
+> >
+> > ```{r}
 > > ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs)) + 
 > >   geom_violin() +
 > >   geom_jitter(alpha = 0.3, colour = "tomato")
-> >
+> > ```
 > >
 > {: .solution}
 {: .challenge}
@@ -264,7 +266,7 @@ each value of x (in this case, wall type) appears in the dataset.
 
 ```{r}
 ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
-  geom_bar()
+    geom_bar()
 ```
 But what if we wanted to plot the average value of a second variable 
 for each wall type? We would need to first generate a dataframe with 
@@ -272,7 +274,7 @@ the appropriate information.
 
 ```{r}
 # Generate a dataframe of average number of years farming (A11_years_farm) 
-# by wall type
+                                        # by wall type
 
 wall_avs <- SAFI_results %>%
   group_by(C02_respondent_wall_type) %>%
@@ -358,10 +360,10 @@ We'll use this to create a barplot for each village.
 
 ```{r}
 ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
-  geom_bar() +
-  ylab("Frequency") +  
-  xlab("wall Type") +
-  ggtitle("Frequency of SAFI Building Wall Types by Village") +
+    geom_bar() +
+    ylab("Frequency") +  
+    xlab("wall Type") +
+    ggtitle("Frequency of SAFI Building Wall Types by Village") +
   facet_wrap(~ A09_village )
 ```
 
