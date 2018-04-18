@@ -4,7 +4,7 @@ teaching: 0
 exercises: 0
 questions:
 - "What are the components of a ggplot?"
-- "How do I create scatterplots, boxplots, and histogram?"
+- "How do I create scatterplots, boxplots, and barplots?"
 - "How can I change the aesthetics (ex. colour, transparency) of my plot?"
 - "How can I create multiple plots at once?"
 
@@ -22,6 +22,11 @@ keypoints:
 - "barplot are useful for visualizing categorical data"
 - "facetting allows you to generate multiple plots based on a categorical variable"
 ---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("04-")
+```
 
 ## What is `ggplot2`?
 
@@ -45,10 +50,12 @@ which is stored in our current working directory. `ggplot2` uses data stored in
 the 'long' format; i.e. with a column for every dimension and a row for every 
 observation. Well-structured data will save you lots of time when making figures.
 
-~~~
+```{r}
 library(ggplot2)
-SAFI_results <- read.csv("data/SAFI_results.csv")
-~~~
+library(readr)
+library(dplyr)
+SAFI_results <- read_csv("data/SAFI_results.csv")
+```
 
 ## Plotting with `ggplot2`
 
@@ -60,9 +67,9 @@ To intialize a ggplot, we use the `ggplot` function. This function lets R know
 that we are creating a new plot, and is used to specify the dataframe that 
 contains the information we are interested in visualizing.
 
-~~~
+```{r}
 ggplot(data = SAFI_results)
-~~~
+```
 
 When you run this line of code you will get a blank canvas in the Plots pane in 
 the lower right hand corner of RStudio. There is nothing wrong with the code - 
@@ -75,9 +82,12 @@ be plotted, and specifies how to present them in the graph as either positions
 (x / y) or characteristics (ex. size, shape, color). The `aes` function is flexible 
 in terms of which layer it is defined in; for now, we'll add it to our first layer.
 
-~~~
+Let's first plot the number of years farming (`A11_years_farm`) on the x axis and 
+the number of years living in the area (`B16_years_liv`) on the y axis.
+
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv))
-~~~
+```
 
 When you run this line of code, you will still get a blank canvas in the Plots 
 pane, but you'll notice that labels for the x and y axis have been added. This 
@@ -95,22 +105,23 @@ options. Some of the common ones include:
 * `geom_bar()` for barplots
 
 Because, in this instance, we are looking at two continuous variables (*number 
-of years farming in area* and *number of years living in area*), let's opt to 
+of years farming* and *number of years living in area*), let's opt to 
 display the data using a scatterplot. To add a geom (in this case, 
 `geom_point()`) to the plot, we'll add a new layer using the `+` operator.
 
-~~~
+
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) + geom_point()
-~~~
+```
 
 As we begin to build more complex plots, it can be helpful to put each new layer 
 of the plot on a new line for readability. To do this, the `+` sign used to add 
 layers must be placed at the end of each line containing a layer.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) + 
       geom_point()
-~~~
+```
 
 Note that the contents of the first layer (in the `ggplot()` function) are 
 considered to be global settings. In other words, they will be considered the 
@@ -120,10 +131,10 @@ As was mentioned earier, the `aes` function is flexible in terms of which layer
 it is defined in. This means that you can specify the mapping for a particular 
 geom independently rather than as a global setting.
 
-~~~
+```{r}
 ggplot(data = SAFI_results) + 
       geom_point(aes(x = A11_years_farm, y = B16_years_liv))
-~~~
+```
 
 Note: Often, deciding whether to include mapping as a global setting or 
 independently within geoms is a personal preference or habit. However, if, for 
@@ -137,35 +148,35 @@ Building plots with `ggplot2` is typically an iterative process. We start by
 defining the dataset we want to use, identifing our mapping aesthetics, and 
 choosing a geom.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
-  geom_point() 
-~~~
+  geom_point()
+```
 
 Next, we may want to start modifying this plot to make it more visualy appealing 
 or include more information. For instance, we can define the transparency of our 
 points using `alpha` to avoid overplotting.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
-  geom_point(alpha = 0.1)
-~~~
+  geom_point(alpha = 0.5)
+```
 
 We can decide that we also prefer all of the points to be blue.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
-    geom_point(alpha = 0.1, color = "blue")
-~~~
+    geom_point(alpha = 0.5, color = "blue")
+```
 
 Upon further investigation, perhaps we decide that each point should be a 
-different colour, based on which species it represents - information that is 
-found in the column called `species_id`.
+different colour, based on which village the farm is located in - this 
+information is found in the column called `A09_village`.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B16_years_liv)) +
-  geom_point(alpha = 1.0, aes(color = species_id))
-~~~
+  geom_point(alpha = 0.5, aes(color = A09_village))
+```
 
 Notice in the last example that we see that colour is now specified *inside* 
 of an `aes` function. Why didn't we have to do that when we wanted our 
@@ -175,6 +186,7 @@ that our `A11_years_farm` column is represented by x and our `B16_years_liv`
 column is represented by y, the colour of each point is going to represent a 
 third dimension on our coordinate system.
 
+
 > ## Exercise
 >
 > Create a scatterplot with the number of years farming (`A11_years_farm`) on 
@@ -182,48 +194,49 @@ third dimension on our coordinate system.
 > with the following:
 >
 > * The size of the points vary based on the number of plots (`D_plots_count`)
-> * The transparency of the points is 0.5
+> * The transparency of the points is 0.4
 > * The colour of the points is blue
 >
 > > ## Solution
-> > 
-> > ~~~
+> >
+> > ```{r}
 > > ggplot(data = SAFI_results, aes(x = A11_years_farm, y = B_no_membrs)) +
-> >         geom_point(aes(size = D_plots_count), color = "blue", alpha = 0.5)
-> > ~~~
-> > 
+> >         geom_point(aes(size = D_plots_count), color = "blue", alpha = 0.4)
+> > ```
+> >
 > {: .solution}
 {: .challenge}
 
-## Boxplot
+
+## Boxplots
 
 We can use boxplots to visualize the distribution of a continuous variable 
-among a categorical variable. For example, the weight recorded for each species:
+among a categorical variable. For example, the size of the household with 
+each floor type (`C03_respondent_floor_type`).
 
-~~~
-
-ggplot(data = surveys_complete, aes(x = species_id, y = weight)) +
-    geom_boxplot()
-~~~
+```{r}
+ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs)) + 
+      geom_boxplot()
+```
 
 We can get a better idea of the number and distribution of points by adding a 
 layer of points over the boxplots.
 
-~~~
-ggplot(data = SAFI_results, aes(x = species_id, y = weight)) +
- geom_boxplot() +
- geom_point()
-~~~
+```{r}
+ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs)) + 
+      geom_boxplot() +
+      geom_point()
+```
 
 This isn't particularly pretty; rather than use `geom_point` here, we can 
 use `geom_jitter` to jitter or spread out the points. We can also make the 
 points slightly transparent using `alpha` and change their colour.
 
-~~~
-ggplot(data = SAFI_results, aes(x = species_id, y = weight)) +
- geom_boxplot() +
- geom_jitter(alpha = 0.3, color = "tomato")
-~~~
+```{r}
+ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs)) + 
+      geom_boxplot() +
+      geom_jitter(alpha = 0.3, colour = "tomato")
+```
 
 > ## Exercise
 >
@@ -232,15 +245,14 @@ ggplot(data = SAFI_results, aes(x = species_id, y = weight)) +
 > boxplot. An alternative to the boxplot is the violin plot, which displays 
 > the shape of the density of points.
 >
-> Replace the box plot with a violin plot; see `geom_violin()`. 
-> 
+> Replace the box plot with a violin plot; see `geom_violin()`.
+>
 > > ## Solution
-> > 
-> > ggplot(data = SAFI_results, aes(x = species_id, y = weight)) +
+> > ggplot(data = SAFI_results, aes(x = C03_respondent_floor_type, y = B_no_membrs)) + 
 > >   geom_violin() +
-> >   geom_jitter(alpha = 0.3, color = "tomato")
-> > 
-> > 
+> >   geom_jitter(alpha = 0.3, colour = "tomato")
+> >
+> >
 > {: .solution}
 {: .challenge}
 
@@ -250,49 +262,41 @@ Barplots are also useful for visualizing categorical data. By default,
 `geom_bar` accepts a variable for x, and plots the number of instances 
 each value of x (in this case, wall type) appears in the dataset.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
   geom_bar()
-~~~
-
+```
 But what if we wanted to plot the average value of a second variable 
 for each wall type? We would need to first generate a dataframe with 
 the appropriate information.
 
-~~~
+```{r}
 # Generate a dataframe of average number of years farming (A11_years_farm) 
 # by wall type
 
 wall_avs <- SAFI_results %>%
   group_by(C02_respondent_wall_type) %>%
   summarise(av = mean(A11_years_farm))
-~~~
+```
 
 Now we can use this dataframe to build a barplot. Instead of only defining 
 the x axis variable (`CO2_respondent_wall_type`), we will also 
 define the y axis variable (`av`), and tell `geom_bar` that we want the actual 
 values of y to be plotted by including the argument `stat = identity`.
 
-~~~
-ggplot(data = wall_types, aes(x = C02_respondent_wall_type, y = av)) +
+```{r}
+ggplot(data = wall_avs, aes(x = C02_respondent_wall_type, y = av)) +
   geom_bar(stat = "identity")
-~~~
+```
 
 Note that `geom_bar` treats the x variable as a factor; this means that we 
 can use the same code to produce a barplot that displays unique values of a 
 numeric variable along the x axis.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = A11_years_farm)) +
   geom_bar()
-~~~
-
-If you are trying to visualize the frequency of a continuous variable, you 
-should use the `geom_histogram` function rather than `geom_bar`.
-~~~
-ggplot(data = SAFI_results, aes(x = weight)) +
-  geom_histogram()
-~~~
+```
 
 ## Adding Labels and Titles
 
@@ -301,40 +305,40 @@ being plotted. However, `ggplot2` offers lots of cusomization options,
 like specifing the axes labels, and adding a title to the plot with 
 relatively little code.
 
-~~~
-ggplot(data = SAFI_results, aes(x = factor(C02_respondent_wall_type))) +
+```{r}
+ggplot(data=SAFI_results, aes(x=factor(C02_respondent_wall_type))) +
   geom_bar() +
   ylab("Frequency") +  
   xlab("Wall Type") +
   ggtitle("Frequency of SAFI Building Wall Types")
-~~~
+```
 
 > ## Exercise
 >
 > Create a barplot of the number of records for each type of roof (`C01_respondent_roof_type`).
-> Create a barplot of the average weight of each species (`species_id`).
+> Create a barplot of the average number of plots of each village.
 > Provide suitable axes labels and titles for each.
-> 
+>
 > > ## Solution
-> > 
-> > ~~~
+> >
+> > ```{r}
 > > ggplot(data = SAFI_results, aes(x = C01_respondent_roof_type)) +
 > >   geom_bar() +
 > >   xlab("Roof Type") +
 > >   ylab("Frequency") +
 > >   ggtitle("Frequency of SAFI Building Roof Types")
 > >
-> > av_weights < -SAFI_results %>%
-> >   group_by(species_id) %>%
-> >   summarise(av=mean(weights))
+> > plots_avs <- SAFI_results %>%
+> >   group_by(A09_village) %>%
+> >   summarise(av=mean(D_plots_count))
 > >
-> > ggplot(data = av_weights, aes(x=species_id, y=av)) +
+> > ggplot(data = plots_avs, aes(x = A09_village, y=av)) +
 > >   geom_bar(stat="identity") +
-> >   xlab("Species") +
-> >   ylab("Average Weight") +
-> >   ggtitle("Average Weight by Species")
-> > ~~~
-> > 
+> >   xlab("Village") +
+> >   ylab("Average Number of Plots") +
+> >   ggtitle("Average Number of Plots by Village")
+> > ```
+> >
 > {: .solution}
 {: .challenge}
 
@@ -352,46 +356,44 @@ based on a factor included in the dataset.
 
 We'll use this to create a barplot for each village.
 
-~~~
+```{r}
 ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
   geom_bar() +
   ylab("Frequency") +  
   xlab("wall Type") +
   ggtitle("Frequency of SAFI Building Wall Types by Village") +
   facet_wrap(~ A09_village )
-~~~
+```
 
 > ## Exercise
 >
 > Create a facetted set of plots which show the different the different villages use differnet
-> roof types (C01_respondent_roof_type) 
+> roof types (`C01_respondent_roof_type`) 
 > 
 > For an extra challenge, try to create a facetted set of barplots of the average
-> weight by species and village.
-> 
+> household size by roof type and village.>
 > > ## Solution
-> > 
-> > ~~~
+> >
+> > ```{r}
 > > ggplot(data = SAFI_results, aes(x = C01_respondent_roof_type)) +
 > >   geom_bar() +
 > >   ylab("Frequency") +  
 > >   xlab("Roof Type") +
 > >   ggtitle("Frequency of SAFI Building Roof Types by Village") +
-> >   facet_wrap(~ village)
-> >
-> > # Challenge Solution:
-> > weight_av_vil <- SAFI_results %>%
-> >   group_by(A09_village, species_id) %>%
-> >   summarise(av = mean(weight))
-> >
-> > ggplot(weight_av_vil, aes(x = species_id, y = av) +
-> >   geom_bar(stat = "identity") +
-> >   xlab("Species") +
-> >   ylab("Average Weight") +
-> >   ggtitle("Average Weight of Species by Village") +
 > >   facet_wrap(~ A09_village)
 > >
-> > ~~~
+> > # Challenge Solution:
+> > size_avs <- SAFI_results %>%
+> >   group_by(A09_village, C01_respondent_roof_type) %>%
+> >   summarise(av = mean(B_no_membrs))
+> >
+> > ggplot(size_avs, aes(x = C01_respondent_roof_type, y = av)) +
+> >   geom_bar(stat = "identity") +
+> >   xlab("Roof Type") +
+> >   ylab("Average Household Size") +
+> >   ggtitle("Average Household Size with Each Roof Type, by Village") +
+> >   facet_wrap(~ A09_village)
+> > ```
 > >
 > {: .solution}
 {: .challenge}
