@@ -46,9 +46,10 @@ expressed from the same set of components:
 
 Before we learn more about the details, let's load the `ggplot2` package and 
 import a dataset. For this episode we will be using the `SAFI_results` data, 
-which is stored in our current working directory. `ggplot2` uses data stored in 
-the 'long' format; i.e. with a column for every dimension and a row for every 
-observation. Well-structured data will save you lots of time when making figures.
+which is stored in a folder called "data", located in our current working directory. 
+`ggplot2` uses data stored in the 'long' format; i.e. with a column for every 
+dimension and a row for every observation. Well-structured data will save you 
+lots of time when making figures.
 
 ```{r}
 library(ggplot2)
