@@ -29,21 +29,31 @@ keypoints:
 
 
 
-## What are 'dplyr' and 'tidyr'?
+## What are `dplyr` and `tidyr`?
 
-`dplyr` is a package, part of the 'tidyverse' package, for
-making tabular data manipulation easier. It pairs nicely with `tidyr` which enables you to conveniently convert between different data formats which can be useful for plotting and some types of analysis.
+Both `dplyr` and `tidyr` are part of Tidyverse, which is a collection of R 
+packages designed for data science that share an underlying design 
+philosophy, grammar, and data structure.
 
-The package `dplyr` provides easy tools for the most common data manipulation
-tasks. It is built to work directly with data frames, with many common tasks
-optimized for faster execution. An additional feature is the
-ability to work directly with data stored in an external database. We will look at this in a later episode.
+Specifically, `dplyr` is used to manipulate tabular data, and provides 
+user-friendly functions for common manipulation tasks, like subsetting and / or 
+summarising data. It works directly with data framess, and is optimized to be 
+computationally efficient. In addition, `dplyr` can be used to communicate and 
+work with data stored in an external database; we will learn more about this in 
+a later episode. 
 
+The `tidyr` package assists with the often tedious task of reshaping data, which 
+is often required before plotting or analyzing data. For example, you may need 
+each sample represented by a single row, with each variable related to that sample 
+in an individual column. Alternatively, some functions may instead require a sample 
+to be spread across multiple rows, each representing one measured variable. Moving 
+back and forth between these types of formats is non-trivial, and `tidyr` provides 
+functions to achieve these and more sophisticated data shaping processes.
 
-The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups - like plots or aquaria. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
-
-To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
-[handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+Together, these packages can be useful for plotting and many types of analyses. To 
+learn more about `dplyr` and `tidyr` after the workshop, you may want to check out 
+this [cheatsheet about `dplyr`](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) 
+and this [cheatsheet about `tidyr`](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
 
 
 We will start by loading our SN7577 dataset
@@ -418,6 +428,13 @@ library(dplyr)
 
 
 ~~~
+Warning: package 'dplyr' was built under R version 3.4.2
+~~~
+{: .error}
+
+
+
+~~~
 
 Attaching package: 'dplyr'
 ~~~
@@ -512,7 +529,7 @@ filter(SN7577, numage == 90)
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
 ~~~
 {: .output}
 
@@ -702,16 +719,16 @@ SN7577 %>%
 # A tibble: 1,286 x 2
    income_000 income
         <dbl>  <int>
- 1     12000.     12
- 2     16000.     16
- 3     17000.     17
- 4     17000.     17
- 5     16000.     16
- 6     12000.     12
- 7     17000.     17
- 8     17000.     17
- 9     16000.     16
-10     17000.     17
+ 1      12000     12
+ 2      16000     16
+ 3      17000     17
+ 4      17000     17
+ 5      16000     16
+ 6      12000     12
+ 7      17000     17
+ 8      17000     17
+ 9      16000     16
+10      17000     17
 # ... with 1,276 more rows
 ~~~
 {: .output}
@@ -733,16 +750,16 @@ SN7577 %>%
 # A tibble: 1,286 x 3
    income_000 income income_taxed
         <dbl>  <int>        <dbl>
- 1     12000.     12        9600.
- 2     16000.     16       12800.
- 3     17000.     17       13600.
- 4     17000.     17       13600.
- 5     16000.     16       12800.
- 6     12000.     12        9600.
- 7     17000.     17       13600.
- 8     17000.     17       13600.
- 9     16000.     16       12800.
-10     17000.     17       13600.
+ 1      12000     12         9600
+ 2      16000     16        12800
+ 3      17000     17        13600
+ 4      17000     17        13600
+ 5      16000     16        12800
+ 6      12000     12         9600
+ 7      17000     17        13600
+ 8      17000     17        13600
+ 9      16000     16        12800
+10      17000     17        13600
 # ... with 1,276 more rows
 ~~~
 {: .output}
@@ -767,12 +784,12 @@ SN7577 %>%
 # A tibble: 6 x 2
   income_000 income
        <dbl>  <int>
-1     12000.     12
-2     16000.     16
-3     17000.     17
-4     17000.     17
-5     16000.     16
-6     12000.     12
+1      12000     12
+2      16000     16
+3      17000     17
+4      17000     17
+5      16000     16
+6      12000     12
 ~~~
 {: .output}
 
@@ -802,16 +819,16 @@ SN7577 %>%
 > > # A tibble: 1,280 x 2
 > >    voting_years numage
 > >           <dbl>  <int>
-> >  1          46.     64
-> >  2           7.     25
-> >  3          72.     90
-> >  4          30.     48
-> >  5          30.     48
-> >  6          36.     54
-> >  7          56.     74
-> >  8          61.     79
-> >  9          47.     65
-> > 10          44.     62
+> >  1           46     64
+> >  2            7     25
+> >  3           72     90
+> >  4           30     48
+> >  5           30     48
+> >  6           36     54
+> >  7           56     74
+> >  8           61     79
+> >  9           47     65
+> > 10           44     62
 > > # ... with 1,270 more rows
 > > ~~~
 > > {: .output}
@@ -846,19 +863,19 @@ SN7577 %>%
 
 ~~~
 # A tibble: 11 x 2
-      Q1 avg_age
-   <int>   <dbl>
- 1     1    55.7
- 2     2    47.2
- 3     3    52.8
- 4     4    56.4
- 5     5    44.5
- 6     6    56.2
- 7     7    42.5
- 8     8    45.6
- 9     9    40.5
-10    10    46.4
-11    11    48.8
+      Q1  avg_age
+   <int>    <dbl>
+ 1     1 55.73184
+ 2     2 47.23219
+ 3     3 52.84615
+ 4     4 56.41463
+ 5     5 44.47368
+ 6     6 56.17391
+ 7     7 42.50000
+ 8     8 45.63636
+ 9     9 40.47305
+10    10 46.44179
+11    11 48.81132
 ~~~
 {: .output}
 
@@ -884,19 +901,19 @@ SN7577 %>%
 > > 
 > > ~~~
 > > # A tibble: 11 x 2
-> >       Q1 avg_age
-> >    <int>   <dbl>
-> >  1     1    55.7
-> >  2     2    47.2
-> >  3     3    52.8
-> >  4     4    56.4
-> >  5     5    44.5
-> >  6     6    56.2
-> >  7     7    42.5
-> >  8     8    45.6
-> >  9     9    40.5
-> > 10    10    46.4
-> > 11    11    48.8
+> >       Q1  avg_age
+> >    <int>    <dbl>
+> >  1     1 55.73184
+> >  2     2 47.23219
+> >  3     3 52.84615
+> >  4     4 56.41463
+> >  5     5 44.47368
+> >  6     6 56.17391
+> >  7     7 42.50000
+> >  8     8 45.63636
+> >  9     9 40.47305
+> > 10    10 46.44179
+> > 11    11 48.81132
 > > ~~~
 > > {: .output}
 > > 
@@ -913,19 +930,19 @@ SN7577 %>%
 > > 
 > > ~~~
 > > # A tibble: 11 x 2
-> >       Q1 avg_age
-> >    <int>   <dbl>
-> >  1     1    55.7
-> >  2     2    47.2
-> >  3     3    52.8
-> >  4     4    56.4
-> >  5     5    44.5
-> >  6     6    56.2
-> >  7     7    42.5
-> >  8     8    45.6
-> >  9     9    40.5
-> > 10    10    46.4
-> > 11    11    48.8
+> >       Q1  avg_age
+> >    <int>    <dbl>
+> >  1     1 55.73184
+> >  2     2 47.23219
+> >  3     3 52.84615
+> >  4     4 56.41463
+> >  5     5 44.47368
+> >  6     6 56.17391
+> >  7     7 42.50000
+> >  8     8 45.63636
+> >  9     9 40.47305
+> > 10    10 46.44179
+> > 11    11 48.81132
 > > ~~~
 > > {: .output}
 > > 
@@ -944,19 +961,19 @@ SN7577 %>%
 > > 
 > > ~~~
 > > # A tibble: 11 x 2
-> >       Q1 avg_age
-> >    <int>   <dbl>
-> >  1     1    55.7
-> >  2     2    47.4
-> >  3     3    52.8
-> >  4     4    56.4
-> >  5     5    44.5
-> >  6     6    56.2
-> >  7     7    42.5
-> >  8     8    45.6
-> >  9     9    40.7
-> > 10    10    46.7
-> > 11    11    50.7
+> >       Q1  avg_age
+> >    <int>    <dbl>
+> >  1     1 55.73184
+> >  2     2 47.35714
+> >  3     3 52.84615
+> >  4     4 56.41463
+> >  5     5 44.47368
+> >  6     6 56.17391
+> >  7     7 42.50000
+> >  8     8 45.63636
+> >  9     9 40.71687
+> > 10    10 46.72072
+> > 11    11 50.72549
 > > ~~~
 > > {: .output}
 > > 
@@ -973,19 +990,19 @@ SN7577 %>%
 > > 
 > > ~~~
 > > # A tibble: 11 x 2
-> >       Q1 avg_age
-> >    <int>   <dbl>
-> >  1     1    55.7
-> >  2     2    NA  
-> >  3     3    52.8
-> >  4     4    56.4
-> >  5     5    44.5
-> >  6     6    56.2
-> >  7     7    42.5
-> >  8     8    45.6
-> >  9     9    NA  
-> > 10    10    NA  
-> > 11    11    NA  
+> >       Q1  avg_age
+> >    <int>    <dbl>
+> >  1     1 55.73184
+> >  2     2       NA
+> >  3     3 52.84615
+> >  4     4 56.41463
+> >  5     5 44.47368
+> >  6     6 56.17391
+> >  7     7 42.50000
+> >  8     8 45.63636
+> >  9     9       NA
+> > 10    10       NA
+> > 11    11       NA
 > > ~~~
 > > {: .output}
 > > 
@@ -1034,7 +1051,7 @@ SN7577 %>%
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
 ~~~
 {: .output}
 
@@ -1053,19 +1070,19 @@ SN7577 %>%
 
 ~~~
 # A tibble: 11 x 2
-      Q1 avg_age
-   <int>   <dbl>
- 1     1    55.7
- 2     2    47.4
- 3     3    52.8
- 4     4    56.4
- 5     5    44.5
- 6     6    56.2
- 7     7    42.5
- 8     8    45.6
- 9     9    40.7
-10    10    46.7
-11    11    50.7
+      Q1  avg_age
+   <int>    <dbl>
+ 1     1 55.73184
+ 2     2 47.35714
+ 3     3 52.84615
+ 4     4 56.41463
+ 5     5 44.47368
+ 6     6 56.17391
+ 7     7 42.50000
+ 8     8 45.63636
+ 9     9 40.71687
+10    10 46.72072
+11    11 50.72549
 ~~~
 {: .output}
 
@@ -1085,22 +1102,22 @@ SN7577 %>%
 ~~~
 # A tibble: 14 x 3
 # Groups:   sex [?]
-     sex   age avg_age
-   <int> <int>   <dbl>
- 1     1     1    20.6
- 2     1     2    29.6
- 3     1     3    39.8
- 4     1     4    49.0
- 5     1     5    56.9
- 6     1     6    62.1
- 7     1     7    73.3
- 8     2     1    21.3
- 9     2     2    29.7
-10     2     3    39.6
-11     2     4    50.4
-12     2     5    57.0
-13     2     6    62.4
-14     2     7    73.1
+     sex   age  avg_age
+   <int> <int>    <dbl>
+ 1     1     1 20.64078
+ 2     1     2 29.60976
+ 3     1     3 39.83158
+ 4     1     4 49.00000
+ 5     1     5 56.90000
+ 6     1     6 62.13559
+ 7     1     7 73.31765
+ 8     2     1 21.30435
+ 9     2     2 29.74545
+10     2     3 39.58716
+11     2     4 50.42478
+12     2     5 56.95349
+13     2     6 62.40426
+14     2     7 73.05224
 ~~~
 {: .output}
 
@@ -1121,18 +1138,18 @@ SN7577 %>%
 ~~~
 # A tibble: 22 x 3
 # Groups:   sex [?]
-     sex    Q1 avg_age
-   <int> <int>   <dbl>
- 1     1     1    55.9
- 2     1     2    48.4
- 3     1     3    50.1
- 4     1     4    56.3
- 5     1     5    36.4
- 6     1     6    58.5
- 7     1     7    45.0
- 8     1     8    44.0
- 9     1     9    39.4
-10     1    10    46.9
+     sex    Q1  avg_age
+   <int> <int>    <dbl>
+ 1     1     1 55.94118
+ 2     1     2 48.39604
+ 3     1     3 50.08000
+ 4     1     4 56.29167
+ 5     1     5 36.44444
+ 6     1     6 58.48571
+ 7     1     7 45.00000
+ 8     1     8 44.00000
+ 9     1     9 39.41026
+10     1    10 46.94558
 # ... with 12 more rows
 ~~~
 {: .output}
@@ -1156,30 +1173,30 @@ SN7577 %>%
 ~~~
 # A tibble: 22 x 3
 # Groups:   sex [?]
-     sex    Q1 avg_age
-   <int> <int>   <dbl>
- 1     1     1    55.9
- 2     1     2    48.4
- 3     1     3    50.1
- 4     1     4    56.3
- 5     1     5    36.4
- 6     1     6    58.5
- 7     1     7    45.0
- 8     1     8    44.0
- 9     1     9    39.4
-10     1    10    46.9
-11     1    11    48.9
-12     2     1    55.5
-13     2     2    46.2
-14     2     3    55.4
-15     2     4    56.6
-16     2     5    51.7
-17     2     6    48.8
-18     2     7    40.0
-19     2     8    47.0
-20     2     9    41.9
-21     2    10    46.5
-22     2    11    52.6
+     sex    Q1  avg_age
+   <int> <int>    <dbl>
+ 1     1     1 55.94118
+ 2     1     2 48.39604
+ 3     1     3 50.08000
+ 4     1     4 56.29167
+ 5     1     5 36.44444
+ 6     1     6 58.48571
+ 7     1     7 45.00000
+ 8     1     8 44.00000
+ 9     1     9 39.41026
+10     1    10 46.94558
+11     1    11 48.92308
+12     2     1 55.45455
+13     2     2 46.16477
+14     2     3 55.40741
+15     2     4 56.58824
+16     2     5 51.70000
+17     2     6 48.81818
+18     2     7 40.00000
+19     2     8 47.00000
+20     2     9 41.87500
+21     2    10 46.54301
+22     2    11 52.60000
 ~~~
 {: .output}
 
@@ -1202,30 +1219,30 @@ SN7577 %>%
 ~~~
 # A tibble: 22 x 4
 # Groups:   sex [?]
-     sex    Q1 avg_age count_age
-   <int> <int>   <dbl>     <int>
- 1     1     1    55.9       102
- 2     1     2    48.4       202
- 3     1     3    50.1        25
- 4     1     4    56.3        24
- 5     1     5    36.4         9
- 6     1     6    58.5        35
- 7     1     7    45.0         2
- 8     1     8    44.0         5
- 9     1     9    39.4        78
-10     1    10    46.9       147
-11     1    11    48.9        26
-12     2     1    55.5        77
-13     2     2    46.2       176
-14     2     3    55.4        27
-15     2     4    56.6        17
-16     2     5    51.7        10
-17     2     6    48.8        11
-18     2     7    40.0         2
-19     2     8    47.0         6
-20     2     9    41.9        88
-21     2    10    46.5       186
-22     2    11    52.6        25
+     sex    Q1  avg_age count_age
+   <int> <int>    <dbl>     <int>
+ 1     1     1 55.94118       102
+ 2     1     2 48.39604       202
+ 3     1     3 50.08000        25
+ 4     1     4 56.29167        24
+ 5     1     5 36.44444         9
+ 6     1     6 58.48571        35
+ 7     1     7 45.00000         2
+ 8     1     8 44.00000         5
+ 9     1     9 39.41026        78
+10     1    10 46.94558       147
+11     1    11 48.92308        26
+12     2     1 55.45455        77
+13     2     2 46.16477       176
+14     2     3 55.40741        27
+15     2     4 56.58824        17
+16     2     5 51.70000        10
+17     2     6 48.81818        11
+18     2     7 40.00000         2
+19     2     8 47.00000         6
+20     2     9 41.87500        88
+21     2    10 46.54301       186
+22     2    11 52.60000        25
 ~~~
 {: .output}
 
@@ -1350,18 +1367,18 @@ If you go done to the bottom of the listing you will see that the 6 NAs are also
 > > 
 > > ~~~
 > > # A tibble: 10 x 3
-> >       Q2 avg_age count_age
-> >    <int>   <dbl>     <int>
-> >  1    -1    48.9       898
-> >  2     1    55.1        42
-> >  3     2    48.8        70
-> >  4     3    52.3        22
-> >  5     4    55.1         7
-> >  6     5    55.4         5
-> >  7     6    56.8        11
-> >  8     9    41.6         8
-> >  9    10    41.9       184
-> > 10    11    54.3        39
+> >       Q2  avg_age count_age
+> >    <int>    <dbl>     <int>
+> >  1    -1 48.88170       898
+> >  2     1 55.11905        42
+> >  3     2 48.82857        70
+> >  4     3 52.27273        22
+> >  5     4 55.14286         7
+> >  6     5 55.40000         5
+> >  7     6 56.81818        11
+> >  8     9 41.62500         8
+> >  9    10 41.93956       184
+> > 10    11 54.27027        39
 > > ~~~
 > > {: .output}
 > >
@@ -1433,11 +1450,11 @@ SAFI_results %>%
 ~~~
 # A tibble: 4 x 2
   C02_respondent_wall_type     n
-  <chr>                    <int>
-1 burntbricks                 67
-2 cement                       1
-3 muddaub                     46
-4 sunbricks                   17
+                     <chr> <int>
+1              burntbricks    67
+2                   cement     1
+3                  muddaub    46
+4                sunbricks    17
 ~~~
 {: .output}
 
@@ -1527,33 +1544,8 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 > > SAFI_roof_spread <- SAFI_results %>%
 > >   mutate(mycount = 1) %>%
 > >   spread(key = C01_respondent_roof_type, value = mycount, fill = 0)
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in spread(., key = C01_respondent_roof_type, value = mycount, fill = 0): could not find function "spread"
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > SAFI_roof_spread
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in eval(expr, envir, enclos): object 'SAFI_roof_spread' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
+> > > >
 > > # Gather + filter out excess rows and unneeded colum
 > > SAFI_gather <- SAFI_roof_spread %>%
 > >   gather(key = C01_respondent_roof_type, value = C01_count, grass:mabatisloping) %>%
@@ -1565,7 +1557,10 @@ Both SAFI_results and SAFI_gather now have 131 observations and 55 variables.
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SAFI_roof_spread' not found
+> > Error: <text>:6:1: unexpected '>'
+> > 5: SAFI_roof_spread
+> > 6: >
+> >    ^
 > > ~~~
 > > {: .error}
 > >
