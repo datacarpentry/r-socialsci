@@ -108,7 +108,7 @@ results <- dbSendQuery(mydb, "SELECT * FROM Question1")
 
 
 ~~~
-Error in result_create(conn@ptr, statement): no such table: Question1
+Error in rsqlite_send_query(conn@ptr, statement): no such table: Question1
 ~~~
 {: .error}
 
@@ -238,7 +238,7 @@ results <- dbSendQuery(mydb, SQL_query)
 
 
 ~~~
-Error in result_create(conn@ptr, statement): no such table: SN7577
+Error in rsqlite_send_query(conn@ptr, statement): no such table: SN7577
 ~~~
 {: .error}
 
@@ -270,9 +270,9 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
     verbose = getOption("verbose"), envir = .GlobalEnv) 
 {
     fileExt <- function(x) {
-        db <- grepl("\\.[^.]+\\.(gz|bz2|xz)$", x)
-        ans <- sub(".*\\.", "", x)
-        ans[db] <- sub(".*\\.([^.]+\\.)(gz|bz2|xz)$", "\\1\\2", 
+        db <- grepl("\\\\.[^.]+\\\\.(gz|bz2|xz)$", x)
+        ans <- sub(".*\\\\.", "", x)
+        ans[db] <- sub(".*\\\\.([^.]+\\\\.)(gz|bz2|xz)$", "\\\\1\\\\2", 
             x[db])
         ans
     }
@@ -325,7 +325,7 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
         colnames(db) <- c("Package", "LibPath", "Item", "Title")
         footer <- if (missing(package)) 
             paste0("Use ", sQuote(paste("data(package =", ".packages(all.available = TRUE))")), 
-                "\n", "to list the data sets in all *available* packages.")
+                "\\n", "to list the data sets in all *available* packages.")
         else NULL
         y <- list(title = "Data sets", header = NULL, results = db, 
             footer = footer)
@@ -341,9 +341,9 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
                 if (name %in% names(rds)) {
                   found <- TRUE
                   if (verbose) 
-                    message(sprintf("name=%s:\t found in Rdata.rds", 
+                    message(sprintf("name=%s:\\t found in Rdata.rds", 
                       name), domain = NA)
-                  thispkg <- sub(".*/([^/]*)/data$", "\\1", p)
+                  thispkg <- sub(".*/([^/]*)/data$", "\\\\1", p)
                   thispkg <- sub("_.*$", "", thispkg)
                   thispkg <- paste0("package:", thispkg)
                   objs <- rds[[name]]
@@ -352,13 +352,13 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
                   break
                 }
                 else if (verbose) 
-                  message(sprintf("name=%s:\t NOT found in names() of Rdata.rds, i.e.,\n\t%s\n", 
+                  message(sprintf("name=%s:\\t NOT found in names() of Rdata.rds, i.e.,\\n\\t%s\\n", 
                     name, paste(names(rds), collapse = ",")), 
                     domain = NA)
             }
             if (file_test("-f", file.path(p, "Rdata.zip"))) {
                 warning("zipped data found for package ", sQuote(basename(dirname(p))), 
-                  ".\nThat is defunct, so please re-install the package.", 
+                  ".\\nThat is defunct, so please re-install the package.", 
                   domain = NA)
                 if (file_test("-f", fp <- file.path(p, "filelist"))) 
                   files <- file.path(p, scan(fp, what = "", quiet = TRUE))
@@ -381,8 +381,8 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
             if (length(files)) {
                 for (file in files) {
                   if (verbose) 
-                    message("name=", name, ":\t file= ...", .Platform$file.sep, 
-                      basename(file), "::\t", appendLF = FALSE, 
+                    message("name=", name, ":\\t file= ...", .Platform$file.sep, 
+                      basename(file), "::\\t", appendLF = FALSE, 
                       domain = NA)
                   ext <- fileExt(file)
                   if (basename(file) != paste0(name, ".", ext)) 
@@ -431,7 +431,7 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
     }
     invisible(names)
 }
-<bytecode: 0x559fba42a3c8>
+<bytecode: 0x7fa4f95e56e8>
 <environment: namespace:utils>
 ~~~
 {: .output}
@@ -475,7 +475,7 @@ results = dbSendQuery(mydb, "SELECT * from Question1")
 
 
 ~~~
-Error in result_create(conn@ptr, statement): no such table: Question1
+Error in rsqlite_send_query(conn@ptr, statement): no such table: Question1
 ~~~
 {: .error}
 
@@ -572,7 +572,7 @@ tbl(mydb_dplyr, sql("SELECT count(*) from SN7577"))
 
 
 ~~~
-Error in result_create(conn@ptr, statement): no such table: SN7577
+Error in rsqlite_send_query(conn@ptr, statement): no such table: SN7577
 ~~~
 {: .error}
 
@@ -589,7 +589,7 @@ SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
 
 
 ~~~
-Error in result_create(conn@ptr, statement): no such table: SN7577
+Error in rsqlite_send_query(conn@ptr, statement): no such table: SN7577
 ~~~
 {: .error}
 
@@ -671,19 +671,7 @@ Error in eval(lhs, parent, parent): object 'SN7577_d' not found
 > > 
 > > ~~~
 > > SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in result_create(conn@ptr, statement): no such table: SN7577
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
+> > > >
 > > SN7577_d %>%
 > >   filter(Q2 == -1)   %>%
 > >   group_by(sex)   %>%
@@ -694,7 +682,10 @@ Error in eval(lhs, parent, parent): object 'SN7577_d' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'SN7577_d' not found
+> > Error: <text>:2:1: unexpected '>'
+> > 1: SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
+> > 2: >
+> >    ^
 > > ~~~
 > > {: .error}
 > >

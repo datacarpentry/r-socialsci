@@ -691,16 +691,16 @@ You can find the structure of a vector by using the 'str' function
 
 
 ~~~
-str(posessions)
+str(possessions)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in str(posessions): object 'posessions' not found
+ chr [1:4] "washing machine" "bicycle" "radio" "television"
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -744,35 +744,22 @@ ages_2
 
 
 ~~~
-# extract 3rd elecment from the posessions vector
-posessions
+# extract 3rd elecment from the possessions vector
+possessions
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'posessions' not found
+[1] "washing machine" "bicycle"         "radio"           "television"     
 ~~~
-{: .error}
-
-
-
-~~~
-poss_3 <- posessions[3]
-~~~
-{: .language-r}
+{: .output}
 
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'posessions' not found
-~~~
-{: .error}
-
-
-
-~~~
+poss_3 <- possessions[3]
 poss_3
 ~~~
 {: .language-r}
@@ -780,38 +767,25 @@ poss_3
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'poss_3' not found
+[1] "radio"
 ~~~
-{: .error}
+{: .output}
 
 
 
 ~~~
 # we can also re-assign specific elecments
-posessions[3] <- "Mobile Phone"
+possessions[3] <- "Mobile Phone"
+possessions
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in posessions[3] <- "Mobile Phone": object 'posessions' not found
+[1] "washing machine" "bicycle"         "Mobile Phone"    "television"     
 ~~~
-{: .error}
-
-
-
-~~~
-posessions
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'posessions' not found
-~~~
-{: .error}
+{: .output}
 
 We can exract more than one element at a time by providing a vector of the indexes we want. The index values don't have to be in order, and we can repeat indexes if we want. We provide the vector by using the 'c' function.
 
@@ -891,15 +865,15 @@ Another common way of subsetting is by using a logical vector. TRUE will select 
 
 
 ~~~
-some_posessions <- possessions[c(TRUE, FALSE, TRUE, FALSE)]
-some_posessions
+some_possessions <- possessions[c(TRUE, FALSE, TRUE, FALSE)]
+some_possessions
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] "washing machine" "radio"          
+[1] "washing machine" "Mobile Phone"   
 ~~~
 {: .output}
 
@@ -993,45 +967,32 @@ A common task is to search for certain strings in a vector. One could use the â€
 
 
 ~~~
-posessions
+possessions
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'posessions' not found
+[1] "washing machine" "bicycle"         "Mobile Phone"    "television"     
 ~~~
-{: .error}
+{: .output}
 
 
 
 ~~~
 electrical <- c('dish washer', 'hair dryer', 'Mobile Phone','television','washing machine')
-electrical_posessions <- posessions[posessions %in% electrical] 
+electrical_possessions <- possessions[possessions %in% electrical] 
+electrical_possessions 
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'posessions' not found
+[1] "washing machine" "Mobile Phone"    "television"     
 ~~~
-{: .error}
-
-
-
-~~~
-electrical_posessions 
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'electrical_posessions' not found
-~~~
-{: .error}
+{: .output}
 
 ## Missing data
 
