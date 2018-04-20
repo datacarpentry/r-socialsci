@@ -344,7 +344,7 @@ possessions
 You can find the structure of a vector by using the 'str' function
 
 ```{r}
-str(posessions)
+str(possessions)
 str(ages)
 ```
 
@@ -363,15 +363,15 @@ We specify an index by useof square brackets ('[]').
 ages_2 <- ages[2]
 ages_2
 
-# extract 3rd elecment from the posessions vector
-posessions
-poss_3 <- posessions[3]
+# extract 3rd elecment from the possessions vector
+possessions
+poss_3 <- possessions[3]
 poss_3
 
 
 # we can also re-assign specific elecments
-posessions[3] <- "Mobile Phone"
-posessions
+possessions[3] <- "Mobile Phone"
+possessions
 ```
 
 We can exract more than one element at a time by providing a vector of the indexes we want. The index values don't have to be in order, and we can repeat indexes if we want. We provide the vector by using the 'c' function.
@@ -391,8 +391,8 @@ class(ages_77765136)
 Another common way of subsetting is by using a logical vector. TRUE will select the element with the same index, while FALSE will not:
 
 ```{r}
-some_posessions <- possessions[c(TRUE, FALSE, TRUE, FALSE)]
-some_posessions
+some_possessions <- possessions[c(TRUE, FALSE, TRUE, FALSE)]
+some_possessions
 ```
 
 Rather than manually typing in the logical vector values of TRUE and FALSE, the logical vector is most commonly generated automatically by using a conditional expression.
@@ -430,10 +430,10 @@ ages_60_to_90
 A common task is to search for certain strings in a vector. One could use the “or” operator | to test for equality to multiple values, but this can quickly become tedious. The %in% operator (it is really a function called match) allows you to test if any of the elements of a search vector are found
 
 ```{r}
-posessions
+possessions
 electrical <- c('dish washer', 'hair dryer', 'Mobile Phone','television','washing machine')
-electrical_posessions <- posessions[posessions %in% electrical] 
-electrical_posessions 
+electrical_possessions <- possessions[possessions %in% electrical] 
+electrical_possessions 
 ```
 
 ## Missing data
