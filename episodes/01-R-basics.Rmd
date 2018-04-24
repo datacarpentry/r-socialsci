@@ -378,7 +378,7 @@ We can exract more than one element at a time by providing a vector of the index
 
 ```{r}
 ages_765 <- ages[c(7, 6, 5)]
-age_765
+ages_765
 class(ages_765)
 
 ages
