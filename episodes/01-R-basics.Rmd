@@ -417,14 +417,20 @@ The expression does not have to be as simple as the one we have used. All of the
 
 >, <, >=, <= , ==, !=  
 
-Notice the test for equality is '==' not judt '='
+Notice the test for equality is '==' not just '='
 
-You can combine multiple tests using & (both conditions are true, AND) or | (at least one of the conditions is true, OR)
+You can combine multiple tests using `&` (both conditions are true, AND) or `|` (at least one of the conditions is true, OR).
 
 ```{r}
 ages
 ages_60_to_90 <- ages[ages >= 60 & ages <= 90]
 ages_60_to_90
+```
+
+You can negate an expression using `!` (logical negation, NOT).
+
+```{r}
+ages[!(ages >= 60)]
 ```
 
 A common task is to search for certain strings in a vector. One could use the “or” operator | to test for equality to multiple values, but this can quickly become tedious. The %in% operator (it is really a function called match) allows you to test if any of the elements of a search vector are found
