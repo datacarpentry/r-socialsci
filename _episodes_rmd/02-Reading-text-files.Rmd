@@ -37,7 +37,7 @@ RStudio provides an interface for reading a variety of commonly available data f
 
 We will demonstrate this functionality by importing the SN7577 dataset in both the tab delimited (SN7577.tab) and the SPSS (SN7577_spss.sav) formats.
 
-Full details of the SN7577 dataset are available [here]
+Full details of the SN7577 dataset are available [here](https://discover.ukdataservice.ac.uk/catalogue/?sn=7577&type=data%20catalogue).
 
 
 
