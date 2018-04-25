@@ -188,7 +188,7 @@ Note that the final data frame is the leftmost part of this expression.
 {: .challenge}
  
 
-### Mutate
+## Mutate
 
 Frequently you'll want to create new columns based on the values in existing
 columns, for example to do unit conversions, or to find the ratio of values in two
@@ -244,7 +244,7 @@ SN7577 %>%
 > {: .solution}
 {: .challenge}
 
-### Split-apply-combine data analysis and the summarize() function
+## Split-apply-combine data analysis and the summarize() function
 
 Many data analysis tasks can be approached using the *split-apply-combine*
 paradigm: split the data into groups, apply some analysis to each group, and
@@ -252,7 +252,7 @@ then combine the results. `dplyr` makes this very easy through the use of the
 `group_by()` function.
 
 
-#### The `summarize()` function
+## The `summarize()` function
 
 `group_by()` is often used together with `summarize()`, which collapses each
 group into a single-row summary of that group.  `group_by()` takes as arguments
