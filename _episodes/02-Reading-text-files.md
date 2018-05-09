@@ -1402,15 +1402,165 @@ RStudio knows about the columns in your data.frame, so you can take advantage of
 >
 > > ## Solution
 > >
+> > 
+> > ~~~
 > > SN7577_200 <- SN7577_tab[200, ]
 > > SN7577_200
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 1 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1    10    10     9     9     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
 > > SN7577_last <- SN7577_tab[nrow(SN7577_tab), ]
 > > SN7577_last
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 1 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1    10     6     6     6     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
 > > SN7577_middle <- SN7577_tab[nrow(SN7577_tab)/2, ]
 > > SN7577_middle
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 1 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1    10     4     1     3     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
 > > SN7577_head <- SN7577_tab[-c(7:nrow(SN7577_tab)), ]
 > > SN7577_head
-> > ```
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 6 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1     1    -1     1     8     0     0      0     1     0     0      0
+> > 2     3    -1     1     4     0     0      0     0     0     0      0
+> > 3    10     3     2     6     0     0      0     0     0     0      0
+> > 4     9    -1    10    10     0     0      0     0     0     0      0
+> > 5    10     2     6     1     0     0      0     1     0     0      0
+> > 6     1    -1     1     1     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
 > >
 > {: .solution}
 {: .challenge}
@@ -1635,7 +1785,7 @@ plot(SAFI_results$C01_respondent_roof_type)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
 
 
 The bar chart plot appears in the plots pane. In this case there are the expected 3 bars one for each differnet roof type. Using simple plots like this gives a quick indication of the spread of the data.
