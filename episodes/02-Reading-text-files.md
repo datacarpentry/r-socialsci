@@ -36,7 +36,7 @@ RStudio provides an interface for reading a variety of commonly available data f
 
 We will demonstrate this functionality by importing the SN7577 dataset in both the tab delimited (SN7577.tab) and the SPSS (SN7577_spss.sav) formats.
 
-Full details of the SN7577 dataset are available [here]
+Full details of the SN7577 dataset are available [here](https://discover.ukdataservice.ac.uk/catalogue/?sn=7577&type=data%20catalogue).
 
 
 
@@ -238,7 +238,7 @@ head(SN7577_tab)       # shows first 6 rows (but truncates the variables)
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
 {: .output}
 
@@ -281,7 +281,7 @@ tail(SN7577_tab)       # shows last 6 rows (but truncates the variables)
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
 {: .output}
 
@@ -1347,7 +1347,7 @@ SN7577_tab[3, ]    # all of the columns in the 3rd row of the data.frame (as a d
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
 {: .output}
 
@@ -1712,13 +1712,6 @@ Within this library there are a set of appropriately named functions to extract 
 library(lubridate)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Warning: package 'lubridate' was built under R version 3.4.2
-~~~
-{: .error}
 
 
 
