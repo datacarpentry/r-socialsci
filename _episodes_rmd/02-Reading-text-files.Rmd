@@ -120,7 +120,7 @@ tail(SN7577_tab)           # Shows last 6 rows (but truncates the variables)
 
 head(names(SN7577_tab))    # names() lists all of the column names (output truncated by head)
                            # Despite the extra text in the 'View' the column names for the spss variable
-head(names(SN7577_spss)    # are the same as the csv version
+head(names(SN7577_spss))    # are the same as the csv version
 head(rownames(SN7577_tab)) # List the row names, esentialy index numbers which we don't really need
 
                              # Show the overall structure of the variable, similar but more complex to what
