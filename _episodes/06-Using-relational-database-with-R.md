@@ -65,7 +65,7 @@ Next, create a variable that contains the location of the SQLite database we are
 
 
 ~~~
-dbfile <- "SN7577.sqlite"
+dbfile <- "data/SN7577.sqlite"
 ~~~
 {: .language-r}
 
@@ -92,7 +92,12 @@ dbListTables(mydb)
 
 
 ~~~
-character(0)
+ [1] "Animals"         "Animals_Eat"     "Animalsy"       
+ [4] "Newspapers"      "Q6"              "Q7"             
+ [7] "Question1"       "SN7577"          "SN7577 - Copy"  
+[10] "SN7577_Text"     "SN7577_Text_2"   "SN7577_nulls"   
+[13] "SN7577_reduced"  "SN7577_v"        "ae"             
+[16] "aex"             "vSN7577_reduced"
 ~~~
 {: .output}
 
@@ -102,30 +107,11 @@ Our objective here is to bring data from the database into R by sending a query 
 ~~~
 # Assign the results of a SQL query to an SQLiteResult object
 results <- dbSendQuery(mydb, "SELECT * FROM Question1")
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in rsqlite_send_query(conn@ptr, statement): no such table: Question1
-~~~
-{: .error}
-
-
-
-~~~
 # Return results from a custom object to a dataframe
 data <- fetch(results)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in fetch(results): object 'results' not found
-~~~
-{: .error}
 
 `data` is a standard R dataframe that can be explored and manipulated.
 
@@ -139,7 +125,7 @@ names(data)
 
 
 ~~~
-NULL
+[1] "key"   "value"
 ~~~
 {: .output}
 
@@ -154,8 +140,9 @@ str(data)
 
 
 ~~~
-function (..., list = character(), package = NULL, lib.loc = NULL, 
-    verbose = getOption("verbose"), envir = .GlobalEnv)  
+'data.frame':	11 obs. of  2 variables:
+ $ key  : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ value: chr  "Conservative" "Labour" "Liberal Democrats (Lib Dem)" "Scottish/Welsh Nationalist" ...
 ~~~
 {: .output}
 
@@ -170,9 +157,14 @@ data[,2]
 
 
 ~~~
-Error in data[, 2]: object of type 'closure' is not subsettable
+ [1] "Conservative"                 "Labour"                      
+ [3] "Liberal Democrats (Lib Dem)"  "Scottish/Welsh Nationalist"  
+ [5] "Green Party"                  "UK Independence Party"       
+ [7] "British National Party (BNP)" "Other"                       
+ [9] "Would not vote"               "Undecided"                   
+[11] "Refused"                     
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -185,9 +177,9 @@ data[4,2]
 
 
 ~~~
-Error in data[4, 2]: object of type 'closure' is not subsettable
+[1] "Scottish/Welsh Nationalist"
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -200,9 +192,9 @@ data[data$key > 7,2]
 
 
 ~~~
-Error in data$key: object of type 'closure' is not subsettable
+[1] "Other"          "Would not vote" "Undecided"      "Refused"       
 ~~~
-{: .error}
+{: .output}
 
 Once you have retrieved the data you should close the connection.
 
@@ -211,13 +203,6 @@ Once you have retrieved the data you should close the connection.
 dbClearResult(results)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in dbClearResult(results): object 'results' not found
-~~~
-{: .error}
 
 In addition to sending simple queries we can send complex one like a join.
 You may want to set this up in a concateneted string first for readability.
@@ -232,33 +217,9 @@ SQL_query <- paste("SELECT q.value,",
                    "GROUP BY  s.Q1")
 
 results <- dbSendQuery(mydb, SQL_query)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in rsqlite_send_query(conn@ptr, statement): no such table: SN7577
-~~~
-{: .error}
-
-
-
-~~~
 data <- fetch(results)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in fetch(results): object 'results' not found
-~~~
-{: .error}
-
-
-
-~~~
 data
 ~~~
 {: .language-r}
@@ -266,173 +227,18 @@ data
 
 
 ~~~
-function (..., list = character(), package = NULL, lib.loc = NULL, 
-    verbose = getOption("verbose"), envir = .GlobalEnv) 
-{
-    fileExt <- function(x) {
-        db <- grepl("\\\\.[^.]+\\\\.(gz|bz2|xz)$", x)
-        ans <- sub(".*\\\\.", "", x)
-        ans[db] <- sub(".*\\\\.([^.]+\\\\.)(gz|bz2|xz)$", "\\\\1\\\\2", 
-            x[db])
-        ans
-    }
-    names <- c(as.character(substitute(list(...))[-1L]), list)
-    if (!is.null(package)) {
-        if (!is.character(package)) 
-            stop("'package' must be a character string or NULL")
-        if (any(package %in% "base")) 
-            warning("datasets have been moved from package 'base' to package 'datasets'")
-        if (any(package %in% "stats")) 
-            warning("datasets have been moved from package 'stats' to package 'datasets'")
-        package[package %in% c("base", "stats")] <- "datasets"
-    }
-    paths <- find.package(package, lib.loc, verbose = verbose)
-    if (is.null(lib.loc)) 
-        paths <- c(path.package(package, TRUE), if (!length(package)) getwd(), 
-            paths)
-    paths <- unique(normalizePath(paths[file.exists(paths)]))
-    paths <- paths[dir.exists(file.path(paths, "data"))]
-    dataExts <- tools:::.make_file_exts("data")
-    if (length(names) == 0L) {
-        db <- matrix(character(), nrow = 0L, ncol = 4L)
-        for (path in paths) {
-            entries <- NULL
-            packageName <- if (file_test("-f", file.path(path, 
-                "DESCRIPTION"))) 
-                basename(path)
-            else "."
-            if (file_test("-f", INDEX <- file.path(path, "Meta", 
-                "data.rds"))) {
-                entries <- readRDS(INDEX)
-            }
-            else {
-                dataDir <- file.path(path, "data")
-                entries <- tools::list_files_with_type(dataDir, 
-                  "data")
-                if (length(entries)) {
-                  entries <- unique(tools::file_path_sans_ext(basename(entries)))
-                  entries <- cbind(entries, "")
-                }
-            }
-            if (NROW(entries)) {
-                if (is.matrix(entries) && ncol(entries) == 2L) 
-                  db <- rbind(db, cbind(packageName, dirname(path), 
-                    entries))
-                else warning(gettextf("data index for package %s is invalid and will be ignored", 
-                  sQuote(packageName)), domain = NA, call. = FALSE)
-            }
-        }
-        colnames(db) <- c("Package", "LibPath", "Item", "Title")
-        footer <- if (missing(package)) 
-            paste0("Use ", sQuote(paste("data(package =", ".packages(all.available = TRUE))")), 
-                "\\n", "to list the data sets in all *available* packages.")
-        else NULL
-        y <- list(title = "Data sets", header = NULL, results = db, 
-            footer = footer)
-        class(y) <- "packageIQR"
-        return(y)
-    }
-    paths <- file.path(paths, "data")
-    for (name in names) {
-        found <- FALSE
-        for (p in paths) {
-            if (file_test("-f", file.path(p, "Rdata.rds"))) {
-                rds <- readRDS(file.path(p, "Rdata.rds"))
-                if (name %in% names(rds)) {
-                  found <- TRUE
-                  if (verbose) 
-                    message(sprintf("name=%s:\\t found in Rdata.rds", 
-                      name), domain = NA)
-                  thispkg <- sub(".*/([^/]*)/data$", "\\\\1", p)
-                  thispkg <- sub("_.*$", "", thispkg)
-                  thispkg <- paste0("package:", thispkg)
-                  objs <- rds[[name]]
-                  lazyLoad(file.path(p, "Rdata"), envir = envir, 
-                    filter = function(x) x %in% objs)
-                  break
-                }
-                else if (verbose) 
-                  message(sprintf("name=%s:\\t NOT found in names() of Rdata.rds, i.e.,\\n\\t%s\\n", 
-                    name, paste(names(rds), collapse = ",")), 
-                    domain = NA)
-            }
-            if (file_test("-f", file.path(p, "Rdata.zip"))) {
-                warning("zipped data found for package ", sQuote(basename(dirname(p))), 
-                  ".\\nThat is defunct, so please re-install the package.", 
-                  domain = NA)
-                if (file_test("-f", fp <- file.path(p, "filelist"))) 
-                  files <- file.path(p, scan(fp, what = "", quiet = TRUE))
-                else {
-                  warning(gettextf("file 'filelist' is missing for directory %s", 
-                    sQuote(p)), domain = NA)
-                  next
-                }
-            }
-            else {
-                files <- list.files(p, full.names = TRUE)
-            }
-            files <- files[grep(name, files, fixed = TRUE)]
-            if (length(files) > 1L) {
-                o <- match(fileExt(files), dataExts, nomatch = 100L)
-                paths0 <- dirname(files)
-                paths0 <- factor(paths0, levels = unique(paths0))
-                files <- files[order(paths0, o)]
-            }
-            if (length(files)) {
-                for (file in files) {
-                  if (verbose) 
-                    message("name=", name, ":\\t file= ...", .Platform$file.sep, 
-                      basename(file), "::\\t", appendLF = FALSE, 
-                      domain = NA)
-                  ext <- fileExt(file)
-                  if (basename(file) != paste0(name, ".", ext)) 
-                    found <- FALSE
-                  else {
-                    found <- TRUE
-                    zfile <- file
-                    zipname <- file.path(dirname(file), "Rdata.zip")
-                    if (file.exists(zipname)) {
-                      Rdatadir <- tempfile("Rdata")
-                      dir.create(Rdatadir, showWarnings = FALSE)
-                      topic <- basename(file)
-                      rc <- .External(C_unzip, zipname, topic, 
-                        Rdatadir, FALSE, TRUE, FALSE, FALSE)
-                      if (rc == 0L) 
-                        zfile <- file.path(Rdatadir, topic)
-                    }
-                    if (zfile != file) 
-                      on.exit(unlink(zfile))
-                    switch(ext, R = , r = {
-                      library("utils")
-                      sys.source(zfile, chdir = TRUE, envir = envir)
-                    }, RData = , rdata = , rda = load(zfile, 
-                      envir = envir), TXT = , txt = , tab = , 
-                      tab.gz = , tab.bz2 = , tab.xz = , txt.gz = , 
-                      txt.bz2 = , txt.xz = assign(name, read.table(zfile, 
-                        header = TRUE, as.is = FALSE), envir = envir), 
-                      CSV = , csv = , csv.gz = , csv.bz2 = , 
-                      csv.xz = assign(name, read.table(zfile, 
-                        header = TRUE, sep = ";", as.is = FALSE), 
-                        envir = envir), found <- FALSE)
-                  }
-                  if (found) 
-                    break
-                }
-                if (verbose) 
-                  message(if (!found) 
-                    "*NOT* ", "found", domain = NA)
-            }
-            if (found) 
-                break
-        }
-        if (!found) 
-            warning(gettextf("data set %s not found", sQuote(name)), 
-                domain = NA)
-    }
-    invisible(names)
-}
-<bytecode: 0x7fa4f95e56e8>
-<environment: namespace:utils>
+                          value how_many
+1                  Conservative      179
+2                        Labour      379
+3   Liberal Democrats (Lib Dem)       52
+4    Scottish/Welsh Nationalist       41
+5                   Green Party       19
+6         UK Independence Party       46
+7  British National Party (BNP)        4
+8                         Other       11
+9                Would not vote      167
+10                    Undecided      335
+11                      Refused       53
 ~~~
 {: .output}
 
@@ -442,13 +248,6 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
 dbClearResult(results)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in dbClearResult(results): object 'results' not found
-~~~
-{: .error}
 
 > ## Exercise
 >
@@ -469,30 +268,11 @@ We can also create a new database and add tables to it. Let's base this new data
 ~~~
 # First, use a SQL query to extract the Question1 table from the existing database
 results = dbSendQuery(mydb, "SELECT * from Question1")
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in rsqlite_send_query(conn@ptr, statement): no such table: Question1
-~~~
-{: .error}
-
-
-
-~~~
 # Then, store it as a dataframe
 Q1 <- fetch(results)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in fetch(results): object 'results' not found
-~~~
-{: .error}
 
 Now, we can create the new database and add data to it, either from an external file or a local dataframe.
 
@@ -532,7 +312,14 @@ dbWriteTable(conn = mydb_new , name = "Q1", value = Q1,
 
 
 ~~~
-Error in dbWriteTable(conn = mydb_new, name = "Q1", value = Q1, row.names = FALSE): object 'Q1' not found
+Error in result_create(conn@ptr, statement): database is locked
+~~~
+{: .error}
+
+
+
+~~~
+Error in result_create(conn@ptr, statement): database is locked
 ~~~
 {: .error}
 
@@ -561,6 +348,13 @@ mydb_dplyr <- src_sqlite(path="SN7577.sqlite")
 ~~~
 {: .language-r}
 
+
+
+~~~
+Error: Condition message must be a string
+~~~
+{: .error}
+
 as is the mthod for running queries. However using the 'tbl' functionwe still need to provide avalid SQL string. (?)
 
 
@@ -572,7 +366,7 @@ tbl(mydb_dplyr, sql("SELECT count(*) from SN7577"))
 
 
 ~~~
-Error in rsqlite_send_query(conn@ptr, statement): no such table: SN7577
+Error in tbl(mydb_dplyr, sql("SELECT count(*) from SN7577")): object 'mydb_dplyr' not found
 ~~~
 {: .error}
 
@@ -589,7 +383,7 @@ SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
 
 
 ~~~
-Error in rsqlite_send_query(conn@ptr, statement): no such table: SN7577
+Error in tbl(mydb_dplyr, sql("SELECT * FROM SN7577")): object 'mydb_dplyr' not found
 ~~~
 {: .error}
 
@@ -671,7 +465,19 @@ Error in eval(lhs, parent, parent): object 'SN7577_d' not found
 > > 
 > > ~~~
 > > SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
-> > > >
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > Error in tbl(mydb_dplyr, sql("SELECT * FROM SN7577")): object 'mydb_dplyr' not found
+> > ~~~
+> > {: .error}
+> > 
+> > 
+> > 
+> > ~~~
 > > SN7577_d %>%
 > >   filter(Q2 == -1)   %>%
 > >   group_by(sex)   %>%
@@ -682,10 +488,7 @@ Error in eval(lhs, parent, parent): object 'SN7577_d' not found
 > > 
 > > 
 > > ~~~
-> > Error: <text>:2:1: unexpected '>'
-> > 1: SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
-> > 2: >
-> >    ^
+> > Error in eval(lhs, parent, parent): object 'SN7577_d' not found
 > > ~~~
 > > {: .error}
 > >

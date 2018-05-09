@@ -53,6 +53,29 @@ lots of time when making figures.
 
 ~~~
 library(ggplot2)
+~~~
+{: .language-r}
+
+
+
+~~~
+
+Attaching package: 'ggplot2'
+~~~
+{: .output}
+
+
+
+~~~
+The following object is masked from 'package:dplyr':
+
+    vars
+~~~
+{: .output}
+
+
+
+~~~
 library(readr)
 library(dplyr)
 SAFI_results <- read_csv("data/SAFI_results.csv")
@@ -443,11 +466,16 @@ ggplot(data=SAFI_results, aes(x=factor(C02_respondent_wall_type))) +
 > >   xlab("Roof Type") +
 > >   ylab("Frequency") +
 > >   ggtitle("Frequency of SAFI Building Roof Types")
-> > > >
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-04-unnamed-chunk-22-1.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
+> > 
+> > ~~~
 > > plots_avs <- SAFI_results %>%
 > >   group_by(A09_village) %>%
 > >   summarise(av=mean(D_plots_count))
-> > > >
+> > 
 > > ggplot(data = plots_avs, aes(x = A09_village, y=av)) +
 > >   geom_bar(stat="identity") +
 > >   xlab("Village") +
@@ -456,15 +484,7 @@ ggplot(data=SAFI_results, aes(x=factor(C02_respondent_wall_type))) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error: <text>:6:1: unexpected '>'
-> > 5:   ggtitle("Frequency of SAFI Building Roof Types")
-> > 6: >
-> >    ^
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-04-unnamed-chunk-22-2.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}
@@ -513,12 +533,17 @@ ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
 > >   xlab("Roof Type") +
 > >   ggtitle("Frequency of SAFI Building Roof Types by Village") +
 > >   facet_wrap(~ A09_village)
-> > > >
+> > ~~~
+> > {: .language-r}
+> > 
+> > <img src="../fig/rmd-04-unnamed-chunk-24-1.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
+> > 
+> > ~~~
 > > # Challenge Solution:
 > > size_avs <- SAFI_results %>%
 > >   group_by(A09_village, C01_respondent_roof_type) %>%
 > >   summarise(av = mean(B_no_membrs))
-> > > >
+> > 
 > > ggplot(size_avs, aes(x = C01_respondent_roof_type, y = av)) +
 > >   geom_bar(stat = "identity") +
 > >   xlab("Roof Type") +
@@ -528,15 +553,7 @@ ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error: <text>:7:1: unexpected '>'
-> > 6:   facet_wrap(~ A09_village)
-> > 7: >
-> >    ^
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-04-unnamed-chunk-24-2.png" title="plot of chunk unnamed-chunk-24" alt="plot of chunk unnamed-chunk-24" style="display: block; margin: auto;" />
 > >
 > {: .solution}
 {: .challenge}
