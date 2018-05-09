@@ -278,10 +278,10 @@ Now, we can create the new database and add data to it, either from an external 
 
 
 ~~~
-dbfile_new = "a_newdb.sqlite"
+dbfile_new = "data/a_newdb.sqlite"
 mydb_new = dbConnect(dbDriver("SQLite"), dbfile_new)
 
-dbWriteTable(conn = mydb_new , name = "SN7577", value = "SN7577.csv",
+dbWriteTable(conn = mydb_new , name = "SN7577", value = "data/SN7577.csv",
              row.names = FALSE, header = TRUE)
 ~~~
 {: .language-r}
@@ -289,15 +289,7 @@ dbWriteTable(conn = mydb_new , name = "SN7577", value = "SN7577.csv",
 
 
 ~~~
-Warning in file(file, "rt"): cannot open file 'SN7577.csv': No such file or
-directory
-~~~
-{: .error}
-
-
-
-~~~
-Error in file(file, "rt"): cannot open the connection
+Error in result_create(conn@ptr, statement): database is locked
 ~~~
 {: .error}
 
@@ -344,7 +336,7 @@ a different connection method is used.
 
 
 ~~~
-mydb_dplyr <- src_sqlite(path="SN7577.sqlite")
+mydb_dplyr <- src_sqlite(path="data/SN7577.sqlite")
 ~~~
 {: .language-r}
 
