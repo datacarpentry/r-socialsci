@@ -161,10 +161,10 @@ Q1 <- fetch(results)
 Now, we can create the new database and add data to it, either from an external file or a local dataframe.
 
 ```{r}
-dbfile_new = "a_newdb.sqlite"
+dbfile_new = "data/a_newdb.sqlite"
 mydb_new = dbConnect(dbDriver("SQLite"), dbfile_new)
 
-dbWriteTable(conn = mydb_new , name = "SN7577", value = "SN7577.csv",
+dbWriteTable(conn = mydb_new , name = "SN7577", value = "data/SN7577.csv",
              row.names = FALSE, header = TRUE)
 
 dbWriteTable(conn = mydb_new , name = "Q1", value = Q1,
@@ -179,7 +179,7 @@ When we want to use `dplyr` functions to operate directly on the database tables
 a different connection method is used.
 
 ```{r}
-mydb_dplyr <- src_sqlite(path="SN7577.sqlite")
+mydb_dplyr <- src_sqlite(path="data/SN7577.sqlite")
 ```
 
 as is the mthod for running queries. However using the 'tbl' functionwe still need to provide avalid SQL string. (?)
