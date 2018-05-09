@@ -192,6 +192,7 @@ RStudio knows about the columns in your data.frame, so you can take advantage of
 >
 > > ## Solution
 > >
+> > ```{r}
 > > SN7577_200 <- SN7577_tab[200, ]
 > > SN7577_200
 > > SN7577_last <- SN7577_tab[nrow(SN7577_tab), ]
