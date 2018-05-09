@@ -111,21 +111,21 @@ A data.frame is the representation of data in the format of a table, very much a
 Apart from viewing the data by typing the variable name into the console there are several other functions which can be used to find out information about a data.frame.
 
 ```{r}
-dim(SN7577_tab)        # number of rows and columns
-nrow(SN7577_tab)       # number of rows
-ncol(SN7577_tab)       # number of columns
+dim(SN7577_tab)            # Number of rows and columns
+nrow(SN7577_tab)           # Number of rows
+ncol(SN7577_tab)           # Number of columns
 
-head(SN7577_tab)       # shows first 6 rows (but truncates the variables)
-tail(SN7577_tab)       # shows last 6 rows (but truncates the variables)
+head(SN7577_tab)           # Shows first 6 rows (but truncates the variables)
+tail(SN7577_tab)           # Shows last 6 rows (but truncates the variables)
 
-names(SN7577_tab)      # lists all of the column names
-names(SN7577_spss)     # Despite the extra text in the 'View' the column names for the spss variable
-                       # are the same as the csv version
-rownames(SN7577_tab)   # list the column names, esentialy index numbers which we don't really need
+head(names(SN7577_tab))    # names() lists all of the column names (output truncated by head)
+                           # Despite the extra text in the 'View' the column names for the spss variable
+head(names(SN7577_spss)    # are the same as the csv version
+head(rownames(SN7577_tab)) # List the row names, esentialy index numbers which we don't really need
 
-str(SN7577_tab)        # Show the overall structure of the variable, similar but more complex to what
-                       # what we have seen for other variables.
-summary(SN7577_tab)    # displays summary statistics for the different columns.
+                             # Show the overall structure of the variable, similar but more complex to what
+str(SN7577_tab, list.len=6)  # what we have seen for other variables (output truncated by argument list.len).
+summary(SN7577_tab)[1:6]     # Displays summary statistics (for the first six columns).
 ```
 
 ## Slicing and Dicing a Data.frame
