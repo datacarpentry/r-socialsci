@@ -161,19 +161,216 @@ Apart from viewing the data by typing the variable name into the console there a
 
 ~~~
 dim(SN7577_tab)            # Number of rows and columns
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 1286  202
+~~~
+{: .output}
+
+
+
+~~~
 nrow(SN7577_tab)           # Number of rows
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 1286
+~~~
+{: .output}
+
+
+
+~~~
 ncol(SN7577_tab)           # Number of columns
+~~~
+{: .language-r}
 
+
+
+~~~
+[1] 202
+~~~
+{: .output}
+
+
+
+~~~
 head(SN7577_tab)           # Shows first 6 rows (but truncates the variables)
+~~~
+{: .language-r}
+
+
+
+~~~
+# A tibble: 6 x 202
+     Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+  <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+1     1    -1     1     8     0     0      0     1     0     0      0
+2     3    -1     1     4     0     0      0     0     0     0      0
+3    10     3     2     6     0     0      0     0     0     0      0
+4     9    -1    10    10     0     0      0     0     0     0      0
+5    10     2     6     1     0     0      0     1     0     0      0
+6     1    -1     1     1     0     0      0     0     0     0      0
+# ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+#   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+#   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+#   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+#   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+#   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+#   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+#   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+#   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+#   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+#   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+#   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+#   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+#   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+#   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+#   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+#   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+#   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+#   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+#   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+~~~
+{: .output}
+
+
+
+~~~
 tail(SN7577_tab)           # Shows last 6 rows (but truncates the variables)
+~~~
+{: .language-r}
 
+
+
+~~~
+# A tibble: 6 x 202
+     Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+  <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+1    10     2     3     4     0     0      0     0     1     0      0
+2     2    -1     3     6     0     0      0     0     0     0      0
+3    10    10     2    10     0     0      0     0     0     0      0
+4     9    -1     8     9     0     0      0     0     0     0      0
+5    11    11     1     2     0     0      0     1     1     0      0
+6    10     6     6     6     0     0      0     0     0     0      0
+# ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+#   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+#   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+#   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+#   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+#   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+#   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+#   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+#   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+#   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+#   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+#   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+#   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+#   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+#   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+#   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+#   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+#   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+#   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+#   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+~~~
+{: .output}
+
+
+
+~~~
 head(names(SN7577_tab))    # names() lists all of the column names (output truncated by head)
-                           # Despite the extra text in the 'View' the column names for the spss variable
-head(names(SN7577_spss)    # are the same as the csv version
-head(rownames(SN7577_tab)) # List the row names, esentialy index numbers which we don't really need
+~~~
+{: .language-r}
 
+
+
+~~~
+[1] "Q1"    "Q2"    "Q3"    "Q4"    "Q5ai"  "Q5aii"
+~~~
+{: .output}
+
+
+
+~~~
+                           # Despite the extra text in the 'View' the column names for the spss variable
+head(names(SN7577_spss))    # are the same as the csv version
+~~~
+{: .language-r}
+
+
+
+~~~
+Error in head(names(SN7577_spss)): object 'SN7577_spss' not found
+~~~
+{: .error}
+
+
+
+~~~
+head(rownames(SN7577_tab)) # List the row names, esentialy index numbers which we don't really need
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "1" "2" "3" "4" "5" "6"
+~~~
+{: .output}
+
+
+
+~~~
                              # Show the overall structure of the variable, similar but more complex to what
 str(SN7577_tab, list.len=6)  # what we have seen for other variables (output truncated by argument list.len).
+~~~
+{: .language-r}
+
+
+
+~~~
+Classes 'tbl_df', 'tbl' and 'data.frame':	1286 obs. of  202 variables:
+ $ Q1         : int  1 3 10 9 10 1 1 1 9 2 ...
+ $ Q2         : int  -1 -1 3 -1 2 -1 -1 -1 -1 -1 ...
+ $ Q3         : int  1 1 2 10 6 1 1 1 10 1 ...
+ $ Q4         : int  8 4 6 10 1 1 8 1 10 1 ...
+ $ Q5ai       : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Q5aii      : int  0 0 0 0 0 0 0 0 0 0 ...
+  [list output truncated]
+ - attr(*, "spec")=List of 2
+  ..$ cols   :List of 202
+  .. ..$ Q1         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q2         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q3         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q4         : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5ai       : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. ..$ Q5aii      : list()
+  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
+  .. .. [list output truncated]
+  ..$ default: list()
+  .. ..- attr(*, "class")= chr  "collector_guess" "collector"
+  ..- attr(*, "class")= chr "col_spec"
+~~~
+{: .output}
+
+
+
+~~~
 summary(SN7577_tab)[1:6]     # Displays summary statistics (for the first six columns).
 ~~~
 {: .language-r}
@@ -181,12 +378,10 @@ summary(SN7577_tab)[1:6]     # Displays summary statistics (for the first six co
 
 
 ~~~
-Error: <text>:11:1: unexpected symbol
-10: head(names(SN7577_spss)    # are the same as the csv version
-11: head
-    ^
+[1] "Min.   : 1.000  " "1st Qu.: 2.000  " "Median : 4.000  "
+[4] "Mean   : 5.583  " "3rd Qu.:10.000  " "Max.   :11.000  "
 ~~~
-{: .error}
+{: .output}
 
 ## Slicing and Dicing a Data.frame
 
