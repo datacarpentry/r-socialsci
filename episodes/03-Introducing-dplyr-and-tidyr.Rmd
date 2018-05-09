@@ -62,13 +62,17 @@ We will start by loading our SN7577 dataset
 ```{r}
 SN7577 <- read_csv("data/SN7577.csv")
 
-## inspect the data
-str(SN7577)
+## inspect the data, truncating output with the list.len argument
+str(SN7577, list.len=6)
 ```
 
-Previously we noted that the SN7577 variable appeared to be in 3 different classes. WE were happy to think of it as a data frame as that was what we were talking about.  Now it is convenient to think of it as having a class of  `tbl_df`.
+Previously we noted that the SN7577 variable appeared to be in 3 different classes. 
+We were happy to think of it as a data frame as that was what we were talking about.  
+Now it is convenient to think of it as having a class of  `tbl_df`.
 This is referred to as a "tibble".
-Tibbles are almost identical to R's standard data frames, but they tweak some of the old behaviors of data frames. For our purposes the only differences between data frames and tibbles are that:
+Tibbles are almost identical to R's standard data frames, but they tweak some of the 
+old behaviors of data frames. For our purposes the only differences between data frames 
+and tibbles are that:
 
 1. When you print a tibble, R displays the data type of each column under its name; it prints only the first few rows of data and only as many columns as fit
 on one screen.
@@ -370,7 +374,7 @@ If we wanted to know how many of each age the respondents were we could use:
 SN7577 %>%
   group_by(numage) %>%
   tally() %>%
-  print(n = 100)
+  print(n = 22)
 ```
 
 If you go down to the bottom of the listing you will see that the 6 NAs are also accounted for.
