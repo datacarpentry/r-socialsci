@@ -140,11 +140,8 @@ In the toolbar there is a search text box where you can type what you are lookin
 
 In order to follow along with the examples in this episode you
 should start RStudio and create a new RScript file either from the
-File menu item or the toolbar icon immediately below it.
-
-If you intend to save the script you may wish to name it. If you
-click the save icon on the toolbar a standard save as dialog will
-appear.
+File menu item or the toolbar icon immediately below it. Click the
+save icon on your toolbar and save your script as "datacarpentry-workshop.R".
 
 Although we will routinely refer to using the console in this
 episode, and you can in fact type all of the code directly into the
@@ -162,6 +159,13 @@ When you select code for execution be careful that you either
 select the whole line or lines or if you are just running a single
 line, simply place the cursor in the line. If you select only a
 portion of a line, that is all that will be run.
+
+In this lesson we we be using the SAFI dataset that we have
+been using in the other parts of this workshop. To download the
+data and see more information about the data, visit the [workshop homepage](https://www.datacarpentry.org/socialsci-workshop/data/).
+
+Download the data file and place it in the directory where you
+will be doing your R work.
 
 ## Installing additional packages using the packages tab
 In addition to the core R installation there are in excess of
@@ -217,7 +221,7 @@ install.packages("tidyverse")
 
 was written to the console. 
 
-This is standard R code. the function `install.packages()` is
+This is standard R code. The function `install.packages()` is
 called and passed a single parameter, which is the name of the
 package you want to install. Rather than using the Rstudio GUI
 functionality, you can write the code yourself in the console or
