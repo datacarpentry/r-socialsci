@@ -1,7 +1,7 @@
 ---
 title: "R basics"
-teaching: 0
-exercises: 0
+teaching: 30
+exercises: 20
 questions:
 - "What data types are available in R?"
 - "What is an object?"
@@ -9,20 +9,19 @@ questions:
 - "What arithmetic and logical operators can be used?"
 - "How can subsets be extracted from vectors and data frames?"
 - "How does R treat missing values?"
-- "How can we deal with missing values in R"
-
+- "How can we deal with missing values in R?"
 objectives:
-- "Define what an Object is"
-- "Understand that everything in R is an Object"
-- "Assign values to objects of different types"
-- "Perform arithmetical and logical operations on variables of different types"
-- "Extract subsets from vectors and data frames"
-- "Recognise missing values in a data object"
-- "Understand how R treats missing values"
-- "Detect and replace missing values"
-
+- "Assign values to objects of different types."
+- "Perform arithmetical and logical operations on variables of different types."
+- "Extract subsets from vectors and data frames."
+- "Recognise missing values in a data object."
+- "Understand how R treats missing values."
+- "Detect and replace missing values."
 keypoints:
-- "First key point."
+- "Access individual values by location using `[]`."
+- "Access slices of data using `[low:high]`."
+- "Access arbitrary sets of data using `[c(...)]`."
+- "Use logical operations and logical vectors to access subsets of data."
 ---
 
 
@@ -31,16 +30,12 @@ source("../bin/chunk-options.R")
 knitr_fig_path("01-")
 ```
 
-
 ## Preliminaries
 
-In this lesson we we be using 3 data files;
+In this lesson we we be using the SAFI dataset that we have
+been using in the other parts of this workshop. 
 
 SAFI_results.csv contains survey data relating to farming in Mozambique and Tanzania. It can be downloaded from [here](../data/SAFI_results.csv)
-
-SN7577.csv which is the UKDS datset relating to political engagement. It can be downloaded from [here](../data/SN7577.csv)
-
-SN7577.tab as above but in tab delimited format. It can be downloaded from [here](../data/SN7577.tab)
 
 You may also want to download the data dictionary associated with the SN7577 dataset from [here](../data/audit_of_political_engagement_11_ukda_data_dictionary.rtf)
 
