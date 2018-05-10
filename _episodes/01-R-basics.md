@@ -792,16 +792,16 @@ We can exract more than one element at a time by providing a vector of the index
 
 ~~~
 ages_765 <- ages[c(7, 6, 5)]
-age_765
+ages_765
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'age_765' not found
+[1] 25 63 55
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -931,9 +931,9 @@ The expression does not have to be as simple as the one we have used. All of the
 
 >, <, >=, <= , ==, !=  
 
-Notice the test for equality is '==' not judt '='
+Notice the test for equality is '==' not just '='
 
-You can combine multiple tests using & (both conditions are true, AND) or | (at least one of the conditions is true, OR)
+You can combine multiple tests using `&` (both conditions are true, AND) or `|` (at least one of the conditions is true, OR).
 
 
 ~~~
@@ -960,6 +960,21 @@ ages_60_to_90
 
 ~~~
 [1] 60 65 82 63 72 78 89
+~~~
+{: .output}
+
+You can negate an expression using `!` (logical negation, NOT).
+
+
+~~~
+ages[!(ages >= 60)]
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 50 55 25 56 57 21
 ~~~
 {: .output}
 

@@ -172,7 +172,7 @@ Note that the final data frame is the leftmost part of this expression.
 > ## Exercise
 > 
 >  Using pipes, subset the `SN7577` data to include rows where the numage is  less than 65
->  and retain only the columns `sex`, `age` and `numage.
+>  and retain only the columns `sex`, `age` and `numage`.
 > 
 > > ## Solution
 > > 
@@ -228,9 +228,9 @@ SN7577 %>%
 > 
 >  Create a new data frame from the `SN7577` data that meets the following
 >  criteria: contains only the `numage` column and a new column called
->  `voting years` containing values that are the `numage ` values minus 18.
->  Ensure that the `voting years` column has no -ve values. 
->  Return only the voting_years and numage columns.
+>  `voting years` containing values that are the `numage` values minus 18.
+>  Ensure that the `voting years` column has no negative values. 
+>  Return only the `voting_years` and `numage` columns.
 > 
 > > ## Solution
 > > 
@@ -268,10 +268,12 @@ SN7577 %>%
 
 > ## Exercise
 >
-> The 'na.rm = TRUE' in the summarize clause in the mean function isn't really needed for the SN7577 data as there are no NA values. 
+> The `na.rm = TRUE` in the `summarize` clause in the `mean` function isn't really needed 
+> for the `SN7577` data as there are no NA values. 
 > 1. Try removing it and running the code again and confirm that the answers are the same.
-> 2. There ar however 6 rows with 'numage' = 0. These are effectively missing data. Change these values to NA and run the 
->  code again, both with and without the 'na.rm = True' parameter
+> 2. There are however 6 rows with `numage = 0`. These are effectively missing data. 
+> Change these values to NA and run the code again, both with and without the `na.rm = True` 
+> parameter.
 > 
 > > ## Solution
 > > 
@@ -313,7 +315,8 @@ SN7577 %>%
 ```		
 
 
-You can also group by multiple columns. 'age' is an age grouping variable from 1 to 7, 'sex' uses integers 1 and 2 to denote Male and Female.
+You can also group by multiple columns. `age` is an age grouping variable from 1 to 7, 
+`sex` uses integers 1 and 2 to denote Male and Female.
 
 ```{r}
 SN7577 %>%
@@ -322,7 +325,7 @@ SN7577 %>%
 ```
 
 
-If we ran a similar piece of code, but this time going back to usoing 'Q1'
+If we ran a similar piece of code, but this time going back to usoing `Q1`
 
 ```{r}
 SN7577 %>%
@@ -331,9 +334,10 @@ SN7577 %>%
   summarize(avg_age = mean(numage))
 ```
 
-All of the results are not displayed. This is because 'Q1' can have 11 different values and as we noted earlier, 'dplyr' restrict the output.
+All of the results are not displayed. This is because `Q1` can have 11 different values 
+and as we noted earlier, `dplyr` restricts the output.
 
-We can get round this by explictly adding a call to the 'print' function at the end of our pipeline.
+We can get round this by explictly adding a call to the `print` function at the end of our pipeline.
 
 ```{r}
 
@@ -357,7 +361,8 @@ SN7577 %>%
   print(n = 22)
 ```
 
-the 'n' function counts the number of rows in each group. This is something which is very commonly done that it has its own funtion'tally' in 'dplyr'
+the `n` function counts the number of rows in each group. This is something which is very
+commonly done that it has its own funtion, `tally`, in `dplyr`
 
 If we wanted to know how many of each age the respondents were we could use:
 
@@ -368,12 +373,13 @@ SN7577 %>%
   print(n = 100)
 ```
 
-If you go done to the bottom of the listing you will see that the 6 NAs are also accounted for.
+If you go down to the bottom of the listing you will see that the 6 NAs are also accounted for.
 
 > ## Exercise
 >
-> Q2 in SN7577 is an indication of who the respondent is inclined to vote for. Missing data is denoted by a value
-> of -1. Find the average age and number of respondents in each of the Q2 categories.
+> Q2 in `SN7577` is an indication of who the respondent is inclined to vote for. 
+> Missing data is denoted by a value of -1. Find the average age and number of 
+> respondents in each of the Q2 categories.
 >
 > > ## Solution
 > >
