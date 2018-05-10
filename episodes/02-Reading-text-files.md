@@ -36,7 +36,7 @@ RStudio provides an interface for reading a variety of commonly available data f
 
 We will demonstrate this functionality by importing the SN7577 dataset in both the tab delimited (SN7577.tab) and the SPSS (SN7577_spss.sav) formats.
 
-Full details of the SN7577 dataset are available [here]
+Full details of the SN7577 dataset are available [here](https://discover.ukdataservice.ac.uk/catalogue/?sn=7577&type=data%20catalogue).
 
 
 
@@ -160,7 +160,7 @@ Apart from viewing the data by typing the variable name into the console there a
 
 
 ~~~
-dim(SN7577_tab)        # number of rows and columns
+dim(SN7577_tab)            # Number of rows and columns
 ~~~
 {: .language-r}
 
@@ -174,7 +174,7 @@ dim(SN7577_tab)        # number of rows and columns
 
 
 ~~~
-nrow(SN7577_tab)       # number of rows
+nrow(SN7577_tab)           # Number of rows
 ~~~
 {: .language-r}
 
@@ -188,7 +188,7 @@ nrow(SN7577_tab)       # number of rows
 
 
 ~~~
-ncol(SN7577_tab)       # number of columns
+ncol(SN7577_tab)           # Number of columns
 ~~~
 {: .language-r}
 
@@ -202,7 +202,7 @@ ncol(SN7577_tab)       # number of columns
 
 
 ~~~
-head(SN7577_tab)       # shows first 6 rows (but truncates the variables)
+head(SN7577_tab)           # Shows first 6 rows (but truncates the variables)
 ~~~
 {: .language-r}
 
@@ -238,14 +238,14 @@ head(SN7577_tab)       # shows first 6 rows (but truncates the variables)
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
 {: .output}
 
 
 
 ~~~
-tail(SN7577_tab)       # shows last 6 rows (but truncates the variables)
+tail(SN7577_tab)           # Shows last 6 rows (but truncates the variables)
 ~~~
 {: .language-r}
 
@@ -281,239 +281,58 @@ tail(SN7577_tab)       # shows last 6 rows (but truncates the variables)
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
 {: .output}
 
 
 
 ~~~
-names(SN7577_tab)      # lists all of the column names
+head(names(SN7577_tab))    # names() lists all of the column names (output truncated by head)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-  [1] "Q1"          "Q2"          "Q3"          "Q4"          "Q5ai"       
-  [6] "Q5aii"       "Q5aiii"      "Q5aiv"       "Q5av"        "Q5avi"      
- [11] "Q5avii"      "Q5aviii"     "Q5aix"       "Q5ax"        "Q5axi"      
- [16] "Q5axii"      "Q5axiii"     "Q5axiv"      "Q5axv"       "Q5bi"       
- [21] "Q5bii"       "Q5biii"      "Q5biv"       "Q5bv"        "Q5bvi"      
- [26] "Q5bvii"      "Q5bviii"     "Q5bix"       "Q5bx"        "Q5bxi"      
- [31] "Q5bxii"      "Q5bxiii"     "Q5bxiv"      "Q5bxv"       "Q6"         
- [36] "Q7a"         "Q7b"         "Q8"          "Q9"          "Q10a"       
- [41] "Q10b"        "Q10c"        "Q10d"        "Q11a"        "Q11b"       
- [46] "Q12a"        "Q12b"        "Q13i"        "Q13ii"       "Q13iii"     
- [51] "Q13iv"       "Q14"         "Q15"         "Q16a"        "Q16b"       
- [56] "Q16c"        "Q16d"        "Q16e"        "Q16f"        "Q16g"       
- [61] "Q16h"        "Q17a"        "Q17b"        "Q17c"        "Q17d"       
- [66] "Q17e"        "Q17f"        "Q17g"        "Q18ai"       "Q18aii"     
- [71] "Q18aiii"     "Q18aiv"      "Q18av"       "Q18avi"      "Q18avii"    
- [76] "Q18aviii"    "Q18aix"      "Q18bi"       "Q18bii"      "Q18biii"    
- [81] "Q18biv"      "Q18bv"       "Q18bvi"      "Q18bvii"     "Q18bviii"   
- [86] "Q18bix"      "Q19a"        "Q19b"        "Q19c"        "Q19d"       
- [91] "access1"     "access2"     "access3"     "access4"     "access5"    
- [96] "access6"     "access7"     "web1"        "web2"        "web3"       
-[101] "web4"        "web5"        "web6"        "web7"        "web8"       
-[106] "web9"        "web10"       "web11"       "web12"       "web13"      
-[111] "web14"       "web15"       "web16"       "web17"       "web18"      
-[116] "dbroad"      "intten"      "netfq"       "daily1"      "daily2"     
-[121] "daily3"      "daily4"      "daily5"      "daily6"      "daily7"     
-[126] "daily8"      "daily9"      "daily10"     "daily11"     "daily12"    
-[131] "daily13"     "daily14"     "daily15"     "daily16"     "daily17"    
-[136] "daily18"     "daily19"     "daily20"     "daily21"     "daily22"    
-[141] "daily23"     "daily24"     "daily25"     "sunday1"     "sunday2"    
-[146] "sunday3"     "sunday4"     "sunday5"     "sunday6"     "sunday7"    
-[151] "sunday8"     "sunday9"     "sunday10"    "sunday11"    "sunday12"   
-[156] "sunday13"    "sunday14"    "sunday15"    "sunday16"    "sunday17"   
-[161] "sunday18"    "sunday19"    "sunday20"    "press1"      "press2"     
-[166] "broadsheet1" "broadsheet2" "broadsheet3" "popular1"    "popular2"   
-[171] "popular3"    "popular4"    "popular5"    "sex"         "age"        
-[176] "agegroups"   "numage"      "class"       "sgrade"      "work"       
-[181] "gor"         "qual"        "ethnic"      "ethnicity"   "party"      
-[186] "cie"         "wrkcie"      "income"      "tenure"      "tennet"     
-[191] "lstage"      "maritl"      "numhhd"      "numkid"      "numkid2"    
-[196] "numkid31"    "numkid32"    "numkid33"    "numkid34"    "numkid35"   
-[201] "numkid36"    "wts"        
+[1] "Q1"    "Q2"    "Q3"    "Q4"    "Q5ai"  "Q5aii"
 ~~~
 {: .output}
 
 
 
 ~~~
-names(SN7577_spss)     # Despite the extra text in the 'View' the column names for the spss variable
+                           # Despite the extra text in the 'View' the column names for the spss variable
+head(names(SN7577_spss))    # are the same as the csv version
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'SN7577_spss' not found
+Error in head(names(SN7577_spss)): object 'SN7577_spss' not found
 ~~~
 {: .error}
 
 
 
 ~~~
-                       # are the same as the csv version
-rownames(SN7577_tab)   # list the column names, esentialy index numbers which we don't really need
+head(rownames(SN7577_tab)) # List the row names, esentialy index numbers which we don't really need
 ~~~
 {: .language-r}
 
 
 
 ~~~
-   [1] "1"    "2"    "3"    "4"    "5"    "6"    "7"    "8"    "9"   
-  [10] "10"   "11"   "12"   "13"   "14"   "15"   "16"   "17"   "18"  
-  [19] "19"   "20"   "21"   "22"   "23"   "24"   "25"   "26"   "27"  
-  [28] "28"   "29"   "30"   "31"   "32"   "33"   "34"   "35"   "36"  
-  [37] "37"   "38"   "39"   "40"   "41"   "42"   "43"   "44"   "45"  
-  [46] "46"   "47"   "48"   "49"   "50"   "51"   "52"   "53"   "54"  
-  [55] "55"   "56"   "57"   "58"   "59"   "60"   "61"   "62"   "63"  
-  [64] "64"   "65"   "66"   "67"   "68"   "69"   "70"   "71"   "72"  
-  [73] "73"   "74"   "75"   "76"   "77"   "78"   "79"   "80"   "81"  
-  [82] "82"   "83"   "84"   "85"   "86"   "87"   "88"   "89"   "90"  
-  [91] "91"   "92"   "93"   "94"   "95"   "96"   "97"   "98"   "99"  
- [100] "100"  "101"  "102"  "103"  "104"  "105"  "106"  "107"  "108" 
- [109] "109"  "110"  "111"  "112"  "113"  "114"  "115"  "116"  "117" 
- [118] "118"  "119"  "120"  "121"  "122"  "123"  "124"  "125"  "126" 
- [127] "127"  "128"  "129"  "130"  "131"  "132"  "133"  "134"  "135" 
- [136] "136"  "137"  "138"  "139"  "140"  "141"  "142"  "143"  "144" 
- [145] "145"  "146"  "147"  "148"  "149"  "150"  "151"  "152"  "153" 
- [154] "154"  "155"  "156"  "157"  "158"  "159"  "160"  "161"  "162" 
- [163] "163"  "164"  "165"  "166"  "167"  "168"  "169"  "170"  "171" 
- [172] "172"  "173"  "174"  "175"  "176"  "177"  "178"  "179"  "180" 
- [181] "181"  "182"  "183"  "184"  "185"  "186"  "187"  "188"  "189" 
- [190] "190"  "191"  "192"  "193"  "194"  "195"  "196"  "197"  "198" 
- [199] "199"  "200"  "201"  "202"  "203"  "204"  "205"  "206"  "207" 
- [208] "208"  "209"  "210"  "211"  "212"  "213"  "214"  "215"  "216" 
- [217] "217"  "218"  "219"  "220"  "221"  "222"  "223"  "224"  "225" 
- [226] "226"  "227"  "228"  "229"  "230"  "231"  "232"  "233"  "234" 
- [235] "235"  "236"  "237"  "238"  "239"  "240"  "241"  "242"  "243" 
- [244] "244"  "245"  "246"  "247"  "248"  "249"  "250"  "251"  "252" 
- [253] "253"  "254"  "255"  "256"  "257"  "258"  "259"  "260"  "261" 
- [262] "262"  "263"  "264"  "265"  "266"  "267"  "268"  "269"  "270" 
- [271] "271"  "272"  "273"  "274"  "275"  "276"  "277"  "278"  "279" 
- [280] "280"  "281"  "282"  "283"  "284"  "285"  "286"  "287"  "288" 
- [289] "289"  "290"  "291"  "292"  "293"  "294"  "295"  "296"  "297" 
- [298] "298"  "299"  "300"  "301"  "302"  "303"  "304"  "305"  "306" 
- [307] "307"  "308"  "309"  "310"  "311"  "312"  "313"  "314"  "315" 
- [316] "316"  "317"  "318"  "319"  "320"  "321"  "322"  "323"  "324" 
- [325] "325"  "326"  "327"  "328"  "329"  "330"  "331"  "332"  "333" 
- [334] "334"  "335"  "336"  "337"  "338"  "339"  "340"  "341"  "342" 
- [343] "343"  "344"  "345"  "346"  "347"  "348"  "349"  "350"  "351" 
- [352] "352"  "353"  "354"  "355"  "356"  "357"  "358"  "359"  "360" 
- [361] "361"  "362"  "363"  "364"  "365"  "366"  "367"  "368"  "369" 
- [370] "370"  "371"  "372"  "373"  "374"  "375"  "376"  "377"  "378" 
- [379] "379"  "380"  "381"  "382"  "383"  "384"  "385"  "386"  "387" 
- [388] "388"  "389"  "390"  "391"  "392"  "393"  "394"  "395"  "396" 
- [397] "397"  "398"  "399"  "400"  "401"  "402"  "403"  "404"  "405" 
- [406] "406"  "407"  "408"  "409"  "410"  "411"  "412"  "413"  "414" 
- [415] "415"  "416"  "417"  "418"  "419"  "420"  "421"  "422"  "423" 
- [424] "424"  "425"  "426"  "427"  "428"  "429"  "430"  "431"  "432" 
- [433] "433"  "434"  "435"  "436"  "437"  "438"  "439"  "440"  "441" 
- [442] "442"  "443"  "444"  "445"  "446"  "447"  "448"  "449"  "450" 
- [451] "451"  "452"  "453"  "454"  "455"  "456"  "457"  "458"  "459" 
- [460] "460"  "461"  "462"  "463"  "464"  "465"  "466"  "467"  "468" 
- [469] "469"  "470"  "471"  "472"  "473"  "474"  "475"  "476"  "477" 
- [478] "478"  "479"  "480"  "481"  "482"  "483"  "484"  "485"  "486" 
- [487] "487"  "488"  "489"  "490"  "491"  "492"  "493"  "494"  "495" 
- [496] "496"  "497"  "498"  "499"  "500"  "501"  "502"  "503"  "504" 
- [505] "505"  "506"  "507"  "508"  "509"  "510"  "511"  "512"  "513" 
- [514] "514"  "515"  "516"  "517"  "518"  "519"  "520"  "521"  "522" 
- [523] "523"  "524"  "525"  "526"  "527"  "528"  "529"  "530"  "531" 
- [532] "532"  "533"  "534"  "535"  "536"  "537"  "538"  "539"  "540" 
- [541] "541"  "542"  "543"  "544"  "545"  "546"  "547"  "548"  "549" 
- [550] "550"  "551"  "552"  "553"  "554"  "555"  "556"  "557"  "558" 
- [559] "559"  "560"  "561"  "562"  "563"  "564"  "565"  "566"  "567" 
- [568] "568"  "569"  "570"  "571"  "572"  "573"  "574"  "575"  "576" 
- [577] "577"  "578"  "579"  "580"  "581"  "582"  "583"  "584"  "585" 
- [586] "586"  "587"  "588"  "589"  "590"  "591"  "592"  "593"  "594" 
- [595] "595"  "596"  "597"  "598"  "599"  "600"  "601"  "602"  "603" 
- [604] "604"  "605"  "606"  "607"  "608"  "609"  "610"  "611"  "612" 
- [613] "613"  "614"  "615"  "616"  "617"  "618"  "619"  "620"  "621" 
- [622] "622"  "623"  "624"  "625"  "626"  "627"  "628"  "629"  "630" 
- [631] "631"  "632"  "633"  "634"  "635"  "636"  "637"  "638"  "639" 
- [640] "640"  "641"  "642"  "643"  "644"  "645"  "646"  "647"  "648" 
- [649] "649"  "650"  "651"  "652"  "653"  "654"  "655"  "656"  "657" 
- [658] "658"  "659"  "660"  "661"  "662"  "663"  "664"  "665"  "666" 
- [667] "667"  "668"  "669"  "670"  "671"  "672"  "673"  "674"  "675" 
- [676] "676"  "677"  "678"  "679"  "680"  "681"  "682"  "683"  "684" 
- [685] "685"  "686"  "687"  "688"  "689"  "690"  "691"  "692"  "693" 
- [694] "694"  "695"  "696"  "697"  "698"  "699"  "700"  "701"  "702" 
- [703] "703"  "704"  "705"  "706"  "707"  "708"  "709"  "710"  "711" 
- [712] "712"  "713"  "714"  "715"  "716"  "717"  "718"  "719"  "720" 
- [721] "721"  "722"  "723"  "724"  "725"  "726"  "727"  "728"  "729" 
- [730] "730"  "731"  "732"  "733"  "734"  "735"  "736"  "737"  "738" 
- [739] "739"  "740"  "741"  "742"  "743"  "744"  "745"  "746"  "747" 
- [748] "748"  "749"  "750"  "751"  "752"  "753"  "754"  "755"  "756" 
- [757] "757"  "758"  "759"  "760"  "761"  "762"  "763"  "764"  "765" 
- [766] "766"  "767"  "768"  "769"  "770"  "771"  "772"  "773"  "774" 
- [775] "775"  "776"  "777"  "778"  "779"  "780"  "781"  "782"  "783" 
- [784] "784"  "785"  "786"  "787"  "788"  "789"  "790"  "791"  "792" 
- [793] "793"  "794"  "795"  "796"  "797"  "798"  "799"  "800"  "801" 
- [802] "802"  "803"  "804"  "805"  "806"  "807"  "808"  "809"  "810" 
- [811] "811"  "812"  "813"  "814"  "815"  "816"  "817"  "818"  "819" 
- [820] "820"  "821"  "822"  "823"  "824"  "825"  "826"  "827"  "828" 
- [829] "829"  "830"  "831"  "832"  "833"  "834"  "835"  "836"  "837" 
- [838] "838"  "839"  "840"  "841"  "842"  "843"  "844"  "845"  "846" 
- [847] "847"  "848"  "849"  "850"  "851"  "852"  "853"  "854"  "855" 
- [856] "856"  "857"  "858"  "859"  "860"  "861"  "862"  "863"  "864" 
- [865] "865"  "866"  "867"  "868"  "869"  "870"  "871"  "872"  "873" 
- [874] "874"  "875"  "876"  "877"  "878"  "879"  "880"  "881"  "882" 
- [883] "883"  "884"  "885"  "886"  "887"  "888"  "889"  "890"  "891" 
- [892] "892"  "893"  "894"  "895"  "896"  "897"  "898"  "899"  "900" 
- [901] "901"  "902"  "903"  "904"  "905"  "906"  "907"  "908"  "909" 
- [910] "910"  "911"  "912"  "913"  "914"  "915"  "916"  "917"  "918" 
- [919] "919"  "920"  "921"  "922"  "923"  "924"  "925"  "926"  "927" 
- [928] "928"  "929"  "930"  "931"  "932"  "933"  "934"  "935"  "936" 
- [937] "937"  "938"  "939"  "940"  "941"  "942"  "943"  "944"  "945" 
- [946] "946"  "947"  "948"  "949"  "950"  "951"  "952"  "953"  "954" 
- [955] "955"  "956"  "957"  "958"  "959"  "960"  "961"  "962"  "963" 
- [964] "964"  "965"  "966"  "967"  "968"  "969"  "970"  "971"  "972" 
- [973] "973"  "974"  "975"  "976"  "977"  "978"  "979"  "980"  "981" 
- [982] "982"  "983"  "984"  "985"  "986"  "987"  "988"  "989"  "990" 
- [991] "991"  "992"  "993"  "994"  "995"  "996"  "997"  "998"  "999" 
-[1000] "1000" "1001" "1002" "1003" "1004" "1005" "1006" "1007" "1008"
-[1009] "1009" "1010" "1011" "1012" "1013" "1014" "1015" "1016" "1017"
-[1018] "1018" "1019" "1020" "1021" "1022" "1023" "1024" "1025" "1026"
-[1027] "1027" "1028" "1029" "1030" "1031" "1032" "1033" "1034" "1035"
-[1036] "1036" "1037" "1038" "1039" "1040" "1041" "1042" "1043" "1044"
-[1045] "1045" "1046" "1047" "1048" "1049" "1050" "1051" "1052" "1053"
-[1054] "1054" "1055" "1056" "1057" "1058" "1059" "1060" "1061" "1062"
-[1063] "1063" "1064" "1065" "1066" "1067" "1068" "1069" "1070" "1071"
-[1072] "1072" "1073" "1074" "1075" "1076" "1077" "1078" "1079" "1080"
-[1081] "1081" "1082" "1083" "1084" "1085" "1086" "1087" "1088" "1089"
-[1090] "1090" "1091" "1092" "1093" "1094" "1095" "1096" "1097" "1098"
-[1099] "1099" "1100" "1101" "1102" "1103" "1104" "1105" "1106" "1107"
-[1108] "1108" "1109" "1110" "1111" "1112" "1113" "1114" "1115" "1116"
-[1117] "1117" "1118" "1119" "1120" "1121" "1122" "1123" "1124" "1125"
-[1126] "1126" "1127" "1128" "1129" "1130" "1131" "1132" "1133" "1134"
-[1135] "1135" "1136" "1137" "1138" "1139" "1140" "1141" "1142" "1143"
-[1144] "1144" "1145" "1146" "1147" "1148" "1149" "1150" "1151" "1152"
-[1153] "1153" "1154" "1155" "1156" "1157" "1158" "1159" "1160" "1161"
-[1162] "1162" "1163" "1164" "1165" "1166" "1167" "1168" "1169" "1170"
-[1171] "1171" "1172" "1173" "1174" "1175" "1176" "1177" "1178" "1179"
-[1180] "1180" "1181" "1182" "1183" "1184" "1185" "1186" "1187" "1188"
-[1189] "1189" "1190" "1191" "1192" "1193" "1194" "1195" "1196" "1197"
-[1198] "1198" "1199" "1200" "1201" "1202" "1203" "1204" "1205" "1206"
-[1207] "1207" "1208" "1209" "1210" "1211" "1212" "1213" "1214" "1215"
-[1216] "1216" "1217" "1218" "1219" "1220" "1221" "1222" "1223" "1224"
-[1225] "1225" "1226" "1227" "1228" "1229" "1230" "1231" "1232" "1233"
-[1234] "1234" "1235" "1236" "1237" "1238" "1239" "1240" "1241" "1242"
-[1243] "1243" "1244" "1245" "1246" "1247" "1248" "1249" "1250" "1251"
-[1252] "1252" "1253" "1254" "1255" "1256" "1257" "1258" "1259" "1260"
-[1261] "1261" "1262" "1263" "1264" "1265" "1266" "1267" "1268" "1269"
-[1270] "1270" "1271" "1272" "1273" "1274" "1275" "1276" "1277" "1278"
-[1279] "1279" "1280" "1281" "1282" "1283" "1284" "1285" "1286"
+[1] "1" "2" "3" "4" "5" "6"
 ~~~
 {: .output}
 
 
 
 ~~~
-str(SN7577_tab)        # Show the overall structure of the variable, similar but more complex to what
+                             # Show the overall structure of the variable, similar but more complex to what
+str(SN7577_tab, list.len=6)  # what we have seen for other variables (output truncated by argument list.len).
 ~~~
 {: .language-r}
 
@@ -527,99 +346,6 @@ Classes 'tbl_df', 'tbl' and 'data.frame':	1286 obs. of  202 variables:
  $ Q4         : int  8 4 6 10 1 1 8 1 10 1 ...
  $ Q5ai       : int  0 0 0 0 0 0 0 0 0 0 ...
  $ Q5aii      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5aiii     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5aiv      : int  1 0 0 0 1 0 0 0 0 0 ...
- $ Q5av       : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5avi      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5avii     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5aviii    : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5aix      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5ax       : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5axi      : int  0 0 0 0 0 1 0 0 0 0 ...
- $ Q5axii     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5axiii    : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5axiv     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5axv      : int  0 1 1 1 0 0 1 1 1 1 ...
- $ Q5bi       : int  1 0 1 0 1 1 0 1 1 1 ...
- $ Q5bii      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5biii     : int  0 0 0 0 0 0 0 1 0 1 ...
- $ Q5biv      : int  1 0 0 0 0 0 1 1 0 0 ...
- $ Q5bv       : int  0 0 0 0 0 0 0 1 0 0 ...
- $ Q5bvi      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5bvii     : int  1 0 0 0 0 0 1 1 0 1 ...
- $ Q5bviii    : int  0 0 1 0 0 0 0 1 0 0 ...
- $ Q5bix      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5bx       : int  0 0 0 0 0 0 0 1 0 0 ...
- $ Q5bxi      : int  0 1 1 0 0 1 1 1 0 1 ...
- $ Q5bxii     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5bxiii    : int  0 0 1 0 0 1 0 1 0 0 ...
- $ Q5bxiv     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q5bxv      : int  0 0 0 1 0 0 0 0 0 0 ...
- $ Q6         : int  3 2 2 3 3 2 2 2 4 2 ...
- $ Q7a        : int  3 2 2 3 2 2 2 2 4 2 ...
- $ Q7b        : int  3 2 2 3 3 2 2 3 3 2 ...
- $ Q8         : int  2 3 3 5 3 2 4 3 3 3 ...
- $ Q9         : int  3 3 4 4 4 4 5 2 4 4 ...
- $ Q10a       : int  3 4 6 3 3 3 4 4 2 4 ...
- $ Q10b       : int  4 5 4 3 3 4 4 2 4 4 ...
- $ Q10c       : int  1 1 2 2 2 1 1 4 2 2 ...
- $ Q10d       : int  4 1 3 2 2 3 2 4 3 2 ...
- $ Q11a       : int  2 4 3 4 3 4 2 3 4 4 ...
- $ Q11b       : int  2 4 3 4 4 4 3 4 4 4 ...
- $ Q12a       : int  2 3 3 4 3 3 2 2 4 3 ...
- $ Q12b       : int  2 3 3 4 3 4 3 2 4 3 ...
- $ Q13i       : int  1 1 1 1 1 1 1 1 1 1 ...
- $ Q13ii      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q13iii     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q13iv      : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q14        : int  3 3 3 4 4 2 2 2 4 2 ...
- $ Q15        : int  2 3 1 3 3 2 2 2 4 2 ...
- $ Q16a       : int  3 2 2 6 1 3 3 2 3 5 ...
- $ Q16b       : int  3 4 4 6 3 5 4 4 3 5 ...
- $ Q16c       : int  1 1 1 6 1 1 3 1 2 1 ...
- $ Q16d       : int  4 4 3 6 2 3 3 2 3 5 ...
- $ Q16e       : int  2 4 4 6 2 2 3 3 2 1 ...
- $ Q16f       : int  3 3 4 6 2 4 2 2 3 4 ...
- $ Q16g       : int  2 1 2 6 4 1 2 1 3 1 ...
- $ Q16h       : int  4 5 5 6 4 5 3 5 3 5 ...
- $ Q17a       : int  4 5 4 3 4 3 2 5 4 5 ...
- $ Q17b       : int  2 1 2 2 2 1 2 2 1 2 ...
- $ Q17c       : int  2 4 2 3 3 1 2 1 1 1 ...
- $ Q17d       : int  2 1 2 2 1 1 2 2 1 1 ...
- $ Q17e       : int  4 3 3 2 2 2 2 5 5 5 ...
- $ Q17f       : int  2 1 3 3 2 2 2 2 2 2 ...
- $ Q17g       : int  1 2 2 5 1 3 2 1 1 1 ...
- $ Q18ai      : int  1 1 1 1 0 0 0 0 0 0 ...
- $ Q18aii     : int  0 0 0 1 0 0 0 0 1 1 ...
- $ Q18aiii    : int  1 1 1 0 1 0 1 1 1 1 ...
- $ Q18aiv     : int  0 1 1 1 1 1 1 1 1 1 ...
- $ Q18av      : int  0 0 0 0 0 0 1 1 0 0 ...
- $ Q18avi     : int  1 0 0 0 1 1 0 0 0 0 ...
- $ Q18avii    : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q18aviii   : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q18aix     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q18bi      : int  1 0 1 1 0 1 0 0 0 0 ...
- $ Q18bii     : int  0 1 0 0 0 0 0 1 1 1 ...
- $ Q18biii    : int  0 0 1 0 1 0 0 1 1 0 ...
- $ Q18biv     : int  0 1 1 0 1 1 1 1 1 1 ...
- $ Q18bv      : int  0 0 0 0 0 0 0 0 0 1 ...
- $ Q18bvi     : int  0 0 0 0 1 0 1 0 0 0 ...
- $ Q18bvii    : int  0 1 0 0 0 0 1 0 0 0 ...
- $ Q18bviii   : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q18bix     : int  0 0 0 0 0 0 0 0 0 0 ...
- $ Q19a       : int  1 2 2 4 1 2 2 2 2 2 ...
- $ Q19b       : int  3 2 2 4 1 2 2 2 2 2 ...
- $ Q19c       : int  2 2 2 4 2 1 2 2 2 2 ...
- $ Q19d       : int  2 1 2 4 1 1 2 1 5 1 ...
- $ access1    : int  1 1 0 1 0 1 1 1 1 1 ...
- $ access2    : int  0 0 0 0 0 0 0 0 0 0 ...
- $ access3    : int  0 0 0 0 1 0 0 0 0 0 ...
- $ access4    : int  0 1 0 1 0 0 0 0 0 1 ...
- $ access5    : int  0 0 0 0 0 0 0 0 0 0 ...
- $ access6    : int  0 0 0 0 0 0 0 0 0 0 ...
- $ access7    : int  0 0 1 0 0 0 0 0 0 0 ...
- $ web1       : int  1 1 -1 1 1 1 1 1 1 1 ...
- $ web2       : int  1 0 -1 1 0 1 1 1 1 1 ...
   [list output truncated]
  - attr(*, "spec")=List of 2
   ..$ cols   :List of 202
@@ -635,192 +361,6 @@ Classes 'tbl_df', 'tbl' and 'data.frame':	1286 obs. of  202 variables:
   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
   .. ..$ Q5aii      : list()
   .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5aiii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5aiv      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5av       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5avi      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5avii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5aviii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5aix      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5ax       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5axi      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5axii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5axiii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5axiv     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5axv      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bi       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bii      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5biii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5biv      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bv       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bvi      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bvii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bviii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bix      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bx       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bxi      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bxii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bxiii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bxiv     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q5bxv      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q6         : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q7a        : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q7b        : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q8         : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q9         : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q10a       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q10b       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q10c       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q10d       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q11a       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q11b       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q12a       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q12b       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q13i       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q13ii      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q13iii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q13iv      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q14        : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q15        : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16a       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16b       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16c       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16d       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16e       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16f       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16g       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q16h       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q17a       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q17b       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q17c       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q17d       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q17e       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q17f       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q17g       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18ai      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18aii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18aiii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18aiv     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18av      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18avi     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18avii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18aviii   : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18aix     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18bi      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18bii     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18biii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18biv     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18bv      : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18bvi     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18bvii    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18bviii   : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q18bix     : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q19a       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q19b       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q19c       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ Q19d       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ access1    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ access2    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ access3    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ access4    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ access5    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ access6    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ access7    : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ web1       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
-  .. ..$ web2       : list()
-  .. .. ..- attr(*, "class")= chr  "collector_integer" "collector"
   .. .. [list output truncated]
   ..$ default: list()
   .. ..- attr(*, "class")= chr  "collector_guess" "collector"
@@ -831,371 +371,15 @@ Classes 'tbl_df', 'tbl' and 'data.frame':	1286 obs. of  202 variables:
 
 
 ~~~
-                       # what we have seen for other variables.
-summary(SN7577_tab)    # displays summary statistics for the different columns.
+summary(SN7577_tab)[1:6]     # Displays summary statistics (for the first six columns).
 ~~~
 {: .language-r}
 
 
 
 ~~~
-       Q1               Q2               Q3              Q4       
- Min.   : 1.000   Min.   :-1.000   Min.   : 1.00   Min.   : 1.00  
- 1st Qu.: 2.000   1st Qu.:-1.000   1st Qu.: 1.00   1st Qu.: 1.00  
- Median : 4.000   Median :-1.000   Median : 2.00   Median : 6.00  
- Mean   : 5.583   Mean   : 1.407   Mean   : 3.67   Mean   : 5.54  
- 3rd Qu.:10.000   3rd Qu.: 2.000   3rd Qu.: 6.00   3rd Qu.: 9.00  
- Max.   :11.000   Max.   :11.000   Max.   :11.00   Max.   :12.00  
-      Q5ai            Q5aii             Q5aiii            Q5aiv       
- Min.   :0.0000   Min.   :0.00000   Min.   :0.00000   Min.   :0.0000  
- 1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.0000  
- Median :0.0000   Median :0.00000   Median :0.00000   Median :0.0000  
- Mean   :0.1252   Mean   :0.03732   Mean   :0.06532   Mean   :0.1423  
- 3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.0000  
- Max.   :1.0000   Max.   :1.00000   Max.   :1.00000   Max.   :1.0000  
-      Q5av            Q5avi            Q5avii           Q5aviii       
- Min.   :0.0000   Min.   :0.0000   Min.   :0.00000   Min.   :0.00000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.00000  
- Median :0.0000   Median :0.0000   Median :0.00000   Median :0.00000  
- Mean   :0.1322   Mean   :0.1921   Mean   :0.09176   Mean   :0.02955  
- 3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0.00000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.00000   Max.   :1.00000  
-     Q5aix              Q5ax             Q5axi            Q5axii       
- Min.   :0.00000   Min.   :0.00000   Min.   :0.0000   Min.   :0.00000  
- 1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.0000   1st Qu.:0.00000  
- Median :0.00000   Median :0.00000   Median :0.0000   Median :0.00000  
- Mean   :0.02177   Mean   :0.01944   Mean   :0.1711   Mean   :0.05754  
- 3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.0000   3rd Qu.:0.00000  
- Max.   :1.00000   Max.   :1.00000   Max.   :1.0000   Max.   :1.00000  
-    Q5axiii            Q5axiv             Q5axv             Q5bi       
- Min.   :0.00000   Min.   :0.000000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:0.00000   1st Qu.:0.000000   1st Qu.:0.0000   1st Qu.:0.0000  
- Median :0.00000   Median :0.000000   Median :1.0000   Median :1.0000  
- Mean   :0.05754   Mean   :0.006998   Mean   :0.5233   Mean   :0.5249  
- 3rd Qu.:0.00000   3rd Qu.:0.000000   3rd Qu.:1.0000   3rd Qu.:1.0000  
- Max.   :1.00000   Max.   :1.000000   Max.   :1.0000   Max.   :1.0000  
-     Q5bii            Q5biii           Q5biv             Q5bv       
- Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
- Median :0.0000   Median :0.0000   Median :0.0000   Median :0.0000  
- Mean   :0.2115   Mean   :0.2162   Mean   :0.4098   Mean   :0.2908  
- 3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:1.0000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
-     Q5bvi            Q5bvii          Q5bviii           Q5bix        
- Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.00000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.00000  
- Median :0.0000   Median :0.0000   Median :0.0000   Median :0.00000  
- Mean   :0.2053   Mean   :0.2356   Mean   :0.1407   Mean   :0.06221  
- 3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.00000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.00000  
-      Q5bx            Q5bxi            Q5bxii          Q5bxiii      
- Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
- Median :0.0000   Median :0.0000   Median :0.0000   Median :0.0000  
- Mean   :0.1454   Mean   :0.4619   Mean   :0.1353   Mean   :0.1983  
- 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:0.0000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
-     Q5bxiv            Q5bxv             Q6             Q7a      
- Min.   :0.00000   Min.   :0.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:0.00000   1st Qu.:0.000   1st Qu.:2.000   1st Qu.:2.00  
- Median :0.00000   Median :0.000   Median :3.000   Median :2.00  
- Mean   :0.01322   Mean   :0.203   Mean   :2.608   Mean   :2.56  
- 3rd Qu.:0.00000   3rd Qu.:0.000   3rd Qu.:3.000   3rd Qu.:3.00  
- Max.   :1.00000   Max.   :1.000   Max.   :5.000   Max.   :5.00  
-      Q7b              Q8              Q9             Q10a      
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000  
- Median :3.000   Median :3.000   Median :3.000   Median :3.000  
- Mean   :2.597   Mean   :2.954   Mean   :3.223   Mean   :3.099  
- 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:4.000  
- Max.   :5.000   Max.   :5.000   Max.   :6.000   Max.   :6.000  
-      Q10b            Q10c            Q10d            Q11a     
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:2.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2.00  
- Median :3.000   Median :2.000   Median :3.000   Median :3.00  
- Mean   :3.372   Mean   :2.269   Mean   :2.719   Mean   :3.06  
- 3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:4.00  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :5.00  
-      Q11b            Q12a            Q12b            Q13i       
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :0.0000  
- 1st Qu.:3.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.0000  
- Median :3.000   Median :3.000   Median :3.000   Median :1.0000  
- Mean   :3.274   Mean   :2.756   Mean   :2.848   Mean   :0.8437  
- 3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:1.0000  
- Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :1.0000  
-     Q13ii             Q13iii           Q13iv              Q14       
- Min.   :0.00000   Min.   :0.0000   Min.   :0.00000   Min.   :1.000  
- 1st Qu.:0.00000   1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:2.000  
- Median :0.00000   Median :0.0000   Median :0.00000   Median :3.000  
- Mean   :0.05521   Mean   :0.0902   Mean   :0.01244   Mean   :2.959  
- 3rd Qu.:0.00000   3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:4.000  
- Max.   :1.00000   Max.   :1.0000   Max.   :1.00000   Max.   :6.000  
-      Q15             Q16a            Q16b            Q16c     
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.00  
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:3.000   1st Qu.:1.00  
- Median :2.000   Median :3.000   Median :4.000   Median :2.00  
- Mean   :2.672   Mean   :3.026   Mean   :3.691   Mean   :2.24  
- 3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:5.000   3rd Qu.:3.00  
- Max.   :5.000   Max.   :6.000   Max.   :6.000   Max.   :6.00  
-      Q16d            Q16e            Q16f            Q16g      
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:3.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:2.000  
- Median :3.000   Median :3.000   Median :3.000   Median :3.000  
- Mean   :3.582   Mean   :3.132   Mean   :3.086   Mean   :2.778  
- 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.:3.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
-      Q16h            Q17a            Q17b            Q17c      
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:3.000   1st Qu.:3.000   1st Qu.:1.000   1st Qu.:1.000  
- Median :4.000   Median :3.000   Median :2.000   Median :2.000  
- Mean   :3.685   Mean   :3.436   Mean   :1.767   Mean   :2.005  
- 3rd Qu.:5.000   3rd Qu.:4.000   3rd Qu.:2.000   3rd Qu.:2.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
-      Q17d            Q17e            Q17f            Q17g      
- Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000  
- Median :2.000   Median :3.000   Median :2.000   Median :2.000  
- Mean   :2.065   Mean   :2.911   Mean   :2.448   Mean   :2.197  
- 3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:3.000   3rd Qu.:3.000  
- Max.   :6.000   Max.   :6.000   Max.   :6.000   Max.   :6.000  
-     Q18ai            Q18aii          Q18aiii           Q18aiv      
- Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
- Median :0.0000   Median :0.0000   Median :0.0000   Median :0.0000  
- Mean   :0.3079   Mean   :0.2745   Mean   :0.4323   Mean   :0.4059  
- 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:1.0000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
-     Q18av            Q18avi          Q18avii           Q18aviii      
- Min.   :0.0000   Min.   :0.0000   Min.   :0.00000   Min.   :0.00000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.00000  
- Median :0.0000   Median :0.0000   Median :0.00000   Median :0.00000  
- Mean   :0.1361   Mean   :0.3258   Mean   :0.06376   Mean   :0.04977  
- 3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:0.00000   3rd Qu.:0.00000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.00000   Max.   :1.00000  
-     Q18aix            Q18bi            Q18bii          Q18biii      
- Min.   :0.00000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:0.00000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
- Median :0.00000   Median :0.0000   Median :0.0000   Median :0.0000  
- Mean   :0.08709   Mean   :0.3017   Mean   :0.2294   Mean   :0.3857  
- 3rd Qu.:0.00000   3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:1.0000  
- Max.   :1.00000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
-     Q18biv           Q18bv            Q18bvi          Q18bvii       
- Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.00000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.00000  
- Median :0.0000   Median :0.0000   Median :0.0000   Median :0.00000  
- Mean   :0.3414   Mean   :0.1376   Mean   :0.2255   Mean   :0.09176  
- 3rd Qu.:1.0000   3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.00000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.00000  
-    Q18bviii           Q18bix             Q19a            Q19b      
- Min.   :0.00000   Min.   :0.00000   Min.   :1.000   Min.   :1.000  
- 1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:1.000   1st Qu.:1.000  
- Median :0.00000   Median :0.00000   Median :2.000   Median :2.000  
- Mean   :0.04121   Mean   :0.09798   Mean   :2.103   Mean   :2.206  
- 3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:3.000   3rd Qu.:3.000  
- Max.   :1.00000   Max.   :1.00000   Max.   :6.000   Max.   :6.000  
-      Q19c            Q19d          access1          access2      
- Min.   :1.000   Min.   :1.000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:1.0000   1st Qu.:0.0000  
- Median :2.000   Median :2.000   Median :1.0000   Median :0.0000  
- Mean   :2.411   Mean   :2.236   Mean   :0.7885   Mean   :0.2877  
- 3rd Qu.:3.000   3rd Qu.:3.000   3rd Qu.:1.0000   3rd Qu.:1.0000  
- Max.   :6.000   Max.   :6.000   Max.   :1.0000   Max.   :1.0000  
-    access3           access4          access5           access6       
- Min.   :0.00000   Min.   :0.0000   Min.   :0.00000   Min.   :0.00000  
- 1st Qu.:0.00000   1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.00000  
- Median :0.00000   Median :0.0000   Median :0.00000   Median :0.00000  
- Mean   :0.07698   Mean   :0.4075   Mean   :0.04588   Mean   :0.05365  
- 3rd Qu.:0.00000   3rd Qu.:1.0000   3rd Qu.:0.00000   3rd Qu.:0.00000  
- Max.   :1.00000   Max.   :1.0000   Max.   :1.00000   Max.   :1.00000  
-    access7            web1              web2              web3        
- Min.   :0.0000   Min.   :-1.0000   Min.   :-1.0000   Min.   :-1.0000  
- 1st Qu.:0.0000   1st Qu.: 1.0000   1st Qu.: 0.0000   1st Qu.: 0.0000  
- Median :0.0000   Median : 1.0000   Median : 1.0000   Median : 1.0000  
- Mean   :0.1641   Mean   : 0.6198   Mean   : 0.5397   Mean   : 0.4774  
- 3rd Qu.:0.0000   3rd Qu.: 1.0000   3rd Qu.: 1.0000   3rd Qu.: 1.0000  
- Max.   :1.0000   Max.   : 1.0000   Max.   : 1.0000   Max.   : 1.0000  
-      web4              web5                 web6        
- Min.   :-1.0000   Min.   :-1.0000000   Min.   :-1.0000  
- 1st Qu.: 0.0000   1st Qu.: 0.0000000   1st Qu.: 0.0000  
- Median : 1.0000   Median : 0.0000000   Median : 0.0000  
- Mean   : 0.4246   Mean   : 0.0007776   Mean   : 0.3157  
- 3rd Qu.: 1.0000   3rd Qu.: 0.0000000   3rd Qu.: 1.0000  
- Max.   : 1.0000   Max.   : 1.0000000   Max.   : 1.0000  
-      web7               web8               web9         
- Min.   :-1.00000   Min.   :-1.00000   Min.   :-1.00000  
- 1st Qu.: 0.00000   1st Qu.: 0.00000   1st Qu.: 0.00000  
- Median : 0.00000   Median : 0.00000   Median : 0.00000  
- Mean   :-0.01788   Mean   : 0.08865   Mean   :-0.02333  
- 3rd Qu.: 0.00000   3rd Qu.: 1.00000   3rd Qu.: 0.00000  
- Max.   : 1.00000   Max.   : 1.00000   Max.   : 1.00000  
-     web10              web11             web12              web13        
- Min.   :-1.00000   Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.0000  
- 1st Qu.: 0.00000   1st Qu.: 0.0000   1st Qu.: 0.00000   1st Qu.: 0.0000  
- Median : 0.00000   Median : 0.0000   Median : 0.00000   Median : 0.0000  
- Mean   :-0.07698   Mean   :-0.1547   Mean   : 0.07932   Mean   : 0.3313  
- 3rd Qu.: 0.00000   3rd Qu.: 0.0000   3rd Qu.: 0.00000   3rd Qu.: 1.0000  
- Max.   : 1.00000   Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.0000  
-     web14             web15              web16         
- Min.   :-1.0000   Min.   :-1.00000   Min.   :-1.00000  
- 1st Qu.: 0.0000   1st Qu.: 0.00000   1st Qu.: 0.00000  
- Median : 0.0000   Median : 0.00000   Median : 0.00000  
- Mean   :-0.1104   Mean   : 0.09098   Mean   :-0.01166  
- 3rd Qu.: 0.0000   3rd Qu.: 1.00000   3rd Qu.: 0.00000  
- Max.   : 1.0000   Max.   : 1.00000   Max.   : 1.00000  
-     web17              web18             dbroad           intten      
- Min.   :-1.00000   Min.   :-1.0000   Min.   :-1.000   Min.   :-1.000  
- 1st Qu.: 0.00000   1st Qu.: 0.0000   1st Qu.: 1.000   1st Qu.: 6.000  
- Median : 0.00000   Median : 0.0000   Median : 2.000   Median : 9.000  
- Mean   :-0.07621   Mean   :-0.1641   Mean   : 1.146   Mean   : 7.044  
- 3rd Qu.: 0.00000   3rd Qu.: 0.0000   3rd Qu.: 2.000   3rd Qu.: 9.000  
- Max.   : 1.00000   Max.   : 0.0000   Max.   : 4.000   Max.   :10.000  
-     netfq            daily1      daily2            daily3       
- Min.   : 1.000   Min.   :0   Min.   :0.00000   Min.   :0.00000  
- 1st Qu.: 1.000   1st Qu.:0   1st Qu.:0.00000   1st Qu.:0.00000  
- Median : 1.000   Median :0   Median :0.00000   Median :0.00000  
- Mean   : 2.932   Mean   :0   Mean   :0.02022   Mean   :0.04044  
- 3rd Qu.: 3.000   3rd Qu.:0   3rd Qu.:0.00000   3rd Qu.:0.00000  
- Max.   :10.000   Max.   :0   Max.   :1.00000   Max.   :1.00000  
-     daily4            daily5             daily6            daily7        
- Min.   :0.00000   Min.   :0.000000   Min.   :0.00000   Min.   :0.000000  
- 1st Qu.:0.00000   1st Qu.:0.000000   1st Qu.:0.00000   1st Qu.:0.000000  
- Median :0.00000   Median :0.000000   Median :0.00000   Median :0.000000  
- Mean   :0.05677   Mean   :0.009331   Mean   :0.03266   Mean   :0.002333  
- 3rd Qu.:0.00000   3rd Qu.:0.000000   3rd Qu.:0.00000   3rd Qu.:0.000000  
- Max.   :1.00000   Max.   :1.000000   Max.   :1.00000   Max.   :1.000000  
-     daily8            daily9           daily10           daily11      
- Min.   :0.00000   Min.   :0.00000   Min.   :0.00000   Min.   :0.0000  
- 1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.0000  
- Median :0.00000   Median :0.00000   Median :0.00000   Median :0.0000  
- Mean   :0.01711   Mean   :0.07854   Mean   :0.02722   Mean   :0.1089  
- 3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.0000  
- Max.   :1.00000   Max.   :1.00000   Max.   :1.00000   Max.   :1.0000  
-    daily12          daily13           daily14     daily15     daily16 
- Min.   :0.0000   Min.   :0.00000   Min.   :0   Min.   :0   Min.   :0  
- 1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0   1st Qu.:0   1st Qu.:0  
- Median :0.0000   Median :0.00000   Median :0   Median :0   Median :0  
- Mean   :0.0451   Mean   :0.01788   Mean   :0   Mean   :0   Mean   :0  
- 3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0   3rd Qu.:0   3rd Qu.:0  
- Max.   :1.0000   Max.   :1.00000   Max.   :0   Max.   :0   Max.   :0  
-    daily17     daily18           daily19           daily20       
- Min.   :0   Min.   :0.00000   Min.   :0.00000   Min.   :0.00000  
- 1st Qu.:0   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.00000  
- Median :0   Median :0.00000   Median :0.00000   Median :0.00000  
- Mean   :0   Mean   :0.07309   Mean   :0.03266   Mean   :0.02566  
- 3rd Qu.:0   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.00000  
- Max.   :0   Max.   :1.00000   Max.   :1.00000   Max.   :1.00000  
-    daily21          daily22          daily23          daily24      
- Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
- Median :0.0000   Median :0.0000   Median :0.0000   Median :1.0000  
- Mean   :0.1477   Mean   :0.1695   Mean   :0.1695   Mean   :0.5739  
- 3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:1.0000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
-    daily25            sunday1           sunday2           sunday3       
- Min.   :0.000000   Min.   :0.00000   Min.   :0.00000   Min.   :0.00000  
- 1st Qu.:0.000000   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.00000  
- Median :0.000000   Median :0.00000   Median :0.00000   Median :0.00000  
- Mean   :0.001555   Mean   :0.02722   Mean   :0.05832   Mean   :0.01011  
- 3rd Qu.:0.000000   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.00000  
- Max.   :1.000000   Max.   :1.00000   Max.   :1.00000   Max.   :1.00000  
-    sunday4           sunday5           sunday6           sunday7        
- Min.   :0.00000   Min.   :0.00000   Min.   :0.00000   Min.   :0.000000  
- 1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.00000   1st Qu.:0.000000  
- Median :0.00000   Median :0.00000   Median :0.00000   Median :0.000000  
- Mean   :0.01011   Mean   :0.04899   Mean   :0.03188   Mean   :0.009331  
- 3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.00000   3rd Qu.:0.000000  
- Max.   :1.00000   Max.   :1.00000   Max.   :1.00000   Max.   :1.000000  
-    sunday8          sunday9     sunday10        sunday11      
- Min.   :0.0000   Min.   :0   Min.   :0.000   Min.   :0.00000  
- 1st Qu.:0.0000   1st Qu.:0   1st Qu.:0.000   1st Qu.:0.00000  
- Median :0.0000   Median :0   Median :0.000   Median :0.00000  
- Mean   :0.0311   Mean   :0   Mean   :0.014   Mean   :0.03266  
- 3rd Qu.:0.0000   3rd Qu.:0   3rd Qu.:0.000   3rd Qu.:0.00000  
- Max.   :1.0000   Max.   :0   Max.   :1.000   Max.   :1.00000  
-    sunday12    sunday13           sunday14           sunday15     
- Min.   :0   Min.   :0.000000   Min.   :0.000000   Min.   :0.0000  
- 1st Qu.:0   1st Qu.:0.000000   1st Qu.:0.000000   1st Qu.:0.0000  
- Median :0   Median :0.000000   Median :0.000000   Median :0.0000  
- Mean   :0   Mean   :0.002333   Mean   :0.006221   Mean   :0.0591  
- 3rd Qu.:0   3rd Qu.:0.000000   3rd Qu.:0.000000   3rd Qu.:0.0000  
- Max.   :0   Max.   :1.000000   Max.   :1.000000   Max.   :1.0000  
-    sunday16         sunday17          sunday18        sunday19     
- Min.   :0.0000   Min.   :0.00000   Min.   :0.000   Min.   :0.0000  
- 1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.000   1st Qu.:0.0000  
- Median :0.0000   Median :0.00000   Median :0.000   Median :1.0000  
- Mean   :0.1128   Mean   :0.09098   Mean   :0.105   Mean   :0.7092  
- 3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0.000   3rd Qu.:1.0000  
- Max.   :1.0000   Max.   :1.00000   Max.   :1.000   Max.   :1.0000  
-    sunday20            press1            press2         broadsheet1    
- Min.   :0.000000   Min.   :-1.0000   Min.   :-1.0000   Min.   :0.0000  
- 1st Qu.:0.000000   1st Qu.:-1.0000   1st Qu.:-1.0000   1st Qu.:0.0000  
- Median :0.000000   Median :-1.0000   Median :-1.0000   Median :0.0000  
- Mean   :0.002333   Mean   :-0.4635   Mean   :-0.2846   Mean   :0.1477  
- 3rd Qu.:0.000000   3rd Qu.: 0.0000   3rd Qu.: 1.0000   3rd Qu.:0.0000  
- Max.   :1.000000   Max.   : 1.0000   Max.   : 1.0000   Max.   :1.0000  
-  broadsheet2      broadsheet3        popular1         popular2     
- Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000  
- 1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:0.0000  
- Median :0.0000   Median :0.0000   Median :0.0000   Median :0.0000  
- Mean   :0.1128   Mean   :0.1765   Mean   :0.3072   Mean   :0.2465  
- 3rd Qu.:0.0000   3rd Qu.:0.0000   3rd Qu.:1.0000   3rd Qu.:0.0000  
- Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
-    popular3         popular4        popular5           sex       
- Min.   :0.0000   Min.   :0.000   Min.   :0.0000   Min.   :1.000  
- 1st Qu.:0.0000   1st Qu.:0.000   1st Qu.:0.0000   1st Qu.:1.000  
- Median :0.0000   Median :0.000   Median :0.0000   Median :1.000  
- Mean   :0.1858   Mean   :0.339   Mean   :0.2838   Mean   :1.491  
- 3rd Qu.:0.0000   3rd Qu.:1.000   3rd Qu.:1.0000   3rd Qu.:2.000  
- Max.   :1.0000   Max.   :1.000   Max.   :1.0000   Max.   :2.000  
-      age          agegroups         numage          class      
- Min.   :1.000   Min.   :1.000   Min.   : 0.00   Min.   :1.000  
- 1st Qu.:2.000   1st Qu.:2.000   1st Qu.:32.00   1st Qu.:2.000  
- Median :4.000   Median :4.000   Median :48.00   Median :2.000  
- Mean   :4.086   Mean   :3.857   Mean   :48.17   Mean   :2.474  
- 3rd Qu.:6.000   3rd Qu.:5.000   3rd Qu.:64.00   3rd Qu.:4.000  
- Max.   :7.000   Max.   :7.000   Max.   :95.00   Max.   :4.000  
-     sgrade           work             gor              qual      
- Min.   :1.000   Min.   : 1.000   Min.   : 1.000   Min.   :1.000  
- 1st Qu.:3.000   1st Qu.: 1.000   1st Qu.: 3.000   1st Qu.:2.000  
- Median :3.000   Median : 5.000   Median : 6.000   Median :4.000  
- Mean   :3.541   Mean   : 4.851   Mean   : 6.212   Mean   :3.924  
- 3rd Qu.:5.000   3rd Qu.: 8.000   3rd Qu.: 9.000   3rd Qu.:6.000  
- Max.   :6.000   Max.   :12.000   Max.   :11.000   Max.   :9.000  
-     ethnic         ethnicity          party             cie       
- Min.   :-1.000   Min.   : 1.000   Min.   :-1.000   Min.   :1.000  
- 1st Qu.: 1.000   1st Qu.: 1.000   1st Qu.: 1.000   1st Qu.:1.000  
- Median : 1.000   Median : 1.000   Median : 2.000   Median :1.000  
- Mean   : 1.193   Mean   : 3.438   Mean   : 3.332   Mean   :1.337  
- 3rd Qu.: 1.000   3rd Qu.: 4.000   3rd Qu.: 5.000   3rd Qu.:2.000  
- Max.   : 2.000   Max.   :20.000   Max.   :11.000   Max.   :2.000  
-     wrkcie           income          tenure          tennet      
- Min.   : 1.000   Min.   : 1.00   Min.   :1.000   Min.   :-1.000  
- 1st Qu.: 1.000   1st Qu.: 9.00   1st Qu.:1.000   1st Qu.: 1.000  
- Median : 2.000   Median :13.00   Median :2.000   Median : 1.000  
- Mean   : 4.026   Mean   :12.12   Mean   :2.486   Mean   : 1.319  
- 3rd Qu.: 8.000   3rd Qu.:17.00   3rd Qu.:4.000   3rd Qu.: 2.000  
- Max.   :12.000   Max.   :17.00   Max.   :7.000   Max.   : 2.000  
-     lstage           maritl          numhhd          numkid     
- Min.   :-1.000   Min.   :1.000   Min.   :1.000   Min.   :-1.00  
- 1st Qu.: 3.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:-1.00  
- Median : 4.000   Median :2.000   Median :2.000   Median : 1.00  
- Mean   : 3.217   Mean   :2.872   Mean   :2.735   Mean   : 2.74  
- 3rd Qu.: 4.000   3rd Qu.:4.000   3rd Qu.:4.000   3rd Qu.: 4.00  
- Max.   : 4.000   Max.   :7.000   Max.   :6.000   Max.   :11.00  
-    numkid2         numkid31         numkid32          numkid33     
- Min.   :1.000   Min.   :0.0000   Min.   :0.00000   Min.   :0.0000  
- 1st Qu.:1.000   1st Qu.:0.0000   1st Qu.:0.00000   1st Qu.:0.0000  
- Median :2.000   Median :0.0000   Median :0.00000   Median :0.0000  
- Mean   :1.713   Mean   :0.1198   Mean   :0.06921   Mean   :0.1065  
- 3rd Qu.:2.000   3rd Qu.:0.0000   3rd Qu.:0.00000   3rd Qu.:0.0000  
- Max.   :2.000   Max.   :1.0000   Max.   :1.00000   Max.   :1.0000  
-    numkid34       numkid35         numkid36      wts        
- Min.   :0.00   Min.   :0.0000   Min.   :0   Min.   :0.1448  
- 1st Qu.:0.00   1st Qu.:0.0000   1st Qu.:0   1st Qu.:0.5779  
- Median :0.00   Median :1.0000   Median :0   Median :0.8539  
- Mean   :0.14   Mean   :0.7131   Mean   :0   Mean   :1.0000  
- 3rd Qu.:0.00   3rd Qu.:1.0000   3rd Qu.:0   3rd Qu.:1.3021  
- Max.   :1.00   Max.   :1.0000   Max.   :0   Max.   :4.4802  
+[1] "Min.   : 1.000  " "1st Qu.: 2.000  " "Median : 4.000  "
+[4] "Mean   : 5.583  " "3rd Qu.:10.000  " "Max.   :11.000  "
 ~~~
 {: .output}
 
@@ -1347,7 +531,7 @@ SN7577_tab[3, ]    # all of the columns in the 3rd row of the data.frame (as a d
 #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
 #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
 #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
-#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, ...
+#   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
 ~~~
 {: .output}
 
@@ -1402,15 +586,165 @@ RStudio knows about the columns in your data.frame, so you can take advantage of
 >
 > > ## Solution
 > >
+> > 
+> > ~~~
 > > SN7577_200 <- SN7577_tab[200, ]
 > > SN7577_200
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 1 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1    10    10     9     9     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
 > > SN7577_last <- SN7577_tab[nrow(SN7577_tab), ]
 > > SN7577_last
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 1 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1    10     6     6     6     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
 > > SN7577_middle <- SN7577_tab[nrow(SN7577_tab)/2, ]
 > > SN7577_middle
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 1 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1    10     4     1     3     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
 > > SN7577_head <- SN7577_tab[-c(7:nrow(SN7577_tab)), ]
 > > SN7577_head
-> > ```
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > # A tibble: 6 x 202
+> >      Q1    Q2    Q3    Q4  Q5ai Q5aii Q5aiii Q5aiv  Q5av Q5avi Q5avii
+> >   <int> <int> <int> <int> <int> <int>  <int> <int> <int> <int>  <int>
+> > 1     1    -1     1     8     0     0      0     1     0     0      0
+> > 2     3    -1     1     4     0     0      0     0     0     0      0
+> > 3    10     3     2     6     0     0      0     0     0     0      0
+> > 4     9    -1    10    10     0     0      0     0     0     0      0
+> > 5    10     2     6     1     0     0      0     1     0     0      0
+> > 6     1    -1     1     1     0     0      0     0     0     0      0
+> > # ... with 191 more variables: Q5aviii <int>, Q5aix <int>, Q5ax <int>,
+> > #   Q5axi <int>, Q5axii <int>, Q5axiii <int>, Q5axiv <int>, Q5axv <int>,
+> > #   Q5bi <int>, Q5bii <int>, Q5biii <int>, Q5biv <int>, Q5bv <int>,
+> > #   Q5bvi <int>, Q5bvii <int>, Q5bviii <int>, Q5bix <int>, Q5bx <int>,
+> > #   Q5bxi <int>, Q5bxii <int>, Q5bxiii <int>, Q5bxiv <int>, Q5bxv <int>,
+> > #   Q6 <int>, Q7a <int>, Q7b <int>, Q8 <int>, Q9 <int>, Q10a <int>,
+> > #   Q10b <int>, Q10c <int>, Q10d <int>, Q11a <int>, Q11b <int>,
+> > #   Q12a <int>, Q12b <int>, Q13i <int>, Q13ii <int>, Q13iii <int>,
+> > #   Q13iv <int>, Q14 <int>, Q15 <int>, Q16a <int>, Q16b <int>, Q16c <int>,
+> > #   Q16d <int>, Q16e <int>, Q16f <int>, Q16g <int>, Q16h <int>,
+> > #   Q17a <int>, Q17b <int>, Q17c <int>, Q17d <int>, Q17e <int>,
+> > #   Q17f <int>, Q17g <int>, Q18ai <int>, Q18aii <int>, Q18aiii <int>,
+> > #   Q18aiv <int>, Q18av <int>, Q18avi <int>, Q18avii <int>,
+> > #   Q18aviii <int>, Q18aix <int>, Q18bi <int>, Q18bii <int>,
+> > #   Q18biii <int>, Q18biv <int>, Q18bv <int>, Q18bvi <int>, Q18bvii <int>,
+> > #   Q18bviii <int>, Q18bix <int>, Q19a <int>, Q19b <int>, Q19c <int>,
+> > #   Q19d <int>, access1 <int>, access2 <int>, access3 <int>,
+> > #   access4 <int>, access5 <int>, access6 <int>, access7 <int>,
+> > #   web1 <int>, web2 <int>, web3 <int>, web4 <int>, web5 <int>,
+> > #   web6 <int>, web7 <int>, web8 <int>, web9 <int>, web10 <int>,
+> > #   web11 <int>, web12 <int>, web13 <int>, web14 <int>, …
+> > ~~~
+> > {: .output}
 > >
 > {: .solution}
 {: .challenge}
@@ -1635,7 +969,7 @@ plot(SAFI_results$C01_respondent_roof_type)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
 
 
 The bar chart plot appears in the plots pane. In this case there are the expected 3 bars one for each differnet roof type. Using simple plots like this gives a quick indication of the spread of the data.
@@ -1712,13 +1046,6 @@ Within this library there are a set of appropriately named functions to extract 
 library(lubridate)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Warning: package 'lubridate' was built under R version 3.4.2
-~~~
-{: .error}
 
 
 
