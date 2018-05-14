@@ -72,8 +72,8 @@ load into memory the content of the CSV file as an object of class `data.frame`.
 
 
 ~~~
-download.file("/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
-    "data/interviews.csv")
+download.file("https://github.com/ErinBecker/r-socialsci/blob/gh-pages/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
+"interviews.csv")
 ~~~
 {: .language-r}
 
@@ -81,15 +81,15 @@ You are now ready to load the data:
 
 
 ~~~
-interviews <- read.csv("data/interviews.csv")
+interviews <- read.csv("interviews.csv")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Warning in file(file, "rt"): cannot open file 'data/interviews.csv': No
-such file or directory
+Warning in file(file, "rt"): cannot open file 'interviews.csv': No such
+file or directory
 ~~~
 {: .error}
 
@@ -161,7 +161,7 @@ vectors, each column must contain a single type of data (e.g., characters, integ
 factors). For example, here is a figure depicting a data frame comprising a
 numeric, a character, and a logical vector.
 
-![](./img/data-frame.svg)
+![](./fig/data-frame.svg)
 
 
 We can see this when inspecting the <b>str</b>ucture of a data frame
