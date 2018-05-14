@@ -67,7 +67,7 @@ SN7577 <- read_csv("data/SN7577.csv")
 
 
 ~~~
-Error: 'data/SN7577.csv' does not exist in current working directory ('/Users/ebecker/Box Sync/Carpentry_repos/datacarpentry-lessons/socialsci/r-socialsci/_episodes_rmd').
+Error in read_csv("data/SN7577.csv"): could not find function "read_csv"
 ~~~
 {: .error}
 

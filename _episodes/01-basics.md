@@ -603,7 +603,7 @@ Vectors are one of the many **data structures** that R uses. Other important
 ones are lists (`list`), matrices (`matrix`), data frames (`data.frame`),
 factors (`factor`) and arrays (`array`).
 
-> ## Challenge
+> ## Exercise
 >
 >
 > We’ve seen that atomic vectors can be of type character,
@@ -849,7 +849,7 @@ possessions[possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat")]
 ~~~
 {: .output}
 
-> ## Challenge (optional)
+> ## Exercise (optional)
 >
 > * Can you figure out why `"four" > "five"` returns `TRUE`?
 >
@@ -979,7 +979,7 @@ rooms[complete.cases(rooms)]
 {: .output}
 Recall that you can use the `typeof()` function to find the type of your atomic vector.
 
-> ## Challenge
+> ## Exercise
 >
 > 1. Using this vector of rooms, create a new vector with the NAs removed.
 >
