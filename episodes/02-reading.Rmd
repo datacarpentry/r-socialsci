@@ -72,7 +72,7 @@ that contains the survey data from Figshare, and we will use `read.csv()` to
 load into memory the content of the CSV file as an object of class `data.frame`.
 
 ```{r, eval=FALSE, purl=TRUE}
-download.file("download.file("/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
+download.file("/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
     "data/interviews.csv")
 ```
 

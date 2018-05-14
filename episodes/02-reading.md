@@ -72,7 +72,8 @@ load into memory the content of the CSV file as an object of class `data.frame`.
 
 
 ~~~
-download.file("FIXME")
+download.file("/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
+    "data/interviews.csv")
 ~~~
 {: .language-r}
 
@@ -80,14 +81,14 @@ You are now ready to load the data:
 
 
 ~~~
-interviews <- read.csv("data/SAFI_for_R.csv")
+interviews <- read.csv("data/interviews.csv")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Warning in file(file, "rt"): cannot open file 'data/SAFI_for_R.csv': No
+Warning in file(file, "rt"): cannot open file 'data/interviews.csv': No
 such file or directory
 ~~~
 {: .error}
