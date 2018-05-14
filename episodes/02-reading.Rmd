@@ -72,14 +72,14 @@ that contains the survey data from Figshare, and we will use `read.csv()` to
 load into memory the content of the CSV file as an object of class `data.frame`.
 
 ```{r, eval=FALSE, purl=TRUE}
-download.file("/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
-    "data/interviews.csv")
+download.file("https://github.com/ErinBecker/r-socialsci/blob/gh-pages/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
+"interviews.csv")
 ```
 
 You are now ready to load the data:
 
 ```{r, eval=TRUE,  purl=FALSE}
-interviews <- read.csv("data/interviews.csv")
+interviews <- read.csv("interviews.csv")
 ```
 
 This statement doesn't produce any output because, as you might recall,
@@ -128,7 +128,7 @@ vectors, each column must contain a single type of data (e.g., characters, integ
 factors). For example, here is a figure depicting a data frame comprising a
 numeric, a character, and a logical vector.
 
-![](./img/data-frame.svg)
+![](./fig/data-frame.svg)
 
 
 We can see this when inspecting the <b>str</b>ucture of a data frame
