@@ -1,6 +1,6 @@
 ---
 title: "Introducing dplyr and tidyr"
-teaching: 30
+teaching: 45
 exercises: 20
 questions:
 - "How can I select specific rows and/or columns from a data frame?"
@@ -676,19 +676,23 @@ re-generate them.
 In preparation for our next lesson on plotting, we are going to create a
 version of the dataset where each of the columns includes only one
 data value. To do this, we will use spread to expand the
-`months_no_water` and `items_owned` columns. We've already done each of
-these steps in the exercises above. We will now combine those steps into a single data frame.
+`months_lack_food` and `items_owned` columns. We will also create a couple of summary columns.
 
 ```{r, purl=FALSE}
 interviews_plotting <- interviews %>%
+# spread data by items_owned
 mutate(split_items = strsplit(items_owned, ";")) %>%
 unnest() %>%
 mutate(dummy = TRUE) %>%
 spread(key = split_items, value = dummy, fill = FALSE) %>%
-mutate(split_months = strsplit(months_no_water, ";")) %>%
+# spread data by months_lack_food
+mutate(split_months = strsplit(months_lack_food, ";")) %>%
 unnest() %>%
 mutate(dummy = TRUE) %>%
-spread(key = split_months, value = dummy, fill = FALSE)
+spread(key = split_months, value = dummy, fill = FALSE) %>%
+# add some summary columns
+mutate(number_months_lack_food = rowSums(select(., Apr:Sept))) %>%
+mutate(number_items = rowSums(select(., bicycle:television)))
 ```
 
 Now we can save this data frame to our `data_output` directory.
