@@ -1,0 +1,115 @@
+---
+title: "Introducing dplyr and tidyr"
+teaching: 30
+exercises: 20
+questions:
+- "How can I select specific rows and/or columns from a data frame?"
+- "How can I combine multiple commands into a single command?"
+- "How can create new columns or remove existing columns from a data frame?"
+- "How can I reformat a dataframe to meet my needs?"
+objectives:
+- "Describe the purpose of the **`dplyr`** and **`tidyr`** packages."
+- "Select certain columns in a data frame with the **`dplyr`** function `select`."
+- "Select certain rows in a data frame according to filtering conditions with the **`dplyr`** function `filter` ."
+- "Link the output of one **`dplyr`** function to the input of another function with the 'pipe' operator `%>%`."
+- "Add new columns to a data frame that are functions of existing columns with `mutate`."
+- "Use the split-apply-combine concept for data analysis."
+- "Use `summarize`, `group_by`, and `count` to split a data frame into groups of observations, apply a summary statistics for each group, and then combine the results."
+- "Describe the concept of a wide and a long table format and for which purpose those formats are useful."
+- "Describe what key-value pairs are."
+- "Reshape a data frame from long to wide format and back with the `spread` and `gather` commands from the **`tidyr`** package.
+- "Export a data frame to a .csv file."
+keypoints:
+- "Use the `dplyr` package to manipulate dataframes."
+- "Use `select()` to choose variables from a dataframe."
+- "Use `filter()` to choose data based on values."
+- "Use `group_by()` and `summarize()` to work with subsets of data."
+- "Use `mutate()` to create new variables."
+- "Use the `tidyr` package to change the layout of dataframes."
+- "Use `gather()` to go from wide to long format."
+- "Use `spread()` to go from long to wide format."
+---
+
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("03-")
+```
+
+```{r, echo=FALSE, purl=FALSE, message = FALSE}
+source("setup.R")
+interviews <- read.csv("data/interviews.csv")
+```
+
+# Data Manipulation using **`dplyr`** and **`tidyr`**
+
+Bracket subsetting is handy, but it can be cumbersome and difficult to read,
+especially for complicated operations. Enter **`dplyr`**. **`dplyr`** is a package for
+making tabular data manipulation easier. It pairs nicely with **`tidyr`** which enables you to swiftly convert between different data formats for plotting and analysis.
+
+Packages in R are basically sets of additional functions that let you do more
+stuff. The functions we've been using so far, like `str()` or `data.frame()`,
+come built into R; packages give you access to more of them. Before you use a
+package for the first time you need to install it on your machine, and then you
+should import it in every subsequent R session when you need it. You should
+already have installed the **`tidyverse`** package. This is an
+"umbrella-package" that installs several packages useful for data analysis which
+work together well such as **`tidyr`**, **`dplyr`**, **`ggplot2`**, **`tibble`**, etc.
+
+
+The **`tidyverse`** package tries to address 3 common issues that arise when
+doing data analysis with some of functions that come with R:
+
+1. The results from a base R function sometimes depend on the type of data.
+2. Using R expressions in a non standard way, which can be confusing for new
+learners.
+3. Hidden arguments, having default operations that new learners are not aware
+of.
+
+We have seen in our previous lesson that when building or importing a data frame, the columns that contain characters (i.e., text) are coerced (=converted) into the `factor` data type. We had to set **`stringsAsFactors`** to **`FALSE`** to avoid this hidden argument to convert our data type.
+
+This time will use the **`tidyverse`** package to read the data and avoid having to set **`stringsAsFactors`** to **`FALSE`**
+
+To load the package type:
+
+
+```{r, message = FALSE, purl = FALSE}
+## load the tidyverse packages, incl. dplyr
+library("tidyverse")
+```
+
+## What are **`dplyr`** and **`tidyr`**?
+
+The package **`dplyr`** provides easy tools for the most common data manipulation
+tasks. It is built to work directly with data frames, with many common tasks
+optimized by being written in a compiled language (C++). An additional feature is the
+ability to work directly with data stored in an external database. The benefits of
+doing this are that the data can be managed natively in a relational database,
+queries can be conducted on that database, and only the results of the query are
+returned.
+
+This addresses a common problem with R in that all operations are conducted
+in-memory and thus the amount of data you can work with is limited by available
+memory. The database connections essentially remove that limitation in that you
+can connect to a database of many hundreds of GB, conduct queries on it directly, and pull
+back into R only what you need for analysis.
+
+The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
+
+To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
+[handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+
+We'll read in our data using the `read_csv()` function, from the tidyverse package **`readr`**, instead of `read.csv()`.
+
+
+```{r, results = 'hide', purl = FALSE}
+interviews <- read_csv("data/interviews.csv")
+
+## inspect the data
+str(interviews)
+
+## preview the data
+# View(interviews)
+```
+
+Notice that the class of the data is now `tbl_df`
