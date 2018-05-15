@@ -1,0 +1,532 @@
+---
+title: "Reading text files"
+teaching: 20
+exercises: 15
+questions:
+- "What is a data.frame?"
+- "How can I read a complete csv file into R?"
+- "How can I get basic summary information about my dataset?"
+- "How can I change the way R treats strings in my dataset?"
+- "Why would I want strings to be treated differently?"
+- "How are dates represented in R and how can I change the format?"
+objectives:
+- "Describe what a data frame is."
+- "Load external data from a .csv file into a data frame."
+- "Summarize the contents of a data frame."
+- "Describe the difference between a factor and a string."
+- "Convert between strings and factors."
+- "Reorder and rename factors."
+- "Change how character strings are handled in a data frame."
+- "Examine and change date formats."
+
+keypoints:
+- "Use read.csv to read tabular data in R."
+- "Use factors to represent categorical data in R."
+---
+
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("02-")
+```
+
+## Presentation of the SAFI Data
+
+SAFI (Studying African Farmer-Led Irrigation) is a study looking at farming
+and irrigation methods in Tanzania and Mozambique. The survey data
+was collected through interviews conducted between November 2016 and
+June 2017. For this lesson, we will be using a subset of the
+available data. For information about the full teaching dataset used
+in other lessons in this workshop, see the
+[dataset description](https://www.datacarpentry.org/socialsci-workshop/data/).
+
+We will be using a subset of the cleaned version of the dataset that
+was produced through cleaning in OpenRefine. Each row holds
+information for a single interview respondent, and the columns
+represent:
+
+| column_name | description |
+| ----------- | ----------- |
+| key_id | Added to provide a unique Id for each observation. (The InstanceID field does this as well but it is not as convenient to use) |
+| interview_date | Date of interview |
+| village | Village name |
+| years_farm | Number of years the household have been farming in this area |
+| no_membrs | How many members in the household? |
+| years_liv | How many years have you been living in this village or neighboring village? |
+| respondent_roof_type | What type of roof does their house have? |
+| respondent_wall_type | What type of walls does their house have (from list) |
+| buildings_in_compound | How many buildings are in the compound?  Do not include stores, toilets or temporary structures. |
+| no_plots | How many plots were cultivated in the last 12 months? |
+| water_use | Do you bring water to your fields, stop water leaving your fields or drain water out of any of your fields? |
+| affect_conflicts | Have you been affected by conflicts with other irrigators in the area? |
+| du_labour | In the most recent cultivation season, did anyone in the household undertake day labour work on other farm? |
+| items_owned | Which of the following items are owned by the household? (list) |
+| no_meals | How many meals do people in your household normally eat in a day? |
+| months_lack_food | Indicate which months, In the last 12 months have you faced a situation when you did not have enough food to feed the household? |
+| no_food_mitigation | When you have faced such a situation what do you do? |
+| gps_Latitude | Location latitude (provided by smartphone) |
+| gps_Longitude | Location longitude (provided by smartphone) |
+
+We are going to use the R function `download.file()` to download the CSV file
+that contains the survey data from Figshare, and we will use `read.csv()` to
+load into memory the content of the CSV file as an object of class `data.frame`.
+
+```{r, eval=FALSE, purl=TRUE}
+download.file("https://github.com/ErinBecker/r-socialsci/blob/gh-pages/data/SAFI_cleaned_from_OpenRefine_subset.csv?raw=TRUE",
+"interviews.csv")
+```
+
+You are now ready to load the data:
+
+```{r, eval=TRUE,  purl=FALSE}
+interviews <- read.csv("interviews.csv")
+```
+
+This statement doesn't produce any output because, as you might recall,
+assignments don't display anything. If we want to check that our data has been
+loaded, we can see the contents of the data frame by typing its name: `interviews`.
+
+Wow... that was a lot of output. At least it means the data loaded
+properly. Let's check the top (the first 6 lines) of this data frame using the
+function `head()`:
+
+```{r, results='show', purl=FALSE}
+head(interviews)
+## Try also
+## View(interviews)
+```
+
+> ### Note
+>
+> `read.csv` assumes that fields are delineated by commas, however, in several
+> countries, the comma is used as a decimal separator and the semicolon (;) is
+> used as a field delineator. If you want to read in this type of files in R,
+> you can use the `read.csv2` function. It behaves exactly like `read.csv` but
+> uses different parameters for the decimal and the field separators. If you are
+> working with another format, they can be both specified by the user. Check out
+> the help for `read.csv()` by typing `?read.csv` to learn more. There is also the `read.delim()` for
+> in tab separated data files. It is important to note that all of these functions
+> are actually wrapper functions for the main `read.table()` function with different arguments.
+> As such, the surveys data above could have also been loaded by using `read.table()`
+> with the separation argument as `,`. The code is as follows:
+> `surveys <- read.table(file="FIXME", sep=",", header=TRUE)`.
+> The header argument has to be set to TRUE to be able to read the headers as
+> by default `read.table()` has the header argument set to FALSE.
+
+## What are data frames?
+
+Data frames are the _de facto_ data structure for most tabular data, and what we
+use for statistics and plotting.
+
+A data frame can be created by hand, but most commonly they are generated by the
+functions `read.csv()` or `read.table()`; in other words, when importing
+spreadsheets from your hard drive (or the web).
+
+A data frame is the representation of data in the format of a table where the
+columns are vectors that all have the same length. Because columns are
+vectors, each column must contain a single type of data (e.g., characters, integers,
+factors). For example, here is a figure depicting a data frame comprising a
+numeric, a character, and a logical vector.
+
+![](./fig/data-frame.svg)
+
+
+We can see this when inspecting the <b>str</b>ucture of a data frame
+with the function `str()`:
+
+```{r, purl=FALSE}
+str(surveys)
+```
+
+## Inspecting `data.frame` Objects
+
+We already saw how the functions `head()` and `str()` can be useful to check the
+content and the structure of a data frame. Here is a non-exhaustive list of
+functions to get a sense of the content/structure of the data. Let's try them out!
+
+* Size:
+* `dim(interviews)` - returns a vector with the number of rows in the first element,
+and the number of columns as the second element (the **dim**ensions of
+the object)
+* `nrow(interviews)` - returns the number of rows
+* `ncol(interviews)` - returns the number of columns
+
+* Content:
+* `head(interviews)` - shows the first 6 rows
+* `tail(interviews)` - shows the last 6 rows
+
+* Names:
+* `names(interviews)` - returns the column names (synonym of `colnames()` for `data.frame`
+objects)
+* `rownames(interviews)` - returns the row names
+
+* Summary:
+* `str(interviews)` - structure of the object and information about the class, length and
+content of  each column
+* `summary(interviews)` - summary statistics for each column
+
+Note: most of these functions are "generic", they can be used on other types of
+objects besides `data.frame`.
+
+
+> ## Exercise
+>
+> Based on the output of `str(interviews)`, can you answer the following questions?
+>
+> * What is the class of the object `interviews`?
+> * How many rows and how many columns are in this object?
+> * How many different villages were included in this study?
+>
+> > ## Solution
+> >
+> >  ```{r}
+> >  str(surveys)
+> >  ```
+> >
+> >  * This is an object of class dataframe.
+> >  * There are 131 rows and FIXME columns.
+> >  * There are 3 different villages in the dataset.
+> >  ```
+> {: .solution}
+{: .challenge}
+
+## Indexing and subsetting data frames
+
+Our interviews data frame has rows and columns (it has 2 dimensions), if we want to
+extract some specific data from it, we need to specify the "coordinates" we
+want from it. Row numbers come first, followed by column numbers. However, note
+that different ways of specifying these coordinates lead to results with
+different classes.
+
+
+```{r, purl=FALSE}
+# first element in the first column of the data frame (as a vector)
+interviews[1, 1]
+# first element in the 6th column (as a vector)
+interviews[1, 6]
+# first column of the data frame (as a vector)
+interviews[, 1]
+# first column of the data frame (as a data.frame)
+interviews[1]
+# first three elements in the 7th column (as a vector)
+interviews[1:3, 7]
+# the 3rd row of the data frame (as a data.frame)
+interviews[3, ]
+# equivalent to head_interviews <- head(interviews)
+head_interviews <- interviews[1:6, ]
+```
+
+`:` is a special function that creates numeric vectors of integers in increasing
+or decreasing order, test `1:10` and `10:1` for instance.
+
+You can also exclude certain indices of a data frame using the "`-`" sign:
+
+```{r, purl=FALSE}
+interviews[, -1]          # The whole data frame, except the first column
+interviews[-c(7:131), ] # Equivalent to head(interviews)
+```
+
+Data frames can be subset by calling indices (as shown previously), but also by calling their column names directly:
+
+```{r, eval = FALSE, purl=FALSE}
+interviews["village"]       # Result is a data.frame
+interviews[, "village"]     # Result is a vector
+interviews[["village"]]     # Result is a vector
+interviews$village          # Result is a vector
+```
+
+In RStudio, you can use the autocompletion feature to get the full and correct names of the columns.
+
+> ## Exercise
+>
+> 1. Create a `data.frame` (`interviews_100`) containing only the data in
+>    row 100 of the `surveys` dataset.
+>
+> 2. Notice how `nrow()` gave you the number of rows in a `data.frame`?
+>
+>      * Use that number to pull out just that last row in the data frame.
+>      * Compare that with what you see as the last row using `tail()` to make
+>        sure it's meeting expectations.
+>      * Pull out that last row using `nrow()` instead of the row number.
+>      * Create a new data frame (`interviews_last`) from that last row.
+>
+> 3. Use `nrow()` to extract the row that is in the middle of the data
+>    frame. Store the content of this row in an object named `interviews_middle`.
+>
+> 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
+>    `head(interviews)`, keeping just the first through 6th rows of the interviews
+>    dataset.
+>
+> > ## Solution
+> > ```{r}
+> > ## 1.
+> > interviews_100 <- interviews[100, ]
+> > ## 2.
+> > # Saving `n_rows` to improve readability and reduce duplication
+> > n_rows <- nrow(interviews)
+> > interviews_last <- interviews[n_rows, ]
+> > ## 3.
+> > interviews_middle <- interviews[n_rows / 2, ]
+> > ## 4.
+> > interviews_head <- interviews[-(7:n_rows), ]
+> > ```
+> {: .solution}
+{: .challenge}
+
+
+## Factors
+
+
+When we did `str(interviews)` we saw that several of the columns consist of
+integers. The columns `interview_date`, `village`, `respondent_roof_type`, ... however, are
+of a special class called `factor`. Factors are very useful and actually
+contribute to making R particularly well suited to working with data. So we are
+going to spend a little time introducing them.
+
+Factors represent categorical data. They are stored as integers associated with labels and they can be ordered or unordered. While factors look (and often behave) like character vectors, they are actually treated as integer vectors by R. So you need to be very careful when treating them as strings.
+
+Once created, factors can only contain a pre-defined set of values, known as
+*levels*. By default, R always sorts levels in alphabetical order. For
+instance, if you have a factor with 2 levels:
+
+```{r, purl=TRUE}
+respondent_floor_type <- factor(c("earth", "cement", "cement", "earth"))
+```
+
+R will assign `1` to the level `"cement"` and `2` to the level `"earth"` (because
+`c` comes before `e`, even though the first element in this vector is
+`"earth"`). You can see this by using the function `levels()` and you can find the
+number of levels using `nlevels()`:
+
+```{r, purl=FALSE}
+levels(respondent_floor_type)
+nlevels(respondent_floor_type)
+```
+
+Sometimes, the order of the factors does not matter, other times you might want
+to specify the order because it is meaningful (e.g., "low", "medium", "high"),
+it improves your visualization, or it is required by a particular type of
+analysis. Here, one way to reorder our levels in the `respondent_floor_type` vector would be:
+
+```{r, results=TRUE, purl=FALSE}
+respondent_floor_type # current order
+respondent_floor_type <- factor(respondent_floor_type, levels = c("earth", "cement"))
+respondent_floor_type # after re-ordering
+```
+
+In R's memory, these factors are represented by integers (1, 2, 3), but are more
+informative than integers because factors are self describing: `"cement"`,
+`"earth"` is more descriptive than `1`, `2`. Which one is "earth"?  You wouldn't
+be able to tell just from the integer data. Factors, on the other hand, have
+this information built in. It is particularly helpful when there are many levels.
+
+### Converting factors
+
+If you need to convert a factor to a character vector, you use
+`as.character(x)`.
+
+```{r, purl=FALSE}
+as.character(respondent_floor_type)
+```
+
+Converting factors where the levels appear as numbers (such as concentration
+levels, or years) to a numeric vector is a little trickier. The `as.numeric()`
+function returns the index values of the factor, not its levels, so it will
+result in an entirely new (and unwanted in this case) set of numbers.
+One method to avoid this is to convert factors to characters, and then to numbers.
+Another method is to use the `levels()` function. Compare:
+
+```{r, purl=TRUE}
+year_fct <- factor(c(1990, 1983, 1977, 1998, 1990))
+as.numeric(year_fct)               # Wrong! And there is no warning...
+as.numeric(as.character(year_fct)) # Works...
+as.numeric(levels(year_fct))[year_fct]    # The recommended way.
+```
+
+Notice that in the `levels()` approach, three important steps occur:
+
+* We obtain all the factor levels using `levels(year_fct)`
+* We convert these levels to numeric values using `as.numeric(levels(year_fct))`
+* We then access these numeric values using the underlying integers of the
+vector `year_fct` inside the square brackets
+
+### Renaming factors
+
+When your data is stored as a factor, you can use the `plot()` function to get a
+quick glance at the number of observations represented by each factor
+level. Let's look at the number of interview respondents who were
+or were not members of an irrigation association:
+
+```{r, purl=TRUE}
+## bar plot of the number of interview respondents who were
+## members of irrigation association:
+plot(interviews$memb_assoc)
+```
+
+In addition to "no"s and "yes"s, there are about 40 respondents for which the information about whether they were part of an
+irrigation association hasn't been recorded. Additionally, for these individuals,
+there is no label to indicate that the information is missing or undetermined. Let's rename this
+label to something more meaningful. Before doing that, we're going to pull out
+the data in this column and work with that data, so we're not modifying the working copy
+of the data frame:
+
+```{r, results=TRUE, purl=FALSE}
+memb_assoc <- interviews$memb_assoc
+head(memb_assoc)
+levels(memb_assoc)
+levels(memb_assoc)[2] <- "Undetermined"
+levels(memb_assoc)
+head(memb_assoc)
+```
+
+> ## Exercise
+>
+> * Rename "no" and "yes" to "No" and "Yes" respectively.
+> * Now that we have renamed the factor level to "Undetermined", can you recreate the
+>  barplot such that "Undetermined" is last (after "Yes")?
+>
+> > ## Solution
+> > ```{r}
+> > levels(memb_assoc)[c(1,3)] <- c("No", "Yes")
+> > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
+> > plot(memb_assoc)
+> ```
+> {: .solution}
+{: .challenge}
+
+
+### Using `stringsAsFactors=FALSE`
+
+By default, when building or importing a data frame, the columns that contain
+characters (i.e. text) are coerced (= converted) into factors. Depending on what you want to do with the data, you may want to keep these
+columns as `character`. To do so, `read.csv()` and `read.table()` have an
+argument called `stringsAsFactors` which can be set to `FALSE`.
+
+In most cases, it is preferable to set `stringsAsFactors = FALSE` when importing
+data and to convert as a factor only the columns that require this data
+type.
+
+
+```{r, eval=FALSE, purl=TRUE}
+## Compare the difference between our data read as `factor` vs `character`.
+interviews <- read.csv("data/SAFI_cleaned_from_OpenRefine_subset.csv", stringsAsFactors = TRUE)
+str(interviews)
+interviews <- read.csv("data/SAFI_cleaned_from_OpenRefine_subset.csv", stringsAsFactors = FALSE)
+str(interviews)
+## Convert the column "village" into a factor
+interviews$village <- factor(interviews$village)
+```
+
+> ## Exercise
+>
+> 1. We have seen how data frames are created when using `read.csv()`, but
+>   they can also be created by hand with the `data.frame()` function.  There are
+>   a few mistakes in this hand-crafted `data.frame`. Can you spot and fix them?
+>   Don't hesitate to experiment!
+>
+>     ```{r, eval=FALSE, purl=FALSE}
+>     animal_data <- data.frame(
+>               animal = c(dog, cat, sea cucumber, sea urchin),
+>               feel = c("furry", "squishy", "spiny"),
+>               weight = c(45, 8 1.1, 0.8)
+>               )
+>     ```
+>
+> 2. Can you predict the class for each of the columns in the following example?
+>    Check your guesses using `str(country_climate)`:
+>      * Are they what you expected?  Why? Why not?
+>      * What would have been different if we had added `stringsAsFactors = FALSE` when creating the data frame?
+>      * What would you need to change to ensure that each column had the accurate data type?
+>
+>     ```{r, eval=FALSE, purl=FALSE}
+>     country_climate <- data.frame(
+>            country = c("Canada", "Panama", "South Africa", "Australia"),
+>            climate = c("cold", "hot", "temperate", "hot/temperate"),
+>            temperature = c(10, 30, 18, "15"),
+>            northern_hemisphere = c(TRUE, TRUE, FALSE, "FALSE"),
+>            has_kangaroo = c(FALSE, FALSE, FALSE, 1)
+>            )
+>     ```
+>
+> > ## Solution
+> >
+> >   * missing quotations around the names of the animals
+> >   * missing one entry in the "feel" column (probably for one of the furry animals)
+> >   * missing one comma in the weight column
+> >   * `country`, `climate`, `temperature`, and `northern_hemisphere` are
+> >     factors; `has_kangaroo` is numeric
+> >  * using `stringsAsFactors = FALSE` would have made them character instead of
+> >    factors
+> >  * removing the quotes in temperature and northern_hemisphere and replacing 1
+> >    by TRUE in the `has_kangaroo` column would give what was probably
+> >    intended
+> {: .solution}
+{: .challenge}
+
+The automatic conversion of data type is sometimes a blessing, sometimes an
+annoyance. Be aware that it exists, learn the rules, and double check that data
+you import in R are of the correct type within your data frame. If not, use it
+to your advantage to detect mistakes that might have been introduced during data
+entry (a letter in a column that should only contain numbers for instance).
+
+Learn more in this [RStudio tutorial](https://support.rstudio.com/hc/en-us/articles/218611977-Importing-Data-with-RStudio)
+
+## Formatting Dates
+
+One of the most common issues that new (and experienced!) R users have is
+converting date and time information into a variable that is appropriate and
+usable during analyses. As a reminder from earlier in this lesson, the best
+practice for dealing with date data is to ensure that each component of your
+date is stored as a separate variable. In our dataset, we have a
+column `interview_date` which contains information about the
+year, month, and day that the interview was conducted. Let's
+convert those dates into three separate columns.
+
+```{r, eval=FALSE, purl=FALSE}
+str(interviews)
+```
+We are going to use the package **`lubridate`** (which belongs to the **`tidyverse`**; learn more [here](https://www.tidyverse.org/)) to work with dates. **`lubridate`** gets installed as part as the **`tidyverse`** installation. When you load  the **`tidyverse`** (`library(tidyverse)`), the core packages (the packages used in most data analyses) get loaded. **`lubridate`** however does not belong to the core tidyverse, so you have to load it explicitly with `library(lubridate)`
+
+Start by loading the required package:
+
+```{r load-package, message=FALSE, purl=FALSE}
+library(lubridate)
+```
+
+The lubridate function `ymd()` takes a vector representing year, month, and day, and converts it to a
+`Date` vector. `Date` is a class of data recognized by R as being a date and can
+be manipulated as such. The argument that the function requires is flexible,
+but, as a best practice, is a character vector formatted as "YYYY-MM-DD".
+
+
+Let's extract our `interview_date` column and inspect the structure:
+
+```{r, purl=FALSE}
+dates <- interviews$interview_date
+str(dates)
+```
+Because our `interview_date` column includes time stamps (even
+though all times are recorded as zeros), we will need to use a
+variation of the `ymd()` function called `ymd_hms`. This
+function assumes that the character vector you are trying to convert
+includes hours, minutes, and seconds as well as year, month, and day.
+
+```{r, purl=FALSE}
+dates <- ymd_hms(dates)
+str(dates)
+```
+
+Our `interview_date` column has now been converted from
+character vectors to a POSIXct object. This is a type of date object.
+
+We can now split the year, month, and day into separate columns and add this information back to our data frame:
+
+```{r, purl=FALSE}
+interviews$day = day(dates)
+interviews$month = month(dates)
+interviews$year = year(dates)
+str(interviews)
+```
+Notice the three new columns at the end of our data frame.
+
+
