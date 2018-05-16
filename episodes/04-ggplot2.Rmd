@@ -259,7 +259,18 @@ ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
 geom_bar()
 ```
 
+We can use the `fill` asthetic for the `geom_bar()` geom to color bars by
+the portion of each count that is from each village.
 
+```{r}
+ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
+geom_bar(aes(fill = village))
+```
+
+This creates a stacked bar chart. These are generally more difficult to
+read than side-by-side bars. We can separate the portions of the stacked
+bar that correspond to each village and put them side-by-side by
+using the `position` argument for `geom_bar()` and setting it to "dodge".
 
 
 ```{r}
@@ -267,125 +278,276 @@ ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
 geom_bar(aes(fill = village), position = "dodge")
 ```
 
-
+This is a nicer graphic, but we're more likely to be interested in the
+proportion of each housing type in each village than in the actual
+count of number of houses of each type (because we might have
+sampled different numbers of households in each village). To compare
+proportions, we will first create a new data frame (`percent_wall_type`)
+with a new column named "percent" representing the percent of
+each house type in each village. We will remove houses with
+cement walls, as there was only one in the dataset.
 
 
 ```{r}
 percent_wall_type <- interviews_plotting %>%
 filter(respondent_wall_type != "cement") %>%
-group_by(respondent_wall_type, village) %>%
+group_by(village, respondent_wall_type) %>%
 summarize(count = n()) %>%
 mutate(percent = count / sum(count))
+```
 
+Now we can use this new data frame to create our plot showing the
+percentage of each house type in each village.
+
+```{r}
 ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
 geom_bar(stat = "identity", position = "dodge")
 ```
 
-
-
-
-
-
-
+> ## Exercise
+>
+> Create a bar plot showing the proportion of respondents in each
+> village who are or are not part of an irrigation association
+> (`memb_assoc`). Include only respondents who answered that question
+> in the calculations and plot. Which village had the lowest proportion of
+> respondents in an irrigation association?
+>
+> > ## Solution
+> > ```{r}
+> > percent_memb_assoc <- interviews_plotting %>%
+> > filter(memb_assoc != "NULL") %>%
+> > group_by(village, memb_assoc) %>%
+> > summarize(count = n()) %>%
+> > mutate(percent = count / sum(count))
+> >
+> > ggplot(percent_memb_assoc, aes(x = village, y = percent, fill = memb_assoc)) +
+> > geom_bar(stat = "identity", position = "dodge")
+> > ```
+> >
+> > Ruaca had the lowest proportion of members in an irrigation association.
+> {: .solution}
+{: .challenge}
 
 
 ## Adding Labels and Titles
 
-By default, the axes labels are determined by the name of the variable 
-being plotted. However, `ggplot2` offers lots of cusomization options, 
+By default, the axes labels on a plot are determined by the name of the variable
+being plotted. However, **`ggplot2`** offers lots of cusomization options,
 like specifing the axes labels, and adding a title to the plot with 
-relatively little code.
+relatively few lines of code. We will add more informative x and y axis
+labels to our plot of proportion of house type by village and also add
+a title.
 
 ```{r}
-ggplot(data=SAFI_results, aes(x=factor(C02_respondent_wall_type))) +
-  geom_bar() +
-  ylab("Frequency") +  
-  xlab("Wall Type") +
-  ggtitle("Frequency of SAFI Building Wall Types")
+ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
+    geom_bar(stat = "identity", position = "dodge") +
+    ylab("Percent") +
+    xlab("Wall Type") +
+    ggtitle("Proportion of wall type by village")
 ```
-
-> ## Exercise
->
-> Create a barplot of the number of records for each type of roof (`C01_respondent_roof_type`).
-> Create a barplot of the average number of plots of each village.
-> Provide suitable axes labels and titles for each.
->
-> > ## Solution
-> >
-> > ```{r}
-> > ggplot(data = SAFI_results, aes(x = C01_respondent_roof_type)) +
-> >   geom_bar() +
-> >   xlab("Roof Type") +
-> >   ylab("Frequency") +
-> >   ggtitle("Frequency of SAFI Building Roof Types")
-> >
-> > plots_avs <- SAFI_results %>%
-> >   group_by(A09_village) %>%
-> >   summarise(av=mean(D_plots_count))
-> >
-> > ggplot(data = plots_avs, aes(x = A09_village, y=av)) +
-> >   geom_bar(stat="identity") +
-> >   xlab("Village") +
-> >   ylab("Average Number of Plots") +
-> >   ggtitle("Average Number of Plots by Village")
-> > ```
-> >
-> {: .solution}
-{: .challenge}
 
 ## Faceting
 
-What if, instead of wanting to visualize the frequency of wall types across 
-the entire data set, we wanted to visualize the frequency of wall types by 
-village? One method to do this would be to make a subset of the 
-data for each village and create a plot for each individual subset. But, 
-this would likely be tedious and time-consuming.
+Rather than creating a single plot with side-by-side bars for each
+village, we may want to create multiple plot, where each plot shows the
+data for a single village. This would be especially useful if we had
+a large number of villages that we had sampled, as a large number of
+side-by-side bars will become more difficult to read.
 
-Instead, `ggplot2` has a built-in method of doing this, called *facetting*. The 
-`facet_wrap` function allows the user to split one plot into multiple plots 
-based on a factor included in the dataset.
-
-We'll use this to create a barplot for each village.
+**`ggplot2`** has a special technique called *faceting* that allows the user to split one
+plot into multiple plots based on a factor included in the dataset. We
+will use it to split our barplot of housing type proportion by village
+so that each village has it's own panel in a multi-panel plot:
 
 ```{r}
-ggplot(data = SAFI_results, aes(x = C02_respondent_wall_type)) +
-    geom_bar() +
-    ylab("Frequency") +  
-    xlab("wall Type") +
-    ggtitle("Frequency of SAFI Building Wall Types by Village") +
-  facet_wrap(~ A09_village )
+ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+ylab("Percent") +
+xlab("Wall Type") +
+ggtitle("Proportion of wall type by village") +
+facet_wrap(~ village)
 ```
 
+Click the "Zoom" button in your RStudio plots pane to view a larger
+version of this plot.
+
+Usually plots with white background look more readable when printed.  We can set
+the background to white using the function `theme_bw()`. Additionally, you can remove
+the grid:
+
+```{r, purl=FALSE}
+ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+ylab("Percent") +
+xlab("Wall Type") +
+ggtitle("Proportion of wall type by village") +
+facet_wrap(~ village) +
+theme_bw() +
+theme(panel.grid = element_blank())
+```
+
+What if we wanted to see the proportion of respondents in each village
+who owned a particular item? We can calculate the percent of people
+in each village who own each item and then create a faceted series of
+bar plots where each plot is a particular item. First we need to
+calculate the percentage of people in each village who own each item:
+
+```{r}
+percent_items <- interviews_gather %>%
+group_by(item_owned, village) %>%
+summarize(count = n()) %>%
+# add a column with the number of people in each village
+mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
+village == "God" ~ 43,
+village == "Ruaca" ~ 49)) %>%
+mutate(percent = count / people_in_village)
+```{r}
+
+To calculate this percentage data frame, we needed to use the `case_when()` parameter within `mutate()`. In our earlier examples,
+we knew that each house was one and only one of the types specified.
+However, people can (and do) own more than one item, so we can't use
+the sum of the count column to give us the denominator in our percentage
+calculation. Instead, we need to specify the number of respondents in each
+village. Using this data frame, we can now create a multi-paneled bar plot.
+
+```{r}
+ggplot(percent_items, aes(x = village, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+facet_wrap(~ item_owned) +
+theme_bw() +
+theme(panel.grid = element_blank())
+```
+
+## **`ggplot2`** themes
+
+In addition to `theme_bw()`, which changes the plot background to white, **`ggplot2`**
+comes with several other themes which can be useful to quickly change the look
+of your visualization. The complete list of themes is available
+at <http://docs.ggplot2.org/current/ggtheme.html>. `theme_minimal()` and
+`theme_light()` are popular, and `theme_void()` can be useful as a starting
+point to create a new hand-crafted theme.
+
+The
+[ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html) package
+provides a wide variety of options (including an Excel 2003 theme).
+The [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list
+of packages that extend the capabilities of **`ggplot2`**, including additional
+themes.
+
 > ## Exercise
->
-> Create a facetted set of plots which show the different the different villages use differnet
-> roof types (`C01_respondent_roof_type`) 
-> 
-> For an extra challenge, try to create a facetted set of barplots of the average
-> household size by roof type and village.>
-> > ## Solution
-> >
-> > ```{r}
-> > ggplot(data = SAFI_results, aes(x = C01_respondent_roof_type)) +
-> >   geom_bar() +
-> >   ylab("Frequency") +  
-> >   xlab("Roof Type") +
-> >   ggtitle("Frequency of SAFI Building Roof Types by Village") +
-> >   facet_wrap(~ A09_village)
-> >
-> > # Challenge Solution:
-> > size_avs <- SAFI_results %>%
-> >   group_by(A09_village, C01_respondent_roof_type) %>%
-> >   summarise(av = mean(B_no_membrs))
-> >
-> > ggplot(size_avs, aes(x = C01_respondent_roof_type, y = av)) +
-> >   geom_bar(stat = "identity") +
-> >   xlab("Roof Type") +
-> >   ylab("Average Household Size") +
-> >   ggtitle("Average Household Size with Each Roof Type, by Village") +
-> >   facet_wrap(~ A09_village)
-> > ```
-> >
-> {: .solution}
+> Experiment with at least two different themes. Build the previous plot
+> using each of those themes. Which do you like best?
 {: .challenge}
 
+## Customization
+
+Take a look at the [**`ggplot2`** cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf), and
+think of ways you could improve the plot.
+
+Now, let's change names of axes to something more informative than 'village'
+and 'percent' and add a title to the figure:
+
+```{r, purl=FALSE}
+ggplot(percent_items, aes(x = village, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+facet_wrap(~ item_owned) +
+labs(title = "Percent of respondents in each village who owned each item",
+x = "Village",
+y = "Percent of Respondents") +
+theme_bw()
+```
+
+The axes have more informative names, but their readability can be improved by
+increasing the font size:
+
+```{r number-species-year-with-right-labels-xfont-size, purl=FALSE}
+ggplot(percent_items, aes(x = village, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+facet_wrap(~ item_owned) +
+labs(title = "Percent of respondents in each village who owned each item",
+x = "Village",
+y = "Percent of Respondents") +
+theme_bw() +
+theme(text=element_text(size = 16))
+```
+
+Note that it is also possible to change the fonts of your plots. If you are on
+Windows, you may have to install
+the [**`extrafont`** package](https://github.com/wch/extrafont), and follow the
+instructions included in the README for this package.
+
+After our manipulations, you may notice that the values on the x-axis are still not
+properly readable. Let's change the orientation of the labels and adjust them
+vertically and horizontally so they don't overlap. You can use a 90-degree
+angle, or experiment to find the appropriate angle for diagonally oriented
+labels:
+
+```{r number-species-year-with-theme, purl=FALSE}
+ggplot(percent_items, aes(x = village, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+facet_wrap(~ item_owned) +
+labs(title = "Percent of respondents in each village who owned each item",
+x = "Village",
+y = "Percent of Respondents") +
+theme_bw() +
+theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+axis.text.y = element_text(colour = "grey20", size = 12),
+text = element_text(size = 16))
+```
+
+If you like the changes you created better than the default theme, you can save them as
+an object to be able to easily apply them to other plots you may create:
+
+
+```{r number-species-year-with-right-labels-xfont-orientation, purl=FALSE}
+grey_theme <- theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+axis.text.y = element_text(colour = "grey20", size = 12),
+text = element_text(size = 16))
+
+
+ggplot(percent_items, aes(x = village, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+facet_wrap(~ item_owned) +
+labs(title = "Percent of respondents in each village who owned each item",
+x = "Village",
+y = "Percent of Respondents") +
+grey_theme
+```
+
+> ### Challenge
+>
+> With all of this information in hand, please take another five minutes to
+> either improve one of the plots generated in this exercise or create a
+> beautiful graph of your own. Use the RStudio [**`ggplot2`** cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf)
+> for inspiration. Here are some ideas:
+>
+> * See if you can make the bars white with black outline.
+> * Try using a different color palette (see
+>   http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
+
+After creating your plot, you can save it to a file in your favorite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
+
+Instead, use the `ggsave()` function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`).
+
+Make sure you have the `fig_output/` folder in your working directory.
+
+```{r ggsave-example, eval=FALSE, purl=FALSE}
+my_plot <- ggplot(percent_items, aes(x = village, y = percent)) +
+geom_bar(stat = "identity", position = "dodge") +
+facet_wrap(~ item_owned) +
+labs(title = "Percent of respondents in each village who owned each item",
+x = "Village",
+y = "Percent of Respondents") +
+theme_bw() +
+theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+axis.text.y = element_text(colour = "grey20", size = 12),
+text = element_text(size = 16))
+
+ggsave("fig_output/name_of_file.png", my_plot, width = 15, height = 10)
+```
+
+Note: The parameters `width` and `height` also determine the font size in the saved plot.
+
+
+```{r, child="_page_built_on.Rmd"}
+```
