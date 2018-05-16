@@ -114,7 +114,7 @@ str(interviews)
 
 Notice that the class of the data is now `tbl_df`
 
-This is referred to as a "tibble". Tibbles are data frames, but they tweak some of the old behaviors of data frames. The data structure is very similar to a data frame. For our purposes the only differences are that:
+This is referred to as a "tibble". Tibbles tweak some of the behaviors of the data frame objects we introduced in the previous episode. The data structure is very similar to a data frame. For our purposes the only differences are that:
 
 1. In addition to displaying the data type of each column under its name, it
 only prints the first few rows of data and only as many columns as fit on one
@@ -192,8 +192,8 @@ its right, we don't need to explicitly include the data frame as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
-in the above example, we took the data frame `interviews`, *then* we `filter`ed
-for rows with `village == "God"`, *then* we `select`ed columns `no_membrs` and `years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
+in the above example, we take the data frame `interviews`, *then* we `filter`
+for rows with `village == "God"`, *then* we `select` columns `no_membrs` and `years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
 more complex manipulations of data frames.
 
@@ -208,7 +208,7 @@ select(no_membrs, years_liv)
 interviews_god
 ```
 
-Note that the final data frame is the leftmost part of this expression.
+Note that the final data frame (`interviews_god`) is the leftmost part of this expression.
 
 > ## Exercise
 >
@@ -324,9 +324,7 @@ summarize(mean_no_membrs = mean(no_membrs))
 
 When grouping both by `village` and `membr_assoc`, we see rows in our
 table for respondents who did not specify whether they were a
-member of an irrigation association.
-that escaped before their sex could be determined and weighted.
-We can exclude those data from our table using a filter step.
+member of an irrigation association. We can exclude those data from our table using a filter step.
 
 
 ```{r, purl = FALSE}
@@ -460,7 +458,7 @@ of values of variables associated with each housing material (e.g. for
 of the wall construction materials in `respondent_wall_type` would
 become the names of column variables and the cells would contain "TRUE" or "FALSE".
 
-Having created a new table, it is therefore straightforward to explore the
+Having created a new table, we can now explore the
 relationship within and between household types - for example we could
 compare the ratio of household members to sleeping rooms grouped by
 type of construction material. The key point here is that we are still following a tidy data structure,
@@ -497,7 +495,7 @@ mutate(dummy = TRUE) %>%
 spread(key = respondent_wall_type, value = dummy, fill = FALSE)
 ```
 
-View the `interviews_spread` dataframe and notice that there is no
+View the `interviews_spread` data frame and notice that there is no
 longer a column titled `respondent_wall_type`. This is because
 there is a default parameter in `spread()` that drops the original column.
 
@@ -613,7 +611,7 @@ owned a particular item:
 interviews_items_owned %>%
 filter(bicycle == TRUE) %>%
 group_by(village) %>%
-count(bicycle == TRUE)
+count(bicycle)
 ```
 
 Or calculate the average number of items from the list owned

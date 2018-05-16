@@ -451,7 +451,7 @@ function (..., list = character(), package = NULL, lib.loc = NULL,
     }
     invisible(names)
 }
-<bytecode: 0x7fdc283e6038>
+<bytecode: 0x7fb055613230>
 <environment: namespace:utils>
 ~~~
 {: .output}
