@@ -48,24 +48,19 @@ represent:
 | column_name | description |
 | ----------- | ----------- |
 | key_id | Added to provide a unique Id for each observation. (The InstanceID field does this as well but it is not as convenient to use) |
-| interview_date | Date of interview |
 | village | Village name |
-| years_farm | Number of years the household have been farming in this area |
+| interview_date | Date of interview |
 | no_membrs | How many members in the household? |
 | years_liv | How many years have you been living in this village or neighboring village? |
-| respondent_roof_type | What type of roof does their house have? |
 | respondent_wall_type | What type of walls does their house have (from list) |
-| buildings_in_compound | How many buildings are in the compound?  Do not include stores, toilets or temporary structures. |
-| no_plots | How many plots were cultivated in the last 12 months? |
-| water_use | Do you bring water to your fields, stop water leaving your fields or drain water out of any of your fields? |
+| rooms | How many rooms in the main house are used for sleeping? |
+| memb_assoc | Are you a member of an irrigation association? |
 | affect_conflicts | Have you been affected by conflicts with other irrigators in the area? |
-| du_labour | In the most recent cultivation season, did anyone in the household undertake day labour work on other farm? |
+| liv_count | Number of livestock owned. |
 | items_owned | Which of the following items are owned by the household? (list) |
 | no_meals | How many meals do people in your household normally eat in a day? |
 | months_lack_food | Indicate which months, In the last 12 months have you faced a situation when you did not have enough food to feed the household? |
-| no_food_mitigation | When you have faced such a situation what do you do? |
-| gps_Latitude | Location latitude (provided by smartphone) |
-| gps_Longitude | Location longitude (provided by smartphone) |
+| instanceID | Unique identifier for the form data submission |
 
 We are going to use the R function `download.file()` to download the CSV file
 that contains the survey data from Figshare, and we will use `read.csv()` to
