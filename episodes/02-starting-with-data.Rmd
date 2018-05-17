@@ -1,5 +1,5 @@
 ---
-title: "Reading text files"
+title: "Starting with Data"
 teaching: 20
 exercises: 15
 questions:
