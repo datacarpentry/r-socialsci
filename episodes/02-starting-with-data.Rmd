@@ -423,5 +423,3 @@ interviews
 ```
 
 Notice the three new columns at the end of our data frame.
-
-
