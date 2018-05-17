@@ -14,8 +14,7 @@ hours). They start with some basic information about R syntax, the
 RStudio interface, and move through how to import CSV files, the 
 structure of data frames, how to deal with factors, how to add/remove
 rows and columns, how to calculate summary statistics from a data 
-frame, and a brief introduction to plotting. The last lesson 
-demonstrates how to work with databases directly from R.
+frame, and a brief introduction to plotting.
 
 > ## Getting Started
 >
