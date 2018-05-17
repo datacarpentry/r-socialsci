@@ -3,7 +3,6 @@
 """Initialize a newly-created repository."""
 
 
-from __future__ import print_function
 import sys
 import os
 
@@ -121,7 +120,7 @@ our lessons must run equally well on all three.
 
 If you choose to contribute via GitHub, you may want to look at
 [How to Contribute to an Open Source Project on GitHub][how-contribute].
-To manage changes, we follow [GitHub flow][github-flow]. 
+To manage changes, we follow [GitHub flow][github-flow].
 Each lesson has two maintainers who review issues and pull requests or encourage others to do so.
 The maintainers are community volunteers and have final say over what gets merged into the lesson.
 To use the web interface for contributing to a lesson:
@@ -195,17 +194,20 @@ repository: <USERNAME>/<PROJECT>
 
 # Sites.
 amy_site: "https://amy.software-carpentry.org/workshops"
+carpentries_github: "https://github.com/carpentries"
+carpentries_pages: "https://carpentries.github.io"
+carpentries_site: "https://carpentries.org/"
 dc_site: "http://datacarpentry.org"
-swc_github: "https://github.com/swcarpentry"
-swc_site: "https://software-carpentry.org"
-swc_pages: "https://swcarpentry.github.io"
-lc_site: "https://librarycarpentry.github.io/"
-template_repo: "https://github.com/swcarpentry/styles"
 example_repo: "https://github.com/swcarpentry/lesson-example"
 example_site: "https://swcarpentry.github.com/lesson-example"
+lc_site: "https://librarycarpentry.github.io/"
+swc_github: "https://github.com/swcarpentry"
+swc_pages: "https://swcarpentry.github.io"
+swc_site: "https://software-carpentry.org"
+template_repo: "https://github.com/swcarpentry/styles"
+training_site: "https://swcarpentry.github.io/instructor-training"
 workshop_repo: "https://github.com/swcarpentry/workshop-template"
 workshop_site: "https://swcarpentry.github.io/workshop-template"
-training_site: "https://swcarpentry.github.io/instructor-training"
 
 # Surveys.
 pre_survey: "https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id="
@@ -279,7 +281,7 @@ FIXME
 
 ROOT_AIO_MD = '''\
 ---
-layout: page 
+layout: page
 root: .
 ---
 <script>
