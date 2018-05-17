@@ -26,148 +26,189 @@ knitr_fig_path("00-")
 
 ## R and RStudio
 
-R is an open source programming language originally designed and
-implemented by statisticians primarily for statistical analysis.
-It includes high quality graphics capabilities and tools for basic
-data analysis and reading and writing data to/from files.
+R is an open source programming language originally designed and implemented by
+statisticians primarily for statistical analysis. It includes high quality
+graphics capabilities and tools for data analysis and reading and writing data
+to/from files.
 
-Because R is open source and is supported by a large community of
-developers and users there is a very large selection of third party
-add-on libraries which are freely available and can easily be added
-to the core R system making even more analysis techniques readily
-available.
+Because R is open source and is supported by a large community of developers and
+users there is a very large selection of third-party add-on packages which are
+freely available to extend R's native capabilities.
 
-R is a scripted language. Rather than pointing and clicking in a
-GUI environment you write code statements to ask R to do something
-for you. This has the advantage of providing a permanent record of
-what was done and allows for peer review of the work undertaken.
+R is a scripted language. Rather than pointing and clicking in a graphical
+environment you write code statements to ask R to do something for you. This has
+the advantage of providing a record of what was done and allows for peer review
+of the work undertaken.
 
-Having this written record, something which is increasingly
-required as part of a publication submission, is also an aid when
-seeking help with problems.
+Having this written record, something which is increasingly required as part of
+a publication submission, is also an aid when seeking help with problems.
 
-There are many online resources such as [stackoverflow ](https://stackoverflow.com/questions/tagged/r)
-which will allow you to seek help from the online R community. You
-can search in the normal Internet way of doing things by providing
-keywords in a free format search request, but you can also post
-specific questions. Questions which are backed up with code
-snippets are more likely to attract knowledgeable responses.
+There are many online resources such as
+[stackoverflow](https://stackoverflow.com/questions/tagged/r) and the [RStudio
+Community](https://community.rstudio.com/) which will allow you to seek help
+from peers. Questions which are backed up with [short, reproducible code
+snippets](https://www.tidyverse.org/help/) are more likely to attract knowledgeable responses.
 
-Although R is a scripted language, there is still a place for the
-GUI (Graphical User Interface). The most popular R GUI currently is
-RStudio. We will be using RStudio throughout this lesson. RStudio
-acts as a front-end to the R environment. For this workshop. we
-need to install both R and R Studio.
+To make it easier to interact with R, we will use RStudio. RStudio is the most popular IDE (Integrated Development Interface), to work with R. An IDE is a software that provide tools to make it easier to program. 
 
-In the remainder of this episode we will go through the steps of
-installing first R and then RStudio and finish with a brief tour of
-some of the RStudio facilities.
-
-## Installing R
-
-The latest version of R can be downloaded from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/).
-You will find download links for Linux, Mac and Windows versions of
-R. You should choose the environment appropriate to your machine's
-operating system. In each case you will be guided to a particular
-download for your machine.
-
-Having completed the download, you should install using the normal
-technique for your operating environment. If you are using a
-Windows machine you can double click the downloaded executable
-file.  You can accepts the defaults for all of the option presented by the
-install wizard. By default both the 32 and 64 bit versions of R
-will be installed and icons for them will be available on your
-desktop.
-
-These icons are in fact for a simple R GUI called RGui. It will
-allow you to create and run R Scripts among other things, but it is
-not as sophisticated as RStudio.
-
-## Installing RStudio
-
-
-The latest version of RStudio can be downloaded from the
-[RStudio.com]( https://www.rstudio.com/) website. Like R, there are
-versions for Mac, Linux, and Windows. Select the one you need,
-download the file, and install it in the usual manner for your
-operating system. You can accept the defaults for all of the
-options presented by the install wizard.
-
-In the latest versions of Windows, RStudio is not automatically
-placed on the desktop. To start RStudio in Windows, type ‘RStudio’
-into the search bar by the Windows Start icon in the bottom left
-hand corner of the screen. When the desktop app appears in the list
-of programs you can run it directly by selecting it or you can
-choose to have the icon added to the Start menu or taskbar.
+<figure>
+```{r rstudio-analogy, echo=FALSE, fig.cap="RStudio extends what R can do, and make it easier to write R code and interact with R."}	
+knitr::include_graphics("../fig/r+rstudio-analogy.jpg")
+```
+<figcaption>
+RStudio extends what R can do, and make it easier to write R code and interact
+with R. [Credit photo left
+photo](https://commons.wikimedia.org/w/index.php?curid=2447462), [Credit photo right
+photo](https://commons.wikimedia.org/w/index.php?curid=44599363)
+</figcaption>
+</figure>
 
 ## A tour of RStudio
 
-When you first open RStudio you will be presented with a display
-similar to this;
 
-![Rstudio_startup](../fig/R_00_Rstudio_01.png)
 
-On the righthand side there are two tabbed panes. The pane at the
-top allows you to see either a history of all of the commands which
-have been run previously (it even remembers across sessions).  You
-can select any command and have it copied across into the console
-area on the left from where you can run it again by hitting the
-enter key. The Environment tab allows you to see all of the
-variables which exist in your current session. You can see the
-variable names, see what data types they are and see some of the
-values.  This can be useful for a quick check on variable contents.
-There are a set of R commands which you can run from the console to
-provide more complete information.
+## Knowing your way around RStudio
 
-The bottom pane on the right has five tabs.
+Let's start by learning about [RStudio](https://www.rstudio.com/), which is an
+Integrated Development Environment (IDE) for working with R.
 
-* Files – contents of the current working directory. This defaults in Windows to the Documents folder.  You can change it from the menu items for the tab, or more likely it will change when you create a project with its own folder as we will be doing later.
-* Plots – This tab will display any graphic output you produce. There are forward and back buttons allowing you to see previous plots from the session and there are options to export the graphic to an external file.
-* Packages – This is a list of all of the packages installed in your R environment and an indication of whether they are currently loaded in your RStudio session. There are options for installing additional packages from CRAN or updating existing packages. Both of which will require you to have an Internet connection.
-* Viewer – This is used to display HTML files.
-* Help -  The initial help page provides a set of links to a variety of Help related topics.
+The RStudio IDE open-source product is free under the
+[Affero General Public License (AGPL) v3](https://www.gnu.org/licenses/agpl-3.0.en.html).
+The RStudio IDE is also available with a commercial license and priority email
+support from RStudio, Inc.
 
-![Help](../fig/R_00_Rstudio_02.png).
+We will use RStudio IDE to write code, navigate the files on our computer,
+inspect the variables we are going to create, and visualize the plots we will
+generate. RStudio can also be used for other things (e.g., version control,
+developing packages, writing Shiny apps) that we will not cover during the
+workshop.
 
-These include basic manuals on R  as well as reference materials on
-the installed packages. The RStudio Cheat Sheets are small pdf
-documents which can be downloaded and provide summary information
-on how to use key packages in R like dplyr and ggplot2 both of
-which we will be using extensively in this lesson.
-In the toolbar there is a search text box where you can type what you are looking for.
 
-### Creating a Script file
+## Getting set up
 
-In order to follow along with the examples in this episode you
-should start RStudio and create a new RScript file either from the
-File menu item or the toolbar icon immediately below it. Click the
-save icon on your toolbar and save your script as "datacarpentry-workshop.R".
+It is good practice to keep a set of related data, analyses, and text
+self-contained in a single folder, called the **working directory**. All of the
+scripts within this folder can then use *relative paths* to files that indicate
+where inside the project a file is located (as opposed to absolute paths, which
+point to where a file is on a specific computer). Working this way makes it
+a lot easier to move your project around on your computer and share it with
+others without worrying about whether or not the underlying scripts will still
+work.
 
-Although we will routinely refer to using the console in this
-episode, and you can in fact type all of the code directly into the
-console, we will assume that you will write all of your code to the
-script file first and then select the code and either click the
-'run' button on the toolbar or use the keyboard shortcut of
-'ctrl+Enter' (or 'command+Enter' on Mac).
+RStudio provides a helpful set of tools to do this through its "Projects"
+interface, which not only creates a working directory for you but also remembers
+its location (allowing you to quickly navigate to it) and optionally preserves
+custom settings and open files to make it easier to resume work after a
+break. Below, we will go through the steps for creating an "R Project" for this
+tutorial. First let's take a quick tour of RStudio.
 
-There are shortcut alternatives to many of the RStudio menu and
-toolbar items. The RStudio article
-[Editing and Executing Code](https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code)
+
+![RStudio interface screenshot](img/rstudio-screenshot.png)
+
+RStudio is divided into 4 "Panes": the **Source** for your scripts and documents
+(top-left, in the default layout), the R **Console** (bottom-left), your
+**Environment/History** (top-right), and your
+**Files/Plots/Packages/Help/Viewer** (bottom-right). The placement of these
+panes and their content can be customized (see menu, Tools -> Global Options ->
+Pane Layout). One of the advantages of using RStudio is that all the information
+you need to write code is available in a single window. Additionally, with many
+shortcuts, autocompletion, and highlighting for the major file types you use
+while developing in R, RStudio will make typing easier and less error-prone.
+
+![RStudio_startup](../fig/R_00_Rstudio_01.png)
+
+
+RStudio is divided into 4 "Panes": the **Source** for your scripts and documents
+(top-left, in the default layout), the R **Console** (bottom-left), your
+**Environment/History** (top-right), and your
+**Files/Plots/Packages/Help/Viewer** (bottom-right). The placement of these
+panes and their content can be customized (see menu, Tools -> Global Options ->
+Pane Layout). One of the advantages of using RStudio is that all the information
+you need to write code is available in a single window. Additionally, with many
+shortcuts, autocompletion, and highlighting for the major file types you use
+while developing in R, RStudio will make typing easier and less error-prone.
+
+
+### Create a new project
+
+* Under the `File` menu, click on `New project`, choose `New directory`, then
+  `New project`
+* Enter a name for this new folder (or "directory"), and choose a convenient
+  location for it. This will be your **working directory** for the rest of the
+  day (e.g., `~/data-carpentry`)
+* Click on `Create project`
+* Create a new file where we will type our scripts. Go to File > New File > R
+script. Click the save icon on your toolbar and save your script as
+"datacarpentry-workshop.R".
+
+### Organizing your working directory
+
+Using a consistent folder structure across your projects will help keep things
+organized, and will also make it easy to find/file things in the future. This
+can be especially helpful when you have multiple projects. In general, you may
+create directories (folders) for **scripts**, **data**, and **documents**.
+
+ - **`data/`** Use this folder to store your raw data and intermediate datasets
+   you may create for the need of a particular analysis. For the sake of
+   transparency and [provenance](https://en.wikipedia.org/wiki/Provenance), you
+   should *always* keep a copy of your raw data accessible and do as much of
+   your data cleanup and preprocessing programmatically (i.e., with scripts,
+   rather than manually) as possible. Separating raw data from processed data is
+   also a good idea. For example, you could have files
+   `data/raw/irrigation__survey.plot1.txt` and `...plot2.txt` kept separate from
+   a `data/processed/irrigation_survey.csv` file generated by the
+   `scripts/01_preprocess_irrigation_survey.R` script.
+ - **`documents/`** This would be a place to keep outlines, drafts, and other
+   text.
+ - **`scripts/`** This would be the location to keep your R scripts for
+   different analyses or plotting.
+
+You may want additional directories or subdirectories depending on your project
+needs, but these should form the backbone of your working directory.
+
+![Example of a working directory structure](../fig/working-directory-structure.png)
+
+### The working directory
+
+The working directory is an important concept to understand. It is the place
+from where R will be looking for and saving the files. When you write code for
+your project, it should refer to files in relation to the root of your working
+directory and only need files within this structure.
+
+Using RStudio projects makes this easy and ensures that your working directory
+is set properly. If you need to check it, you can use `getwd()`. If for some
+reason your working directory is not what it should be, you can change it in the
+RStudio interface by navigating in the file browser where your working directory
+should be, and clicking on the blue gear icon "More", and select "Set As Working
+Directory". Alternatively you can use `setwd("/path/to/working/directory")` to
+reset your working directory. However, your scripts should not include this line
+because it will fail on someone else's computer.
+
+
+### Working with script files
+
+Although we will routinely refer to using the console in this episode, and you
+can in fact type all of the code directly into the console, we will assume that
+you will write all of your code to the script file first and then select the
+code and either click the 'run' button on the toolbar or use the keyboard
+shortcut of 'ctrl+Enter' (or 'command+Enter' on Mac).
+
+There are shortcut alternatives to many of the RStudio menu and toolbar items.
+The RStudio article [Editing and Executing
+Code](https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code)
 explains many of them.
 
-When you select code for execution be careful that you either
-select the whole line or lines or if you are just running a single
-line, simply place the cursor in the line. If you select only a
-portion of a line, that is all that will be run.
+When you select code for execution be careful that you either select the whole
+line or lines. If you are running a single line, place the cursor on the line
+you want to evaluate. If you select only a portion of a line, only that will be
+run.
 
-In this lesson we we be using the SAFI dataset that we have
-been using in the other parts of this workshop. To download the
-data and see more information about the data, visit the [workshop homepage](https://www.datacarpentry.org/socialsci-workshop/data/).
+### Downloading the data
 
-Download the data file and place it in the directory where you
-will be doing your R work.
+
 
 ## Installing additional packages using the packages tab
+
 In addition to the core R installation there are in excess of
 10,000 additional packages which can be used to extend the
 functionality of R. Many of these have been written by R users and
