@@ -25,6 +25,7 @@ keypoints:
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("04-")
+source("../bin/download_data.R")
 ```
 
 We start by loading the required packages. **`ggplot2`** is included in the **`tidyverse`** package.

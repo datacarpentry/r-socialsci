@@ -34,11 +34,7 @@ keypoints:
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("03-")
-```
-
-```{r, echo=FALSE, purl=FALSE, message = FALSE}
-source("setup.R")
-interviews <- read.csv("data/interviews.csv")
+source("../bin/download_data.R")
 ```
 
 # Data Manipulation using **`dplyr`** and **`tidyr`**
