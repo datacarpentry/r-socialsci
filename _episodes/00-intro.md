@@ -62,43 +62,6 @@ In the remainder of this episode we will go through the steps of
 installing first R and then RStudio and finish with a brief tour of
 some of the RStudio facilities.
 
-## Installing R
-
-The latest version of R can be downloaded from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/).
-You will find download links for Linux, Mac and Windows versions of
-R. You should choose the environment appropriate to your machine's
-operating system. In each case you will be guided to a particular
-download for your machine.
-
-Having completed the download, you should install using the normal
-technique for your operating environment. If you are using a
-Windows machine you can double click the downloaded executable
-file.  You can accepts the defaults for all of the option presented by the
-install wizard. By default both the 32 and 64 bit versions of R
-will be installed and icons for them will be available on your
-desktop.
-
-These icons are in fact for a simple R GUI called RGui. It will
-allow you to create and run R Scripts among other things, but it is
-not as sophisticated as RStudio.
-
-## Installing RStudio
-
-
-The latest version of RStudio can be downloaded from the
-[RStudio.com]( https://www.rstudio.com/) website. Like R, there are
-versions for Mac, Linux, and Windows. Select the one you need,
-download the file, and install it in the usual manner for your
-operating system. You can accept the defaults for all of the
-options presented by the install wizard.
-
-In the latest versions of Windows, RStudio is not automatically
-placed on the desktop. To start RStudio in Windows, type ‘RStudio’
-into the search bar by the Windows Start icon in the bottom left
-hand corner of the screen. When the desktop app appears in the list
-of programs you can run it directly by selecting it or you can
-choose to have the icon added to the Start menu or taskbar.
-
 ## A tour of RStudio
 
 When you first open RStudio you will be presented with a display
