@@ -500,9 +500,10 @@ Let's extract our `interview_date` column and inspect the structure:
 dates <- interviews$interview_date
 str(dates)
 ```
+
 Because our `interview_date` column includes time stamps (even
 though all times are recorded as zeros), we will need to use a
-variation of the `ymd()` function called `ymd_hms`. This
+variation of the `ymd()` function called `ymd_hms()`. This
 function assumes that the character vector you are trying to convert
 includes hours, minutes, and seconds as well as year, month, and day.
 
@@ -517,9 +518,9 @@ character vectors to a POSIXct object. This is a type of date object.
 We can now split the year, month, and day into separate columns and add this information back to our data frame:
 
 ```{r, purl=FALSE}
-interviews$day = day(dates)
-interviews$month = month(dates)
-interviews$year = year(dates)
+interviews$day <- day(dates)
+interviews$month <- month(dates)
+interviews$year <- year(dates)
 str(interviews)
 ```
 Notice the three new columns at the end of our data frame.
