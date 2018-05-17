@@ -28,6 +28,7 @@ keypoints:
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("02-")
+source("../bin/download_data.R")
 ```
 
 ## Presentation of the SAFI Data
@@ -523,6 +524,7 @@ interviews$month <- month(dates)
 interviews$year <- year(dates)
 str(interviews)
 ```
+
 Notice the three new columns at the end of our data frame.
 
 
