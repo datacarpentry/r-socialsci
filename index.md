@@ -20,7 +20,9 @@ frame, and a brief introduction to plotting.
 >
 > Data Carpentry's teaching is hands-on, so participants are encouraged to use
 > their own computers to ensure the proper setup of tools for an efficient
-> workflow. <br>**These lessons assume no prior knowledge of the skills or tools.**
+> workflow.
+>
+> **These lessons assume no prior knowledge of the skills or tools.**
 >
 > To get started, follow the directions in the "[Setup](setup/)" tab to
 > download data to your computer and follow any installation instructions.
