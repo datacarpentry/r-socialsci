@@ -1,5 +1,5 @@
 ---
-title: "R basics"
+title: "Introduction to R"
 teaching: 30
 exercises: 20
 questions:
