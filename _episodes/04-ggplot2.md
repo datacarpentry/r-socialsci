@@ -131,7 +131,7 @@ let's use `geom_point()` first:
 
 ~~~
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
-geom_point()
+    geom_point()
 ~~~
 {: .language-r}
 
@@ -318,7 +318,7 @@ hidden?
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-violin-plot-1.png" title="plot of chunk violin-plot" alt="plot of chunk violin-plot" style="display: block; margin: auto;" />
 > {: .solution}
 >
 > So far, we've looked at the distribution of room number within wall type. Try
@@ -337,7 +337,7 @@ hidden?
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-unnamed-chunk-5-1.png" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-boxplot-exercise-1.png" title="plot of chunk boxplot-exercise" alt="plot of chunk boxplot-exercise" style="display: block; margin: auto;" />
 > {: .solution}
 >
 > - Add color to the data points on your boxplot according to whether the
@@ -352,7 +352,7 @@ hidden?
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-boxplot-exercise-factor-1.png" title="plot of chunk boxplot-exercise-factor" alt="plot of chunk boxplot-exercise-factor" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -369,7 +369,7 @@ ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-1-1.png" title="plot of chunk barplot-1" alt="plot of chunk barplot-1" style="display: block; margin: auto;" />
 
 We can use the `fill` asthetic for the `geom_bar()` geom to color bars by
 the portion of each count that is from each village.
@@ -381,7 +381,7 @@ ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-stack-1.png" title="plot of chunk barplot-stack" alt="plot of chunk barplot-stack" style="display: block; margin: auto;" />
 
 This creates a stacked bar chart. These are generally more difficult to read
 than side-by-side bars. We can separate the portions of the stacked bar that
@@ -396,7 +396,7 @@ ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-dodge-1.png" title="plot of chunk barplot-dodge" alt="plot of chunk barplot-dodge" style="display: block; margin: auto;" />
 
 This is a nicer graphic, but we're more likely to be interested in the
 proportion of each housing type in each village than in the actual count of
@@ -421,12 +421,12 @@ percentage of each house type in each village.
 
 
 ~~~
-ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
-    geom_bar(stat = "identity", position = "dodge")
+ ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
+     geom_bar(stat = "identity", position = "dodge")
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-wall-type-1.png" title="plot of chunk barplot-wall-type" alt="plot of chunk barplot-wall-type" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
@@ -450,7 +450,7 @@ ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_t
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-barplot-memb-assoc-1.png" title="plot of chunk barplot-memb-assoc" alt="plot of chunk barplot-memb-assoc" style="display: block; margin: auto;" />
 > >
 > > Ruaca had the lowest proportion of members in an irrigation association.
 > {: .solution}
@@ -476,7 +476,7 @@ ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_t
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-wall-types-labelled-1.png" title="plot of chunk barplot-wall-types-labelled" alt="plot of chunk barplot-wall-types-labelled" style="display: block; margin: auto;" />
 
 ## Faceting
 
@@ -502,7 +502,7 @@ ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-faceting-1.png" title="plot of chunk barplot-faceting" alt="plot of chunk barplot-faceting" style="display: block; margin: auto;" />
 
 Click the "Zoom" button in your RStudio plots pane to view a larger
 version of this plot.
@@ -524,7 +524,7 @@ ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-theme-bw-1.png" title="plot of chunk barplot-theme-bw" alt="plot of chunk barplot-theme-bw" style="display: block; margin: auto;" />
 
 What if we wanted to see the proportion of respondents in each village
 who owned a particular item? We can calculate the percent of people
@@ -535,7 +535,9 @@ calculate the percentage of people in each village who own each item:
 
 ~~~
 percent_items <- interviews_plotting %>%
-    count(items_owned, village) %>%
+    gather(items, items_owned_logical, bicycle:no_listed_items) %>%
+    filter(items_owned_logical) %>%
+    count(items, village) %>%
     ## add a column with the number of people in each village
     mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
                                          village == "God" ~ 43,
@@ -556,13 +558,13 @@ a multi-paneled bar plot.
 ~~~
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
+    facet_wrap(~ items) +
     theme_bw() +
     theme(panel.grid = element_blank())
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-17-1.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-percent-items-barplot-1.png" title="plot of chunk percent-items-barplot" alt="plot of chunk percent-items-barplot" style="display: block; margin: auto;" />
 
 ## **`ggplot2`** themes
 
@@ -599,7 +601,7 @@ Now, let's change names of axes to something more informative than 'village' and
 ~~~
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
+    facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village who owned each item",
          x = "Village",
          y = "Percent of Respondents") +
@@ -607,7 +609,7 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-customization-1.png" title="plot of chunk ggplot-customization" alt="plot of chunk ggplot-customization" style="display: block; margin: auto;" />
 
 The axes have more informative names, but their readability can be improved by
 increasing the font size:
@@ -616,7 +618,7 @@ increasing the font size:
 ~~~
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
+    facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village who owned each item",
          x = "Village",
          y = "Percent of Respondents") +
@@ -625,7 +627,7 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-number-species-year-with-right-labels-xfont-size-1.png" title="plot of chunk number-species-year-with-right-labels-xfont-size" alt="plot of chunk number-species-year-with-right-labels-xfont-size" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-customization-font-size-1.png" title="plot of chunk ggplot-customization-font-size" alt="plot of chunk ggplot-customization-font-size" style="display: block; margin: auto;" />
 
 Note that it is also possible to change the fonts of your plots. If you are on
 Windows, you may have to install the [**`extrafont`**
@@ -636,14 +638,15 @@ After our manipulations, you may notice that the values on the x-axis are still
 not properly readable. Let's change the orientation of the labels and adjust
 them vertically and horizontally so they don't overlap. You can use a 90-degree
 angle, or experiment to find the appropriate angle for diagonally oriented
-labels:
+labels. With a larger font, the title also runs off. We can "\n" in the string
+for the title to insert a new line:
 
 
 ~~~
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
-    labs(title = "Percent of respondents in each village who owned each item",
+    facet_wrap(~ items) +
+    labs(title = "Percent of respondents in each village \n who owned each item",
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
@@ -653,30 +656,32 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-number-species-year-with-theme-1.png" title="plot of chunk number-species-year-with-theme" alt="plot of chunk number-species-year-with-theme" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-customization-label-orientation-1.png" title="plot of chunk ggplot-customization-label-orientation" alt="plot of chunk ggplot-customization-label-orientation" style="display: block; margin: auto;" />
 
 If you like the changes you created better than the default theme, you can save
-them as an object to be able to easily apply them to other plots you may create:
+them as an object to be able to easily apply them to other plots you may create.
+We can also add `plot.title = element_text(hjust = 0.5)` to center the title:
 
 
 
 ~~~
 grey_theme <- theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
                     axis.text.y = element_text(colour = "grey20", size = 12),
-                    text = element_text(size = 16))
+                    text = element_text(size = 16),
+                    plot.title = element_text(hjust = 0.5))
 
 
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
-    labs(title = "Percent of respondents in each village who owned each item",
+    facet_wrap(~ items) +
+    labs(title = "Percent of respondents in each village \n who owned each item",
          x = "Village",
          y = "Percent of Respondents") +
     grey_theme
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-number-species-year-with-right-labels-xfont-orientation-1.png" title="plot of chunk number-species-year-with-right-labels-xfont-orientation" alt="plot of chunk number-species-year-with-right-labels-xfont-orientation" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-custom-themes-1.png" title="plot of chunk ggplot-custom-themes" alt="plot of chunk ggplot-custom-themes" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
@@ -700,14 +705,15 @@ Make sure you have the `fig_output/` folder in your working directory.
 ~~~
 my_plot <- ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
-    labs(title = "Percent of respondents in each village who owned each item",
+    facet_wrap(~ items) +
+    labs(title = "Percent of respondents in each village \n who owned each item",
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
     theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
           axis.text.y = element_text(colour = "grey20", size = 12),
-          text = element_text(size = 16))
+          text = element_text(size = 16),
+          plot.title = element_text(hjust = 0.5))
 
 ggsave("fig_output/name_of_file.png", my_plot, width = 15, height = 10)
 ~~~

@@ -689,7 +689,7 @@ plot(memb_assoc)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-factor-plot-default-order-1.png" title="plot of chunk factor-plot-default-order" alt="plot of chunk factor-plot-default-order" style="display: block; margin: auto;" />
 
 Looking at the plot compared to the output of the vector, we can see that n
 addition to "no"s and "yes"s, there are about some respondents for which the
@@ -748,7 +748,7 @@ plot(memb_assoc)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-factor-plot-reorder-1.png" title="plot of chunk factor-plot-reorder" alt="plot of chunk factor-plot-reorder" style="display: block; margin: auto;" />
 
 
 > ## Exercise
@@ -760,6 +760,7 @@ plot(memb_assoc)
 >   recreate the barplot such that "Undetermined" is last (after "Yes")?
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > levels(memb_assoc) <- c("No", "Undetermined", "Yes")
@@ -768,7 +769,7 @@ plot(memb_assoc)
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-02-unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-02-factor-plot-exercise-1.png" title="plot of chunk factor-plot-exercise" alt="plot of chunk factor-plot-exercise" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
