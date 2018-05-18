@@ -814,7 +814,7 @@ interviews_gather <- interviews_spread %>%
 ~~~
 {: .language-r}
 
-This creates a data frame with `nrow(interviews_gather)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
+This creates a data frame with 524 rows (4 rows per interview respondent). The four rows for each respondent differ only in the
 value of the "respondent_wall_type" and "dummy" columns. View the data to see what this looks like.
 
 Only one row for each interview respondent is informative - we know that if the
@@ -893,7 +893,7 @@ mutate(split_items = strsplit(items_owned, ";")) %>%
 
 Now that we have the `items_owned` column as a list, we can use the `tidyr`
 function `unnest()` to create a long format version of the dataset. In this long
-format version, there are `nrow(interviews_items_owned)` rows (one row for
+format version, there are 131 rows (one row for
 each unique item for each respondent).
 
 
