@@ -325,7 +325,7 @@ Let's extract the `memb_assoc` column from our data frame, convert it into a
 factor, and use it to look at the number of interview respondents who were or
 were not members of an irrigation association:
 
-```{r, purl=TRUE}
+```{r factor-plot-default-order, purl=TRUE}
 ## create a vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
 ## convert it into a factor
@@ -344,7 +344,7 @@ been recorded, and encoded as missing data. They do not appear on the plot.
 Let's encode them differently so they can counted and visualized in our plot.
 
 
-```{r, purl=TRUE}
+```{r factor-plot-reorder, purl=TRUE}
 ## Let's recreate the vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
 ## replace the missing data with "undetermined"
@@ -368,7 +368,8 @@ plot(memb_assoc)
 >   recreate the barplot such that "Undetermined" is last (after "Yes")?
 >
 > > ## Solution
-> > ```{r}
+> >
+> > ```{r factor-plot-exercise}
 > > levels(memb_assoc) <- c("No", "Undetermined", "Yes")
 > > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 > > plot(memb_assoc)
