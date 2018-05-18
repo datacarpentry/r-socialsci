@@ -68,8 +68,8 @@ To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want
 
 To make sure, everyone will use the same dataset for this lesson, we'll read again the SAFI dataset that we downloaded earlier.
 
-```{r, results = 'hide', purl = FALSE}
-interviews <- read_csv("data/interviews.csv", na = "NULL")
+```{r, results = 'hide', purl = FALSE, message=FALSE}
+interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 
 ## inspect the data
 interviews
@@ -382,6 +382,7 @@ interviews %>%
 > >            year = year(date)) %>%
 > >     group_by(year, month) %>%
 > >     summarize(max_no_membrs = max(no_membrs))
+> > ```
 > {: .solution}
 {: .challenge}
 
@@ -485,11 +486,11 @@ To recreate our original data frame, we will use the following:
 
 ```{r, purl=FALSE}
 interviews_gather <- interviews_spread %>%
-    gather(key = "respondent_wall_type", value = "wall_type_logical",
+    gather(key = respondent_wall_type, value = "wall_type_logical",
            burntbricks:sunbricks)
 ```
 
-This creates a data frame with `r nrow(interviews_gather)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
+This creates a data frame with `nrow(interviews_gather)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
 value of the "respondent_wall_type" and "dummy" columns. View the data to see what this looks like.
 
 Only one row for each interview respondent is informative - we know that if the
@@ -505,8 +506,8 @@ together in the next chunk of code:
 interviews_gather <- interviews_spread %>%
     gather(key = "respondent_wall_type", value = "dummy",
            burntbricks:sunbricks) %>%
-    filter(dummy == TRUE) %>%
-    select(-dummy)
+    filter(wall_type_logical == TRUE) %>%
+    select(-wall_type_logical)
 ```
 
 View both `interviews_gather` and `interviews_spread` and compare their
@@ -532,6 +533,7 @@ interviews_items_owned <- interviews %>%
     unnest() %>%
     mutate(items_owned_logical = TRUE) %>%
     spread(key = split_items, value = items_owned_logical, fill = FALSE)
+nrow(interviews_items_owned)
 ```
 
 There are a couple of new concepts in this code chunk. Let's walk through it
@@ -552,7 +554,7 @@ mutate(split_items = strsplit(items_owned, ";")) %>%
 
 Now that we have the `items_owned` column as a list, we can use the `tidyr`
 function `unnest()` to create a long format version of the dataset. In this long
-format version, there are `r nrow(interviews_items_owned)` rows (one row for
+format version, there are `nrow(interviews_items_owned)` rows (one row for
 each unique item for each respondent).
 
 ```{r, eval=FALSE}
