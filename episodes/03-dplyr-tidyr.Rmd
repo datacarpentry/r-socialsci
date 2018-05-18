@@ -504,9 +504,9 @@ together in the next chunk of code:
 
 ```{r, purl=FALSE}
 interviews_gather <- interviews_spread %>%
-    gather(key = "respondent_wall_type", value = "dummy",
+    gather(key = "respondent_wall_type", value = "wall_type_logical",
            burntbricks:sunbricks) %>%
-    filter(wall_type_logical == TRUE) %>%
+    filter(wall_type_logical) %>%
     select(-wall_type_logical)
 ```
 
@@ -566,8 +566,8 @@ creates a new column for each of the unique values in the `split_items` column
 and fills those columns with `TRUE` or `FALSE`.
 
 ```{r, eval=FALSE}
-mutate(dummy = TRUE) %>%
-spread(key = split_items, value = dummy, fill = FALSE)
+mutate(items_owned_logical = TRUE) %>%
+    spread(key = split_items, value = items_owned_logical, fill = FALSE)
 ```
 
 View the `interviews_items_owned` data frame. It should have `r
