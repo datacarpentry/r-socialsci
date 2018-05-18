@@ -409,7 +409,9 @@ calculate the percentage of people in each village who own each item:
 
 ```{r percent-items-data}
 percent_items <- interviews_plotting %>%
-    count(items_owned, village) %>%
+    gather(items, items_owned_logical, bicycle:no_listed_items) %>%
+    filter(items_owned_logical) %>%
+    count(items, village) %>%
     ## add a column with the number of people in each village
     mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
                                          village == "God" ~ 43,
@@ -428,7 +430,7 @@ a multi-paneled bar plot.
 ```{r percent-items-barplot}
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
+    facet_wrap(~ items) +
     theme_bw() +
     theme(panel.grid = element_blank())
 ```
@@ -467,7 +469,7 @@ Now, let's change names of axes to something more informative than 'village' and
 ```{r ggplot-customization, purl=FALSE}
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
+    facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village who owned each item",
          x = "Village",
          y = "Percent of Respondents") +
@@ -480,7 +482,7 @@ increasing the font size:
 ```{r ggplot-customization-font-size, purl=FALSE}
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
+    facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village who owned each item",
          x = "Village",
          y = "Percent of Respondents") +
@@ -502,8 +504,8 @@ labels:
 ```{r ggplot-customization-label-orientation, purl=FALSE}
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
     labs(title = "Percent of respondents in each village who owned each item",
+    facet_wrap(~ items) +
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
@@ -524,8 +526,8 @@ grey_theme <- theme(axis.text.x = element_text(colour = "grey20", size = 12, ang
 
 ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
     labs(title = "Percent of respondents in each village who owned each item",
+    facet_wrap(~ items) +
          x = "Village",
          y = "Percent of Respondents") +
     grey_theme
@@ -552,8 +554,8 @@ Make sure you have the `fig_output/` folder in your working directory.
 ```{r ggsave-example, eval=FALSE, purl=FALSE}
 my_plot <- ggplot(percent_items, aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    facet_wrap(~ items_owned) +
     labs(title = "Percent of respondents in each village who owned each item",
+    facet_wrap(~ items) +
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
