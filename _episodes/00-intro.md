@@ -25,111 +25,227 @@ source: Rmd
 
 ## R and RStudio
 
-R is an open source programming language originally designed and
-implemented by statisticians primarily for statistical analysis.
-It includes high quality graphics capabilities and tools for basic
-data analysis and reading and writing data to/from files.
+R is an open source programming language originally designed and implemented by
+statisticians primarily for statistical analysis. It includes high quality
+graphics capabilities and tools for data analysis and reading and writing data
+to/from files.
 
-Because R is open source and is supported by a large community of
-developers and users there is a very large selection of third party
-add-on libraries which are freely available and can easily be added
-to the core R system making even more analysis techniques readily
-available.
+Because R is open source and is supported by a large community of developers and
+users there is a very large selection of third-party add-on packages which are
+freely available to extend R's native capabilities.
 
-R is a scripted language. Rather than pointing and clicking in a
-GUI environment you write code statements to ask R to do something
-for you. This has the advantage of providing a permanent record of
-what was done and allows for peer review of the work undertaken.
+R is a scripted language. Rather than pointing and clicking in a graphical
+environment you write code statements to ask R to do something for you. This has
+the advantage of providing a record of what was done and allows for peer review
+of the work undertaken.
 
-Having this written record, something which is increasingly
-required as part of a publication submission, is also an aid when
-seeking help with problems.
+Having this written record, something which is increasingly required as part of
+a publication submission, is also an aid when seeking help with problems.
 
-There are many online resources such as [stackoverflow ](https://stackoverflow.com/questions/tagged/r)
-which will allow you to seek help from the online R community. You
-can search in the normal Internet way of doing things by providing
-keywords in a free format search request, but you can also post
-specific questions. Questions which are backed up with code
-snippets are more likely to attract knowledgeable responses.
+There are many online resources such as
+[stackoverflow](https://stackoverflow.com/questions/tagged/r) and the [RStudio
+Community](https://community.rstudio.com/) which will allow you to seek help
+from peers. Questions which are backed up with [short, reproducible code
+snippets](https://www.tidyverse.org/help/) are more likely to attract knowledgeable responses.
 
-Although R is a scripted language, there is still a place for the
-GUI (Graphical User Interface). The most popular R GUI currently is
-RStudio. We will be using RStudio throughout this lesson. RStudio
-acts as a front-end to the R environment. For this workshop. we
-need to install both R and R Studio.
+To make it easier to interact with R, we will use RStudio. RStudio is the most popular IDE (Integrated Development Interface), to work with R. An IDE is a software that provide tools to make it easier to program. 
 
-In the remainder of this episode we will go through the steps of
-installing first R and then RStudio and finish with a brief tour of
-some of the RStudio facilities.
+<figure>
+<img src="../fig/r+rstudio-analogy.jpg" title="RStudio extends what R can do, and make it easier to write R code and interact with R." alt="RStudio extends what R can do, and make it easier to write R code and interact with R." style="display: block; margin: auto;" />
+<figcaption>
+RStudio extends what R can do, and make it easier to write R code and interact
+with R. [Credit photo left
+photo](https://commons.wikimedia.org/w/index.php?curid=2447462), [Credit photo right
+photo](https://commons.wikimedia.org/w/index.php?curid=44599363)
+</figcaption>
+</figure>
 
 ## A tour of RStudio
 
-When you first open RStudio you will be presented with a display
-similar to this;
 
-![Rstudio_startup](../fig/R_00_Rstudio_01.png)
 
-On the righthand side there are two tabbed panes. The pane at the
-top allows you to see either a history of all of the commands which
-have been run previously (it even remembers across sessions).  You
-can select any command and have it copied across into the console
-area on the left from where you can run it again by hitting the
-enter key. The Environment tab allows you to see all of the
-variables which exist in your current session. You can see the
-variable names, see what data types they are and see some of the
-values.  This can be useful for a quick check on variable contents.
-There are a set of R commands which you can run from the console to
-provide more complete information.
+## Knowing your way around RStudio
 
-The bottom pane on the right has five tabs.
+Let's start by learning about [RStudio](https://www.rstudio.com/), which is an
+Integrated Development Environment (IDE) for working with R.
 
-* Files – contents of the current working directory. This defaults in Windows to the Documents folder.  You can change it from the menu items for the tab, or more likely it will change when you create a project with its own folder as we will be doing later.
-* Plots – This tab will display any graphic output you produce. There are forward and back buttons allowing you to see previous plots from the session and there are options to export the graphic to an external file.
-* Packages – This is a list of all of the packages installed in your R environment and an indication of whether they are currently loaded in your RStudio session. There are options for installing additional packages from CRAN or updating existing packages. Both of which will require you to have an Internet connection.
-* Viewer – This is used to display HTML files.
-* Help -  The initial help page provides a set of links to a variety of Help related topics.
+The RStudio IDE open-source product is free under the
+[Affero General Public License (AGPL) v3](https://www.gnu.org/licenses/agpl-3.0.en.html).
+The RStudio IDE is also available with a commercial license and priority email
+support from RStudio, Inc.
 
-![Help](../fig/R_00_Rstudio_02.png).
+We will use RStudio IDE to write code, navigate the files on our computer,
+inspect the variables we are going to create, and visualize the plots we will
+generate. RStudio can also be used for other things (e.g., version control,
+developing packages, writing Shiny apps) that we will not cover during the
+workshop. 
 
-These include basic manuals on R  as well as reference materials on
-the installed packages. The RStudio Cheat Sheets are small pdf
-documents which can be downloaded and provide summary information
-on how to use key packages in R like dplyr and ggplot2 both of
-which we will be using extensively in this lesson.
-In the toolbar there is a search text box where you can type what you are looking for.
+One of the advantages of using RStudio is that all the information
+you need to write code is available in a single window. Additionally, with many
+shortcuts, autocompletion, and highlighting for the major file types you use
+while developing in R, RStudio will make typing easier and less error-prone.
 
-### Creating a Script file
 
-In order to follow along with the examples in this episode you
-should start RStudio and create a new RScript file either from the
-File menu item or the toolbar icon immediately below it. Click the
-save icon on your toolbar and save your script as "datacarpentry-workshop.R".
+## Getting set up
 
-Although we will routinely refer to using the console in this
-episode, and you can in fact type all of the code directly into the
-console, we will assume that you will write all of your code to the
-script file first and then select the code and either click the
-'run' button on the toolbar or use the keyboard shortcut of
-'ctrl+Enter' (or 'command+Enter' on Mac).
+It is good practice to keep a set of related data, analyses, and text
+self-contained in a single folder, called the **working directory**. All of the
+scripts within this folder can then use *relative paths* to files that indicate
+where inside the project a file is located (as opposed to absolute paths, which
+point to where a file is on a specific computer). Working this way makes it
+a lot easier to move your project around on your computer and share it with
+others without worrying about whether or not the underlying scripts will still
+work.
 
-There are shortcut alternatives to many of the RStudio menu and
-toolbar items. The RStudio article
-[Editing and Executing Code](https://support.rstudio.com/hc/en-us/articles/200484448-Editing-and-Executing-Code)
-explains many of them.
+RStudio provides a helpful set of tools to do this through its "Projects"
+interface, which not only creates a working directory for you but also remembers
+its location (allowing you to quickly navigate to it) and optionally preserves
+custom settings and open files to make it easier to resume work after a
+break. Below, we will go through the steps for creating an "R Project" for this
+tutorial. First let's take a quick tour of RStudio.
 
-When you select code for execution be careful that you either
-select the whole line or lines or if you are just running a single
-line, simply place the cursor in the line. If you select only a
-portion of a line, that is all that will be run.
+![RStudio_startup](../fig/R_00_Rstudio_01.png)
 
-In this lesson we we be using the SAFI dataset that we have
-been using in the other parts of this workshop. To download the
-data and see more information about the data, visit the [workshop homepage](https://www.datacarpentry.org/socialsci-workshop/data/).
+RStudio is divided into 4 "Panes": the **Source** for your scripts and documents
+(top-left, in the default layout), the R **Console** (bottom-left), your
+**Environment/History** (top-right), and your
+**Files/Plots/Packages/Help/Viewer** (bottom-right). The placement of these
+panes and their content can be customized (see menu, Tools -> Global Options ->
+Pane Layout).
 
-Download the data file and place it in the directory where you
-will be doing your R work.
+
+### Create a new project
+
+* Under the `File` menu, click on `New project`, choose `New directory`, then
+  `New project`
+* Enter a name for this new folder (or "directory"), and choose a convenient
+  location for it. This will be your **working directory** for the rest of the
+  day (e.g., `~/data-carpentry`)
+* Click on `Create project`
+* Create a new file where we will type our scripts. Go to File > New File > R
+  script. Click the save icon on your toolbar and save your script as
+  "`script.R`".
+
+### Organizing your working directory
+
+Using a consistent folder structure across your projects will help keep things
+organized, and will also make it easy to find/file things in the future. This
+can be especially helpful when you have multiple projects. In general, you may
+create directories (folders) for **scripts**, **data**, and **documents**.
+
+ - **`data/`** Use this folder to store your raw data and intermediate datasets
+   you may create for the need of a particular analysis. For the sake of
+   transparency and [provenance](https://en.wikipedia.org/wiki/Provenance), you
+   should *always* keep a copy of your raw data accessible and do as much of
+   your data cleanup and preprocessing programmatically (i.e., with scripts,
+   rather than manually) as possible.
+ - **`data_output/`** When you need to modify your raw data for your analyses,
+   it might be useful to store the modified versions of the datasets generated
+   by your scripts in a different folder.
+ - **`documents/`** This would be a place to keep outlines, drafts, and other
+   text.
+ - **`fig_output/`** This folder will store the graphics that are generated
+   by your scripts.
+ - **`scripts/`** This would be the location to keep your R scripts for
+   different analyses or plotting.
+
+You may want additional directories or subdirectories depending on your project
+needs, but these should form the backbone of your working directory.
+
+![Example of a working directory structure](../fig/working-directory-structure.png)
+
+### The working directory
+
+The working directory is an important concept to understand. It is the place
+from where R will be looking for and saving the files. When you write code for
+your project, it should refer to files in relation to the root of your working
+directory and only need files within this structure.
+
+Using RStudio projects makes this easy and ensures that your working directory
+is set properly. If you need to check it, you can use `getwd()`. If for some
+reason your working directory is not what it should be, you can change it in the
+RStudio interface by navigating in the file browser where your working directory
+should be, and clicking on the blue gear icon "More", and select "Set As Working
+Directory". Alternatively you can use `setwd("/path/to/working/directory")` to
+reset your working directory. However, your scripts should not include this line
+because it will fail on someone else's computer.
+
+
+### Downloading the data and getting set up
+
+For this lesson we will use the following folders in our working directory: **`data/`**, **`data_output/`** and **`fig_output/`**. Let's write them all in lowercase to be consistent. We can create them using the RStudio interface by clicking on the "New Folder" button in the file pane (bottom right), or directly from R by typing at console:
+
+
+~~~
+dir.create("data")
+dir.create("data_output")
+dir.create("fig_output")
+~~~
+{: .language-r}
+
+Go to the Fighare page for this curriculum, and download the dataset called "`SAFI_clean.csv`". The direct download link is: <https://ndownloader.figshare.com/files/11492171>. Place this downloaded file in the `data/` you just created. You can do this directly from R by copying and pasting this in your terminal (your instructor can place this chunk of code in the Etherpad):
+
+
+~~~
+download.file("https://ndownloader.figshare.com/files/11492171",
+              "data/SAFI_clean.csv", mode = "wb")
+~~~
+{: .language-r}
+
+## Interacting with R
+
+The basis of programming is that we write down instructions for the computer to
+follow, and then we tell the computer to follow those instructions. We write, or
+*code*, instructions in R because it is a common language that both the computer
+and we can understand. We call the instructions *commands* and we tell the
+computer to follow the instructions by *executing* (also called *running*) those
+commands.
+
+There are two main ways of interacting with R: by using the console or by using
+script files (plain text files that contain your code). The console pane (in
+RStudio, the bottom left panel) is the place where commands written in the R
+language can be typed and executed immediately by the computer. It is also where
+the results will be shown for commands that have been executed. You can type
+commands directly into the console and press <kbd>Enter</kbd> to execute those commands,
+but they will be forgotten when you close the session.
+
+Because we want our code and workflow to be reproducible, it is better to type
+the commands we want in the script editor, and save the script. This way, there
+is a complete record of what we did, and anyone (including our future selves!)
+can easily replicate the results on their computer.
+
+RStudio allows you to execute commands directly from the script editor by using
+the <kbd>Ctrl</kbd> + <kbd>Enter</kbd> shortcut (on Macs, <kbd>Cmd</kbd> +
+<kbd>Return</kbd> will work, too). The command on the current line in the
+script (indicated by the cursor) or all of the commands in the currently
+selected text will be sent to the console and executed when you press
+<kbd>Ctrl</kbd> + <kbd>Enter</kbd>. You can find other keyboard shortcuts in this [RStudio cheatsheet about the RStudio IDE](https://github.com/rstudio/cheatsheets/raw/master/rstudio-ide.pdf).
+
+At some point in your analysis you may want to check the content of a variable
+or the structure of an object, without necessarily keeping a record of it in
+your script. You can type these commands and execute them directly in the
+console.  RStudio provides the <kbd>Ctrl</kbd> + <kbd>1</kbd> and
+<kbd>Ctrl</kbd> + <kbd>2</kbd> shortcuts allow you to jump between the
+script and the console panes.
+
+If R is ready to accept commands, the R console shows a `>` prompt. If it
+receives a command (by typing, copy-pasting or sent from the script editor using
+<kbd>Ctrl</kbd> + <kbd>Enter</kbd>), R will try to execute it, and when
+ready, will show the results and come back with a new `>` prompt to wait for new
+commands.
+
+If R is still waiting for you to enter more data because it isn't complete yet,
+the console will show a `+` prompt. It means that you haven't finished entering
+a complete command. This is because you have not 'closed' a parenthesis or
+quotation, i.e. you don't have the same number of left-parentheses as
+right-parentheses, or the same number of opening and closing quotation marks.
+When this happens, and you thought you finished typing your command, click
+inside the console window and press <kbd>Esc</kbd>; this will cancel the
+incomplete command and return you to the `>` prompt.
+
 
 ## Installing additional packages using the packages tab
+
 In addition to the core R installation there are in excess of
 10,000 additional packages which can be used to extend the
 functionality of R. Many of these have been written by R users and
@@ -155,6 +271,7 @@ packages which have to be installed with them. The ‘Install
 dependencies’ option makes sure that this happens.
 
 > ## Exercise
+>
 > Use the install option from the packages tab to install the ‘tidyverse’ package.
 > 
 > > ## Solution
@@ -165,7 +282,7 @@ dependencies’ option makes sure that this happens.
 > {: .solution}
 {: .challenge}
 
-Because the install process accesses the repository at CRAN, you
+Because the install process accesses the CRAN repository, you
 will need an Internet connection to install packages in this way.
 
 It is also possible to install packages from other repositories as
@@ -185,8 +302,4 @@ install.packages("tidyverse")
 
 was written to the console. 
 
-This is standard R code. The function `install.packages()` is
-called and passed a single parameter, which is the name of the
-package you want to install. Rather than using the Rstudio GUI
-functionality, you can write the code yourself in the console or
-include it as part of a script.
+You could also have installed the **`tidyverse`** packages by running this command directly at the R terminal.

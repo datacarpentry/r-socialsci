@@ -5,175 +5,81 @@ title: "Introducing dplyr and tidyr"
 teaching: 45
 exercises: 20
 questions:
-- "How can I select specific rows and/or columns from a data frame?"
-- "How can I combine multiple commands into a single command?"
-- "How can create new columns or remove existing columns from a data frame?"
-- "How can I reformat a dataframe to meet my needs?"
+  - "How can I select specific rows and/or columns from a data frame?"
+  - "How can I combine multiple commands into a single command?"
+  - "How can create new columns or remove existing columns from a data frame?"
+  - "How can I reformat a dataframe to meet my needs?"
 objectives:
 - "Describe the purpose of the **`dplyr`** and **`tidyr`** packages."
 - "Select certain columns in a data frame with the **`dplyr`** function `select`."
-- "Select certain rows in a data frame according to filtering conditions with the **`dplyr`** function `filter` ."
+- "Select certain rows in a data frame according to filtering conditions with the **`dplyr`** function `filter`."
 - "Link the output of one **`dplyr`** function to the input of another function with the 'pipe' operator `%>%`."
 - "Add new columns to a data frame that are functions of existing columns with `mutate`."
 - "Use the split-apply-combine concept for data analysis."
 - "Use `summarize`, `group_by`, and `count` to split a data frame into groups of observations, apply a summary statistics for each group, and then combine the results."
 - "Describe the concept of a wide and a long table format and for which purpose those formats are useful."
 - "Describe what key-value pairs are."
-- "Reshape a data frame from long to wide format and back with the `spread` and `gather` commands from the **`tidyr`** package.
-- "Export a data frame to a .csv file."
+- "Reshape a data frame from long to wide format and back with the `spread` and `gather` commands from the **`tidyr`** package."
+- "Export a data frame to a csv file."
 keypoints:
-- "Use the `dplyr` package to manipulate dataframes."
-- "Use `select()` to choose variables from a dataframe."
-- "Use `filter()` to choose data based on values."
-- "Use `group_by()` and `summarize()` to work with subsets of data."
-- "Use `mutate()` to create new variables."
-- "Use the `tidyr` package to change the layout of dataframes."
-- "Use `gather()` to go from wide to long format."
-- "Use `spread()` to go from long to wide format."
+  - "Use the `dplyr` package to manipulate dataframes."
+  - "Use `select()` to choose variables from a dataframe."
+  - "Use `filter()` to choose data based on values."
+  - "Use `group_by()` and `summarize()` to work with subsets of data."
+  - "Use `mutate()` to create new variables."
+  - "Use the `tidyr` package to change the layout of dataframes."
+  - "Use `gather()` to go from wide to long format."
+  - "Use `spread()` to go from long to wide format."
 ---
 
 
 
 
-
-~~~
-Warning in file(filename, "r", encoding = encoding): cannot open file
-'setup.R': No such file or directory
-~~~
-{: .error}
-
-
-
-~~~
-Error in file(filename, "r", encoding = encoding): cannot open the connection
-~~~
-{: .error}
-
-
-
-~~~
-Warning in file(file, "rt"): cannot open file 'data/interviews.csv': No
-such file or directory
-~~~
-{: .error}
-
-
-
-~~~
-Error in file(file, "rt"): cannot open the connection
-~~~
-{: .error}
-
 # Data Manipulation using **`dplyr`** and **`tidyr`**
 
-Bracket subsetting is handy, but it can be cumbersome and difficult to read,
-especially for complicated operations. Enter **`dplyr`**. **`dplyr`** is a package for
-making tabular data manipulation easier. It pairs nicely with **`tidyr`** which enables you to swiftly convert between different data formats for plotting and analysis.
+**`dplyr`** is a package for making tabular data manipulation easier by using a
+limited set of functions that can be combined to extract and summarize insights from your data. It pairs nicely with **`tidyr`** which enables you to
+swiftly convert between different data formats (long vs. wide) for plotting and analysis.
 
-Packages in R are basically sets of additional functions that let you do more
-stuff. The functions we've been using so far, like `str()` or `data.frame()`,
-come built into R; packages give you access to more of them. Before you use a
-package for the first time you need to install it on your machine, and then you
-should import it in every subsequent R session when you need it. You should
-already have installed the **`tidyverse`** package. This is an
-"umbrella-package" that installs several packages useful for data analysis which
-work together well such as **`tidyr`**, **`dplyr`**, **`ggplot2`**, **`tibble`**, etc.
-
-
-The **`tidyverse`** package tries to address 3 common issues that arise when
-doing data analysis with some of functions that come with R:
-
-1. The results from a base R function sometimes depend on the type of data.
-2. Using R expressions in a non standard way, which can be confusing for new
-learners.
-3. Hidden arguments, having default operations that new learners are not aware
-of.
-
-We have seen in our previous lesson that when building or importing a data frame, the columns that contain characters (i.e., text) are coerced (=converted) into the `factor` data type. We had to set **`stringsAsFactors`** to **`FALSE`** to avoid this hidden argument to convert our data type.
-
-This time will use the **`tidyverse`** package to read the data and avoid having to set **`stringsAsFactors`** to **`FALSE`**
-
-To load the package type:
-
-
-
-~~~
-## load the tidyverse packages, incl. dplyr
-library("tidyverse")
-~~~
-{: .language-r}
+Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the tidyverse. These packages were loaded in R's memory when we called `library(tidyverse)` earlier.
 
 ## What are **`dplyr`** and **`tidyr`**?
 
-The package **`dplyr`** provides easy tools for the most common data manipulation
-tasks. It is built to work directly with data frames, with many common tasks
-optimized by being written in a compiled language (C++). An additional feature is the
-ability to work directly with data stored in an external database. The benefits of
-doing this are that the data can be managed natively in a relational database,
-queries can be conducted on that database, and only the results of the query are
-returned.
+The package **`dplyr`** provides easy tools for the most common data
+manipulation tasks. It is built to work directly with data frames, with many
+common tasks optimized by being written in a compiled language (C++). An
+additional feature is the ability to work directly with data stored in an
+external database. The benefits of doing this are that the data can be managed
+natively in a relational database, queries can be conducted on that database,
+and only the results of the query are returned.
 
 This addresses a common problem with R in that all operations are conducted
 in-memory and thus the amount of data you can work with is limited by available
 memory. The database connections essentially remove that limitation in that you
-can connect to a database of many hundreds of GB, conduct queries on it directly, and pull
-back into R only what you need for analysis.
+can connect to a database of many hundreds of GB, conduct queries on it
+directly, and pull back into R only what you need for analysis.
 
 The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
 
 To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
 [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
 
-We'll read in our data using the `read_csv()` function, from the tidyverse package **`readr`**, instead of `read.csv()`.
-
-
-
-~~~
-interviews <- read_csv("data/interviews.csv")
-~~~
-{: .language-r}
-
+To make sure, everyone will use the same dataset for this lesson, we'll read again the SAFI dataset that we downloaded earlier.
 
 
 ~~~
-Error: 'data/interviews.csv' does not exist in current working directory ('/Users/ebecker/Box Sync/Carpentry_repos/datacarpentry-lessons/socialsci/r-socialsci/_episodes_rmd').
-~~~
-{: .error}
+interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 
-
-
-~~~
 ## inspect the data
-str(interviews)
-~~~
-{: .language-r}
+interviews
 
-
-
-~~~
-Error in str(interviews): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 ## preview the data
 # View(interviews)
 ~~~
 {: .language-r}
 
-Notice that the class of the data is now `tbl_df`
-
-This is referred to as a "tibble". Tibbles tweak some of the behaviors of the data frame objects we introduced in the previous episode. The data structure is very similar to a data frame. For our purposes the only differences are that:
-
-1. In addition to displaying the data type of each column under its name, it
-only prints the first few rows of data and only as many columns as fit on one
-screen.
-2. Columns of class `character` are never converted into factors.
-
-
 We're going to learn some of the most common **`dplyr`** functions:
+
 - `select()`: subset columns
 - `filter()`: subset rows on conditions
 - `mutate()`: create new columns by using information from other columns
@@ -193,13 +99,6 @@ select(interviews, village, no_membrs, years_liv)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in select(interviews, village, no_membrs, years_liv): object 'interviews' not found
-~~~
-{: .error}
-
 To choose rows based on a specific criteria, use `filter()`:
 
 
@@ -211,9 +110,25 @@ filter(interviews, village == "God")
 
 
 ~~~
-Error in filter(interviews, village == "God"): object 'interviews' not found
+# A tibble: 43 x 14
+   key_ID village interview_date      no_membrs years_liv respondent_wall…
+    <int> <chr>   <dttm>                  <int>     <int> <chr>           
+ 1      1 God     2016-11-17 00:00:00         3         4 muddaub         
+ 2      1 God     2016-11-17 00:00:00         7         9 muddaub         
+ 3      3 God     2016-11-17 00:00:00        10        15 burntbricks     
+ 4      4 God     2016-11-17 00:00:00         7         6 burntbricks     
+ 5      5 God     2016-11-17 00:00:00         7        40 burntbricks     
+ 6      6 God     2016-11-17 00:00:00         3         3 muddaub         
+ 7      7 God     2016-11-17 00:00:00         6        38 muddaub         
+ 8     11 God     2016-11-21 00:00:00         6        20 sunbricks       
+ 9     12 God     2016-11-21 00:00:00         7        20 burntbricks     
+10     13 God     2016-11-21 00:00:00         6         8 burntbricks     
+# ... with 33 more rows, and 8 more variables: rooms <int>,
+#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <int>,
+#   items_owned <chr>, no_meals <int>, months_lack_food <chr>,
+#   instanceID <chr>
 ~~~
-{: .error}
+{: .output}
 
 ## Pipes
 
@@ -226,29 +141,9 @@ that as input to the next function, like this:
 
 ~~~
 interviews2 <- filter(interviews, village == "God")
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in filter(interviews, village == "God"): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 interviews_god <- select(interviews2, no_membrs, years_liv)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in select(interviews2, no_membrs, years_liv): object 'interviews2' not found
-~~~
-{: .error}
 
 This is readable, but can clutter up your workspace with lots of objects that you have to name individually. With multiple steps, that can be hard to keep track of.
 
@@ -260,44 +155,50 @@ interviews_god <- select(filter(interviews, village == "God"), no_membrs, years_
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in filter(interviews, village == "God"): object 'interviews' not found
-~~~
-{: .error}
-
 This is handy, but can be difficult to read if too many functions are nested, as
 R evaluates the expression from the inside out (in this case, filtering, then selecting).
 
-The last option, *pipes*, are a recent addition to R. Pipes let you take
-the output of one function and send it directly to the next, which is useful
-when you need to do many things to the same dataset.  Pipes in R look like
-`%>%` and are made available via the **`magrittr`** package, installed automatically
-with **`dplyr`**. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd>
+The last option, *pipes*, are a recent addition to R. Pipes let you take the
+output of one function and send it directly to the next, which is useful when
+you need to do many things to the same dataset. Pipes in R look like `%>%` and
+are made available via the **`magrittr`** package, installed automatically with
+**`dplyr`**. If you use RStudio, you can type the pipe with <kbd>Ctrl</kbd>
 + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> +
 <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
 
 
 ~~~
 interviews %>%
-filter(village == "God") %>%
-select(no_membrs, years_liv)
+    filter(village == "God") %>%
+    select(no_membrs, years_liv)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 43 x 2
+   no_membrs years_liv
+       <int>     <int>
+ 1         3         4
+ 2         7         9
+ 3        10        15
+ 4         7         6
+ 5         7        40
+ 6         3         3
+ 7         6        38
+ 8         6        20
+ 9         7        20
+10         6         8
+# ... with 33 more rows
 ~~~
-{: .error}
+{: .output}
 
-In the above code, we use the pipe to send the `interviews` dataset first through
-`filter()` to keep rows where `village` is "God", then through `select()`
-to keep only the `no_membrs` and `years_liv` columns. Since `%>%` takes
-the object on its left and passes it as the first argument to the function on
-its right, we don't need to explicitly include the data frame as an argument
+In the above code, we use the pipe to send the `interviews` dataset first
+through `filter()` to keep rows where `village` is "God", then through
+`select()` to keep only the `no_membrs` and `years_liv` columns. Since `%>%`
+takes the object on its left and passes it as the first argument to the function
+on its right, we don't need to explicitly include the data frame as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
@@ -312,21 +213,9 @@ can assign it a new name:
 
 ~~~
 interviews_god <- interviews %>%
-filter(village == "God") %>%
-select(no_membrs, years_liv)
-~~~
-{: .language-r}
+    filter(village == "God") %>%
+    select(no_membrs, years_liv)
 
-
-
-~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 interviews_god
 ~~~
 {: .language-r}
@@ -334,9 +223,22 @@ interviews_god
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews_god' not found
+# A tibble: 43 x 2
+   no_membrs years_liv
+       <int>     <int>
+ 1         3         4
+ 2         7         9
+ 3        10        15
+ 4         7         6
+ 5         7        40
+ 6         3         3
+ 7         6        38
+ 8         6        20
+ 9         7        20
+10         6         8
+# ... with 33 more rows
 ~~~
-{: .error}
+{: .output}
 
 Note that the final data frame (`interviews_god`) is the leftmost part of this expression.
 
@@ -348,6 +250,7 @@ Note that the final data frame (`interviews_god`) is the leftmost part of this e
 > `liv_count`, and `no_meals`.
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > interviews %>%
@@ -359,17 +262,30 @@ Note that the final data frame (`interviews_god`) is the leftmost part of this e
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'interviews' not found
+> > # A tibble: 33 x 3
+> >    affect_conflicts liv_count no_meals
+> >    <chr>                <int>    <int>
+> >  1 once                     3        2
+> >  2 never                    2        2
+> >  3 never                    2        3
+> >  4 once                     3        2
+> >  5 frequently               1        3
+> >  6 more_once                5        2
+> >  7 more_once                3        2
+> >  8 more_once                2        3
+> >  9 once                     3        3
+> > 10 never                    3        3
+> > # ... with 23 more rows
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
 ### Mutate
 
 Frequently you'll want to create new columns based on the values in existing
-columns, for example to do unit conversions, or to find the ratio of values in two
-columns. For this we'll use `mutate()`.
+columns, for example to do unit conversions, or to find the ratio of values in
+two columns. For this we'll use `mutate()`.
 
 We might be interested in the ratio of number of household members
 to rooms used for sleeping (i.e. avg number of people per room):
@@ -377,48 +293,32 @@ to rooms used for sleeping (i.e. avg number of people per room):
 
 ~~~
 interviews %>%
-mutate(people_per_room = no_membrs / rooms)
+    mutate(people_per_room = no_membrs / rooms)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 131 x 15
+   key_ID village interview_date      no_membrs years_liv respondent_wall…
+    <int> <chr>   <dttm>                  <int>     <int> <chr>           
+ 1      1 God     2016-11-17 00:00:00         3         4 muddaub         
+ 2      1 God     2016-11-17 00:00:00         7         9 muddaub         
+ 3      3 God     2016-11-17 00:00:00        10        15 burntbricks     
+ 4      4 God     2016-11-17 00:00:00         7         6 burntbricks     
+ 5      5 God     2016-11-17 00:00:00         7        40 burntbricks     
+ 6      6 God     2016-11-17 00:00:00         3         3 muddaub         
+ 7      7 God     2016-11-17 00:00:00         6        38 muddaub         
+ 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks     
+ 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks     
+10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks     
+# ... with 121 more rows, and 9 more variables: rooms <int>,
+#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <int>,
+#   items_owned <chr>, no_meals <int>, months_lack_food <chr>,
+#   instanceID <chr>, people_per_room <dbl>
 ~~~
-{: .error}
-
-If this runs off your screen and you just want to see the first few rows, you
-can use a pipe to view the `head()` of the data. (Pipes work with non-**`dplyr`**
-functions, too, as long as the **`dplyr`** or `magrittr` package is loaded).
-
-
-~~~
-interviews %>%
-mutate(people_per_room = no_membrs / rooms)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
-head()
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in head.default(): argument "x" is missing, with no default
-~~~
-{: .error}
+{: .output}
 
 We may be interested in investigating whether being a member of an
 irrigation association had any effect on the ratio of household members
@@ -427,67 +327,64 @@ data from our dataset where the respondent didn't answer the
 question of whether they were a member of an irrigation association.
 These cases are recorded as "NULL" in the dataset.
 
-To remove these cases, we
-could insert a `filter()` in the chain:
+To remove these cases, we could insert a `filter()` in the chain:
 
 
 ~~~
 interviews %>%
-filter(memb_assoc != "NULL") %>%
-mutate(people_per_room = no_membrs / rooms)
+    filter(!is.na(memb_assoc)) %>%
+    mutate(people_per_room = no_membrs / rooms)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 92 x 15
+   key_ID village interview_date      no_membrs years_liv respondent_wall…
+    <int> <chr>   <dttm>                  <int>     <int> <chr>           
+ 1      1 God     2016-11-17 00:00:00         7         9 muddaub         
+ 2      7 God     2016-11-17 00:00:00         6        38 muddaub         
+ 3      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks     
+ 4      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks     
+ 5     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks     
+ 6     12 God     2016-11-21 00:00:00         7        20 burntbricks     
+ 7     13 God     2016-11-21 00:00:00         6         8 burntbricks     
+ 8     15 God     2016-11-21 00:00:00         5        30 sunbricks       
+ 9     21 God     2016-11-21 00:00:00         8        20 burntbricks     
+10     24 Ruaca   2016-11-21 00:00:00         6         4 burntbricks     
+# ... with 82 more rows, and 9 more variables: rooms <int>,
+#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <int>,
+#   items_owned <chr>, no_meals <int>, months_lack_food <chr>,
+#   instanceID <chr>, people_per_room <dbl>
 ~~~
-{: .error}
+{: .output}
 
-
-
-~~~
-head()
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in head.default(): argument "x" is missing, with no default
-~~~
-{: .error}
-
-The `!`
-symbol negates the result, so we're asking for every row where
-`memb_assoc` *is not* "NULL".
+The `!` symbol negates the result, so we're asking for every row where
+`memb_assoc` *is not* missing..
 
 > ## Exercise
 >
 >  Create a new data frame from the `interviews` data that meets the following
 >  criteria: contains only the `village` column and a new column called
->  `total_meals` containing a value that is equal to the total number of meals served in the household per day on average (`no_membrs` times `no_meals`). Only the rows where `total_meals` is greater than 20
-> should be shown in the final data frame.
+>  `total_meals` containing a value that is equal to the total number of meals
+>  served in the household per day on average (`no_membrs` times `no_meals`).
+>  Only the rows where `total_meals` is greater than 20 should be shown in the
+>  final data frame.
 >
->  **Hint**: think about how the commands should be ordered to produce this data frame!
+>  **Hint**: think about how the commands should be ordered to produce this data
+>  frame!
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > interviews_total_meals <- interviews %>%
 > >     mutate(total_meals = no_membrs * no_meals) %>%
-> >      filter(total_meals > 20) %>%
+> >     filter(total_meals > 20) %>%
 > >     select(village, total_meals)
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in eval(lhs, parent, parent): object 'interviews' not found
-> > ~~~
-> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -495,8 +392,8 @@ symbol negates the result, so we're asking for every row where
 
 Many data analysis tasks can be approached using the *split-apply-combine*
 paradigm: split the data into groups, apply some analysis to each group, and
-then combine the results. **`dplyr`** makes this very easy through the use of the
-`group_by()` function.
+then combine the results. **`dplyr`** makes this very easy through the use of
+the `group_by()` function.
 
 
 #### The `summarize()` function
@@ -509,17 +406,22 @@ to calculate the summary statistics. So to compute the average household size by
 
 ~~~
 interviews %>%
-group_by(village) %>%
-summarize(mean_no_membrs = mean(no_membrs, na.rm = TRUE))
+    group_by(village) %>%
+    summarize(mean_no_membrs = mean(no_membrs))
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 3 x 2
+  village  mean_no_membrs
+  <chr>             <dbl>
+1 Chirodzo           7.08
+2 God                6.86
+3 Ruaca              7.57
 ~~~
-{: .error}
+{: .output}
 
 You may also have noticed that the output from these calls doesn't run off the
 screen anymore. It's one of the advantages of `tbl_df` over data frame.
@@ -529,59 +431,90 @@ You can also group by multiple columns:
 
 ~~~
 interviews %>%
-group_by(village, memb_assoc) %>%
-summarize(mean_no_membrs = mean(no_membrs))
+    group_by(village, memb_assoc) %>%
+    summarize(mean_no_membrs = mean(no_membrs))
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 9 x 3
+# Groups:   village [?]
+  village  memb_assoc mean_no_membrs
+  <chr>    <chr>               <dbl>
+1 Chirodzo no                   8.06
+2 Chirodzo yes                  7.82
+3 Chirodzo <NA>                 5.08
+4 God      no                   7.13
+5 God      yes                  8   
+6 God      <NA>                 6   
+7 Ruaca    no                   7.18
+8 Ruaca    yes                  9.5 
+9 Ruaca    <NA>                 6.22
 ~~~
-{: .error}
+{: .output}
 
-When grouping both by `village` and `membr_assoc`, we see rows in our
-table for respondents who did not specify whether they were a
-member of an irrigation association. We can exclude those data from our table using a filter step.
+When grouping both by `village` and `membr_assoc`, we see rows in our table for
+respondents who did not specify whether they were a member of an irrigation
+association. We can exclude those data from our table using a filter step.
 
 
 
 ~~~
 interviews %>%
-filter(memb_assoc != "NULL") %>%
-group_by(village, memb_assoc) %>%
-summarize(mean_no_membrs = mean(no_membrs))
+    filter(!is.na(memb_assoc)) %>%
+    group_by(village, memb_assoc) %>%
+    summarize(mean_no_membrs = mean(no_membrs))
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 6 x 3
+# Groups:   village [?]
+  village  memb_assoc mean_no_membrs
+  <chr>    <chr>               <dbl>
+1 Chirodzo no                   8.06
+2 Chirodzo yes                  7.82
+3 God      no                   7.13
+4 God      yes                  8   
+5 Ruaca    no                   7.18
+6 Ruaca    yes                  9.5 
 ~~~
-{: .error}
+{: .output}
 
 Once the data are grouped, you can also summarize multiple variables at the same
 time (and not necessarily on the same variable). For instance, we could add a
-column indicating the minimum household size for each village for each
-group (members of an irrigation association vs not):
+column indicating the minimum household size for each village for each group
+(members of an irrigation association vs not):
 
 
 ~~~
 interviews %>%
-filter(memb_assoc != "NULL") %>%
-group_by(village, memb_assoc) %>%
-summarize(mean_no_membrs = mean(no_membrs), min_membrs = min(no_membrs))
+    filter(!is.na(memb_assoc)) %>%
+    group_by(village, memb_assoc) %>%
+    summarize(mean_no_membrs = mean(no_membrs),
+              min_membrs = min(no_membrs))
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 6 x 4
+# Groups:   village [?]
+  village  memb_assoc mean_no_membrs min_membrs
+  <chr>    <chr>               <dbl>      <dbl>
+1 Chirodzo no                   8.06          4
+2 Chirodzo yes                  7.82          2
+3 God      no                   7.13          3
+4 God      yes                  8             5
+5 Ruaca    no                   7.18          2
+6 Ruaca    yes                  9.5           5
 ~~~
-{: .error}
+{: .output}
 
 It is sometimes useful to rearrange the result of a query to inspect the values. For instance, we can sort on `min_membrs` to put the group
 with the smallest household first:
@@ -590,38 +523,57 @@ with the smallest household first:
 
 ~~~
 interviews %>%
-filter(memb_assoc != "NULL") %>%
-group_by(village, memb_assoc) %>%
-summarize(mean_no_membrs = mean(no_membrs), min_membrs = min(no_membrs)) %>%
-arrange(min_membrs)
+    filter(!is.na(memb_assoc)) %>%
+    group_by(village, memb_assoc) %>%
+    summarize(mean_no_membrs = mean(no_membrs), min_membrs = min(no_membrs)) %>%
+    arrange(min_membrs)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 6 x 4
+# Groups:   village [3]
+  village  memb_assoc mean_no_membrs min_membrs
+  <chr>    <chr>               <dbl>      <dbl>
+1 Chirodzo yes                  7.82          2
+2 Ruaca    no                   7.18          2
+3 God      no                   7.13          3
+4 Chirodzo no                   8.06          4
+5 God      yes                  8             5
+6 Ruaca    yes                  9.5           5
 ~~~
-{: .error}
+{: .output}
 
 To sort in descending order, we need to add the `desc()` function. If we want to sort the results by decreasing order of minimum household size:
 
 
 ~~~
 interviews %>%
-filter(memb_assoc != "NULL") %>%
-group_by(village, memb_assoc) %>%
-summarize(mean_no_membrs = mean(no_membrs), min_membrs = min(no_membrs)) %>%
-arrange(desc(min_membrs))
+    filter(!is.na(memb_assoc)) %>%
+    group_by(village, memb_assoc) %>%
+    summarize(mean_no_membrs = mean(no_membrs),
+              min_membrs = min(no_membrs)) %>%
+    arrange(desc(min_membrs))
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 6 x 4
+# Groups:   village [3]
+  village  memb_assoc mean_no_membrs min_membrs
+  <chr>    <chr>               <dbl>      <dbl>
+1 God      yes                  8             5
+2 Ruaca    yes                  9.5           5
+3 Chirodzo no                   8.06          4
+4 God      no                   7.13          3
+5 Chirodzo yes                  7.82          2
+6 Ruaca    no                   7.18          2
 ~~~
-{: .error}
+{: .output}
 
 #### Counting
 
@@ -633,33 +585,42 @@ each village, we would do:
 
 ~~~
 interviews %>%
-count(village)
+    count(village)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 3 x 2
+  village      n
+  <chr>    <int>
+1 Chirodzo    39
+2 God         43
+3 Ruaca       49
 ~~~
-{: .error}
+{: .output}
 
-For convenience, `count()` provides the `sort` argument:
-
+For convenience, `count()` provides the `sort` argument to get results in decrea:
 
 
 ~~~
 interviews %>%
-count(village, sort = TRUE)
+    count(village, sort = TRUE)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+# A tibble: 3 x 2
+  village      n
+  <chr>    <int>
+1 Ruaca       49
+2 God         43
+3 Chirodzo    39
 ~~~
-{: .error}
+{: .output}
 
 > ## Exercise
 >
@@ -668,6 +629,7 @@ Error in eval(lhs, parent, parent): object 'interviews' not found
 > of meals represented?
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > interviews %>%
@@ -678,9 +640,13 @@ Error in eval(lhs, parent, parent): object 'interviews' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'interviews' not found
+> > # A tibble: 2 x 2
+> >   no_meals     n
+> >      <int> <int>
+> > 1        2    52
+> > 2        3    79
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 >
 > 2. Use `group_by()` and `summarize()` to find the mean, min, and max
@@ -688,6 +654,7 @@ Error in eval(lhs, parent, parent): object 'interviews' not found
 > observations (hint: see `?n`).
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > interviews %>%
@@ -704,122 +671,121 @@ Error in eval(lhs, parent, parent): object 'interviews' not found
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'interviews' not found
+> > # A tibble: 3 x 5
+> >   village  mean_no_membrs min_no_membrs max_no_membrs     n
+> >   <chr>             <dbl>         <dbl>         <dbl> <int>
+> > 1 Chirodzo           7.08             2            12    39
+> > 2 God                6.86             3            15    43
+> > 3 Ruaca              7.57             2            19    49
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 >
 > 3. What was the largest household interviewed in each month?
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > # if not already included, add month, year, and day columns
 > > interviews %>%
-> >     mutate(date = ymd_hms(interview_date),
-> >             month = month(date),
-> >             day = day(date),
-> >             year = year(date)) %>%
+> >     mutate(month = month(date),
+> >            day = day(date),
+> >            year = year(date)) %>%
 > >     group_by(year, month) %>%
 > >     summarize(max_no_membrs = max(no_membrs))
-> > > {: .solution}
-> > {: .challenge}
-> > 
-> > ## Reshaping with gather and spread
-> > 
-> > In the [spreadsheet
-> > lesson](http://www.datacarpentry.org/spreadsheets-socialsci/),
-> > we discussed how to structure our data leading to the four rules defining a tidy
-> > dataset:
-> > 
-> > 1. Each variable has its own column
-> > 2. Each observation has its own row
-> > 3. Each value must have its own cell
-> > 4. Each type of observational unit forms a table
-> > 
-> > Here we examine the fourth rule: Each type of observational unit forms a table.
-> > 
-> > In `interviews` , the rows of `interviews` contain the values of variables associated
-> > with each record (the unit), values such as the number of household members or posessions
-> > associated with each record. What if instead of comparing records, we
-> > wanted to look at differences in households grouped by different types of housing construction materials?
-> > 
-> > We'd need to create a new table where each row (the unit) is comprised
-> > of values of variables associated with each housing material (e.g. for
-> > `respondent_wall_type`). In practical terms this means the values
-> > of the wall construction materials in `respondent_wall_type` would
-> > become the names of column variables and the cells would contain "TRUE" or "FALSE".
-> > 
-> > Having created a new table, we can now explore the
-> > relationship within and between household types - for example we could
-> > compare the ratio of household members to sleeping rooms grouped by
-> > type of construction material. The key point here is that we are still following a tidy data structure,
-> > but we have **reshaped** the data according to the observations of interest.
-> > 
-> > The opposite transformation would be to transform column names into values of
-> > a variable.
-> > 
-> > We can do both these of transformations with two `tidyr` functions, `spread()`
-> > and `gather()`.
-> > 
-> > #### Spreading
-> > 
-> > `spread()` takes three principal arguments:
-> > 
-> > 1. the data
-> > 2. the *key* column variable whose values will become new column names.
-> > 3. the *value* column variable whose values will fill the new column variables.
-> > 
-> > Further arguments include `fill` which, if set, fills in missing values with
-> > the value provided.
-> > 
-> > Let's use `spread()` to transform interviews to create new columns for each type of wall construction material. We use the pipe as
-> > before too. Because both the `key` and `value` parameters must
-> > come from column values, we will create a dummy column to hold the
-> > value "TRUE", which we will then place into the appropriate column
-> > that corresponds to the wall construction material for that respondent.
-> > We will use `fill = "FALSE"` to fill the rest of the new columns
-> > for that row with "FALSE"."
 > > ~~~
 > > {: .language-r}
 > > 
 > > 
 > > 
 > > ~~~
-> > Error: <text>:9:1: unexpected '>'
-> > 8:     summarize(max_no_membrs = max(no_membrs))
-> > 9: >
-> >    ^
+> > Error in mutate_impl(.data, dots): Evaluation error: do not know how to convert 'x' to class "POSIXlt".
 > > ~~~
 > > {: .error}
+> {: .solution}
+{: .challenge}
+
+## Reshaping with gather and spread
+
+In the [spreadsheet
+lesson](http://www.datacarpentry.org/spreadsheets-socialsci/), we discussed how
+to structure our data leading to the four rules defining a tidy dataset:
+
+1. Each variable has its own column
+2. Each observation has its own row
+3. Each value must have its own cell
+4. Each type of observational unit forms a table
+
+Here we examine the fourth rule: Each type of observational unit forms a table.
+
+In `interviews`, each row contains the values of variables associated with each
+record (the unit), values such as the number of household members or posessions
+associated with each record. What if instead of comparing records, we wanted to
+look at differences in households grouped by different types of housing
+construction materials?
+
+We'd need to create a new table where each row (the unit) is comprised
+of values of variables associated with each housing material (e.g. for
+`respondent_wall_type`). In practical terms this means the values
+of the wall construction materials in `respondent_wall_type` would
+become the names of column variables and the cells would contain `TRUE` or `FALSE`.
+
+Having created a new table, we can now explore the relationship within and
+between household types - for example we could compare the ratio of household
+members to sleeping rooms grouped by type of construction material. The key
+point here is that we are still following a tidy data structure, but we have
+**reshaped** the data according to the observations of interest.
+
+The opposite transformation would be to transform column names into values of
+a variable.
+
+We can do both these of transformations with two `tidyr` functions, `spread()`
+and `gather()`.
+
+#### Spreading
+
+`spread()` takes three principal arguments:
+
+1. the data
+2. the *key* column variable whose values will become new column names.
+3. the *value* column variable whose values will fill the new column variables.
+
+Further arguments include `fill` which, if set, fills in missing values with
+the value provided.
+
+Let's use `spread()` to transform interviews to create new columns for each type
+of wall construction material. We use the pipe as before too. Because both the
+`key` and `value` parameters must come from column values, we will create a
+dummy column (we'll name it `wall_type_logical`) to hold the value `TRUE`, which
+we will then place into the appropriate column that corresponds to the wall
+construction material for that respondent. When using `mutate()` if you give a
+single value, it will be used for all observations in the dataset. We will use
+`fill = FALSE` in `spread()` to fill the rest of the new columns for that row
+with `FALSE`.
+
 
 ~~~
 interviews_spread <- interviews %>%
-mutate(dummy = TRUE) %>%
-spread(key = respondent_wall_type, value = dummy, fill = FALSE)
+    mutate(wall_type_logical = TRUE) %>%
+    spread(key = respondent_wall_type, value = wall_type_logical, fill = FALSE)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
-~~~
-{: .error}
-
-View the `interviews_spread` data frame and notice that there is no
-longer a column titled `respondent_wall_type`. This is because
-there is a default parameter in `spread()` that drops the original column.
+View the `interviews_spread` data frame and notice that there is no longer a
+column titled `respondent_wall_type`. This is because there is a default
+parameter in `spread()` that drops the original column.
 
 ## Gathering
 
-The opposing situation could occur if we had been provided with data in the
-form of `interviews_spread`, where the building materials are column names, but we
+The opposing situation could occur if we had been provided with data in the form
+of `interviews_spread`, where the building materials are column names, but we
 wish to treat them as values of a `respondent_wall_type` variable instead.
 
-In this situation we are gathering the column names and turning them into a
-pair of new variables. One variable represents the column names as values, and
-the other variable contains the values previously associated with the column names. We will do this in two steps to make this process a bit clearer.
+In this situation we are gathering the column names and turning them into a pair
+of new variables. One variable represents the column names as values, and the
+other variable contains the values previously associated with the column names.
+We will do this in two steps to make this process a bit clearer.
 
 `gather()` takes four principal arguments:
 
@@ -830,85 +796,91 @@ associated with the key.
 4. the names of the columns we use to fill the key variable (or to drop).
 
 To recreate our original data frame, we will use the following:
+
 1. the data - `interviews_spread`
-2. the *key* column will be "respondent_wall_type" (as a character string). This is the name of the new column we want to create.
-3. the *value* column will be "dummy". This will be either TRUE or FALSE.
-4. the names of the columns we will use to fill the key variable are burntbricks:sunbricks (the column named "burntbricks" up to and including the column named "sunbricks").
+2. the *key* column will be "respondent_wall_type" (as a character string). This
+   is the name of the new column we want to create.
+3. the *value* column will be `wall_type_logical`. This will be either `TRUE` or
+   `FALSE`.
+4. the names of the columns we will use to fill the key variable are
+   `burntbricks:sunbricks` (the column named "burntbricks" up to and including
+   the column named "sunbricks" as they are ordered in the data frame).
 
 
 ~~~
 interviews_gather <- interviews_spread %>%
-gather(key = "respondent_wall_type", value = "dummy", burntbricks:sunbricks)
+    gather(key = respondent_wall_type, value = "wall_type_logical",
+           burntbricks:sunbricks)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in eval(lhs, parent, parent): object 'interviews_spread' not found
-~~~
-{: .error}
-
-This creates a dataframe with 524 rows (4 rows per interview respondent). The four rows for each respondent differ only in the
+This creates a data frame with `nrow(interviews_gather)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
 value of the "respondent_wall_type" and "dummy" columns. View the data to see what this looks like.
 
-Only one row for each interview respondent is informative - we know that
-if the house walls are made of "sunbrick" they aren't made of any other the other materials. Therefore, we can get rid of the rows where
-"dummy" is FALSE. We can then get rid of the "dummy" column. We do all
-of these steps together in the next chunk of code:
+Only one row for each interview respondent is informative - we know that if the
+house walls are made of "sunbrick" they aren't made of any other the other
+materials. Therefore, we can get filter our dataset to only keep values where
+`wall_type_logical` is `TRUE`. Because, `wall_type_logical` is already either
+`TRUE` or `FALSE`, when passing the column name to `filter()`, it will
+automatically already only keep rows where this column has the value `TRUE`. We
+can then remove the `wall_type_logical` column. We do all of these steps
+together in the next chunk of code:
 
 
 ~~~
 interviews_gather <- interviews_spread %>%
-gather(key = "respondent_wall_type", value = "dummy", burntbricks:sunbricks) %>%
-filter(dummy == TRUE) %>%
-select(-dummy)
+    gather(key = "respondent_wall_type", value = "dummy",
+           burntbricks:sunbricks) %>%
+    filter(wall_type_logical == TRUE) %>%
+    select(-wall_type_logical)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews_spread' not found
+Error in filter_impl(.data, quo): Evaluation error: object 'wall_type_logical' not found.
 ~~~
 {: .error}
 
-View both `interviews_gather` and `interviews_spread` and compare their structure. Notice that the rows have been reordered in
-`interviews_gather` such that all of the respondents with a particular
-wall type are grouped together.
+View both `interviews_gather` and `interviews_spread` and compare their
+structure. Notice that the rows have been reordered in `interviews_gather` such
+that all of the respondents with a particular wall type are grouped together.
 
 ## Applying `spread()` to clean our data
 
-Now that we've learned about `gather()` and `spread()` we're going to
-put these functions to use to fix a problem with the way that our data
-is structured. In the spreadsheets lesson, we learned that it's best
-practice to have only a single piece of information in each cell of
-your spreadsheet. In this dataset, we have several columns which contain
-multiple pieces of information. For example, the `items_owned` column
-contains information about whether our respondents owned a fridge, a television, etc. To make this data easier to analyze, we
-will split this column and create a new column for each item. Each cell
-in that column will either be TRUE or FALSE and will indicate whether
+Now that we've learned about `gather()` and `spread()` we're going to put these
+functions to use to fix a problem with the way that our data is structured. In
+the spreadsheets lesson, we learned that it's best practice to have only a
+single piece of information in each cell of your spreadsheet. In this dataset,
+we have several columns which contain multiple pieces of information. For
+example, the `items_owned` column contains information about whether our
+respondents owned a fridge, a television, etc. To make this data easier to
+analyze, we will split this column and create a new column for each item. Each
+cell in that column will either be `TRUE` or `FALSE` and will indicate whether
 that interview respondent owned that item.
 
 
 ~~~
 interviews_items_owned <- interviews %>%
-mutate(split_items = strsplit(items_owned, ";")) %>%
-unnest() %>%
-mutate(dummy = TRUE) %>%
-spread(key = split_items, value = dummy, fill = FALSE)
+    mutate(split_items = strsplit(items_owned, ";")) %>%
+    unnest() %>%
+    mutate(items_owned_logical = TRUE) %>%
+    spread(key = split_items, value = items_owned_logical, fill = FALSE)
+nrow(interviews_items_owned)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
+[1] 131
 ~~~
-{: .error}
+{: .output}
 
-There are a couple of new concepts in this code chunk. Let's walk
-through it line by line. First we create a new object (`interviews_items_owned`) based on the `interviews` dataframe.
+There are a couple of new concepts in this code chunk. Let's walk through it
+line by line. First we create a new object (`interviews_items_owned`) based on
+the `interviews` dataframe.
 
 
 ~~~
@@ -916,9 +888,9 @@ interviews_items_owned <- interviews %>%
 ~~~
 {: .language-r}
 
-Then we use the new function `strsplit()` to split the column `items_owned` based on the presence of semi-colons (`;`).
-This creates a new column `split_items` where each cell contains
-a list of items.
+Then we use the new function `strsplit()` to split the column `items_owned`
+based on the presence of semi-colons (`;`). This creates a new column
+`split_items` that contains each item as a list.
 
 
 ~~~
@@ -926,9 +898,10 @@ mutate(split_items = strsplit(items_owned, ";")) %>%
 ~~~
 {: .language-r}
 
-Now that we have the `items_owned` column as a list, we can use the
-`tidyr` function `unnest()` to create a long format version of the dataset. In this long format version, there are 631 rows (one row
-for each unique item for each respondent).
+Now that we have the `items_owned` column as a list, we can use the `tidyr`
+function `unnest()` to create a long format version of the dataset. In this long
+format version, there are `nrow(interviews_items_owned)` rows (one row for
+each unique item for each respondent).
 
 
 ~~~
@@ -936,8 +909,9 @@ unnest() %>%
 ~~~
 {: .language-r}
 
-Lastly, we use `spread()` to switch from long format to wide format. This creates a new column for each of the unique values in the
-`split_items` column and fills those columns with TRUE or FALSE.
+Lastly, we use `spread()` to switch from long format to wide format. This
+creates a new column for each of the unique values in the `split_items` column
+and fills those columns with `TRUE` or `FALSE`.
 
 
 ~~~
@@ -946,29 +920,43 @@ spread(key = split_items, value = dummy, fill = FALSE)
 ~~~
 {: .language-r}
 
-View the `interviews_items_owned` data frame. It should have 131 rows
-(the same number of rows you had originally), but extra columns for each
-item.
+View the `interviews_items_owned` data frame. It should have `r
+nrow(interviews)` rows (the same number of rows you had originally), but extra
+columns for each item. 
 
-This format of the data allows us to do interesting things, like make a
-table showing the number of respondents in each village who
-owned a particular item:
+You may notice that the last column in called `\`<NA>\``. This is because the respondents did not own any of the items that was in the interviewer's list. We can use the `rename()` function to change this name to something more meaningful:
+
+
+~~~
+interviews_items_owned <- interviews_items_owned %>%
+    rename(no_listed_items = `<NA>`)
+~~~
+{: .language-r}
+
+This format of the data allows us to do interesting things, like make a table
+showing the number of respondents in each village who owned a particular item:
 
 
 ~~~
 interviews_items_owned %>%
-filter(bicycle == TRUE) %>%
-group_by(village) %>%
-count(bicycle)
+    filter(bicycle) %>%
+    group_by(village) %>%
+    count(bicycle)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews_items_owned' not found
+# A tibble: 3 x 3
+# Groups:   village [3]
+  village  bicycle     n
+  <chr>    <lgl>   <int>
+1 Chirodzo TRUE       17
+2 God      TRUE       23
+3 Ruaca    TRUE       20
 ~~~
-{: .error}
+{: .output}
 
 Or calculate the average number of items from the list owned
 by respondents in each village:
@@ -976,40 +964,46 @@ by respondents in each village:
 
 ~~~
 interviews_items_owned %>%
-mutate(number_items = rowSums(select(., bicycle:television))) %>%
-group_by(village) %>%
-summarize(mean_items = mean(number_items))
+    mutate(number_items = rowSums(select(., bicycle:television))) %>%
+    group_by(village) %>%
+    summarize(mean_items = mean(number_items))
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error in eval(lhs, parent, parent): object 'interviews_items_owned' not found
+# A tibble: 3 x 2
+  village  mean_items
+  <chr>         <dbl>
+1 Chirodzo       4.54
+2 God            3.98
+3 Ruaca          5.57
 ~~~
-{: .error}
+{: .output}
 
 > ## Exercise
 >
-> 1. Create a new data frame (named `interviews_months_no_water`)
-> that has one column for each month and records TRUE or FALSE for
-> whether each interview respondent was lacking water in that month.
+> 1. Create a new data frame (named `interviews_months_no_water`) that has one
+> column for each month and records `TRUE` or `FALSE` for whether each interview
+> respondent was lacking water in that month.
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > interviews_months_no_water <- interviews %>%
-> > mutate(split_months = strsplit(months_no_water, ";")) %>%
-> > unnest() %>%
-> > mutate(dummy = TRUE) %>%
-> > spread(key = split_months, value = dummy, fill = FALSE)
+> >   mutate(split_months = strsplit(months_no_water, ";")) %>%
+> >   unnest() %>%
+> >   mutate(months_no_water_logical  = TRUE) %>%
+> >   spread(key = split_months, value = months_no_water_logical, fill = FALSE)
 > > ~~~
 > > {: .language-r}
 > > 
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'interviews' not found
+> > Error in mutate_impl(.data, dots): Evaluation error: object 'months_no_water' not found.
 > > ~~~
 > > {: .error}
 > {: .solution}
@@ -1018,12 +1012,13 @@ Error in eval(lhs, parent, parent): object 'interviews_items_owned' not found
 > they did belong to an irrigation association? What about if they didn't?
 >
 > > ## Solution
+> >
 > > 
 > > ~~~
 > > interviews_months_no_water %>%
-> > mutate(number_months = rowSums(select(., Apr:Sept))) %>%
-> > group_by(memb_assoc) %>%
-> > summarize(mean_months = mean(number_months))
+> >   mutate(number_months = rowSums(select(., Apr:Sept))) %>%
+> >   group_by(memb_assoc) %>%
+> >   summarize(mean_months = mean(number_months))
 > > ~~~
 > > {: .language-r}
 > > 
@@ -1062,28 +1057,22 @@ data value. To do this, we will use spread to expand the
 
 ~~~
 interviews_plotting <- interviews %>%
-# spread data by items_owned
-mutate(split_items = strsplit(items_owned, ";")) %>%
-unnest() %>%
-mutate(dummy = TRUE) %>%
-spread(key = split_items, value = dummy, fill = FALSE) %>%
-# spread data by months_lack_food
-mutate(split_months = strsplit(months_lack_food, ";")) %>%
-unnest() %>%
-mutate(dummy = TRUE) %>%
-spread(key = split_months, value = dummy, fill = FALSE) %>%
-# add some summary columns
-mutate(number_months_lack_food = rowSums(select(., Apr:Sept))) %>%
-mutate(number_items = rowSums(select(., bicycle:television)))
+    ## spread data by items_owned
+    mutate(split_items = strsplit(items_owned, ";")) %>%
+    unnest() %>%
+    mutate(items_owned_logical = TRUE) %>%
+    spread(key = split_items, value = items_owned_logical, fill = FALSE) %>%
+    rename(no_listed_items = `<NA>`) %>%
+    ## spread data by months_lack_food
+    mutate(split_months = strsplit(months_lack_food, ";")) %>%
+    unnest() %>%
+    mutate(months_lack_food_logical = TRUE) %>%
+    spread(key = split_months, value = months_lack_food_logical, fill = FALSE) %>%
+    ## add some summary columns
+    mutate(number_months_lack_food = rowSums(select(., Apr:Sept))) %>%
+    mutate(number_items = rowSums(select(., bicycle:television)))
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in eval(lhs, parent, parent): object 'interviews' not found
-~~~
-{: .error}
 
 Now we can save this data frame to our `data_output` directory.
 
@@ -1094,8 +1083,4 @@ write_csv(interviews_plotting, path = "data_output/interviews_plotting.csv")
 {: .language-r}
 
 
-~~~
-Error in is.data.frame(x): object 'interviews_plotting' not found
-~~~
-{: .error}
 
