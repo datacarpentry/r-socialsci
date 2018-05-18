@@ -829,19 +829,12 @@ together in the next chunk of code:
 
 ~~~
 interviews_gather <- interviews_spread %>%
-    gather(key = "respondent_wall_type", value = "dummy",
+    gather(key = "respondent_wall_type", value = "wall_type_logical",
            burntbricks:sunbricks) %>%
-    filter(wall_type_logical == TRUE) %>%
+    filter(wall_type_logical) %>%
     select(-wall_type_logical)
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in filter_impl(.data, quo): Evaluation error: object 'wall_type_logical' not found.
-~~~
-{: .error}
 
 View both `interviews_gather` and `interviews_spread` and compare their
 structure. Notice that the rows have been reordered in `interviews_gather` such
@@ -915,8 +908,8 @@ and fills those columns with `TRUE` or `FALSE`.
 
 
 ~~~
-mutate(dummy = TRUE) %>%
-spread(key = split_items, value = dummy, fill = FALSE)
+mutate(items_owned_logical = TRUE) %>%
+    spread(key = split_items, value = items_owned_logical, fill = FALSE)
 ~~~
 {: .language-r}
 
