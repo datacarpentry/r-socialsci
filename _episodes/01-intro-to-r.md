@@ -204,8 +204,12 @@ area_hectares <- 50
 {: .language-r}
 
 > ## Exercise
-> What do you think is the current content of the object `area_acres`? 123.5 or 6.175?
+> 
+> What do you think is the current content of the object `area_acres`? 123.5 or
+> 6.175?
+>
 > > ## Solution
+> >
 > > The value of `area_acres` is still 6.175 because you have not
 > > re-run the line `area_acres <- 2.47 * area_hectares` since
 > > changing the value of `area_hectares`.

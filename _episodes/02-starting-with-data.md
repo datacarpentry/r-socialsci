@@ -37,7 +37,7 @@ was collected through interviews conducted between November 2016 and
 June 2017. For this lesson, we will be using a subset of the
 available data. For information about the full teaching dataset used
 in other lessons in this workshop, see the
-[dataset description](https://www.datacarpentry.org/socialsci-workshop/data/).
+[dataset description](http://www.datacarpentry.org/socialsci-workshop/data/).
 
 We will be using a subset of the cleaned version of the dataset that
 was produced through cleaning in OpenRefine. Each row holds

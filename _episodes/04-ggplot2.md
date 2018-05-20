@@ -19,9 +19,9 @@ keypoints:
    - "`ggplot2` is a flexible and useful tool for creating plots in R."
    - "The data set and coordinate system can be defined using the `ggplot` function."
    - "Additional layers, including geoms, are added using the `+` operator."
-   - "Boxplots are useful for visualizing the distribuion of a continuous variable."
+   - "Boxplots are useful for visualizing the distribution of a continuous variable."
    - "Barplot are useful for visualizing categorical data."
-   - "Facetting allows you to generate multiple plots based on a categorical variable."
+   - "Faceting allows you to generate multiple plots based on a categorical variable."
 ---
 
 
@@ -371,7 +371,7 @@ ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
 
 <img src="../fig/rmd-04-barplot-1-1.png" title="plot of chunk barplot-1" alt="plot of chunk barplot-1" style="display: block; margin: auto;" />
 
-We can use the `fill` asthetic for the `geom_bar()` geom to color bars by
+We can use the `fill` aesthetic for the `geom_bar()` geom to color bars by
 the portion of each count that is from each village.
 
 
@@ -460,8 +460,8 @@ percentage of each house type in each village.
 ## Adding Labels and Titles
 
 By default, the axes labels on a plot are determined by the name of the variable
-being plotted. However, **`ggplot2`** offers lots of cusomization options,
-like specifing the axes labels, and adding a title to the plot with 
+being plotted. However, **`ggplot2`** offers lots of customization options,
+like specifying the axes labels, and adding a title to the plot with 
 relatively few lines of code. We will add more informative x and y axis
 labels to our plot of proportion of house type by village and also add
 a title.
@@ -476,7 +476,7 @@ ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_t
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-wall-types-labelled-1.png" title="plot of chunk barplot-wall-types-labelled" alt="plot of chunk barplot-wall-types-labelled" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-wall-types-labeled-1.png" title="plot of chunk barplot-wall-types-labeled" alt="plot of chunk barplot-wall-types-labeled" style="display: block; margin: auto;" />
 
 ## Faceting
 
