@@ -1037,3 +1037,5 @@ Now that we have learned how to write scripts, and the basics of R's data
 structures, we are ready to start working with the SAFI dataset we have been
 using in the other lessons, and learn about data frames.
 
+
+{% include links.md %}

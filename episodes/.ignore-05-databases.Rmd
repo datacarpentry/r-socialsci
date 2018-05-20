@@ -237,3 +237,5 @@ SN7577_d %>%
 > >
 > {: .solution}
 {: .challenge}
+
+{% include links.md %}

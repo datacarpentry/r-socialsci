@@ -303,3 +303,5 @@ install.packages("tidyverse")
 was written to the console. 
 
 You could also have installed the **`tidyverse`** packages by running this command directly at the R terminal.
+
+{% include links.md %}
