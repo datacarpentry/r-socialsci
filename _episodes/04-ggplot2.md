@@ -229,13 +229,13 @@ geom_jitter(alpha = 0.5, color = "blue")
 
 <img src="../fig/rmd-04-adding-colors-1.png" title="plot of chunk adding-colors" alt="plot of chunk adding-colors" style="display: block; margin: auto;" />
 
-Or to color each species in the plot differently, you could use a vector as an input to the argument **color**. **`ggplot2`** will provide a different color corresponding to different values in the vector. Here is an example where we color by **`village`**:
+Or to color each species in the plot differently, you could use a vector as an input to the argument **`color`**.  Because we are now mapping features of the data to a color, instead of setting one color for all points, the color now needs to be set inside a call to the **`aes`** function. **`ggplot2`** will provide a different color corresponding to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** function call because we are using the same value for all points. Here is an example where we color by **`village`**:
 
 
 
 ~~~
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
-    geom_jitter(aes(alpha = 0.5, color = village))
+    geom_jitter(aes(color = village), alpha = 0.5)
 ~~~
 {: .language-r}
 
