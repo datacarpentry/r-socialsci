@@ -223,7 +223,7 @@ We can also add colors for all the points:
 
 ~~~
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
-geom_jitter(alpha = 0.5, color = "blue")
+geom_jitter(color = "blue", alpha = 0.5)
 ~~~
 {: .language-r}
 
@@ -235,7 +235,7 @@ Or to color each species in the plot differently, you could use a vector as an i
 
 ~~~
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
-    geom_jitter(aes(alpha = 0.5, color = village))
+    geom_jitter(alpha = 0.5, aes(color = village))
 ~~~
 {: .language-r}
 
@@ -342,13 +342,16 @@ hidden?
 >
 > - Add color to the data points on your boxplot according to whether the
 >   respondent is a member of an irrigation association (`memb_assoc`).
->
+>ggplot(txhousing, aes(x=year, y=median)) + 
+  facet_wrap(~ city) +
+  scale_y_continuous(labels = scales::dollar) +
+  geom_jitter(alpha = 0.3, aes(color = city))
 > > ## Solution
 > > 
 > > ~~~
 > > ggplot(data = interviews_plotting, aes(x = respondent_wall_type, y = liv_count)) +
 > >   geom_boxplot(alpha = 0) +
-> >   geom_jitter(aes(alpha = 0.5, color = memb_assoc))
+> >   geom_jitter(alpha = 0.5, aes(color = memb_assoc))
 > > ~~~
 > > {: .language-r}
 > > 
