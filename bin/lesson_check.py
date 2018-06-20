@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Check lesson files and their contents.
@@ -26,7 +26,7 @@ SOURCE_DIRS = ['', '_episodes', '_extras']
 # specially. This list must include all the Markdown files listed in the
 # 'bin/initialize' script.
 REQUIRED_FILES = {
-    '%/CONDUCT.md': True,
+    '%/CODE_OF_CONDUCT.md': True,
     '%/CONTRIBUTING.md': False,
     '%/LICENSE.md': True,
     '%/README.md': False,
@@ -171,13 +171,18 @@ def check_config(reporter, source_dir):
     reporter.check_field(config_file, 'configuration',
                          config, 'kind', 'lesson')
     reporter.check_field(config_file, 'configuration',
-                         config, 'carpentry', ('swc', 'dc', 'lc'))
+                         config, 'carpentry', ('swc', 'dc', 'lc', 'cp'))
     reporter.check_field(config_file, 'configuration', config, 'title')
     reporter.check_field(config_file, 'configuration', config, 'email')
 
-    reporter.check({'values': {'root': '..'}} in config.get('defaults', []),
+    for defaults in [
+            {'values': {'root': '.', 'layout': 'page'}},
+            {'values': {'root': '..', 'layout': 'episode'}, 'scope': {'type': 'episodes', 'path': ''}},
+            {'values': {'root': '..', 'layout': 'page'}, 'scope': {'type': 'extras', 'path': ''}}
+            ]:
+        reporter.check(defaults in config.get('defaults', []),
                    'configuration',
-                   '"root" not set to ".." in configuration')
+                   '"root" not set to "." in configuration')
 
 
 def read_references(reporter, ref_path):
@@ -271,9 +276,9 @@ def create_checker(args, filename, info):
     for (pat, cls) in CHECKERS:
         if pat.search(filename):
             return cls(args, filename, **info)
+    return NotImplemented
 
-
-class CheckBase(object):
+class CheckBase:
     """Base class for checking Markdown files."""
 
     def __init__(self, args, filename, metadata, metadata_len, text, lines, doc):
@@ -508,7 +513,6 @@ class CheckGeneric(CheckBase):
 
     def __init__(self, args, filename, metadata, metadata_len, text, lines, doc):
         super().__init__(args, filename, metadata, metadata_len, text, lines, doc)
-        self.layout = 'page'
 
 
 CHECKERS = [
@@ -517,6 +521,7 @@ CHECKERS = [
     (re.compile(r'index\.md'), CheckIndex),
     (re.compile(r'reference\.md'), CheckReference),
     (re.compile(r'_episodes/.*\.md'), CheckEpisode),
+    (re.compile(r'aio\.md'), CheckNonJekyll),
     (re.compile(r'.*\.md'), CheckGeneric)
 ]
 

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """Initialize a newly-created repository."""
 
@@ -11,8 +11,9 @@ BOILERPLATE = (
     '.travis.yml',
     'AUTHORS',
     'CITATION',
+    'CODE_OF_CONDUCT.md',
     'CONTRIBUTING.md',
-    'README.md'
+    'README.md',
     '_config.yml',
     '_episodes/01-introduction.md',
     '_extras/about.md',
