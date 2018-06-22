@@ -333,7 +333,9 @@ percentage of each house type in each village.
 > > percent_memb_assoc <- interviews_plotting %>%
 > >   filter(!is.na(memb_assoc)) %>%
 > >   count(village, memb_assoc) %>%
-> >   mutate(percent = n / sum(n))
+> >   group_by(village) %>%
+> >   mutate(percent = n / sum(n)) %>%
+> >   ungroup()
 > >
 > > ggplot(percent_memb_assoc, aes(x = village, y = percent, fill = memb_assoc)) +
 > > geom_bar(stat = "identity", position = "dodge")
