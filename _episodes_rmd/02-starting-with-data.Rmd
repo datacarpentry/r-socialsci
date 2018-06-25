@@ -99,7 +99,7 @@ interviews
 
 A tibble is an extension of `R` data frames used by the _tidyverse_. When the 
 data is read using `read_csv()`, it is stored in an object of class `tbl_df`, 
-`tbl`,  and `data.frame`. You can see the class of an object
+`tbl`,  and `data.frame`. You can see the class of an object with
 
 ```{r results='hold', purl=FALSE}
 class(interviews)
