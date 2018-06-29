@@ -308,7 +308,9 @@ houses with cement walls, as there was only one in the dataset.
 percent_wall_type <- interviews_plotting %>%
     filter(respondent_wall_type != "cement") %>%
     count(village, respondent_wall_type) %>%
-    mutate(percent = n / sum(n))
+    group_by(village) %>%
+    mutate(percent = n / sum(n)) %>%
+    ungroup()
 ```
 
 Now we can use this new data frame to create our plot showing the
