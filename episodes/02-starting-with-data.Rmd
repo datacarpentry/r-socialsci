@@ -1,7 +1,7 @@
 ---
 title: "Starting with Data"
-teaching: 20
-exercises: 15
+teaching: 50
+exercises: 30
 questions:
 - "What is a data.frame?"
 - "How can I read a complete csv file into R?"
