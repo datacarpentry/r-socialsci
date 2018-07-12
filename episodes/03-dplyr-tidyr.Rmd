@@ -1,7 +1,7 @@
 ---
 title: "Introducing dplyr and tidyr"
-teaching: 45
-exercises: 20
+teaching: 50
+exercises: 30
 questions:
   - "How can I select specific rows and/or columns from a data frame?"
   - "How can I combine multiple commands into a single command?"
