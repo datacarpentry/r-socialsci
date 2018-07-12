@@ -1,7 +1,7 @@
 ---
 title: "Introduction to R"
-teaching: 30
-exercises: 20
+teaching: 50
+exercises: 30
 questions:
 - "What data types are available in R?"
 - "What is an object?"
