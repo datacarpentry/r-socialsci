@@ -12,6 +12,10 @@ carpentry: "dc"
 # Overall title for pages.
 title: "R for Social Scientists"
 
+# Life cycle stage of the lesson
+# possible values: "pre-alpha", "alpha", "beta", "stable"
+life_cycle: "beta"
+
 
 #------------------------------------------------------------
 # Generic settings (should not need to change).
