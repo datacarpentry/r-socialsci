@@ -8,7 +8,7 @@ questions:
   - "How can create new columns or remove existing columns from a data frame?"
   - "How can I reformat a dataframe to meet my needs?"
 objectives:
-- "Describe the purpose of the **`dplyr`** and **`tidyr`** packages."
+- "Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages."
 - "Select certain columns in a data frame with the **`dplyr`** function `select`."
 - "Select certain rows in a data frame according to filtering conditions with the **`dplyr`** function `filter`."
 - "Link the output of one **`dplyr`** function to the input of another function with the 'pipe' operator `%>%`."
@@ -39,32 +39,26 @@ source("../bin/download_data.R")
 
 # Data Manipulation using **`dplyr`** and **`tidyr`**
 
-**`dplyr`** is a package for making tabular data manipulation easier by using a
-limited set of functions that can be combined to extract and summarize insights from your data. It pairs nicely with **`tidyr`** which enables you to
-swiftly convert between different data formats (long vs. wide) for plotting and analysis.
+**`dplyr`** is a package for making tabular data manipulation easier by using a limited set of functions that can be combined to extract and summarize insights from your data. It pairs nicely with **`tidyr`** which enables you to swiftly convert between different data formats (long vs. wide) for plotting and analysis.
 
 Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the tidyverse. These packages were loaded in R's memory when we called `library(tidyverse)` earlier.
 
-## What are **`dplyr`** and **`tidyr`**?
+## What are R packages?
 
-The package **`dplyr`** provides easy tools for the most common data
-manipulation tasks. It is built to work directly with data frames, with many
-common tasks optimized by being written in a compiled language (C++). An
-additional feature is the ability to work directly with data stored in an
-external database. The benefits of doing this are that the data can be managed
-natively in a relational database, queries can be conducted on that database,
-and only the results of the query are returned.
+An R package is a complete unit for sharing code with others. Each R package contains the code for a set of R functions, the documentation (or description) for each of the functions, as well as a practice dataset to learn the functions on. 
 
-This addresses a common problem with R in that all operations are conducted
-in-memory and thus the amount of data you can work with is limited by available
-memory. The database connections essentially remove that limitation in that you
-can connect to a database of many hundreds of GB, conduct queries on it
-directly, and pull back into R only what you need for analysis.
+Generally, each R package is built with a specific task in mind. For instance, the package **`dplyr`** provides easy tools for the most common data manipulation tasks. It is built to work directly with data frames, with many common tasks optimized by being written in a compiled language (C++) (not all R packages are written in R!). 
 
 The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
 
+But there are also packages available for a wide range of tasks including building plots (**`ggplot`**, which we'll see later), downloading data from the NCBI database, or performing statistical analysis on your data set. Many packages such as these are housed on, and downloadable from, the **C**omprehensive **R** **A**rchive **N**etwork (CRAN) using `install.packages`. This function makes the package accessible by your R installation with the command `library()`, as you did with `tidyverse` earlier.
+
+To easily access the documentation for a package within R or R studio, use `help(package = "package_name")`.
+
 To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
 [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+
+## Learning **`dplyr`** and **`tidyr`**
 
 To make sure, everyone will use the same dataset for this lesson, we'll read again the SAFI dataset that we downloaded earlier.
 
@@ -95,7 +89,7 @@ We're going to learn some of the most common **`dplyr`** functions:
 
 To select columns of a
 data frame, use `select()`. The first argument to this function is the data
-frame (`surveys`), and the subsequent arguments are the columns to keep.
+frame (`interviews`), and the subsequent arguments are the columns to keep.
 
 ```{r, results = 'hide', purl = FALSE}
 select(interviews, village, no_membrs, years_liv)
