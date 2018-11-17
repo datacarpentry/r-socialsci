@@ -173,7 +173,7 @@ to select the whole line), then press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> +
 
 > ## Exercise
 >
-> Create two variables `length` and `width` and assign them values.
+> Create two variables `length` and `width` and assign them values. It should be noted that R Studio might add "()" after width and if you leave the parentheses you will get unexpected results. This is why you might see other programmers abbreviate common words.
 > Create a third variable `area` and give it a value based on the current values of `length` and `width`.
 > Show that changing the values of either `length` and `width` does not affect the value of `area`.
 > 
