@@ -980,7 +980,7 @@ interviews_items_owned %>%
 
 > ## Exercise
 >
-> 1. Create a new data frame (named `interviews_months_no_water`) that has one
+> 1. Create a new data frame (named `interviews_months_lack_food`) that has one
 > column for each month and records `TRUE` or `FALSE` for whether each interview
 > respondent was lacking water in that month.
 >
@@ -989,10 +989,10 @@ interviews_items_owned %>%
 > > 
 > > ~~~
 > > interviews_months_no_water <- interviews %>%
-> >   mutate(split_months = strsplit(months_no_water, ";")) %>%
+> >   mutate(split_months = strsplit(months_lack_food, ";")) %>%
 > >   unnest() %>%
-> >   mutate(months_no_water_logical  = TRUE) %>%
-> >   spread(key = split_months, value = months_no_water_logical, fill = FALSE)
+> >   mutate(months_no_food_logical  = TRUE) %>%
+> >   spread(key = split_months, value = months_no_food_logical, fill = FALSE)
 > > ~~~
 > > {: .language-r}
 > > 
