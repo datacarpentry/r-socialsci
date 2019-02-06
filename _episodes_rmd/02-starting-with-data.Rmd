@@ -71,8 +71,9 @@ library(tidyverse)
 interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 ```
 
-This statement doesn't produce any output because, as you might recall,
-assignments don't display anything. If we want to check that our data has been
+This statement creates a data frame but doesn't show any data because, as you might recall,
+assignments don't display anything. (Note, however, that `read_csv` may show informational
+text about the data frame that is created.) If we want to check that our data has been
 loaded, we can see the contents of the data frame by typing its name: `interviews`.
 
 ```{r, results='hold', purl=FALSE}
