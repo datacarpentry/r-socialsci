@@ -12,7 +12,7 @@ using R much easier and more interactive. You need to install R before you
 install RStudio. After installing both programs, you will need to install the
 **`tidyverse`** package from within RStudio. Follow the instructions below for
 your operating system, and then follow the instructions to install
-**`tidyverse`.
+**`tidyverse`**.
 
 ### Windows
 
