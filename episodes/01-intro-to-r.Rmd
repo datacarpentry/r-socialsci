@@ -22,7 +22,6 @@ objectives:
 - "Analyze vectors with missing data."
 keypoints:
 - "Access individual values by location using `[]`."
-- "Access slices of data using `[low:high]`."
 - "Access arbitrary sets of data using `[c(...)]`."
 - "Use logical operations and logical vectors to access subsets of data."
 source: Rmd
