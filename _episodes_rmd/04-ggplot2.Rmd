@@ -360,9 +360,9 @@ a title.
 ```{r barplot-wall-types-labeled}
 ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
-    ylab("Percent") +
-    xlab("Wall Type") +
-    ggtitle("Proportion of wall type by village")
+    labs(title="Proportion of wall type by village",
+         x="Wall Type",
+         y="Percent")
 ```
 
 ## Faceting
@@ -381,9 +381,9 @@ so that each village has it's own panel in a multi-panel plot:
 ```{r barplot-faceting}
 ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    ylab("Percent") +
-    xlab("Wall Type") +
-    ggtitle("Proportion of wall type by village") +
+    labs(title="Proportion of wall type by village",
+         x="Wall Type",
+         y="Percent") +
     facet_wrap(~ village)
 ```
 
@@ -397,9 +397,9 @@ the grid:
 ```{r barplot-theme-bw, purl=FALSE}
 ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    ylab("Percent") +
-    xlab("Wall Type") +
-    ggtitle("Proportion of wall type by village") +
+    labs(title="Proportion of wall type by village",
+         x="Wall Type",
+         y="Percent") +
     facet_wrap(~ village) +
     theme_bw() +
     theme(panel.grid = element_blank())
