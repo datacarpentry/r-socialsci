@@ -108,7 +108,7 @@ an "R Project" for this tutorial. First, let's take a quick tour of RStudio.
 
 ![RStudio_startup](../fig/R_00_Rstudio_01.png)
 
-RStudio is divided into four "panes": the **Source** for your scripts and documents
+RStudio is divided into three "panes": the **Source** for your scripts and documents
 (top left in the default layout), the R **Console** (bottom left), your
 **Environment/History** (top right), and your
 **Files/Plots/Packages/Help/Viewer** (bottom right). The placement of these
