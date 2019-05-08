@@ -171,7 +171,7 @@ interviews[1, 1]
 ## first element in the 6th column (as a vector)
 interviews[1, 6]
 ## first column of the data frame (as a vector)
-interviews[, 1]
+interviews[[1]]
 ## first column of the data frame (as a data.frame)
 interviews[1]
 ## first three elements in the 7th column (as a vector)
