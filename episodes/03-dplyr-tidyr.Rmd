@@ -380,6 +380,7 @@ interviews %>%
 > >
 > > ```{r}
 > > # if not already included, add month, year, and day columns
+> > library(lubridate) # load lubridate if not already loaded
 > > interviews %>%
 > >     mutate(month = month(interview_date),
 > >            day = day(interview_date),
