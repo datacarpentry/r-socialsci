@@ -190,6 +190,8 @@ does not appear to be different by village.
 > > ggplot(data = interviews_plotting, aes(x = village, y = rooms)) +
 > > geom_jitter(aes(color = respondent_wall_type))
 > > ```
+> > This is not a good way to show this type of data because it is difficult to
+> > distinguish between villages.
 > {: .solution}
 {: .challenge}
 
