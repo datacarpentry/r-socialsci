@@ -190,6 +190,8 @@ does not appear to be different by village.
 > > ggplot(data = interviews_plotting, aes(x = village, y = rooms)) +
 > > geom_jitter(aes(color = respondent_wall_type))
 > > ```
+> > This is not a good way to show this type of data because it is difficult to
+> > distinguish between villages.
 > {: .solution}
 {: .challenge}
 
@@ -360,9 +362,9 @@ a title.
 ```{r barplot-wall-types-labeled}
 ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
-    ylab("Percent") +
-    xlab("Wall Type") +
-    ggtitle("Proportion of wall type by village")
+    labs(title="Proportion of wall type by village",
+         x="Wall Type",
+         y="Percent")
 ```
 
 ## Faceting
@@ -381,9 +383,9 @@ so that each village has it's own panel in a multi-panel plot:
 ```{r barplot-faceting}
 ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    ylab("Percent") +
-    xlab("Wall Type") +
-    ggtitle("Proportion of wall type by village") +
+    labs(title="Proportion of wall type by village",
+         x="Wall Type",
+         y="Percent") +
     facet_wrap(~ village)
 ```
 
@@ -397,9 +399,9 @@ the grid:
 ```{r barplot-theme-bw, purl=FALSE}
 ggplot(percent_wall_type, aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
-    ylab("Percent") +
-    xlab("Wall Type") +
-    ggtitle("Proportion of wall type by village") +
+    labs(title="Proportion of wall type by village",
+         x="Wall Type",
+         y="Percent") +
     facet_wrap(~ village) +
     theme_bw() +
     theme(panel.grid = element_blank())
@@ -449,7 +451,7 @@ at <http://docs.ggplot2.org/current/ggtheme.html>. `theme_minimal()` and
 point to create a new hand-crafted theme.
 
 The
-[ggthemes](https://cran.r-project.org/web/packages/ggthemes/vignettes/ggthemes.html)
+[ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)
 package provides a wide variety of options (including an Excel 2003 theme). The
 [**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list
 of packages that extend the capabilities of **`ggplot2`**, including additional
