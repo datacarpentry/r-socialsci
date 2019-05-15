@@ -95,7 +95,7 @@ We're going to learn some of the most common **`dplyr`** functions:
 
 To select columns of a
 data frame, use `select()`. The first argument to this function is the data
-frame (`surveys`), and the subsequent arguments are the columns to keep.
+frame (`interviews`), and the subsequent arguments are the columns to keep.
 
 ```{r, results = 'hide', purl = FALSE}
 select(interviews, village, no_membrs, years_liv)
@@ -380,10 +380,11 @@ interviews %>%
 > >
 > > ```{r}
 > > # if not already included, add month, year, and day columns
+> > library(lubridate) # load lubridate if not already loaded
 > > interviews %>%
-> >     mutate(month = month(date),
-> >            day = day(date),
-> >            year = year(date)) %>%
+> >     mutate(month = month(interview_date),
+> >            day = day(interview_date),
+> >            year = year(interview_date)) %>%
 > >     group_by(year, month) %>%
 > >     summarize(max_no_membrs = max(no_membrs))
 > > ```
