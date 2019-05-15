@@ -290,11 +290,11 @@ the workhorse of R. A vector is composed by a series of values, which can be
 either numbers or characters. We can assign a series of values to a vector using
 the `c()` function. For example we can create a vector of household
 members for the households we've interviewed and assign
-it to a new object `no_membrs`:
+it to a new object `hh_members`:
 
 ```{r, purl=FALSE}
-no_membrs <- c(3, 7, 10, 6)
-no_membrs
+hh_members <- c(3, 7, 10, 6)
+hh_members
 ```
 
 A vector can also contain characters. For example, we can have
@@ -314,7 +314,7 @@ There are many functions that allow you to inspect the content of a
 vector. `length()` tells you how many elements are in a particular vector:
 
 ```{r, purl=FALSE}
-length(no_membrs)
+length(hh_members)
 length(respondent_wall_type)
 ```
 
@@ -322,7 +322,7 @@ An important feature of a vector, is that all of the elements are the same type 
 The function `class()` indicates the class (the type of element) of an object:
 
 ```{r, purl=FALSE}
-class(no_membrs)
+class(hh_members)
 class(respondent_wall_type)
 ```
 
@@ -331,7 +331,7 @@ elements. It is a useful function when working with large and complex
 objects:
 
 ```{r, purl=FALSE}
-str(no_membrs)
+str(hh_members)
 str(respondent_wall_type)
 ```
 
@@ -463,8 +463,8 @@ Another common way of subsetting is by using a logical vector. `TRUE` will
 select the element with the same index, while `FALSE` will not:
 
 ```{r, results='show', purl=FALSE}
-no_membrs <- c(3, 7, 10, 6)
-no_membrs[c(TRUE, FALSE, TRUE, TRUE)]
+hh_members <- c(3, 7, 10, 6)
+hh_members[c(TRUE, FALSE, TRUE, TRUE)]
 ```
 
 Typically, these logical vectors are not typed by hand, but are the output of
@@ -472,17 +472,17 @@ other functions or logical tests. For instance, if you wanted to select only the
 values above 5:
 
 ```{r, results='show', purl=FALSE}
-no_membrs > 5    # will return logicals with TRUE for the indices that meet the condition
+hh_members > 5    # will return logicals with TRUE for the indices that meet the condition
 ## so we can use this to select only the values above 5
-no_membrs[no_membrs > 5]
+hh_members[hh_members > 5]
 ```
 
 You can combine multiple tests using `&` (both conditions are true, AND) or `|`
 (at least one of the conditions is true, OR):
 
 ```{r, results='show', purl=FALSE}
-no_membrs[no_membrs < 3 | no_membrs > 5]
-no_membrs[no_membrs >= 7 & no_membrs == 3]
+hh_members[hh_members < 3 | hh_members > 5]
+hh_members[hh_members >= 7 & hh_members == 3]
 ```
 
 Here, `<` stands for "less than", `>` for "greater than", `>=` for "greater than
