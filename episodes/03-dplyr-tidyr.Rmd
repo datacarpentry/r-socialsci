@@ -43,7 +43,7 @@ source("../bin/download_data.R")
 
 Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the tidyverse. These packages were loaded in R's memory when we called `library(tidyverse)` earlier.
 
-## What are R packages?
+## What is an R package?
 
 An R package is a complete unit for sharing code with others. Each R package contains the code for a set of R functions, the documentation (or description) for each of the functions, as well as a practice dataset to learn the functions on. 
 
@@ -51,9 +51,9 @@ Generally, each R package is built with a specific task in mind. For instance, t
 
 The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
 
-But there are also packages available for a wide range of tasks including building plots (**`ggplot`**, which we'll see later), downloading data from the NCBI database, or performing statistical analysis on your data set. Many packages such as these are housed on, and downloadable from, the **C**omprehensive **R** **A**rchive **N**etwork (CRAN) using `install.packages`. This function makes the package accessible by your R installation with the command `library()`, as you did with `tidyverse` earlier.
+But there are also packages available for a wide range of tasks including building plots (**`ggplot2`**, which we'll see later), downloading data from the NCBI database, or performing statistical analysis on your data set. Many packages such as these are housed on, and downloadable from, the **C**omprehensive **R** **A**rchive **N**etwork (CRAN) using `install.packages`. This function makes the package accessible by your R installation with the command `library()`, as you did with `tidyverse` earlier.
 
-To easily access the documentation for a package within R or R studio, use `help(package = "package_name")`.
+To easily access the documentation for a package within R or RStudio, use `help(package = "package_name")`.
 
 To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
 [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
