@@ -103,17 +103,7 @@ RStudio provides a helpful set of tools to do this through its "Projects"
 interface, which not only creates a working directory for you but also remembers
 its location (allowing you to quickly navigate to it). The interface also 
 (optionally) preserves custom settings and open files to make it easier to 
-resume work after a break. Below, we will go through the steps to create
-an "R Project" for this tutorial. First, let's take a quick tour of RStudio.
-
-![RStudio_startup](../fig/R_00_Rstudio_01.png)
-
-RStudio is divided into three "panes": the **Source** for your scripts and documents
-(top left in the default layout), the R **Console** (bottom left), your
-**Environment/History** (top right), and your
-**Files/Plots/Packages/Help/Viewer** (bottom right). The placement of these
-panes and their content can be customized (see menu, Tools -> Global Options ->
-Pane Layout).
+resume work after a break. 
 
 
 ### Create a new project
@@ -127,6 +117,22 @@ Pane Layout).
 * Create a new file where we will type our scripts. Go to File > New File > R
   script. Click the save icon on your toolbar and save your script as
   "`script.R`".
+  
+### The RStudio Interface  
+Let's take a quick tour of RStudio.
+
+![RStudio_startup](../fig/R_00_Rstudio_01.png)
+
+RStudio is divided into four "panes". The placement of these
+panes and their content can be customized (see menu, Tools -> Global Options ->
+Pane Layout).  
+
+The Default Layout is:
+- Top Left - **Source**: your scripts and documents
+- Bottom Left - **Console**: what R would look and be like without RStudio
+- Top Right - **Enviornment/History**: look here to see what you have done
+- Bottom Right - **Files** and more: see the contents of the project/working directory here, like your Script.R file
+
 
 ### Organizing your working directory
 
