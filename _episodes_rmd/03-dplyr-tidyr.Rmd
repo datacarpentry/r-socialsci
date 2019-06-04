@@ -602,28 +602,28 @@ interviews_items_owned %>%
 
 > ## Exercise
 >
-> 1. Create a new data frame (named `interviews_months_no_water`) that has one
+> 1. Create a new data frame (named `interviews_months_lack_food`) that has one
 > column for each month and records `TRUE` or `FALSE` for whether each interview
-> respondent was lacking water in that month.
+> respondent was lacking food in that month.
 >
 > > ## Solution
 > >
 > > ```{r}
-> > interviews_months_no_water <- interviews %>%
-> >   mutate(split_months = strsplit(months_no_water, ";")) %>%
+> > interviews_months_lack_food <- interviews %>%
+> >   mutate(split_months = strsplit(months_lack_food, ";")) %>%
 > >   unnest() %>%
-> >   mutate(months_no_water_logical  = TRUE) %>%
-> >   spread(key = split_months, value = months_no_water_logical, fill = FALSE)
+> >   mutate(months_lack_food_logical  = TRUE) %>%
+> >   spread(key = split_months, value = months_lack_food_logical, fill = FALSE)
 > > ```
 > {: .solution}
 >
-> 2. How many months (on average) were respondents without water if
+> 2. How many months (on average) were respondents without food if
 > they did belong to an irrigation association? What about if they didn't?
 >
 > > ## Solution
 > >
 > > ```{r}
-> > interviews_months_no_water %>%
+> > interviews_months_lack_food %>%
 > >   mutate(number_months = rowSums(select(., Apr:Sept))) %>%
 > >   group_by(memb_assoc) %>%
 > >   summarize(mean_months = mean(number_months))
