@@ -528,10 +528,10 @@ that interview respondent owned that item.
 
 ```{r, purl=FALSE}
 interviews_items_owned <- interviews %>%
-    mutate(split_items = strsplit(items_owned, ";")) %>%
-    unnest() %>%
+    separate_rows(items_owned, sep=";") %>%
     mutate(items_owned_logical = TRUE) %>%
-    spread(key = split_items, value = items_owned_logical, fill = FALSE)
+    spread(key = items_owned, value = items_owned_logical, fill = FALSE)
+
 nrow(interviews_items_owned)
 ```
 
@@ -543,21 +543,13 @@ the `interviews` dataframe.
 interviews_items_owned <- interviews %>%
 ```
 
-Then we use the new function `strsplit()` to split the column `items_owned`
-based on the presence of semi-colons (`;`). This creates a new column
-`split_items` that contains each item as a list.
-
-```{r, eval=FALSE}
-mutate(split_items = strsplit(items_owned, ";")) %>%
-```
-
-Now that we have the `items_owned` column as a list, we can use the `tidyr`
-function `unnest()` to create a long format version of the dataset. In this long
+Then we use the new function `separate_rows()` to split the column `items_owned`
+based on the presence of semi-colons (`;`). This creates a long format version of the dataset. In this long
 format version, there are `r nrow(interviews_items_owned)` rows (one row for
 each unique item for each respondent).
 
 ```{r, eval=FALSE}
-unnest() %>%
+separate_rows(items_owned, sep=";") %>%
 ```
 
 Lastly, we use `spread()` to switch from long format to wide format. This
@@ -566,7 +558,7 @@ and fills those columns with `TRUE` or `FALSE`.
 
 ```{r, eval=FALSE}
 mutate(items_owned_logical = TRUE) %>%
-    spread(key = split_items, value = items_owned_logical, fill = FALSE)
+    spread(key = items_owned, value = items_owned_logical, fill = FALSE)
 ```
 
 View the `interviews_items_owned` data frame. It should have `r
@@ -610,10 +602,9 @@ interviews_items_owned %>%
 > >
 > > ```{r}
 > > interviews_months_lack_food <- interviews %>%
-> >   mutate(split_months = strsplit(months_lack_food, ";")) %>%
-> >   unnest() %>%
+> >   separate_rows(months_lack_food, sep=";") %>%
 > >   mutate(months_lack_food_logical  = TRUE) %>%
-> >   spread(key = split_months, value = months_lack_food_logical, fill = FALSE)
+> >   spread(key = months_lack_food, value = months_lack_food_logical, fill = FALSE)
 > > ```
 > {: .solution}
 >
@@ -657,16 +648,14 @@ data value. To do this, we will use spread to expand the
 ```{r, purl=FALSE}
 interviews_plotting <- interviews %>%
     ## spread data by items_owned
-    mutate(split_items = strsplit(items_owned, ";")) %>%
-    unnest() %>%
+    separate_rows(items_owned, sep=";") %>%
     mutate(items_owned_logical = TRUE) %>%
-    spread(key = split_items, value = items_owned_logical, fill = FALSE) %>%
+    spread(key = items_owned, value = items_owned_logical, fill = FALSE) %>%
     rename(no_listed_items = `<NA>`) %>%
     ## spread data by months_lack_food
-    mutate(split_months = strsplit(months_lack_food, ";")) %>%
-    unnest() %>%
+    separate_rows(months_lack_food, sep=";") %>%
     mutate(months_lack_food_logical = TRUE) %>%
-    spread(key = split_months, value = months_lack_food_logical, fill = FALSE) %>%
+    spread(key = months_lack_food, value = months_lack_food_logical, fill = FALSE) %>%
     ## add some summary columns
     mutate(number_months_lack_food = rowSums(select(., Apr:Sept))) %>%
     mutate(number_items = rowSums(select(., bicycle:television)))
