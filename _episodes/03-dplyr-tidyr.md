@@ -10,7 +10,7 @@ questions:
   - "How can create new columns or remove existing columns from a data frame?"
   - "How can I reformat a dataframe to meet my needs?"
 objectives:
-- "Describe the purpose of the **`dplyr`** and **`tidyr`** packages."
+- "Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages."
 - "Select certain columns in a data frame with the **`dplyr`** function `select`."
 - "Select certain rows in a data frame according to filtering conditions with the **`dplyr`** function `filter`."
 - "Link the output of one **`dplyr`** function to the input of another function with the 'pipe' operator `%>%`."
@@ -37,32 +37,26 @@ keypoints:
 
 # Data Manipulation using **`dplyr`** and **`tidyr`**
 
-**`dplyr`** is a package for making tabular data manipulation easier by using a
-limited set of functions that can be combined to extract and summarize insights from your data. It pairs nicely with **`tidyr`** which enables you to
-swiftly convert between different data formats (long vs. wide) for plotting and analysis.
+**`dplyr`** is a package for making tabular data manipulation easier by using a limited set of functions that can be combined to extract and summarize insights from your data. It pairs nicely with **`tidyr`** which enables you to swiftly convert between different data formats (long vs. wide) for plotting and analysis.
 
 Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the tidyverse. These packages were loaded in R's memory when we called `library(tidyverse)` earlier.
 
-## What are **`dplyr`** and **`tidyr`**?
+## What is an R package?
 
-The package **`dplyr`** provides easy tools for the most common data
-manipulation tasks. It is built to work directly with data frames, with many
-common tasks optimized by being written in a compiled language (C++). An
-additional feature is the ability to work directly with data stored in an
-external database. The benefits of doing this are that the data can be managed
-natively in a relational database, queries can be conducted on that database,
-and only the results of the query are returned.
+An R package is a complete unit for sharing code with others. Each R package contains the code for a set of R functions, the documentation (or description) for each of the functions, as well as a practice dataset to learn the functions on. 
 
-This addresses a common problem with R in that all operations are conducted
-in-memory and thus the amount of data you can work with is limited by available
-memory. The database connections essentially remove that limitation in that you
-can connect to a database of many hundreds of GB, conduct queries on it
-directly, and pull back into R only what you need for analysis.
+Generally, each R package is built with a specific task in mind. For instance, the package **`dplyr`** provides easy tools for the most common data manipulation tasks. It is built to work directly with data frames, with many common tasks optimized by being written in a compiled language (C++) (not all R packages are written in R!). 
 
 The package **`tidyr`** addresses the common problem of wanting to reshape your data for plotting and use by different R functions. Sometimes we want data sets where we have one row per measurement. Sometimes we want a data frame where each measurement type has its own column, and rows are instead more aggregated groups. Moving back and forth between these formats is nontrivial, and **`tidyr`** gives you tools for this and more sophisticated  data manipulation.
 
+But there are also packages available for a wide range of tasks including building plots (**`ggplot2`**, which we'll see later), downloading data from the NCBI database, or performing statistical analysis on your data set. Many packages such as these are housed on, and downloadable from, the **C**omprehensive **R** **A**rchive **N**etwork (CRAN) using `install.packages`. This function makes the package accessible by your R installation with the command `library()`, as you did with `tidyverse` earlier.
+
+To easily access the documentation for a package within R or RStudio, use `help(package = "package_name")`.
+
 To learn more about **`dplyr`** and **`tidyr`** after the workshop, you may want to check out this
 [handy data transformation with **`dplyr`** cheatsheet](https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf) and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/master/data-import.pdf).
+
+## Learning **`dplyr`** and **`tidyr`**
 
 To make sure, everyone will use the same dataset for this lesson, we'll read again the SAFI dataset that we downloaded earlier.
 
@@ -94,7 +88,7 @@ We're going to learn some of the most common **`dplyr`** functions:
 
 To select columns of a
 data frame, use `select()`. The first argument to this function is the data
-frame (`surveys`), and the subsequent arguments are the columns to keep.
+frame (`interviews`), and the subsequent arguments are the columns to keep.
 
 
 ~~~
@@ -115,7 +109,7 @@ filter(interviews, village == "God")
 ~~~
 # A tibble: 43 x 14
    key_ID village interview_date      no_membrs years_liv respondent_wall…
-    <int> <chr>   <dttm>                  <int>     <int> <chr>           
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>           
  1      1 God     2016-11-17 00:00:00         3         4 muddaub         
  2      1 God     2016-11-17 00:00:00         7         9 muddaub         
  3      3 God     2016-11-17 00:00:00        10        15 burntbricks     
@@ -126,9 +120,9 @@ filter(interviews, village == "God")
  8     11 God     2016-11-21 00:00:00         6        20 sunbricks       
  9     12 God     2016-11-21 00:00:00         7        20 burntbricks     
 10     13 God     2016-11-21 00:00:00         6         8 burntbricks     
-# ... with 33 more rows, and 8 more variables: rooms <int>,
-#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <int>,
-#   items_owned <chr>, no_meals <int>, months_lack_food <chr>,
+# … with 33 more rows, and 8 more variables: rooms <dbl>,
+#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <dbl>,
+#   items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
 #   instanceID <chr>
 ~~~
 {: .output}
@@ -182,7 +176,7 @@ interviews %>%
 ~~~
 # A tibble: 43 x 2
    no_membrs years_liv
-       <int>     <int>
+       <dbl>     <dbl>
  1         3         4
  2         7         9
  3        10        15
@@ -193,7 +187,7 @@ interviews %>%
  8         6        20
  9         7        20
 10         6         8
-# ... with 33 more rows
+# … with 33 more rows
 ~~~
 {: .output}
 
@@ -228,7 +222,7 @@ interviews_god
 ~~~
 # A tibble: 43 x 2
    no_membrs years_liv
-       <int>     <int>
+       <dbl>     <dbl>
  1         3         4
  2         7         9
  3        10        15
@@ -239,7 +233,7 @@ interviews_god
  8         6        20
  9         7        20
 10         6         8
-# ... with 33 more rows
+# … with 33 more rows
 ~~~
 {: .output}
 
@@ -267,7 +261,7 @@ Note that the final data frame (`interviews_god`) is the leftmost part of this e
 > > ~~~
 > > # A tibble: 33 x 3
 > >    affect_conflicts liv_count no_meals
-> >    <chr>                <int>    <int>
+> >    <chr>                <dbl>    <dbl>
 > >  1 once                     3        2
 > >  2 never                    2        2
 > >  3 never                    2        3
@@ -278,7 +272,7 @@ Note that the final data frame (`interviews_god`) is the leftmost part of this e
 > >  8 more_once                2        3
 > >  9 once                     3        3
 > > 10 never                    3        3
-> > # ... with 23 more rows
+> > # … with 23 more rows
 > > ~~~
 > > {: .output}
 > {: .solution}
@@ -305,7 +299,7 @@ interviews %>%
 ~~~
 # A tibble: 131 x 15
    key_ID village interview_date      no_membrs years_liv respondent_wall…
-    <int> <chr>   <dttm>                  <int>     <int> <chr>           
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>           
  1      1 God     2016-11-17 00:00:00         3         4 muddaub         
  2      1 God     2016-11-17 00:00:00         7         9 muddaub         
  3      3 God     2016-11-17 00:00:00        10        15 burntbricks     
@@ -316,9 +310,9 @@ interviews %>%
  8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks     
  9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks     
 10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks     
-# ... with 121 more rows, and 9 more variables: rooms <int>,
-#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <int>,
-#   items_owned <chr>, no_meals <int>, months_lack_food <chr>,
+# … with 121 more rows, and 9 more variables: rooms <dbl>,
+#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <dbl>,
+#   items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
 #   instanceID <chr>, people_per_room <dbl>
 ~~~
 {: .output}
@@ -345,7 +339,7 @@ interviews %>%
 ~~~
 # A tibble: 92 x 15
    key_ID village interview_date      no_membrs years_liv respondent_wall…
-    <int> <chr>   <dttm>                  <int>     <int> <chr>           
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>           
  1      1 God     2016-11-17 00:00:00         7         9 muddaub         
  2      7 God     2016-11-17 00:00:00         6        38 muddaub         
  3      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks     
@@ -356,9 +350,9 @@ interviews %>%
  8     15 God     2016-11-21 00:00:00         5        30 sunbricks       
  9     21 God     2016-11-21 00:00:00         8        20 burntbricks     
 10     24 Ruaca   2016-11-21 00:00:00         6         4 burntbricks     
-# ... with 82 more rows, and 9 more variables: rooms <int>,
-#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <int>,
-#   items_owned <chr>, no_meals <int>, months_lack_food <chr>,
+# … with 82 more rows, and 9 more variables: rooms <dbl>,
+#   memb_assoc <chr>, affect_conflicts <chr>, liv_count <dbl>,
+#   items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
 #   instanceID <chr>, people_per_room <dbl>
 ~~~
 {: .output}
@@ -443,18 +437,18 @@ interviews %>%
 
 ~~~
 # A tibble: 9 x 3
-# Groups:   village [?]
+# Groups:   village [3]
   village  memb_assoc mean_no_membrs
   <chr>    <chr>               <dbl>
-1 Chirodzo no                   8.06
-2 Chirodzo yes                  7.82
-3 Chirodzo <NA>                 5.08
-4 God      no                   7.13
-5 God      yes                  8   
-6 God      <NA>                 6   
-7 Ruaca    no                   7.18
-8 Ruaca    yes                  9.5 
-9 Ruaca    <NA>                 6.22
+1 Chirodzo <NA>                 5.08
+2 Chirodzo no                   8.06
+3 Chirodzo yes                  7.82
+4 God      <NA>                 6   
+5 God      no                   7.13
+6 God      yes                  8   
+7 Ruaca    <NA>                 6.22
+8 Ruaca    no                   7.18
+9 Ruaca    yes                  9.5 
 ~~~
 {: .output}
 
@@ -476,7 +470,7 @@ interviews %>%
 
 ~~~
 # A tibble: 6 x 3
-# Groups:   village [?]
+# Groups:   village [3]
   village  memb_assoc mean_no_membrs
   <chr>    <chr>               <dbl>
 1 Chirodzo no                   8.06
@@ -507,7 +501,7 @@ interviews %>%
 
 ~~~
 # A tibble: 6 x 4
-# Groups:   village [?]
+# Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
   <chr>    <chr>               <dbl>      <dbl>
 1 Chirodzo no                   8.06          4
@@ -645,7 +639,7 @@ interviews %>%
 > > ~~~
 > > # A tibble: 2 x 2
 > >   no_meals     n
-> >      <int> <int>
+> >      <dbl> <int>
 > > 1        2    52
 > > 2        3    79
 > > ~~~
@@ -691,10 +685,34 @@ interviews %>%
 > > 
 > > ~~~
 > > # if not already included, add month, year, and day columns
+> > library(lubridate) # load lubridate if not already loaded
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > 
+> > Attaching package: 'lubridate'
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > The following object is masked from 'package:base':
+> > 
+> >     date
+> > ~~~
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
 > > interviews %>%
-> >     mutate(month = month(date),
-> >            day = day(date),
-> >            year = year(date)) %>%
+> >     mutate(month = month(interview_date),
+> >            day = day(interview_date),
+> >            year = year(interview_date)) %>%
 > >     group_by(year, month) %>%
 > >     summarize(max_no_membrs = max(no_membrs))
 > > ~~~
@@ -703,9 +721,17 @@ interviews %>%
 > > 
 > > 
 > > ~~~
-> > Error in mutate_impl(.data, dots): Evaluation error: could not find function "month".
+> > # A tibble: 5 x 3
+> > # Groups:   year [2]
+> >    year month max_no_membrs
+> >   <dbl> <dbl>         <dbl>
+> > 1  2016    11            19
+> > 2  2016    12            12
+> > 3  2017     4            17
+> > 4  2017     5            15
+> > 5  2017     6            15
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
@@ -859,10 +885,10 @@ that interview respondent owned that item.
 
 ~~~
 interviews_items_owned <- interviews %>%
-    mutate(split_items = strsplit(items_owned, ";")) %>%
-    unnest() %>%
+    separate_rows(items_owned, sep=";") %>%
     mutate(items_owned_logical = TRUE) %>%
-    spread(key = split_items, value = items_owned_logical, fill = FALSE)
+    spread(key = items_owned, value = items_owned_logical, fill = FALSE)
+
 nrow(interviews_items_owned)
 ~~~
 {: .language-r}
@@ -884,24 +910,14 @@ interviews_items_owned <- interviews %>%
 ~~~
 {: .language-r}
 
-Then we use the new function `strsplit()` to split the column `items_owned`
-based on the presence of semi-colons (`;`). This creates a new column
-`split_items` that contains each item as a list.
-
-
-~~~
-mutate(split_items = strsplit(items_owned, ";")) %>%
-~~~
-{: .language-r}
-
-Now that we have the `items_owned` column as a list, we can use the `tidyr`
-function `unnest()` to create a long format version of the dataset. In this long
+Then we use the new function `separate_rows()` to split the column `items_owned`
+based on the presence of semi-colons (`;`). This creates a long format version of the dataset. In this long
 format version, there are 131 rows (one row for
 each unique item for each respondent).
 
 
 ~~~
-unnest() %>%
+separate_rows(items_owned, sep=";") %>%
 ~~~
 {: .language-r}
 
@@ -912,7 +928,7 @@ and fills those columns with `TRUE` or `FALSE`.
 
 ~~~
 mutate(items_owned_logical = TRUE) %>%
-    spread(key = split_items, value = items_owned_logical, fill = FALSE)
+    spread(key = items_owned, value = items_owned_logical, fill = FALSE)
 ~~~
 {: .language-r}
 
@@ -982,36 +998,28 @@ interviews_items_owned %>%
 >
 > 1. Create a new data frame (named `interviews_months_lack_food`) that has one
 > column for each month and records `TRUE` or `FALSE` for whether each interview
-> respondent was lacking water in that month.
+> respondent was lacking food in that month.
 >
 > > ## Solution
 > >
 > > 
 > > ~~~
-> > interviews_months_no_water <- interviews %>%
-> >   mutate(split_months = strsplit(months_lack_food, ";")) %>%
-> >   unnest() %>%
-> >   mutate(months_no_food_logical  = TRUE) %>%
-> >   spread(key = split_months, value = months_no_food_logical, fill = FALSE)
+> > interviews_months_lack_food <- interviews %>%
+> >   separate_rows(months_lack_food, sep=";") %>%
+> >   mutate(months_lack_food_logical  = TRUE) %>%
+> >   spread(key = months_lack_food, value = months_lack_food_logical, fill = FALSE)
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in mutate_impl(.data, dots): Evaluation error: object 'months_no_water' not found.
-> > ~~~
-> > {: .error}
 > {: .solution}
 >
-> 2. How many months (on average) were respondents without water if
+> 2. How many months (on average) were respondents without food if
 > they did belong to an irrigation association? What about if they didn't?
 >
 > > ## Solution
 > >
 > > 
 > > ~~~
-> > interviews_months_no_water %>%
+> > interviews_months_lack_food %>%
 > >   mutate(number_months = rowSums(select(., Apr:Sept))) %>%
 > >   group_by(memb_assoc) %>%
 > >   summarize(mean_months = mean(number_months))
@@ -1021,9 +1029,14 @@ interviews_items_owned %>%
 > > 
 > > 
 > > ~~~
-> > Error in eval(lhs, parent, parent): object 'interviews_months_no_water' not found
+> > # A tibble: 3 x 2
+> >   memb_assoc mean_months
+> >   <chr>            <dbl>
+> > 1 <NA>              2.95
+> > 2 no                2.31
+> > 3 yes               2.64
 > > ~~~
-> > {: .error}
+> > {: .output}
 > {: .solution}
 {: .challenge}
 
@@ -1054,16 +1067,14 @@ data value. To do this, we will use spread to expand the
 ~~~
 interviews_plotting <- interviews %>%
     ## spread data by items_owned
-    mutate(split_items = strsplit(items_owned, ";")) %>%
-    unnest() %>%
+    separate_rows(items_owned, sep=";") %>%
     mutate(items_owned_logical = TRUE) %>%
-    spread(key = split_items, value = items_owned_logical, fill = FALSE) %>%
+    spread(key = items_owned, value = items_owned_logical, fill = FALSE) %>%
     rename(no_listed_items = `<NA>`) %>%
     ## spread data by months_lack_food
-    mutate(split_months = strsplit(months_lack_food, ";")) %>%
-    unnest() %>%
+    separate_rows(months_lack_food, sep=";") %>%
     mutate(months_lack_food_logical = TRUE) %>%
-    spread(key = split_months, value = months_lack_food_logical, fill = FALSE) %>%
+    spread(key = months_lack_food, value = months_lack_food_logical, fill = FALSE) %>%
     ## add some summary columns
     mutate(number_months_lack_food = rowSums(select(., Apr:Sept))) %>%
     mutate(number_items = rowSums(select(., bicycle:television)))
