@@ -234,7 +234,7 @@ In RStudio, you can use the autocompletion feature to get the full and correct n
 > > n_rows <- nrow(interviews)
 > > interviews_last <- interviews[n_rows, ]
 > > ## 3.
-> > interviews_middle <- interviews[n_rows / 2, ]
+> > interviews_middle <- interviews[(n_rows / 2), ]
 > > ## 4.
 > > interviews_head <- interviews[-(7:n_rows), ]
 > > ```
