@@ -1,5 +1,5 @@
 ---
-title: "Before we Start"
+title: "Before we start"
 teaching: 25
 exercises: 15
 questions:
