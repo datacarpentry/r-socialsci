@@ -1,5 +1,5 @@
 ---
-title: "Starting with Data"
+title: "Starting with data"
 teaching: 50
 exercises: 30
 questions:
