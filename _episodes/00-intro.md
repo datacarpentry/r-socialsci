@@ -43,7 +43,7 @@ Having this written record, something which is increasingly required as part of
 a publication submission, is also an aid when seeking help with problems.
 
 There are many online resources such as
-[stackoverflow](https://stackoverflow.com/questions/tagged/r) and the [RStudio
+[stackoverflow](https://stackoverflow.com/questions/tagged/r?tab=Votes) and the [RStudio
 Community](https://community.rstudio.com/) which will allow you to seek help
 from peers. Questions which are backed up with [short, reproducible code
 snippets](https://www.tidyverse.org/help/) are more likely to attract knowledgeable responses.
