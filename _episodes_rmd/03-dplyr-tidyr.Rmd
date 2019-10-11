@@ -449,6 +449,9 @@ interviews_spread <- interviews %>%
     spread(key = respondent_wall_type, value = wall_type_logical, fill = FALSE)
 ```
 
+![](../fig/long_to_wide.png)
+
+
 View the `interviews_spread` data frame and notice that there is no longer a
 column titled `respondent_wall_type`. This is because there is a default
 parameter in `spread()` that drops the original column.
@@ -488,6 +491,9 @@ interviews_gather <- interviews_spread %>%
     gather(key = respondent_wall_type, value = "wall_type_logical",
            burntbricks:sunbricks)
 ```
+
+
+![](../fig/wide_to_long.png)
 
 This creates a data frame with `r nrow(interviews_gather)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
 value of the "respondent_wall_type" and "dummy" columns. View the data to see what this looks like.
