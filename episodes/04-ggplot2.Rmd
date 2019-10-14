@@ -1,5 +1,5 @@
 ---
-title: "Data visualisation with ggplot2"
+title: "Data Visualisation with ggplot2"
 teaching: 80
 exercises: 35
 questions:
