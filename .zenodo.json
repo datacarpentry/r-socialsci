@@ -1,0 +1,67 @@
+{
+  "contributors": [
+    {
+      "type": "Editor",
+      "name": "Juan Fung",
+      "orcid": "0000-0002-0820-787X"
+    },
+    {
+      "type": "Editor",
+      "name": "angela-li"
+    }
+  ],
+  "creators": [
+    {
+      "name": "Francois Michonneau",
+      "orcid": "0000-0002-9092-966X"
+    },
+    {
+      "name": "Juan Fung",
+      "orcid": "0000-0002-0820-787X"
+    },
+    {
+      "name": "Erin Alison Becker",
+      "orcid": "0000-0002-6832-0233"
+    },
+    {
+      "name": "Danielle Quinn"
+    },
+    {
+      "name": "Hao Ye",
+      "orcid": "0000-0002-8630-1458"
+    },
+    {
+      "name": "Geoffrey LaFlair",
+      "orcid": "0000-0003-0306-6550"
+    },
+    {
+      "name": "Martin Olmos"
+    },
+    {
+      "name": "angela-li"
+    },
+    {
+      "name": "Katrin Leinweber",
+      "orcid": "0000-0001-5135-5758"
+    },
+    {
+      "name": "Ben Marwick",
+      "orcid": "0000-0001-7879-4531"
+    },
+    {
+      "name": "Christina Maimone",
+      "orcid": "0000-0002-0402-6297"
+    },
+    {
+      "name": "Jake Kaupp",
+      "orcid": "0000-0002-3217-3294"
+    },
+    {
+      "name": "Murray Cadzow",
+      "orcid": "0000-0002-2299-4136"
+    }
+  ],
+  "license": {
+    "id": "CC-BY-4.0"
+  }
+}
