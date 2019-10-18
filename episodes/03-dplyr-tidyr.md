@@ -598,7 +598,7 @@ interviews %>%
 ~~~
 {: .output}
 
-For convenience, `count()` provides the `sort` argument to get results in decrea:
+For convenience, `count()` provides the `sort` argument to get results in decreasing order:
 
 
 ~~~
