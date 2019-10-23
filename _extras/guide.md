@@ -13,7 +13,7 @@ This lesson uses `SAFI_clean.csv`. The direct download link for this file is:
 When time comes in the lesson to use this file, we recommend that the
 instructors, place the `download.file()` command in the Etherpad, and that the
 learners copy and paste it in their scripts to download the file directly from
-figshare in their working directory. . If the learners haven't created the
+figshare in their working directory. If the learners haven't created the
 `data/` directory and/or are not in the correct working directory, the
 `download.file` command will produce an error. Therefore, it is important to use
 the stickies at this point.
