@@ -250,7 +250,7 @@ very useful and actually contribute to making R particularly well suited to
 working with data. So we are going to spend a little time introducing them.
 
 Factors represent categorical data. They are stored as integers associated with
-labels and they can be ordered or unordered. While factors look (and often
+labels and they can be ordered or unordered. Factors are generally used to relate a single answer with a subset of allowed answers that are generally present in a survey. This makes it easier to see how one element relates to the other elements in a column. While factors look (and often
 behave) like character vectors, they are actually treated as integer vectors by
 R. So you need to be very careful when treating them as strings.
 
