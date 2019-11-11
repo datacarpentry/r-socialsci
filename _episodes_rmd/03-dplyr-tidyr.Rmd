@@ -551,7 +551,7 @@ interviews_items_owned <- interviews %>%
 
 Then we use the new function `separate_rows()` to split the column `items_owned`
 based on the presence of semi-colons (`;`). This creates a long format version of the dataset. In this long
-format version, there are `r nrow(interviews_items_owned)` rows (one row for
+format version, there are `r nrow(interviews %>% separate_rows(items_owned, sep=";"))` rows (one row for
 each unique item for each respondent).
 
 ```{r, eval=FALSE}
