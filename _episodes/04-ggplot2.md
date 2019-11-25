@@ -92,7 +92,7 @@ lots of time when making figures with **`ggplot2`**
 ggplot graphics are built step by step by adding new elements. Adding layers in
 this fashion allows for extensive flexibility and customization of plots.
 
-Remember from the last lesson that the pipe operator `%>%` by default places the result of the left-hand side into the first argument of the right-hand side. `ggplot2` is a function that expects a data source to be the first argument. Using this knowledge, we can build a ggplot using the following basic template that can be used for different types of plots:
+Remember from the last lesson that the pipe operator `%>%` by default places the result of the left-hand side into the first argument of the right-hand side. **`ggplot2`** is a function that expects a data source to be the first argument. Using this knowledge, we can build a ggplot using the following basic template that can be used for different types of plots:
 
 ```
 <DATA> %>% 
@@ -113,7 +113,8 @@ interviews_plotting %>%
 
 - define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.
 
-To add an aesthetic to the plot use the `+` operator.
+To add an aesthetic to the plot use the + operator.
+
 
 ~~~
 interviews_plotting %>% 
@@ -130,8 +131,7 @@ common ones today, including:
 * `geom_boxplot()` for, well, boxplots!
 * `geom_line()` for trend lines, time series, etc.
 
-To add a geom to the plot use the `+` operator. Because we have two continuous variables,
-let's use `geom_point()` first:
+To add a geom to the plot use the `+` operator. Because we have two continuous variables, let's use `geom_point()` first:
 
 
 ~~~
@@ -147,8 +147,9 @@ interviews_plotting %>%
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
 templates and conveniently explore different types of plots, so the above plot
-can also be generated with code like this, similar to the "intermediate steps"
+can also be generated with code like this, similar to the “intermediate steps”
 approach in the previous lesson:
+
 
 ~~~
 # Assign the plot to a variable
@@ -171,9 +172,8 @@ interviews_plot +
 >   defined globally in the `ggplot()` function.
 > - The `+` sign used to add new layers must be placed at the end of the line
 >   containing the *previous* layer. If, instead, the `+` sign is added at the
->   beginning of the line containing the new layer, R will interpret the previous
->   line as the end of the instruction, **`ggplot2`** will not add the new layer,
->   and an error message will be created because a new command is started with `+`.
+>   beginning of the line containing the new layer, **`ggplot2`** will not add
+>   the new layer and will return an error message.
 {: .callout}
 
 
@@ -193,6 +193,7 @@ interviews_plot
 Building plots with **`ggplot2`** is typically an iterative process. We start by
 defining the dataset we'll use, lay out the axes, and choose a geom:
 	
+
 ~~~
 interviews_plotting %>%
     ggplot() +
@@ -204,8 +205,8 @@ interviews_plotting %>%
 <img src="../fig/rmd-04-create-ggplot-object-1.png" title="plot of chunk create-ggplot-object" alt="plot of chunk create-ggplot-object" width="612" style="display: block; margin: auto;" />
 
 Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) as an argument to `geom_point`
-to avoid overplotting:
+instance, we can add transparency (`alpha`) to avoid overplotting:
+
 
 ~~~
 interviews_plotting %>%
@@ -232,7 +233,9 @@ interviews_plotting %>%
 
 <img src="../fig/rmd-04-adding-jitter-1.png" title="plot of chunk adding-jitter" alt="plot of chunk adding-jitter" width="612" style="display: block; margin: auto;" />
 
+
 We can also add colors for all the points:
+
 
 ~~~
 interviews_plotting %>%
@@ -307,6 +310,7 @@ interviews_plotting %>%
 By adding points to a boxplot, we can have a better idea of the number of
 measurements and of their distribution:
 
+
 ~~~
 interviews_plotting %>%
     ggplot() +
@@ -380,11 +384,17 @@ hidden?
 > >     ggplot() +
 > >     aes(x = respondent_wall_type, y = liv_count) +
 > >     geom_boxplot(alpha = 0) +
-> >     geom_jitter(aes(alpha = 0.5, color=memb_assoc)) +
+> >     aes(color=memb_assoc) %>%
+> >     geom_jitter(alpha = 0.5)
 > > ~~~
 > > {: .language-r}
 > > 
 > > <img src="../fig/rmd-04-boxplot-exercise-factor-1.png" title="plot of chunk boxplot-exercise-factor" alt="plot of chunk boxplot-exercise-factor" width="612" style="display: block; margin: auto;" />
+> > Note: in this case the `color` aesthetic is attached to `geom_jitter`
+> > using the pipe operator so that it doesn't affect the entire `ggplot2`
+> > structure. If a `+` were used instead, then the `geom_boxplot` command
+> > would be modified as well as `geom_jitter`, because it also has a 
+> > `color` argument.
 > {: .solution}
 {: .challenge}
 
@@ -563,6 +573,7 @@ Usually plots with white background look more readable when printed.  We can set
 the background to white using the function `theme_bw()`. Additionally, you can remove
 the grid:
 
+
 ~~~
 percent_wall_type %>%
     ggplot() +
@@ -587,7 +598,7 @@ calculate the percentage of people in each village who own each item:
 
 
 ~~~
-percent_items <- interviews_plotting %>%
+interviews_plotting %>%
     gather(items, items_owned_logical, bicycle:no_listed_items) %>%
     filter(items_owned_logical) %>%
     count(items, village) %>%
@@ -595,7 +606,7 @@ percent_items <- interviews_plotting %>%
     mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
                                          village == "God" ~ 43,
                                          village == "Ruaca" ~ 49)) %>%
-    mutate(percent = n / people_in_village)
+    mutate(percent = n / people_in_village) -> percent_items
 ~~~
 {: .language-r}
 
