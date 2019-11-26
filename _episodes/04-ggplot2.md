@@ -95,7 +95,7 @@ this fashion allows for extensive flexibility and customization of plots.
 Remember from the last lesson that the pipe operator `%>%` by default places the result of the left-hand side into the first argument of the right-hand side. **`ggplot2`** is a function that expects a data source to be the first argument. Using this knowledge, we can build a ggplot using the following basic template that can be used for different types of plots:
 
 ```
-<DATA> %>% 
+<DATA> %>%
     ggplot() +
     aes(<MAPPINGS>) +
     <GEOM_FUNCTION>()
@@ -106,7 +106,7 @@ Remember from the last lesson that the pipe operator `%>%` by default places the
 
 
 ~~~
-interviews_plotting %>% 
+interviews_plotting %>%
     ggplot()
 ~~~
 {: .language-r}
@@ -117,7 +117,7 @@ To add an aesthetic to the plot use the + operator.
 
 
 ~~~
-interviews_plotting %>% 
+interviews_plotting %>%
     ggplot() +
     aes(x = no_membrs, y = number_items)
 ~~~
@@ -135,7 +135,7 @@ To add a geom to the plot use the `+` operator. Because we have two continuous v
 
 
 ~~~
-interviews_plotting %>% 
+interviews_plotting %>%
     ggplot() +
     aes(x = no_membrs, y = number_items) +
     geom_point()
@@ -192,7 +192,7 @@ interviews_plot
 
 Building plots with **`ggplot2`** is typically an iterative process. We start by
 defining the dataset we'll use, lay out the axes, and choose a geom:
-	
+
 
 ~~~
 interviews_plotting %>%
@@ -247,7 +247,15 @@ interviews_plotting %>%
 
 <img src="../fig/rmd-04-adding-colors-1.png" title="plot of chunk adding-colors" alt="plot of chunk adding-colors" width="612" style="display: block; margin: auto;" />
 
-Or to color each species in the plot differently, you could use a vector as an input to the argument **`color`**.  Because we are now mapping features of the data to a color, instead of setting one color for all points, the color now needs to be set inside a call to the **`aes`** function. **`ggplot2`** will provide a different color corresponding to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** function call because we are using the same value for all points. Here is an example where we color by **`village`**:
+Or to color each species in the plot differently, you could use a
+vector as an input to the argument **`color`**.  Because we are now
+mapping features of the data to a color, instead of setting one color
+for all points, the color now needs to be set inside a call to the
+**`aes`** function. **`ggplot2`** will provide a different color
+corresponding to different values in the vector. We set the value of
+**`alpha`** separate from the **`aes`** function call because we are
+using the same value for all points. Here is an example where we color
+by **`village`**:
 
 
 
@@ -255,12 +263,24 @@ Or to color each species in the plot differently, you could use a vector as an i
 interviews_plotting %>%
     ggplot() +
     aes(x = no_membrs, y = number_items) +
-    geom_jitter(alpha = 0.5) +
-    aes(color = village)
+    aes(color = village) %>%
+    geom_jitter(alpha = 0.5)
 ~~~
 {: .language-r}
 
 <img src="../fig/rmd-04-color-by-species-1.png" title="plot of chunk color-by-species" alt="plot of chunk color-by-species" width="612" style="display: block; margin: auto;" />
+
+This ggplot construction has two different aesthetics
+statements. Aesthetics have a special representation in ggplot2 in
+that by default they apply to the entire **`ggplot2`** structure. The
+first aesthetics statement sets up the aesthetics that apply globally,
+using `+`. The second is bound only to the next **`geom_jitter`** plot
+by using `%>%`. The reason for doing this will become more clear later
+on, when we layer plots over the top of each other.
+
+It may help to understand the **`aes`** function as adding a new data
+field to a plot, similar to the way the **`mutate`** function adds a
+new data field to a dataset.
 
 There appears to be a positive trend between number of household
 members and number of items owned (from the list provided). This trend
@@ -279,8 +299,8 @@ does not appear to be different by village.
 > > interviews_plotting %>%
 > >     ggplot() +
 > >     aes(x = village, y = rooms) +
-> >     geom_jitter() +
-> >     aes(color = respondent_wall_type)
+> >     aes(color = respondent_wall_type) %>%
+> >     geom_jitter()
 > > ~~~
 > > {: .language-r}
 > > 
@@ -337,7 +357,7 @@ hidden?
 > (of the density of points) is drawn.
 >
 > - Replace the box plot with a violin plot; see `geom_violin()`.
-> 
+>
 > > ## Solution
 > >
 > > 
@@ -384,7 +404,7 @@ hidden?
 > >     ggplot() +
 > >     aes(x = respondent_wall_type, y = liv_count) +
 > >     geom_boxplot(alpha = 0) +
-> >     aes(color=memb_assoc) %>%
+> >     aes(color = memb_assoc) %>%
 > >     geom_jitter(alpha = 0.5)
 > > ~~~
 > > {: .language-r}
@@ -393,7 +413,7 @@ hidden?
 > > Note: in this case the `color` aesthetic is attached to `geom_jitter`
 > > using the pipe operator so that it doesn't affect the entire `ggplot2`
 > > structure. If a `+` were used instead, then the `geom_boxplot` command
-> > would be modified as well as `geom_jitter`, because it also has a 
+> > would be modified as well as `geom_jitter`, because it also has a
 > > `color` argument.
 > {: .solution}
 {: .challenge}
@@ -423,8 +443,8 @@ the portion of each count that is from each village.
 interviews_plotting %>%
     ggplot() +
     aes(x = respondent_wall_type) +
-    geom_bar() +
-    aes(fill = village)
+    aes(fill = village) %>%
+    geom_bar()
 ~~~
 {: .language-r}
 
@@ -441,8 +461,8 @@ argument for `geom_bar()` and setting it to "dodge".
 interviews_plotting %>%
     ggplot() +
     aes(x = respondent_wall_type) +
-    geom_bar(position = "dodge") +
-    aes(fill = village)
+    aes(fill = village) %>%
+    geom_bar(position = "dodge")
 ~~~
 {: .language-r}
 
@@ -475,12 +495,19 @@ percentage of each house type in each village.
 ~~~
 percent_wall_type %>%
     ggplot() +
-    aes(x = village, y = percent, fill = respondent_wall_type) +
-    geom_bar(stat = "identity", position = "dodge")
+    aes(x = village, y = percent) +
+    aes(fill = respondent_wall_type) %>%
+    geom_col(position = "dodge")
 ~~~
 {: .language-r}
 
 <img src="../fig/rmd-04-barplot-wall-type-1.png" title="plot of chunk barplot-wall-type" alt="plot of chunk barplot-wall-type" width="612" style="display: block; margin: auto;" />
+
+Note that **`geom_col`** is being used instead of **`geom_bar`**,
+because we are using the *value* of a particular summary statistic,
+rather than the *count* of data (which is the default for
+**`geom_bar`**).
+
 
 > ## Exercise
 >
@@ -503,8 +530,9 @@ percent_wall_type %>%
 > > 
 > > percent_memb_assoc %>%
 > >     ggplot() +
-> >     aes(x = village, y = percent, fill = memb_assoc) +
-> >     geom_bar(stat = "identity", position = "dodge")
+> >     aes(x = village, y = percent) +
+> >     aes(fill = memb_assoc) %>%
+> >     geom_col(position = "dodge")
 > > ~~~
 > > {: .language-r}
 > > 
@@ -519,7 +547,7 @@ percent_wall_type %>%
 
 By default, the axes labels on a plot are determined by the name of the variable
 being plotted. However, **`ggplot2`** offers lots of customization options,
-like specifying the axes labels, and adding a title to the plot with 
+like specifying the axes labels, and adding a title to the plot with
 relatively few lines of code. We will add more informative x and y axis
 labels to our plot of proportion of house type by village and also add
 a title.
@@ -528,8 +556,9 @@ a title.
 ~~~
 percent_wall_type %>%
     ggplot() +
-    aes(x = village, y = percent, fill = respondent_wall_type) +
-    geom_bar(stat = "identity", position = "dodge") +
+    aes(x = village, y = percent) +
+    aes(fill = respondent_wall_type) %>%
+    geom_col(position = "dodge") +
     labs(title="Proportion of wall type by village",
          x="Wall Type",
          y="Percent")
@@ -556,7 +585,7 @@ so that each village has it's own panel in a multi-panel plot:
 percent_wall_type %>%
     ggplot() +
     aes(x = respondent_wall_type, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     labs(title="Proportion of wall type by village",
          x="Wall Type",
          y="Percent") +
@@ -578,7 +607,7 @@ the grid:
 percent_wall_type %>%
     ggplot() +
     aes(x = respondent_wall_type, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     labs(title="Proportion of wall type by village",
          x="Wall Type",
          y="Percent") +
@@ -623,7 +652,7 @@ a multi-paneled bar plot.
 percent_items %>%
     ggplot() +
     aes(x = village, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     facet_wrap(~ items) +
     theme_bw() +
     theme(panel.grid = element_blank())
@@ -668,7 +697,7 @@ Now, let's change names of axes to something more informative than 'village' and
 percent_items %>%
     ggplot() +
     aes(x = village, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village who owned each item",
          x = "Village",
@@ -687,7 +716,7 @@ increasing the font size:
 percent_items %>%
     ggplot() +
     aes(x = village, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village who owned each item",
          x = "Village",
@@ -716,7 +745,7 @@ for the title to insert a new line:
 percent_items %>%
     ggplot() +
     aes(x = village, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village \n who owned each item",
          x = "Village",
@@ -746,7 +775,7 @@ theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust
 percent_items %>%
     ggplot() +
     aes(x = village, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village \n who owned each item",
          x = "Village",
@@ -780,7 +809,7 @@ Make sure you have the `fig_output/` folder in your working directory.
 percent_items %>%
     ggplot() +
     aes(x = village, y = percent) +
-    geom_bar(stat = "identity", position = "dodge") +
+    geom_col(position = "dodge") +
     facet_wrap(~ items) +
     labs(title = "Percent of respondents in each village \n who owned each item",
          x = "Village",
