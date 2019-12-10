@@ -102,7 +102,6 @@ To choose rows based on a specific criteria, use `filter()`:
 ~~~
 filter(interviews, village == "Chirodzo")
 
-#[EDIT: For religious Jewish poeple, it is forbidden to write the word g-d. When mocking up this lesson, it became difficult for me to follow along due to the fact I had to first search for an alternate 'village'. You may consider changing this village type example for the final lesson? I have tried to catch most examples by changing to Chirodzo.] 
 ~~~
 {: .language-r}
 
