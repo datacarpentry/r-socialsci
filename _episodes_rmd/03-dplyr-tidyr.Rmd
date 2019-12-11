@@ -567,9 +567,8 @@ mutate(items_owned_logical = TRUE) %>%
     spread(key = items_owned, value = items_owned_logical, fill = FALSE)
 ```
 
-View the `interviews_items_owned` data frame. It should have `r
-nrow(interviews)` rows (the same number of rows you had originally), but extra
-columns for each item. 
+View the `interviews_items_owned` data frame. It should have `r nrow(interviews)`
+rows (the same number of rows you had originally), but extra columns for each item. 
 
 You may notice that the last column in called `\`<NA>\``. This is because the respondents did not own any of the items that was in the interviewer's list. We can use the `rename()` function to change this name to something more meaningful:
 
