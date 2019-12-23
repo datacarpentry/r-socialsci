@@ -385,7 +385,7 @@ interviews %>%
 > {: .solution}
 {: .challenge}
 
-## Reshaping with gather and spread
+## Reshaping with pivot_longer and pivot_wider
 
 In the [spreadsheet
 lesson](http://www.datacarpentry.org/spreadsheets-socialsci/), we discussed how
@@ -419,42 +419,48 @@ point here is that we are still following a tidy data structure, but we have
 The opposite transformation would be to transform column names into values of
 a variable.
 
-We can do both these of transformations with two `tidyr` functions, `spread()`
-and `gather()`.
+We can do both these of transformations with two `tidyr` functions, `pivot_wider()`
+and `pivot_longer()`.
 
-#### Spreading
+#### Pivoting wider
 
-`spread()` takes three principal arguments:
+`pivot_wider()` takes three principal arguments:
 
 1. the data
-2. the *key* column variable whose values will become new column names.
-3. the *value* column variable whose values will fill the new column variables.
+2. the *names_from* column variable whose values will become new column names.
+3. the *values_from* column variable whose values will fill the new column variables.
 
-Further arguments include `fill` which, if set, fills in missing values with
+Further arguments include `values_fill` which, if set, fills in missing values with
 the value provided.
 
-Let's use `spread()` to transform interviews to create new columns for each type
+Let's use `pivot_wider()` to transform interviews to create new columns for each type
 of wall construction material. We use the pipe as before too. Because both the
-`key` and `value` parameters must come from column values, we will create a
+`names_from` and `values_from` parameters must come from column values, we will create a
 dummy column (we'll name it `wall_type_logical`) to hold the value `TRUE`, which
 we will then place into the appropriate column that corresponds to the wall
 construction material for that respondent. When using `mutate()` if you give a
 single value, it will be used for all observations in the dataset. We will use
-`fill = FALSE` in `spread()` to fill the rest of the new columns for that row
-with `FALSE`.
+`values_fill = list(wall_type_logcial = FALSE)` in `pivot_wider()` to fill the 
+rest of the new columns for that row with `FALSE`.
 
 ```{r, purl=FALSE}
-interviews_spread <- interviews %>%
+interviews_wide <- interviews %>%
     mutate(wall_type_logical = TRUE) %>%
-    spread(key = respondent_wall_type, value = wall_type_logical, fill = FALSE)
+    pivot_wider(names_from = respondent_wall_type, 
+                values_from = wall_type_logical, 
+                values_fill = list(wall_type_logical = FALSE))
+
+interviews_wide
 ```
 
 ![](../fig/long_to_wide.png)
 
 
-View the `interviews_spread` data frame and notice that there is no longer a
+View the `interviews_wide` data frame and notice that there is no longer a
 column titled `respondent_wall_type`. This is because there is a default
-parameter in `spread()` that drops the original column.
+parameter in `pivot_wider()` that drops the original column.
+
+
 
 ## Gathering
 
