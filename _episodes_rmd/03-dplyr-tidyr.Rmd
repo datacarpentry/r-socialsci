@@ -17,7 +17,7 @@ objectives:
 - "Use `summarize`, `group_by`, and `count` to split a data frame into groups of observations, apply a summary statistics for each group, and then combine the results."
 - "Describe the concept of a wide and a long table format and for which purpose those formats are useful."
 - "Describe what key-value pairs are."
-- "Reshape a data frame from long to wide format and back with the `spread` and `gather` commands from the **`tidyr`** package."
+- "Reshape a data frame from long to wide format and back with the `pivot_wider` and `pivot_longer` commands from the **`tidyr`** package."
 - "Export a data frame to a csv file."
 keypoints:
   - "Use the `dplyr` package to manipulate dataframes."
@@ -385,7 +385,7 @@ interviews %>%
 > {: .solution}
 {: .challenge}
 
-## Reshaping with pivot_longer and pivot_wider
+## Reshaping with pivot_wider and pivot_longer
 
 In the [spreadsheet
 lesson](http://www.datacarpentry.org/spreadsheets-socialsci/), we discussed how
@@ -399,7 +399,7 @@ to structure our data leading to the four rules defining a tidy dataset:
 Here we examine the fourth rule: Each type of observational unit forms a table.
 
 In `interviews`, each row contains the values of variables associated with each
-record (the unit), values such as the number of household members or posessions
+record (the unit), values such as the number of household members or possessions
 associated with each record. What if instead of comparing records, we wanted to
 look at differences in households grouped by different types of housing
 construction materials?
@@ -439,9 +439,13 @@ of wall construction material. We use the pipe as before too. Because both the
 dummy column (we'll name it `wall_type_logical`) to hold the value `TRUE`, which
 we will then place into the appropriate column that corresponds to the wall
 construction material for that respondent. When using `mutate()` if you give a
-single value, it will be used for all observations in the dataset. We will use
+single value, it will be used for all observations in the dataset. 
+
+For each row, there will be newly created wall type columns that are not `TRUE`. The
+default fill would be `NA`, but we want them to be `FALSE`. We will use 
 `values_fill = list(wall_type_logcial = FALSE)` in `pivot_wider()` to fill the 
 rest of the new columns for that row with `FALSE`.
+
 
 ```{r, purl=FALSE}
 interviews_wide <- interviews %>%
@@ -458,14 +462,16 @@ interviews_wide
 
 View the `interviews_wide` data frame and notice that there is no longer a
 column titled `respondent_wall_type`. This is because there is a default
-parameter in `pivot_wider()` that drops the original column.
+parameter in `pivot_wider()` that drops the original column. The values that were
+in that column have now become variables `muddaub`, `burntbricks`, `sunbricks`, and 
+`cement`.
 
 
 
-## Gathering
+## Pivoting longer
 
 The opposing situation could occur if we had been provided with data in the form
-of `interviews_spread`, where the building materials are column names, but we
+of `interviews_wide`, where the building materials are column names, but we
 wish to treat them as values of a `respondent_wall_type` variable instead.
 
 In this situation we are gathering the column names and turning them into a pair
@@ -473,41 +479,46 @@ of new variables. One variable represents the column names as values, and the
 other variable contains the values previously associated with the column names.
 We will do this in two steps to make this process a bit clearer.
 
-`gather()` takes four principal arguments:
+`pivot_longer()` takes four principal arguments:
 
 1. the data
-2. the *key* column variable we wish to create from column names.
-3. the *value* column variable we wish to create and fill with values
-associated with the key.
-4. the names of the columns we use to fill the key variable (or to drop).
+2. *cols* are the names of the columns we use to fill the values variable (or to drop).
+3. the *names_to* column variable we wish to create from column names.
+4. the *values_to* column variable we wish to create and fill with values
+associated with the named columns.
 
 To recreate our original data frame, we will use the following:
 
-1. the data - `interviews_spread`
-2. the *key* column will be "respondent_wall_type" (as a character string). This
+1. the data - `interviews_wide`
+2. the *cols* are the names of the columns we will use to fill the key variable are
+   `muddaub:cement` (the column named "muddaub" up to and including
+   the column named "cement" as they are ordered in the data frame).
+3. the *names_to* column will be "respondent_wall_type" (as a character string). This
    is the name of the new column we want to create.
-3. the *value* column will be `wall_type_logical`. This will be either `TRUE` or
+4. the *values_to* column will be `wall_type_logical`. This will be either `TRUE` or
    `FALSE`.
-4. the names of the columns we will use to fill the key variable are
-   `burntbricks:sunbricks` (the column named "burntbricks" up to and including
-   the column named "sunbricks" as they are ordered in the data frame).
+
 
 ```{r, purl=FALSE}
-interviews_gather <- interviews_spread %>%
-    gather(key = respondent_wall_type, value = "wall_type_logical",
-           burntbricks:sunbricks)
+interviews_long <- interviews_wide %>%
+    pivot_longer(cols = muddaub:cement,
+                 names_to = "respondent_wall_type", 
+                 values_to = "wall_type_logical")
+
+interviews_long
 ```
+
 
 
 ![](../fig/wide_to_long.png)
 
 This creates a data frame with `r nrow(interviews_gather)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
-value of the "respondent_wall_type" and "dummy" columns. View the data to see what this looks like.
+value of the "respondent_wall_type" and "wall_type_logical" columns. View the data to see what this looks like.
 
-Only one row for each interview respondent is informative - we know that if the
+Only one row for each interview respondent is informative--we know that if the
 house walls are made of "sunbrick" they aren't made of any other the other
-materials. Therefore, we can get filter our dataset to only keep values where
-`wall_type_logical` is `TRUE`. Because, `wall_type_logical` is already either
+materials. Therefore, we can filter our dataset to only keep values where
+`wall_type_logical` is `TRUE`. Because `wall_type_logical` is already either
 `TRUE` or `FALSE`, when passing the column name to `filter()`, it will
 automatically already only keep rows where this column has the value `TRUE`. We
 can then remove the `wall_type_logical` column. We do all of these steps
@@ -521,9 +532,10 @@ interviews_gather <- interviews_spread %>%
     select(-wall_type_logical)
 ```
 
-View both `interviews_gather` and `interviews_spread` and compare their
-structure. Notice that the rows have been reordered in `interviews_gather` such
+View both `interviews_long` and `interviews_wide` and compare their
+structure. Notice that the rows have been reordered in `interviews_long` such
 that all of the respondents with a particular wall type are grouped together.
+
 
 ## Applying `spread()` to clean our data
 
