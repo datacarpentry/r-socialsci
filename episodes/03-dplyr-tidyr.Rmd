@@ -1,33 +1,38 @@
 ---
 title: "Introducing dplyr and tidyr"
+keypoints:
+- Use the `dplyr` package to manipulate dataframes.
+- Use `select()` to choose variables from a dataframe.
+- Use `filter()` to choose data based on values.
+- Use `group_by()` and `summarize()` to work with subsets of data.
+- Use `mutate()` to create new variables.
+- Use the `tidyr` package to change the layout of dataframes.
+- Use `gather()` to go from wide to long format.
+- Use `spread()` to go from long to wide format.
+objectives:
+- Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages.
+- Select certain columns in a data frame with the **`dplyr`** function `select`.
+- Select certain rows in a data frame according to filtering conditions with the **`dplyr`**
+  function `filter`.
+- Link the output of one **`dplyr`** function to the input of another function with
+  the 'pipe' operator `%>%`.
+- Add new columns to a data frame that are functions of existing columns with `mutate`.
+- Use the split-apply-combine concept for data analysis.
+- Use `summarize`, `group_by`, and `count` to split a data frame into groups of observations,
+  apply a summary statistics for each group, and then combine the results.
+- Describe the concept of a wide and a long table format and for which purpose those
+  formats are useful.
+- Describe what key-value pairs are.
+- Reshape a data frame from long to wide format and back with the `pivot_wider` and
+  `pivot_longer` commands from the **`tidyr`** package.
+- Export a data frame to a csv file.
+questions:
+- How can I select specific rows and/or columns from a data frame?
+- How can I combine multiple commands into a single command?
+- How can create new columns or remove existing columns from a data frame?
+- How can I reformat a dataframe to meet my needs?
 teaching: 50
 exercises: 30
-questions:
-  - "How can I select specific rows and/or columns from a data frame?"
-  - "How can I combine multiple commands into a single command?"
-  - "How can create new columns or remove existing columns from a data frame?"
-  - "How can I reformat a dataframe to meet my needs?"
-objectives:
-- "Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages."
-- "Select certain columns in a data frame with the **`dplyr`** function `select`."
-- "Select certain rows in a data frame according to filtering conditions with the **`dplyr`** function `filter`."
-- "Link the output of one **`dplyr`** function to the input of another function with the 'pipe' operator `%>%`."
-- "Add new columns to a data frame that are functions of existing columns with `mutate`."
-- "Use the split-apply-combine concept for data analysis."
-- "Use `summarize`, `group_by`, and `count` to split a data frame into groups of observations, apply a summary statistics for each group, and then combine the results."
-- "Describe the concept of a wide and a long table format and for which purpose those formats are useful."
-- "Describe what key-value pairs are."
-- "Reshape a data frame from long to wide format and back with the `pivot_wider` and `pivot_longer` commands from the **`tidyr`** package."
-- "Export a data frame to a csv file."
-keypoints:
-  - "Use the `dplyr` package to manipulate dataframes."
-  - "Use `select()` to choose variables from a dataframe."
-  - "Use `filter()` to choose data based on values."
-  - "Use `group_by()` and `summarize()` to work with subsets of data."
-  - "Use `mutate()` to create new variables."
-  - "Use the `tidyr` package to change the layout of dataframes."
-  - "Use `gather()` to go from wide to long format."
-  - "Use `spread()` to go from long to wide format."
 ---
 
 
@@ -441,8 +446,8 @@ we will then place into the appropriate column that corresponds to the wall
 construction material for that respondent. When using `mutate()` if you give a
 single value, it will be used for all observations in the dataset. 
 
-For each row, there will be newly created wall type columns that are not `TRUE`. The
-default fill would be `NA`, but we want them to be `FALSE`. We will use 
+For each row, only one of the newly created wall type columns will be `TRUE`. 
+The default fill for these is `NA`, but we want them to be `FALSE`. We will use 
 `values_fill = list(wall_type_logcial = FALSE)` in `pivot_wider()` to fill the 
 rest of the new columns for that row with `FALSE`.
 
@@ -468,7 +473,7 @@ in that column have now become variables `muddaub`, `burntbricks`, `sunbricks`, 
 
 
 
-## Pivoting longer
+### Pivoting longer
 
 The opposing situation could occur if we had been provided with data in the form
 of `interviews_wide`, where the building materials are column names, but we
@@ -512,7 +517,7 @@ interviews_long
 
 ![](../fig/wide_to_long.png)
 
-This creates a data frame with `r nrow(interviews_gather)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
+This creates a data frame with `r nrow(interviews_long)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
 value of the "respondent_wall_type" and "wall_type_logical" columns. View the data to see what this looks like.
 
 Only one row for each interview respondent is informative--we know that if the
@@ -525,21 +530,23 @@ can then remove the `wall_type_logical` column. We do all of these steps
 together in the next chunk of code:
 
 ```{r, purl=FALSE}
-interviews_gather <- interviews_spread %>%
-    gather(key = "respondent_wall_type", value = "wall_type_logical",
-           burntbricks:sunbricks) %>%
+interviews_long <- interviews_wide %>%
+    pivot_longer(cols = muddaub:cement,
+                 names_to = "respondent_wall_type", 
+                 values_to = "wall_type_logical") %>%
     filter(wall_type_logical) %>%
     select(-wall_type_logical)
+
+interviews_long
 ```
 
 View both `interviews_long` and `interviews_wide` and compare their
-structure. Notice that the rows have been reordered in `interviews_long` such
-that all of the respondents with a particular wall type are grouped together.
+structure. 
 
 
-## Applying `spread()` to clean our data
+## Applying `pivot_wider()` to clean our data
 
-Now that we've learned about `gather()` and `spread()` we're going to put these
+Now that we've learned about `pivot_longer()` and `pivot_wider()` we're going to put these
 functions to use to fix a problem with the way that our data is structured. In
 the spreadsheets lesson, we learned that it's best practice to have only a
 single piece of information in each cell of your spreadsheet. In this dataset,
@@ -550,11 +557,14 @@ analyze, we will split this column and create a new column for each item. Each
 cell in that column will either be `TRUE` or `FALSE` and will indicate whether
 that interview respondent owned that item.
 
+
 ```{r, purl=FALSE}
 interviews_items_owned <- interviews %>%
     separate_rows(items_owned, sep=";") %>%
     mutate(items_owned_logical = TRUE) %>%
-    spread(key = items_owned, value = items_owned_logical, fill = FALSE)
+    pivot_wider(names_from = items_owned, 
+                values_from = items_owned_logical, 
+                values_fill = list(items_owned_logical = FALSE))
 
 nrow(interviews_items_owned)
 ```
@@ -567,33 +577,33 @@ the `interviews` dataframe.
 interviews_items_owned <- interviews %>%
 ```
 
-Then we use the new function `separate_rows()` to split the column `items_owned`
-based on the presence of semi-colons (`;`). This creates a long format version of the dataset. In this long
-format version, there are `r nrow(interviews_items_owned)` rows (one row for
-each unique item for each respondent).
+Then we use the new function `separate_rows()` from the **`tidyr`** package to split the column `items_owned`
+based on the presence of semi-colons (`;`). This creates a long format version of the dataset, which has multiple rows for each respondent, each row with a unique item. For example, if a respondent has a television and a solar panel, that respondent will now have two rows, one with "television" and the other with "solar panel" in the `items_owned` column.
 
 ```{r, eval=FALSE}
 separate_rows(items_owned, sep=";") %>%
 ```
 
 Lastly, we use `spread()` to switch from long format to wide format. This
-creates a new column for each of the unique values in the `split_items` column
+creates a new column for each of the unique values in the `split_items` column,
 and fills those columns with `TRUE` or `FALSE`.
 
 ```{r, eval=FALSE}
 mutate(items_owned_logical = TRUE) %>%
-    spread(key = items_owned, value = items_owned_logical, fill = FALSE)
+pivot_wider(names_from = items_owned,
+            values_from = items_owned_logical,
+            values_fill = list(items_owned_logical = FALSE))
 ```
 
-View the `interviews_items_owned` data frame. It should have `r
-nrow(interviews)` rows (the same number of rows you had originally), but extra
+View the `interviews_items_owned` data frame. It should have 
+`r nrow(interviews)` rows (the same number of rows you had originally), but extra
 columns for each item. 
 
-You may notice that the last column in called `\`<NA>\``. This is because the respondents did not own any of the items that was in the interviewer's list. We can use the `rename()` function to change this name to something more meaningful:
+You may notice that one of the columns in called `\`<NA>\`. This is because the respondents did not own any of the items that was in the interviewer's list. We can use the `rename()` function to change this name to something more meaningful:
 
 ```{r}
 interviews_items_owned <- interviews_items_owned %>%
-    rename(no_listed_items = `<NA>`)
+    rename(no_listed_items = `NA`)
 ```
 
 This format of the data allows us to do interesting things, like make a table
@@ -628,7 +638,9 @@ interviews_items_owned %>%
 > > interviews_months_lack_food <- interviews %>%
 > >   separate_rows(months_lack_food, sep=";") %>%
 > >   mutate(months_lack_food_logical  = TRUE) %>%
-> >   spread(key = months_lack_food, value = months_lack_food_logical, fill = FALSE)
+> >   pivot_wider(names_from = months_lack_food, 
+> >               values_from = months_lack_food_logical, 
+> >               values_fill = list(months_lack_food_logical = FALSE))
 > > ```
 > {: .solution}
 >
@@ -669,20 +681,25 @@ version of the dataset where each of the columns includes only one
 data value. To do this, we will use spread to expand the
 `months_lack_food` and `items_owned` columns. We will also create a couple of summary columns.
 
+
 ```{r, purl=FALSE}
 interviews_plotting <- interviews %>%
-    ## spread data by items_owned
+    ## pivot wider data by items_owned
     separate_rows(items_owned, sep=";") %>%
     mutate(items_owned_logical = TRUE) %>%
-    spread(key = items_owned, value = items_owned_logical, fill = FALSE) %>%
-    rename(no_listed_items = `<NA>`) %>%
+    pivot_wider(names_from = items_owned, 
+                values_from = items_owned_logical, 
+                values_fill = list(items_owned_logical = FALSE)) %>%
+    rename(no_listed_items = `NA`) %>%
     ## spread data by months_lack_food
     separate_rows(months_lack_food, sep=";") %>%
     mutate(months_lack_food_logical = TRUE) %>%
-    spread(key = months_lack_food, value = months_lack_food_logical, fill = FALSE) %>%
+    pivot_wider(names_from = months_lack_food, 
+                values_from = months_lack_food_logical, 
+                values_fill = list(months_lack_food_logical = FALSE)) %>%
     ## add some summary columns
-    mutate(number_months_lack_food = rowSums(select(., Apr:Sept))) %>%
-    mutate(number_items = rowSums(select(., bicycle:television)))
+    mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
+    mutate(number_items = rowSums(select(., bicycle:car)))
 ```
 
 Now we can save this data frame to our `data_output` directory.
