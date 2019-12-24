@@ -7,8 +7,8 @@ keypoints:
 - Use `group_by()` and `summarize()` to work with subsets of data.
 - Use `mutate()` to create new variables.
 - Use the `tidyr` package to change the layout of dataframes.
-- Use `gather()` to go from wide to long format.
-- Use `spread()` to go from long to wide format.
+- Use `pivot_wider()` to go from long to wide format.
+- Use `pivot_longer()` to go from wide to long format.
 objectives:
 - Describe the purpose of an R package and the **`dplyr`** and **`tidyr`** packages.
 - Select certain columns in a data frame with the **`dplyr`** function `select`.
@@ -22,7 +22,8 @@ objectives:
   apply a summary statistics for each group, and then combine the results.
 - Describe the concept of a wide and a long table format and for which purpose those
   formats are useful.
-- Describe what key-value pairs are.
+- Describe the roles of variable names and their associated values when a table is
+  reshaped.
 - Reshape a data frame from long to wide format and back with the `pivot_wider` and
   `pivot_longer` commands from the **`tidyr`** package.
 - Export a data frame to a csv file.
@@ -416,7 +417,7 @@ of the wall construction materials in `respondent_wall_type` would
 become the names of column variables and the cells would contain `TRUE` or `FALSE`.
 
 Having created a new table, we can now explore the relationship within and
-between household types - for example we could compare the ratio of household
+between household types--for example we could compare the ratio of household
 members to sleeping rooms grouped by type of construction material. The key
 point here is that we are still following a tidy data structure, but we have
 **reshaped** the data according to the observations of interest.
@@ -427,7 +428,7 @@ a variable.
 We can do both these of transformations with two `tidyr` functions, `pivot_wider()`
 and `pivot_longer()`.
 
-#### Pivoting wider
+### Pivoting wider
 
 `pivot_wider()` takes three principal arguments:
 
@@ -446,10 +447,8 @@ we will then place into the appropriate column that corresponds to the wall
 construction material for that respondent. When using `mutate()` if you give a
 single value, it will be used for all observations in the dataset. 
 
-For each row, only one of the newly created wall type columns will be `TRUE`. 
-The default fill for these is `NA`, but we want them to be `FALSE`. We will use 
-`values_fill = list(wall_type_logcial = FALSE)` in `pivot_wider()` to fill the 
-rest of the new columns for that row with `FALSE`.
+For each row in our newly pivoted table, only one of the newly created wall type columns will be `TRUE`. 
+The default value that `pivot_wider` uses to fill the other wall types is `NA`, but we want them to be `FALSE`. We will use `values_fill = list(wall_type_logcial = FALSE)` in `pivot_wider()` to fill the rest of the new columns for that row with `FALSE`.
 
 
 ```{r, purl=FALSE}
@@ -458,8 +457,6 @@ interviews_wide <- interviews %>%
     pivot_wider(names_from = respondent_wall_type, 
                 values_from = wall_type_logical, 
                 values_fill = list(wall_type_logical = FALSE))
-
-interviews_wide
 ```
 
 ![](../fig/long_to_wide.png)
@@ -500,8 +497,8 @@ To recreate our original data frame, we will use the following:
    the column named "cement" as they are ordered in the data frame).
 3. the *names_to* column will be "respondent_wall_type" (as a character string). This
    is the name of the new column we want to create.
-4. the *values_to* column will be `wall_type_logical`. This will be either `TRUE` or
-   `FALSE`.
+4. the *values_to* column will be "wall_type_logical" (as a character string). 
+   This will be populated with either `TRUE` or `FALSE`.
 
 
 ```{r, purl=FALSE}
@@ -509,8 +506,6 @@ interviews_long <- interviews_wide %>%
     pivot_longer(cols = muddaub:cement,
                  names_to = "respondent_wall_type", 
                  values_to = "wall_type_logical")
-
-interviews_long
 ```
 
 
@@ -536,8 +531,6 @@ interviews_long <- interviews_wide %>%
                  values_to = "wall_type_logical") %>%
     filter(wall_type_logical) %>%
     select(-wall_type_logical)
-
-interviews_long
 ```
 
 View both `interviews_long` and `interviews_wide` and compare their
@@ -584,7 +577,7 @@ based on the presence of semi-colons (`;`). This creates a long format version o
 separate_rows(items_owned, sep=";") %>%
 ```
 
-Lastly, we use `spread()` to switch from long format to wide format. This
+Lastly, we use `pivot_wider()` to switch from long format to wide format. This
 creates a new column for each of the unique values in the `split_items` column,
 and fills those columns with `TRUE` or `FALSE`.
 
@@ -678,20 +671,20 @@ re-generate them.
 
 In preparation for our next lesson on plotting, we are going to create a
 version of the dataset where each of the columns includes only one
-data value. To do this, we will use spread to expand the
+data value. To do this, we will use `pivot_wider` to expand the
 `months_lack_food` and `items_owned` columns. We will also create a couple of summary columns.
 
 
 ```{r, purl=FALSE}
 interviews_plotting <- interviews %>%
-    ## pivot wider data by items_owned
+    ## pivot wider by items_owned
     separate_rows(items_owned, sep=";") %>%
     mutate(items_owned_logical = TRUE) %>%
     pivot_wider(names_from = items_owned, 
                 values_from = items_owned_logical, 
                 values_fill = list(items_owned_logical = FALSE)) %>%
     rename(no_listed_items = `NA`) %>%
-    ## spread data by months_lack_food
+    ## pivot wider by months_lack_food
     separate_rows(months_lack_food, sep=";") %>%
     mutate(months_lack_food_logical = TRUE) %>%
     pivot_wider(names_from = months_lack_food, 
