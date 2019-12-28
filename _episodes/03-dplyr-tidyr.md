@@ -801,9 +801,9 @@ interviews_spread <- interviews %>%
 ~~~
 {: .language-r}
 
-View the `interviews_spread` data frame and notice that there is no longer a
-column titled `respondent_wall_type`. This is because there is a default
-parameter in `spread()` that drops the original column.
+Use name(interviews_spread), notice that there is no longer a column titled `respondent_wall_type`. 
+This is because there is a default parameter in `spread()` that drops the original column. Use dim(interviews)  and dim(interviews_spread) to compare number of columns. 
+
 
 ## Gathering
 
