@@ -447,8 +447,12 @@ we will then place into the appropriate column that corresponds to the wall
 construction material for that respondent. When using `mutate()` if you give a
 single value, it will be used for all observations in the dataset. 
 
-For each row in our newly pivoted table, only one of the newly created wall type columns will be `TRUE`. 
-The default value that `pivot_wider` uses to fill the other wall types is `NA`, but we want them to be `FALSE`. We will use `values_fill = list(wall_type_logcial = FALSE)` in `pivot_wider()` to fill the rest of the new columns for that row with `FALSE`.
+For each row in our newly pivoted table, only one of the newly created wall type columns will be `TRUE`. The default value that `pivot_wider` uses to fill the other wall types is `NA`.
+
+![](../fig/pivot_long_to_wide.png)
+
+
+Instead of the default value of `NA`, we want them to be `FALSE`. We will use `values_fill = list(wall_type_logcial = FALSE)` in `pivot_wider()` to fill the rest of the new columns for that row with `FALSE`.
 
 
 ```{r, purl=FALSE}
@@ -458,8 +462,6 @@ interviews_wide <- interviews %>%
                 values_from = wall_type_logical, 
                 values_fill = list(wall_type_logical = FALSE))
 ```
-
-![](../fig/long_to_wide.png)
 
 
 View the `interviews_wide` data frame and notice that there is no longer a
@@ -492,9 +494,8 @@ associated with the named columns.
 To recreate our original data frame, we will use the following:
 
 1. the data - `interviews_wide`
-2. the *cols* are the names of the columns we will use to fill the key variable are
-   `muddaub:cement` (the column named "muddaub" up to and including
-   the column named "cement" as they are ordered in the data frame).
+2. the *cols* are the names of the columns that are to be reshaped;
+   in this case, they are specified in a list using `c()`.
 3. the *names_to* column will be "respondent_wall_type" (as a character string). This
    is the name of the new column we want to create.
 4. the *values_to* column will be "wall_type_logical" (as a character string). 
@@ -503,17 +504,15 @@ To recreate our original data frame, we will use the following:
 
 ```{r, purl=FALSE}
 interviews_long <- interviews_wide %>%
-    pivot_longer(cols = muddaub:cement,
+    pivot_longer(cols = c(burntbricks, cement, muddaub, sunbricks),
                  names_to = "respondent_wall_type", 
                  values_to = "wall_type_logical")
 ```
 
 
+![](../fig/pivot_wide_to_long.png)
 
-![](../fig/wide_to_long.png)
-
-This creates a data frame with `r nrow(interviews_long)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the
-value of the "respondent_wall_type" and "wall_type_logical" columns. View the data to see what this looks like.
+This creates a data frame with `r nrow(interviews_long)` rows (4 rows per interview respondent). The four rows for each respondent differ only in the value of the "respondent_wall_type" and "wall_type_logical" columns. View the data to see what this looks like.
 
 Only one row for each interview respondent is informative--we know that if the
 house walls are made of "sunbrick" they aren't made of any other the other
@@ -526,7 +525,7 @@ together in the next chunk of code:
 
 ```{r, purl=FALSE}
 interviews_long <- interviews_wide %>%
-    pivot_longer(cols = muddaub:cement,
+    pivot_longer(cols = c(burntbricks, cement, muddaub, sunbricks),
                  names_to = "respondent_wall_type", 
                  values_to = "wall_type_logical") %>%
     filter(wall_type_logical) %>%
