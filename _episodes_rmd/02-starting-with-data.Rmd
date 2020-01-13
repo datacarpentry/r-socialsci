@@ -133,7 +133,7 @@ When calling a `tbl_df` object (like `interviews` here), there is already a lot 
 functions. Let's try them out!
 
 * Size:
-* `dim(interviews)` - returns a vector with the number of rows in the first element,
+* `dim(interviews)` - returns a vector with the number of rows as the first element,
 and the number of columns as the second element (the **dim**ensions of
 the object)
 * `nrow(interviews)` - returns the number of rows
