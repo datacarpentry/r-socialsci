@@ -152,14 +152,14 @@ the object)
 length and content of each column
 * `summary(interviews)` - summary statistics for each column
 
-Note: most of these functions are "generic", they can be used on other types of
+Note: most of these functions are "generic." They can be used on other types of
 objects besides data frames.
 
 
 
 ## Indexing and subsetting data frames
 
-Our interviews data frame has rows and columns (it has 2 dimensions), if we want to
+Our interviews data frame has rows and columns (it has 2 dimensions). If we want to
 extract some specific data from it, we need to specify the "coordinates" we
 want from it. Row numbers come first, followed by column numbers. However, note
 that different ways of specifying these coordinates lead to results with
