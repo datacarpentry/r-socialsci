@@ -272,9 +272,9 @@ levels(respondent_floor_type)
 nlevels(respondent_floor_type)
 ```
 
-Sometimes, the order of the factors does not matter, other times you might want
-to specify the order because it is meaningful (e.g., "low", "medium", "high"),
-it improves your visualization, or it is required by a particular type of
+Sometimes, the order of the factors does not matter. Other times you might want
+to specify the order because it is meaningful (e.g., "low", "medium", "high").
+It may improve your visualization, or it may be required by a particular type of
 analysis. Here, one way to reorder our levels in the `respondent_floor_type` vector would be:
 
 ```{r, results=TRUE, purl=FALSE}
