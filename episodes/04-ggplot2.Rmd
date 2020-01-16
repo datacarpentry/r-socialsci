@@ -505,7 +505,7 @@ After our manipulations, you may notice that the values on the x-axis are still
 not properly readable. Let's change the orientation of the labels and adjust
 them vertically and horizontally so they don't overlap. You can use a 90-degree
 angle, or experiment to find the appropriate angle for diagonally oriented
-labels. With a larger font, the title also runs off. We can "\n" in the string
+labels. With a larger font, the title also runs off. We can add "\n" in the string
 for the title to insert a new line:
 
 ```{r ggplot-customization-label-orientation, purl=FALSE}
