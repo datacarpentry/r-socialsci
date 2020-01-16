@@ -11,7 +11,7 @@ objectives:
    - "Produce scatter plots, boxplots, and time series plots using ggplot."
    - "Set universal plot settings."
    - "Describe what faceting is and apply faceting in ggplot."
-   - "Modify the aesthetics of an existing ggplot plot (including axis labels and color)."
+   - "Modify the aesthetics of an existing ggplot plot (including axis labels and colour)."
    - "Build complex and customized plots from data in a data frame."
 keypoints:
    - "`ggplot2` is a flexible and useful tool for creating plots in R."
@@ -72,7 +72,7 @@ ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ggplot(data = interviews_plotting)
 ```
 
-- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.
+- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, colour, etc.
 
 ```{r ggplot-steps-2, eval=FALSE, purl=FALSE}
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items))
@@ -159,14 +159,14 @@ ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
 ```
 
 
-We can also add colors for all the points:
+We can also add colours for all the points:
 
 ```{r adding-colors, purl=FALSE}
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
     geom_jitter(alpha = 0.5, color = "blue")
 ```
 
-Or to color each species in the plot differently, you could use a vector as an input to the argument **`color`**.  Because we are now mapping features of the data to a color, instead of setting one color for all points, the color now needs to be set inside a call to the **`aes`** function. **`ggplot2`** will provide a different color corresponding to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** function call because we are using the same value for all points. Here is an example where we color by **`village`**:
+Or to colour each species in the plot differently, you could use a vector as an input to the argument **`color`**.  Because we are now mapping features of the data to a colour, instead of setting one colour for all points, the colour now needs to be set inside a call to the **`aes`** function. **`ggplot2`** will provide a different colour corresponding to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** function call because we are using the same value for all points. Here is an example where we colour by **`village`**:
 
 
 ```{r color-by-species, purl=FALSE}
@@ -181,7 +181,7 @@ does not appear to be different by village.
 > ## Exercise
 >
 > Use what you just learned to create a scatter plot of `rooms` by `village`
-> with the `respondent_wall_type` showing in different colors. Is this a good
+> with the `respondent_wall_type` showing in different colours. Is this a good
 > way to show this type of data?
 >
 > > ## Solution
@@ -255,7 +255,7 @@ hidden?
 > > ```
 > {: .solution}
 >
-> - Add color to the data points on your boxplot according to whether the
+> - Add colour to the data points on your boxplot according to whether the
 >   respondent is a member of an irrigation association (`memb_assoc`).
 >
 > > ## Solution
@@ -278,7 +278,7 @@ ggplot(data = interviews_plotting, aes(x = respondent_wall_type)) +
     geom_bar()
 ```
 
-We can use the `fill` aesthetic for the `geom_bar()` geom to color bars by
+We can use the `fill` aesthetic for the `geom_bar()` geom to colour bars by
 the portion of each count that is from each village.
 
 ```{r barplot-stack}
@@ -550,11 +550,11 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 > for inspiration. Here are some ideas:
 >
 > * See if you can make the bars white with black outline.
-> * Try using a different color palette (see
+> * Try using a different colour palette (see
 >   http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
 {: .challenge}
 
-After creating your plot, you can save it to a file in your favorite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
+After creating your plot, you can save it to a file in your favourite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
 
 Instead, use the `ggsave()` function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`).
 
