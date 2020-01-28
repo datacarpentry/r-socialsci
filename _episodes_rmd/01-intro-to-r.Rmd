@@ -123,7 +123,7 @@ area_hectares <- 2.5
 ```
 
 This means that assigning a value to one object does not change the values of
-other objects  For example, let's store the plot's area in acres
+other objects. For example, let's store the plot's area in acres
 in a new object, `area_acres`:
 
 ```{r, purl=FALSE}
