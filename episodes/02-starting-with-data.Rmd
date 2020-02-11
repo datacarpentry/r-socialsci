@@ -349,8 +349,8 @@ memb_assoc
 plot(memb_assoc)
 ```
 
-Looking at the plot compared to the output of the vector, we can see that n
-addition to "no"s and "yes"s, there are about some respondents for which the
+Looking at the plot compared to the output of the vector, we can see that in
+addition to "no"s and "yes"s, there are some respondents for which the
 information about whether they were part of an irrigation association hasn't
 been recorded, and encoded as missing data. They do not appear on the plot.
 Let's encode them differently so they can counted and visualized in our plot.
