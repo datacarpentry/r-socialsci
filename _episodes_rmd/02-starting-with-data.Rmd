@@ -152,7 +152,7 @@ Summary:
 length and content of each column
 * `summary(interviews)` - summary statistics for each column
 
-Note: most of these functions are "generic", they can be used on other types of
+Note: most of these functions are "generic." They can be used on other types of
 objects besides data frames.
 
 
