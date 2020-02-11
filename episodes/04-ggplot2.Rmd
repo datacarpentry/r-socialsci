@@ -18,7 +18,7 @@ keypoints:
    - "The data set and coordinate system can be defined using the `ggplot` function."
    - "Additional layers, including geoms, are added using the `+` operator."
    - "Boxplots are useful for visualizing the distribution of a continuous variable."
-   - "Barplot are useful for visualizing categorical data."
+   - "Barplots are useful for visualizing categorical data."
    - "Faceting allows you to generate multiple plots based on a categorical variable."
 ---
 
