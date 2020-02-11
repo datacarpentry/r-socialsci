@@ -18,7 +18,7 @@ keypoints:
    - "The data set and coordinate system can be defined using the `ggplot` function."
    - "Additional layers, including geoms, are added using the `+` operator."
    - "Boxplots are useful for visualizing the distribution of a continuous variable."
-   - "Barplot are useful for visualizing categorical data."
+   - "Barplots are useful for visualizing categorical data."
    - "Faceting allows you to generate multiple plots based on a categorical variable."
 ---
 
@@ -505,7 +505,7 @@ After our manipulations, you may notice that the values on the x-axis are still
 not properly readable. Let's change the orientation of the labels and adjust
 them vertically and horizontally so they don't overlap. You can use a 90-degree
 angle, or experiment to find the appropriate angle for diagonally oriented
-labels. With a larger font, the title also runs off. We can "\n" in the string
+labels. With a larger font, the title also runs off. We can add "\n" in the string
 for the title to insert a new line:
 
 ```{r ggplot-customization-label-orientation, purl=FALSE}
@@ -550,8 +550,8 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 > for inspiration. Here are some ideas:
 >
 > * See if you can make the bars white with black outline.
-> * Try using a different colour palette (see
->   http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
+> * Try using a different color palette (see
+>   [http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)).
 {: .challenge}
 
 After creating your plot, you can save it to a file in your favourite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
