@@ -132,22 +132,22 @@ column of integers (abbreviated `<int>`), `village` is a column of characters
 When calling a `tbl_df` object (like `interviews` here), there is already a lot of information about our data frame being displayed such as the number of rows, the number of columns, the names of the columns, and as we just saw the class of data stored in each column. However, there are functions to extract this information from data frames.  Here is a non-exhaustive list of some of these
 functions. Let's try them out!
 
-* Size:
+Size:
 * `dim(interviews)` - returns a vector with the number of rows as the first element,
 and the number of columns as the second element (the **dim**ensions of
 the object)
 * `nrow(interviews)` - returns the number of rows
 * `ncol(interviews)` - returns the number of columns
 
-* Content:
+Content:
 * `head(interviews)` - shows the first 6 rows
 * `tail(interviews)` - shows the last 6 rows
 
-* Names:
+Names:
 * `names(interviews)` - returns the column names (synonym of `colnames()` for
 `data.frame` objects)
 
-* Summary:
+Summary:
 * `str(interviews)` - structure of the object and information about the class,
 length and content of each column
 * `summary(interviews)` - summary statistics for each column
