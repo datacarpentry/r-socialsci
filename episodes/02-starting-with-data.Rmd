@@ -85,9 +85,9 @@ interviews
 
 > ## Note
 >
-> `read_csv()` assumes that fields are delineated by commas, however, in several
+> `read_csv()` assumes that fields are delimited by commas. However, in several
 > countries, the comma is used as a decimal separator and the semicolon (;) is
-> used as a field delineator. If you want to read in this type of files in R,
+> used as a field delimiter. If you want to read in this type of files in R,
 > you can use the `read_csv2` function. It behaves exactly like `read_csv` but
 > uses different parameters for the decimal and the field separators. If you are
 > working with another format, they can be both specified by the user. Check out
@@ -132,34 +132,34 @@ column of integers (abbreviated `<int>`), `village` is a column of characters
 When calling a `tbl_df` object (like `interviews` here), there is already a lot of information about our data frame being displayed such as the number of rows, the number of columns, the names of the columns, and as we just saw the class of data stored in each column. However, there are functions to extract this information from data frames.  Here is a non-exhaustive list of some of these
 functions. Let's try them out!
 
-* Size:
-* `dim(interviews)` - returns a vector with the number of rows in the first element,
+Size:
+* `dim(interviews)` - returns a vector with the number of rows as the first element,
 and the number of columns as the second element (the **dim**ensions of
 the object)
 * `nrow(interviews)` - returns the number of rows
 * `ncol(interviews)` - returns the number of columns
 
-* Content:
+Content:
 * `head(interviews)` - shows the first 6 rows
 * `tail(interviews)` - shows the last 6 rows
 
-* Names:
+Names:
 * `names(interviews)` - returns the column names (synonym of `colnames()` for
 `data.frame` objects)
 
-* Summary:
+Summary:
 * `str(interviews)` - structure of the object and information about the class,
 length and content of each column
 * `summary(interviews)` - summary statistics for each column
 
-Note: most of these functions are "generic", they can be used on other types of
+Note: most of these functions are "generic." They can be used on other types of
 objects besides data frames.
 
 
 
 ## Indexing and subsetting data frames
 
-Our `interviews` data frame has rows and columns (it has 2 dimensions), if we want to
+Our `interviews` data frame has rows and columns (it has 2 dimensions). If we want to
 extract some specific data from it, we need to specify the "coordinates" we
 want from it. Row numbers come first, followed by column numbers. However, note
 that different ways of specifying these coordinates lead to results with
@@ -272,9 +272,9 @@ levels(respondent_floor_type)
 nlevels(respondent_floor_type)
 ```
 
-Sometimes, the order of the factors does not matter, other times you might want
-to specify the order because it is meaningful (e.g., "low", "medium", "high"),
-it improves your visualization, or it is required by a particular type of
+Sometimes, the order of the factors does not matter. Other times you might want
+to specify the order because it is meaningful (e.g., "low", "medium", "high").
+It may improve your visualization, or it may be required by a particular type of
 analysis. Here, one way to reorder our levels in the `respondent_floor_type` vector would be:
 
 ```{r, results=TRUE, purl=FALSE}
