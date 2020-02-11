@@ -82,9 +82,9 @@ ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items))
 lines, bars). **`ggplot2`** offers many different geoms; we will use some
 common ones today, including:
 
-* `geom_point()` for scatter plots, dot plots, etc.
-* `geom_boxplot()` for, well, boxplots!
-* `geom_line()` for trend lines, time series, etc.
+	* `geom_point()` for scatter plots, dot plots, etc.
+	* `geom_boxplot()` for, well, boxplots!
+	* `geom_line()` for trend lines, time series, etc.
 
 To add a geom to the plot use the `+` operator. Because we have two continuous variables,
 let's use `geom_point()` first:
