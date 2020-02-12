@@ -137,8 +137,8 @@ that as input to the next function, like this:
 
 
 ~~~
-interviews2 <- filter(interviews, village == "God")
-interviews_god <- select(interviews2, no_membrs, years_liv)
+interviews2 <- filter(interviews, village == "xxx")
+interviews_xxx <- select(interviews2, no_membrs, years_liv)
 ~~~
 {: .language-r}
 
@@ -148,7 +148,7 @@ You can also nest functions (i.e. one function inside of another), like this:
 
 
 ~~~
-interviews_god <- select(filter(interviews, village == "God"), no_membrs, years_liv)
+interviews_xxxx <- select(filter(interviews, village == "xxxx"), no_membrs, years_liv)
 ~~~
 {: .language-r}
 
@@ -166,7 +166,7 @@ are made available via the **`magrittr`** package, installed automatically with
 
 ~~~
 interviews %>%
-    filter(village == "God") %>%
+    filter(village == "xxxx") %>%
     select(no_membrs, years_liv)
 ~~~
 {: .language-r}
@@ -192,7 +192,7 @@ interviews %>%
 {: .output}
 
 In the above code, we use the pipe to send the `interviews` dataset first
-through `filter()` to keep rows where `village` is "God", then through
+through `filter()` to keep rows where `village` is "xxxx", then through
 `select()` to keep only the `no_membrs` and `years_liv` columns. Since `%>%`
 takes the object on its left and passes it as the first argument to the function
 on its right, we don't need to explicitly include the data frame as an argument
@@ -200,7 +200,7 @@ to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
 in the above example, we take the data frame `interviews`, *then* we `filter`
-for rows with `village == "God"`, *then* we `select` columns `no_membrs` and `years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
+for rows with `village == "xxxx"`, *then* we `select` columns `no_membrs` and `years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
 more complex manipulations of data frames.
 
@@ -210,7 +210,7 @@ can assign it a new name:
 
 ~~~
 interviews_god <- interviews %>%
-    filter(village == "God") %>%
+    filter(village == "xxxx") %>%
     select(no_membrs, years_liv)
 
 interviews_god
@@ -237,7 +237,7 @@ interviews_god
 ~~~
 {: .output}
 
-Note that the final data frame (`interviews_god`) is the leftmost part of this expression.
+Note that the final data frame (`interviews_xxxx`) is the leftmost part of this expression.
 
 > ## Exercise
 >
