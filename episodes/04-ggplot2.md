@@ -137,6 +137,22 @@ ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
 
 <img src="../fig/rmd-04-first-ggplot-1.png" title="plot of chunk first-ggplot" alt="plot of chunk first-ggplot" width="612" style="display: block; margin: auto;" />
 
+> ## Exercise
+>
+> Use what you just learned to create a scatter plot of `no_membrs` by `memb_assoc`. Think about what are other information 
+> you might want to put in the graph in order to illustrate the ratio of `memb_assoc` over `no_membrs`. Keep them in mind as 
+>we proceed.
+>
+> > ## Solution
+> >
+> > 
+> > ~~~
+> > ggplot(data = interviews_plotting, aes(x = no_membrs , y = memb_assoc)) +
+> > geom_point()
+> > ~~~
+> > {: .language-r}
+> > 
+
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
 templates and conveniently explore different types of plots, so the above plot
