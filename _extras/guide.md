@@ -78,6 +78,8 @@ The two main goals for this lessons are:
 
 ### Manipulating data with dplyr
 
+* This lesson works better if you have graphics demonstrating dplyr commands. 
+  You can modify [this Google Slides deck](https://docs.google.com/presentation/d/1A9abypFdFp8urAe9z7GCMjFr4aPeIb8mZAtJA2F7H0w/edit#slide=id.g652714585f_0_114) and use it for your workshop.
 * For this lesson make sure that learners are comfortable using pipes.
 * There is also sometimes some confusion on what the arguments of `group_by`
   should be, and when to use `filter()` and `select()`.
