@@ -263,9 +263,10 @@ very useful and actually contribute to making R particularly well suited to
 working with data. So we are going to spend a little time introducing them.
 
 Factors represent categorical data. They are stored as integers associated with
-labels and they can be ordered or unordered. While factors look (and often
-behave) like character vectors, they are actually treated as integer vectors by
-R. So you need to be very careful when treating them as strings.
+labels and they can be ordered (ordinal variable) or unordered (nominal variable). 
+While factors look (and often behave) like character vectors, they are actually 
+treated as integer vectors by R.
+So you need to be very careful when treating them as strings.
 
 Once created, factors can only contain a pre-defined set of values, known as
 *levels*. By default, R always sorts levels in alphabetical order. For
@@ -310,6 +311,17 @@ levels(respondent_floor_type)
 respondent_floor_type
 ```
 
+So far, your factor is unordered, like a nominal variable. R does not know the 
+difference between a nominal and an ordinal variable. You make your factor an
+ordered factor by using the `ordered=TRUE` option insude your factor function.
+Note how the reported levels changed from the unordered factor above to the
+ordered version below. Ordered levels use the less than sign `<` to denote
+level ranking.
+
+```{r, results=TRUE, purl=FALSE}
+respondent_floor_type_ordered = factor(respondent_floor_type, ordered=TRUE)
+respondent_flood_type_ordered # after setting as ordered factor
+```
 
 
 ### Converting factors
