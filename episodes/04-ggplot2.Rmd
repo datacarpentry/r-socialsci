@@ -311,7 +311,7 @@ percent_wall_type <- interviews_plotting %>%
     filter(respondent_wall_type != "cement") %>%
     count(village, respondent_wall_type) %>%
     group_by(village) %>%
-    mutate(percent = n / sum(n)) %>%
+    mutate(percent = n / sum(n) * 100) %>%
     ungroup()
 ```
 
@@ -321,7 +321,7 @@ percentage of each house type in each village.
 ```{r barplot-wall-type}
  ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
      geom_bar(stat = "identity", position = "dodge")
- ```
+```
 
 > ## Exercise
 >
@@ -338,7 +338,7 @@ percentage of each house type in each village.
 > >   filter(!is.na(memb_assoc)) %>%
 > >   count(village, memb_assoc) %>%
 > >   group_by(village) %>%
-> >   mutate(percent = n / sum(n)) %>%
+> >   mutate(percent = n / sum(n) * 100) %>%
 > >   ungroup()
 > >
 > > ggplot(percent_memb_assoc, aes(x = village, y = percent, fill = memb_assoc)) +
@@ -363,7 +363,7 @@ a title.
 ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
     labs(title="Proportion of wall type by village",
-         x="Wall Type",
+         x="Village",
          y="Percent")
 ```
 
@@ -422,7 +422,7 @@ percent_items <- interviews_plotting %>%
     mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
                                          village == "God" ~ 43,
                                          village == "Ruaca" ~ 49)) %>%
-    mutate(percent = n / people_in_village)
+    mutate(percent = n / people_in_village * 100)
 ```
 
 To calculate this percentage data frame, we needed to use the `case_when()`
