@@ -320,7 +320,7 @@ level ranking.
 
 ```{r, results=TRUE, purl=FALSE}
 respondent_floor_type_ordered = factor(respondent_floor_type, ordered=TRUE)
-respondent_flood_type_ordered # after setting as ordered factor
+respondent_floor_type_ordered # after setting as ordered factor
 ```
 
 
