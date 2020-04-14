@@ -469,6 +469,8 @@ column titled `respondent_wall_type`. This is because there is a default
 parameter in `pivot_wider()` that drops the original column. The values that were
 in that column have now become variables `muddaub`, `burntbricks`, `sunbricks`, and 
 `cement`.
+You can use `dim(interviews)` and `dim(interviews_spread)` to compare the 
+number of columns.
 
 
 
