@@ -10,8 +10,8 @@ those interested in working with social sciences data in R.
 This is an introduction to R designed for participants with no 
 programming experience. These lessons can be taught in a day (~ 6 
 hours). They start with some basic information about R syntax, the 
-RStudio interface, and move through how to import CSV files, the 
-structure of data frames, how to deal with factors, how to add/remove
+RStudio interface, and move through how to import CSV files, or other data files used in social sciences, 
+the structure of data frames, how to deal with factors, how to add/remove
 rows and columns, how to calculate summary statistics from a data 
 frame, and a brief introduction to plotting.
 
