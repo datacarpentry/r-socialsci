@@ -142,7 +142,9 @@ ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
 ```
 
 Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) to avoid overplotting:
+instance, we can add transparency (`alpha`) to avoid overplotting, which means 
+that overlapping points become invisible. Adding transparency begins to address 
+this problem, as overlapping dots become darker:
 
 ```{r adding-transparency, purl=FALSE}
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
