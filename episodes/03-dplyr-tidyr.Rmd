@@ -275,6 +275,15 @@ interviews %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
+Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the `ungroup` function:
+
+```{r, purl = FALSE}
+interviews %>%
+    group_by(village, memb_assoc) %>%
+    summarize(mean_no_membrs = mean(no_membrs)) %>%
+    ungroup()
+```
+
 When grouping both by `village` and `membr_assoc`, we see rows in our table for
 respondents who did not specify whether they were a member of an irrigation
 association. We can exclude those data from our table using a filter step.
