@@ -353,7 +353,7 @@ interviews %>%
 
 > ## Exercise
 >
-> 1. How many households in the survey have an average of
+> How many households in the survey have an average of
 > two meals per day? Three meals per day? Are there any other numbers
 > of meals represented?
 >
@@ -365,7 +365,7 @@ interviews %>%
 > > ```
 > {: .solution}
 >
-> 2. Use `group_by()` and `summarize()` to find the mean, min, and max
+> Use `group_by()` and `summarize()` to find the mean, min, and max
 > number of household members for each village. Also add the number of
 > observations (hint: see `?n`).
 >
@@ -383,7 +383,7 @@ interviews %>%
 > > ```
 > {: .solution}
 >
-> 3. What was the largest household interviewed in each month?
+> What was the largest household interviewed in each month?
 >
 > > ## Solution
 > >
