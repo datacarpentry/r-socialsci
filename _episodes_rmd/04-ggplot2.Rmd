@@ -448,7 +448,7 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 In addition to `theme_bw()`, which changes the plot background to white,
 **`ggplot2`** comes with several other themes which can be useful to quickly
 change the look of your visualization. The complete list of themes is available
-at <http://docs.ggplot2.org/current/ggtheme.html>. `theme_minimal()` and
+at <https://ggplot2.tidyverse.org/reference/ggtheme.html>. `theme_minimal()` and
 `theme_light()` are popular, and `theme_void()` can be useful as a starting
 point to create a new hand-crafted theme.
 
@@ -468,7 +468,7 @@ themes.
 ## Customization
 
 Take a look at the [**`ggplot2`** cheat
-sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf),
+sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf),
 and think of ways you could improve the plot.
 
 Now, let's change names of axes to something more informative than 'village' and
