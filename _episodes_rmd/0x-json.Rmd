@@ -1,0 +1,151 @@
+---
+title: "Processing JSON data"
+teaching: 30
+exercises: 15
+questions:
+- "What is JSON format?"
+- "How can I convert JSON to an R dataframe?"
+- "How can I convert an array of JSON record into a table?"
+objectives:
+- "Describe the JSON data format"
+- "Understand where JSON is typically used"
+- "Appreciate some advantages of using JSON over tabular data"
+- "Appreciate some dis-advantages of processing JSON documents"
+- "Use the jsonLite package to read a JSON file"
+- "Display formatted JSON as dataframe"
+- "Select and display nested dataframe fields from a JSON document"
+- "Write tabular data from selected elements from a JSON document to a csv file"
+keypoints:
+- "JSON is a popular data format for transferring data used by a great many Web based APIs"
+- "The complex structure of a JSON document means that it cannot easily be 'flattened' into tabular data"
+- "We can use R code to extract values of interest and place them in a csv file"
+---
+
+```{r, include=FALSE}
+source("../bin/chunk-options.R")
+knitr_fig_path("0x-")
+source("../bin/download_data.R")
+```
+
+## The JSON data format
+
+The JSON data format was designed as a way of allowing different machines or processes within machines to communicate with each other by sending messages constructed in a well defined format. JSON is now the preferred data format used by APIs (Application Programming Interfaces).
+
+The JSON format although somewhat verbose is not only Human readable but it can also be mapped very easily to an R dataframe.
+
+We are going to read a file of data formatted as JSON, convert it into a dataframe in R then selectively create a csv file from the extracted data.
+
+The JSON file we are going to use is the [SAFI.json](../data/SAFI.json) file. This is the output file from an electronic survey system called ODK. The JSON represents the answers to a series of survey questions. The questions themselves have been replaced with unique Keys, the values are the answers.
+
+Because detailed surveys are by nature nested structures making it possible to record different levels of detail or selectively ask a set of specific questions based on the answer given a previous question, the structure of the answers for the survey can not only be complex and convoluted, it could easily be different from one survey respondent's set of answers to another.
+
+### Advantages of JSON
+
+* Very popular data format for APIs (e.g. results from an Internet search)
+* Human readable
+* Each record (or document as they are called) is self contained. The equivalent of the column name and column values are in every record.
+* Documents do not all have to have the same structure within the same file
+* Document structures can be complex and nested
+
+### Dis-advantages of JSON
+
+* It is more verbose than the equivalent data in csv format
+* Can be more difficult to process and display than csv formatted data
+
+## Use the JSON package to read a JSON file
+
+
+```{r}
+
+library(jsonlite)
+
+json_data <- read_json(path='data/SAFI.json')
+
+```
+
+We can see that a new object called json_data has appeared in our Environment. It is described as a Large list (131 elements). In this current form, our data is messy. You can have a glimpse of it with the `head()` or `View()` functions. It will look not much more structured than if you were to open the JSON file with a text editor. 
+
+This is because, by default, the `read_json()` function's parameter `simplifyVector`, which specifies whether or not to simplify vectors is set to FALSE. This means that the default setting does not simplify nested lists into vectors and data frames. However, we can set this to TRUE, and our data will be read directly as a dataframe: 
+
+```{r}
+
+json_data <- read_json(path='data/SAFI.json', simplifyVector = TRUE)
+
+```
+
+
+
+Now we can see we have this json data in a dataframe format. Have a glimpse of it with the `head()` function:
+
+```{r}
+
+head(json_data)
+
+```
+
+
+Looking good, but you might notice that actually we have a variable, *F_liv* that is a list of dataframes! It is very important to know what you are expecting from your data to be able to look for things like this. For example, if you are getting your JSON from an API, have a look at the API documentation, so you know what to look for. 
+
+
+So what can we do about this column of dataframes? Well first things first, we can example each one. For  example to access the dataframe in the first row, we can use the  bracket (`[`) subsetting. Here we use single bracket, but you could also use double bracket (`[[`). The `[[` form allows only a single element to be selected using integer or character indices, whereas `[` allows indexing by vectors. 
+
+
+```{r}
+
+json_data$F_liv[1]
+
+```
+
+
+We can also choose to view the nested dataframes at all the rows of our main dataframe where a particular condition is met (for example where the value for the variable *C06_rooms* is equal to 4): 
+
+
+```{r}
+
+json_data$F_liv[which(json_data$C06_rooms==4)]
+
+```
+
+## Write the JSON file to csv
+
+If we try to write our json_data dataframe to a csv as we would usuall in a regular dataframe, we will get an error that tells us we have an "unimplemented type 'list' in 'EncodeElement'". This is because of the columns in our dataframes which are lists, or nested dataframes. You can try yourself: 
+
+```{r, eval = FALSE}
+
+write.csv(json_data, file = "SAFI_from_JSON.csv")
+
+```
+
+To write out as a csv, we will need to "flatten" these columns. One thing you can do to achieve this is to turn all of the columns of your dataframe to "character" types.   
+
+
+```{r}
+
+flattened_json_data <- apply(json_data,2,as.character)
+
+```
+
+
+Now you can write this to a csv file: 
+
+```{r, eval = TRUE}
+
+write.csv(flattened_json_data, file = "data_output/SAFI_from_JSON.csv")
+
+```
+
+
+Note: this means that when you read this csv back into R, the column of the nested dataframes will now be read in as a character vector. Converting it back to list to extract elements might be complicated, so it is probably better to keep storing these data in a JSON format if you will have to do this. 
+
+
+You can also write out the individual nested dataframes to a csv. For example:
+
+
+```{r}
+
+write.csv(json_data$F_liv[[1]], file = "data_output/F_liv_row1.csv")
+
+```
+
+
+{% include links.md %}
