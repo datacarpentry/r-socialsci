@@ -57,7 +57,7 @@ instructions to install **`tidyverse`**.
   that appears on the terminal indicates the version of R you are running. Alternatively, you can type `sessionInfo()`, which will also display which version of R you are running. Go on
   the [CRAN website](https://cran.r-project.org/bin/macosx/) and check
   whether a more recent version is available. If so, please download and install
-  it.
+  it. In any case, make sure you have at least R 3.2.
 
 #### If you don't have R and RStudio installed
 
@@ -70,7 +70,7 @@ instructions to install **`tidyverse`**.
 * Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
 * Under *Installers* select **RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)**
   (where x, y, and z represent version numbers)
-* Double click the file to install RStudio
+* Double click the file to install RStudio.
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
 
@@ -83,7 +83,7 @@ instructions to install **`tidyverse`**.
   distributions, you could use your package manager (e.g., for Debian/Ubuntu run
   `sudo apt-get install r-base`, and for Fedora `sudo yum install R`), but we
   don't recommend this approach as the versions provided by this approach are
-  usually out of date. In any case, make sure you have at least R 3.3.1.
+  usually out of date. In any case, make sure you have at least R 3.2.
 * Go to the
   [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
 * Under *Installers* select the version that matches your distribution, and
