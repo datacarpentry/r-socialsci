@@ -7,7 +7,7 @@ questions:
 - "What is an object?"
 - "How can values be initially assigned to variables of different data types?"
 - "What arithmetic and logical operators can be used?"
-- "How can subsets be extracted from vectors and data frames?"
+- "How can subsets be extracted from vectors?"
 - "How does R treat missing values?"
 - "How can we deal with missing values in R?"
 objectives: 
