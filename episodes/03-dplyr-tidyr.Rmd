@@ -624,7 +624,7 @@ by respondents in each village:
 
 ```{r, purl=FALSE}
 interviews_items_owned %>%
-    mutate(number_items = rowSums(select(., bicycle:television))) %>%
+    mutate(number_items = rowSums(select(., bicycle:car))) %>%
     group_by(village) %>%
     summarize(mean_items = mean(number_items))
 ```
@@ -654,7 +654,7 @@ interviews_items_owned %>%
 > >
 > > ```{r}
 > > interviews_months_lack_food %>%
-> >   mutate(number_months = rowSums(select(., Apr:Sept))) %>%
+> >   mutate(number_months = rowSums(select(., Jan:May))) %>%
 > >   group_by(memb_assoc) %>%
 > >   summarize(mean_months = mean(number_months))
 > > ```
