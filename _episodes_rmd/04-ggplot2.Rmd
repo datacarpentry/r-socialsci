@@ -135,15 +135,15 @@ interviews_plot
 
 Building plots with **`ggplot2`** is typically an iterative process. We start by
 defining the dataset we'll use, lay out the axes, and choose a geom:
-	
+
 ```{r create-ggplot-object, purl=FALSE}
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
     geom_point()
 ```
 
 Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) to avoid overplotting, which means 
-that overlapping points become invisible. Adding transparency begins to address 
+instance, we can add transparency (`alpha`) to avoid overplotting, which means
+that overlapping points become invisible. Adding transparency begins to address
 this problem, as overlapping dots become darker:
 
 ```{r adding-transparency, purl=FALSE}
@@ -232,7 +232,7 @@ hidden?
 > (of the density of points) is drawn.
 >
 > - Replace the box plot with a violin plot; see `geom_violin()`.
-> 
+>
 > > ## Solution
 > >
 > > ```{r violin-plot}
@@ -356,7 +356,7 @@ percentage of each house type in each village.
 
 By default, the axes labels on a plot are determined by the name of the variable
 being plotted. However, **`ggplot2`** offers lots of customization options,
-like specifying the axes labels, and adding a title to the plot with 
+like specifying the axes labels, and adding a title to the plot with
 relatively few lines of code. We will add more informative x and y axis
 labels to our plot of proportion of house type by village and also add
 a title.
@@ -455,7 +455,7 @@ point to create a new hand-crafted theme.
 The
 [ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)
 package provides a wide variety of options (including an Excel 2003 theme). The
-[**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list
+[**`ggplot2`** extensions website](https://exts.ggplot2.tidyverse.org/) provides a list
 of packages that extend the capabilities of **`ggplot2`**, including additional
 themes.
 
