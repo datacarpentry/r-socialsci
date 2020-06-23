@@ -33,9 +33,9 @@ library;
 ls -l /Library/Frameworks/R.framework/Versions/
 ```
 
-We are currently using R 3.x.y If it isn't there, they will need to install it.
+We are currently using R >=3.2. If it isn't there, they will need to install it.
 If it is present, you will need to set the symbolic link to Current to point to
-the 3.x.y directory:
+the R >=3.2 directory:
 
 ```
 ln -s /Library/Frameworks/R.framework/Versions/3.x.y /Library/Frameworks/R.framework/Version/Current

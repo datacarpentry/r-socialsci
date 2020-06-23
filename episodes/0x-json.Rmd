@@ -10,7 +10,7 @@ objectives:
 - "Describe the JSON data format"
 - "Understand where JSON is typically used"
 - "Appreciate some advantages of using JSON over tabular data"
-- "Appreciate some dis-advantages of processing JSON documents"
+- "Appreciate some disadvantages of processing JSON documents"
 - "Use the jsonLite package to read a JSON file"
 - "Display formatted JSON as dataframe"
 - "Select and display nested dataframe fields from a JSON document"
@@ -47,7 +47,7 @@ Because detailed surveys are by nature nested structures making it possible to r
 * Documents do not all have to have the same structure within the same file
 * Document structures can be complex and nested
 
-### Dis-advantages of JSON
+### Disadvantages of JSON
 
 * It is more verbose than the equivalent data in csv format
 * Can be more difficult to process and display than csv formatted data
