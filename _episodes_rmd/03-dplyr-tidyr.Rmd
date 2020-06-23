@@ -478,7 +478,7 @@ column titled `respondent_wall_type`. This is because there is a default
 parameter in `pivot_wider()` that drops the original column. The values that were
 in that column have now become variables `muddaub`, `burntbricks`, `sunbricks`, and 
 `cement`.
-You can use `dim(interviews)` and `dim(interviews_spread)` to compare the 
+You can use `dim(interviews)` and `dim(interviews_wide)` to compare the 
 number of columns.
 
 
@@ -588,7 +588,7 @@ separate_rows(items_owned, sep=";") %>%
 ```
 
 Lastly, we use `pivot_wider()` to switch from long format to wide format. This
-creates a new column for each of the unique values in the `split_items` column,
+creates a new column for each of the unique values in the `items_owned` column,
 and fills those columns with `TRUE` or `FALSE`.
 
 ```{r, eval=FALSE}
@@ -602,7 +602,7 @@ View the `interviews_items_owned` data frame. It should have
 `r nrow(interviews)` rows (the same number of rows you had originally), but extra
 columns for each item. 
 
-You may notice that one of the columns in called `\`<NA>\`. This is because the respondents did not own any of the items that was in the interviewer's list. We can use the `rename()` function to change this name to something more meaningful:
+You may notice that one of the columns is called `´NA´`. This is because the respondents did not own any of the items that was in the interviewer's list. We can use the `rename()` function to change this name to something more meaningful:
 
 ```{r}
 interviews_items_owned <- interviews_items_owned %>%
