@@ -103,9 +103,18 @@ Alternatively you can go to CRAN and download the package and install from ZIP
 file:
 -   Tools > Install Packages > set to 'from Zip/TAR'
 
-It is important that R, and the R packages be installed locally, not on a network drive. If a learner is using a machine with multiple users where their account is not based locally this can create a variety of issues (this often happens on university computers). Hopefully the learner will realize these issues beforehand, but depending on the machine and how the IT folks that service the computer have things set up, it may be very difficult to impossible to make R work without their help.
+It is important that R, and the R packages be installed locally, not on a network
+drive. If a learner is using a machine with multiple users where their account is
+not based locally this can create a variety of issues (this often happens on
+university computers). Hopefully the learner will realize these issues beforehand,
+but depending on the machine and how the IT folks that service the computer have
+things set up, it may be very difficult to impossible to make R work without their
+help.
 
-If learners are having issues with one package, they may have issues with another. It's often easier to make sure they have all the needed packages installed at one time, rather than deal with these issues over and over. [Here is a list of all necessary packages for these lessons.](https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R)
+If learners are having issues with one package, they may have issues with another.
+It's often easier to make sure they have all the needed packages installed at one
+time, rather than deal with these issues over and over. 
+[Here is a list of all necessary packages for these lessons.](https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R)
 
 ## Other Resources
 
