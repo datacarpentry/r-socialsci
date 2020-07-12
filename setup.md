@@ -98,5 +98,5 @@ instructions to install **`tidyverse`**.
 **After installing R and RStudio, you need to install the `tidyverse` package.**
 
 * After starting RStudio, at the console type:
-  `install.packages(c("tidyverse"))`
+  `install.packages("tidyverse")`
 
