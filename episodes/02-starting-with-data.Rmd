@@ -265,10 +265,13 @@ very useful and actually contribute to making R particularly well suited to
 working with data. So we are going to spend a little time introducing them.
 
 Factors represent categorical data. They are stored as integers associated with
-labels and they can be ordered (ordinal variable) or unordered (nominal variable). 
-While factors look (and often behave) like character vectors, they are actually 
-treated as integer vectors by R.
-So you need to be very careful when treating them as strings.
+labels and they can be ordered (ordinal) or unordered (nominal). Factors
+create a structured  relation between the different levels (values) of a
+categorical variable, such as days of the week or responses to a question in
+a survey. This can make it easier to see how one element relates to the
+other elements in a column. While factors look (and often behave) like 
+character vectors, they are actually treated as integer vectors by `R`. So 
+you need to be very careful when treating them as strings.
 
 Once created, factors can only contain a pre-defined set of values, known as
 *levels*. By default, R always sorts levels in alphabetical order. For
