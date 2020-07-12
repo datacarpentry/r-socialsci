@@ -9,10 +9,15 @@ title: Setup
 underlying statistical computing environment, but using R alone is no
 fun. RStudio is a graphical integrated development environment (IDE) that makes
 using R much easier and more interactive. You need to install R before you
-install RStudio. Once installed, because RStudio is an IDE, RStudio will run R in the background.  You do not need to run it separately. After installing both programs, you will need to install the
-**`tidyverse`** package from within RStudio. Follow the instructions below for
-your operating system, and then follow the instructions to install
-**`tidyverse`**.
+install RStudio. Once installed, because RStudio is an IDE, RStudio will run R in 
+the background.  You do not need to run it separately. 
+
+After installing both programs, 
+you will need to install the **`tidyverse`** package from within RStudio. The 
+**`tidyverse`** package is a powerful collection of data science tools within **R** 
+see the [**`tidyverse`** website](https://tidyverse.tidyverse.org) for more details. 
+Follow the instructions below for your operating system, and then follow the 
+instructions to install **`tidyverse`**.
 
 ### Windows
 
@@ -52,7 +57,7 @@ your operating system, and then follow the instructions to install
   that appears on the terminal indicates the version of R you are running. Alternatively, you can type `sessionInfo()`, which will also display which version of R you are running. Go on
   the [CRAN website](https://cran.r-project.org/bin/macosx/) and check
   whether a more recent version is available. If so, please download and install
-  it.
+  it. In any case, make sure you have at least R 3.2.
 
 #### If you don't have R and RStudio installed
 
@@ -65,7 +70,7 @@ your operating system, and then follow the instructions to install
 * Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
 * Under *Installers* select **RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)**
   (where x, y, and z represent version numbers)
-* Double click the file to install RStudio
+* Double click the file to install RStudio.
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
 
@@ -78,7 +83,7 @@ your operating system, and then follow the instructions to install
   distributions, you could use your package manager (e.g., for Debian/Ubuntu run
   `sudo apt-get install r-base`, and for Fedora `sudo yum install R`), but we
   don't recommend this approach as the versions provided by this approach are
-  usually out of date. In any case, make sure you have at least R 3.3.1.
+  usually out of date. In any case, make sure you have at least R 3.2.
 * Go to the
   [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download)
 * Under *Installers* select the version that matches your distribution, and

@@ -18,7 +18,7 @@ keypoints:
    - "The data set and coordinate system can be defined using the `ggplot` function."
    - "Additional layers, including geoms, are added using the `+` operator."
    - "Boxplots are useful for visualizing the distribution of a continuous variable."
-   - "Barplot are useful for visualizing categorical data."
+   - "Barplots are useful for visualizing categorical data."
    - "Faceting allows you to generate multiple plots based on a categorical variable."
 ---
 
@@ -52,7 +52,7 @@ change or if we decide to change from a bar plot to a scatterplot. This helps in
 creating publication quality plots with minimal amounts of adjustments and
 tweaking.
 
-**`ggplot2`** functions like data in the 'long' format, i.e., a column for every
+**`ggplot2`** functions work best with data in the 'long' format, i.e., a column for every
 dimension, and a row for every observation. Well-structured data will save you
 lots of time when making figures with **`ggplot2`**
 
@@ -82,9 +82,9 @@ ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items))
 lines, bars). **`ggplot2`** offers many different geoms; we will use some
 common ones today, including:
 
-* `geom_point()` for scatter plots, dot plots, etc.
-* `geom_boxplot()` for, well, boxplots!
-* `geom_line()` for trend lines, time series, etc.
+	* `geom_point()` for scatter plots, dot plots, etc.
+	* `geom_boxplot()` for, well, boxplots!
+	* `geom_line()` for trend lines, time series, etc.
 
 To add a geom to the plot use the `+` operator. Because we have two continuous variables,
 let's use `geom_point()` first:
@@ -135,14 +135,16 @@ interviews_plot
 
 Building plots with **`ggplot2`** is typically an iterative process. We start by
 defining the dataset we'll use, lay out the axes, and choose a geom:
-	
+
 ```{r create-ggplot-object, purl=FALSE}
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
     geom_point()
 ```
 
 Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) to avoid overplotting:
+instance, we can add transparency (`alpha`) to avoid overplotting, which means
+that overlapping points become invisible. Adding transparency begins to address
+this problem, as overlapping dots become darker:
 
 ```{r adding-transparency, purl=FALSE}
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items)) +
@@ -230,7 +232,7 @@ hidden?
 > (of the density of points) is drawn.
 >
 > - Replace the box plot with a violin plot; see `geom_violin()`.
-> 
+>
 > > ## Solution
 > >
 > > ```{r violin-plot}
@@ -311,7 +313,7 @@ percent_wall_type <- interviews_plotting %>%
     filter(respondent_wall_type != "cement") %>%
     count(village, respondent_wall_type) %>%
     group_by(village) %>%
-    mutate(percent = n / sum(n)) %>%
+    mutate(percent = n / sum(n) * 100) %>%
     ungroup()
 ```
 
@@ -321,7 +323,7 @@ percentage of each house type in each village.
 ```{r barplot-wall-type}
  ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
      geom_bar(stat = "identity", position = "dodge")
- ```
+```
 
 > ## Exercise
 >
@@ -338,7 +340,7 @@ percentage of each house type in each village.
 > >   filter(!is.na(memb_assoc)) %>%
 > >   count(village, memb_assoc) %>%
 > >   group_by(village) %>%
-> >   mutate(percent = n / sum(n)) %>%
+> >   mutate(percent = n / sum(n) * 100) %>%
 > >   ungroup()
 > >
 > > ggplot(percent_memb_assoc, aes(x = village, y = percent, fill = memb_assoc)) +
@@ -354,7 +356,7 @@ percentage of each house type in each village.
 
 By default, the axes labels on a plot are determined by the name of the variable
 being plotted. However, **`ggplot2`** offers lots of customization options,
-like specifying the axes labels, and adding a title to the plot with 
+like specifying the axes labels, and adding a title to the plot with
 relatively few lines of code. We will add more informative x and y axis
 labels to our plot of proportion of house type by village and also add
 a title.
@@ -363,7 +365,7 @@ a title.
 ggplot(percent_wall_type, aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
     labs(title="Proportion of wall type by village",
-         x="Wall Type",
+         x="Village",
          y="Percent")
 ```
 
@@ -422,7 +424,7 @@ percent_items <- interviews_plotting %>%
     mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
                                          village == "God" ~ 43,
                                          village == "Ruaca" ~ 49)) %>%
-    mutate(percent = n / people_in_village)
+    mutate(percent = n / people_in_village * 100)
 ```
 
 To calculate this percentage data frame, we needed to use the `case_when()`
@@ -446,14 +448,14 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 In addition to `theme_bw()`, which changes the plot background to white,
 **`ggplot2`** comes with several other themes which can be useful to quickly
 change the look of your visualization. The complete list of themes is available
-at <http://docs.ggplot2.org/current/ggtheme.html>. `theme_minimal()` and
+at <https://ggplot2.tidyverse.org/reference/ggtheme.html>. `theme_minimal()` and
 `theme_light()` are popular, and `theme_void()` can be useful as a starting
 point to create a new hand-crafted theme.
 
 The
 [ggthemes](https://jrnold.github.io/ggthemes/reference/index.html)
 package provides a wide variety of options (including an Excel 2003 theme). The
-[**`ggplot2`** extensions website](https://www.ggplot2-exts.org) provides a list
+[**`ggplot2`** extensions website](https://exts.ggplot2.tidyverse.org/) provides a list
 of packages that extend the capabilities of **`ggplot2`**, including additional
 themes.
 
@@ -466,7 +468,7 @@ themes.
 ## Customization
 
 Take a look at the [**`ggplot2`** cheat
-sheet](https://www.rstudio.com/wp-content/uploads/2016/11/ggplot2-cheatsheet-2.1.pdf),
+sheet](https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf),
 and think of ways you could improve the plot.
 
 Now, let's change names of axes to something more informative than 'village' and
@@ -505,7 +507,7 @@ After our manipulations, you may notice that the values on the x-axis are still
 not properly readable. Let's change the orientation of the labels and adjust
 them vertically and horizontally so they don't overlap. You can use a 90-degree
 angle, or experiment to find the appropriate angle for diagonally oriented
-labels. With a larger font, the title also runs off. We can "\n" in the string
+labels. With a larger font, the title also runs off. We can add "\n" in the string
 for the title to insert a new line:
 
 ```{r ggplot-customization-label-orientation, purl=FALSE}
@@ -551,7 +553,7 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 >
 > * See if you can make the bars white with black outline.
 > * Try using a different color palette (see
->   http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/).
+>   [http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)).
 {: .challenge}
 
 After creating your plot, you can save it to a file in your favorite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
