@@ -123,7 +123,7 @@ area_hectares <- 2.5
 ```
 
 This means that assigning a value to one object does not change the values of
-other objects  For example, let's store the plot's area in acres
+other objects. For example, let's store the plot's area in acres
 in a new object, `area_acres`:
 
 ```{r, purl=FALSE}
@@ -288,7 +288,7 @@ doing.
 A vector is the most common and basic data type in R, and is pretty much
 the workhorse of R. A vector is composed by a series of values, which can be
 either numbers or characters. We can assign a series of values to a vector using
-the `c()` function. For example we can create a vector of household
+the `c()` function. For example we can create a vector of the number of household
 members for the households we've interviewed and assign
 it to a new object `hh_members`:
 
@@ -531,6 +531,9 @@ examples.
 ```{r, purl=FALSE}
 ## Extract those elements which are not missing values.
 rooms[!is.na(rooms)]
+
+## Count the number of missing values.
+sum(is.na(rooms))
 
 ## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 na.omit(rooms)

@@ -13,7 +13,7 @@ This lesson uses `SAFI_clean.csv`. The direct download link for this file is:
 When time comes in the lesson to use this file, we recommend that the
 instructors, place the `download.file()` command in the Etherpad, and that the
 learners copy and paste it in their scripts to download the file directly from
-figshare in their working directory. . If the learners haven't created the
+figshare in their working directory. If the learners haven't created the
 `data/` directory and/or are not in the correct working directory, the
 `download.file` command will produce an error. Therefore, it is important to use
 the stickies at this point.
@@ -33,9 +33,9 @@ library;
 ls -l /Library/Frameworks/R.framework/Versions/
 ```
 
-We are currently using R 3.x.y If it isn't there, they will need to install it.
+We are currently using R >=3.2. If it isn't there, they will need to install it.
 If it is present, you will need to set the symbolic link to Current to point to
-the 3.x.y directory:
+the R >=3.2 directory:
 
 ```
 ln -s /Library/Frameworks/R.framework/Versions/3.x.y /Library/Frameworks/R.framework/Version/Current
@@ -78,10 +78,12 @@ The two main goals for this lessons are:
 
 ### Manipulating data with dplyr
 
+* This lesson works better if you have graphics demonstrating dplyr commands.
+  You can modify [this Google Slides deck](https://docs.google.com/presentation/d/1A9abypFdFp8urAe9z7GCMjFr4aPeIb8mZAtJA2F7H0w/edit#slide=id.g652714585f_0_114) and use it for your workshop.
 * For this lesson make sure that learners are comfortable using pipes.
 * There is also sometimes some confusion on what the arguments of `group_by`
   should be, and when to use `filter()` and `select()`.
-  
+
 ### Visualizing data with ggplot2
 
 * This lesson is a broad overview of ggplot2 and focuses on (1) getting familiar
@@ -101,7 +103,7 @@ Alternatively you can go to CRAN and download the package and install from ZIP
 file
 -   Tools > Install Packages > set to 'from Zip/TAR'
 
-It is important that R, and the R packages be installed locally, not on a network drive. If a learner is using a machine with multiple users where their account is not based locally this can create a variety of issues (This often happens on university computers). Hopefully the learner will realize these issues before hand, but depending on the machine and how the IT folks that service the computer have things set up, it may be very difficult to impossible to make R work without their help. 
+It is important that R, and the R packages be installed locally, not on a network drive. If a learner is using a machine with multiple users where their account is not based locally this can create a variety of issues (This often happens on university computers). Hopefully the learner will realize these issues before hand, but depending on the machine and how the IT folks that service the computer have things set up, it may be very difficult to impossible to make R work without their help.
 
 If learners are having issues with one package, they may have issues with another. It's often easier to make sure they have all the needed packages installed at one time, rather then deal with these issues over and over. [Here is a list of all necessary packages for these lessons.](https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R)
 
