@@ -11,11 +11,11 @@ This lesson uses `SAFI_clean.csv`. The direct download link for this file is:
 <https://ndownloader.figshare.com/files/11492171>.
 
 When time comes in the lesson to use this file, we recommend that the
-instructors, place the `download.file()` command in the Etherpad, and that the
+instructors place the `download.file()` command in the Etherpad, and that the
 learners copy and paste it in their scripts to download the file directly from
 figshare in their working directory. If the learners haven't created the
 `data/` directory and/or are not in the correct working directory, the
-`download.file` command will produce an error. Therefore, it is important to use
+`download.file()` command will produce an error. Therefore, it is important to use
 the stickies at this point.
 
 ## RStudio and Multiple R Installs
@@ -27,7 +27,7 @@ new R is installed and can be accessed via the R console, RStudio does not find
 it. The net result of this is that the learner's RStudio will be running an
 older R install. This will cause package installations to fail. This can be
 fixed at the terminal. First, check for the appropriate R installation in the
-library;
+library:
 
 ```
 ls -l /Library/Frameworks/R.framework/Versions/
@@ -50,11 +50,11 @@ Then restart RStudio.
 * The main goal here is to help the learners be comfortable with the RStudio
   interface. We use RStudio because it helps make using R more organized and
   user friendly.
-* Go very slowly in the "Getting setup section". Make sure everyone is following
+* Go very slowly in the "Getting setup" section. Make sure everyone is following
   along (remind learners to use the stickies). Plan with the helpers at this
   point to go around the room, and be available to help. It's important to make
   sure that learners are in the correct working directory, and that they create
-  a `data`  (all lowercase) subfolder.
+  a `data` (all lowercase) subfolder.
 
 ### Intro to R
 
@@ -70,7 +70,7 @@ Then restart RStudio.
 The two main goals for this lessons are:
 
 * To make sure that learners are comfortable with working with data frames, and
-  can use the bracket notation to select slices/columns
+  can use the bracket notation to select slices/columns.
 * To expose learners to factors. Their behavior is not necessarily intuitive,
   and so it is important that they are guided through it the first time they are
   exposed to it. The content of the lesson should be enough for learners to
@@ -94,18 +94,27 @@ The two main goals for this lessons are:
 ## Technical Tips and Tricks
 
 Show how to use the 'zoom' button to blow up graphs without constantly resizing
-windows
+windows.
 
-Sometimes a package will not install, try a different CRAN mirror
+Sometimes a package will not install. You can try a different CRAN mirror:
 - Tools > Global Options > Packages > CRAN Mirror
 
 Alternatively you can go to CRAN and download the package and install from ZIP
-file
+file:
 -   Tools > Install Packages > set to 'from Zip/TAR'
 
-It is important that R, and the R packages be installed locally, not on a network drive. If a learner is using a machine with multiple users where their account is not based locally this can create a variety of issues (This often happens on university computers). Hopefully the learner will realize these issues before hand, but depending on the machine and how the IT folks that service the computer have things set up, it may be very difficult to impossible to make R work without their help.
+It is important that R, and the R packages be installed locally, not on a network
+drive. If a learner is using a machine with multiple users where their account is
+not based locally this can create a variety of issues (this often happens on
+university computers). Hopefully the learner will realize these issues beforehand,
+but depending on the machine and how the IT folks that service the computer have
+things set up, it may be very difficult to impossible to make R work without their
+help.
 
-If learners are having issues with one package, they may have issues with another. It's often easier to make sure they have all the needed packages installed at one time, rather then deal with these issues over and over. [Here is a list of all necessary packages for these lessons.](https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R)
+If learners are having issues with one package, they may have issues with another.
+It's often easier to make sure they have all the needed packages installed at one
+time, rather than deal with these issues over and over. 
+[Here is a list of all necessary packages for these lessons.](https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R)
 
 ## Other Resources
 
