@@ -66,10 +66,9 @@ To build a ggplot, we will use the following basic template that can be used for
     ggplot(aes(<MAPPINGS>)) +
     <GEOM_FUNCTION>()
 ```
-Remember from the last lesson that the pipe operator `%>%` places the result of the left-hand side into the first argument of the right-hand side. **`ggplot2`** is a function that expects a data source to be the first argument, allowing us to pipe the data into the ggplot function.
+Remember from the last lesson that the pipe operator `%>%` places the result of the previous line(s) into the first argument of the function. **`ggplot`** is a function that expects a data frame to be the first argument. This allows for us to change from specifying the `data =` argument within the `ggplot` function and instead pipe the data into the function.
 
-- use the `ggplot()` function and bind the plot to a specific data frame using
-  the `data` argument
+- use the `ggplot()` function and bind the plot to a specific data frame.
 
 ```{r ggplot-steps-1, eval=FALSE, purl=FALSE}
 interviews_plotting %>%
