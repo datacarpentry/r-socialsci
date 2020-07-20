@@ -116,6 +116,13 @@ It's often easier to make sure they have all the needed packages installed at on
 time, rather than deal with these issues over and over. 
 [Here is a list of all necessary packages for these lessons.](https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R)
 
+**`|` character on Spanish keyboards:** The Spanish Mac keyboard does not have a `|` key. 
+This character can be created using: 
+```
+`alt` + `1`
+```
+
+
 ## Other Resources
 
 If you encounter a problem during a workshop, feel free to contact the
