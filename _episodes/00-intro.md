@@ -253,6 +253,11 @@ For this lesson we will use the following folders in our working directory: **`d
 dir.create("data")
 dir.create("data_output")
 dir.create("fig_output")
+
+# In analogue way, one can create further directories - following the aforementioned directory tree structure:
+
+# dir.create("documents")
+# dir.create("scripts")
 ~~~
 {: .language-r}
 
@@ -372,7 +377,9 @@ install of ‘tidyverse’, you may have noticed that the line
 
 
 ~~~
-install.packages("tidyverse")
+# install tidyverse package alongside its dependencies
+
+install.packages("tidyverse", dependencies = TRUE)
 ~~~
 {: .language-r}
 
