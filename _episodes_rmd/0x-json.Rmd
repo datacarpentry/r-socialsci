@@ -29,7 +29,7 @@ source("../bin/download_data.R")
 
 ## The JSON data format
 
-The JSON data format was designed as a way of allowing different machines or processes within machines to communicate with each other by sending messages constructed in a well defined format. JSON is now the preferred data format used by APIs (Application Programming Interfaces).
+The JSON (JavaScript Object Notation) data format was designed as a way of allowing different machines or processes within machines to communicate with each other by sending messages constructed in a well defined format. JSON is now the preferred data format used by APIs (Application Programming Interfaces).
 
 The JSON format although somewhat verbose is not only Human readable but it can also be mapped very easily to an R dataframe.
 
