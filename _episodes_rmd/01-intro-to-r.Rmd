@@ -363,6 +363,13 @@ all R objects are built from. The other 4 **atomic vector** types are:
 `1 + 4i`) and that's all we're going to say about them
 * `"raw"` for bitstreams that we won't discuss further
 
+**Automatic type coercion**
+
+If the user is defining a vector containing atomic elements with mixed data types, there is a convention for automatic type coercion, because of vectors can contain elements with identical types. Below is the illustration of R's built-in automatic type conversion hierarchy: lowest rank --> highest rank.
+
+(Roughly:): Logical/ boolean --> Integer --> Double/ float --> Character.
+
+
 You can check the type of your vector using the `typeof()` function and inputting your vector as the argument.
 
 Vectors are one of the many **data structures** that R uses. Other important
