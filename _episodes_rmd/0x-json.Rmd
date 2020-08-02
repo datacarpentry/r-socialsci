@@ -108,7 +108,7 @@ json_data$F_liv[which(json_data$C06_rooms==4)]
 
 ## Write the JSON file to csv
 
-If we try to write our json_data dataframe to a csv as we would usually do in case of a regular dataframe, we will get an error that tells us we have an "unimplemented type 'list' in 'EncodeElement'". This is because of the columns in our dataframes which are lists, or nested dataframes. You can try yourself: 
+If we try to write our json_data dataframe to a .csv as we would usually do in case of a regular dataframe, we will get an error that tells us we have an "unimplemented type 'list' in 'EncodeElement'". This is because of the columns in our dataframes which are lists, or nested dataframes. You can try yourself: 
 
 ```{r, eval = FALSE}
 
