@@ -365,12 +365,14 @@ all R objects are built from. The other 4 **atomic vector** types are:
 
 **Automatic type coercion**
 
-If the user is defining a vector containing atomic elements with mixed data types, there is a convention for automatic type coercion, 
-because of vectors can contain elements with identical types. Below is the illustration of R's built-in automatic type conversion hierarchy: 
-lowest rank --> highest rank.
+If a user defines a vector containing elements of mixed data types (e.g. both integers and characters), 
+R will coerce/convert the mixed data types into a single data type. This is because, in `R`, vectors 
+cannot contain elements with different data types. Thus, `R` will coerce/convert these mixed data types
+into a single data type so that the vector can be created. `R` has a convention for how it performs this 
+data type coercion, with a hierarchy of data types. Below is the illustration of R's built-in 
+data type conversion hierarchy, from lowest rank (always converted) to highest rank (never converted).
 
-(Roughly:): Logical/ boolean --> Integer --> Double/ float --> Character.
-
+(Roughly): Logical/Boolean --> Integer --> Double/Float --> Character
 
 You can check the type of your vector using the `typeof()` function and inputting your vector as the argument.
 
