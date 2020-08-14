@@ -21,7 +21,7 @@ objectives:
 - "Examine and change date formats."
 
 keypoints:
-- "Use read.csv to read tabular data in R."
+- "Use read_csv to read tabular data in R."
 - "Use factors to represent categorical data in R."
 ---
 
@@ -328,13 +328,13 @@ respondent_floor_type
 
 So far, your factor is unordered, like a nominal variable. R does not know the 
 difference between a nominal and an ordinal variable. You make your factor an
-ordered factor by using the `ordered=TRUE` option insude your factor function.
+ordered factor by using the `ordered=TRUE` option inside your factor function.
 Note how the reported levels changed from the unordered factor above to the
 ordered version below. Ordered levels use the less than sign `<` to denote
 level ranking.
 
 ```{r, results=TRUE, purl=FALSE}
-respondent_floor_type_ordered = factor(respondent_floor_type, ordered=TRUE)
+respondent_floor_type_ordered <- factor(respondent_floor_type, ordered=TRUE)
 respondent_floor_type_ordered # after setting as ordered factor
 ```
 
