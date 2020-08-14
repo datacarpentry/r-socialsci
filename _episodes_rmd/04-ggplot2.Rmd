@@ -159,8 +159,16 @@ interviews_plotting %>%
     geom_point(alpha = 0.5)
 ```
 
-That only helped a little bit with the overplotting problem. We can also
-introduce a little bit of randomness into the position of our points
+That only helped a little bit with the overplotting problem. We can create a new data make 
+the size of the dots representative of the number of items
+
+```{r create-ggplot-object, purl=FALSE}
+select(interviews_plotting,no_membrs,number_items) %>%
+  count(no_membrs, number_items) %>%
+  ggplot(aes(x = no_membrs, y = number_items)) +
+  geom_point(aes(size = n))
+```
+We can also introduce a little bit of randomness into the position of our points
 using the `geom_jitter()` function.
 
 ```{r adding-jitter, purl=FALSE}
@@ -168,7 +176,6 @@ interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter(alpha = 0.5)
 ```
-
 
 We can also add colors for all the points:
 
