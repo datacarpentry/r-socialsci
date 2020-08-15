@@ -159,30 +159,21 @@ interviews_plotting %>%
     geom_point(alpha = 0.5)
 ```
 
-That only helped a little bit with the overplotting problem. We can create a new data make 
-the size of the dots representative of the number of items
+That only helped a little bit with the overplotting problem. We can make 
+the size of the dots representative of the number of items using the 
+`geom_count()` function
 
-```{r create-ggplot-object, purl=FALSE}
-select(interviews_plotting,no_membrs,number_items) %>%
-  count(no_membrs, number_items) %>%
-  ggplot(aes(x = no_membrs, y = number_items)) +
-  geom_point(aes(size = n))
-```
-We can also introduce a little bit of randomness into the position of our points
-using the `geom_jitter()` function.
-
-```{r adding-jitter, purl=FALSE}
+```{r adding-count, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5)
+    geom_count()
 ```
-
 We can also add colors for all the points:
 
 ```{r adding-colors, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5, color = "blue")
+    geom_count(alpha = 0.5, color = "blue")
 ```
 
 Or to color each species in the plot differently, you could use a vector as an input to the argument **`color`**.  Because we are now mapping features of the data to a color, instead of setting one color for all points, the color now needs to be set inside a call to the **`aes`** function. **`ggplot2`** will provide a different color corresponding to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** function call because we are using the same value for all points. Here is an example where we color by **`village`**:
@@ -191,7 +182,7 @@ Or to color each species in the plot differently, you could use a vector as an i
 ```{r color-by-species, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(aes(color = village), alpha = 0.5)
+    geom_count(aes(color = village), alpha = 0.5)
 ```
 
 There appears to be a positive trend between number of household
@@ -209,7 +200,7 @@ does not appear to be different by village.
 > > ```{r scatter-challenge, answer=TRUE, purl=FALSE}
 > > interviews_plotting %>%
 > >     ggplot(aes(x = village, y = rooms)) +
-> >     geom_jitter(aes(color = respondent_wall_type))
+> >     geom_count(aes(color = respondent_wall_type))
 > > ```
 > > This is not a good way to show this type of data because it is difficult to
 > > distinguish between villages.
@@ -260,7 +251,7 @@ hidden?
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type, y = rooms)) +
 > >   geom_violin(alpha = 0) +
-> >   geom_jitter(alpha = 0.5, color = "tomato")
+> >   geom_count(alpha = 0.5, color = "tomato")
 > > ```
 > {: .solution}
 >
@@ -269,14 +260,14 @@ hidden?
 > type.
 >
 > - Create a boxplot for `liv_count` for each wall type. Overlay the boxplot
->   layer on a jitter layer to show actual measurements.
+>   layer on a count layer to show actual measurements.
 >
 > > ## Solution
 > > ```{r boxplot-exercise}
 > > interviews_plotting %>%
 > >    ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >    geom_boxplot(alpha = 0) +
-> >    geom_jitter(alpha = 0.5)
+> >    geom_count(alpha = 0.5)
 > > ```
 > {: .solution}
 >
@@ -288,7 +279,7 @@ hidden?
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >   geom_boxplot(alpha = 0) +
-> >   geom_jitter(aes(alpha = 0.5, color = memb_assoc))
+> >   geom_count(aes(color = memb_assoc),alpha=0.5)
 > > ```
 > {: .solution}
 {: .challenge}
