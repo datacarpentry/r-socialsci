@@ -242,8 +242,12 @@ In RStudio, you can use the autocompletion feature to get the full and correct n
 >      * Pull out that last row using `nrow()` instead of the row number.
 >      * Create a new data frame (`interviews_last`) from that last row.
 >
-> 3. Use `nrow()` to extract the row that is in the middle of the data frame.
->    Store the content of this row in an object named `interviews_middle`.
+> 3. Using the number of rows in the interviews dataset that you found in 
+>    question 2, extract the row that is in the middle of the dataset. Store
+>    the content of this middle row in an object named `interviews_middle`.
+>    (hint: This dataset has an odd number of rows, so finding the middle is a
+>    bit trickier than dividing n_rows by 2. Use the median( ) function and what
+>    you've learned about sequences in R to extract the middle row!
 >
 > 4. Combine `nrow()` with the `-` notation above to reproduce the behavior of
 >    `head(interviews)`, keeping just the first through 6th rows of the interviews
@@ -259,7 +263,7 @@ In RStudio, you can use the autocompletion feature to get the full and correct n
 > > n_rows <- nrow(interviews)
 > > interviews_last <- interviews[n_rows, ]
 > > ## 3.
-> > interviews_middle <- interviews[(n_rows / 2), ]
+> > interviews_middle <- interviews[median(1:n_rows), ]
 > > ## 4.
 > > interviews_head <- interviews[-(7:n_rows), ]
 > > ```
