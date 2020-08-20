@@ -149,9 +149,10 @@ interviews_plotting %>%
 ```
 
 Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) as an argument to `geom_point` to avoid overplotting, which means
-that overlapping points become invisible. Adding transparency begins to address
-this problem, as overlapping dots become darker:
+instance, we can add transparency (`alpha`) as an argument to `geom_point` 
+to avoid overplotting, which means that overlapping points become invisible. 
+Adding transparency begins to address this problem, as overlapping dots become 
+darker:
 
 ```{r adding-transparency, purl=FALSE}
 interviews_plotting %>%
@@ -168,7 +169,9 @@ interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_count()
 ```
-We can also add colors for all the points:
+The `geom_count()`  function makes the size of each point representative of the 
+number of data items of that type and the legend gives point sizes associated to
+particular numbers of items. We can also add colors for all the points:
 
 ```{r adding-colors, purl=FALSE}
 interviews_plotting %>%
@@ -202,8 +205,9 @@ does not appear to be different by village.
 > >     ggplot(aes(x = village, y = rooms)) +
 > >     geom_count(aes(color = respondent_wall_type))
 > > ```
-> > This is not a good way to show this type of data because it is difficult to
-> > distinguish between villages.
+> > This is not the best way to show this type of data because it is difficult to
+> > distinguish between `respondent_wall_type` in houses in the same `village` with the
+> > same number of `rooms`. Changing the alpha setting is helpful in such a situation.
 > {: .solution}
 {: .challenge}
 
@@ -222,19 +226,19 @@ interviews_plotting %>%
 By adding points to a boxplot, we can have a better idea of the number of
 measurements and of their distribution:
 
-```{r boxplot-with-points, purl=FALSE}
+```{r boxplot-with-count, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
-    geom_boxplot(alpha = 0) +
-    geom_jitter(alpha = 0.5, color = "tomato")
+    geom_count(alpha = 0.5, color = "tomato") +
+    geom_boxplot(alpha = 0) 
 ```
 
 We can see that muddaub houses and sunbrick houses tend to be smaller than
 burntbrick houses.
 
-Notice how the boxplot layer is behind the jitter layer? What do you need to
-change in the code to put the boxplot in front of the points such that it's not
-hidden?
+Notice how the count layer is behind the boxplot layer? What do you need to
+change in the code to put the boxplot in behind the points such that the point
+correspoinding to cement is not hidden?
 
 > ## Exercise
 >
