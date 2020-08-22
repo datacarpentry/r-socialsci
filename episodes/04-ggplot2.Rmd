@@ -104,7 +104,7 @@ templates and conveniently explore different types of plots, so the above plot
 can also be generated with code like this, similar to the "intermediate steps" approach in the previous lesson:
 
 ```{r first-ggplot-with-plus, eval=FALSE, purl=FALSE}
-# Assign plot to a variable
+# Assign plot to an object
 interviews_plot <- interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items))
 
@@ -333,7 +333,7 @@ percent_wall_type <- interviews_plotting %>%
     filter(respondent_wall_type != "cement") %>%
     count(village, respondent_wall_type) %>%
     group_by(village) %>%
-    mutate(percent = n / sum(n) * 100) %>%
+    mutate(percent = 100 * (n / sum(n)) ) %>%
     ungroup()
 ```
 
@@ -361,7 +361,7 @@ percent_wall_type %>%
 > >   filter(!is.na(memb_assoc)) %>%
 > >   count(village, memb_assoc) %>%
 > >   group_by(village) %>%
-> >   mutate(percent = n / sum(n) * 100) %>%
+> >   mutate(percent = 100* (n / sum(n) )) %>%
 > >   ungroup()
 > >
 > > percent_memb_assoc %>%
@@ -449,7 +449,7 @@ percent_items <- interviews_plotting %>%
     mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
                                          village == "God" ~ 43,
                                          village == "Ruaca" ~ 49)) %>%
-    mutate(percent = n / people_in_village * 100)
+    mutate(percent = 100 * (n / people_in_village) )
 ```
 
 To calculate this percentage data frame, we needed to use the `case_when()`
