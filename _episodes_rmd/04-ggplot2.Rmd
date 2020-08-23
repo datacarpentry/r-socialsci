@@ -101,7 +101,8 @@ interviews_plotting %>%
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
 templates and conveniently explore different types of plots, so the above plot
-can also be generated with code like this, similar to the "intermediate steps" approach in the previous lesson:
+can also be generated with code like this, similar to the "intermediate steps" 
+approach in the previous lesson:
 
 ```{r first-ggplot-with-plus, eval=FALSE, purl=FALSE}
 # Assign plot to a variable
@@ -149,9 +150,10 @@ interviews_plotting %>%
 ```
 
 Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) as an argument to `geom_point` to avoid overplotting, which means
-that overlapping points become invisible. Adding transparency begins to address
-this problem, as overlapping dots become darker:
+instance, we can add transparency (`alpha`) as an argument to `geom_point` 
+to avoid overplotting, which means that overlapping points become invisible. 
+Adding transparency begins to address this problem, as overlapping dots 
+become darker:
 
 ```{r adding-transparency, purl=FALSE}
 interviews_plotting %>%
@@ -178,7 +180,14 @@ interviews_plotting %>%
     geom_jitter(alpha = 0.5, color = "blue")
 ```
 
-Or to color each species in the plot differently, you could use a vector as an input to the argument **`color`**.  Because we are now mapping features of the data to a color, instead of setting one color for all points, the color now needs to be set inside a call to the **`aes`** function. **`ggplot2`** will provide a different color corresponding to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** function call because we are using the same value for all points. Here is an example where we color by **`village`**:
+Or to color each species in the plot differently, you could use a vector as 
+an input to the argument **`color`**.  Because we are now mapping features 
+of the data to a color, instead of setting one color for all points, the color 
+now needs to be set inside a call to the **`aes`** function. **`ggplot2`** 
+will provide a different color corresponding to different values in the 
+vector. We set the value of **`alpha`** outside of the **`aes`** function call
+because we are using the same value for all points. Here is an example where 
+we color by **`village`**:
 
 
 ```{r color-by-species, purl=FALSE}
@@ -333,7 +342,7 @@ percent_wall_type <- interviews_plotting %>%
     filter(respondent_wall_type != "cement") %>%
     count(village, respondent_wall_type) %>%
     group_by(village) %>%
-    mutate(percent = n / sum(n) * 100) %>%
+    mutate(percent = (n / sum(n)) * 100) %>%
     ungroup()
 ```
 
@@ -361,7 +370,7 @@ percent_wall_type %>%
 > >   filter(!is.na(memb_assoc)) %>%
 > >   count(village, memb_assoc) %>%
 > >   group_by(village) %>%
-> >   mutate(percent = n / sum(n) * 100) %>%
+> >   mutate(percent = (n / sum(n)) * 100) %>%
 > >   ungroup()
 > >
 > > percent_memb_assoc %>%
@@ -400,10 +409,11 @@ data for a single village. This would be especially useful if we had
 a large number of villages that we had sampled, as a large number of
 side-by-side bars will become more difficult to read.
 
-**`ggplot2`** has a special technique called *faceting* that allows the user to split one
-plot into multiple plots based on a factor included in the dataset. We
-will use it to split our barplot of housing type proportion by village
-so that each village has it's own panel in a multi-panel plot:
+**`ggplot2`** has a special technique called *faceting* that allows the 
+user to split one plot into multiple plots based on a factor included 
+in the dataset. We will use it to split our barplot of housing type 
+proportion by village so that each village has it's own panel in a 
+multi-panel plot:
 
 ```{r barplot-faceting}
 percent_wall_type %>%
@@ -449,7 +459,7 @@ percent_items <- interviews_plotting %>%
     mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
                                          village == "God" ~ 43,
                                          village == "Ruaca" ~ 49)) %>%
-    mutate(percent = n / people_in_village * 100)
+    mutate(percent = (n / people_in_village) * 100)
 ```
 
 To calculate this percentage data frame, we needed to use the `case_when()`
