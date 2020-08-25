@@ -19,10 +19,10 @@ objectives:
 - "Reorder and rename factors."
 - "Change how character strings are handled in a data frame."
 - "Examine and change date formats."
-
 keypoints:
 - "Use read_csv to read tabular data in R."
 - "Use factors to represent categorical data in R."
+source: Rmd
 ---
 
 
