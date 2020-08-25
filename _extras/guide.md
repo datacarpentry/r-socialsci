@@ -83,6 +83,15 @@ The two main goals for this lessons are:
 * For this lesson make sure that learners are comfortable using pipes.
 * There is also sometimes some confusion on what the arguments of `group_by`
   should be, and when to use `filter()` and `select()`.
+* If the code that generates the output for the table `interviews_plotting` (which is used in the following episode) causes the following error:
+
+    Error: Can't rename columns that don't exist.   
+    x Column `NA` doesn't exist.
+    
+    Make sure you have read in the CSV file with the option that set NAs to NULL, like so: 
+    
+    `interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
+`  
 
 ### Visualizing data with ggplot2
 
