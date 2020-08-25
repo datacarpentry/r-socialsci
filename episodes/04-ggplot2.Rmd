@@ -20,6 +20,7 @@ keypoints:
    - "Boxplots are useful for visualizing the distribution of a continuous variable."
    - "Barplots are useful for visualizing categorical data."
    - "Faceting allows you to generate multiple plots based on a categorical variable."
+source: Rmd
 ---
 
 ```{r, include=FALSE}
