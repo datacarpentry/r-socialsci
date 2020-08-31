@@ -453,7 +453,7 @@ calculate the percentage of people in each village who own each item:
 
 ```{r percent-items-data}
 percent_items <- interviews_plotting %>%
-    gather(items, items_owned_logical, bicycle:no_listed_items) %>%
+    pivot_longer(cols = bicycle:no_listed_items, names_to = "items", values_to = "items_owned_logical") %>%
     filter(items_owned_logical) %>%
     count(items, village) %>%
     ## add a column with the number of people in each village
