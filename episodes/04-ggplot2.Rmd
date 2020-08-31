@@ -161,31 +161,38 @@ interviews_plotting %>%
 ```
 
 That only helped a little bit with the overplotting problem. We can make 
-the size of the dots representative of the number of items using the 
-`geom_count()` function
+the move the the dots by a random amount using the 
+`geom_jitter()` function so that they do not overlap.
 
 ```{r adding-count, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_count()
+    geom_jitter()
 ```
-The `geom_count()`  function makes the size of each point representative of the 
-number of data items of that type and the legend gives point sizes associated to
-particular numbers of items. We can also add colors for all the points:
+We can give limits on the amount of random motion so tha the points remain 
+clustered.  We can also add colors for all the points:
 
 ```{r adding-colors, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_count(alpha = 0.5, color = "blue")
+    geom_jitter(alpha = 0.5, color = "blue", width = 0.2, height = 0.2)
 ```
 
-Or to color each species in the plot differently, you could use a vector as an input to the argument **`color`**.  Because we are now mapping features of the data to a color, instead of setting one color for all points, the color now needs to be set inside a call to the **`aes`** function. **`ggplot2`** will provide a different color corresponding to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** function call because we are using the same value for all points. Here is an example where we color by **`village`**:
+The width and height parameters give maximum limits of the cell size for random jitter
+displacements to be applied to points. Experiment with the values to see how your plot
+changes. To color each species in the plot differently, you could use a vector as an input 
+to the argument **`color`**.  Because we are now mapping features of the data to a color, 
+instead of setting one color for all points, the color now needs to be set inside a call 
+to the **`aes`** function. **`ggplot2`** will provide a different color corresponding 
+to different values in the vector. We set the value of **`alpha`** outside of the **`aes`** 
+function call because we are using the same value for all points. Here is an example 
+where we color by **`village`**:
 
 
 ```{r color-by-species, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_count(aes(color = village), alpha = 0.5)
+    geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
 ```
 
 There appears to be a positive trend between number of household
@@ -195,19 +202,32 @@ does not appear to be different by village.
 > ## Exercise
 >
 > Use what you just learned to create a scatter plot of `rooms` by `village`
-> with the `respondent_wall_type` showing in different colors. Is this a good
-> way to show this type of data?
+> with the `respondent_wall_type` showing in different colors. What
+> other kinds of plots might you use to show this type of data?
 >
 > > ## Solution
 > >
 > > ```{r scatter-challenge, answer=TRUE, purl=FALSE}
 > > interviews_plotting %>%
 > >     ggplot(aes(x = village, y = rooms)) +
-> >     geom_count(aes(color = respondent_wall_type))
+> >     geom_jitter(aes(color = respondent_wall_type), alpha = 0.5, width = 0.25, height = 0.25)
 > > ```
-> > This is not the best way to show this type of data because it is difficult to
-> > distinguish between `respondent_wall_type` in houses in the same `village` with the
-> > same number of `rooms`. Changing the alpha setting is helpful in such a situation.
+> >
+> > There are multiple ways to make plots. One other way to plot the data is 
+> > to use the `geom_count` plotting function. The `geom_count()`  function 
+> > makes the size of each point representative of the number of data items 
+> > of that type and the legend gives point sizes associated to particular 
+> > numbers of items.
+> >
+> > ```{r scatter-challenge, answer=TRUE, purl=FALSE}
+> > interviews_plotting %>%
+> >     ggplot(aes(x = village, y = rooms)) +
+> >     geom_count(aes(color = respondent_wall_type), shape = 22, alpha = 0.75)
+> > ```
+> > For both of these plots, it is difficult to distinguish between `respondent_wall_type`
+> > in houses in the same `village` with the same number of `rooms`. Changing the alpha 
+> > setting is a partial solution. See https://ggplot2.tidyverse.org/articles/ggplot2-specs.html
+>> to find other shapes you can use. What other plot types can help you visualize this data well?
 > {: .solution}
 {: .challenge}
 
@@ -229,7 +249,7 @@ measurements and of their distribution:
 ```{r boxplot-with-count, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
-    geom_count(alpha = 0.5, color = "tomato") +
+    geom_jitter(alpha = 0.5, color = "tomato", width = 0.25, height = 0.25) +
     geom_boxplot(alpha = 0) 
 ```
 
@@ -255,7 +275,7 @@ correspoinding to cement is not hidden?
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type, y = rooms)) +
 > >   geom_violin(alpha = 0) +
-> >   geom_count(alpha = 0.5, color = "tomato")
+> >   geom_jitter(alpha = 0.5, color = "tomato")
 > > ```
 > {: .solution}
 >
@@ -271,7 +291,7 @@ correspoinding to cement is not hidden?
 > > interviews_plotting %>%
 > >    ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >    geom_boxplot(alpha = 0) +
-> >    geom_count(alpha = 0.5)
+> >    geom_jitter(alpha = 0.5, width = 0.25, height = 0.25)
 > > ```
 > {: .solution}
 >
@@ -283,7 +303,7 @@ correspoinding to cement is not hidden?
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >   geom_boxplot(alpha = 0) +
-> >   geom_count(aes(color = memb_assoc),alpha=0.5)
+> >   geom_jitter(aes(color = memb_assoc), alpha = 0.5, width = 0.25, height = 0.25)
 > > ```
 > {: .solution}
 {: .challenge}
