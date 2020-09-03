@@ -115,18 +115,29 @@ We're going to learn some of the most common **`dplyr`** functions:
 
 ## Selecting columns and filtering rows
 
-To select columns of a
-dataframe, use `select()`. The first argument to this function is the data
-frame (`interviews`), and the subsequent arguments are the columns to keep.
+To select columns of a dataframe, use `select()`. The first argument to this
+function is the dataframe (`interviews`), and the subsequent arguments are the
+columns to keep, separated by commas. Alternatively, if you are selecting 
+columns adjacent to each other, you can use a `:` to select a range of columns, 
+read as "select columns from ___ to ___." 
 
 ```{r, results = 'hide', purl = FALSE}
-select(interviews, village, no_membrs, years_liv)
+# to select columns throughout the dataframe
+select(interviews, village, no_members, months_lack_food)
+# to select a series of connected columns
+select(interviews, village, village:respondent_wall_type)
 ```
 
-To choose rows based on a specific criteria, use `filter()`:
+To choose rows based on a specific criteria, we can use the `filter()` function. 
+The arguments after the dataframe are the condition(s) we want for our final 
+dataframe to adhere to (e.g. village name is God). We can chain a series of 
+conditions together using commas between each condition.
 
 ```{r, purl = FALSE}
+# one condition
 filter(interviews, village == "God")
+# multiple conditions
+filter(interviews, village == "God", rooms > 1, no_meals > 2)
 ```
 
 ## Pipes
@@ -139,7 +150,7 @@ that as input to the next function, like this:
 
 ```{r, purl = FALSE}
 interviews2 <- filter(interviews, village == "God")
-interviews_god <- select(interviews2, no_membrs, years_liv)
+interviews_god <- select(interviews2, village:respondent_wall_type)
 ```
 
 This is readable, but can clutter up your workspace with lots of objects that
@@ -150,7 +161,7 @@ You can also nest functions (i.e. one function inside of another), like this:
 
 ```{r, purl = FALSE}
 interviews_god <- select(filter(interviews, village == "God"), 
-                         no_membrs, years_liv)
+                         village:respondent_wall_type)
 ```
 
 This is handy, but can be difficult to read if too many functions are nested, as
@@ -168,7 +179,7 @@ are made available via the **`magrittr`** package, installed automatically with
 ```{r, purl = FALSE}
 interviews %>%
     filter(village == "God") %>%
-    select(no_membrs, years_liv)
+    select(village:respondent_wall_type)
 ```
 
 In the above code, we use the pipe to send the `interviews` dataset first
@@ -191,7 +202,7 @@ can assign it a new name:
 ```{r, purl = FALSE}
 interviews_god <- interviews %>%
     filter(village == "God") %>%
-    select(no_membrs, years_liv)
+    select(village:respondent_wall_type)
 
 interviews_god
 ```
@@ -245,8 +256,10 @@ interviews %>%
     mutate(people_per_room = no_membrs / rooms)
 ```
 
-The `!` symbol negates the result, so we're asking for every row where
-`memb_assoc` *is not* missing..
+The `!` symbol negates the result of the `is.na()` function. Thus, if `is.na()`
+returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol 
+negates this and says we only want values of `FALSE`, where `memb_assoc` **is 
+not** missing.
 
 > ## Exercise
 >
@@ -348,7 +361,8 @@ household first:
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
-    summarize(mean_no_membrs = mean(no_membrs), min_membrs = min(no_membrs)) %>%
+    summarize(mean_no_membrs = mean(no_membrs),
+              min_membrs = min(no_membrs)) %>%
     arrange(min_membrs)
 ```
 
@@ -442,12 +456,6 @@ to structure our data leading to the three rules defining a "tidy" dataset:
 1. Each variable has its own column
 2. Each observation has its own row
 3. Each value must have its own cell
-
-<!-- I'm not sure how I feel about this rule, I think that you can break down  -->
-<!-- long and wide data in terms of rules 1 and 2.  -->
-<!-- 4. Each type of observational unit forms a table -->
-
-<!-- Here we examine the fourth rule: Each type of observational unit forms a table. -->
 
 In this section we will explore how these rules are linked to the different 
 data formats researchers are often interested in: "wide" and "long". This
@@ -619,7 +627,8 @@ To recreate our original dataframe, we will use the following:
 1. the data - `interviews_wide`
 2. a list of *cols* (columns) that are to be reshaped; these can be specified 
    using a  `:` if the columns to be reshaped are in one area of the dataframe, 
-   or with a vector (`c()`) if the columns are spread throughout the dataframe. 
+   or with a `vars()` or vector (`c()`) command if the columns are spread
+   throughout the dataframe. 
 3. the *names_to* column will be a character string of the name the column 
    these columns will be collapsed into ("respondent_wall_type").
 4. the *values_to* column will be a character string of the name of the 
@@ -630,7 +639,7 @@ To recreate our original dataframe, we will use the following:
 
 ```{r, purl = FALSE}
 interviews_long <- interviews_wide %>%
-    pivot_longer(cols = burntbricks:sunbricks,
+    pivot_longer(cols = vars(burntbricks:sunbricks),
                  names_to = "respondent_wall_type", 
                  values_to = "wall_type_logical")
 ```
