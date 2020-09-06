@@ -188,7 +188,7 @@ a different connection method is used.
 mydb_dplyr <- src_sqlite(path="data/SN7577.sqlite")
 ```
 
-as is the method for running queries. However using the 'tbl' functionwe still need to provide avalid SQL string. (?)
+as is the method for running queries. However using the 'tbl' function we still need to provide avalid SQL string. (?)
 
 ```{r}
 tbl(mydb_dplyr, sql("SELECT count(*) from SN7577"))
