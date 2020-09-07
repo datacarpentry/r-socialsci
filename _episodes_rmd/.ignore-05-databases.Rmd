@@ -28,9 +28,14 @@ source("../bin/download_data.R")
 
 ## Introduction
 
-A common problem with R in that all operations are conducted in-memory and thus
-the amount of data you can work with is limited by available memory. So far, we have used small datasets
-that can easily fit into your computer's memory. But what about datasets that are too large for your
+A common problem with R in that all operations are conducted in-memory. Here, "memory" means a computer 
+drive called Random Access Memory (RAM for short) which is phsically installed on your computer. RAM 
+allows for data to be read in nearly the same amount of time regardless of its physical location
+inside the memory. This is in stark contrast to the speed data could be read from CDs, DVDs, or other
+storage media, where the speed of transfer depended on how quickly the drive could rotate or the 
+arm could move. Unfortunately, your computer has a limited amount of RAM, so the amount of data you
+can work with is limited by the available memory. So far, we have used small datasets that can
+easily fit into your computer's memory. But what about datasets that are too large for your
 computer to handle as a whole?
 
 In this case, it is helpful to organze the data into a database stored outside of R before creating
@@ -183,7 +188,7 @@ a different connection method is used.
 mydb_dplyr <- src_sqlite(path="data/SN7577.sqlite")
 ```
 
-as is the mthod for running queries. However using the 'tbl' functionwe still need to provide avalid SQL string. (?)
+as is the method for running queries. However using the 'tbl' function we still need to provide avalid SQL string. (?)
 
 ```{r}
 tbl(mydb_dplyr, sql("SELECT count(*) from SN7577"))
