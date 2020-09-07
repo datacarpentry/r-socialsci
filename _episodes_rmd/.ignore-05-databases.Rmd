@@ -30,7 +30,7 @@ source("../bin/download_data.R")
 
 A common problem with R in that all operations are conducted in-memory. Here, "memory" means a computer 
 drive called Random Access Memory (RAM for short) which is phsically installed on your computer. RAM 
-allows for data to be read in in nearly the same amount of time regardless of its physical location
+allows for data to be read in nearly the same amount of time regardless of its physical location
 inside the memory. This is in stark contrast to the speed data could be read from CDs, DVDs, or other
 storage media, where the speed of transfer depended on how quickly the drive could rotate or the 
 arm could move. Unfortunately, your computer has a limited amount of RAM, so the amount of data you
