@@ -123,9 +123,9 @@ read as "select columns from ___ to ___."
 
 ```{r, results = 'hide', purl = FALSE}
 # to select columns throughout the dataframe
-select(interviews, village, no_members, months_lack_food)
+select(interviews, village, no_membrs, months_lack_food)
 # to select a series of connected columns
-select(interviews, village, village:respondent_wall_type)
+select(interviews, village:respondent_wall_type)
 ```
 
 To choose rows based on a specific criteria, we can use the `filter()` function. 
@@ -472,7 +472,7 @@ difficult to tell observations apart, since we have multiple observations
 for each village, date combination (as seen below). 
 
 ```{r, purl = FALSE}
-SAFI_clean %>% 
+interviews %>% 
   select(village, interview_date) %>% 
   tibble()
 ```
@@ -482,7 +482,7 @@ below, for each interview date in each village no `key_ID`s are the same. Thus,
 this format is what is called a "long" data format.
 
 ```{r, purl = FALSE}
-SAFI_clean %>% 
+interviews %>% 
   filter(village == "God") %>% 
   select(key_ID, village, interview_date) %>% 
   head(n = 10) %>% 
@@ -627,8 +627,8 @@ To recreate our original dataframe, we will use the following:
 1. the data - `interviews_wide`
 2. a list of *cols* (columns) that are to be reshaped; these can be specified 
    using a  `:` if the columns to be reshaped are in one area of the dataframe, 
-   or with a `vars()` or vector (`c()`) command if the columns are spread
-   throughout the dataframe. 
+   or with a vector (`c()`) command if the columns are spread throughout the
+   dataframe. 
 3. the *names_to* column will be a character string of the name the column 
    these columns will be collapsed into ("respondent_wall_type").
 4. the *values_to* column will be a character string of the name of the 
@@ -639,7 +639,7 @@ To recreate our original dataframe, we will use the following:
 
 ```{r, purl = FALSE}
 interviews_long <- interviews_wide %>%
-    pivot_longer(cols = vars(burntbricks:sunbricks),
+    pivot_longer(cols = burntbricks:sunbricks,
                  names_to = "respondent_wall_type", 
                  values_to = "wall_type_logical")
 ```
@@ -728,7 +728,7 @@ it a `list()` of columns that you would like to replace the `NA` values in,
 and the value that you would like to replace the `NA`s. This ends up looking 
 like this: 
 
-```{r}
+```{r, eval = FALSE}
 replace_na(list(items_owned = "no_listed_items")) %>%
 ```
 
