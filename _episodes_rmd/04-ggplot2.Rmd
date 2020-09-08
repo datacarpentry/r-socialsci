@@ -276,8 +276,8 @@ this trend does not appear to be different by village.
 > >     ggplot(aes(x = village, y = rooms)) +
 > >     geom_jitter(aes(color = respondent_wall_type),
 > >		    alpha = 0.5,
-> > 		    width = 0.25,
-> > 		    height = 0.25)
+> > 		    width = 0.2,
+> > 		    height = 0.2)
 > > ```
 > >
 > > This is not a great way to show this type of data because it is difficult to
@@ -307,8 +307,8 @@ interviews_plotting %>%
     geom_boxplot(alpha = 0) +
     geom_jitter(alpha = 0.5,
     		color = "tomato",
-    		width = 0.25,
-		height = 0.25) +
+    		width = 0.2,
+    		height = 0.2) +
 ```
 
 We can see that muddaub houses and sunbrick houses tend to be smaller than
@@ -349,7 +349,7 @@ hidden?
 > > interviews_plotting %>%
 > >    ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >    geom_boxplot(alpha = 0) +
-> >    geom_jitter(alpha = 0.5, width = 0.25, height = 0.25)
+> >    geom_jitter(alpha = 0.5, width = 0.2, height = 0.2)
 > > ```
 > {: .solution}
 >
@@ -361,7 +361,7 @@ hidden?
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >   geom_boxplot(alpha = 0) +
-> >   geom_jitter(aes(color = memb_assoc), alpha = 0.5, width = 0.25, height = 0.25)
+> >   geom_jitter(aes(color = memb_assoc), alpha = 0.5, width = 0.2, height = 0.2)
 > > ```
 > {: .solution}
 {: .challenge}
