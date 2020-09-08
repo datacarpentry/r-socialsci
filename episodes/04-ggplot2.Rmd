@@ -151,10 +151,28 @@ interviews_plotting %>%
 ```
 
 Then, we start modifying this plot to extract more information from it. For
-instance, we can add transparency (`alpha`) as an argument to `geom_point` 
-to avoid overplotting, which means that overlapping points become invisible. 
-Adding transparency begins to address this problem, as overlapping dots 
-become darker:
+instance, when inspecting the plot we notice that points only appear at the 
+intersection of whole numbers of `no_membrs` and `number_items`. Also, from a 
+rough estimate, it looks like there are far fewer dots on the plot than there 
+rows in our dataframe. This should lead us to believe that there may be multiple
+observations plotted on top of each other (e.g. three observations where 
+`no_membrs` is 3 and `number_items` is 1). 
+
+There are two main ways to alleviate overplotting issues: 
+1. changing the transparency of the points 
+2. jittering the location of the points
+
+Let's first explore option 1, changing the transparency of the points. What we 
+mean when we say "transparency" we mean the opacity of point, or your ability to 
+see through the point. We can control the transparency of the points with the 
+`alpha` argument to `geom_point`. Values of `alpha` range from 0 to 1, with
+lower values corresponding to more transparent colors (an `alpha` of 1 is the 
+default value). 
+
+Here, we change the `alpha` to 0.5, in an attempt to help fix the overplotting. 
+While the overplotting isn't solved, adding transparency begins to address this
+problem, as the points where there are overlapping observations are darker (as 
+opposed to lighter gray):
 
 ```{r adding-transparency, purl=FALSE}
 interviews_plotting %>%
@@ -162,60 +180,109 @@ interviews_plotting %>%
     geom_point(alpha = 0.5)
 ```
 
-That only helped a little bit with the overplotting problem. We can also
-introduce a little bit of randomness into the position of our points
-using the `geom_jitter()` function.
+That only helped a little bit with the overplotting problem, so let's try option
+two. We can jitter the points on the plot, so that we can see each point in the
+locations where there are overlapping points. Jittering introduces a little bit
+of randomness into the position of our points. You can think of this process as 
+taking the overplotted graph and giving it a tiny shake. The points will move a 
+little bit side-to-side and up-and-down, but their position from the original 
+plot won't dramatically change. 
+
+We can jitter our points using the `geom_jitter()` function instead of the
+`geom_point()`  function, as seen below:
 
 ```{r adding-jitter, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5)
+    geom_jitter()
+```
+The `geom_jitter()` function allows for us to specify the amount of random
+motion in the jitter, using the `width` and `height` arguments. When we don't 
+specify values for `width` and `height`, `geom_jitter()` defaults to 40% of the
+resolution of the data (the smallest change that can be measured). Hence, if we 
+would like *less* spread in our jitter than was default, we should pick values 
+between 0.1 and 0.4. Experiment with the values to see how your plot changes.
+
+```{r adding-width-height, purl=FALSE}
+interviews_plotting %>%
+    ggplot(aes(x = no_membrs, y = number_items)) +
+    geom_jitter(alpha = 0.5,
+                width = 0.2,
+                height = 0.2)
 ```
 
-
-We can also add colors for all the points:
+For our final change, we can also add colors for all the points by specifying 
+a `color` argument inside the `geom_jitter()` function:
 
 ```{r adding-colors, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5, color = "blue")
+    geom_jitter(alpha = 0.5,
+                color = "blue",
+                width = 0.2,
+                height = 0.2)
 ```
 
-Or to color each species in the plot differently, you could use a vector as 
-an input to the argument **`color`**.  Because we are now mapping features 
-of the data to a color, instead of setting one color for all points, the color 
-now needs to be set inside a call to the **`aes`** function. **`ggplot2`** 
-will provide a different color corresponding to different values in the 
-vector. We set the value of **`alpha`** outside of the **`aes`** function call
-because we are using the same value for all points. Here is an example where 
-we color by **`village`**:
+To color each species in the plot differently, you could use a vector as an input 
+to the argument **`color`**.  However, because we are now mapping features of the
+data to a color, instead of setting one color for all points, the color of the 
+points now needs to be set inside a call to the **`aes`** function. When we map 
+a variable in our data to the color of the points, **`ggplot2`** will provide a
+different color corresponding to the different values of the variable. We will 
+continue to specify the value of **`alpha`**, **`width`**, and **`height`**
+outside of the **`aes`** function because we are using the same value for 
+every point. Here is an example where we color points by the **`village`** 
+of the observation:
 
 
 ```{r color-by-species, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(aes(color = village), alpha = 0.5)
+    geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
 ```
 
 There appears to be a positive trend between number of household
-members and number of items owned (from the list provided). This trend
-does not appear to be different by village.
+members and number of items owned (from the list provided). Additionally, 
+this trend does not appear to be different by village.
+
+> ## Notes 
+> 
+> As you will learn, there are multiple ways to plot the a relationship
+> between variables. Another way to plot data with overlapping points is 
+> to use the `geom_count` plotting function. The `geom_count()`  function 
+> makes the size of each point representative of the number of data items 
+> of that type and the legend gives point sizes associated to particular 
+> numbers of items. 
+>
+> ```{r color-by-species-notes, purl=FALSE}
+> interviews_plotting %>% 
+>    ggplot(aes(x = no_membrs, y = number_items, color = village)) +
+>    geom_count()
+> ```    
+
+{: .callout}
 
 > ## Exercise
 >
 > Use what you just learned to create a scatter plot of `rooms` by `village`
-> with the `respondent_wall_type` showing in different colors. Is this a good
-> way to show this type of data?
+> with the `respondent_wall_type` showing in different colors. Does this 
+> seem like a good way to display the relationship between these variables? 
+> What other kinds of plots might you use to show this type of data?
 >
 > > ## Solution
 > >
 > > ```{r scatter-challenge, answer=TRUE, purl=FALSE}
 > > interviews_plotting %>%
 > >     ggplot(aes(x = village, y = rooms)) +
-> >     geom_jitter(aes(color = respondent_wall_type))
+> >     geom_jitter(aes(color = respondent_wall_type),
+> >		    alpha = 0.5,
+> > 		    width = 0.2,
+> > 		    height = 0.2)
 > > ```
-> > This is not a good way to show this type of data because it is difficult to
-> > distinguish between villages.
+> >
+> > This is not a great way to show this type of data because it is difficult to
+> > distinguish between villages. What other plot types could help you visualize
+> > this relationship better?
 > {: .solution}
 {: .challenge}
 
@@ -234,18 +301,21 @@ interviews_plotting %>%
 By adding points to a boxplot, we can have a better idea of the number of
 measurements and of their distribution:
 
-```{r boxplot-with-points, purl=FALSE}
+```{r boxplot-with-jitter, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
     geom_boxplot(alpha = 0) +
-    geom_jitter(alpha = 0.5, color = "tomato")
+    geom_jitter(alpha = 0.5,
+    		color = "tomato",
+    		width = 0.2,
+    		height = 0.2) +
 ```
 
 We can see that muddaub houses and sunbrick houses tend to be smaller than
 burntbrick houses.
 
-Notice how the boxplot layer is behind the jitter layer? What do you need to
-change in the code to put the boxplot in front of the points such that it's not
+Notice how the  boxplot layer is behind the jitter layer? What do you need to
+change in the code to put the boxplot in behind the points such that it's not 
 hidden?
 
 > ## Exercise
@@ -279,7 +349,7 @@ hidden?
 > > interviews_plotting %>%
 > >    ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >    geom_boxplot(alpha = 0) +
-> >    geom_jitter(alpha = 0.5)
+> >    geom_jitter(alpha = 0.5, width = 0.2, height = 0.2)
 > > ```
 > {: .solution}
 >
@@ -291,7 +361,7 @@ hidden?
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >   geom_boxplot(alpha = 0) +
-> >   geom_jitter(aes(color = memb_assoc), alpha = 0.5)
+> >   geom_jitter(aes(color = memb_assoc), alpha = 0.5, width = 0.2, height = 0.2)
 > > ```
 > {: .solution}
 {: .challenge}
