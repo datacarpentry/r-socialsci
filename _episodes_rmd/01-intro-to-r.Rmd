@@ -493,15 +493,30 @@ to `<-`).
 
 A common task is to search for certain strings in a vector.  One could use the
 "or" operator `|` to test for equality to multiple values, but this can quickly
-become tedious. The function `%in%` allows you to test if any of the elements of
-a search vector are found:
+become tedious. 
 
 ```{r, results='show', purl=FALSE}
 possessions <- c("car", "bicycle", "radio", "television", "mobile_phone")
 possessions[possessions == "car" | possessions == "bicycle"] # returns both car and bicycle
-possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat")
-possessions[possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat")]
 ```
+
+The function `%in%` allows you to test if any of the elements of a search vector
+(on the left hand side) are found in the target vector (on the right hand side):
+
+```{r, results='show', purl=FALSE}
+possessions %in% c("car", "bicycle")
+```
+
+Note that the output is the same length as the search vector on the left hand
+side, because `%in%` checks whether each element of the search vector is found
+somewhere in the target vector. Thus, you can use `%in%` to select the elements
+in the search vector that appear in your target vector:
+
+```{r, results='show', purl=FALSE}
+possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")
+possessions[possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")]
+```
+
 
 ## Missing data
 
