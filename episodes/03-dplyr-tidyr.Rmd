@@ -1,5 +1,5 @@
 ---
-title: "Introducing dplyr and tidyr"
+title: "Data Wrangling with dplyr and tidyr"
 keypoints:
 - Use the `dplyr` package to manipulate dataframes.
 - Use `select()` to choose variables from a dataframe.
@@ -56,7 +56,6 @@ tidyverse. These packages were loaded in R's memory when we called
 `library(tidyverse)` earlier.
 
 ## What is an R package?
-
 
 The package **`dplyr`** provides easy tools for the most common data
 manipulation tasks. It is built to work directly with dataframes, with many
