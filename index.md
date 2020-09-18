@@ -1,5 +1,6 @@
 ---
 layout: lesson
+root: .
 ---
 
 Data Carpentry’s aim is to teach researchers basic concepts, skills, 
