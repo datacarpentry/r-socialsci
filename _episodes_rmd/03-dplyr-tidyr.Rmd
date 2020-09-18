@@ -43,6 +43,15 @@ source("../bin/download_data.R")
 
 Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the tidyverse. These packages were loaded in R's memory when we called `library(tidyverse)` earlier.
 
+> ## Note
+>
+> The packages in the tidyverse, namely **`dplyr`**, **`tidyr`** and **`ggplot2`** 
+> accept both the British (e.g. *summarise*) and American (e.g. *summarize*) spelling 
+> variants of different function and option names. For this lesson, we utilize
+> the American spellings of different functions; however, feel free to use
+> the regional variant for where you are teaching. 
+{: .callout}
+
 ## What is an R package?
 
 An R package is a complete unit for sharing code with others. Each R package contains the code for a set of R functions, the documentation (or description) for each of the functions, as well as a practice dataset to learn the functions on. 
