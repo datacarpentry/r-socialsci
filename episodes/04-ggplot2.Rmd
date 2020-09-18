@@ -72,7 +72,7 @@ ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) +  <GEOM_FUNCTION>()
 ggplot(data = interviews_plotting)
 ```
 
-- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, colour, etc.
+- define a mapping (using the aesthetic (`aes`) function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.
 
 ```{r ggplot-steps-2, eval=FALSE, purl=FALSE}
 ggplot(data = interviews_plotting, aes(x = no_membrs, y = number_items))
@@ -550,7 +550,7 @@ ggplot(percent_items, aes(x = village, y = percent)) +
 > for inspiration. Here are some ideas:
 >
 > * See if you can make the bars white with black outline.
-> * Try using a different color palette (see
+> * Try using a different colour palette (see
 >   [http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)).
 {: .challenge}
 
@@ -568,8 +568,8 @@ my_plot <- ggplot(percent_items, aes(x = village, y = percent)) +
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
-    theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
-          axis.text.y = element_text(colour = "grey20", size = 12),
+    theme(axis.text.x = element_text(color = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+          axis.text.y = element_text(color = "grey20", size = 12),
           text = element_text(size = 16),
           plot.title = element_text(hjust = 0.5))
 
