@@ -1,5 +1,5 @@
 ---
-title: "Data Wrangling with dplyr and tidyr"
+title: "Data Wrangling with `dplyr` and `tidyr`"
 keypoints:
 - Use the `dplyr` package to manipulate dataframes.
 - Use `select()` to choose variables from a dataframe.
@@ -44,9 +44,7 @@ knitr_fig_path("03-")
 source("../bin/download_data.R")
 ```
 
-# Data Manipulation using **`dplyr`** and **`tidyr`**
-
-**`dplyr`** is a package for making tabular data manipulation easier by using a
+**`dplyr`** is a package for making tabular data wrangling easier by using a
 limited set of functions that can be combined to extract and summarize insights
 from your data. It pairs nicely with **`tidyr`** which enables you to swiftly
 convert between different data formats (long vs. wide) for plotting and analysis.
@@ -58,7 +56,7 @@ tidyverse. These packages were loaded in R's memory when we called
 ## What is an R package?
 
 The package **`dplyr`** provides easy tools for the most common data
-manipulation tasks. It is built to work directly with dataframes, with many
+wrangling tasks. It is built to work directly with dataframes, with many
 common tasks optimized by being written in a compiled language (C++) (not all R
 packages are written in R!). 
 
@@ -67,7 +65,7 @@ data for plotting and use by different R functions. Sometimes we want data sets
 where we have one row per measurement. Sometimes we want a dataframe where each
 measurement type has its own column, and rows are instead more aggregated
 groups. Moving back and forth between these formats is nontrivial, and
-**`tidyr`** gives you tools for this and more sophisticated  data manipulation.
+**`tidyr`** gives you tools for this and more sophisticated data wrangling.
 
 But there are also packages available for a wide range of tasks including
 building plots (**`ggplot2`**, which we'll see later), downloading data from the
@@ -193,7 +191,7 @@ in the above example, we take the dataframe `interviews`, *then* we `filter`
 for rows with `village == "God"`, *then* we `select` columns `no_membrs` and
 `years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
-more complex manipulations of dataframes.
+more complex data wrangling operations. 
 
 If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
@@ -465,20 +463,24 @@ how they relate to these different types of data formats.
 ### Long and wide data formats 
 
 In the `interviews` data, each row contains the values of variables associated
-with each record collected (each interview in the villages), where the unique
-identifier for each row is the `key_ID`. Without the `key_ID` it would be 
-difficult to tell observations apart, since we have multiple observations 
-for each village, date combination (as seen below). 
+with each record collected (each interview in the villages), where it is stated 
+that the the `key_ID` was "added to provide a unique Id for each observation" 
+and the `instance_ID` "does this as well but it is not as convenient to use." 
+
+However, with some inspection, we notice that there are more than one row in the
+dataset with the same `key_ID` (as seen below). However, the `instanceID`s
+associated with these duplicate `key_ID`s are not the same. Thus, we should
+think of `instanceID` as the unique identifier for observations!
 
 ```{r, purl = FALSE}
 interviews %>% 
-  select(village, interview_date) %>% 
+  select(key_ID, village, interview_date, instanceID) %>% 
   tibble()
 ```
 
-We also notice that no `key_ID` was surveyed more than once. As seen in the code 
-below, for each interview date in each village no `key_ID`s are the same. Thus, 
-this format is what is called a "long" data format.
+As seen in the code below, for each interview date in each village no 
+`instanceID`s are the same. Thus, this format is what is called a "long" data
+format, where each observation occupies only one row in the dataframe.
 
 ```{r, purl = FALSE}
 interviews %>% 
