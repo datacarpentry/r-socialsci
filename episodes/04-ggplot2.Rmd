@@ -43,6 +43,30 @@ If not still in the workspace, load the data we saved in the previous lesson.
 interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 ```
 
+If you were unable to complete the previous lesson or did not save the data,
+then you can create it now.
+
+```{r, purl = FALSE}
+interviews_plotting <- interviews %>%
+  ## pivot wider by items_owned
+  separate_rows(items_owned, sep = ";") %>%
+  ## if there were no items listed, changing NA to no_listed_items
+  replace_na(list(items_owned = "no_listed_items")) %>%
+  mutate(items_owned_logical = TRUE) %>%
+  pivot_wider(names_from = items_owned, 
+              values_from = items_owned_logical, 
+              values_fill = list(items_owned_logical = FALSE)) %>%
+  ## pivot wider by months_lack_food
+  separate_rows(months_lack_food, sep = ";") %>%
+  mutate(months_lack_food_logical = TRUE) %>%
+  pivot_wider(names_from = months_lack_food, 
+              values_from = months_lack_food_logical, 
+              values_fill = list(months_lack_food_logical = FALSE)) %>%
+  ## add some summary columns
+  mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
+  mutate(number_items = rowSums(select(., bicycle:car)))
+```
+
 ## Plotting with **`ggplot2`**
 
 **`ggplot2`** is a plotting package that makes it simple to create complex plots
