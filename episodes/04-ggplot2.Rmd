@@ -11,7 +11,7 @@ objectives:
    - "Produce scatter plots, boxplots, and time series plots using ggplot."
    - "Set universal plot settings."
    - "Describe what faceting is and apply faceting in ggplot."
-   - "Modify the aesthetics of an existing ggplot plot (including axis labels and color)."
+   - "Modify the aesthetics of an existing ggplot plot (including axis labels and colour)."
    - "Build complex and customized plots from data in a data frame."
 keypoints:
    - "`ggplot2` is a flexible and useful tool for creating plots in R."
@@ -235,7 +235,7 @@ interviews_plotting %>%
                 height = 0.2)
 ```
 
-For our final change, we can also add colors for all the points by specifying 
+For our final change, we can also add colours for all the points by specifying 
 a `color` argument inside the `geom_jitter()` function:
 
 ```{r adding-colors, purl=FALSE}
@@ -247,12 +247,12 @@ interviews_plotting %>%
                 height = 0.2)
 ```
 
-To color each species in the plot differently, you could use a vector as an input 
+To colour each species in the plot differently, you could use a vector as an input 
 to the argument **`color`**.  However, because we are now mapping features of the
-data to a color, instead of setting one color for all points, the color of the 
+data to a colour, instead of setting one colour for all points, the colour of the 
 points now needs to be set inside a call to the **`aes`** function. When we map 
-a variable in our data to the color of the points, **`ggplot2`** will provide a
-different color corresponding to the different values of the variable. We will 
+a variable in our data to the colour of the points, **`ggplot2`** will provide a
+different colour corresponding to the different values of the variable. We will 
 continue to specify the value of **`alpha`**, **`width`**, and **`height`**
 outside of the **`aes`** function because we are using the same value for 
 every point. Here is an example where we color points by the **`village`** 
@@ -289,7 +289,7 @@ this trend does not appear to be different by village.
 > ## Exercise
 >
 > Use what you just learned to create a scatter plot of `rooms` by `village`
-> with the `respondent_wall_type` showing in different colors. Does this 
+> with the `respondent_wall_type` showing in different colours. Does this 
 > seem like a good way to display the relationship between these variables? 
 > What other kinds of plots might you use to show this type of data?
 >
@@ -377,7 +377,7 @@ hidden?
 > > ```
 > {: .solution}
 >
-> - Add color to the data points on your boxplot according to whether the
+> - Add colour to the data points on your boxplot according to whether the
 >   respondent is a member of an irrigation association (`memb_assoc`).
 >
 > > ## Solution
@@ -402,7 +402,7 @@ interviews_plotting %>%
     geom_bar()
 ```
 
-We can use the `fill` aesthetic for the `geom_bar()` geom to color bars by
+We can use the `fill` aesthetic for the `geom_bar()` geom to colour bars by
 the portion of each count that is from each village.
 
 ```{r barplot-stack}
@@ -659,7 +659,7 @@ percent_items %>%
 
 If you like the changes you created better than the default theme, you can save
 them as an object to be able to easily apply them to other plots you may create.
-We can also add `plot.title = element_text(hjust = 0.5)` to center the title:
+We can also add `plot.title = element_text(hjust = 0.5)` to centre the title:
 
 
 ```{r ggplot-custom-themes, purl=FALSE}
@@ -687,11 +687,11 @@ percent_items %>%
 > for inspiration. Here are some ideas:
 >
 > * See if you can make the bars white with black outline.
-> * Try using a different color palette (see
+> * Try using a different colour palette (see
 >   [http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)).
 {: .challenge}
 
-After creating your plot, you can save it to a file in your favorite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
+After creating your plot, you can save it to a file in your favourite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
 
 Instead, use the `ggsave()` function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`).
 
@@ -706,8 +706,8 @@ my_plot <- percent_items %>%
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
-    theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
-          axis.text.y = element_text(colour = "grey20", size = 12),
+    theme(axis.text.x = element_text(color = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+          axis.text.y = element_text(color = "grey20", size = 12),
           text = element_text(size = 16),
           plot.title = element_text(hjust = 0.5))
 
