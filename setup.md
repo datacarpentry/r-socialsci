@@ -100,3 +100,11 @@ instructions to install **`tidyverse`**.
 * After starting RStudio, at the console type:
   `install.packages("tidyverse")`
 
+* For reference, the lesson uses `SAFI_clean.csv`. The direct download link for
+this file is: <https://ndownloader.figshare.com/files/11492171>. To download
+from `R`:
+
+```{r, eval=TRUE,  message=FALSE, purl=FALSE}
+download.file("https://ndownloader.figshare.com/files/11492171",
+              "data/SAFI_clean.csv", mode = "wb")
+```
