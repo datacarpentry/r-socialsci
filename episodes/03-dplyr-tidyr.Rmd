@@ -127,14 +127,14 @@ select(interviews, village:respondent_wall_type)
 
 To choose rows based on a specific criteria, we can use the `filter()` function. 
 The arguments after the dataframe are the condition(s) we want for our final 
-dataframe to adhere to (e.g. village name is God). We can chain a series of 
+dataframe to adhere to (e.g. village name is Chirodzo). We can chain a series of 
 conditions together using commas between each condition.
 
 ```{r, purl = FALSE}
 # one condition
-filter(interviews, village == "God")
+filter(interviews, village == "Chirodzo")
 # multiple conditions
-filter(interviews, village == "God", rooms > 1, no_meals > 2)
+filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
 ```
 
 ## Pipes
@@ -146,7 +146,7 @@ With intermediate steps, you create a temporary dataframe and use
 that as input to the next function, like this:
 
 ```{r, purl = FALSE}
-interviews2 <- filter(interviews, village == "God")
+interviews2 <- filter(interviews, village == "Chirodzo")
 interviews_god <- select(interviews2, village:respondent_wall_type)
 ```
 
@@ -157,7 +157,7 @@ track of.
 You can also nest functions (i.e. one function inside of another), like this:
 
 ```{r, purl = FALSE}
-interviews_god <- select(filter(interviews, village == "God"), 
+interviews_god <- select(filter(interviews, village == "Chirodzo"), 
                          village:respondent_wall_type)
 ```
 
@@ -175,12 +175,12 @@ are made available via the **`magrittr`** package, installed automatically with
 
 ```{r, purl = FALSE}
 interviews %>%
-    filter(village == "God") %>%
+    filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
 ```
 
 In the above code, we use the pipe to send the `interviews` dataset first
-through `filter()` to keep rows where `village` is "God", then through
+through `filter()` to keep rows where `village` is "Chirodzo", then through
 `select()` to keep only the `no_membrs` and `years_liv` columns. Since `%>%`
 takes the object on its left and passes it as the first argument to the function
 on its right, we don't need to explicitly include the dataframe as an argument
@@ -188,7 +188,7 @@ to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
 in the above example, we take the dataframe `interviews`, *then* we `filter`
-for rows with `village == "God"`, *then* we `select` columns `no_membrs` and
+for rows with `village == "Chirodzo"`, *then* we `select` columns `no_membrs` and
 `years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
 more complex data wrangling operations. 
@@ -198,7 +198,7 @@ can assign it a new name:
 
 ```{r, purl = FALSE}
 interviews_god <- interviews %>%
-    filter(village == "God") %>%
+    filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
 
 interviews_god
@@ -484,7 +484,7 @@ format, where each observation occupies only one row in the dataframe.
 
 ```{r, purl = FALSE}
 interviews %>% 
-  filter(village == "God") %>% 
+  filter(village == "Chirodzo") %>% 
   select(key_ID, village, interview_date) %>% 
   head(n = 10) %>% 
   tibble()
