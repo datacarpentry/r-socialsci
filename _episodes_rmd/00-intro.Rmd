@@ -124,12 +124,12 @@ freely available to extend R's native capabilities.
 
 
 <figure>
-```{r rstudio-analogy, echo=FALSE, fig.cap="RStudio extends what R can do, and makes it easier to write R code and interact with R."}	
-knitr::include_graphics("../fig/r+rstudio-analogy.jpg")
+```{r rstudio-analogy, echo=FALSE, fig.show="hold", out.width="50%", fig.cap="RStudio extends what R can do, and makes it easier to write R code and interact with R."}	
+knitr::include_graphics(c("../fig/r-manual.jpeg", "../fig/r-automatic.jpeg"))
 ```
 <figcaption>
 RStudio extends what R can do, and makes it easier to write R code and interact
-with R. <a href="https://commons.wikimedia.org/w/index.php?curid=2447462">Left photo credit</a>; <a href="https://commons.wikimedia.org/w/index.php?curid=44599363">right photo credit</a>. 
+with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Top photo credit</a>; <a href="https://unsplash.com/photos/Wec3M4dY_LE">bottom photo credit</a>. 
 </figcaption>
 </figure>
 
