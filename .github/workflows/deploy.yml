@@ -13,6 +13,16 @@ jobs:
       RSPM: 'https://packagemanager.rstudio.com/cran/__linux__/bionic/latest'
 
     steps:
+
+      - name: Set up Ruby
+        uses: actions/setup-ruby@main
+        with:
+          ruby-version: '2.7.1'
+
+      - name: Install GitHub Pages, Bundler, and kramdown gems
+        run: |
+          gem install github-pages bundler kramdown
+
       - name: Checkout repo
         uses: actions/checkout@v2
 
