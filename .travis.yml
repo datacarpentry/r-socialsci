@@ -17,6 +17,8 @@ latex: false
 env:
   global:
     - MAKEFLAGS="-j 2"
+    - R_LIBS_USER=~/R/Library
+    - R_LIBS_SITE=/usr/local/lib/R/site-library:/usr/lib/R/site-library
 
 # Stages -----------------------------------------------------------------------
 
