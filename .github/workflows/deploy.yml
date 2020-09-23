@@ -51,6 +51,7 @@ jobs:
         run: make site
 
       - name: Deploy site
+        uses: maxheld83/ghpages@v0.3.0
         env:
           BUILD_DIR: _site/
           GH_PAT: ${{ secrets.GH_PAT }}
