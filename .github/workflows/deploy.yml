@@ -62,6 +62,7 @@ jobs:
 
       - name: Deploy site
         uses: maxheld83/ghpages@v0.3.0
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' && github.repository == 'datacarpentry/r-socialsci' }}
         env:
           BUILD_DIR: _site/
           GH_PAT: ${{ secrets.GH_PAT }}
