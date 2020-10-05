@@ -122,16 +122,26 @@ freely available to extend R's native capabilities.
 
 
 
-
 <figure>
-```{r rstudio-analogy, echo=FALSE, fig.cap="RStudio extends what R can do, and makes it easier to write R code and interact with R."}	
-knitr::include_graphics("../fig/r+rstudio-analogy.jpg")
+<div class="row">
+<div class="col-md-6">
+```{r rstudio-analogy, echo=FALSE, fig.show="hold", out.width="100%", fig.cap="RStudio extends what R can do, and makes it easier to write R code and interact with R."}
+knitr::include_graphics("../fig/r-manual.jpeg")
 ```
+</div>
+<div class="col-md-6">
+```{r rstudio-analogy-2, echo=FALSE, fig.show="hold", out.width="100%"}
+knitr::include_graphics("../fig/r-automatic.jpeg")
+```
+</div>
+</div>
 <figcaption>
 RStudio extends what R can do, and makes it easier to write R code and interact
-with R. <a href="https://commons.wikimedia.org/w/index.php?curid=2447462">Left photo credit</a>; <a href="https://commons.wikimedia.org/w/index.php?curid=44599363">right photo credit</a>. 
+with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Left photo credit</a>; <a href="https://unsplash.com/photos/Wec3M4dY_LE">Right photo credit</a>.
 </figcaption>
 </figure>
+
+
 
 ## A tour of RStudio
 
