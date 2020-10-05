@@ -103,10 +103,25 @@ library(tidyverse)
 interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 ```
 
-This statement creates a data frame but doesn't show any data because, as you might recall,
-assignments don't display anything. (Note, however, that `read_csv` may show informational
-text about the data frame that is created.) If we want to check that our data has been
-loaded, we can see the contents of the data frame by typing its name: `interviews`.
+
+If you were to type in the code above, it is likely that the `read.csv()` 
+function would appear in the automatically populated list of functions. This 
+function is different from the `read_csv()` function, as it is included in the 
+"base" packages that come pre-installed with R. Overall, `read.csv()` behaves 
+similar to `read_csv()`, with a few notable differences. First, `read.csv()` 
+coerces column names with spaces and/or special characters to different names 
+(e.g. `interview date` becomes `interview.date`). Second, `read.csv()` 
+stores data as a `data.frame`, where `read_csv()` stores data as a `tibble`. 
+We prefer tibbles because they have nice printing properties among other 
+desirable qualities. Read more about tibbles [here](https://tibble.tidyverse.org/).
+
+
+The second statement in the code above creates a data frame but doesn't output 
+any data because, as you might recall, assignments (`<-`) don't display
+anything. (Note, however, that `read_csv` may show informational
+text about the data frame that is created.) If we want to check that our data
+has been loaded, we can see the contents of the data frame by typing its name:
+`interviews` in the console.
 
 ```{r, results='hold', purl=FALSE}
 interviews
