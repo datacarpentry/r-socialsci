@@ -1,5 +1,5 @@
 ---
-title: "Data Wrangling with `dplyr` and `tidyr`"
+title: "Data Wrangling with dplyr and tidyr"
 keypoints:
 - Use the `dplyr` package to manipulate dataframes.
 - Use `select()` to choose variables from a dataframe.
