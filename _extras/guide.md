@@ -58,6 +58,16 @@ Then restart RStudio.
 
 ### Intro to R
 
+* Why use assignment arrows (<-) over equal signs? 
+Historically, the assignment arrow dates back to S. In S, the <- was inspired by
+APL, which had a key for <-. At that time, <- was used for variable assignment,
+because == didn't exist for equality comparisons. Instead, equality was tested
+with =. So, you needed a different variable for assignment.
+
+Fast forward to today, there really are only a few mechanical reasons why <- is
+preferred over =. Assignment ranks higher in operator precedence than =.
+If you wish to perform variable assignment inside a function, <- is the only
+option.
 * When going over the section on assignments, make sure to pause for at least 30
   seconds when asking "What do you think is the current content of the object
   `area_acres`? 123.5 or 6.175?". For learners with no programming experience,
