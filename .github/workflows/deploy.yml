@@ -29,7 +29,7 @@ jobs:
       - name: Setup R
         uses: r-lib/actions/setup-r@master
         with:
-          crayon.enabled: FALSE
+          crayon.enabled: 'FALSE'
 
       - name: Install needed packages
         run: |
