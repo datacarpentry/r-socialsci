@@ -1,0 +1,265 @@
+---
+title: "Code Handout"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.width = 3, 
+                  fig.height = 3, 
+                  message = FALSE, 
+                  warning = FALSE,
+                  eval = FALSE)
+
+```
+
+This document contains all of the functions that we have covered thus far in the
+course. It will be updated every week, after we've added new skills. Each 
+function is presented alongside an example of how it is used. 
+
+All of the examples below are in the context of the Palmer Penguins, found 
+[here (link)](https://allisonhorst.github.io/palmerpenguins/index.html). 
+
+
+
+## Packages
+
+- `library()` -- loads packages into your `R` session
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+
+
+## Inspecting Data
+
+- `glimpse()` -- shows a summary of the dataset, the number of rows and columns, 
+variable names, and the first 10 entries of each variable 
+```{r}
+glimpse(penguins)
+```
+
+
+
+## Working with Data
+
+- `<-` -- "assignment arrow", assigns a value (vector, dataframe, single value)
+to the name of a variable 
+```{r}
+penguins_2007 <- penguins %>% 
+  filter(year == 2007)
+```
+
+
+
+- `c()` -- the "concatenate" function combines inputs to form a vector, the 
+values have to be the same data type. 
+
+```{r}
+cat_variables <- c("Species", "Island", "Sex")
+```
+
+\newpage
+
+## Verbs of Data Wrangling
+
+- `select()` -- selects variables (columns) from a dataframe 
+```{r}
+penguins %>% 
+select(species)
+```
+
+- `filter()` -- filters observations (rows) out of / into a dataframe, where
+the inputs (arguments) are the conditions to be satisfied in the data that are
+kept 
+```{r}
+## It's nice to have a new line for each condition, so your code is easier to read!
+penguins %>% 
+filter(species == "Adelie",
+       body_mass_g > 3000,
+       year == 2008)
+
+```
+
+**Logical operators:** Filtering for certain observations (e.g. flights from a
+particular airport) is often of interest in data frames where we might want to
+examine observations with certain characteristics separately from the rest of
+the data. To do so, you can use the `filter` function and a series of **logical
+operators**. The most commonly used logical operators for data analysis are as
+follows:
+
+-   `==` means "equal to"
+-   `!=` means "not equal to"
+-   `>` or `<` means "greater than" or "less than"
+-   `>=` or `<=` means "greater than or equal to" or "less than or equal to"
+
+- `mutate()` -- creates new variables or modifies existing variables
+```{r}
+penguins %>% 
+  filter(is.na(bill_length_mm) != TRUE, 
+         is.na(bill_depth_mm) != TRUE) %>% 
+  mutate(body_mass_kg = body_mass_g / 1000)
+```
+
+
+- `group_by()` -- groups the dataframe based on levels of a categorical variable, 
+usually used alongside `summarize()`
+
+```{r, eval = FALSE}
+penguins %>% 
+  group_by(island)
+```
+
+
+- summarize()` -- creates data summaries of variables in a dataframe, for grouped 
+summaries use alongside `group_by()`
+
+```{r}
+penguins %>% 
+  filter(is.na(body_mass_g) != TRUE) %>% 
+  group_by(island) %>% 
+  summarize(mean_mass = mean(body_mass_g))  
+
+```
+
+
+- `ungroup()` -- removes the grouping of a dataframe, typically used after group
+summaries when additional ungrouped operations are required 
+```{r}
+penguins %>% 
+  filter(is.na(body_mass_g) != TRUE) %>% 
+  group_by(island) %>% 
+  summarize(mean_mass = mean(body_mass_g)) %>% 
+  ungroup() 
+```
+
+
+- `arrange()` -- orders a dataframe based on the values of a numerical variable, 
+paired with `desc()` to order in descending order
+
+```{r}
+penguins %>% 
+  filter(is.na(body_mass_g) != TRUE) %>% 
+  group_by(island) %>% 
+  summarize(mean_mass = mean(body_mass_g)) %>% 
+  arrange(desc(mean_mass))
+```
+
+
+- `%>%` -- the "pipe" operator, joins sequences of data wrangling steps together, 
+works with any function that has `data = ` as the first argument 
+```{r}
+penguins %>%
+  select(species, island, body_mass_g, sex, year) %>% 
+  filter(island ==   "Torgersen", 
+         is.na(body_mass_g) != TRUE) %>% 
+  group_by(species, year) %>% 
+  summarize(mean_mass = mean(body_mass_g),
+            median_mass = median(body_mass_g),
+            observations = n()) %>% 
+  arrange(desc(mean_mass))
+```
+
+
+## Other Data Wrangling Tools
+  
+- `count()` -- counts the number of observations (rows) of the different levels 
+of a categorical variable
+  * can add `sort = TRUE` to sort the table in descending order (similar to 
+  using `arrange(desc())` )
+```{r}
+penguins %>% 
+count(species)
+```
+
+- `mean()` -- finds the mean of a numerical variable, not resistant to `NA` values, 
+so either filter out prior or use `na.omit = TRUE` argument
+  * Other summary functions include:
+    +  `var()` -- find the variance of a numerical variable
+    +  `sd()` -- finds the standard deviation of a numerical variable
+    + `IQR()` -- find the innerquartile range (Q3 - Q1) of a numerical variable
+    + `median()` -- finds the median of a numerical variable 
+
+- `is.na()` -- returns a vector of `TRUE` and `FALSE` values corresponding to 
+whether a particular row of a variable was `NA` (missing)
+```{r}
+penguins %>% 
+  mutate(missing_weight = is.na(body_mass_g))
+```
+
+- `sample_n()` -- selects $n$ rows from the dataframe, based on the value of 
+`size` specified
+```{r}
+penguins %>% 
+  sample_n(size = 10)
+```
+
+- `replace_na()` -- replaces NA values with the value specified 
+  * The values to be replaced must be passed to the function (input) as a 
+  `list()` object. 
+```{r}
+penguins %>% 
+  replace_na(list(bill_length_mm = "no_measurement", 
+                  bill_depth_mm = "no_measurement")) %>% 
+  glimpse()
+```
+
+- `separate_rows()` -- separates a variable with multiple values based on the 
+delimiter specified. 
+  * Variables whose entries are stored as a list with commas or semicolons are 
+  great candidates for this function!
+  
+- `rowSums()` -- forms row sums for numeric variables 
+  * Note: In the lesson `rowSums()` was used on a `logical` variable, because
+  logical values can be numerically represented as 0 (FALSE) and 1 (TRUE)
+```{r}
+x <- tibble(x1 = 3, x2 = c(4:1, 2:5))
+rowSums(x)
+```
+
+
+## Pivoting Dataframes
+
+- `pivot_wider()` -- transforms a dataframe from long to wide format
+  * takes three principal arguments: 
+    1. the data
+    2. the *names_from* column variable whose values will become new column names
+    3. the *values_from* column variable whose values will fill the new column
+   variables.
+  * Further arguments include `values_fill` which, if set, fills in missing
+  values with the value provided.
+  
+```{r}
+wide <- penguins %>% 
+  mutate(island_logical = TRUE) %>% 
+  pivot_wider(names_from = species, 
+              values_from = island_logical, 
+              values_fill = list(island_logical = FALSE))
+
+glimpse(wide)
+```
+
+- `pivot_longer()` -- transforms a dataframe from wide to long format
+  * takes four principal arguments:
+  1. the data
+  2. *cols* are the names of the columns we use to fill the a new values variable
+   (or to drop).
+  3. the *names_to* column variable we wish to create from the *cols* provided.
+  4. the *values_to* column variable we wish to create and fill with values
+  associated with the *cols* provided.
+  
+```{r}
+wide %>% 
+  pivot_longer(cols = Adelie:Gentoo, 
+               names_to = "species", 
+               values_to = "island_logical")
+```
+
+## Extracting Data
+
+- `write_csv()` -- writes a dataframe to a csv file, output into the file path 
+specified
+
+```{r}
+write_csv(wide, path = "data/penguins_wide.csv")
+```
+
