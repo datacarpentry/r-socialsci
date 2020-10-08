@@ -1,0 +1,207 @@
+---
+title: "Code Handout - Starting with Data"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.width = 3, 
+                  fig.height = 3, 
+                  message = FALSE, 
+                  warning = FALSE,
+                  eval = FALSE)
+
+```
+
+This document contains all of the functions that were covered in the 
+_Introduction to R_ workshop. Each function is presented alongside an example of
+how it can be used. 
+
+All of the examples below are in the context of the Palmer Penguins, found 
+[here (link)](https://allisonhorst.github.io/palmerpenguins/index.html). 
+
+
+## Packages
+
+- `library()` -- loads packages into your `R` session
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(lubridate)
+```
+
+
+## Importing Data
+- `read_csv()` -- function to import a csv file. 
+  * First argument is the path to the data, passed as a character 
+  (inside quotations). 
+  * You can specify what values should be considered missing, using the `na`
+  argument. 
+```{r}
+penguins <- read_csv("data/penguins.csv")
+```
+
+
+## Inspecting Data
+
+- `dim()` - returns a vector with the number of rows as the first element,
+and the number of columns as the second element (the **dim**ensions of
+the object)
+```{r}
+dim(penguins)
+```
+
+- `nrow()` - returns the number of rows
+- `ncol()` - returns the number of columns
+```{r}
+nrow(penguins)
+ncol(penguins)
+```
+
+- `head()` - displays the first 6 rows of the dataframe
+- `tail()` - displays the last 6 rows of the dataframe
+```{r}
+head(penguins)
+tail(penguins)
+```
+
+- `names()` - returns the all of the names of an object (both row and column) 
+- `colnames()` - returns column names for dataframes (without row names)
+```{r}
+names(penguins)
+colnames(penguins)
+```
+
+- `glimpse()` - provides a preview of the data, where column names are presented 
+with their associated data types, and the entries from each column are printed 
+in each row 
+```{r}
+glimpse(penguins)
+```
+
+- `str()` - returns the structure of the object and information about the class,
+the names and data types of each column, and a preview of the first entries of
+each column
+```{r}
+str(penguins)
+```
+
+- `summary()` - provides summary statistics for each column
+  * Note: summary statistics for character variables are not meaningful, as they 
+  simply state the number of observations (length) of the variable
+```{r}
+summary(penguins)
+```
+
+
+## Subsetting Data
+
+- `[]` -- selects rows and columns from a dataframe
+  * The first entry is the row number, the second entry is the column number(s),
+  and they are separated with a comma. 
+```{r}
+## Selects the element in the first row, second column
+penguins[1, 2]
+
+## Selects every element in the fourth row
+penguins[4, ]
+
+## Selects every element in the third column
+penguins[, 3]
+```
+
+- `[[]]` -- selects a column from a dataframe
+  * Inside the brackets you can pass either the number of the column or the 
+  name of the column (in quotations)
+```{r}
+penguins[[1]]
+
+penguins[["island"]]
+```
+
+- `$` -- selects a column from a dataframe, where the name of the dataframe is 
+on the left and the name of the column is on the right
+```{r}
+penguins$body_mass_g
+```
+
+
+## Working with Different Data Types
+
+- `factor()` -- creates a categorical variable from a character or numeric 
+variable, variable has a factor datatype
+  * the values (level) of the factor levels is specified in the `levels` 
+  argument, where the levels must be specified in a vector (using `c()`)
+  * Note: the order you wish for the levels to appear is how you should list 
+  them in the `levels` argument, you can also specify `ordered = TRUE` to 
+  ensure the levels remain in this order
+```{r}
+penguins$year_fct <- factor(penguins$year, 
+                               levels = c("2007", "2008", "2009"), 
+                            ordered = TRUE)
+```
+
+- `as.factor()` -- creates a categorical variable from a character or numeric 
+variable, variable has a factor datatype
+  * does not allow for you to specify the order of the levels
+  * defaults to alphabetical ordering for factor levels
+```{r}
+penguins$year_fct <- as.factor(penguins$year)
+```
+
+- `levels()` -- returns the levels of a variable with a factor datatype, in the 
+order they were stored
+  * Note: this function will not work for character datatypes
+```{r}
+levels(penguins$year_fct)
+```
+
+- `nlevels()` -- returns the number of levels of a variable with a factor
+datatype
+  * Note: this function will not work for character datatypes
+```{r}
+nlevels(penguins$year_fct)
+```
+
+- `as.character()` -- creates a character variable from a numeric or factor 
+variable
+```{r}
+penguins$species_chr <- as.character(penguins$species)
+```
+
+- `ymd()` -- transforms dates stored as character or numeric variables to dates
+  * Note: to use this function, dates must be stored in year-month-day format
+  * The function does well with heterogeneous formats (as seen below), but
+  formats where some of the entries are not in double digits may not be parsed 
+  correctly.
+```{r}
+x <- c("2009-01-01", "2009-01-02", "2009-01-03")
+ymd(x)
+```
+
+- `day()` -- extracts the day (number) of a date variable 
+```{r}
+day(x)
+```
+
+- `month()` -- extracts the month (number) of a date variable
+```{r}
+month(x)
+```
+
+- `year()` -- extracts the year of a date variable
+```{r}
+year(x)
+```
+
+
+## Visualizing Data
+
+- `plot()` -- a generic function for plotting R objects
+  * In this lesson `plot()` was used to create bargraphs of categorical
+  variables.
+```{r}
+plot(penguins$species)
+```
+
+
