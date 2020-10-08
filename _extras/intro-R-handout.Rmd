@@ -1,0 +1,188 @@
+---
+title: "Code Handout - Introduction to R"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.width = 3, 
+                  fig.height = 3, 
+                  message = FALSE, 
+                  warning = FALSE,
+                  eval = FALSE)
+
+```
+
+This document contains all of the functions that were covered in the 
+_Introduction to R_ workshop. Each function is presented alongside an example of
+how it can be used. 
+
+
+## Creating Objects 
+
+- `<-` -- "assignment arrow", assigns a value (vector, dataframe, single value)
+to the name of a variable 
+```{r}
+
+x <- 3
+y <- c(1, 2, 3)
+z <- x + y
+```
+
+- `c()` -- the "concatenate" function combines inputs to form a vector, the 
+values have to be the same data type. 
+```{r}
+animals <- c("bird", "cat", "dog")
+numbers <- c(1, 14, 57, 89)
+logicals <- c(TRUE, FALSE, TRUE, TRUE)
+```
+
+
+## Inspecting Objects
+
+- `str()` -- compact display of the structure of an R object 
+```{r}
+str(animals)
+```
+
+- `class()` -- returns the type of element of any R object
+```{r}
+class(logicals)
+```
+
+- `typeof()` -- returns the data type or storage mode of any R object
+```{r}
+typeof(numbers)
+```
+
+
+## Functions in R 
+
+- `args()` -- returns the arguments of a function
+```{r}
+args(round)
+```
+
+- named arguments -- the name of the argument the function expects
+  * You can choose to not name your arguments, __if__ you know the __exact__ 
+  order they should be in! 
+  * However, we generally discourage this.
+```{r}
+## Either of these work, since the digits argument is named explicitly.
+round(3.14159, digits = 2)
+round(digits = 2, 3.14159)
+
+## This does not work, since the arguments are not named and in the incorrect order. 
+round(2, 3.14159)
+```
+
+
+## Functions to Summarize Data
+
+- `sqrt()` -- returns the square root of a numeric variable
+```{r}
+sqrt(numbers)
+```
+
+- `mean()` -- returns the mean of a numeric variable
+  * You can add the `na.rm` argument, to remove `NA` values before calculating 
+  the mean.
+```{r}
+sqrt(numbers)
+```
+
+- `max()` -- returns the maximum of a numeric variable
+  * You can add the `na.rm` argument, to remove `NA` values before calculating 
+  the max.
+```{r}
+sqrt(numbers)
+```
+
+- `sum()` -- returns the sum of a numeric variable
+  * You can add the `na.rm` argument, to remove `NA` values before calculating 
+  the sum.
+```{r}
+sqrt(numbers)
+```
+
+- `length()` -- returns the length of a vector (of any datatype)
+```{r}
+length(animals)
+```
+
+
+## Subsetting Data
+
+- `[]` -- used to subset elements from a vector
+```{r}
+animals[3]
+## selects the third element
+
+animals[2:3]
+## selects the second and third element
+
+animals[c(1, 3)]
+## selects the first and third element
+```
+
+- relational operators -- return logical values indicating where a relation is 
+satisfied. The most commonly used logical operators for data analysis are as follows:
+  * `==` means "equal to"
+  * `!=` means "not equal to"
+  * `>` or `<` means "greater than" or "less than"
+  * `>=` or `<=` means "greater than or equal to" or "less than or equal to"
+```{r}
+animals == "dog"
+
+animals != "cat"
+
+numbers > 4
+
+numbers <= 12
+```
+
+
+- logical operators -- join subset criteria together 
+  * `&` means "and" -- where two criteria must **both** be satisfied
+  * `|` means "or" -- where at least one criteria must be satisfied
+```{r}
+numbers > 4 & numbers < 20
+
+animals == "dog" | animals == "cat"
+```
+  
+
+- `%in%` -- the "inclusion operator", allows you to test if any of the elements
+of a search vector (on the left hand side) are found in the target vector (on
+the right hand side). 
+  * The levels of the target vector must be included in a vector (`c()`). 
+```{r}
+possessions <- c("car", "bicycle", "radio", "television", "mobile_phone")
+
+possessions %in% c("car", "bicycle", "motorcycle")
+```
+
+
+## Missing Data 
+
+- `is.na()` -- returns a vector of logical values indicating which elements of 
+a vector have `NA` values
+  * Often combined with `!`, where the `!` negates the previous statement (e.g. 
+  `!TRUE` is equal to `FALSE`). 
+```{r}
+missing <- c(1, 3, NA, 7, 12, NA)
+
+is.na(missing)
+
+!is.na(missing)
+```
+
+- `na.omit()` -- removes the observations with `NA` values
+```{r}
+na.omit(missing)
+```
+
+- `complete.cases()` -- returns a vector of logical values indicating which
+elements of a vector **are not** missing (`NA`) values
+```{r}
+complete.cases(missing)
+```
+
