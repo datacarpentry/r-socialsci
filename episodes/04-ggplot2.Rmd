@@ -491,9 +491,9 @@ a title.
 percent_wall_type %>%
     ggplot(aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
-    labs(title="Proportion of wall type by village",
-         x="Village",
-         y="Percent")
+    labs(title = "Proportion of wall type by village",
+         x = "Village",
+         y = "Percent")
 ```
 
 ## Faceting
@@ -547,7 +547,8 @@ calculate the percentage of people in each village who own each item:
 
 ```{r percent-items-data}
 percent_items <- interviews_plotting %>%
-    pivot_longer(cols = bicycle:no_listed_items, names_to = "items", values_to = "items_owned_logical") %>%
+    pivot_longer(cols = bicycle:no_listed_items, names_to = "items", 
+                 values_to = "items_owned_logical") %>%
     filter(items_owned_logical) %>%
     count(items, village) %>%
     ## add a column with the number of people in each village
@@ -628,7 +629,7 @@ percent_items %>%
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
-    theme(text=element_text(size = 16))
+    theme(text = element_text(size = 16))
 ```
 
 Note that it is also possible to change the fonts of your plots. If you are on
@@ -652,7 +653,8 @@ percent_items %>%
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
-    theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+    theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45,
+                                     hjust = 0.5, vjust = 0.5),
           axis.text.y = element_text(colour = "grey20", size = 12),
           text = element_text(size = 16))
 ```
@@ -663,7 +665,9 @@ We can also add `plot.title = element_text(hjust = 0.5)` to centre the title:
 
 
 ```{r ggplot-custom-themes, purl=FALSE}
-grey_theme <- theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+grey_theme <- theme(axis.text.x = element_text(colour = "grey20", size = 12,
+                                               angle = 45, hjust = 0.5,
+                                               vjust = 0.5),
                     axis.text.y = element_text(colour = "grey20", size = 12),
                     text = element_text(size = 16),
                     plot.title = element_text(hjust = 0.5))
@@ -706,7 +710,8 @@ my_plot <- percent_items %>%
          x = "Village",
          y = "Percent of Respondents") +
     theme_bw() +
-    theme(axis.text.x = element_text(color = "grey20", size = 12, angle = 45, hjust = 0.5, vjust = 0.5),
+    theme(axis.text.x = element_text(color = "grey20", size = 12, angle = 45,
+                                     hjust = 0.5, vjust = 0.5),
           axis.text.y = element_text(color = "grey20", size = 12),
           text = element_text(size = 16),
           plot.title = element_text(hjust = 0.5))
