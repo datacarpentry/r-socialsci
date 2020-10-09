@@ -455,9 +455,7 @@ interviews %>%
 
 ## Reshaping with pivot_wider() and pivot_longer()
 
-In the [spreadsheet
-lesson](http://www.datacarpentry.org/spreadsheets-socialsci/), we discussed how
-to structure our data leading to the three rules defining a "tidy" dataset:
+There are essentially three rules that define a "tidy" dataset:
 
 1. Each variable has its own column
 2. Each observation has its own row
@@ -483,8 +481,7 @@ think of `instanceID` as the unique identifier for observations!
 
 ```{r, purl = FALSE}
 interviews %>% 
-  select(key_ID, village, interview_date, instanceID) %>% 
-  tibble()
+  select(key_ID, village, interview_date, instanceID) 
 ```
 
 As seen in the code below, for each interview date in each village no 
@@ -494,9 +491,8 @@ format, where each observation occupies only one row in the dataframe.
 ```{r, purl = FALSE}
 interviews %>% 
   filter(village == "Chirodzo") %>% 
-  select(key_ID, village, interview_date) %>% 
-  head(n = 10) %>% 
-  tibble()
+  select(key_ID, village, interview_date, instanceID) %>% 
+  sample_n(size = 10) 
 ```
 
 We notice that the layout or format of the `interviews` data is in a format that
