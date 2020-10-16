@@ -75,12 +75,13 @@ json_data <- read_json(path='data/SAFI.json', simplifyVector = TRUE)
 ```
 
 
-
-Now we can see we have this json data in a dataframe format. Have a glimpse of it with the `head()` function:
+Now we can see we have this json data in a dataframe format. For consistency with the rest of
+the lesson, let's coerce it to be a tibble and use `glimpse` to take a peek inside:
 
 ```{r}
 
-head(json_data)
+json_data <- json_data %>% as_tibble()
+glimpse(json_data)
 
 ```
 
@@ -113,7 +114,7 @@ If we try to write our json_data dataframe to a csv as we would usuall in a regu
 
 ```{r, eval = FALSE}
 
-write.csv(json_data, file = "SAFI_from_JSON.csv")
+write_csv(json_data, file = "SAFI_from_JSON.csv")
 
 ```
 
@@ -131,7 +132,7 @@ Now you can write this to a csv file:
 
 ```{r, eval = TRUE}
 
-write.csv(flattened_json_data, file = "data_output/SAFI_from_JSON.csv")
+write_csv(flattened_json_data, file = "data_output/SAFI_from_JSON.csv")
 
 ```
 
@@ -144,7 +145,7 @@ You can also write out the individual nested dataframes to a csv. For example:
 
 ```{r}
 
-write.csv(json_data$F_liv[[1]], file = "data_output/F_liv_row1.csv")
+write_csv(json_data$F_liv[[1]], file = "data_output/F_liv_row1.csv")
 
 ```
 
