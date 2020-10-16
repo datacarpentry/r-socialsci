@@ -874,7 +874,7 @@ write_csv(interviews_plotting, path = "data_output/interviews_plotting.csv")
 
 ```{r, purl = FALSE, eval = TRUE, echo = FALSE}
 if (!dir.exists("data_output")) dir.create("data_output")
-write_csv(interviews_plotting, path = "data_output/interviews_plotting.csv")
+write_csv(interviews_plotting, file = "data_output/interviews_plotting.csv")
 ```
 
 {% include links.md %}
