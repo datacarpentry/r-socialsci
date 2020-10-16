@@ -498,4 +498,31 @@ interviews
 
 Notice the three new columns at the end of our data frame.
 
+In our example above, the `interview_date` column was read in correctly as a `Date` variable but generally that is not the case. Date columns are often read in as `character` variables and one can use the `as_date()` function to convert them to the appropriate `Date/POSIXct`format. 
+
+Let's say we have a vector of dates in character format:
+
+```{r, purl=FALSE}
+char_dates <- c("7/31/2012","8/9/2014",'4/30/2106')
+str(char_dates)
+```
+
+We can convert this vector to dates as : 
+
+```{r, purl=FALSE}
+as_date(char_dates, format = "%m/%d/%y")
+```
+
+Argument `format` tells the function the order to parse the characters and identify the month, day and year. A wrong format can lead to parsing errors or incorrect results.
+
+For example,
+```{r, purl=FALSE}
+as_date(char_dates, format = "%d/%m/%y")
+```
+
+We can also use functions `ymd()`, `mdy()` or `dmy()` to convert character variables to date.
+```{r, purl=FALSE}
+mdy(char_dates)
+```
+
 {% include links.md %}
