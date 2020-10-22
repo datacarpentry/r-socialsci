@@ -182,10 +182,10 @@ Summary:
 * `str(interviews)` - structure of the object and information about the class,
 length and content of each column
 * `summary(interviews)` - summary statistics for each column
+* `glimpse(interviews)` - like `str()` it returns the class of each column and tries to show as much data as possible. Unlike the other inspecting functions listed above, `glimpse()` is not a "base R" function so you need to have the tibble package or the tidyverse installed to be able to run it. 
 
 Note: most of these functions are "generic." They can be used on other types of
 objects besides data frames.
-
 
 
 ## Indexing and subsetting data frames
