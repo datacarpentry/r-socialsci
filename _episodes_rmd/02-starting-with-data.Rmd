@@ -183,7 +183,7 @@ Summary:
 length and content of each column
 * `summary(interviews)` - summary statistics for each column
 * `glimpse(interviews)` - returns the number of columns and rows of the tibble,
-the class of each column and previews as many values will fit on the screen.
+the names and class of each column, and previews as many values will fit on the screen.
 Unlike the other inspecting functions listed above, `glimpse()` is not a "base R"
 function so you need to have the `dplyr` or `tibble` packages loaded to be able
 to execute it.
