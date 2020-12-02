@@ -126,7 +126,8 @@ To write out as a csv, we will need to "flatten" these columns. One thing you ca
 
 ```{r}
 
-flattened_json_data <- apply(json_data,2,as.character)
+flattened_json_data <- apply(json_data,2,as.character) %>%
+  as_tibble()
 
 ```
 
