@@ -78,7 +78,8 @@ Cheat sheet of functions used in the lessons
 ### Lesson 4 -- Data Visualization with ggplot2
 
   * `read_csv()` # load a csv formatted file into R memory
-  * `ggplot2(data= , aes(x= , y= )) + geom_point( ) + facet_wrap () + theme_bw() + theme() `
+  * `ggplot2(data= , aes(x= , y= )) + geom_point( ) + facet_wrap () +
+    theme_bw() + theme() ` # skeleton for creating plot layers
   * `aes()` # by selecting the variables to be plotted and the variables to
     define the presentation such as plotting size, shape color, etc.
   * `geom_` # graphical representation of the data in the plot (points, lines, bars). To add a geom to the plot use + operator
