@@ -24,8 +24,10 @@ source: Rmd
 
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
-knitr_fig_path("0x-")
+knitr_fig_path("05-")
 source("../bin/download_data.R")
+## load the tidyverse
+library(tidyverse)
 ```
 
 ## The JSON data format
@@ -76,7 +78,8 @@ json_data <- read_json(path='data/SAFI.json', simplifyVector = TRUE)
 
 
 Now we can see we have this json data in a dataframe format. For consistency with the rest of
-the lesson, let's coerce it to be a tibble and use `glimpse` to take a peek inside:
+the lesson, let's coerce it to be a tibble and use `glimpse` to take a peek
+inside (these functions were loaded by `library(tidyverse)`):
 
 ```{r}
 
