@@ -46,7 +46,8 @@ interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 If you were unable to complete the previous lesson or did not save the data,
 then you can create it now.
 
-```{r, purl = FALSE}
+```{r, purl = FALSE, eval=FALSE}
+## NOT RUN
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
   separate_rows(items_owned, sep = ";") %>%
