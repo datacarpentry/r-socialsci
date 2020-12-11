@@ -345,7 +345,7 @@ You can see if you have a package installed by looking in the `packages` tab
 (on the lower-right by default). You can also type the command 
 `installed.packages()` into the console and examine the output.
 
-![Packages pane}(/fig/packages.png)
+![Packages pane](/fig/packages.png)
 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab, click the ‘Install’ icon and start typing the
