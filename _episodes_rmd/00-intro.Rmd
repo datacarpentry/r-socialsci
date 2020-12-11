@@ -338,8 +338,14 @@ In addition to the core R installation, there are in excess of
 functionality of R. Many of these have been written by R users and
 have been made available in central repositories, like the one
 hosted at CRAN, for anyone to download and install into their own R
-environment. In the course of this lesson we will be making use of
-several of these packages, such as 'ggplot2' and 'dplyr'.
+environment. You should have already installed the packages 'ggplot2'
+and 'dplyr. If you have not, please do so now using these instructions. 
+
+You can see if you have a package installed by looking in the `packages` tab 
+(on the lower-right by default). You can also type the command 
+`installed.packages()` into the console and examine the output.
+
+![Packages pane}(/fig/packages.png)
 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab, click the ‘Install’ icon and start typing the
@@ -359,13 +365,20 @@ dependencies’ option makes sure that this happens.
 
 > ## Exercise
 >
-> Use the install option from the packages tab to install the ‘tidyverse’ package.
+> Use both the Console and the Packages tab to confirm that you have the tidyverse
+> installed.
 > 
 > > ## Solution
-> > From the packages tab, click ‘Install’ from the toolbar and type ‘tidyverse’ into the textbox, then click ‘install’.
-> > The ‘tidyverse’ package is really a package of packages, including 'ggplot2' and 'dplyr', both of which require other packages to run correctly. All of these packages will be installed automatically. 
-> > Depending on what packages have previously been installed in your R environment, the install of ‘tidyverse’ could be very quick or could take several minutes.
-> > As the install proceeds, messages relating to its progress will be written to the console. You will be able to see all of the packages which are actually being installed.
+> > Scroll through packages tab down to ‘tidyverse’.  You can also type a few 
+> > characters into the searchbox. 
+> > The ‘tidyverse’ package is really a package of packages, including 
+> > 'ggplot2' and 'dplyr', both of which require other packages to run correctly. 
+> > All of these packages will be installed automatically. Depending on what 
+> > packages have previously been installed in your R environment, the install of 
+> > ‘tidyverse’ could be very quick or could take several minutes. As the install 
+> > proceeds, messages relating to its progress will be written to the console. 
+> > You will be able to see all of the packages which are actually being 
+> > installed.
 > {: .solution}
 {: .challenge}
 
