@@ -547,24 +547,29 @@ bar plots where each plot is a particular item. First we need to
 calculate the percentage of people in each village who own each item:
 
 ```{r percent-items-data}
-percent_items <- interviews_plotting %>%
-    pivot_longer(cols = bicycle:no_listed_items, names_to = "items", 
-                 values_to = "items_owned_logical") %>%
-    filter(items_owned_logical) %>%
-    count(items, village) %>%
-    ## add a column with the number of people in each village
-    mutate(people_in_village = case_when(village == "Chirodzo" ~ 39,
-                                         village == "God" ~ 43,
-                                         village == "Ruaca" ~ 49)) %>%
-    mutate(percent = (n / people_in_village) * 100)
+percent_items <- interviews_plotting %>% 
+    group_by(village) %>%
+    summarize(across(bicycle:no_listed_items, ~ sum(.x) / n() * 100)) %>% 
+    pivot_longer(bicycle:no_listed_items, names_to = "items", values_to = "percent")
 ```
 
-To calculate this percentage data frame, we needed to use the `case_when()`
-parameter within `mutate()`. In our earlier examples, we knew that each house
-was one and only one of the types specified. However, people can (and do) own
-more than one item, so we can't use the sum of the count column to give us the
-denominator in our percentage calculation. Instead, we need to specify the
-number of respondents in each village. Using this data frame, we can now create
+To calculate this percentage data frame, we needed to use the `across()` option 
+within a `summarize()` calculation. Unlike the previous example where there was 
+a single wall type variable, and each house was exactly one of the types 
+specified, people can (and do) own more than one item, so the percentage 
+calculation needs to be repeated for each item - i.e. each column representing 
+an item.
+
+Here, combining `summarize()` with `across()` allows us to specify first, the 
+columns to be summarized (`bicycle:no_listed_items`) and then the calculation. 
+Because there is no built-in function (e.g. `mean()`) to compute the percentage 
+in each group, we define our own: `~` indicates that we are defining a formula, 
+`sum(.x)` gives the number of people owning that item by counting the `TRUE` 
+values, and `n()` gives the current group size.
+
+After the `summarize()` operation, we have a table of percentages with each item 
+in its own column, so a `pivot_longer()` is required to transform the table into 
+a form suitable for plotting. Using this data frame, we can now create
 a multi-paneled bar plot.
 
 ```{r percent-items-barplot}
