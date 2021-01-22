@@ -156,7 +156,7 @@ that as input to the next function, like this:
 
 ```{r, purl = FALSE}
 interviews2 <- filter(interviews, village == "Chirodzo")
-interviews_god <- select(interviews2, village:respondent_wall_type)
+interviews_ch <- select(interviews2, village:respondent_wall_type)
 ```
 
 This is readable, but can clutter up your workspace with lots of objects that
@@ -166,7 +166,7 @@ track of.
 You can also nest functions (i.e. one function inside of another), like this:
 
 ```{r, purl = FALSE}
-interviews_god <- select(filter(interviews, village == "Chirodzo"), 
+interviews_ch <- select(filter(interviews, village == "Chirodzo"), 
                          village:respondent_wall_type)
 ```
 
@@ -206,14 +206,15 @@ If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
 
 ```{r, purl = FALSE}
-interviews_god <- interviews %>%
+interviews_ch <- interviews %>%
     filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
 
-interviews_god
+interviews_ch
+
 ```
 
-Note that the final dataframe (`interviews_god`) is the leftmost part of this
+Note that the final dataframe (`interviews_ch`) is the leftmost part of this
 expression.
 
 > ## Exercise
