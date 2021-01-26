@@ -50,16 +50,16 @@ from your data. It pairs nicely with **`tidyr`** which enables you to swiftly
 convert between different data formats (long vs. wide) for plotting and analysis.
 
 Similarly to **`readr`**, **`dplyr`** and **`tidyr`** are also part of the
-tidyverse. These packages were loaded in R's memory when we called 
+tidyverse. These packages were loaded in R's memory when we called
 `library(tidyverse)` earlier.
 
 > ## Note
 >
-> The packages in the tidyverse, namely **`dplyr`**, **`tidyr`** and **`ggplot2`** 
-> accept both the British (e.g. *summarise*) and American (e.g. *summarize*) spelling 
+> The packages in the tidyverse, namely **`dplyr`**, **`tidyr`** and **`ggplot2`**
+> accept both the British (e.g. *summarise*) and American (e.g. *summarize*) spelling
 > variants of different function and option names. For this lesson, we utilize
 > the American spellings of different functions; however, feel free to use
-> the regional variant for where you are teaching. 
+> the regional variant for where you are teaching.
 {: .callout}
 
 ## What is an R package?
@@ -67,7 +67,7 @@ tidyverse. These packages were loaded in R's memory when we called
 The package **`dplyr`** provides easy tools for the most common data
 wrangling tasks. It is built to work directly with dataframes, with many
 common tasks optimized by being written in a compiled language (C++) (not all R
-packages are written in R!). 
+packages are written in R!).
 
 The package **`tidyr`** addresses the common problem of wanting to reshape your
 data for plotting and use by different R functions. Sometimes we want data sets
@@ -79,7 +79,7 @@ groups. Moving back and forth between these formats is nontrivial, and
 But there are also packages available for a wide range of tasks including
 building plots (**`ggplot2`**, which we'll see later), downloading data from the
 NCBI database, or performing statistical analysis on your data set. Many
-packages such as these are housed on, and downloadable from, the 
+packages such as these are housed on, and downloadable from, the
 **C**omprehensive **R** **A**rchive **N**etwork (CRAN) using `install.packages`.
 This function makes the package accessible by your R installation with the
 command `library()`, as you did with `tidyverse` earlier.
@@ -123,9 +123,9 @@ We're going to learn some of the most common **`dplyr`** functions:
 
 To select columns of a dataframe, use `select()`. The first argument to this
 function is the dataframe (`interviews`), and the subsequent arguments are the
-columns to keep, separated by commas. Alternatively, if you are selecting 
-columns adjacent to each other, you can use a `:` to select a range of columns, 
-read as "select columns from ___ to ___." 
+columns to keep, separated by commas. Alternatively, if you are selecting
+columns adjacent to each other, you can use a `:` to select a range of columns,
+read as "select columns from ___ to ___."
 
 ```{r, results = 'hide', purl = FALSE}
 # to select columns throughout the dataframe
@@ -134,9 +134,9 @@ select(interviews, village, no_membrs, months_lack_food)
 select(interviews, village:respondent_wall_type)
 ```
 
-To choose rows based on a specific criteria, we can use the `filter()` function. 
-The arguments after the dataframe are the condition(s) we want for our final 
-dataframe to adhere to (e.g. village name is Chirodzo). We can chain a series of 
+To choose rows based on a specific criteria, we can use the `filter()` function.
+The arguments after the dataframe are the condition(s) we want for our final
+dataframe to adhere to (e.g. village name is Chirodzo). We can chain a series of
 conditions together using commas between each condition.
 
 ```{r, purl = FALSE}
@@ -166,7 +166,7 @@ track of.
 You can also nest functions (i.e. one function inside of another), like this:
 
 ```{r, purl = FALSE}
-interviews_ch <- select(filter(interviews, village == "Chirodzo"), 
+interviews_ch <- select(filter(interviews, village == "Chirodzo"),
                          village:respondent_wall_type)
 ```
 
@@ -200,7 +200,7 @@ in the above example, we take the dataframe `interviews`, *then* we `filter`
 for rows with `village == "Chirodzo"`, *then* we `select` columns `no_membrs` and
 `years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
-more complex data wrangling operations. 
+more complex data wrangling operations.
 
 If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
@@ -264,8 +264,8 @@ interviews %>%
 ```
 
 The `!` symbol negates the result of the `is.na()` function. Thus, if `is.na()`
-returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol 
-negates this and says we only want values of `FALSE`, where `memb_assoc` **is 
+returns a value of `TRUE` (because the `memb_assoc` is missing), the `!` symbol
+negates this and says we only want values of `FALSE`, where `memb_assoc` **is
 not** missing.
 
 > ## Exercise
@@ -462,18 +462,18 @@ There are essentially three rules that define a "tidy" dataset:
 2. Each observation has its own row
 3. Each value must have its own cell
 
-In this section we will explore how these rules are linked to the different 
+In this section we will explore how these rules are linked to the different
 data formats researchers are often interested in: "wide" and "long". This
 tutorial will help you efficiently transform your data shape regardless of
 original format. First we will explore qualities of the `interviews` data and
-how they relate to these different types of data formats. 
+how they relate to these different types of data formats.
 
-### Long and wide data formats 
+### Long and wide data formats
 
 In the `interviews` data, each row contains the values of variables associated
-with each record collected (each interview in the villages), where it is stated 
-that the the `key_ID` was "added to provide a unique Id for each observation" 
-and the `instance_ID` "does this as well but it is not as convenient to use." 
+with each record collected (each interview in the villages), where it is stated
+that the the `key_ID` was "added to provide a unique Id for each observation"
+and the `instance_ID` "does this as well but it is not as convenient to use."
 
 However, with some inspection, we notice that there are more than one row in the
 dataset with the same `key_ID` (as seen below). However, the `instanceID`s
@@ -481,19 +481,19 @@ associated with these duplicate `key_ID`s are not the same. Thus, we should
 think of `instanceID` as the unique identifier for observations!
 
 ```{r, purl = FALSE}
-interviews %>% 
-  select(key_ID, village, interview_date, instanceID) 
+interviews %>%
+  select(key_ID, village, interview_date, instanceID)
 ```
 
-As seen in the code below, for each interview date in each village no 
+As seen in the code below, for each interview date in each village no
 `instanceID`s are the same. Thus, this format is what is called a "long" data
 format, where each observation occupies only one row in the dataframe.
 
 ```{r, purl = FALSE}
-interviews %>% 
-  filter(village == "Chirodzo") %>% 
-  select(key_ID, village, interview_date, instanceID) %>% 
-  sample_n(size = 10) 
+interviews %>%
+  filter(village == "Chirodzo") %>%
+  select(key_ID, village, interview_date, instanceID) %>%
+  sample_n(size = 10)
 ```
 
 We notice that the layout or format of the `interviews` data is in a format that
@@ -503,35 +503,35 @@ adheres to rules 1-3, where
 - each row is an observation
 - each value has its own cell
 
-This is called a "long" data format. But, we notice that each column represents 
-a different variable. In the "longest" data format there would only be three 
-columns, one for the id variable, one for the observed variable, and one for the 
+This is called a "long" data format. But, we notice that each column represents
+a different variable. In the "longest" data format there would only be three
+columns, one for the id variable, one for the observed variable, and one for the
 observed value (of that variable). This data format is quite unsightly
-and difficult to work with, so you will rarely see it in use. 
+and difficult to work with, so you will rarely see it in use.
 
-Alternatively, in a "wide" data format we see modifications to rule 1, where 
+Alternatively, in a "wide" data format we see modifications to rule 1, where
 each column no longer represents a single variable. Instead, columns can
 represent different levels/values of a variable. For instance, in some data you
 encounter the researchers may have chosen for every survey date to be a
 different column.
 
-These may sound like dramatically different data layouts, but there are some 
-tools that make transitions between these layouts much simpler than you might 
-think! The gif below shows how these two formats relate to each other, and 
-gives you an idea of how we can use R to shift from one format to the other. 
+These may sound like dramatically different data layouts, but there are some
+tools that make transitions between these layouts much simpler than you might
+think! The gif below shows how these two formats relate to each other, and
+gives you an idea of how we can use R to shift from one format to the other.
 
 ![](../fig/tidyr-pivot_wider_longer.gif)
 Long and wide dataframe layouts mainly affect readability. You may find that
 visually you may prefer the "wide" format, since you can see more of the data on
 the screen. However, all of the R functions we have used thus far expect for
 your data to be in a "long" data format. This is because the long format is more
-machine readable and is closer to the formatting of databases. 
+machine readable and is closer to the formatting of databases.
 
 ### Questions which warrant different data formats
 
 In interviews, each row contains the values of variables associated with each
 record (the unit), values such as the village of the respondent, the number
-of household members, or the type of wall their house had. This format allows 
+of household members, or the type of wall their house had. This format allows
 for us to make comparisons across individual surveys, but what if we wanted to
 look at differences in households grouped by different types of housing
 construction materials?
@@ -539,7 +539,7 @@ construction materials?
 To facilitate this comparison we would need to create a new table where each row
 (the unit) was comprised of values of variables associated with housing material
 (e.g. the `respondent_wall_type`). In practical terms this means the values of
-the wall construction materials in `respondent_wall_type` (e.g. muddaub, 
+the wall construction materials in `respondent_wall_type` (e.g. muddaub,
 burntbricks, cement, sunbricks) would become the names of column variables and
 the cells would contain values of `TRUE` or `FALSE`, for whether that house had
 a wall made of that material.
@@ -549,11 +549,11 @@ between villages. The key point here is that we are still following a tidy data
 structure, but we have **reshaped** the data according to the observations of
 interest.
 
-Alternatively, if the interview dates were spread across multiple columns, and 
+Alternatively, if the interview dates were spread across multiple columns, and
 we were interested in visualizing, within each village, how irrigation
-conflicts have changed over time. This would require for the interview date to 
-be included in a single column rather than spread across multiple columns. Thus, 
-we would need to transform the column names into values of a variable. 
+conflicts have changed over time. This would require for the interview date to
+be included in a single column rather than spread across multiple columns. Thus,
+we would need to transform the column names into values of a variable.
 
 We can do both these of transformations with two `tidyr` functions,
 `pivot_wider()` and `pivot_longer()`.
@@ -577,26 +577,26 @@ must come from column values, we will create a dummy column (we'll name it
 `wall_type_logical`) to hold the value `TRUE`, which we will then place into the
 appropriate column that corresponds to the wall construction material for that
 respondent. When using `mutate()` if you give a single value, it will be used
-for all observations in the dataset. 
+for all observations in the dataset.
 
 For each row in our newly pivoted table, only one of the newly created wall type
-columns will have a value of `TRUE`, since each house can only be made of one 
+columns will have a value of `TRUE`, since each house can only be made of one
 wall type. The default value that `pivot_wider` uses to fill the other wall
 types is `NA`.
 
 ![](../fig/pivot_long_to_wide.png)
 
-If instead of the default value being `NA`, we wanted these values to be `FALSE`, 
-we can insert a default value into the `values_fill` argument. By including 
-`values_fill = list(wall_type_logical = FALSE)` inside `pivot_wider()`, we can 
+If instead of the default value being `NA`, we wanted these values to be `FALSE`,
+we can insert a default value into the `values_fill` argument. By including
+`values_fill = list(wall_type_logical = FALSE)` inside `pivot_wider()`, we can
 fill the remainder of the wall type columns for that row with the value `FALSE`.
 
 
 ```{r, purl = FALSE}
 interviews_wide <- interviews %>%
     mutate(wall_type_logical = TRUE) %>%
-    pivot_wider(names_from = respondent_wall_type, 
-                values_from = wall_type_logical, 
+    pivot_wider(names_from = respondent_wall_type,
+                values_from = wall_type_logical,
                 values_fill = list(wall_type_logical = FALSE))
 ```
 
@@ -605,8 +605,8 @@ View the `interviews_wide` dataframe and notice that there is no longer a
 column titled `respondent_wall_type`. This is because there is a default
 parameter in `pivot_wider()` that drops the original column. The values that
 were in that column have now become columns named `muddaub`, `burntbricks`,
-`sunbricks`, and `cement`. You can use `dim(interviews)` and 
-`dim(interviews_wide)` to see how the number of columns has changed between 
+`sunbricks`, and `cement`. You can use `dim(interviews)` and
+`dim(interviews_wide)` to see how the number of columns has changed between
 the two datasets.
 
 ### Pivoting longer
@@ -632,22 +632,22 @@ associated with the *cols* provided.
 To recreate our original dataframe, we will use the following:
 
 1. the data - `interviews_wide`
-2. a list of *cols* (columns) that are to be reshaped; these can be specified 
-   using a  `:` if the columns to be reshaped are in one area of the dataframe, 
+2. a list of *cols* (columns) that are to be reshaped; these can be specified
+   using a  `:` if the columns to be reshaped are in one area of the dataframe,
    or with a vector (`c()`) command if the columns are spread throughout the
-   dataframe. 
-3. the *names_to* column will be a character string of the name the column 
+   dataframe.
+3. the *names_to* column will be a character string of the name the column
    these columns will be collapsed into ("respondent_wall_type").
-4. the *values_to* column will be a character string of the name of the 
-   column the values of the collapsed columns will be inserted into 
-   ("wall_type_logical"). This column will be populated with values of 
+4. the *values_to* column will be a character string of the name of the
+   column the values of the collapsed columns will be inserted into
+   ("wall_type_logical"). This column will be populated with values of
    `TRUE` or `FALSE`.
 
 
 ```{r, purl = FALSE}
 interviews_long <- interviews_wide %>%
     pivot_longer(cols = burntbricks:sunbricks,
-                 names_to = "respondent_wall_type", 
+                 names_to = "respondent_wall_type",
                  values_to = "wall_type_logical")
 ```
 
@@ -672,13 +672,13 @@ We do all of these steps together in the next chunk of code:
 ```{r, purl = FALSE}
 interviews_long <- interviews_wide %>%
     pivot_longer(cols = c(burntbricks, cement, muddaub, sunbricks),
-                 names_to = "respondent_wall_type", 
+                 names_to = "respondent_wall_type",
                  values_to = "wall_type_logical") %>%
     filter(wall_type_logical) %>%
     select(-wall_type_logical)
 ```
 
-View both `interviews_long` and `interviews_wide` and compare their structure. 
+View both `interviews_long` and `interviews_wide` and compare their structure.
 
 ## Applying `pivot_wider()` to clean our data
 
@@ -691,16 +691,16 @@ information. For example, the `items_owned` column contains information about
 whether our respondents owned a fridge, a television, etc. To make this data
 easier to analyze, we will split this column and create a new column for each
 item. Each cell in that column will either be `TRUE` or `FALSE` and will
-indicate whether that interview respondent owned that item (similar to what 
+indicate whether that interview respondent owned that item (similar to what
 we did previously with `wall_type`).
 
 ```{r, purl = FALSE}
-interviews_items_owned <- interviews %>% 
+interviews_items_owned <- interviews %>%
   separate_rows(items_owned, sep = ";") %>%
   replace_na(list(items_owned = "no_listed_items")) %>%
   mutate(items_owned_logical = TRUE) %>%
-    pivot_wider(names_from = items_owned, 
-                values_from = items_owned_logical, 
+    pivot_wider(names_from = items_owned,
+                values_from = items_owned_logical,
                 values_fill = list(items_owned_logical = FALSE))
 
 nrow(interviews_items_owned)
@@ -716,8 +716,8 @@ interviews_items_owned <- interviews %>%
 
 Then we use the new function `separate_rows()` from the **`tidyr`** package to
 separate the values of `items_owned` based on the presence of semi-colons (`;`).
-The values of this variable were multiple items separated by semi-colons, so 
-this action creates a row for each item listed in a household's possession. 
+The values of this variable were multiple items separated by semi-colons, so
+this action creates a row for each item listed in a household's possession.
 Thus, we end up with a long format version of the dataset, with multiple rows
 for each respondent. For example, if a respondent has a television and a solar
 panel, that respondent will now have two rows, one with "television" and the
@@ -727,13 +727,13 @@ other with "solar panel" in the `items_owned` column.
 separate_rows(items_owned, sep = ";") %>%
 ```
 
-You may notice that one of the columns is called `´NA´`. This is because some 
+You may notice that one of the columns is called `´NA´`. This is because some
 of the respondents did not own any of the items that was in the interviewer's
-list. We can use the `replace_na()` function to change these `NA` values to 
-something more meaningful. The `replace_na()` function expects for you to give 
-it a `list()` of columns that you would like to replace the `NA` values in, 
-and the value that you would like to replace the `NA`s. This ends up looking 
-like this: 
+list. We can use the `replace_na()` function to change these `NA` values to
+something more meaningful. The `replace_na()` function expects for you to give
+it a `list()` of columns that you would like to replace the `NA` values in,
+and the value that you would like to replace the `NA`s. This ends up looking
+like this:
 
 ```{r, eval = FALSE}
 replace_na(list(items_owned = "no_listed_items")) %>%
@@ -741,9 +741,9 @@ replace_na(list(items_owned = "no_listed_items")) %>%
 
 Next, we create a new variable named `items_owned_logical`, which has one value
 (`TRUE`) for every row. This makes since, since each item in every row was owned
-by that household. We are constructing this variable so that when spread the 
-`items_owned` across multiple columns, we can fill the values of those columns 
-with logical values describing whether the household did (`TRUE`) or didn't 
+by that household. We are constructing this variable so that when spread the
+`items_owned` across multiple columns, we can fill the values of those columns
+with logical values describing whether the household did (`TRUE`) or didn't
 (`FALSE`) own that particular item.  
 
 ```{r, eval = FALSE}
@@ -753,7 +753,7 @@ mutate(items_owned_logical = TRUE) %>%
 Lastly, we use `pivot_wider()` to switch from long format to wide format. This
 creates a new column for each of the unique values in the `items_owned` column,
 and fills those columns with the values of `items_owned_logical`. We also
-declare that for items that are missing, we want to fill those cells with the 
+declare that for items that are missing, we want to fill those cells with the
 value of `FALSE` instead of `NA`.
 
 ```{r, eval = FALSE}
@@ -763,9 +763,9 @@ pivot_wider(names_from = items_owned,
 
 ```
 
-View the `interviews_items_owned` dataframe. It should have 
+View the `interviews_items_owned` dataframe. It should have
 `r nrow(interviews)` rows (the same number of rows you had originally), but
-extra columns for each item. How many columns were added? 
+extra columns for each item. How many columns were added?
 
 This format of the data allows us to do interesting things, like make a table
 showing the number of respondents in each village who owned a particular item:
@@ -781,7 +781,7 @@ Or below we calculate the average number of items from the list owned by
 respondents in each village. This code uses the `rowSums()` function to count
 the number of `TRUE` values in the `bicycle` to `car` columns for each row,
 hence its name. We then group the data by villages and caluculate the mean
-number of items, so each average is grouped by village. 
+number of items, so each average is grouped by village.
 
 ```{r, purl = FALSE}
 interviews_items_owned %>%
@@ -802,8 +802,8 @@ interviews_items_owned %>%
 > > interviews_months_lack_food <- interviews %>%
 > >   separate_rows(months_lack_food, sep = ";") %>%
 > >   mutate(months_lack_food_logical  = TRUE) %>%
-> >   pivot_wider(names_from = months_lack_food, 
-> >               values_from = months_lack_food_logical, 
+> >   pivot_wider(names_from = months_lack_food,
+> >               values_from = months_lack_food_logical,
 > >               values_fill = list(months_lack_food_logical = FALSE))
 > > ```
 > {: .solution}
@@ -853,14 +853,14 @@ interviews_plotting <- interviews %>%
   ## if there were no items listed, changing NA to no_listed_items
   replace_na(list(items_owned = "no_listed_items")) %>%
   mutate(items_owned_logical = TRUE) %>%
-  pivot_wider(names_from = items_owned, 
-              values_from = items_owned_logical, 
+  pivot_wider(names_from = items_owned,
+              values_from = items_owned_logical,
               values_fill = list(items_owned_logical = FALSE)) %>%
   ## pivot wider by months_lack_food
   separate_rows(months_lack_food, sep = ";") %>%
   mutate(months_lack_food_logical = TRUE) %>%
-  pivot_wider(names_from = months_lack_food, 
-              values_from = months_lack_food_logical, 
+  pivot_wider(names_from = months_lack_food,
+              values_from = months_lack_food_logical,
               values_fill = list(months_lack_food_logical = FALSE)) %>%
   ## add some summary columns
   mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
@@ -870,7 +870,7 @@ interviews_plotting <- interviews %>%
 Now we can save this dataframe to our `data_output` directory.
 
 ```{r, purl = FALSE, eval = FALSE}
-write_csv(interviews_plotting, path = "data_output/interviews_plotting.csv")
+write_csv (interviews_plotting, file = "data_output/interviews_plotting.csv")
 ```
 
 ```{r, purl = FALSE, eval = TRUE, echo = FALSE}
