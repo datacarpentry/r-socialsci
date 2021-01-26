@@ -867,10 +867,14 @@ interviews_plotting <- interviews %>%
   mutate(number_items = rowSums(select(., bicycle:car)))
 ```
 
-Now we can save this dataframe to our `data_output` directory.
+Now we can save this dataframe to our `data_output` directory. Note: from R version 4 and higher, you will get a warning message that "path" is deprecated. It will still work but is strongly discouraged. You can use "file = " instead. 
 
 ```{r, purl = FALSE, eval = FALSE}
 write_csv(interviews_plotting, path = "data_output/interviews_plotting.csv")
+
+#from R 4.0: 
+write_csv (interviews_plotting, file = "data_output/interviews_plotting.csv")
+
 ```
 
 ```{r, purl = FALSE, eval = TRUE, echo = FALSE}
