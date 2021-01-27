@@ -333,7 +333,7 @@ interviews_plotting %>%
     geom_jitter(alpha = 0.5,
     		color = "tomato",
     		width = 0.2,
-    		height = 0.2) +
+    		height = 0.2)
 ```
 
 We can see that muddaub houses and sunbrick houses tend to be smaller than
