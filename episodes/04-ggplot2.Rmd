@@ -8,7 +8,7 @@ questions:
   - "How can I change the aesthetics (ex. colour, transparency) of my plot?"
   - "How can I create multiple plots at once?"
 objectives:
-   - "Produce scatter plots, boxplots, and time series plots using ggplot."
+   - "Produce scatter plots, boxplots, and barplots using ggplot."
    - "Set universal plot settings."
    - "Describe what faceting is and apply faceting in ggplot."
    - "Modify the aesthetics of an existing ggplot plot (including axis labels and colour)."
