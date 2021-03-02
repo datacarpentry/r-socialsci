@@ -1,0 +1,283 @@
+---
+title: "Code Handout - Data Visualisation with ggplot2"
+---
+
+This document contains all of the functions that we have covered thus far in the
+course. It will be updated every week, after we've added new skills. Each 
+function is presented alongside an example of how it is used. 
+
+All of the examples below are in the context of the Palmer Penguins, found 
+[here (link)](https://allisonhorst.github.io/palmerpenguins/index.html). 
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(fig.width = 3, 
+                  fig.height = 3, 
+                  message = FALSE, 
+                  warning = FALSE,
+                  eval = FALSE)
+
+```
+
+
+## Foundations of `ggplot()`
+
+* `ggplot()` -- a function to create the shell of a visualization, where 
+specific variables are mapped to different aspects of the plot 
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species))
+```
+
+- `aes()` -- aesthetics that can be used when creating a `ggplot()`, where the 
+aesthetics can either be hard coded (e.g. `color = "blue"`) or associated with 
+a variable (e.g. `color = sex`). 
+  * The following are the aesthetic options for *most* plots:
+    + `x`
+    + `y`
+    + `alpha` -- changes transparency
+    + `color` -- produces colored outline 
+    + `fill` -- fills with color
+    + `group` -- used with categorical variables, similar to color
+
+
+- **`+`** -- an important aspect creating a `ggplot()` is to note that the 
+    `geom_XXX()` function is separated from the `ggplot()` function with a plus
+    sign, `+`.
+  * `ggplot()` plots are constructed in series of layers, where the plus sign
+    separates these layers.  
+  * Generally, the `+` sign can be thought of as the end of a line, so you
+    should always hit enter/return after it. While it is not mandatory to move
+    to the next line for each layer, doing so makes the code a lot easier to
+    organize and read. 
+
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point()
+```
+
+
+## Geometric Objects to Visualize the Data
+
+- `geom_histogram( )` -- adds a histogram to the plot, 
+where the observations are binned into ranges of values and then frequencies
+of observations are plotted on the y-axis
+  * You can specify the number of bins you want with the `bins` argument 
+  
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_histogram(bins = 20)
+```
+
+- `geom_boxplot( )` -- adds a boxplot to the plot, where observations are 
+aggregated (summarized), the min, Q1, median, Q3, and maximum are plotted as the
+box and whiskers, and "outliers" are plotted as points. 
+  * You can plot a vertical boxplot by specifying the `x` variable, or a 
+  horizontal boxplot by specifying the `y` variable.
+  * Note: the min and max may not be included in the whiskers, if they are
+  deemed to be "outliers" based on the $1.5 \times \text{IQR}$ rule. 
+
+```{r}
+## Horizontal boxplot
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_boxplot()
+
+## Vertical boxplot
+penguins %>% 
+  ggplot(aes(y = bill_length_mm)) + 
+  geom_boxplot()
+```
+
+- `geom_density()` -- adds a density curve to the plot, where the probability
+density is plotted on the y-axis (so the density curve has a total area of one). 
+  * By default this creates a density curve without shading. By specifying a 
+    color in the `fill` argument, the density curve is shaded. 
+  * Can be thought of as the "one group" violin plot!
+  
+```{r, warning=FALSE, message=FALSE}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm)) + 
+  geom_density(fill = "tomato")
+```
+
+- `geom_violin()` -- plots violins for each level of a categorical variable
+  * Can be thought of as a hybrid mix of `geom_boxplot()` and `geom_density()`, 
+  as the density is displayed, but it is reflected to provide a plot similar in 
+  nature to a boxplot. 
+  * To obtain violins stacked vertically, declare the categorical variable as `y`.
+  To obtain side-by-side violins, declare the categorical variable as `x`.
+
+```{r}
+## Stacked vertically
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = species)) + 
+  geom_violin()
+
+## Side-by-side
+penguins %>% 
+  ggplot(aes(y = bill_length_mm, x = species)) + 
+  geom_violin()
+```
+
+- `geom_bar()` -- creates a barchart of a categorical variable 
+  * Can produce stacked barcharts by specifying a variable as the `fill` 
+  aesthetic. 
+  * Can change from stacked barchart to a side-by-side barchart by specifying 
+  `position = "dodge"`. 
+  * If your data are already in counts (e.g. output from `count()`), then you 
+  can specify the `stat = "identity"` argument inside `geom_bar()`. 
+
+```{r}
+## Stacked barchart
+penguins %>%
+    ggplot(aes(x = species)) +
+    geom_bar(aes(fill = sex))
+
+## Side-by-side barchart
+penguins %>%
+    ggplot(aes(x = species)) +
+    geom_bar(aes(fill = sex),
+             position = "dodge")
+
+## If data are raw counts
+penguins %>% 
+  count(species, sex) %>% 
+  ggplot(aes(x = species, y = n)) + 
+  geom_bar(aes(fill = sex),
+           stat = "identity",
+           position = "dodge")
+```
+
+- `geom_point()` -- plots each observation as an (x, y) point, used to create
+scatterplots
+  * Can use `alpha` to increase the transparency of the points, to reduce 
+  overplotting. 
+  * Can specify `aes`thetics inside of `geom_point()` for local aesthetics (point
+  level) or inside of `ggplot()` for global aesthetics (plot level)
+
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm)) + 
+  geom_point(aes(color = species))
+```
+
+- `geom_jitter()` -- plots each observation as an (x, y) point and adds a small 
+amount of jitter around the point
+  * Useful so that we can see each point in the locations where there are
+  overlapping points. 
+  * Can specify the `width` and `height` of the jittering using the optional 
+  arguments. 
+  
+```{r}
+penguins %>% 
+  ggplot(aes(y = body_mass_g, x = species)) + 
+  geom_violin() + 
+  geom_jitter(aes(color = sex), width = 0.25, height = 0.25)
+```
+
+- `geom_smooth()` -- plots a line over a set of points, draws the readers eye 
+to a specific trend
+  * The methods we will use are "lm" for a linear model (straight line), and 
+  "loess" for a wiggly line
+  * By default, the smoother gives you gray SE bars, to remove these add 
+  `se = FALSE` 
+  
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") 
+```
+
+- `facet_wrap()` -- creates subplots of your original plot, based on the levels
+of the variable you input
+  * To facet by one variable, use `~variable`. 
+  * To facet by two variables, use `variable1 ~ variable2`. 
+  * If you prefer for your facets to be organized in rows or columns, use the 
+  `nrow` and/or `ncol` arguments. 
+  
+```{r, fig.width = 12}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  facet_wrap(~island, nrow = 1)
+```
+
+
+## Plot Characteristics 
+
+- `labs()` -- specifies the plot labels, possible labels are: x, y, color, fill, 
+title, and subtitle
+
+```{r, fig.width = 6}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Bill Length (mm)", 
+       y = "Bill Depth (mm)", 
+       color = "Penguin Species")
+```
+
+- `theme_bw()` -- changes the plotting background to the classic dark-on-light
+ggplot2 theme.
+  * This theme may work better for presentations displayed with a projector.
+  * Other theme options are `theme_minimal()`, `theme_light()`, and `theme_void()`. 
+  
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Bill Length (mm)", 
+       y = "Bill Depth (mm)", 
+       color = "Penguin Species") + 
+  theme_bw()
+```
+
+- `theme()` -- 
+  * Possible options are:
+    + `panel.grid` -- controls the grid lines (`panel.grid = element_blank()` 
+    removes grid lines)
+    + `text` -- specifies font size for the entire plot (e.g. 
+    `text = element_text(size = 16)` 
+    + `axis.text.x` -- specifies the font size for the x-axis text
+    + `axis.text.y` -- specifies the font size for the y-axis text
+    + `plot.title` -- specifies aspects of the plot title, can use 
+    `plot.title = element_text(hjust = 0.5)` to centre the title
+    
+```{r}
+penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") +
+  labs(x = "Bill Length (mm)", 
+       y = "Bill Depth (mm)", 
+       color = "Penguin Species") + 
+  theme_bw() + 
+  theme(axis.text.x = element_text(size = 12), 
+        axis.text.y = element_text(size = 12))
+```
+
+
+## Exporting Plots 
+
+- `ggsave()` -- convenient function for saving a plot 
+  * Unless specified, defaults to the last plot that was made. 
+  * Uses the size of the current graphics device to determine the size of the 
+  plot. 
+
+```{r}
+plot1 <- penguins %>% 
+  ggplot(aes(x = bill_length_mm, y = bill_depth_mm, color = species)) + 
+  geom_point() + 
+  geom_smooth(method = "lm") + 
+  facet_wrap(~island, nrow = 1)
+
+ggsave(path = "images/faceted_plot.png", plot = plot1)
+```
+
