@@ -47,6 +47,7 @@ If you were unable to complete the previous lesson or did not save the data,
 then you can create it now.
 
 ```{r, purl = FALSE, eval = FALSE}
+interviews = read.csv('c:/users/vlala/downloads/SAFI_clean.csv')
 ## Not run, but can be used to load in data from previous lesson!
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
@@ -85,7 +86,18 @@ lots of time when making figures with **`ggplot2`**
 ggplot graphics are built step by step by adding new elements. Adding layers in
 this fashion allows for extensive flexibility and customization of plots.
 
-To build a ggplot, we will use the following basic template that can be used for different types of plots:
+Each chart built with ggplot2 must include the following
+
+* Data  
+* Aesthetic mapping (aes)  
+
+  + Describes how variables are mapped onto graphical attributes  
+  + Visual attribute of data including x-y axes, color, fill, shape, and alpha  
+* Geometric objects (geom)  
+
+  + Determines how values are rendered graphically, as bars (geom_bar), scatterplot (geom_point), line (geom_line), etc. 
+
+Thus, the template for graphic in ggplot2 is:
 
 ```
 <DATA> %>%
@@ -184,15 +196,17 @@ observations plotted on top of each other (e.g. three observations where
 `no_membrs` is 3 and `number_items` is 1). 
 
 There are two main ways to alleviate overplotting issues: 
-1. changing the transparency of the points 
-2. jittering the location of the points
+1. changing the transparency of the points (using `alpha`)
+2. jittering the location of the points (using `geom_jitter()`)
 
 Let's first explore option 1, changing the transparency of the points. What we 
 mean when we say "transparency" we mean the opacity of point, or your ability to 
 see through the point. We can control the transparency of the points with the 
 `alpha` argument to `geom_point`. Values of `alpha` range from 0 to 1, with
 lower values corresponding to more transparent colors (an `alpha` of 1 is the 
-default value). 
+default value). Specifically, an alpha of 0.1, would make a point one-tenth as 
+opaque as a normal point. Stated differently ten points stacked on top of 
+each other would correspond to a normal point. 
 
 Here, we change the `alpha` to 0.5, in an attempt to help fix the overplotting. 
 While the overplotting isn't solved, adding transparency begins to address this
@@ -265,6 +279,9 @@ interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
 ```
+
+PS: ggplot2 understands both the Commonwealth English and American English spellings
+for colour, i.e., you can use either "color" or "colour"
 
 There appears to be a positive trend between number of household
 members and number of items owned (from the list provided). Additionally, 
