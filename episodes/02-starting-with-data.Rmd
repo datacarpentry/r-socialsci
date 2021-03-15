@@ -444,7 +444,7 @@ plot(memb_assoc)
 >
 > > ## Solution
 > >
-> > ```{r factor-plot-exercise fig.caption = "bar graph showing number of individuals who are members of irrigation association, including undetermined option"}
+> > ```{r factor-plot-exercise}
 > > levels(memb_assoc) <- c("No", "Undetermined", "Yes")
 > > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 > > plot(memb_assoc)
