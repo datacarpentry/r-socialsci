@@ -130,7 +130,7 @@ knitr::include_graphics("../fig/r-manual.jpeg")
 ```
 </div>
 <div class="col-md-6">
-```{r rstudio-analogy-2, echo=FALSE, fig.show="hold", out.width="100%"}
+```{r rstudio-analogy-2, echo=FALSE, fig.show="hold", fig.caption="automatic car gear shift representing the ease of RStudio" out.width="100%"}
 knitr::include_graphics("../fig/r-automatic.jpeg")
 ```
 </div>
