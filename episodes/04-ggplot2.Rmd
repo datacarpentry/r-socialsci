@@ -269,9 +269,9 @@ a variable in our data to the colour of the points, **`ggplot2`** will provide a
 different colour corresponding to the different values of the variable. We will 
 continue to specify the value of **`alpha`**, **`width`**, and **`height`**
 outside of the **`aes`** function because we are using the same value for 
-every point. (PS: ggplot2 understands both the Commonwealth English and 
+every point. ggplot2 understands both the Commonwealth English and 
 American English spellings for colour, i.e., you can use either `color` 
-or `colour`). Here is an example where we color points by the **`village`** 
+or `colour`. Here is an example where we color points by the **`village`** 
 of the observation:
 
 
