@@ -400,7 +400,7 @@ Let's extract the `memb_assoc` column from our data frame, convert it into a
 factor, and use it to look at the number of interview respondents who were or
 were not members of an irrigation association:
 
-```{r factor-plot-default-order, fig.cap = "Yes/no bar graph showing number of individuals who are members of irrigation association" purl=TRUE}
+```{r factor-plot-default-order, fig.cap = "Yes/no bar graph showing number of individuals who are members of irrigation association", purl=TRUE}
 ## create a vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
 ## convert it into a factor
@@ -444,14 +444,13 @@ plot(memb_assoc)
 >
 > > ## Solution
 > >
-> > ```{r factor-plot-exercise}
+> > ```{r factor-plot-exercise, fig.caption = "bar graph showing number of individuals who are members of irrigation association, including undetermined option"}
 > > levels(memb_assoc) <- c("No", "Undetermined", "Yes")
 > > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 > > plot(memb_assoc)
 > ```
 > {: .solution}
 {: .challenge}
-
 
 ## Formatting Dates
 
