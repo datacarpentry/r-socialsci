@@ -225,7 +225,6 @@ Anything to the right of the `#` sign and up to the end of the line is treated a
 or include them after any code on the line.
 
 
-
 ~~~
 area_hectares <- 1.0			# land area in hectares
 area_acres <- area_hectares * 2.47	# convert to acres
