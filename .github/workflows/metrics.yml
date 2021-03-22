@@ -1,0 +1,33 @@
+# Visit https://github.com/lowlighter/metrics/blob/master/action.yml for full reference
+name: Metrics
+on:
+  # Schedule updates (each hour)
+  schedule: [{cron: "0 0 * * *"}]
+  # Lines below let you run workflow manually and on each commit
+  workflow_dispatch:
+  push: {branches: ["master", "main"]}
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: lowlighter/metrics@latest
+        with:
+          # Your GitHub token
+          token: ${{ secrets.LOWLIGHTERMETRICS }}
+
+          # Options
+          template: classic
+          user: datacarpentry
+          repo: r-socialsci
+          plugin_introduction: yes
+          plugin_introduction_title: no # Hide section title
+          plugin_licenses: yes
+          plugin_licenses_setup: npm ci       # Command to setup target repository
+          plugin_licenses_ratio: yes          # Display used licenses ratio
+          plugin_licenses_legal: yes          # Display permissions, limitations and conditions
+          plugin_contributors: yes
+          plugin_contributors_base: ""           # Base reference (commit, tag, branch, etc.)
+          plugin_contributors_head: master       # Head reference (commit, tag, branch, etc.)
+          plugin_contributors_ignored: bot       # Ignore "bot" user
+          plugin_contributors_contributions: yes # Display number of contributions for each contributor
+          
