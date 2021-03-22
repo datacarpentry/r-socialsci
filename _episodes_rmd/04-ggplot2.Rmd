@@ -85,7 +85,18 @@ lots of time when making figures with **`ggplot2`**
 ggplot graphics are built step by step by adding new elements. Adding layers in
 this fashion allows for extensive flexibility and customization of plots.
 
-To build a ggplot, we will use the following basic template that can be used for different types of plots:
+Each chart built with ggplot2 must include the following
+
+* Data  
+* Aesthetic mapping (aes)  
+
+  + Describes how variables are mapped onto graphical attributes  
+  + Visual attribute of data including x-y axes, color, fill, shape, and alpha  
+* Geometric objects (geom)  
+
+  + Determines how values are rendered graphically, as bars (geom_bar), scatterplot (geom_point), line (geom_line), etc. 
+
+Thus, the template for graphic in ggplot2 is:
 
 ```
 <DATA> %>%
@@ -192,7 +203,9 @@ mean when we say "transparency" we mean the opacity of point, or your ability to
 see through the point. We can control the transparency of the points with the 
 `alpha` argument to `geom_point`. Values of `alpha` range from 0 to 1, with
 lower values corresponding to more transparent colors (an `alpha` of 1 is the 
-default value). 
+default value). Specifically, an alpha of 0.1, would make a point one-tenth as 
+opaque as a normal point. Stated differently ten points stacked on top of 
+each other would correspond to a normal point.
 
 Here, we change the `alpha` to 0.5, in an attempt to help fix the overplotting. 
 While the overplotting isn't solved, adding transparency begins to address this
@@ -256,7 +269,9 @@ a variable in our data to the colour of the points, **`ggplot2`** will provide a
 different colour corresponding to the different values of the variable. We will 
 continue to specify the value of **`alpha`**, **`width`**, and **`height`**
 outside of the **`aes`** function because we are using the same value for 
-every point. Here is an example where we color points by the **`village`** 
+every point. ggplot2 understands both the Commonwealth English and 
+American English spellings for colour, i.e., you can use either `color` 
+or `colour`. Here is an example where we color points by the **`village`** 
 of the observation:
 
 

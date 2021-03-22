@@ -118,7 +118,7 @@ $ E01_water_use                  <chr> "no", "yes", "no", "no", "no", "no", "y�
 $ B18_sp_parents_liv             <chr> "yes", "yes", "no", "no", "no", "no", "…
 $ B16_years_liv                  <int> 4, 9, 15, 6, 40, 3, 38, 70, 6, 23, 20, …
 $ E_yes_group_count              <chr> NA, "3", NA, NA, NA, NA, "4", "2", "3",…
-$ F_liv                          <list> [<data.frame[1 x 2]>, <data.frame[3 x …
+$ F_liv                          <list> [<data.frame[1 x 2]>], [<data.frame[3 …
 $ `_note2`                       <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 $ instanceID                     <chr> "uuid:ec241f2c-0609-46ed-b5e8-fe575f6ce…
 $ B20_sp_grand_liv               <chr> "yes", "yes", "no", "no", "no", "no", "…
@@ -129,8 +129,8 @@ $ D_plots_count                  <chr> "2", "3", "1", "3", "2", "1", "4", "2",�
 $ C02_respondent_wall_type_other <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 $ C02_respondent_wall_type       <chr> "muddaub", "muddaub", "burntbricks", "b…
 $ C05_buildings_in_compound      <int> 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 2, 2, 1, …
-$ `_remitters`                   <list> [<data.frame[0 x 0]>, <data.frame[0 x …
-$ E18_months_no_water            <list> [NULL, <"Aug", "Sept">, NULL, NULL, NU…
+$ `_remitters`                   <list> [<data.frame[0 x 0]>], [<data.frame[0 …
+$ E18_months_no_water            <list> <NULL>, <"Aug", "Sept">, <NULL>, <NULL…
 $ F07_use_income                 <chr> NA, "AlimentaÃ§Ã£o e pagamento de educa…
 $ G01_no_meals                   <int> 2, 2, 2, 2, 2, 2, 3, 2, 3, 3, 2, 3, 2, …
 $ E17_no_enough_water            <chr> NA, "yes", NA, NA, NA, NA, "yes", "yes"…
@@ -139,31 +139,31 @@ $ A05_end                        <chr> "2017-04-02T17:29:08.000Z", "2017-04-02�
 $ C04_window_type                <chr> "no", "no", "yes", "no", "no", "no", "n…
 $ E21_other_meth                 <chr> NA, "no", NA, NA, NA, NA, "no", "no", "…
 $ D_no_plots                     <int> 2, 3, 1, 3, 2, 1, 4, 2, 3, 2, 2, 2, 4, …
-$ F05_money_source               <list> [NULL, NULL, NULL, NULL, NULL, NULL, N…
+$ F05_money_source               <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>…
 $ A07_district                   <chr> "district1", "district1", "district1", …
 $ C03_respondent_floor_type      <chr> "earth", "earth", "cement", "earth", "e…
-$ E_yes_group                    <list> [<data.frame[0 x 0]>, <data.frame[3 x …
+$ E_yes_group                    <list> [<data.frame[0 x 0]>], [<data.frame[3 …
 $ A01_interview_date             <chr> "2016-11-17", "2016-11-17", "2016-11-17…
 $ B11_remittance_money           <chr> "no", "no", "no", "no", "no", "no", "no…
 $ A04_start                      <chr> "2017-03-23T09:49:57.000Z", "2017-04-02…
-$ D_plots                        <list> [<data.frame[2 x 8]>, <data.frame[3 x …
-$ F_items                        <list> [<data.frame[3 x 3]>, <data.frame[2 x …
+$ D_plots                        <list> [<data.frame[2 x 8]>], [<data.frame[3 …
+$ F_items                        <list> [<data.frame[3 x 3]>], [<data.frame[2 …
 $ F_liv_count                    <chr> "1", "3", "1", "2", "4", "1", "1", "2",…
-$ F10_liv_owned                  <list> ["poultry", <"oxen", "cows", "goats">,…
+$ F10_liv_owned                  <list> "poultry", <"oxen", "cows", "goats">, …
 $ B_no_membrs                    <int> 3, 7, 10, 7, 7, 3, 6, 12, 8, 12, 6, 7, …
 $ F13_du_look_aftr_cows          <chr> "no", "no", "no", "no", "no", "no", "no…
 $ E26_affect_conflicts           <chr> NA, "once", NA, NA, NA, NA, "never", "n…
-$ F14_items_owned                <list> [<"bicycle", "television", "solar_pane…
+$ F14_items_owned                <list> <"bicycle", "television", "solar_panel…
 $ F06_crops_contr                <chr> NA, "more_half", NA, NA, NA, NA, "more_…
 $ B17_parents_liv                <chr> "no", "yes", "no", "no", "yes", "no", "…
-$ G02_months_lack_food           <list> ["Jan", <"Jan", "Sept", "Oct", "Nov", …
+$ G02_months_lack_food           <list> "Jan", <"Jan", "Sept", "Oct", "Nov", "…
 $ A11_years_farm                 <dbl> 11, 2, 40, 6, 18, 3, 20, 16, 16, 22, 6,…
 $ F09_du_labour                  <chr> "no", "no", "yes", "yes", "no", "yes", …
 $ E_no_group_count               <chr> "2", NA, "1", "3", "2", "1", NA, NA, NA…
-$ E22_res_change                 <list> [NULL, NULL, NULL, NULL, NULL, NULL, N…
+$ E22_res_change                 <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>…
 $ E24_resp_assoc                 <chr> NA, "no", NA, NA, NA, NA, NA, "yes", NA…
 $ A03_quest_no                   <chr> "01", "01", "03", "04", "05", "6", "7",…
-$ `_members`                     <list> [<data.frame[3 x 12]>, <data.frame[7 x…
+$ `_members`                     <list> [<data.frame[3 x 12]>], [<data.frame[7…
 $ A06_province                   <chr> "province1", "province1", "province1", …
 $ `gps:Accuracy`                 <dbl> 14, 19, 13, 5, 10, 12, 11, 9, 11, 14, 1…
 $ E20_exper_other                <chr> NA, "yes", NA, NA, NA, NA, "yes", "yes"…
@@ -178,10 +178,10 @@ $ C07_other_buildings            <chr> "no", "no", "no", "no", "no", "no", "ye�
 $ observation                    <chr> "None", "Estes primeiros inquÃ©ritos na…
 $ `_note`                        <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 $ A12_agr_assoc                  <chr> "no", "yes", "no", "no", "no", "no", "n…
-$ G03_no_food_mitigation         <list> [<"na", "rely_less_food", "reduce_meal…
+$ G03_no_food_mitigation         <list> <"na", "rely_less_food", "reduce_meals…
 $ F05_money_source_other         <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 $ `gps:Latitude`                 <dbl> -19.11226, -19.11248, -19.11211, -19.11…
-$ E_no_group                     <list> [<data.frame[2 x 6]>, <data.frame[0 x …
+$ E_no_group                     <list> [<data.frame[2 x 6]>], [<data.frame[0 …
 $ F14_items_owned_other          <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
 $ F08_emply_lab                  <chr> "no", "yes", "no", "no", "no", "no", "n…
 $ `_members_count`               <chr> "3", "7", "10", "7", "7", "3", "6", "12…
