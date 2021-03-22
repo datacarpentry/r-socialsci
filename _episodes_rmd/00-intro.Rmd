@@ -109,7 +109,6 @@ snippets](https://www.tidyverse.org/help/) are more likely to attract
 knowledgeable responses.
 
 
-
 ### Not only is R free, but it is also open-source and cross-platform
 
 Anyone can inspect the source code to see how R works. Because of this
