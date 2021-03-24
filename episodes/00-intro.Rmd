@@ -35,9 +35,9 @@ software that interprets the scripts written using it.
 your R scripts but also to interact with the R software. To function correctly,
 RStudio needs R and therefore both need to be installed on your computer.
 
-To make it easier to interact with R, we will use RStudio. RStudio is the most popular 
-IDE (Integrated Development Environmemt) for R. An IDE is a piece of software that provides 
-tools to make programming easier. 
+To make it easier to interact with R, we will use RStudio. RStudio is the most popular
+IDE (Integrated Development Environmemt) for R. An IDE is a piece of software that provides
+tools to make programming easier.
 
 
 ## Why learn R?
@@ -102,10 +102,10 @@ aspect of your graph to convey most effectively the message from your data.
 ### R has a large and welcoming community
 
 Thousands of people use R daily. Many of them are willing to help you through
-mailing lists and websites such as [Stack Overflow](https://stackoverflow.com/), 
-or on the [RStudio community](https://community.rstudio.com/). Questions which 
+mailing lists and websites such as [Stack Overflow](https://stackoverflow.com/),
+or on the [RStudio community](https://community.rstudio.com/). Questions which
 are backed up with [short, reproducible code
-snippets](https://www.tidyverse.org/help/) are more likely to attract 
+snippets](https://www.tidyverse.org/help/) are more likely to attract
 knowledgeable responses.
 
 
@@ -124,12 +124,12 @@ freely available to extend R's native capabilities.
 <figure>
 <div class="row">
 <div class="col-md-6">
-```{r rstudio-analogy, echo=FALSE, fig.show="hold", out.width="100%", fig.cap="RStudio extends what R can do, and makes it easier to write R code and interact with R."}
+```{r rstudio-analogy, echo=FALSE, fig.show="hold", out.width="100%", fig.alt="RStudio extends what R can do, and makes it easier to write R code and interact with R."}
 knitr::include_graphics("../fig/r-manual.jpeg")
 ```
 </div>
 <div class="col-md-6">
-```{r rstudio-analogy-2, echo=FALSE, fig.show="hold", fig.caption="automatic car gear shift representing the ease of RStudio", out.width="100%"}
+```{r rstudio-analogy-2, echo=FALSE, fig.show="hold", fig.alt="automatic car gear shift representing the ease of RStudio", out.width="100%"}
 knitr::include_graphics("../fig/r-automatic.jpeg")
 ```
 </div>
@@ -157,13 +157,13 @@ The RStudio IDE is also available with a commercial license and priority email
 support from RStudio, Inc.
 
 We will use the RStudio IDE to write code, navigate the files on our computer,
-inspect the variables we create, and visualize the plots we generate. RStudio 
-can also be used for other things (e.g., version control, developing packages, 
-writing Shiny apps) that we will not cover during the workshop. 
+inspect the variables we create, and visualize the plots we generate. RStudio
+can also be used for other things (e.g., version control, developing packages,
+writing Shiny apps) that we will not cover during the workshop.
 
 One of the advantages of using RStudio is that all the information
-you need to write code is available in a single window. Additionally, RStudio 
-provides many shortcuts, autocompletion, and highlighting for the major file 
+you need to write code is available in a single window. Additionally, RStudio
+provides many shortcuts, autocompletion, and highlighting for the major file
 types you use while developing in R. RStudio makes typing easier and less
 error-prone.
 
@@ -173,16 +173,16 @@ error-prone.
 It is good practice to keep a set of related data, analyses, and text
 self-contained in a single folder called the **working directory**. All of the
 scripts within this folder can then use *relative paths* to files. Relative paths
-indicate where inside the project a file is located (as opposed to absolute paths, 
+indicate where inside the project a file is located (as opposed to absolute paths,
 which point to where a file is on a specific computer). Working this way makes it
 a lot easier to move your project around on your computer and share it with
 others without having to directly modify file paths in the individual scripts.
 
 RStudio provides a helpful set of tools to do this through its "Projects"
 interface, which not only creates a working directory for you but also remembers
-its location (allowing you to quickly navigate to it). The interface also 
-(optionally) preserves custom settings and open files to make it easier to 
-resume work after a break. 
+its location (allowing you to quickly navigate to it). The interface also
+(optionally) preserves custom settings and open files to make it easier to
+resume work after a break.
 
 
 ### Create a new project
@@ -196,15 +196,15 @@ resume work after a break.
 * Create a new file where we will type our scripts. Go to File > New File > R
   script. Click the save icon on your toolbar and save your script as
   "`script.R`".
-  
-### The RStudio Interface  
+
+### The RStudio Interface
 Let's take a quick tour of RStudio.
 
 ![RStudio_startup](../fig/R_00_Rstudio_01.png)
 
 RStudio is divided into four "panes". The placement of these
 panes and their content can be customized (see menu, Tools -> Global Options ->
-Pane Layout).  
+Pane Layout).
 
 The Default Layout is:
 - Top Left - **Source**: your scripts and documents
@@ -221,7 +221,7 @@ can be especially helpful when you have multiple projects. In general, you might
 create directories (folders) for **scripts**, **data**, and **documents**. Here
 are some examples of suggested directories:
 
- - **`data/`** Use this folder to store your raw data and intermediate datasets. 
+ - **`data/`** Use this folder to store your raw data and intermediate datasets.
    For the sake of transparency and [provenance](https://en.wikipedia.org/wiki/Provenance), you
    should *always* keep a copy of your raw data accessible and do as much of
    your data cleanup and preprocessing programmatically (i.e., with scripts,
@@ -338,13 +338,13 @@ functionality of R. Many of these have been written by R users and
 have been made available in central repositories, like the one
 hosted at CRAN, for anyone to download and install into their own R
 environment. You should have already installed the packages 'ggplot2'
-and 'dplyr. If you have not, please do so now using these instructions. 
+and 'dplyr. If you have not, please do so now using these instructions.
 
-You can see if you have a package installed by looking in the `packages` tab 
-(on the lower-right by default). You can also type the command 
+You can see if you have a package installed by looking in the `packages` tab
+(on the lower-right by default). You can also type the command
 `installed.packages()` into the console and examine the output.
 
-![Packages pane](/fig/packages.png)
+![Packages pane](../fig/packages_pane.png)
 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab, click the ‘Install’ icon and start typing the
@@ -366,17 +366,17 @@ dependencies’ option makes sure that this happens.
 >
 > Use both the Console and the Packages tab to confirm that you have the tidyverse
 > installed.
-> 
+>
 > > ## Solution
-> > Scroll through packages tab down to ‘tidyverse’.  You can also type a few 
-> > characters into the searchbox. 
-> > The ‘tidyverse’ package is really a package of packages, including 
-> > 'ggplot2' and 'dplyr', both of which require other packages to run correctly. 
-> > All of these packages will be installed automatically. Depending on what 
-> > packages have previously been installed in your R environment, the install of 
-> > ‘tidyverse’ could be very quick or could take several minutes. As the install 
-> > proceeds, messages relating to its progress will be written to the console. 
-> > You will be able to see all of the packages which are actually being 
+> > Scroll through packages tab down to ‘tidyverse’.  You can also type a few
+> > characters into the searchbox.
+> > The ‘tidyverse’ package is really a package of packages, including
+> > 'ggplot2' and 'dplyr', both of which require other packages to run correctly.
+> > All of these packages will be installed automatically. Depending on what
+> > packages have previously been installed in your R environment, the install of
+> > ‘tidyverse’ could be very quick or could take several minutes. As the install
+> > proceeds, messages relating to its progress will be written to the console.
+> > You will be able to see all of the packages which are actually being
 > > installed.
 > {: .solution}
 {: .challenge}
