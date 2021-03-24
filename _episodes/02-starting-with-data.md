@@ -862,7 +862,7 @@ plot(memb_assoc)
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-02-factor-plot-exercise-1.png" title="plot of chunk factor-plot-exercise" alt="plot of chunk factor-plot-exercise" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-02-factor-plot-exercise-1.png" title="bar graph showing number of individuals who are members of irrigation association, including undetermined option" alt="bar graph showing number of individuals who are members of irrigation association, including undetermined option" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 

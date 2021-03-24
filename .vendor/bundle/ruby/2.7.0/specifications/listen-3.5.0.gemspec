@@ -1,15 +1,15 @@
 # -*- encoding: utf-8 -*-
-# stub: listen 3.4.1 ruby lib
+# stub: listen 3.5.0 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "listen".freeze
-  s.version = "3.4.1"
+  s.version = "3.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
-  s.metadata = { "allowed_push_host" => "https://rubygems.org", "bug_tracker_uri" => "https://github.com/guard/listen/issues", "changelog_uri" => "https://github.com/guard/listen/releases", "documentation_uri" => "https://www.rubydoc.info/gems/listen/3.4.1", "homepage_uri" => "https://github.com/guard/listen", "source_code_uri" => "https://github.com/guard/listen/tree/v3.4.1" } if s.respond_to? :metadata=
+  s.metadata = { "allowed_push_host" => "https://rubygems.org", "bug_tracker_uri" => "https://github.com/guard/listen/issues", "changelog_uri" => "https://github.com/guard/listen/releases", "documentation_uri" => "https://www.rubydoc.info/gems/listen/3.5.0", "homepage_uri" => "https://github.com/guard/listen", "source_code_uri" => "https://github.com/guard/listen/tree/v3.5.0" } if s.respond_to? :metadata=
   s.require_paths = ["lib".freeze]
   s.authors = ["Thibaud Guillaume-Gentil".freeze]
-  s.date = "2021-01-14"
+  s.date = "2021-03-23"
   s.description = "The Listen gem listens to file modifications and notifies you about the changes. Works everywhere!".freeze
   s.email = "thibaud@thibaud.gg".freeze
   s.executables = ["listen".freeze]
