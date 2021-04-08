@@ -12,10 +12,10 @@ Gem::Specification.new do |s|
   s.email = "technoweenie@gmail.com".freeze
   s.homepage = "https://github.com/lostisland/sawyer".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.1.4".freeze
+  s.rubygems_version = "3.1.6".freeze
   s.summary = "Secret User Agent of HTTP".freeze
 
-  s.installed_by_version = "3.1.4" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.1.6" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 2

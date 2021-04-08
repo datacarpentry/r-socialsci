@@ -16,10 +16,10 @@ Gem::Specification.new do |s|
   s.files = ["ext/ruby_http_parser/extconf.rb".freeze]
   s.homepage = "http://github.com/tmm1/http_parser.rb".freeze
   s.licenses = ["MIT".freeze]
-  s.rubygems_version = "3.1.4".freeze
+  s.rubygems_version = "3.1.6".freeze
   s.summary = "Simple callback-based HTTP request/response parser".freeze
 
-  s.installed_by_version = "3.1.4" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.1.6" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4

@@ -106,19 +106,19 @@ you may want to look at
 [How to Contribute to an Open Source Project on GitHub][how-contribute].
 In brief:
 
-1.  The published copy of the lesson is in the `master` branch of the repository
+1.  The published copy of the lesson is in the `main` branch of the repository
     (so that GitHub will regenerate it automatically).
     Please create all branches from that,
-    and merge the [master repository][repo]'s `master` branch into your `master` branch
+    and merge the [main repository][repo]'s `main` branch into your `main` branch
     before starting work.
-    Please do *not* work directly in your `master` branch,
+    Please do *not* work directly in your `main` branch,
     since that will make it difficult for you to work on other contributions.
 
 2.  We use [GitHub flow][github-flow] to manage changes:
     1.  Create a new branch in your desktop copy of this repository for each significant change.
     2.  Commit the change in that branch.
     3.  Push that branch to your fork of this repository on GitHub.
-    4.  Submit a pull request from that branch to the [master repository][repo].
+    4.  Submit a pull request from that branch to the [main repository][repo].
     5.  If you receive feedback,
         make changes on your desktop and push to your branch on GitHub:
         the pull request will update automatically.
