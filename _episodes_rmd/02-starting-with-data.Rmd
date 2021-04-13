@@ -63,7 +63,7 @@ in other lessons in this workshop, see the
 [dataset description](http://www.datacarpentry.org/socialsci-workshop/data/).
 
 We will be using a subset of the cleaned version of the dataset that
-was produced through cleaning in OpenRefine. Each row holds
+was produced through cleaning in OpenRefine (`SAFI_clean.csv`). Each row holds
 information for a single interview respondent, and the columns
 represent:
 
