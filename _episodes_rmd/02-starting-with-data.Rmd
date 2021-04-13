@@ -211,17 +211,17 @@ want from it. Row numbers come first, followed by column numbers.
 
 
 ```{r, purl=FALSE}
-## first element in the first column of the data frame (as a tibble)
+## first element in the first column of the tibble
 interviews[1, 1]
-## first element in the 6th column (as a tibble)
+## first element in the 6th column of the tibble 
 interviews[1, 6]
-## first column of the data frame (as a vector)
+## first column of the tibble (as a vector)
 interviews[[1]]
-## first column of the data frame (as a tibble)
+## first column of the tibble
 interviews[1]
-## first three elements in the 7th column (as a tibble)
+## first three elements in the 7th column of the tibble
 interviews[1:3, 7]
-## the 3rd row of the data frame (as a tibble)
+## the 3rd row of the tibble
 interviews[3, ]
 ## equivalent to head_interviews <- head(interviews)
 head_interviews <- interviews[1:6, ]
@@ -233,7 +233,7 @@ or decreasing order, test `1:10` and `10:1` for instance.
 You can also exclude certain indices of a data frame using the "`-`" sign:
 
 ```{r, purl=FALSE}
-interviews[, -1]          # The whole data frame, except the first column
+interviews[, -1]          # The whole tibble, except the first column
 interviews[-c(7:131), ]   # Equivalent to head(interviews)
 ```
 
