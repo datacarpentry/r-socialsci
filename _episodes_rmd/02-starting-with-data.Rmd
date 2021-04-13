@@ -145,12 +145,7 @@ interviews
 
 Note that `read_csv()` actually loads the data as a tibble.
 A tibble is an extension of `R` data frames used by the **`tidyverse`**. When the
-data is read using `read_csv()`, it is stored in an object of class `tbl_df`,
-`tbl`,  and `data.frame`. You can see the class of an object with
-
-```{r results='hold', purl=FALSE}
-class(interviews)
-```
+data is read using `read_csv()`.
 
 As a `tibble`, the type of data included in each column is listed in an
 abbreviated fashion below the column names. For instance, here `key_ID` is a
@@ -160,7 +155,7 @@ column of integers (abbreviated `<int>`), `village` is a column of characters
 
 ## Inspecting data frames
 
-When calling a `tbl_df` object (like `interviews` here), there is already a lot of information about our data frame being displayed such as the number of rows, the number of columns, the names of the columns, and as we just saw the class of data stored in each column. However, there are functions to extract this information from data frames.  Here is a non-exhaustive list of some of these
+When viewing a `tibble` in the R console, like we did with `interviews` here, there is already a lot of information about our data frame being displayed such as the number of rows, the number of columns, the names of the columns, and as we just saw the class of data stored in each column. However, there are functions to extract this information from data frames.  Here is a non-exhaustive list of some of these
 functions. Let's try them out!
 
 Size:
@@ -194,7 +189,7 @@ objects besides data frames or tibbles.
 
 ## Indexing and subsetting data frames
 
-Our `interviews` data frame has rows and columns (it has 2 dimensions).
+Our `interviews` `tibble` has rows and columns (it has 2 dimensions).
 In practice, we may not need the entire data frame; for instance, we may only
 be interested in a subset of the observations (the rows) or a particular set
 of variables (the columns). If we want to
