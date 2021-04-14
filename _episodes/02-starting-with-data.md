@@ -245,7 +245,7 @@ want from it. Row numbers come first, followed by column numbers.
 
 
 ~~~
-## first element in the first column of the data frame (as a data.frame)
+## first element in the first column of the tibble
 interviews[1, 1]
 ~~~
 {: .language-r}
@@ -263,7 +263,7 @@ interviews[1, 1]
 
 
 ~~~
-## first element in the 6th column (as a data.frame)
+## first element in the 6th column of the tibble 
 interviews[1, 6]
 ~~~
 {: .language-r}
@@ -281,7 +281,7 @@ interviews[1, 6]
 
 
 ~~~
-## first column of the data frame (as a vector)
+## first column of the tibble (as a vector)
 interviews[[1]]
 ~~~
 {: .language-r}
@@ -303,7 +303,7 @@ interviews[[1]]
 
 
 ~~~
-## first column of the data frame (as a data.frame)
+## first column of the tibble
 interviews[1]
 ~~~
 {: .language-r}
@@ -331,7 +331,7 @@ interviews[1]
 
 
 ~~~
-## first three elements in the 7th column (as a data.frame)
+## first three elements in the 7th column of the tibble
 interviews[1:3, 7]
 ~~~
 {: .language-r}
@@ -351,7 +351,7 @@ interviews[1:3, 7]
 
 
 ~~~
-## the 3rd row of the data frame (as a data.frame)
+## the 3rd row of the tibble
 interviews[3, ]
 ~~~
 {: .language-r}
@@ -384,7 +384,7 @@ You can also exclude certain indices of a data frame using the "`-`" sign:
 
 
 ~~~
-interviews[, -1]          # The whole data frame, except the first column
+interviews[, -1]          # The whole tibble, except the first column
 ~~~
 {: .language-r}
 
@@ -435,12 +435,12 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 ~~~
 {: .output}
 
-Data frames can be subset by calling indices (as shown previously), but also by calling their column names directly:
+`tibbe`s can be subset by calling indices (as shown previously), but also by calling their column names directly:
 
 
 ~~~
-interviews["village"]       # Result is a data frame
-interviews[, "village"]     # Result is a data frame
+interviews["village"]       # Result is a tibble
+interviews[, "village"]     # Result is a tibble
 interviews[["village"]]     # Result is a vector
 interviews$village          # Result is a vector
 ~~~
@@ -450,16 +450,16 @@ In RStudio, you can use the autocompletion feature to get the full and correct n
 
 > ## Exercise
 >
-> 1. Create a data frame (`interviews_100`) containing only the data in
+> 1. Create a tibble (`interviews_100`) containing only the data in
 >    row 100 of the `interviews` dataset.
 >
-> 2. Notice how `nrow()` gave you the number of rows in a data frame?
+> 2. Notice how `nrow()` gave you the number of rows in the tibble?
 >
->      * Use that number to pull out just that last row in the data frame.
+>      * Use that number to pull out just that last row in the tibble.
 >      * Compare that with what you see as the last row using `tail()` to make
 >        sure it's meeting expectations.
 >      * Pull out that last row using `nrow()` instead of the row number.
->      * Create a new data frame (`interviews_last`) from that last row.
+>      * Create a new tibble (`interviews_last`) from that last row.
 >
 > 3. Using the number of rows in the interviews dataset that you found in
 >    question 2, extract the row that is in the middle of the dataset. Store
