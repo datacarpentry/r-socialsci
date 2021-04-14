@@ -154,9 +154,9 @@ class(interviews)
 
 As a `tibble`, the type of data included in each column is listed in an
 abbreviated fashion below the column names. For instance, here `key_ID` is a
-column of integers (abbreviated `<int>`), `village` is a column of characters
-(`<chr>`) and the `interview_date` is a column in the "date and time" format
-(`<dttm>`).
+column of floating point numbers (abbreviated `<dbl>` for the word 'double'),
+`village` is a column of characters (`<chr>`) and the `interview_date` is a 
+column in the "date and time" format (`<dttm>`).
 
 ## Inspecting data frames
 
