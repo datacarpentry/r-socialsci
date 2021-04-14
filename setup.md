@@ -104,7 +104,7 @@ instructions to install **`tidyverse`**.
 this file is: <https://ndownloader.figshare.com/files/11492171>. To download
 from `R`:
 
-```{r, eval=TRUE,  message=FALSE, purl=FALSE}
+```{r eval=TRUE,  message=FALSE, purl=FALSE}
 download.file("https://ndownloader.figshare.com/files/11492171",
               "data/SAFI_clean.csv", mode = "wb")
 ```
