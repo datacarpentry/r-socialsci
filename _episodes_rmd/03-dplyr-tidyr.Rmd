@@ -137,13 +137,15 @@ select(interviews, village:respondent_wall_type)
 To choose rows based on a specific criteria, we can use the `filter()` function.
 The arguments after the dataframe are the condition(s) we want for our final
 dataframe to adhere to (e.g. village name is Chirodzo). We can chain a series of
-conditions together using commas between each condition.
+conditions together by using logical operators between each condition. 
 
 ```{r, purl = FALSE}
 # one condition
 filter(interviews, village == "Chirodzo")
-# multiple conditions
-filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
+# multiple conditions (output dataframe satisfies all specified conditions)
+filter(interviews, village == "Chirodzo" & rooms > 1 & no_meals > 2)
+# multiple conditions (output dataframe satisfies either of the specified conditions)
+filter(interviews, village == "Chirodzo"|village == "Ruaca")
 ```
 
 ## Pipes
