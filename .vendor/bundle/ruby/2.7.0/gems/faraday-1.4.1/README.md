@@ -2,7 +2,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/faraday.svg)](https://rubygems.org/gems/faraday)
 [![GitHub Actions CI](https://github.com/lostisland/faraday/workflows/CI/badge.svg)](https://github.com/lostisland/faraday/actions?query=workflow%3ACI)
-[![Maintainability](https://api.codeclimate.com/v1/badges/f869daab091ceef1da73/maintainability)](https://codeclimate.com/github/lostisland/faraday/maintainability)
 [![Gitter](https://badges.gitter.im/lostisland/faraday.svg)](https://gitter.im/lostisland/faraday?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 
@@ -47,7 +46,7 @@ But before you start coding, please read our [Contributing Guide][contributing]
 [website]:      https://lostisland.github.io/faraday
 [faraday_team]: https://lostisland.github.io/faraday/team
 [contributing]: https://github.com/lostisland/faraday/blob/master/.github/CONTRIBUTING.md
-[apidoc]:       http://www.rubydoc.info/gems/faraday
+[apidoc]:       https://www.rubydoc.info/github/lostisland/faraday
 [actions]:      https://github.com/lostisland/faraday/actions
 [jruby]:        http://jruby.org/
 [rubinius]:     http://rubini.us/

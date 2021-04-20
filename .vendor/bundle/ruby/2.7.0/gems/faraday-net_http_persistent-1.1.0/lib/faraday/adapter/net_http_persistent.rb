@@ -4,21 +4,21 @@ module Faraday
   class Adapter
     # Net::HTTP::Persistent adapter.
     class NetHttpPersistent < NetHttp
-      dependency 'net/http/persistent'
+      dependency "net/http/persistent"
 
       private
 
       def net_http_connection(env)
         @cached_connection ||=
           if Net::HTTP::Persistent.instance_method(:initialize)
-                                  .parameters.first == %i[key name]
-            options = { name: 'Faraday' }
+              .parameters.first == %i[key name]
+            options = {name: "Faraday"}
             if @connection_options.key?(:pool_size)
               options[:pool_size] = @connection_options[:pool_size]
             end
             Net::HTTP::Persistent.new(**options)
           else
-            Net::HTTP::Persistent.new('Faraday')
+            Net::HTTP::Persistent.new("Faraday")
           end
 
         proxy_uri = proxy_uri(env)
@@ -32,10 +32,10 @@ module Faraday
         proxy_uri = nil
         if (proxy = env[:request][:proxy])
           proxy_uri = if proxy[:uri].is_a?(::URI::HTTP)
-                        proxy[:uri].dup
-                      else
-                        ::URI.parse(proxy[:uri].to_s)
-                      end
+            proxy[:uri].dup
+          else
+            ::URI.parse(proxy[:uri].to_s)
+          end
           proxy_uri.user = proxy_uri.password = nil
           # awful patch for net-http-persistent 2.8
           # not unescaping user/password
@@ -54,9 +54,9 @@ module Faraday
       rescue Errno::ETIMEDOUT, Net::OpenTimeout => e
         raise Faraday::TimeoutError, e
       rescue Net::HTTP::Persistent::Error => e
-        raise Faraday::TimeoutError, e if e.message.include? 'Timeout'
+        raise Faraday::TimeoutError, e if e.message.include? "Timeout"
 
-        if e.message.include? 'connection refused'
+        if e.message.include? "connection refused"
           raise Faraday::ConnectionFailed, e
         end
 
