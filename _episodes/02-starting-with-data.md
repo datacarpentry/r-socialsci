@@ -975,6 +975,22 @@ We can convert this vector to dates as :
 
 
 ~~~
+as_date(char_dates, format = "%m/%d/%Y")
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "2012-07-31" "2014-08-09" "2106-04-30"
+~~~
+{: .output}
+
+Argument `format` tells the function the order to parse the characters and identify the month, day and year. The format above is the equivalent of mm/dd/yyyy. A wrong format can lead to parsing errors or incorrect results.
+
+For example, observe what happens when we use a lower case y instead of upper case Y for the year. 
+
+~~~
 as_date(char_dates, format = "%m/%d/%y")
 ~~~
 {: .language-r}
@@ -986,9 +1002,9 @@ as_date(char_dates, format = "%m/%d/%y")
 ~~~
 {: .output}
 
-Argument `format` tells the function the order to parse the characters and identify the month, day and year. A wrong format can lead to parsing errors or incorrect results.
+Here, the `%y` part of the format stands for a two-digit year instead of a four-digit year, and this leads to parsing errors.
 
-For example,
+Or in the following example, observe what happens when the month and day elements of the format are switched.
 
 ~~~
 as_date(char_dates, format = "%d/%m/%y")
@@ -1001,6 +1017,8 @@ as_date(char_dates, format = "%d/%m/%y")
 [1] NA           "2020-09-08" NA          
 ~~~
 {: .output}
+
+Since there is no month numbered 30 or 31, the first and third dates cannot be parsed.
 
 We can also use functions `ymd()`, `mdy()` or `dmy()` to convert character variables to date.
 
