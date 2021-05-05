@@ -134,19 +134,36 @@ select(interviews, village, no_membrs, months_lack_food)
 select(interviews, village:respondent_wall_type)
 ```
 
-To choose rows based on a specific criteria, we can use the `filter()` function.
-The arguments after the dataframe are the condition(s) we want for our final
-dataframe to adhere to (e.g. village name is Chirodzo). We can chain a series of
-conditions together by using logical operators between each condition. 
+To choose rows based on specific criteria, we can use the `filter()` function.
+The argument after the dataframe is the condition we want our final
+dataframe to adhere to (e.g. village name is Chirodzo): 
 
 ```{r, purl = FALSE}
-# one condition
+# selects observations where village name is "Chirodzo" 
 filter(interviews, village == "Chirodzo")
-# multiple conditions (output dataframe satisfies all specified conditions)
+```
+
+We can also specify multiple conditions within the `filter()` function. We can combine conditions using "and" & "or" statements. To form "and" statements within dplyr, we can  pass our desired conditions as arguments in the `filter()` function, separated by commas:
+
+```{r, purl=FALSE}
+# selects observations with "and" statements, using commas (output dataframe satisfies all specified conditions)
+filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
+```
+
+We can also form "and" statement with the "&" operator instead of commas:
+
+```{r, purl=FALSE}
+# selects observations with "and" statements, using "&" logical operator (output dataframe satisfies all specified conditions)
 filter(interviews, village == "Chirodzo" & rooms > 1 & no_meals > 2)
-# multiple conditions (output dataframe satisfies either of the specified conditions)
+```
+
+To form "or" statements, in which observations that meet one or more of the specified conditions will be filtered, we use the logical operator for "or", which is the vertical bar (|): 
+
+```{r, purl=FALSE}
+# selects observations with "or" statement (output dataframe satisfies either of the specified conditions)
 filter(interviews, village == "Chirodzo"|village == "Ruaca")
 ```
+
 
 ## Pipes
 
