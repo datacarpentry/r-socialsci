@@ -71,14 +71,14 @@ Objects can be given any name such as `x`, `current_temperature`, or
 `subject_id`. You want your object names to be explicit and not too long. They
 cannot start with a number (`2x` is not valid, but `x2` is). R is case sensitive
 (e.g., `age` is different from `Age`). There are some names that
-cannot be used because they are the names of fundamental functions in R (e.g.,
+cannot be used because they are the names of fundamental objects in R (e.g.,
 `if`, `else`, `for`, see
 [here](https://stat.ethz.ch/R-manual/R-devel/library/base/html/Reserved.html)
 for a complete list). In general, even if it's allowed, it's best to not use
-other function names (e.g., `c`, `T`, `mean`, `data`, `df`, `weights`). If in
+them (e.g., `c`, `T`, `mean`, `data`, `df`, `weights`). If in
 doubt, check the help to see if the name is already in use. It's also best to
 avoid dots (`.`) within an object name as in `my.dataset`. There are many
-functions in R with dots in their names for historical reasons, but because dots
+objects in R with dots in their names for historical reasons, but because dots
 have a special meaning in R (for methods) and other programming languages, it's
 best to avoid them. It is also recommended to use nouns for object names, and
 verbs for function names. It's important to be consistent in the styling of your
