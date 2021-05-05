@@ -150,7 +150,7 @@ We can also specify multiple conditions within the `filter()` function. We can c
 filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
 ```
 
-We can also form "and" statement with the "&" operator instead of commas:
+We can also form "and" statements with the "&" operator instead of commas:
 
 ```{r, purl=FALSE}
 # selects observations with "and" statements, using "&" logical operator (output dataframe satisfies all specified conditions)
