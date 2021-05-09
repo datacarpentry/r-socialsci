@@ -134,17 +134,50 @@ select(interviews, village, no_membrs, months_lack_food)
 select(interviews, village:respondent_wall_type)
 ```
 
-To choose rows based on a specific criteria, we can use the `filter()` function.
-The arguments after the dataframe are the condition(s) we want for our final
-dataframe to adhere to (e.g. village name is Chirodzo). We can chain a series of
-conditions together using commas between each condition.
+To choose rows based on specific criteria, we can use the `filter()` function.
+The argument after the dataframe is the condition we want our final
+dataframe to adhere to (e.g. village name is Chirodzo): 
 
 ```{r, purl = FALSE}
-# one condition
+# filters observations where village name is "Chirodzo" 
 filter(interviews, village == "Chirodzo")
-# multiple conditions
-filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
 ```
+
+We can also specify multiple conditions within the `filter()` function. We can
+combine conditions using either "and" or "or" statements. In an "and" 
+statement, an observation (row) must meet **every** criteria to be included
+in the resulting dataframe. To form "and" statements within dplyr, we can  pass
+our desired conditions as arguments in the `filter()` function, separated by
+commas:
+
+```{r, purl=FALSE}
+
+# filters observations with "and" operator (comma)
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo", 
+                   rooms > 1, 
+                   no_meals > 2)
+```
+
+We can also form "and" statements with the `&` operator instead of commas:
+
+```{r, purl=FALSE}
+# filters observations with "&" logical operator
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo" & 
+                   rooms > 1 & 
+                   no_meals > 2)
+```
+
+In an "or" statement, observations must meet *at least one* of the specified conditions. 
+To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
+
+```{r, purl=FALSE}
+# filters observations with "|" logical operator
+# output dataframe satisfies AT LEAST ONE of the specified conditions
+filter(interviews, village == "Chirodzo" | village == "Ruaca")
+```
+
 
 ## Pipes
 
