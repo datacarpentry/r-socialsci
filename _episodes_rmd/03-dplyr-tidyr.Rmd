@@ -143,25 +143,39 @@ dataframe to adhere to (e.g. village name is Chirodzo):
 filter(interviews, village == "Chirodzo")
 ```
 
-We can also specify multiple conditions within the `filter()` function. We can combine conditions using "and" & "or" statements. To form "and" statements within dplyr, we can  pass our desired conditions as arguments in the `filter()` function, separated by commas:
+We can also specify multiple conditions within the `filter()` function. We can
+combine conditions using either "and" or "or" statements. In an "and" 
+statement, an observation (row) must meet **every** criteria to be included
+in the resulting dataframe. To form "and" statements within dplyr, we can  pass
+our desired conditions as arguments in the `filter()` function, separated by
+commas:
 
 ```{r, purl=FALSE}
-# selects observations with "and" statements, using commas (output dataframe satisfies all specified conditions)
-filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
+
+# filters observations with "and" operator (comma)
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo", 
+                   rooms > 1, 
+                   no_meals > 2)
 ```
 
-We can also form "and" statements with the "&" operator instead of commas:
+We can also form "and" statements with the `&` operator instead of commas:
 
 ```{r, purl=FALSE}
-# selects observations with "and" statements, using "&" logical operator (output dataframe satisfies all specified conditions)
-filter(interviews, village == "Chirodzo" & rooms > 1 & no_meals > 2)
+# filters observations with "&" logical operator
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo" & 
+                   rooms > 1 & 
+                   no_meals > 2)
 ```
 
-To form "or" statements, in which observations that meet one or more of the specified conditions will be filtered, we use the logical operator for "or", which is the vertical bar (|): 
+In an "or" statement, observations must meet *at least one* of the specified conditions. 
+To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
 
 ```{r, purl=FALSE}
-# selects observations with "or" statement (output dataframe satisfies either of the specified conditions)
-filter(interviews, village == "Chirodzo"|village == "Ruaca")
+# filters observations with "|" logical operator
+# output dataframe satisfies AT LEAST ONE of the specified conditions
+filter(interviews, village == "Chirodzo" | village == "Ruaca")
 ```
 
 
