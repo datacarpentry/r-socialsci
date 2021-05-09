@@ -135,14 +135,13 @@ select(interviews, village:respondent_wall_type)
 ~~~
 {: .language-r}
 
-To choose rows based on a specific criteria, we can use the `filter()` function.
-The arguments after the dataframe are the condition(s) we want for our final
-dataframe to adhere to (e.g. village name is Chirodzo). We can chain a series of
-conditions together using commas between each condition.
+To choose rows based on specific criteria, we can use the `filter()` function.
+The argument after the dataframe is the condition we want our final
+dataframe to adhere to (e.g. village name is Chirodzo): 
 
 
 ~~~
-# one condition
+# filters observations where village name is "Chirodzo" 
 filter(interviews, village == "Chirodzo")
 ~~~
 {: .language-r}
@@ -169,11 +168,20 @@ filter(interviews, village == "Chirodzo")
 ~~~
 {: .output}
 
+We can also specify multiple conditions within the `filter()` function. We can
+combine conditions using either "and" or "or" statements. In an "and" 
+statement, an observation (row) must meet **every** criteria to be included
+in the resulting dataframe. To form "and" statements within dplyr, we can  pass
+our desired conditions as arguments in the `filter()` function, separated by
+commas:
 
 
 ~~~
-# multiple conditions
-filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
+# filters observations with "and" operator (comma)
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo", 
+                   rooms > 1, 
+                   no_meals > 2)
 ~~~
 {: .language-r}
 
@@ -198,6 +206,74 @@ filter(interviews, village == "Chirodzo", rooms > 1, no_meals > 2)
 #   instanceID <chr>
 ~~~
 {: .output}
+
+We can also form "and" statements with the `&` operator instead of commas:
+
+
+~~~
+# filters observations with "&" logical operator
+# output dataframe satisfies ALL specified conditions
+filter(interviews, village == "Chirodzo" & 
+                   rooms > 1 & 
+                   no_meals > 2)
+~~~
+{: .language-r}
+
+
+
+~~~
+# A tibble: 10 x 14
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+ 2     49 Chirod… 2016-11-16 00:00:00         6        26 burntbricks          2
+ 3     52 Chirod… 2016-11-16 00:00:00        11        15 burntbricks          3
+ 4     56 Chirod… 2016-11-16 00:00:00        12        23 burntbricks          2
+ 5     65 Chirod… 2016-11-16 00:00:00         8        20 burntbricks          3
+ 6     66 Chirod… 2016-11-16 00:00:00        10        37 burntbricks          3
+ 7     67 Chirod… 2016-11-16 00:00:00         5        31 burntbricks          2
+ 8     68 Chirod… 2016-11-16 00:00:00         8        52 burntbricks          3
+ 9    199 Chirod… 2017-06-04 00:00:00         7        17 burntbricks          2
+10    200 Chirod… 2017-06-04 00:00:00         8        20 burntbricks          2
+# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
+#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
+#   instanceID <chr>
+~~~
+{: .output}
+
+In an "or" statement, observations must meet *at least one* of the specified conditions. 
+To form "or" statements we use the logical operator for "or," which is the vertical bar (|): 
+
+
+~~~
+# filters observations with "|" logical operator
+# output dataframe satisfies AT LEAST ONE of the specified conditions
+filter(interviews, village == "Chirodzo" | village == "Ruaca")
+~~~
+{: .language-r}
+
+
+
+~~~
+# A tibble: 88 x 14
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
+ 2      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
+ 3     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+ 4     23 Ruaca   2016-11-21 00:00:00        10        20 burntbricks          4
+ 5     24 Ruaca   2016-11-21 00:00:00         6         4 burntbricks          2
+ 6     25 Ruaca   2016-11-21 00:00:00        11         6 burntbricks          3
+ 7     26 Ruaca   2016-11-21 00:00:00         3        20 burntbricks          2
+ 8     27 Ruaca   2016-11-21 00:00:00         7        36 burntbricks          2
+ 9     28 Ruaca   2016-11-21 00:00:00         2         2 muddaub              1
+10     29 Ruaca   2016-11-21 00:00:00         7        10 burntbricks          2
+# … with 78 more rows, and 7 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
+#   months_lack_food <chr>, instanceID <chr>
+~~~
+{: .output}
+
 
 ## Pipes
 
@@ -969,16 +1045,16 @@ interviews %>%
 # A tibble: 10 x 4
    key_ID village  interview_date      instanceID                               
     <dbl> <chr>    <dttm>              <chr>                                    
- 1     47 Chirodzo 2016-11-17 00:00:00 uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b
- 2     43 Chirodzo 2016-11-17 00:00:00 uuid:b4dff49f-ef27-40e5-a9d1-acf287b47358
- 3     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
- 4     66 Chirodzo 2016-11-16 00:00:00 uuid:a457eab8-971b-4417-a971-2e55b8702816
- 5    127 Chirodzo 2016-11-16 00:00:00 uuid:f6d04b41-b539-4e00-868a-0f62b427587d
- 6     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
- 7     56 Chirodzo 2016-11-16 00:00:00 uuid:973c4ac6-f887-48e7-aeaf-4476f2cfab76
- 8     21 Chirodzo 2016-11-16 00:00:00 uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12
- 9     68 Chirodzo 2016-11-16 00:00:00 uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9
-10      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
+ 1     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
+ 2     68 Chirodzo 2016-11-16 00:00:00 uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9
+ 3     47 Chirodzo 2016-11-17 00:00:00 uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b
+ 4     21 Chirodzo 2016-11-16 00:00:00 uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12
+ 5     48 Chirodzo 2016-11-16 00:00:00 uuid:e180899c-7614-49eb-a97c-40ed013a38a2
+ 6     66 Chirodzo 2016-11-16 00:00:00 uuid:a457eab8-971b-4417-a971-2e55b8702816
+ 7     10 Chirodzo 2016-12-16 00:00:00 uuid:8f4e49bc-da81-4356-ae34-e0d794a23721
+ 8     35 Chirodzo 2016-11-17 00:00:00 uuid:ff7496e7-984a-47d3-a8a1-13618b5683ce
+ 9     62 Chirodzo 2016-11-16 00:00:00 uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6
+10     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
 ~~~
 {: .output}
 
