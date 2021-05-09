@@ -139,7 +139,7 @@ The argument after the dataframe is the condition we want our final
 dataframe to adhere to (e.g. village name is Chirodzo): 
 
 ```{r, purl = FALSE}
-# selects observations where village name is "Chirodzo" 
+# filters observations where village name is "Chirodzo" 
 filter(interviews, village == "Chirodzo")
 ```
 
