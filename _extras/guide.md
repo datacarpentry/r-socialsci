@@ -138,7 +138,7 @@ time, rather than deal with these issues over and over.
 
 **`|` character on Spanish keyboards:** The Spanish Mac keyboard does not have a <kbd>|</kbd> key. 
 This character can be created using: 
-<kbd>alt</kbd> + <kbd>1</kbd>
+<kbd>Alt</kbd> + <kbd>1</kbd>
 
 
 ## Other Resources
