@@ -2,7 +2,6 @@ require "execjs/module"
 require "execjs/disabled_runtime"
 require "execjs/duktape_runtime"
 require "execjs/external_runtime"
-require "execjs/ruby_racer_runtime"
 require "execjs/ruby_rhino_runtime"
 require "execjs/mini_racer_runtime"
 
@@ -12,22 +11,23 @@ module ExecJS
 
     Duktape = DuktapeRuntime.new
 
-    RubyRacer = RubyRacerRuntime.new
-
     RubyRhino = RubyRhinoRuntime.new
 
     MiniRacer = MiniRacerRuntime.new
 
     Node = ExternalRuntime.new(
       name:        "Node.js (V8)",
-      command:     ["nodejs", "node"],
+      command:     ["node", "nodejs"],
       runner_path: ExecJS.root + "/support/node_runner.js",
       encoding:    'UTF-8'
     )
 
     JavaScriptCore = ExternalRuntime.new(
       name:        "JavaScriptCore",
-      command:     "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc",
+      command:     [
+        "/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc",
+        "/System/Library/Frameworks/JavaScriptCore.framework/Versions/A/Resources/jsc",
+      ],
       runner_path: ExecJS.root + "/support/jsc_runner.js"
     )
 
@@ -64,7 +64,9 @@ module ExecJS
     end
 
     def self.from_environment
-      if name = ENV["EXECJS_RUNTIME"]
+      env = ENV["EXECJS_RUNTIME"]
+      if env && !env.empty?
+        name = env
         raise RuntimeUnavailable, "#{name} runtime is not defined" unless const_defined?(name)
         runtime = const_get(name)
 
@@ -79,7 +81,6 @@ module ExecJS
 
     def self.runtimes
       @runtimes ||= [
-        RubyRacer,
         RubyRhino,
         Duktape,
         MiniRacer,

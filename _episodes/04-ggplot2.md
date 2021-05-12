@@ -323,7 +323,7 @@ interviews_plotting %>%
 
 <img src="../fig/rmd-04-adding-colors-1.png" title="plot of chunk adding-colors" alt="plot of chunk adding-colors" width="612" style="display: block; margin: auto;" />
 
-To colour each species in the plot differently, you could use a vector as an input 
+To colour each village in the plot differently, you could use a vector as an input 
 to the argument **`color`**.  However, because we are now mapping features of the
 data to a colour, instead of setting one colour for all points, the colour of the 
 points now needs to be set inside a call to the **`aes`** function. When we map 

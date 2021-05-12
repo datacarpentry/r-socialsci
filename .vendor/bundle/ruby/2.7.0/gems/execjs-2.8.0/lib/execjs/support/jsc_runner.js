@@ -1,9 +1,8 @@
-(function(program, execJS) { execJS(program) })(function(global, module, exports, require, console, setTimeout, setInterval, clearTimeout, clearInterval, setImmediate, clearImmediate) { #{source}
+(function(program, execJS) { execJS(program) })(function() { #{source}
 }, function(program) {
-  var output, print = function(string) {
-    process.stdout.write('' + string);
-  };
+  var output;
   try {
+    delete this.console;
     result = program();
     if (typeof result == 'undefined' && result !== null) {
       print('["ok"]');
