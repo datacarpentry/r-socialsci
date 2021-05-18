@@ -94,7 +94,7 @@ Each chart built with ggplot2 must include the following
   + Visual attribute of data including x-y axes, color, fill, shape, and alpha  
 * Geometric objects (geom)  
 
-  + Determines how values are rendered graphically, as bars (geom_bar), scatterplot (geom_point), line (geom_line), etc. 
+  + Determines how values are rendered graphically, as bars (`geom_bar`), scatterplot (`geom_point`), line (`geom_line`), etc. 
 
 Thus, the template for graphic in ggplot2 is:
 
