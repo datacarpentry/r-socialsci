@@ -803,14 +803,14 @@ hh_members[hh_members < 4 | hh_members > 7]
 
 
 ~~~
-hh_members[hh_members >= 7 & hh_members == 3]
+hh_members[hh_members >= 4 & hh_members <= 7]
 ~~~
 {: .language-r}
 
 
 
 ~~~
-numeric(0)
+[1] 7 6
 ~~~
 {: .output}
 
