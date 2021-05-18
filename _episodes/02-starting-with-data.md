@@ -127,7 +127,7 @@ has been loaded, we can see the contents of the data frame by typing its name:
 ~~~
 interviews
 ## Try also
-## View(interviews)
+## view(interviews)
 ## head(interviews)
 ~~~
 {: .language-r}
@@ -435,7 +435,7 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 ~~~
 {: .output}
 
-`tibbe`s can be subset by calling indices (as shown previously), but also by calling their column names directly:
+`tibble`s can be subset by calling indices (as shown previously), but also by calling their column names directly:
 
 
 ~~~
