@@ -126,7 +126,7 @@ has been loaded, we can see the contents of the data frame by typing its name:
 ```{r, results='hold', purl=FALSE}
 interviews
 ## Try also
-## View(interviews)
+## view(interviews)
 ## head(interviews)
 ```
 
