@@ -484,7 +484,7 @@ You can combine multiple tests using `&` (both conditions are true, AND) or `|`
 
 ```{r, results='show', purl=FALSE}
 hh_members[hh_members < 4 | hh_members > 7]
-hh_members[hh_members >= 7 & hh_members == 3]
+hh_members[hh_members >= 4 & hh_members <= 7]
 ```
 
 Here, `<` stands for "less than", `>` for "greater than", `>=` for "greater than
