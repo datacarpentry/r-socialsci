@@ -107,7 +107,7 @@ interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 interviews
 
 ## preview the data
-# View(interviews)
+# view(interviews)
 ```
 
 We're going to learn some of the most common **`dplyr`** functions:
