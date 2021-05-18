@@ -237,7 +237,7 @@ interviews[, -1]          # The whole tibble, except the first column
 interviews[-c(7:131), ]   # Equivalent to head(interviews)
 ```
 
-`tibbe`s can be subset by calling indices (as shown previously), but also by calling their column names directly:
+`tibble`s can be subset by calling indices (as shown previously), but also by calling their column names directly:
 
 ```{r, eval = FALSE, purl=FALSE}
 interviews["village"]       # Result is a tibble
