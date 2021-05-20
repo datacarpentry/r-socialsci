@@ -93,7 +93,7 @@ and this [one about **`tidyr`**](https://github.com/rstudio/cheatsheets/raw/mast
 
 ## Learning **`dplyr`** and **`tidyr`**
 
-To make sure, everyone will use the same dataset for this lesson, we'll read
+To make sure everyone will use the same dataset for this lesson, we'll read
 again the SAFI dataset that we downloaded earlier.
 
 ```{r, results = 'hide', purl = FALSE, message = FALSE}
