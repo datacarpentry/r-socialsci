@@ -1,5 +1,9 @@
 ---
-title: "Code Handout"
+title: "Code Handout - Data Wrangling with dplyr & tidyr"
+output:
+  html_document:
+    df_print: paged
+    code_download: true
 ---
 
 ```{r, include = FALSE}
