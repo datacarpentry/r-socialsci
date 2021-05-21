@@ -1,5 +1,9 @@
 ---
 title: "Code Handout - Introduction to R"
+output:
+  html_document:
+    df_print: paged
+    code_download: true
 ---
 
 ```{r, include = FALSE}
