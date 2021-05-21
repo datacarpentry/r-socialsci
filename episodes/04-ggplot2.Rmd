@@ -499,15 +499,23 @@ percent_wall_type %>%
 By default, the axes labels on a plot are determined by the name of the variable
 being plotted. However, **`ggplot2`** offers lots of customization options,
 like specifying the axes labels, and adding a title to the plot with
-relatively few lines of code. We will add more informative x and y axis
-labels to our plot of proportion of house type by village and also add
-a title.
+relatively few lines of code. We will add more informative x-and y-axis
+labels to our plot, a more explanatory label to the legend, and a plot title.
+
+The `labs` function takes the following arguments: 
+
+- `title` -- to produce a plot title
+- `subtitle` -- to produce a plot subtitle (smaller text placed beneath the title) 
+- `caption` -- a caption for the plot
+- `...` -- any pair of name and value for aesthetics used in the plot (e.g., 
+`x`, `y`, `fill`, `color`, `size`)
 
 ```{r barplot-wall-types-labeled}
 percent_wall_type %>%
     ggplot(aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
     labs(title = "Proportion of wall type by village",
+         fill = "Type of Wall in Home", 
          x = "Village",
          y = "Percent")
 ```
