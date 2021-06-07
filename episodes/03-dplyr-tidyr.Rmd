@@ -773,7 +773,7 @@ replace_na(list(items_owned = "no_listed_items")) %>%
 ```
 
 Next, we create a new variable named `items_owned_logical`, which has one value
-(`TRUE`) for every row. This makes since, since each item in every row was owned
+(`TRUE`) for every row. This makes sense, since each item in every row was owned
 by that household. We are constructing this variable so that when spread the
 `items_owned` across multiple columns, we can fill the values of those columns
 with logical values describing whether the household did (`TRUE`) or didn't
