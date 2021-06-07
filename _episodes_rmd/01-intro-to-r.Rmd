@@ -533,7 +533,7 @@ You can add the argument `na.rm=TRUE` to calculate the result while ignoring
 the missing values.
 
 ```{r, purl=FALSE}
-rooms <- c(2, 1, 1, NA, 4)
+rooms <- c(2, 1, 1, NA, 7)
 mean(rooms)
 max(rooms)
 mean(rooms, na.rm = TRUE)
