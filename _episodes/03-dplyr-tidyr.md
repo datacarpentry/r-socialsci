@@ -1045,16 +1045,16 @@ interviews %>%
 # A tibble: 10 x 4
    key_ID village  interview_date      instanceID                               
     <dbl> <chr>    <dttm>              <chr>                                    
- 1     48 Chirodzo 2016-11-16 00:00:00 uuid:e180899c-7614-49eb-a97c-40ed013a38a2
- 2     47 Chirodzo 2016-11-17 00:00:00 uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b
- 3    127 Chirodzo 2016-11-16 00:00:00 uuid:f6d04b41-b539-4e00-868a-0f62b427587d
- 4     51 Chirodzo 2016-11-16 00:00:00 uuid:18ac8e77-bdaf-47ab-85a2-e4c947c9d3ce
- 5     54 Chirodzo 2016-11-16 00:00:00 uuid:273ab27f-9be3-4f3b-83c9-d3e1592de919
- 6     55 Chirodzo 2016-11-16 00:00:00 uuid:883c0433-9891-4121-bc63-744f082c1fa0
- 7     59 Chirodzo 2016-11-16 00:00:00 uuid:1936db62-5732-45dc-98ff-9b3ac7a22518
- 8     56 Chirodzo 2016-11-16 00:00:00 uuid:973c4ac6-f887-48e7-aeaf-4476f2cfab76
- 9     44 Chirodzo 2016-11-17 00:00:00 uuid:f9fadf44-d040-4fca-86c1-2835f79c4952
-10     57 Chirodzo 2016-11-16 00:00:00 uuid:a7184e55-0615-492d-9835-8f44f3b03a71
+ 1     10 Chirodzo 2016-12-16 00:00:00 uuid:8f4e49bc-da81-4356-ae34-e0d794a23721
+ 2     62 Chirodzo 2016-11-16 00:00:00 uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6
+ 3     56 Chirodzo 2016-11-16 00:00:00 uuid:973c4ac6-f887-48e7-aeaf-4476f2cfab76
+ 4     69 Chirodzo 2016-11-16 00:00:00 uuid:f86933a5-12b8-4427-b821-43c5b039401d
+ 5     48 Chirodzo 2016-11-16 00:00:00 uuid:e180899c-7614-49eb-a97c-40ed013a38a2
+ 6     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
+ 7     61 Chirodzo 2016-11-16 00:00:00 uuid:2401cf50-8859-44d9-bd14-1bf9128766f2
+ 8     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
+ 9     49 Chirodzo 2016-11-16 00:00:00 uuid:2303ebc1-2b3c-475a-8916-b322ebf18440
+10     67 Chirodzo 2016-11-16 00:00:00 uuid:6c15d667-2860-47e3-a5e7-7f679271e419
 ~~~
 {: .output}
 
@@ -1323,7 +1323,7 @@ replace_na(list(items_owned = "no_listed_items")) %>%
 {: .language-r}
 
 Next, we create a new variable named `items_owned_logical`, which has one value
-(`TRUE`) for every row. This makes since, since each item in every row was owned
+(`TRUE`) for every row. This makes sense, since each item in every row was owned
 by that household. We are constructing this variable so that when spread the
 `items_owned` across multiple columns, we can fill the values of those columns
 with logical values describing whether the household did (`TRUE`) or didn't

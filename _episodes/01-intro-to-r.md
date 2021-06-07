@@ -901,7 +901,7 @@ the missing values.
 
 
 ~~~
-rooms <- c(2, 1, 1, NA, 4)
+rooms <- c(2, 1, 1, NA, 7)
 mean(rooms)
 ~~~
 {: .language-r}
@@ -937,7 +937,7 @@ mean(rooms, na.rm = TRUE)
 
 
 ~~~
-[1] 2
+[1] 2.75
 ~~~
 {: .output}
 
@@ -951,7 +951,7 @@ max(rooms, na.rm = TRUE)
 
 
 ~~~
-[1] 4
+[1] 7
 ~~~
 {: .output}
 
@@ -970,7 +970,7 @@ rooms[!is.na(rooms)]
 
 
 ~~~
-[1] 2 1 1 4
+[1] 2 1 1 7
 ~~~
 {: .output}
 
@@ -1000,7 +1000,7 @@ na.omit(rooms)
 
 
 ~~~
-[1] 2 1 1 4
+[1] 2 1 1 7
 attr(,"na.action")
 [1] 4
 attr(,"class")
@@ -1019,7 +1019,7 @@ rooms[complete.cases(rooms)]
 
 
 ~~~
-[1] 2 1 1 4
+[1] 2 1 1 7
 ~~~
 {: .output}
 Recall that you can use the `typeof()` function to find the type of your atomic vector.
