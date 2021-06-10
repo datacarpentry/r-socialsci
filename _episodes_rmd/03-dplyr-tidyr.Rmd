@@ -30,7 +30,7 @@ objectives:
 questions:
 - How can I select specific rows and/or columns from a dataframe?
 - How can I combine multiple commands into a single command?
-- How can create new columns or remove existing columns from a dataframe?
+- How can I create new columns or remove existing columns from a dataframe?
 - How can I reformat a dataframe to meet my needs?
 teaching: 50
 exercises: 30
