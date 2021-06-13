@@ -150,3 +150,5 @@ maintainers by email or [open an
 issue](https://github.com/datacarpentry/r-socialsci/issues/new).
 
 For a more in-depth coverage of topics of the workshops, you may want to read "[R for Data Science](http://r4ds.had.co.nz/)" by Hadley Wickham and Garrett Grolemund.
+
+//I don't suggest a change on this page - it's the Extras menu in the navigation bar, which I can't see here
