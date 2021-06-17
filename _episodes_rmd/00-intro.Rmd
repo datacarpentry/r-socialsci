@@ -19,7 +19,7 @@ keypoints:
 source: Rmd
 ---
 
-```{r, include=FALSE}
+```{r, include = FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("00-")
 source("../bin/download_data.R")
@@ -35,8 +35,9 @@ software that interprets the scripts written using it.
 your R scripts but also to interact with the R software. To function correctly,
 RStudio needs R and therefore both need to be installed on your computer.
 
-To make it easier to interact with R, we will use RStudio. RStudio is the most popular
-IDE (Integrated Development Environmemt) for R. An IDE is a piece of software that provides
+To make it easier to interact with R, we will use RStudio. RStudio is the most
+popular IDE (Integrated Development Environmemt) for R. An IDE is a piece of
+software that provides
 tools to make programming easier.
 
 
@@ -70,15 +71,13 @@ statistical tests in your manuscript are updated automatically.
 An increasing number of journals and funding agencies expect analyses to be
 reproducible, so knowing R will give you an edge with these requirements.
 
-
 ### R is interdisciplinary and extensible
 
 With 10,000+ packages that can be installed to extend its capabilities, R
 provides a framework that allows you to combine statistical approaches from many
-scientific disciplines to best suit the analytical framework you need to analyze your
-data. For instance, R has packages for image analysis, GIS, time series, population
-genetics, and a lot more.
-
+scientific disciplines to best suit the analytical framework you need to analyze
+your data. For instance, R has packages for image analysis, GIS, time series,
+population genetics, and a lot more.
 
 ### R works on data of all shapes and sizes
 
@@ -92,12 +91,10 @@ types that make handling of missing data and statistical factors convenient.
 R can connect to spreadsheets, databases, and many other data formats, on your
 computer or on the web.
 
-
 ### R produces high-quality graphics
 
 The plotting functionalities in R are endless, and allow you to adjust any
 aspect of your graph to convey most effectively the message from your data.
-
 
 ### R has a large and welcoming community
 
@@ -107,7 +104,6 @@ or on the [RStudio community](https://community.rstudio.com/). Questions which
 are backed up with [short, reproducible code
 snippets](https://www.tidyverse.org/help/) are more likely to attract
 knowledgeable responses.
-
 
 ### Not only is R free, but it is also open-source and cross-platform
 
@@ -120,16 +116,15 @@ users, there is a very large selection of third-party add-on packages which are
 freely available to extend R's native capabilities.
 
 
-
 <figure>
 <div class="row">
 <div class="col-md-6">
-```{r rstudio-analogy, echo=FALSE, fig.show="hold", out.width="100%", fig.alt="RStudio extends what R can do, and makes it easier to write R code and interact with R."}
+```{r rstudio-analogy, echo = FALSE, fig.show = "hold", out.width = "100%", fig.alt = "RStudio extends what R can do, and makes it easier to write R code and interact with R."}
 knitr::include_graphics("../fig/r-manual.jpeg")
 ```
 </div>
 <div class="col-md-6">
-```{r rstudio-analogy-2, echo=FALSE, fig.show="hold", fig.alt="automatic car gear shift representing the ease of RStudio", out.width="100%"}
+```{r rstudio-analogy-2, echo = FALSE, fig.show = "hold", fig.alt = "automatic car gear shift representing the ease of RStudio", out.width="100%"}
 knitr::include_graphics("../fig/r-automatic.jpeg")
 ```
 </div>
@@ -141,10 +136,7 @@ with R. <a href="https://unsplash.com/photos/D19rXKDUPYM">Left photo credit</a>;
 </figure>
 
 
-
 ## A tour of RStudio
-
-
 
 ## Knowing your way around RStudio
 
@@ -172,11 +164,12 @@ error-prone.
 
 It is good practice to keep a set of related data, analyses, and text
 self-contained in a single folder called the **working directory**. All of the
-scripts within this folder can then use *relative paths* to files. Relative paths
-indicate where inside the project a file is located (as opposed to absolute paths,
-which point to where a file is on a specific computer). Working this way makes it
-a lot easier to move your project around on your computer and share it with
-others without having to directly modify file paths in the individual scripts.
+scripts within this folder can then use *relative paths* to files. Relative
+paths indicate where inside the project a file is located (as opposed to
+absolute paths, which point to where a file is on a specific computer). Working
+this way makes it a lot easier to move your project around on your computer and
+share it with others without having to directly modify file paths in the
+individual scripts.
 
 RStudio provides a helpful set of tools to do this through its "Projects"
 interface, which not only creates a working directory for you but also remembers
@@ -197,7 +190,18 @@ resume work after a break.
   script. Click the save icon on your toolbar and save your script as
   "`script.R`".
 
+The simplest way to open an RStudio project once it has been created is to 
+navigate through your files to where the project was saved and double
+click on the `.Rproj` (blue cube) file. This will open RStudio and start your R
+session in the **same** directory as the `.Rproj` file. All your data, plots and
+scripts will now be relative to the project directory. RStudio projects have the
+added benefit of allowing you to open multiple projects at the same time each
+open to its own project directory. This allows you to keep multiple projects
+open without them interfering with each other.
+
+
 ### The RStudio Interface
+
 Let's take a quick tour of RStudio.
 
 ![RStudio_startup](../fig/R_00_Rstudio_01.png)
@@ -209,8 +213,9 @@ Pane Layout).
 The Default Layout is:
 - Top Left - **Source**: your scripts and documents
 - Bottom Left - **Console**: what R would look and be like without RStudio
-- Top Right - **Environment/History**: look here to see what you have done
-- Bottom Right - **Files** and more: see the contents of the project/working directory here, like your Script.R file
+- Top Right - **Enviornment/History**: look here to see what you have done
+- Bottom Right - **Files** and more: see the contents of the project/working
+directory here, like your Script.R file
 
 
 ### Organizing your working directory
@@ -222,12 +227,14 @@ create directories (folders) for **scripts**, **data**, and **documents**. Here
 are some examples of suggested directories:
 
  - **`data/`** Use this folder to store your raw data and intermediate datasets.
-   For the sake of transparency and [provenance](https://en.wikipedia.org/wiki/Provenance), you
+   For the sake of transparency and 
+   [provenance](https://en.wikipedia.org/wiki/Provenance), you
    should *always* keep a copy of your raw data accessible and do as much of
    your data cleanup and preprocessing programmatically (i.e., with scripts,
    rather than manually) as possible.
  - **`data_output/`** When you need to modify your raw data,
-   it might be useful to store the modified versions of the datasets in a different folder.
+   it might be useful to store the modified versions of the datasets in a
+   different folder.
  - **`documents/`** Used for outlines, drafts, and other
    text.
  - **`fig_output/`** This folder can store the graphics that are generated
@@ -238,41 +245,50 @@ are some examples of suggested directories:
 You may want additional directories or subdirectories depending on your project
 needs, but these should form the backbone of your working directory.
 
-![Example of a working directory structure](../fig/working-directory-structure.png)
+![Example of a working directory structure](../fig/rstudio_project_files.jpeg)
+
 
 ### The working directory
 
 The working directory is an important concept to understand. It is the place
-where R will look for and save files. When you write code for
-your project, your scripts should refer to files in relation to the root of your working
-directory and only to files within this structure.
+where R will look for and save files. When you write code for your project, your
+scripts should refer to files in relation to the root of your working directory
+and only to files within this structure.
 
 Using RStudio projects makes this easy and ensures that your working directory
 is set up properly. If you need to check it, you can use `getwd()`. If for some
-reason your working directory is not what it should be, you can change it in the
-RStudio interface by navigating in the file browser to where your working directory
-should be, clicking on the blue gear icon "More", and selecting "Set As Working
-Directory". Alternatively, you can use `setwd("/path/to/working/directory")` to
-reset your working directory. However, your scripts should not include this line,
-because it will fail on someone else's computer.
+reason your working directory is not the same as the location of your RStudio 
+project, it is likely that you opened an R script or RMarkdown file **not** your
+`.Rproj` file. You should close out of RStudio and open the `.Rproj` file by 
+double clicking on the blue cube! 
 
 
 ### Downloading the data and getting set up
 
-For this lesson we will use the following folders in our working directory: **`data/`**, **`data_output/`** and **`fig_output/`**. Let's write them all in lowercase to be consistent. We can create them using the RStudio interface by clicking on the "New Folder" button in the file pane (bottom right), or directly from R by typing at console:
+For this lesson we will use the following folders in our working directory:
+**`data/`**, **`data_output/`** and **`fig_output/`**. Let's write them all in
+lowercase to be consistent. We can create them using the RStudio interface by
+clicking on the "New Folder" button in the file pane (bottom right), or directly
+from R by typing at console:
 
-```{r create-dirs, eval=FALSE}
+```{r create-dirs, eval = FALSE}
 dir.create("data")
 dir.create("data_output")
 dir.create("fig_output")
 ```
 
-Go to the Figshare page for this curriculum and download the dataset called "`SAFI_clean.csv`". The direct download link is: <https://ndownloader.figshare.com/files/11492171>. Place this downloaded file in the `data/` you just created. You can do this directly from R by copying and pasting this in your terminal (your instructor can place this chunk of code in the Etherpad):
+Go to the Figshare page for this curriculum and download the dataset called
+"`SAFI_clean.csv`". The direct download link is:
+<https://ndownloader.figshare.com/files/11492171>. Place this downloaded file in
+the `data/` you just created. You can do this directly from R by copying and
+pasting this in your terminal (your instructor can place this chunk of code in
+the Etherpad):
 
-```{r download-data, eval=FALSE}
+```{r download-data, eval = FALSE}
 download.file("https://ndownloader.figshare.com/files/11492171",
               "data/SAFI_clean.csv", mode = "wb")
 ```
+
 
 ## Interacting with R
 
@@ -288,8 +304,8 @@ script files (plain text files that contain your code). The console pane (in
 RStudio, the bottom left panel) is the place where commands written in the R
 language can be typed and executed immediately by the computer. It is also where
 the results will be shown for commands that have been executed. You can type
-commands directly into the console and press <kbd>Enter</kbd> to execute those commands,
-but they will be forgotten when you close the session.
+commands directly into the console and press <kbd>Enter</kbd> to execute those
+commands, but they will be forgotten when you close the session.
 
 Because we want our code and workflow to be reproducible, it is better to type
 the commands we want in the script editor and save the script. This way, there
@@ -386,6 +402,7 @@ will need an Internet connection to install packages.
 
 It is also possible to install packages from other repositories, as
 well as Github or the local file system, but we won’t be looking at these options in this lesson.
+
 
 ## Installing additional packages using R code
 
