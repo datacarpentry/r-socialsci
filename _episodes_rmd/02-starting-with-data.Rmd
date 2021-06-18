@@ -451,6 +451,7 @@ Notice that in the recommended `levels()` approach, three important steps occur:
 vector `year_fct` inside the square brackets
 
 ### Renaming factors
+##
 
 When your data is stored as a factor, you can use the `plot()` function to get a
 quick glance at the number of observations represented by each factor level.
