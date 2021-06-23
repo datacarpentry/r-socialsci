@@ -121,13 +121,6 @@ interviews <- read_csv(
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error: '/home/runner/work/r-socialsci/r-socialsci/data/SAFI_clean.csv' does not exist.
-~~~
-{: .error}
-
 In the above code, we notice the `here()` function takes folder and file names
 as inputs (e.g., `"data"`, `"SAFI_clean.csv"`), each enclosed in quotations 
 (`""`) and separated by a comma. The `here()` will accept as many names as are
@@ -157,24 +150,33 @@ has been loaded, we can see the contents of the data frame by typing its name:
 
 ~~~
 interviews
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 ## Try also
 ## view(interviews)
 ## head(interviews)
 ~~~
 {: .language-r}
+
+
+
+~~~
+# A tibble: 131 x 14
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
+ 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
+ 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
+ 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
+ 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
+ 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
+ 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
+ 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
+ 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
+10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+# … with 121 more rows, and 7 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
+#   months_lack_food <chr>, instanceID <chr>
+~~~
+{: .output}
 
 > ## Note
 >
@@ -203,9 +205,9 @@ class(interviews)
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+[1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" 
 ~~~
-{: .error}
+{: .output}
 
 As a `tibble`, the type of data included in each column is listed in an
 abbreviated fashion below the column names. For instance, here `key_ID` is a
@@ -283,9 +285,12 @@ interviews[1, 1]
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 1 x 1
+  key_ID
+   <dbl>
+1      1
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -298,9 +303,12 @@ interviews[1, 6]
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 1 x 1
+  respondent_wall_type
+  <chr>               
+1 muddaub             
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -313,9 +321,16 @@ interviews[[1]]
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+  [1]   1   1   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+ [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+ [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  21  54
+ [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71 127
+ [73] 133 152 153 155 178 177 180 181 182 186 187 195 196 197 198 201 202  72
+ [91]  73  76  83  85  89 101 103 102  78  80 104 105 106 109 110 113 118 125
+[109] 119 115 108 116 117 144 143 150 159 160 165 166 167 174 175 189 191 192
+[127] 126 193 194 199 200
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -328,9 +343,22 @@ interviews[1]
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 131 x 1
+   key_ID
+    <dbl>
+ 1      1
+ 2      1
+ 3      3
+ 4      4
+ 5      5
+ 6      6
+ 7      7
+ 8      8
+ 9      9
+10     10
+# … with 121 more rows
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -343,9 +371,14 @@ interviews[1:3, 7]
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 3 x 1
+  rooms
+  <dbl>
+1     1
+2     1
+3     1
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -358,9 +391,15 @@ interviews[3, ]
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 1 x 14
+  key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
+   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
+1      3 God     2016-11-17 00:00:00        10        15 burntbricks           1
+# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
+#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
+#   instanceID <chr>
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -369,13 +408,6 @@ Error in eval(expr, envir, enclos): object 'interviews' not found
 head_interviews <- interviews[1:6, ]
 ~~~
 {: .language-r}
-
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
-~~~
-{: .error}
 
 `:` is a special function that creates numeric vectors of integers in increasing
 or decreasing order, test `1:10` and `10:1` for instance.
@@ -391,9 +423,24 @@ interviews[, -1]          # The whole tibble, except the first column
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 131 x 13
+   village  interview_date      no_membrs years_liv respondent_wall_type rooms
+   <chr>    <dttm>                  <dbl>     <dbl> <chr>                <dbl>
+ 1 God      2016-11-17 00:00:00         3         4 muddaub                  1
+ 2 God      2016-11-17 00:00:00         7         9 muddaub                  1
+ 3 God      2016-11-17 00:00:00        10        15 burntbricks              1
+ 4 God      2016-11-17 00:00:00         7         6 burntbricks              1
+ 5 God      2016-11-17 00:00:00         7        40 burntbricks              1
+ 6 God      2016-11-17 00:00:00         3         3 muddaub                  1
+ 7 God      2016-11-17 00:00:00         6        38 muddaub                  1
+ 8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks              3
+ 9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks              1
+10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks              5
+# … with 121 more rows, and 7 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
+#   months_lack_food <chr>, instanceID <chr>
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -405,9 +452,20 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 6 x 14
+  key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
+   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
+1      1 God     2016-11-17 00:00:00         3         4 muddaub               1
+2      1 God     2016-11-17 00:00:00         7         9 muddaub               1
+3      3 God     2016-11-17 00:00:00        10        15 burntbricks           1
+4      4 God     2016-11-17 00:00:00         7         6 burntbricks           1
+5      5 God     2016-11-17 00:00:00         7        40 burntbricks           1
+6      6 God     2016-11-17 00:00:00         3         3 muddaub               1
+# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
+#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
+#   instanceID <chr>
 ~~~
-{: .error}
+{: .output}
 
 `tibble`s can be subset by calling indices (as shown previously), but also by
 calling their column names directly:
@@ -457,75 +515,16 @@ names of the columns.
 > > ~~~
 > > ## 1.
 > > interviews_100 <- interviews[100, ]
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > ## 2.
 > > # Saving `n_rows` to improve readability and reduce duplication
 > > n_rows <- nrow(interviews)
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in nrow(interviews): object 'interviews' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > interviews_last <- interviews[n_rows, ]
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > ## 3.
 > > interviews_middle <- interviews[median(1:n_rows), ]
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > ## 4.
 > > interviews_head <- interviews[-(7:n_rows), ]
 > > ~~~
 > > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in eval(expr, envir, enclos): object 'interviews' not found
-> > ~~~
-> > {: .error}
 > {: .solution}
 {: .challenge}
 
@@ -790,34 +789,10 @@ were not members of an irrigation association:
 ~~~
 ## create a vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 ## convert it into a factor
 memb_assoc <- as.factor(memb_assoc)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in is.factor(x): object 'memb_assoc' not found
-~~~
-{: .error}
-
-
-
-~~~
 ## let's see what it looks like
 memb_assoc
 ~~~
@@ -826,9 +801,18 @@ memb_assoc
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'memb_assoc' not found
+  [1] <NA> yes  <NA> <NA> <NA> <NA> no   yes  no   no   <NA> yes  no   <NA> yes 
+ [16] <NA> <NA> <NA> <NA> <NA> no   <NA> <NA> no   no   no   <NA> no   yes  <NA>
+ [31] <NA> yes  no   yes  yes  yes  <NA> yes  <NA> yes  <NA> no   no   <NA> no  
+ [46] no   yes  <NA> <NA> yes  <NA> no   yes  no   <NA> yes  no   no   <NA> no  
+ [61] yes  <NA> <NA> <NA> no   yes  no   no   no   no   yes  <NA> no   yes  <NA>
+ [76] <NA> yes  no   no   yes  no   no   yes  no   yes  no   no   <NA> yes  yes 
+ [91] yes  yes  yes  no   no   no   no   yes  no   no   yes  yes  no   <NA> no  
+[106] no   <NA> no   no   <NA> no   <NA> <NA> no   no   no   no   yes  no   no  
+[121] no   no   no   no   no   no   no   no   no   yes  <NA>
+Levels: no yes
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -839,12 +823,7 @@ plot(memb_assoc)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in plot(memb_assoc): object 'memb_assoc' not found
-~~~
-{: .error}
+<img src="../fig/rmd-02-factor-plot-default-order-1.png" title="Yes/no bar graph showing number of individuals who are members of irrigation association" alt="Yes/no bar graph showing number of individuals who are members of irrigation association" width="612" style="display: block; margin: auto;" />
 
 Looking at the plot compared to the output of the vector, we can see that in
 addition to "no"s and "yes"s, there are some respondents for which the
@@ -857,49 +836,13 @@ Let's encode them differently so they can counted and visualized in our plot.
 ~~~
 ## Let's recreate the vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 ## replace the missing data with "undetermined"
 memb_assoc[is.na(memb_assoc)] <- "undetermined"
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in memb_assoc[is.na(memb_assoc)] <- "undetermined": object 'memb_assoc' not found
-~~~
-{: .error}
-
-
-
-~~~
 ## convert it into a factor
 memb_assoc <- as.factor(memb_assoc)
-~~~
-{: .language-r}
 
-
-
-~~~
-Error in is.factor(x): object 'memb_assoc' not found
-~~~
-{: .error}
-
-
-
-~~~
 ## let's see what it looks like
 memb_assoc
 ~~~
@@ -908,9 +851,36 @@ memb_assoc
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'memb_assoc' not found
+  [1] undetermined yes          undetermined undetermined undetermined
+  [6] undetermined no           yes          no           no          
+ [11] undetermined yes          no           undetermined yes         
+ [16] undetermined undetermined undetermined undetermined undetermined
+ [21] no           undetermined undetermined no           no          
+ [26] no           undetermined no           yes          undetermined
+ [31] undetermined yes          no           yes          yes         
+ [36] yes          undetermined yes          undetermined yes         
+ [41] undetermined no           no           undetermined no          
+ [46] no           yes          undetermined undetermined yes         
+ [51] undetermined no           yes          no           undetermined
+ [56] yes          no           no           undetermined no          
+ [61] yes          undetermined undetermined undetermined no          
+ [66] yes          no           no           no           no          
+ [71] yes          undetermined no           yes          undetermined
+ [76] undetermined yes          no           no           yes         
+ [81] no           no           yes          no           yes         
+ [86] no           no           undetermined yes          yes         
+ [91] yes          yes          yes          no           no          
+ [96] no           no           yes          no           no          
+[101] yes          yes          no           undetermined no          
+[106] no           undetermined no           no           undetermined
+[111] no           undetermined undetermined no           no          
+[116] no           no           yes          no           no          
+[121] no           no           no           no           no          
+[126] no           no           no           no           yes         
+[131] undetermined
+Levels: no undetermined yes
 ~~~
-{: .error}
+{: .output}
 
 
 
@@ -921,12 +891,7 @@ plot(memb_assoc)
 ~~~
 {: .language-r}
 
-
-
-~~~
-Error in plot(memb_assoc): object 'memb_assoc' not found
-~~~
-{: .error}
+<img src="../fig/rmd-02-factor-plot-reorder-1.png" title="plot of chunk factor-plot-reorder" alt="plot of chunk factor-plot-reorder" width="612" style="display: block; margin: auto;" />
 
 
 > ## Exercise
@@ -942,43 +907,12 @@ Error in plot(memb_assoc): object 'memb_assoc' not found
 > > 
 > > ~~~
 > > levels(memb_assoc) <- c("No", "Undetermined", "Yes")
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in levels(memb_assoc) <- c("No", "Undetermined", "Yes"): object 'memb_assoc' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
-> > ~~~
-> > {: .language-r}
-> > 
-> > 
-> > 
-> > ~~~
-> > Error in factor(memb_assoc, levels = c("No", "Yes", "Undetermined")): object 'memb_assoc' not found
-> > ~~~
-> > {: .error}
-> > 
-> > 
-> > 
-> > ~~~
 > > plot(memb_assoc)
 > > ~~~
 > > {: .language-r}
 > > 
-> > 
-> > 
-> > ~~~
-> > Error in plot(memb_assoc): object 'memb_assoc' not found
-> > ~~~
-> > {: .error}
+> > <img src="../fig/rmd-02-factor-plot-exercise-1.png" title="bar graph showing number of individuals who are members of irrigation association, including undetermined option" alt="bar graph showing number of individuals who are members of irrigation association, including undetermined option" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -1021,19 +955,6 @@ Let's extract our `interview_date` column and inspect the structure:
 
 ~~~
 dates <- interviews$interview_date
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
-~~~
-{: .error}
-
-
-
-~~~
 str(dates)
 ~~~
 {: .language-r}
@@ -1041,9 +962,9 @@ str(dates)
 
 
 ~~~
-Error in str(dates): object 'dates' not found
+ POSIXct[1:131], format: "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" ...
 ~~~
-{: .error}
+{: .output}
 
 When we imported the data in R, `read_csv()` recognized that this column
 contained date information. We can now use the `day()`, `month()` and  `year()`
@@ -1054,47 +975,8 @@ our data frame to store it:
 
 ~~~
 interviews$day <- day(dates)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in day(dates): object 'dates' not found
-~~~
-{: .error}
-
-
-
-~~~
 interviews$month <- month(dates)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in month(dates): object 'dates' not found
-~~~
-{: .error}
-
-
-
-~~~
 interviews$year <- year(dates)
-~~~
-{: .language-r}
-
-
-
-~~~
-Error in year(dates): object 'dates' not found
-~~~
-{: .error}
-
-
-
-~~~
 interviews
 ~~~
 {: .language-r}
@@ -1102,9 +984,25 @@ interviews
 
 
 ~~~
-Error in eval(expr, envir, enclos): object 'interviews' not found
+# A tibble: 131 x 17
+   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
+    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
+ 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
+ 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
+ 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
+ 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
+ 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
+ 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
+ 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
+ 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
+ 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
+10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
+# … with 121 more rows, and 10 more variables: memb_assoc <chr>,
+#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
+#   months_lack_food <chr>, instanceID <chr>, day <int>, month <dbl>,
+#   year <dbl>
 ~~~
-{: .error}
+{: .output}
 
 Notice the three new columns at the end of our data frame.
 
