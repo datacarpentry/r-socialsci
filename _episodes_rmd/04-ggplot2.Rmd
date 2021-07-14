@@ -531,7 +531,7 @@ side-by-side bars will become more difficult to read.
 **`ggplot2`** has a special technique called *faceting* that allows the 
 user to split one plot into multiple plots based on a factor included 
 in the dataset. We will use it to split our barplot of housing type 
-proportion by village so that each village has it's own panel in a 
+proportion by village so that each village has its own panel in a 
 multi-panel plot:
 
 ```{r barplot-faceting}
@@ -728,7 +728,7 @@ percent_items %>%
 
 After creating your plot, you can save it to a file in your favourite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
 
-Instead, use the `ggsave()` function, which allows you easily change the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`).
+Instead, use the `ggsave()` function, which allows you to easily change the dimension and resolution of your plot by adjusting the appropriate arguments (`width`, `height` and `dpi`).
 
 Make sure you have the `fig_output/` folder in your working directory.
 
