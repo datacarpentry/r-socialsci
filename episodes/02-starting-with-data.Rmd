@@ -577,7 +577,7 @@ them to the appropriate `Date/POSIXct`format.
 Let's say we have a vector of dates in character format:
 
 ```{r, purl = FALSE}
-char_dates <- c("7/31/2012", "8/9/2014", "4/30/2106")
+char_dates <- c("7/31/2012", "8/9/2014", "4/30/2016")
 str(char_dates)
 ```
 
