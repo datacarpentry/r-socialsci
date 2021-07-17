@@ -21,7 +21,7 @@ questions:
 - How can I convert .Rmd files to .html?
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("06-")
 source("../bin/download_data.R")
@@ -30,29 +30,30 @@ source("../bin/download_data.R")
 ## R Markdown
 
 R Markdown is a flexible type of document that allows you to seamlessly combine 
-executable R code, and its output, with text in a single document. These documents
-can be readily converted to multiple static and dynamic output formats, including
-PDF (.pdf), Word (.docx), and HTML (.html).
+executable R code, and its output, with text in a single document. These
+documents can be readily converted to multiple static and dynamic output
+formats, including PDF (.pdf), Word (.docx), and HTML (.html).
 
 The benefit of a well-prepared R Markdown document is full reproducibility. This
-also means that, if you notice a data transcription error, or you are able to add 
-more data to your analysis, you will be able to recompile the report without making
-any changes in the actual document.
+also means that, if you notice a data transcription error, or you are able to
+add more data to your analysis, you will be able to recompile the report without
+making any changes in the actual document.
 
 The **rmarkdown** package comes pre-installed with RStudio, so no action is 
 necessary.
 
-![https://github.com/allisonhorst](../fig/rmarkdown_wizards.png)
+![R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Alliso Horst (<https://github.com/allisonhorst>)](../fig/rmarkdown_wizards.png)
 
 ## Creating an R Markdown file
 
-To create a new R Markdown document in RStudio, click File -> New File -> R Markdown:
+To create a new R Markdown document in RStudio, click File -> New File -> 
+R Markdown:
 
 ![Screenshot of the New R Markdown file dialogue box in RStudio](../fig/new-rmd.png)
 
-Then click on 'Create Empty Document'. Normally you could enter the title of your
-document, your name (Author), and select the type of output, but we will be learning
-how to start from a blank document.
+Then click on 'Create Empty Document'. Normally you could enter the title of
+your document, your name (Author), and select the type of output, but we will be
+learning how to start from a blank document.
 
 ## Basic components of R Markdown
 
@@ -67,23 +68,34 @@ output: html_document
 ---
 ```
 
-The only necessary field is the `output:`, which specifies the type of output you
-want. The rest can be deleted if you don't need them. To start the document, 
-we will begin writing below the YAML header (i.e. after the second `---`).
+The header is defined by the three hyphons at the beginning (`---`) and the
+three hyphons at the end (`---`). 
+
+In the YAML, the only required field is the `output:`, which specifies the type
+of output you want. This can be an `html_document`, a `pdf_document`, or a 
+`word_document`. We will start with an HTML doument and discuss the other
+options later. 
+
+The rest of the fields can be deleted, if you don't need them. After the header,
+to begin the body of the document, you start typing after the end of the YAML
+header (i.e. after the second `---`).
 
 ## Markdown syntax
 
 Markdown is a popular markup language that allows you to add formatting elements
 to text, such as **bold**, *italics*, and `code`. The formatting will not be
-immediately visible in a markdown (.md) document, like in Word, rather you add
-Markdown syntax to the text, which can then be converted to various other file 
-that can translate the Markdown syntax. Markdown is useful because it is 
-lightweight, flexible, and platform independent.
+immediately visible in a markdown (.md) document, like you would see in a Word
+document. Rather, you add Markdown syntax to the text, which can then be
+converted to various other files that can translate the Markdown syntax.
+Markdown is useful because it is lightweight, flexible, and platform
+independent.
 
 Some platforms provide a real time preview of the formatting, like RStudio's 
 visual markdown editor (available from version 1.4).
 
-First, let's create a header:
+First, let's create a header! A `#` in front of text indicates to Markdown that 
+this text is a header. Adding more `#`s make the header smaller, i.e. one `#` is 
+a first level header, two `##`s is a second level header, etc.
 
 ```
 # Title
@@ -93,23 +105,24 @@ First, let's create a header:
 ##### Sub-sub-sub section
 ```
 
-Since we have already defined our title in the YAML header, we will use a section
-header.
+Since we have already defined our title in the YAML header, we will use a 
+section header to create an Introduction section.
 
 ```
 ## Introduction
 ```
 
 You can make things **bold** by surrounding the word with double asterisks, 
-`**bold**`, or double underscores, `__bold__`; and *italicize* using single asterisks,
-`*italics*`, or single underscores, `_italics_`.
+`**bold**`, or double underscores, `__bold__`; and *italicize* using single
+asterisks, `*italics*`, or single underscores, `_italics_`.
 
 You can also combine **bold** and *italics* to write something ***really*** 
 important with triple-asterisks, `***really***`, or underscores, `___really___`;
 and, if you're feeling bold (pun intended), you can also use a combination of
-asterisks and underscores, **_really_**, `**_really_**. Just be consistent...
+asterisks and underscores, `**_really_**`, `**_really_**`. 
 
-To create `code-type` font, surround the word with backticks, &#96;code-type&#96;.
+To create `code-type` font, surround the word with backticks, 
+&#96;code-type&#96;.
 
 Now that we've learned a couple of things, it might be useful to implement them:
 
@@ -119,7 +132,7 @@ Now that we've learned a couple of things, it might be useful to implement them:
 This report uses the **tidyverse** package along with the *SAFI* dataset, 
 which has columns that include:
 ```
-Then we can create a list for the variables using `-`, `+`, or `*`.
+Then we can create a list for the variables using `-`, `+`, or `*` keys.
 
 ```
 ## Introduction
@@ -154,20 +167,23 @@ And nested items by tab-indenting:
 - interview_date
   + Date of interview
 - no_members
+  + How many family members lived in a house
 - years_liv
-  + How many years respondent has lived in village
-    * or neighbouring village
+  + How many years respondent has lived in village or neighbouring village
 - respondent_wall_type
+  + Type of wall of house
 - rooms
+  + Number of rooms in house
 ```
 
-For more Markdown syntax see [here](https://www.markdownguide.org/basic-syntax).
+For more Markdown syntax see [the following reference guide](https://www.markdownguide.org/basic-syntax).
 
-Now we can render the document into HTML by clicking the **Knit** button in the top
-of the Source pane (top left), or use the keyboard shortcut
+Now we can render the document into HTML by clicking the **Knit** button in the
+top of the Source pane (top left), or use the keyboard shortcut
 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> on Windows and Linux, and 
 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> on Mac. If you haven't saved the
-document yet, you will be prompted to do so when you **Knit** for the first time.
+document yet, you will be prompted to do so when you **Knit** for the first
+time.
 
 ![The 'knitting' process: First, R Markdown is converted to Markdown, which is then converted (via pandoc) to .html, .pdf, .docx, etc.](../fig/rmd-rmd_to_html.png)
 
@@ -192,24 +208,25 @@ Here is where you place the R code that you want to run.
 &#96;&#96;&#96;
 </pre>
 
-Naming a chunk is optional, but recommended. Each chunk name must be unique, and
-only contain alphanumeric characters and `-`.
+An R Markdown document knows that this text is not part of the report from the 
+three `&#96;&#96;&#96` that begin and end the chunk. It also knows that the code
+inside of the chunk is R code from the `r` inside of the curly braces (`{}`). 
+After the `r` you can add a name for the code chunk . Naming a chunk is
+optional, but recommended. Each chunk name must be unique, and only contain
+alphanumeric characters and `-`.
 
-The keyboard shortcut for inserting a code chunk in RStudio is
-<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> on Windows and Linux, or
-<kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.
-
-```{r load-tidyverse, echo=FALSE, message=FALSE, purl=FALSE}
+```{r package-data, echo = FALSE, message = FALSE, purl = FALSE}
 library(tidyverse)
 interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 ```
 
 To load **tidyverse** and our `SAFI_clean.csv` file, we will insert a chunk and 
-call it 'setup'. Since we don't want to show the chunk or the output of the chunk 
-in our knitted HTML document, we use `{r setup, include=FALSE}`. 
+call it 'setup'. Since we don't want this code or the output to show in our
+knitted HTML document, we add an `include = FALSE` option after the code chunk 
+name (`{r setup, include = FALSE}`). 
 
 <pre>
-&#96;&#96;&#96;{r setup, include=FALSE}
+&#96;&#96;&#96;{r setup, include = FALSE}
 library(tidyverse)
 library(here)
 interviews <- read_csv(here("data/SAFI_clean.csv"), na = "NULL")
@@ -219,19 +236,20 @@ interviews <- read_csv(here("data/SAFI_clean.csv"), na = "NULL")
 > ## Important Note!
 >
 > The file paths you give in a .Rmd document, e.g. to load a .csv file, are 
-> relative to the .Rmd document and not the project root. 
+> relative to the .Rmd document, **not** the project root. 
 >
-> Use the `here()` function to keep the file paths consistent within your project.
+> As suggested in the Starting with Data episode, we highly recommend the use of
+the `here()` function to keep the file paths consistent within your project.
 {: .callout}
 
 
-### Insert table
+## Insert table
 
 Next, we will re-create a table from the Data Wrangling episode which 
 shows the average household size grouped by `village` and `memb_assoc`. 
 We can do this by creating a new code chunk and calling it 'interview-tbl'. 
-Or, you can come up with something more creative
-(just remember to stick to the naming rules). 
+Or, you can come up with something more creative (just remember to stick to the
+naming rules). 
 
 It isn't necessary to **Knit** your document every time you want to see the
 output. Instead you can run the code chunk with the green triangle in the top
@@ -240,7 +258,10 @@ right corner of the the chunk, or with the keyboard shortcuts:
 <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>C</kbd> on Mac.
 
 To make sure the table is formatted nicely in our output document, we will need
-to use the `kable` function from the **knitr** package.
+to use the `kable()` function from the **knitr** package. The `kable()` function 
+takes the output of your R code and knits it into a nice looking HTML table. You
+can also specify different aspects of the table, e.g. the column names, a
+caption, etc. 
 
 Run the code chunk to make sure you get the desired output.
 
@@ -249,65 +270,69 @@ interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
     summarize(mean_no_membrs = mean(no_membrs)) %>%
-  knitr::kable(caption = "We can also add a caption.")
+  knitr::kable(caption = "We can also add a caption.", 
+               col.names = c("Village", "Member Association", 
+                             "Mean Number of Members"))
 ```
 
 
-### Customising chunk output
+## Customising chunk output
 
-There are multiple options available to customise how the code-chunks are presented
-in the output document. The options are entered in the code chunk after `chunk-name`
-and separated by commas, e.g. `{r chunk-name, eval=FALSE, echo=TRUE}`.
+We mentioned using `include = FALSE` in a code chunk to prevent the code and 
+output from printing in the knitted document. There are additional options
+available to customise how the code-chunks are presented in the output document.
+The options are entered in the code chunk after `chunk-name`and separated by
+commas, e.g. `{r chunk-name, eval = FALSE, echo = TRUE}`.
 
-| Option | Output |
-|--------|--------|
-| `eval=<TRUE,FALSE>` | Whether or not the code within the code chunk should be run. |
-| `echo=<TRUE,FALSE>` | Choose if you want to show your code chunk in the output document. `echo=TRUE` will show the code chunk. |
-| `include=<TRUE,FALSE>` | Choose if the output of a code chunk should be included in the document. `FALSE` means that your code will run, but will not show up in the document. |
-| `warning=<TRUE,FALSE>` | Whether or not you want your output document to display potential warning messages produced by your code. |
-| `message=<TRUE,FALSE>` | Whether or not you want your output document to display potential messages produced by your code. |
+| Option | Options | Output |
+|--------|---------|--------|
+| `eval` | `TRUE` or `FALSE` | Whether or not the code within the code chunk should be run. |
+| `echo` | `TRUE` or `FALSE` | Choose if you want to show your code chunk in the output document. `echo = TRUE` will show the code chunk. |
+| `include` | `TRUE` or `FALSE` | Choose if the output of a code chunk should be included in the document. `FALSE` means that your code will run, but will not show up in the document. |
+| `warning` | `TRUE` or `FALSE` | Whether or not you want your output document to display potential warning messages produced by your code. |
+| `message` | `TRUE` or `FALSE` | Whether or not you want your output document to display potential messages produced by your code. |
+| `fig.align` | `default`, `left`, `right`, `center` | Where the figure from your R code chunk should be output on the page
 
 
 > ## Tip
 >
 > - The default settings for the above chunk options are all `TRUE`.
-> - The default settings can be modified per chunk, or with `knitr::opts_chunk$set()`,
+> - The default settings can be modified per chunk, or with 
+> `knitr::opts_chunk$set()`,
 > - Entering `knitr::opts_chunk$set(echo = FALSE)` will change the default of
-> value of `echo` to `FALSE` for all chunks in the document.
+> value of `echo` to `FALSE` for **every** code chunk in the document.
 {: .callout}
 
 
 > ## Exercise
 >
-> Play around with the different options in the chunk with the code for the table, 
-> and re-**Knit** to see what each option does to the output.
+> Play around with the different options in the chunk with the code for the 
+> table, and re-**Knit** to see what each option does to the output.
 >
-> What happens if you use `eval=FALSE` and `echo=FALSE`? What is the difference between
-> this and `include=FALSE`? 
+> What happens if you use `eval = FALSE` and `echo = FALSE`? What is the
+> difference between this and `include = FALSE`? 
 > > ## Solution to Exercise
 > > 
-> > Create a chunk with `{r eval=FALSE, echo=FALSE}`, then create another chunk
-> > with `{r include=FALSE}` to compare.
-> > `eval=FALSE` and `echo=FALSE` will neither run the code in the chunk, nor show 
-> > the code in the knitted document. The code chunk essentially doesn't exist in
-> > the knitted document, 
-> > whereas `include=FALSE` will run the code and store the output for later use.
+> > Create a chunk with `{r eval = FALSE, echo = FALSE}`, then create another
+> > chunk with `{r include = FALSE}` to compare.
+> > `eval = FALSE` and `echo = FALSE` will neither run the code in the chunk,
+> > nor show the code in the knitted document. The code chunk essentially
+> > doesn't exist in the knitted document as it was never run. Whereas
+> > `include = FALSE` will run the code and store the output for later use.
 > {: .solution}
 {: .challenge}
 
 
-### In-line R code
+## In-line R code
 
 Now we will use some in-line R code to present some descriptive statistics.
-To use in-line R-code, we use the backticks that we also used in the Markdown
-section, but now we need to specify that we are using R-code. This is done by
-including `r` after the first backtick. Each time you **Knit** your document, 
-the code will be executed and only the output from the executed code will be shown
-in the output document. If, for whatever reason, our data and/or code has changed, 
-the document will automatically update the output of our code accordingly. Pretty
-useful for those of us who are prone to data entry errors!
+To use in-line R-code, we use the same backticks that we used in the Markdown
+section, with an `r` to specify that we are generating R-code. The difference 
+between in-line code and a code chunk is the number of backticks. In-line R code 
+uses one backtick (``` `r` ```), whereas code chunks use three backticks 
+(&#96;&#96;&#96; r &#96;&#96;&#96;). 
 
-For example, today's date is &#96;r Sys.Date()&#96;, will be rendered as:  
+For example, today's date is &#96;r Sys.Date()&#96;, will be rendered as: 
 today's date is `r Sys.Date()`.  
 The code will display today's date in the output document (well, technically the 
 date the document was last knitted).
@@ -343,7 +368,7 @@ a dynamic document that will automatically update if we make changes to the data
 and/or code chunks.
 
 
-### Plots
+## Plots
 
 Finally, we will also include a plot, so our document is a little more colourful 
 and a little less boring. We will use the `interview_plotting` data from the 
@@ -384,7 +409,7 @@ interviews_plotting <- interviews %>%
 > `interviews_plotting` data frame.
 >
 > > ## Solution to Exercise
-> > ```{r my-fancy-plot, answer=TRUE, purl=FALSE}
+> > ```{r my-fancy-plot, answer = TRUE, purl = FALSE}
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type)) +
 > >   geom_bar(aes(fill = village))
@@ -396,18 +421,20 @@ interviews_plotting <- interviews %>%
 We can also create a caption with the chunk option `fig.cap`.
 
 <pre>
-&#96;&#96;&#96;{r chunk-name, fig.cap="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
+&#96;&#96;&#96;{r chunk-name, fig.cap = "I made this plot while attending an
+awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
 Code for plot
 &#96;&#96;&#96;
 </pre>
 
 ...or, ideally, something more informative.
 
-```{r caption-plot, eval=TRUE, fig.cap="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
+```{r caption-plot, eval = TRUE, fig.cap = "I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
 interviews_plotting %>%
   ggplot(aes(x = respondent_wall_type)) +
-  geom_bar(aes(fill = village), position = "dodge") +
-  scale_fill_viridis_d() # add colourblind-friendly palette
+  geom_bar(aes(fill = village), position = "dodge") + 
+  labs(x = "Type of Wall in Home", y = "Count", fill = "Village Name") +
+  scale_fill_viridis_d() # add colour deficient friendly palette
 ```
 
 
