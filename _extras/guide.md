@@ -86,7 +86,7 @@ The two main goals for this lessons are:
   exposed to it. The content of the lesson should be enough for learners to
   avoid common mistakes with them.
 
-### Manipulating data with dplyr
+### Data wrangling with dplyr and tidyr
 
 * This lesson works better if you have graphics demonstrating dplyr commands.
   You can modify [this Google Slides deck](https://docs.google.com/presentation/d/1A9abypFdFp8urAe9z7GCMjFr4aPeIb8mZAtJA2F7H0w/edit#slide=id.g652714585f_0_114) and use it for your workshop.
@@ -109,6 +109,20 @@ interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
 * This lesson is a broad overview of ggplot2 and focuses on (1) getting familiar
   with the layering system of ggplot2, (2) using the argument `group` in the
   `aes()` function, (3) basic customization of the plots.
+
+
+### Getting started with R Markdown (Optional)
+
+* This is an optional lesson intended to introduce learners to R Markdown.
+* While it is listed after the core lessons, some instructors may prefer to teach it early
+in the workshop, depending on the audience.
+
+### Processing JSON data (Optional)
+
+* This is an optional lessons intended to introduce learners to JSON data, as well as how to
+read JSON data into R and how to convert the data into a data frame or array.
+* Note that his lesson was community-contributed and remains a work in progress. As such, it could 
+benefit from feedback from instructors and/or workshop participants.
 
 
 ## Technical Tips and Tricks
