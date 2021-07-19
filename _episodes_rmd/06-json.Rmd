@@ -1,5 +1,5 @@
 ---
-title: "Processing JSON data"
+title: "Processing JSON data (Optional)"
 teaching: 30
 exercises: 15
 questions:
