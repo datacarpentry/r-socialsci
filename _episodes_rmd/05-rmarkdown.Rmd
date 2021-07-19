@@ -1,5 +1,5 @@
 ---
-title: "Getting started with R Markdown"
+title: "Getting started with R Markdown (Optional)"
 teaching: 30
 exercises: 15
 output: 
