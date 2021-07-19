@@ -56,6 +56,14 @@ ruby2_keywords :delegating_method
 Bug reports and pull requests are welcome on [GitHub] or
 [Ruby Issue Tracking System].
 
+## Development
+
+After checking out the repo, run `bundle install` to install dependencies.
+Then, run `bundle exec rake test` to run the tests.
+
+To test on older Ruby versions, you can use docker. E.g. to test on Ruby 2.0,
+use `docker-compose run ruby-2.0`.
+
 ## License
 
 The gem is available as open source under the terms of the

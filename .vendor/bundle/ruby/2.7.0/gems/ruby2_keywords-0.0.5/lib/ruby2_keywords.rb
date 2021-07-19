@@ -11,7 +11,7 @@ class Module
   end
 end
 
-main = TOPLEVEL_BINDING.receiver
+main = TOPLEVEL_BINDING.eval('self')
 unless main.respond_to?(:ruby2_keywords, true)
   # call-seq:
   #    ruby2_keywords(method_name, ...)
