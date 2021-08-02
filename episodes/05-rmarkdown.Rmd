@@ -42,7 +42,15 @@ making any changes in the actual document.
 The **rmarkdown** package comes pre-installed with RStudio, so no action is 
 necessary.
 
-![R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Alliso Horst (<https://github.com/allisonhorst>)](../fig/rmarkdown_wizards.png)
+<figure>
+```{r rmarkdown-wizards, echo = FALSE, fig.show = "hold", fig.alt = "R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst", out.width="100%"}
+knitr::include_graphics("../fig/rmarkdown_wizards.png")
+```
+<figcaption>
+Image credit: <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a>
+</figcaption>
+</figure>
+
 
 ## Creating an R Markdown file
 
