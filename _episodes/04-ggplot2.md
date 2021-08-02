@@ -48,26 +48,28 @@ interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 
 
 ~~~
+Rows: 131 Columns: 45
+~~~
+{: .output}
 
+
+
+~~~
 ── Column specification ────────────────────────────────────────────────────────
-cols(
-  .default = col_logical(),
-  key_ID = col_double(),
-  village = col_character(),
-  interview_date = col_datetime(format = ""),
-  no_membrs = col_double(),
-  years_liv = col_double(),
-  respondent_wall_type = col_character(),
-  rooms = col_double(),
-  memb_assoc = col_character(),
-  affect_conflicts = col_character(),
-  liv_count = col_double(),
-  no_meals = col_double(),
-  instanceID = col_character(),
-  number_months_lack_food = col_double(),
-  number_items = col_double()
-)
-ℹ Use `spec()` for the full column specifications.
+Delimiter: ","
+chr   (5): village, respondent_wall_type, memb_assoc, affect_conflicts, inst...
+dbl   (8): key_ID, no_membrs, years_liv, rooms, liv_count, no_meals, number_...
+lgl  (31): bicycle, television, solar_panel, table, cow_cart, radio, cow_plo...
+dttm  (1): interview_date
+~~~
+{: .output}
+
+
+
+~~~
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ~~~
 {: .output}
 

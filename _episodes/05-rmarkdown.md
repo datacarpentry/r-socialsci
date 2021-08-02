@@ -40,7 +40,13 @@ making any changes in the actual document.
 The **rmarkdown** package comes pre-installed with RStudio, so no action is 
 necessary.
 
-![R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Alliso Horst (<https://github.com/allisonhorst>)](../fig/rmarkdown_wizards.png)
+<figure>
+<img src="../fig/rmarkdown_wizards.png" title="R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst" alt="R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst" width="100%" style="display: block; margin: auto;" />
+<figcaption>
+Image credit: <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a>
+</figcaption>
+</figure>
+
 
 ## Creating an R Markdown file
 
@@ -343,7 +349,7 @@ uses one backtick (``` `r` ```), whereas code chunks use three backticks
 (&#96;&#96;&#96; r &#96;&#96;&#96;). 
 
 For example, today's date is &#96;r Sys.Date()&#96;, will be rendered as: 
-today's date is 2021-07-19.  
+today's date is 2021-08-02.  
 The code will display today's date in the output document (well, technically the 
 date the document was last knitted).
 
