@@ -104,7 +104,7 @@ subdirectories.  This is an important contrast to using `setwd()`, which
 depends on the way you order your files on your computer. 
 
 <figure>
-```{r here-figure, echo = FALSE, fig.show = "hold", fig.alt = "Monsters at a fork in the road, with signs saying here, and not here. One direction, not here, leads to a scary dark forest with spiders and absolute filepaths, while the other leads to a sunny, green meadow, and a city below a rainbow and a world free of absolute filepaths. Art by Alliso Horst", out.width="100%"}
+```{r here-figure, echo = FALSE, fig.show = "hold", fig.alt = "Monsters at a fork in the road, with signs saying here, and not here. One direction, not here, leads to a scary dark forest with spiders and absolute filepaths, while the other leads to a sunny, green meadow, and a city below a rainbow and a world free of absolute filepaths. Art by Allison Horst", out.width="100%"}
 knitr::include_graphics("../fig/here_horst.png")
 ```
 <figcaption>
