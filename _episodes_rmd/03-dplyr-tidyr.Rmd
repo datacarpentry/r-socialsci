@@ -100,8 +100,9 @@ again the SAFI dataset that we downloaded earlier.
 
 ## load the tidyverse
 library(tidyverse)
+library(here)
 
-interviews <- read_csv("data/SAFI_clean.csv", na = "NULL")
+interviews <- read_csv(here("data", "SAFI_clean.csv"), na = "NULL")
 
 ## inspect the data
 interviews
