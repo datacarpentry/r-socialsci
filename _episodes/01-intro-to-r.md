@@ -968,6 +968,7 @@ examples.
 
 ~~~
 ## Extract those elements which are not missing values.
+## The ! character is also called the NOT operator
 rooms[!is.na(rooms)]
 ~~~
 {: .language-r}
@@ -983,6 +984,7 @@ rooms[!is.na(rooms)]
 
 ~~~
 ## Count the number of missing values.
+## The output of is.na() is a logical vector (TRUE/FALSE equivalent to 1/0) so the sum() function here is effectively counting
 sum(is.na(rooms))
 ~~~
 {: .language-r}
