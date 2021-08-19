@@ -912,7 +912,9 @@ plot(memb_assoc)
 > >
 > > 
 > > ~~~
+> > ## Rename levels. Note we need to keep the original level ordering when renaming.
 > > levels(memb_assoc) <- c("No", "Undetermined", "Yes")
+> > ## Reorder levels. Note we need to use the new level names.
 > > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 > > plot(memb_assoc)
 > > ~~~
