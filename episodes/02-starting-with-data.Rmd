@@ -242,7 +242,7 @@ extract some specific data from it, we need to specify the "coordinates" we
 want from it. Row numbers come first, followed by column numbers.
 
 > ## Tip
-> Indexing a `tibble` with `[` or `[[` or `$` always results in a `tibble`.
+> Indexing a `tibble` with `[` always results in a `tibble`.
 > However, note this is not true in general for data frames, so be careful!
 > Different ways of specifying these coordinates can lead to results with
 > different classes. This is covered in the Software Carpentry lesson
