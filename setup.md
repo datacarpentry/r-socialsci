@@ -98,7 +98,7 @@ instructions to install **`tidyverse`**.
 **After installing R and RStudio, you need to install the `tidyverse` and `here` packages.**
 
 * After starting RStudio, at the console type:
-  `install.packages("tidyverse")`
+  `install.packages("tidyverse")`  
   `install.packages("here")`
 
 * For reference, the lesson uses `SAFI_clean.csv`. The direct download link for
