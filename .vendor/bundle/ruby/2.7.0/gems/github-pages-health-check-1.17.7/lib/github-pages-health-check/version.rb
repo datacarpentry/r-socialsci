@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
 module GitHubPages
-  VERSION = 218
+  module HealthCheck
+    VERSION = "1.17.7"
+  end
 end

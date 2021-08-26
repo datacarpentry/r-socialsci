@@ -85,7 +85,7 @@ module GitHubPages
         cname_to_fastly? pointed_to_github_pages_ip?
         non_github_pages_ip_present? pages_domain?
         served_by_pages? valid? reason valid_domain? https?
-        enforces_https? https_error https_eligible? caa_error
+        enforces_https? https_error https_eligible? caa_error dns_zone_soa? dns_zone_ns?
       ].freeze
 
       def self.redundant(host)
@@ -164,7 +164,10 @@ module GitHubPages
       # Is this domain an apex domain, meaning a CNAME would be innapropriate
       def apex_domain?
         return @apex_domain if defined?(@apex_domain)
-        return unless valid_domain?
+
+        return false unless valid_domain?
+
+        return true if dns_zone_soa? && dns_zone_ns?
 
         # PublicSuffix.domain pulls out the apex-level domain name.
         # E.g. PublicSuffix.domain("techblog.netflix.com") # => "netflix.com"
@@ -175,6 +178,30 @@ module GitHubPages
         PublicSuffix.domain(unicode_host,
                             :default_rule => nil,
                             :ignore_private => true) == unicode_host
+      end
+
+      #
+      # Does the domain have an associated SOA record?
+      #
+      def dns_zone_soa?
+        return @soa_records if defined?(@soa_records)
+        return false unless dns?
+
+        @soa_records = dns.any? do |answer|
+          answer.type == Dnsruby::Types::SOA && answer.name.to_s == host
+        end
+      end
+
+      #
+      # Does the domain have assoicated NS records?
+      #
+      def dns_zone_ns?
+        return @ns_records if defined?(@ns_records)
+        return false unless dns?
+
+        @ns_records = dns.any? do |answer|
+          answer.type == Dnsruby::Types::NS && answer.name.to_s == host
+        end
       end
 
       # Should the domain use an A record?
@@ -278,7 +305,9 @@ module GitHubPages
         Dnsruby::Types::A,
         Dnsruby::Types::AAAA,
         Dnsruby::Types::CNAME,
-        Dnsruby::Types::MX
+        Dnsruby::Types::MX,
+        Dnsruby::Types::NS,
+        Dnsruby::Types::SOA
       ].freeze
 
       # Returns an array of DNS answers
@@ -339,6 +368,8 @@ module GitHubPages
       # The domain to which this domain's CNAME resolves
       # Returns nil if the domain is not a CNAME
       def cname
+        return unless dns?
+
         cnames = dns.take_while { |answer| answer.type == Dnsruby::Types::CNAME }
         return if cnames.empty?
 
@@ -405,7 +436,7 @@ module GitHubPages
 
       # Any errors querying CAA records
       def caa_error
-        return nil unless caa.errored?
+        return nil unless caa&.errored?
 
         caa.error.class.name
       end
