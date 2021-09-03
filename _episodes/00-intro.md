@@ -34,7 +34,7 @@ your R scripts but also to interact with the R software. To function correctly,
 RStudio needs R and therefore both need to be installed on your computer.
 
 To make it easier to interact with R, we will use RStudio. RStudio is the most
-popular IDE (Integrated Development Environmemt) for R. An IDE is a piece of
+popular IDE (Integrated Development Environment) for R. An IDE is a piece of
 software that provides
 tools to make programming easier.
 
