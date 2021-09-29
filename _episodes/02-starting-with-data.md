@@ -917,40 +917,47 @@ plot(memb_assoc)
 > > ## Reorder levels. Note we need to use the new level names.
 > > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 > > plot(memb_assoc)
+> > > ```
+> > > {: .solution}
+> > {: .challenge}
+> > 
+> > ## Formatting Dates
+> > 
+> > One of the most common issues that new (and experienced!) R users have is
+> > converting date and time information into a variable that is appropriate and
+> > usable during analyses. The best
+> > practice for dealing with date data is to ensure that each component of your
+> > date is stored as a separate variable. In our dataset, we have a
+> > column `interview_date` which contains information about the
+> > year, month, and day that the interview was conducted. Let's
+> > convert those dates into three separate columns.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-02-factor-plot-exercise-1.png" title="bar graph showing number of individuals who are members of irrigation association, including undetermined option" alt="bar graph showing number of individuals who are members of irrigation association, including undetermined option" width="612" style="display: block; margin: auto;" />
-> {: .solution}
-{: .challenge}
-
-## Formatting Dates
-
-One of the most common issues that new (and experienced!) R users have is
-converting date and time information into a variable that is appropriate and
-usable during analyses. The best
-practice for dealing with date data is to ensure that each component of your
-date is stored as a separate variable. In our dataset, we have a
-column `interview_date` which contains information about the
-year, month, and day that the interview was conducted. Let's
-convert those dates into three separate columns.
-
+> > 
+> > 
+> > ~~~
+> > Error: <text>:6:1: unexpected '>'
+> > 5: plot(memb_assoc)
+> > 6: >
+> >    ^
+> > ~~~
+> > {: .error}
 
 ~~~
 str(interviews)
-~~~
-{: .language-r}
+```
 We are going to use the package **`lubridate`**, which is included in the
 **`tidyverse`** installation but not loaded by default, so we have to load
 it explicitly with `library(lubridate)`.
 
 Start by loading the required package:
-
+~~~
+{: .language-r}
 
 ~~~
 library(lubridate)
-~~~
-{: .language-r}
+```
 
 The lubridate function `ymd()` takes a vector representing year, month, and day,
 and converts it to a `Date` vector. `Date` is a class of data recognized by R as
@@ -959,58 +966,42 @@ requires is flexible, but, as a best practice, is a character vector formatted
 as "YYYY-MM-DD".
 
 Let's extract our `interview_date` column and inspect the structure:
-
-
-~~~
-dates <- interviews$interview_date
-str(dates)
 ~~~
 {: .language-r}
 
 
 
 ~~~
- POSIXct[1:131], format: "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" ...
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
+{: .error}
+
+~~~
+dates <- interviews$interview_date
+str(dates)
+```
 
 When we imported the data in R, `read_csv()` recognized that this column
 contained date information. We can now use the `day()`, `month()` and  `year()`
 functions to extract this information from the date, and create new columns in
 our data frame to store it:
 
-
-
-~~~
-interviews$day <- day(dates)
-interviews$month <- month(dates)
-interviews$year <- year(dates)
-interviews
 ~~~
 {: .language-r}
 
 
 
 ~~~
-# A tibble: 131 × 17
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
- 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
- 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
- 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
- 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
- 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
-10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 10 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>, day <int>, month <dbl>,
-#   year <dbl>
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
+{: .error}
+
+~~~
+interviews$day <- day(dates)
+interviews$month <- month(dates)
+interviews$year <- year(dates)
+interviews
+```
 
 Notice the three new columns at the end of our data frame.
 
@@ -1020,35 +1011,35 @@ in as `character` variables and one can use the `as_date()` function to convert
 them to the appropriate `Date/POSIXct`format.
 
 Let's say we have a vector of dates in character format:
+~~~
+{: .language-r}
 
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
 
 ~~~
 char_dates <- c("7/31/2012", "8/9/2014", "4/30/2016")
 str(char_dates)
+```
+
+We can convert this vector to dates as :
 ~~~
 {: .language-r}
 
 
 
 ~~~
- chr [1:3] "7/31/2012" "8/9/2014" "4/30/2016"
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
-
-We can convert this vector to dates as :
-
+{: .error}
 
 ~~~
 as_date(char_dates, format = "%m/%d/%Y")
-~~~
-{: .language-r}
-
-
-
-~~~
-[1] "2012-07-31" "2014-08-09" "2016-04-30"
-~~~
-{: .output}
+```
 
 Argument `format` tells the function the order to parse the characters and
 identify the month, day and year. The format above is the equivalent of 
@@ -1056,55 +1047,65 @@ mm/dd/yyyy. A wrong format can lead to parsing errors or incorrect results.
 
 For example, observe what happens when we use a lower case y instead of upper
 case Y for the year. 
-
-~~~
-as_date(char_dates, format = "%m/%d/%y")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] "2020-07-31" "2020-08-09" "2020-04-30"
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
+{: .error}
+
+~~~
+as_date(char_dates, format = "%m/%d/%y")
+```
 
 Here, the `%y` part of the format stands for a two-digit year instead of a
 four-digit year, and this leads to parsing errors.
 
 Or in the following example, observe what happens when the month and day
 elements of the format are switched.
-
-
-~~~
-as_date(char_dates, format = "%d/%m/%y")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] NA           "2020-09-08" NA          
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
+{: .error}
+
+~~~
+as_date(char_dates, format = "%d/%m/%y")
+```
 
 Since there is no month numbered 30 or 31, the first and third dates cannot be
 parsed.
 
 We can also use functions `ymd()`, `mdy()` or `dmy()` to convert character
 variables to date.
-
-
-~~~
-mdy(char_dates)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] "2012-07-31" "2014-08-09" "2016-04-30"
+Error: attempt to use zero-length variable name
 ~~~
-{: .output}
+{: .error}
+
+~~~
+mdy(char_dates)
+```
 
 {% include links.md %}
+~~~
+{: .language-r}
+
+
+
+~~~
+Error: attempt to use zero-length variable name
+~~~
+{: .error}
