@@ -658,7 +658,6 @@ factors (`factor`) and arrays (`array`).
 > char_logical <- c("a", "b", "c", TRUE)
 > combined_logical <- c(num_logical, char_logical)
 >  ```
-> &nbsp;
 > 
 >  ## Solution
 > 

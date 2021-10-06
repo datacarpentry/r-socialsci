@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: github-pages-health-check 1.17.7 ruby lib
+# stub: github-pages-health-check 1.17.9 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "github-pages-health-check".freeze
-  s.version = "1.17.7"
+  s.version = "1.17.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["GitHub, Inc.".freeze]
-  s.date = "2021-08-23"
+  s.date = "2021-10-01"
   s.description = "Checks your GitHub Pages site for commons DNS configuration issues.".freeze
   s.email = "support@github.com".freeze
   s.homepage = "https://github.com/github/github-pages-health-check".freeze
