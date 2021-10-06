@@ -380,8 +380,8 @@ factors (`factor`) and arrays (`array`).
 >
 >
 > We’ve seen that atomic vectors can be of type character, numeric (or double),
->   integer, and logical. But what happens if we try to mix these types in a
->   single vector?
+> integer, and logical. But what happens if we try to mix these types in a
+> single vector?
 >
 > > ## Solution
 > >
@@ -403,7 +403,7 @@ factors (`factor`) and arrays (`array`).
 >
 > > ## Solution
 > >
-> >  Vectors can be of only one data type. R tries to
+> > Vectors can be of only one data type. R tries to
 > > convert (coerce) the content of this vector to find a "common
 > > denominator" that doesn't lose any information.
 > {: .solution}
