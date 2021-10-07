@@ -657,18 +657,19 @@ factors (`factor`) and arrays (`array`).
 > num_logical <- c(1, 2, 3, TRUE)
 > char_logical <- c("a", "b", "c", TRUE)
 > combined_logical <- c(num_logical, char_logical)
->  ```
-> 
->  ## Solution
-> 
->  Only one. There is no memory of past data types, and the coercion
->  happens the
->  first time the vector is evaluated. Therefore, the `TRUE` in
->  `num_logical`
->  gets converted into a `1` before it gets converted into `"1"` in
->  `combined_logical`.
+> ~~~
+> {: .language-r}
+>
+> > ## Solution
+> >
+> > Only one. There is no memory of past data types, and the coercion
+> > happens the
+> > first time the vector is evaluated. Therefore, the `TRUE` in
+> > `num_logical`
+> > gets converted into a `1` before it gets converted into `"1"` in
+> > `combined_logical`.
 > {: .solution}
-> 
+>
 > You've probably noticed that objects of different types get
 > converted into a single, shared type within a vector. In R, we
 > call converting objects from one class into another class
@@ -676,46 +677,60 @@ factors (`factor`) and arrays (`array`).
 > whereby some types get preferentially coerced into other
 > types. Can you draw a diagram that represents the hierarchy of how
 > these data types are coerced?
-> 
-> {: .challenge}
-> 
-> 
-> ## Subsetting vectors
-> 
-> If we want to extract one or several values from a vector, we must provide one
-> or several indices in square brackets. For instance:
-> ~~~
-> {: .language-r}
-> 
-> 
-> 
-> ~~~
-> Error: attempt to use zero-length variable name
-> ~~~
-> {: .error}
+>
+{: .challenge}
+
+
+## Subsetting vectors
+
+If we want to extract one or several values from a vector, we must provide one
+or several indices in square brackets. For instance:
+
 
 ~~~
 respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
 respondent_wall_type[2]
-respondent_wall_type[c(3, 2)]
-```
-
-We can also repeat the indices to create an object with more elements than the
-original one:
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: attempt to use zero-length variable name
+[1] "burntbricks"
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+respondent_wall_type[c(3, 2)]
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "sunbricks"   "burntbricks"
+~~~
+{: .output}
+
+We can also repeat the indices to create an object with more elements than the
+original one:
+
 
 ~~~
 more_respondent_wall_type <- respondent_wall_type[c(1, 2, 3, 2, 1, 3)]
 more_respondent_wall_type
-```
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "muddaub"     "burntbricks" "sunbricks"   "burntbricks" "muddaub"    
+[6] "sunbricks"  
+~~~
+{: .output}
 
 R indices start at 1. Programming languages like Fortran, MATLAB, Julia, and R
 start counting at 1, because that's what human beings typically do. Languages in
@@ -726,56 +741,82 @@ simpler for computers to do.
 
 Another common way of subsetting is by using a logical vector. `TRUE` will
 select the element with the same index, while `FALSE` will not:
-~~~
-{: .language-r}
 
-
-
-~~~
-Error: attempt to use zero-length variable name
-~~~
-{: .error}
 
 ~~~
 hh_members <- c(3, 7, 10, 6)
 hh_members[c(TRUE, FALSE, TRUE, TRUE)]
-```
+~~~
+{: .language-r}
+
+
+
+~~~
+[1]  3 10  6
+~~~
+{: .output}
 
 Typically, these logical vectors are not typed by hand, but are the output of
 other functions or logical tests. For instance, if you wanted to select only the
 values above 5:
-~~~
-{: .language-r}
 
-
-
-~~~
-Error: attempt to use zero-length variable name
-~~~
-{: .error}
 
 ~~~
 hh_members > 5    # will return logicals with TRUE for the indices that meet the condition
-## so we can use this to select only the values above 5
-hh_members[hh_members > 5]
-```
-
-You can combine multiple tests using `&` (both conditions are true, AND) or `|`
-(at least one of the conditions is true, OR):
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: attempt to use zero-length variable name
+[1] FALSE  TRUE  TRUE  TRUE
 ~~~
-{: .error}
+{: .output}
+
+
+
+~~~
+## so we can use this to select only the values above 5
+hh_members[hh_members > 5]
+~~~
+{: .language-r}
+
+
+
+~~~
+[1]  7 10  6
+~~~
+{: .output}
+
+You can combine multiple tests using `&` (both conditions are true, AND) or `|`
+(at least one of the conditions is true, OR):
+
 
 ~~~
 hh_members[hh_members < 4 | hh_members > 7]
+~~~
+{: .language-r}
+
+
+
+~~~
+[1]  3 10
+~~~
+{: .output}
+
+
+
+~~~
 hh_members[hh_members >= 4 & hh_members <= 7]
-```
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 7 6
+~~~
+{: .output}
 
 Here, `<` stands for "less than", `>` for "greater than", `>=` for "greater than
 or equal to", and `==` for "equal to". The double equal sign `==` is a test for
@@ -786,55 +827,68 @@ to `<-`).
 A common task is to search for certain strings in a vector.  One could use the
 "or" operator `|` to test for equality to multiple values, but this can quickly
 become tedious. 
-~~~
-{: .language-r}
 
-
-
-~~~
-Error: attempt to use zero-length variable name
-~~~
-{: .error}
 
 ~~~
 possessions <- c("car", "bicycle", "radio", "television", "mobile_phone")
 possessions[possessions == "car" | possessions == "bicycle"] # returns both car and bicycle
-```
-
-The function `%in%` allows you to test if any of the elements of a search vector
-(on the left hand side) are found in the target vector (on the right hand side):
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: attempt to use zero-length variable name
+[1] "car"     "bicycle"
 ~~~
-{: .error}
+{: .output}
+
+The function `%in%` allows you to test if any of the elements of a search vector
+(on the left hand side) are found in the target vector (on the right hand side):
+
 
 ~~~
 possessions %in% c("car", "bicycle")
-```
+~~~
+{: .language-r}
+
+
+
+~~~
+[1]  TRUE  TRUE FALSE FALSE FALSE
+~~~
+{: .output}
 
 Note that the output is the same length as the search vector on the left hand
 side, because `%in%` checks whether each element of the search vector is found
 somewhere in the target vector. Thus, you can use `%in%` to select the elements
 in the search vector that appear in your target vector:
+
+
+~~~
+possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: attempt to use zero-length variable name
+[1]  TRUE  TRUE FALSE FALSE FALSE
 ~~~
-{: .error}
+{: .output}
+
+
 
 ~~~
-possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")
 possessions[possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")]
-```
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] "car"     "bicycle"
+~~~
+{: .output}
 
 
 ## Missing data
@@ -848,53 +902,132 @@ you are working with include missing values. This feature
 makes it harder to overlook the cases where you are dealing with missing data.
 You can add the argument `na.rm=TRUE` to calculate the result while ignoring
 the missing values.
+
+
+~~~
+rooms <- c(2, 1, 1, NA, 7)
+mean(rooms)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: attempt to use zero-length variable name
+[1] NA
 ~~~
-{: .error}
+{: .output}
+
+
 
 ~~~
-rooms <- c(2, 1, 1, NA, 7)
-mean(rooms)
 max(rooms)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] NA
+~~~
+{: .output}
+
+
+
+~~~
 mean(rooms, na.rm = TRUE)
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 2.75
+~~~
+{: .output}
+
+
+
+~~~
 max(rooms, na.rm = TRUE)
-```
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 7
+~~~
+{: .output}
 
 If your data include missing values, you may want to become familiar with the
 functions `is.na()`, `na.omit()`, and `complete.cases()`. See below for
 examples.
 
+
+
+~~~
+## Extract those elements which are not missing values.
+## The ! character is also called the NOT operator
+rooms[!is.na(rooms)]
 ~~~
 {: .language-r}
 
 
 
 ~~~
-Error: attempt to use zero-length variable name
+[1] 2 1 1 7
 ~~~
-{: .error}
+{: .output}
+
+
 
 ~~~
-## Extract those elements which are not missing values.
-## The ! character is also called the NOT operator
-rooms[!is.na(rooms)]
-
 ## Count the number of missing values.
 ## The output of is.na() is a logical vector (TRUE/FALSE equivalent to 1/0) so the sum() function here is effectively counting
 sum(is.na(rooms))
+~~~
+{: .language-r}
 
+
+
+~~~
+[1] 1
+~~~
+{: .output}
+
+
+
+~~~
 ## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 na.omit(rooms)
+~~~
+{: .language-r}
 
+
+
+~~~
+[1] 2 1 1 7
+attr(,"na.action")
+[1] 4
+attr(,"class")
+[1] "omit"
+~~~
+{: .output}
+
+
+
+~~~
 ## Extract those elements which are complete cases. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 rooms[complete.cases(rooms)]
-```
+~~~
+{: .language-r}
+
+
+
+~~~
+[1] 2 1 1 7
+~~~
+{: .output}
 Recall that you can use the `typeof()` function to find the type of your atomic vector.
 
 > ## Exercise
@@ -909,15 +1042,6 @@ Recall that you can use the `typeof()` function to find the type of your atomic 
 > 3. Use R to figure out how many households in the set use more than 2 rooms for sleeping.
 >
 > > ## Solution
-~~~
-{: .language-r}
-
-
-
-~~~
-Error: attempt to use zero-length variable name
-~~~
-{: .error}
 > > 
 > > ~~~
 > > rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
@@ -926,25 +1050,37 @@ Error: attempt to use zero-length variable name
 > > rooms_no_na <- na.omit(rooms)
 > > # 2.
 > > median(rooms, na.rm = TRUE)
-> > # 3.
-> > rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
-> > length(rooms_above_2)
-> > ```
-> > > {: .solution}
-> > {: .challenge}
-> > 
-> > Now that we have learned how to write scripts, and the basics of R's data
-> > structures, we are ready to start working with the SAFI dataset we have been
-> > using in the other lessons, and learn about data frames.
-> > 
-> > 
-> > {% include links.md %}
 > > ~~~
 > > {: .language-r}
 > > 
 > > 
 > > 
 > > ~~~
-> > Error: attempt to use zero-length variable name
+> > [1] 1
 > > ~~~
-> > {: .error}
+> > {: .output}
+> > 
+> > 
+> > 
+> > ~~~
+> > # 3.
+> > rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
+> > length(rooms_above_2)
+> > ~~~
+> > {: .language-r}
+> > 
+> > 
+> > 
+> > ~~~
+> > [1] 4
+> > ~~~
+> > {: .output}
+> {: .solution}
+{: .challenge}
+
+Now that we have learned how to write scripts, and the basics of R's data
+structures, we are ready to start working with the SAFI dataset we have been
+using in the other lessons, and learn about data frames.
+
+
+{% include links.md %}
