@@ -30,9 +30,14 @@ instructions to install **`tidyverse`**.
   running. Alternatively, you can type `sessionInfo()`, which will also display
   which version of R you are running. Go on
   the [CRAN website](https://cran.r-project.org/bin/windows/base/) and check
-  whether a more recent version is available. If so, please download and install
-  it. You can [check here](https://cran.r-project.org/bin/windows/base/rw-FAQ.html#How-do-I-UNinstall-R_003f) for
-  more information on how to remove old versions from your system if you wish to do so.
+  whether a more recent version is available. If so, you can update R using
+  the `installr` package, by running:
+  
+~~~
+if( !("installr" %in% installed.packages()) ){install.packages("installr")}
+installr::updateR(TRUE)
+~~~
+{: .language-r}
 
 #### If you don't have R and RStudio installed
 
