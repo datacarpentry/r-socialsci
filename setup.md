@@ -34,7 +34,7 @@ instructions to install **`tidyverse`**.
   the `installr` package, by running:
   
 ~~~
-if(!require("installr")) install.packages('installr')
+if( !("installr" %in% installed.packages()) ){install.packages("installr")}
 installr::updateR(TRUE)
 ~~~
 {: .language-r}
