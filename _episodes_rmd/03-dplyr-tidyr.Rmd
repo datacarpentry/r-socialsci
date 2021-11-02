@@ -506,7 +506,7 @@ how they relate to these different types of data formats.
 
 In the `interviews` data, each row contains the values of variables associated
 with each record collected (each interview in the villages), where it is stated
-that the the `key_ID` was "added to provide a unique Id for each observation"
+that the `key_ID` was "added to provide a unique Id for each observation"
 and the `instance_ID` "does this as well but it is not as convenient to use."
 
 However, with some inspection, we notice that there are more than one row in the
