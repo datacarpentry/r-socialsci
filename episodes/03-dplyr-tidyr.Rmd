@@ -126,11 +126,15 @@ To select columns of a dataframe, use `select()`. The first argument to this
 function is the dataframe (`interviews`), and the subsequent arguments are the
 columns to keep, separated by commas. Alternatively, if you are selecting
 columns adjacent to each other, you can use a `:` to select a range of columns,
-read as "select columns from ___ to ___."
+read as "select columns from ___ to ___." You may have done something similar in 
+the past using subsetting. `select()` is essentially doing the same thing as 
+subsetting, using a package (`dplyr`) instead of R's base functions.
 
 ```{r, results = 'hide', purl = FALSE}
 # to select columns throughout the dataframe
 select(interviews, village, no_membrs, months_lack_food)
+# to do the same thing with subsetting
+interviews[c("village","no_membrs","months_lack_food")]
 # to select a series of connected columns
 select(interviews, village:respondent_wall_type)
 ```
