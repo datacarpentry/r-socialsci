@@ -65,7 +65,7 @@ learning how to start from a blank document.
 
 ## Basic components of R Markdown
 
-To control the output, a YAML (YAML Ain't Markup Language) header is needed:
+To control the output, a YAML (Yet Another Markup Language) header is needed:
 
 ```
 ---
