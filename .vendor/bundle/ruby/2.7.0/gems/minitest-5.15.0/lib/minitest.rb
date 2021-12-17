@@ -3,12 +3,13 @@ require "thread"
 require "mutex_m"
 require "minitest/parallel"
 require "stringio"
+require "etc"
 
 ##
 # :include: README.rdoc
 
 module Minitest
-  VERSION = "5.14.4" # :nodoc:
+  VERSION = "5.15.0" # :nodoc:
   ENCS = "".respond_to? :encoding # :nodoc:
 
   @@installed_at_exit ||= false
@@ -23,7 +24,7 @@ module Minitest
   mc.send :attr_accessor, :parallel_executor
 
   warn "DEPRECATED: use MT_CPU instead of N for parallel test runs" if ENV["N"]
-  n_threads = (ENV["MT_CPU"] || ENV["N"] || 2).to_i
+  n_threads = (ENV["MT_CPU"] || ENV["N"] || Etc.nprocessors).to_i
   self.parallel_executor = Parallel::Executor.new n_threads
 
   ##
@@ -53,6 +54,10 @@ module Minitest
   # Registers Minitest to run at process exit
 
   def self.autorun
+    if Object.const_defined?(:Warning) && Warning.respond_to?(:[]=)
+      Warning[:deprecated] = true
+    end
+
     at_exit {
       next if $! and not ($!.kind_of? SystemExit and $!.success?)
 
@@ -197,6 +202,10 @@ module Minitest
 
       opts.on "-e", "--exclude PATTERN", "Exclude /regexp/ or string from run." do |a|
         options[:exclude] = a
+      end
+
+      opts.on "-S", "--skip CODES", String, "Skip reporting of certain types of results (eg E)." do |s|
+        options[:skip] = s.chars.to_a
       end
 
       unless extensions.empty?
@@ -786,7 +795,11 @@ module Minitest
       filtered_results = results.dup
       filtered_results.reject!(&:skipped?) unless options[:verbose]
 
+      skip = options[:skip] || []
+
       filtered_results.each_with_index { |result, i|
+        next if skip.include? result.result_code
+
         io.puts "\n%3d) %s" % [i+1, result]
       }
       io.puts

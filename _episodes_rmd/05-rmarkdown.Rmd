@@ -76,8 +76,8 @@ output: html_document
 ---
 ```
 
-The header is defined by the three hyphons at the beginning (`---`) and the
-three hyphons at the end (`---`). 
+The header is defined by the three hyphens at the beginning (`---`) and the
+three hyphens at the end (`---`). 
 
 In the YAML, the only required field is the `output:`, which specifies the type
 of output you want. This can be an `html_document`, a `pdf_document`, or a 
