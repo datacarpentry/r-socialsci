@@ -96,7 +96,9 @@ installr::updateR(TRUE)
   rstudio-x.yy.zzz-amd64.deb` at the terminal).
 * Once it's installed, open RStudio to make sure it works and you don't get any
   error messages.
-
+* Before installing the `tidyverse` package, **Ubuntu** (and related) users may
+  need to install the following dependencies: `libcurl4-openssl-dev libssl-dev libxml2-dev`
+  (e.g. `sudo apt install libcurl4-openssl-dev libssl-dev libxml2-dev`).
 
 ### For everyone
 
