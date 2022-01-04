@@ -72,8 +72,8 @@ output: html_document
 ---
 ```
 
-The header is defined by the three hyphons at the beginning (`---`) and the
-three hyphons at the end (`---`). 
+The header is defined by the three hyphens at the beginning (`---`) and the
+three hyphens at the end (`---`). 
 
 In the YAML, the only required field is the `output:`, which specifies the type
 of output you want. This can be an `html_document`, a `pdf_document`, or a 
@@ -349,7 +349,7 @@ uses one backtick (``` `r` ```), whereas code chunks use three backticks
 (&#96;&#96;&#96; r &#96;&#96;&#96;). 
 
 For example, today's date is &#96;r Sys.Date()&#96;, will be rendered as: 
-today's date is 2021-12-17.  
+today's date is 2022-01-04.  
 The code will display today's date in the output document (well, technically the 
 date the document was last knitted).
 

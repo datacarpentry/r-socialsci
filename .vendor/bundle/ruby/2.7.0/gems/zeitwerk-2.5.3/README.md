@@ -50,8 +50,8 @@
   - [Rules of thumb](#rules-of-thumb)
   - [Debuggers](#debuggers)
     - [debug.rb](#debugrb)
-    - [Break](#break)
     - [Byebug](#byebug)
+    - [Break](#break)
 - [Pronunciation](#pronunciation)
 - [Supported Ruby versions](#supported-ruby-versions)
 - [Testing](#testing)
@@ -810,7 +810,9 @@ Kernel.module_eval do
 end
 ```
 
-That file does not define a constant path after the path name and you need to tell Zeitwerk:
+`Kernel` is already defined by Ruby so the module cannot be autoloaded. Also, that file does not define a constant path after the path name. Therefore, Zeitwerk should not process it at all.
+
+The extension can still coexist with the rest of the project, you only need to tell Zeitwerk to ignore it:
 
 ```ruby
 kernel_ext = "#{__dir__}/my_gem/core_ext/kernel.rb"
@@ -825,6 +827,14 @@ core_ext = "#{__dir__}/my_gem/core_ext"
 loader.ignore(core_ext)
 loader.setup
 ```
+
+Now, that file has to be loaded manually with `require` or `require_relative`:
+
+```ruby
+require_relative "my_gem/core_ext/kernel"
+```
+
+and you can do that anytime, before configuring the loader, or after configuring the loader, does not matter.
 
 <a id="markdown-use-case-the-adapter-pattern" name="use-case-the-adapter-pattern"></a>
 #### Use case: The adapter pattern
@@ -973,17 +983,19 @@ With that, when Zeitwerk scans the file system and reaches the gem directories `
 <a id="markdown-debugrb" name="debugrb"></a>
 #### debug.rb
 
-The new [debug.rb](https://github.com/ruby/debug) gem and Zeitwerk seem to be compatible, as far as I can tell. This is the new debugger that is going to ship with Ruby 3.1.
+The new [debug.rb](https://github.com/ruby/debug) gem and Zeitwerk are mostly compatible. This is the new debugger that is going to ship with Ruby 3.1.
+
+There's one exception, though: Due to a technical limitation of tracepoints, explicit namespaces are not autoloaded while expressions are evaluated in the REPL. See [ruby/debug#408](https://github.com/ruby/debug/issues/408).
+
+<a id="markdown-byebug" name="byebug"></a>
+#### Byebug
+
+Zeitwerk and [Byebug](https://github.com/deivid-rodriguez/byebug) have a similar edge incompatibility.
 
 <a id="markdown-break" name="break"></a>
 #### Break
 
 Zeitwerk works fine with [@gsamokovarov](https://github.com/gsamokovarov)'s [Break](https://github.com/gsamokovarov/break) debugger.
-
-<a id="markdown-byebug" name="byebug"></a>
-#### Byebug
-
-Zeitwerk and [Byebug](https://github.com/deivid-rodriguez/byebug) are incompatible, classes or modules that belong to [explicit namespaces](#explicit-namespaces) are not autoloaded inside a Byebug session. See [this issue](https://github.com/deivid-rodriguez/byebug/issues/564#issuecomment-499413606) for further details.
 
 <a id="markdown-pronunciation" name="pronunciation"></a>
 ## Pronunciation

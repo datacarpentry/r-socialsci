@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: github-pages 222 ruby lib
+# stub: github-pages 223 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "github-pages".freeze
-  s.version = "222"
+  s.version = "223"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["GitHub, Inc.".freeze]
-  s.date = "2021-11-16"
+  s.date = "2021-12-27"
   s.description = "Bootstrap the GitHub Pages Jekyll environment locally.".freeze
   s.email = "support@github.com".freeze
   s.executables = ["github-pages".freeze]
@@ -44,6 +44,7 @@ Gem::Specification.new do |s|
     s.add_runtime_dependency(%q<jekyll-github-metadata>.freeze, ["= 2.13.0"])
     s.add_runtime_dependency(%q<jekyll-avatar>.freeze, ["= 0.7.0"])
     s.add_runtime_dependency(%q<jekyll-remote-theme>.freeze, ["= 0.4.3"])
+    s.add_runtime_dependency(%q<jekyll-include-cache>.freeze, ["= 0.2.1"])
     s.add_runtime_dependency(%q<jemoji>.freeze, ["= 0.12.0"])
     s.add_runtime_dependency(%q<jekyll-mentions>.freeze, ["= 1.6.0"])
     s.add_runtime_dependency(%q<jekyll-relative-links>.freeze, ["= 0.6.1"])
@@ -92,6 +93,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jekyll-github-metadata>.freeze, ["= 2.13.0"])
     s.add_dependency(%q<jekyll-avatar>.freeze, ["= 0.7.0"])
     s.add_dependency(%q<jekyll-remote-theme>.freeze, ["= 0.4.3"])
+    s.add_dependency(%q<jekyll-include-cache>.freeze, ["= 0.2.1"])
     s.add_dependency(%q<jemoji>.freeze, ["= 0.12.0"])
     s.add_dependency(%q<jekyll-mentions>.freeze, ["= 1.6.0"])
     s.add_dependency(%q<jekyll-relative-links>.freeze, ["= 0.6.1"])
