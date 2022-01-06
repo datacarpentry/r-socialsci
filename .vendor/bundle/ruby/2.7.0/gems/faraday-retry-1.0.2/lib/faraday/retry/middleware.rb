@@ -1,28 +1,20 @@
 # frozen_string_literal: true
 
 module Faraday
-  class Request
-    # Catches exceptions and retries each request a limited number of times.
+  module Retry
+    # This class provides the main implementation for your middleware.
+    # Your middleware can implement any of the following methods:
+    # * on_request - called when the request is being prepared
+    # * on_complete - called when the response is being processed
     #
-    # By default, it retries 2 times and handles only timeout exceptions. It can
-    # be configured with an arbitrary number of retries, a list of exceptions to
-    # handle, a retry interval, a percentage of randomness to add to the retry
-    # interval, and a backoff factor.
-    #
-    # @example Configure Retry middleware using intervals
-    #   Faraday.new do |conn|
-    #     conn.request(:retry, max: 2,
-    #                          interval: 0.05,
-    #                          interval_randomness: 0.5,
-    #                          backoff_factor: 2,
-    #                          exceptions: [CustomException, 'Timeout::Error'])
-    #
-    #     conn.adapter(:net_http) # NB: Last middleware must be the adapter
-    #   end
-    #
-    # This example will result in a first interval that is random between 0.05
-    # and 0.075 and a second interval that is random between 0.1 and 0.125.
-    class Retry < Faraday::Middleware
+    # Optionally, you can also override the following methods from Faraday::Middleware
+    # * initialize(app, options = {}) - the initializer method
+    # * call(env) - the main middleware invocation method.
+    #   This already calls on_request and on_complete, so you normally don't need to override it.
+    #   You may need to in case you need to "wrap" the request or need more control
+    #   (see "retry" middleware: https://github.com/lostisland/faraday/blob/main/lib/faraday/request/retry.rb#L142).
+    #   IMPORTANT: Remember to call `@app.call(env)` or `super` to not interrupt the middleware chain!
+    class Middleware < Faraday::Middleware
       DEFAULT_EXCEPTIONS = [
         Errno::ETIMEDOUT, 'Timeout::Error',
         Faraday::TimeoutError, Faraday::RetriableResponse
@@ -146,16 +138,14 @@ module Faraday
           # after failure env[:body] is set to the response body
           env[:body] = request_body
           @app.call(env).tap do |resp|
-            if @options.retry_statuses.include?(resp.status)
-              raise Faraday::RetriableResponse.new(nil, resp)
-            end
+            raise Faraday::RetriableResponse.new(nil, resp) if @options.retry_statuses.include?(resp.status)
           end
         rescue @errmatch => e
           if retries.positive? && retry_request?(env, e)
             retries -= 1
             rewind_files(request_body)
-            @options.retry_block.call(env, @options, retries, e)
             if (sleep_amount = calculate_sleep_amount(retries + 1, env))
+              @options.retry_block.call(env, @options, retries, e)
               sleep sleep_amount
               retry
             end
@@ -176,15 +166,15 @@ module Faraday
       def build_exception_matcher(exceptions)
         matcher = Module.new
         (
-        class << matcher
-          self
-        end).class_eval do
+          class << matcher
+            self
+          end).class_eval do
           define_method(:===) do |error|
             exceptions.any? do |ex|
               if ex.is_a? Module
                 error.is_a? ex
               else
-                error.class.to_s == ex.to_s
+                Object.const_defined?(ex.to_s) && error.is_a?(Object.const_get(ex.to_s))
               end
             end
           end
@@ -200,6 +190,7 @@ module Faraday
       end
 
       def rewind_files(body)
+        return unless defined?(UploadIO)
         return unless body.is_a?(Hash)
 
         body.each do |_, value|

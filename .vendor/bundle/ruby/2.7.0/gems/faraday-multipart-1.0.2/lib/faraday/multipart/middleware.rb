@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
-require File.expand_path('url_encoded', __dir__)
 require 'securerandom'
 
 module Faraday
-  class Request
+  module Multipart
     # Middleware for supporting multi-part requests.
-    class Multipart < UrlEncoded
+    class Middleware < Faraday::Request::UrlEncoded
+      DEFAULT_BOUNDARY_PREFIX = '-----------RubyMultipartPost'
+
       self.mime_type = 'multipart/form-data'
-      unless defined?(::Faraday::Request::Multipart::DEFAULT_BOUNDARY_PREFIX)
-        DEFAULT_BOUNDARY_PREFIX = '-----------RubyMultipartPost'
-      end
 
       def initialize(app = nil, options = {})
         super(app)
@@ -43,7 +41,7 @@ module Faraday
       #
       # @param obj [Object]
       # @return [Boolean]
-      def has_multipart?(obj) # rubocop:disable Naming/PredicateName
+      def has_multipart?(obj)
         if obj.respond_to?(:each)
           (obj.respond_to?(:values) ? obj.values : obj).each do |val|
             return true if val.respond_to?(:content_type) || has_multipart?(val)
@@ -59,9 +57,9 @@ module Faraday
         parts = process_params(params) do |key, value|
           part(boundary, key, value)
         end
-        parts << Faraday::Parts::EpiloguePart.new(boundary)
+        parts << Faraday::Multipart::Parts::EpiloguePart.new(boundary)
 
-        body = Faraday::CompositeReadIO.new(parts)
+        body = Faraday::Multipart::CompositeReadIO.new(parts)
         env.request_headers[Faraday::Env::ContentLength] = body.length.to_s
         body
       end
@@ -70,7 +68,7 @@ module Faraday
         if value.respond_to?(:to_part)
           value.to_part(boundary, key)
         else
-          Faraday::Parts::Part.new(boundary, key, value)
+          Faraday::Multipart::Parts::Part.new(boundary, key, value)
         end
       end
 
@@ -95,9 +93,7 @@ module Faraday
           when Hash
             process_params(value, key, all, &block)
           else
-            # rubocop:disable Performance/RedundantBlockCall
-            all << block.call(key, value)
-            # rubocop:enable Performance/RedundantBlockCall
+            all << block.call(key, value) # rubocop:disable Performance/RedundantBlockCall
           end
         end
       end
