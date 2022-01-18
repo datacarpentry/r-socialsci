@@ -213,7 +213,7 @@ Pane Layout).
 The Default Layout is:
 - Top Left - **Source**: your scripts and documents
 - Bottom Left - **Console**: what R would look and be like without RStudio
-- Top Right - **Enviornment/History**: look here to see what you have done
+- Top Right - **Environment/History**: look here to see what you have done
 - Bottom Right - **Files** and more: see the contents of the project/working
 directory here, like your Script.R file
 
