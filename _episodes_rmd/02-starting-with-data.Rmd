@@ -87,7 +87,7 @@ represent:
 
 ## Importing data
 
-You are going load the data in R's memory using the function `read_csv()`
+You are going to load the data in R's memory using the function `read_csv()`
 from the **`readr`** package, which is part of the **`tidyverse`**; learn
 more about the **`tidyverse`** collection of packages
 [here](https://www.tidyverse.org/).
