@@ -531,9 +531,9 @@ plot(memb_assoc)
 
 One of the most common issues that new (and experienced!) R users have is
 converting date and time information into a variable that is appropriate and
-usable during analyses. A possible
+usable during analyses. A best
 practice for dealing with date data is to ensure that each component of your
-date is stored as a separate variable. In our dataset, we have a
+date is available as a separate variable. In our dataset, we have a
 column `interview_date` which contains information about the
 year, month, and day that the interview was conducted. Let's
 convert those dates into three separate columns.
