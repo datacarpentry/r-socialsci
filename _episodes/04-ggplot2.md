@@ -439,8 +439,7 @@ We can see that muddaub houses and sunbrick houses tend to be smaller than
 burntbrick houses.
 
 Notice how the  boxplot layer is behind the jitter layer? What do you need to
-change in the code to put the boxplot in behind the points such that it's not 
-hidden?
+change in the code to put the boxplot layer in front of the jitter layer?
 
 > ## Exercise
 >
