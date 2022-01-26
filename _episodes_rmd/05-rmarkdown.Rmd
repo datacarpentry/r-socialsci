@@ -101,9 +101,9 @@ independent.
 Some platforms provide a real time preview of the formatting, like RStudio's 
 visual markdown editor (available from version 1.4).
 
-First, let's create a header! A `#` in front of text indicates to Markdown that 
-this text is a header. Adding more `#`s make the header smaller, i.e. one `#` is 
-a first level header, two `##`s is a second level header, etc.
+First, let's create a heading! A `#` in front of text indicates to Markdown that 
+this text is a heading. Adding more `#`s make the heading smaller, i.e. one `#` is 
+a first level heading, two `##`s is a second level heading, etc. upto the 6th level heading.
 
 ```
 # Title
@@ -111,10 +111,12 @@ a first level header, two `##`s is a second level header, etc.
 ### Sub-section
 #### Sub-sub section
 ##### Sub-sub-sub section
+###### Sub-sub-sub-sub section
 ```
+(only use a level if the one above is also in use)
 
 Since we have already defined our title in the YAML header, we will use a 
-section header to create an Introduction section.
+section heading to create an Introduction section.
 
 ```
 ## Introduction
