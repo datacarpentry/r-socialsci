@@ -1,5 +1,5 @@
 current directory: /home/runner/work/r-socialsci/r-socialsci/.vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
-/opt/hostedtoolcache/Ruby/2.7.5/x64/bin/ruby -I /opt/hostedtoolcache/Ruby/2.7.5/x64/lib/ruby/2.7.0 -r ./siteconf20220126-11351-dmw090.rb extconf.rb
+/opt/hostedtoolcache/Ruby/2.7.5/x64/bin/ruby -I /opt/hostedtoolcache/Ruby/2.7.5/x64/lib/ruby/2.7.0 -r ./siteconf20220126-11359-kq7eo8.rb extconf.rb
 creating Makefile
 
 current directory: /home/runner/work/r-socialsci/r-socialsci/.vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser
@@ -126,5 +126,5 @@ Makefile:256: warning: overriding recipe for target '.m.S'
 :256: warning: ignoring old recipe for target '.m.S'
 Makefile:260: warning: overriding recipe for target 'ruby_http_parser.so'
 :260: warning: ignoring old recipe for target 'ruby_http_parser.so'
-/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20220126-11351-3u9u9p
+/usr/bin/install -c -m 0755 ruby_http_parser.so ./.gem.20220126-11359-qtiaro
 make[1]: Leaving directory '/home/runner/work/r-socialsci/r-socialsci/.vendor/bundle/ruby/2.7.0/gems/http_parser.rb-0.8.0/ext/ruby_http_parser'
