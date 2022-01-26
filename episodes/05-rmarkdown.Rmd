@@ -217,7 +217,7 @@ Here is where you place the R code that you want to run.
 </pre>
 
 An R Markdown document knows that this text is not part of the report from the 
-three `&#96;&#96;&#96` that begin and end the chunk. It also knows that the code
+`&#96;&#96;&#96` that begins and ends the chunk. It also knows that the code
 inside of the chunk is R code from the `r` inside of the curly braces (`{}`). 
 After the `r` you can add a name for the code chunk . Naming a chunk is
 optional, but recommended. Each chunk name must be unique, and only contain
