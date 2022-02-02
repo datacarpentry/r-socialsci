@@ -98,17 +98,17 @@ again the SAFI dataset that we downloaded earlier.
 
 ```{r, results = 'hide', purl = FALSE, message = FALSE}
 
-## load the tidyverse
+# load the tidyverse
 library(tidyverse)
 library(here)
 
 interviews <- read_csv(here("data", "SAFI_clean.csv"), na = "NULL")
 
-## inspect the data
+# inspect the data
 interviews
 
-## preview the data
-# view(interviews)
+# preview the data
+view(interviews)
 ```
 
 We're going to learn some of the most common **`dplyr`** functions:
