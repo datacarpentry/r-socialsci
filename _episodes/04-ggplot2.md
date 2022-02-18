@@ -49,24 +49,12 @@ interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 
 ~~~
 Rows: 131 Columns: 45
-~~~
-{: .output}
-
-
-
-~~~
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
 chr   (5): village, respondent_wall_type, memb_assoc, affect_conflicts, inst...
 dbl   (8): key_ID, no_membrs, years_liv, rooms, liv_count, no_meals, number_...
 lgl  (31): bicycle, television, solar_panel, table, cow_cart, radio, cow_plo...
 dttm  (1): interview_date
-~~~
-{: .output}
-
-
-
-~~~
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.

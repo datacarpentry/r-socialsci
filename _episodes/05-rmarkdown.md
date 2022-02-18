@@ -351,7 +351,7 @@ uses one backtick (``` `r` ```), whereas code chunks use three backticks
 (&#96;&#96;&#96; r &#96;&#96;&#96;). 
 
 For example, today's date is &#96;r Sys.Date()&#96;, will be rendered as: 
-today's date is 2022-01-26.  
+today's date is 2022-02-18.  
 The code will display today's date in the output document (well, technically the 
 date the document was last knitted).
 
