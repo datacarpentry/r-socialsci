@@ -351,7 +351,7 @@ uses one backtick (``` `r` ```), whereas code chunks use three backticks
 (&#96;&#96;&#96; r &#96;&#96;&#96;). 
 
 For example, today's date is &#96;r Sys.Date()&#96;, will be rendered as: 
-today's date is 2022-02-22.  
+today's date is 2022-02-23.  
 The code will display today's date in the output document (well, technically the 
 date the document was last knitted).
 
@@ -376,7 +376,7 @@ Now we can make an informative statement on the means of each village, and inclu
 the mean values as in-line R-code. For example: 
 
 The average household size in the village of Chirodzo is 
-&#96;r round(mean_chirodzo$mean_no_members, 2)&#96;
+&#96;r round(mean_chirodzo$mean_no_membrs, 2)&#96;
 
 becomes...
 
