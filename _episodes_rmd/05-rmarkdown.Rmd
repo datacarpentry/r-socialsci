@@ -366,7 +366,7 @@ Now we can make an informative statement on the means of each village, and inclu
 the mean values as in-line R-code. For example: 
 
 The average household size in the village of Chirodzo is 
-&#96;r round(mean_chirodzo$mean_no_members, 2)&#96;
+&#96;r round(mean_chirodzo$mean_no_membrs, 2)&#96;
 
 becomes...
 
