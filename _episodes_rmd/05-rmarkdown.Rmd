@@ -279,7 +279,7 @@ Run the code chunk to make sure you get the desired output.
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
-    summarize(mean_no_membrs = mean(no_membrs)) %>%
+    summarize(mean_no_members = mean(no_membrs)) %>%
   knitr::kable(caption = "We can also add a caption.", 
                col.names = c("Village", "Member Association", 
                              "Mean Number of Members"))
@@ -355,7 +355,7 @@ we're interested in presenting the average household size in a village.
 # create a summary data frame with the mean household size by village
 mean_household <- interviews %>%
     group_by(village) %>%
-    summarize(mean_no_membrs = mean(no_membrs))
+    summarize(mean_no_members = mean(no_membrs))
 
 # and select the village we want to use
 mean_chirodzo <- mean_household %>%
@@ -366,12 +366,12 @@ Now we can make an informative statement on the means of each village, and inclu
 the mean values as in-line R-code. For example: 
 
 The average household size in the village of Chirodzo is 
-&#96;r round(mean_chirodzo$mean_no_membrs, 2)&#96;
+&#96;r round(mean_chirodzo$mean_no_members, 2)&#96;
 
 becomes...
 
 The average household size in the village of Chirodzo is 
-`r round(mean_chirodzo$mean_no_membrs, 2)`.
+`r round(mean_chirodzo$mean_no_members, 2)`.
 
 Because we are using in-line R code instead of the actual values, we have created
 a dynamic document that will automatically update if we make changes to the dataset
