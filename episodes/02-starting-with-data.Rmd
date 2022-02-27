@@ -135,6 +135,12 @@ as inputs (e.g., `"data"`, `"SAFI_clean.csv"`), each enclosed in quotations
 necessary to navigate to a particular file 
 (e.g., `here("analysis", "data", "surveys", "clean", "SAFI_clean.csv)`). 
 
+The `here()` function can accept the folder and file names in an alternate format, 
+using a slash ("/") rather than commas to separate the names. The two methods are
+equivalent, so that `here("data", "SAFI_clean.csv")` and
+`here("data/SAFI_clean.csv")` produce the same result. (The slash is used on all
+operating systems; backslashes are not used.)
+
 If you were to type in the code above, it is likely that the `read.csv()`
 function would appear in the automatically populated list of functions. This
 function is different from the `read_csv()` function, as it is included in the
