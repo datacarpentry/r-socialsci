@@ -828,8 +828,10 @@ interviews_items_owned %>%
 Or below we calculate the average number of items from the list owned by
 respondents in each village. This code uses the `rowSums()` function to count
 the number of `TRUE` values in the `bicycle` to `car` columns for each row,
-hence its name. We then group the data by villages and calculate the mean
-number of items, so each average is grouped by village.
+hence its name. Note that we replaced `NA` values with the value `no_listed_items`,
+so we must exclude this value in the aggregation. We then group the data by 
+villages and calculate the mean number of items, so each average is grouped
+by village.
 
 ```{r, purl = FALSE}
 interviews_items_owned %>%
