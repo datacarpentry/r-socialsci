@@ -62,7 +62,7 @@ Because detailed surveys are by nature nested structures making it possible to r
 
 library(jsonlite)
 
-json_data <- read_json(path='https://datacarpentry.org/r-socialsci/data/SAFI.json')
+json_data <- read_json(path='https://github.com/datacarpentry/r-socialsci/blob/main/data/SAFI.json')
 
 ```
 
