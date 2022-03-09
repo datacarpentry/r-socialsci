@@ -115,4 +115,4 @@ from `R`:
 `download.file("https://ndownloader.figshare.com/files/11492171","data/SAFI_clean.csv", mode = "wb")`
 
 * The [json episode](https://datacarpentry.org/r-socialsci/06-json/index.html) uses 
-`SAFI.json`. The downlink link is <https://datacarpentry.org/r-socialsci/data/SAFI.json>.
+`SAFI.json`. The downlink link is <https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json>.
