@@ -62,7 +62,7 @@ Because detailed surveys are by nature nested structures making it possible to r
 
 library(jsonlite)
 
-json_data <- read_json(path='https://github.com/datacarpentry/r-socialsci/blob/main/data/SAFI.json')
+json_data <- read_json(path='https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json')
 
 ```
 
@@ -77,7 +77,7 @@ We can see that a new object called json_data has appeared in our Environment. I
 This is because, by default, the `read_json()` function's parameter `simplifyVector`, which specifies whether or not to simplify vectors is set to FALSE. This means that the default setting does not simplify nested lists into vectors and data frames. However, we can set this to TRUE, and our data will be read directly as a dataframe: 
 
 ```{r, echo=FALSE, include=FALSE}
-json_data <- read_json(path='https://github.com/datacarpentry/r-socialsci/blob/main/data/SAFI.json', simplifyVector = TRUE)
+json_data <- read_json(path='https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json', simplifyVector = TRUE)
 ```
 
 ```{r, eval=FALSE}
