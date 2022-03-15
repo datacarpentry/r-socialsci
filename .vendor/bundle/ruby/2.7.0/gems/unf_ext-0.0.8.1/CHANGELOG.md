@@ -1,4 +1,8 @@
-## 0.0.8
+## 0.0.8.1 (2022-03-13)
+
+- Include Windows binaries for Ruby 3.1.
+
+## 0.0.8 (2021-09-14)
 
 - No functional change in the library code.
 - Include Windows binaries for Ruby 3.0.

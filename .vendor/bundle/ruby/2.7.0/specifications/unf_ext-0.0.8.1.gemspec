@@ -1,15 +1,15 @@
 # -*- encoding: utf-8 -*-
-# stub: unf_ext 0.0.8 ruby lib
+# stub: unf_ext 0.0.8.1 ruby lib
 # stub: ext/unf_ext/extconf.rb
 
 Gem::Specification.new do |s|
   s.name = "unf_ext".freeze
-  s.version = "0.0.8"
+  s.version = "0.0.8.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Takeru Ohta".freeze, "Akinori MUSHA".freeze]
-  s.date = "2021-09-14"
+  s.date = "2022-03-13"
   s.description = "Unicode Normalization Form support library for CRuby".freeze
   s.email = ["knu@idaemons.org".freeze]
   s.extensions = ["ext/unf_ext/extconf.rb".freeze]

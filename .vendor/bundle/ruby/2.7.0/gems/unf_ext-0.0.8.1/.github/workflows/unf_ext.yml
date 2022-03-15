@@ -12,12 +12,10 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-20.04, macos-11.0, windows-2019 ]
-        ruby: [ 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3.0, head ]
+        ruby: [ 2.6, 2.7, "3.0", 3.1, head ]
         include:
           - { os: windows-2019, ruby: mingw }
         exclude:
-          - { os: macos-11.0, ruby: 2.2 }
-          - { os: macos-11.0, ruby: 2.3 }
           - { os: windows-2019, ruby: head }
 
     steps:
@@ -33,10 +31,6 @@ jobs:
       - name:  bundle install
         shell: pwsh
         run: |
-          # update RubyGems in Ruby 2.2, bundle install
-          if ('${{ matrix.ruby }}' -lt '2.3') {
-            gem update --system 2.7.10 --no-document
-          }
           bundle config set --local path .bundle/vendor
           bundle install --jobs 4 --retry 3
 
