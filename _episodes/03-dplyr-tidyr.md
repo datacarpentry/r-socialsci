@@ -93,7 +93,7 @@ and this [one about **`tidyr`**](https://raw.githubusercontent.com/rstudio/cheat
 >
 > There are alternatives to the `tidyverse` packages for data wrangling, including
 > the package [`data.table`](https://rdatatable.gitlab.io/data.table/). See this 
-> [comparison](https://mgimond.github.io/rug_2019_12/Index.htm://mgimond.github.io/rug_2019_12/Index.html)
+> [comparison](https://mgimond.github.io/rug_2019_12/Index.html)
 > for example to get a sense of the differences between using `base`, `tidyverse`, and 
 > `data.table`.
 {: .callout}
@@ -1067,16 +1067,16 @@ interviews %>%
 # A tibble: 10 × 4
    key_ID village  interview_date      instanceID                               
     <dbl> <chr>    <dttm>              <chr>                                    
- 1      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
- 2     62 Chirodzo 2016-11-16 00:00:00 uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6
- 3     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
- 4     36 Chirodzo 2016-11-17 00:00:00 uuid:c90eade0-1148-4a12-8c0e-6387a36f45b1
- 5     63 Chirodzo 2016-11-16 00:00:00 uuid:86ed4328-7688-462f-aac7-d6518414526a
- 6     43 Chirodzo 2016-11-17 00:00:00 uuid:b4dff49f-ef27-40e5-a9d1-acf287b47358
- 7    192 Chirodzo 2017-06-03 00:00:00 uuid:f94409a6-e461-4e4c-a6fb-0072d3d58b00
- 8     34 Chirodzo 2016-11-17 00:00:00 uuid:14c78c45-a7cc-4b2a-b765-17c82b43feb4
- 9     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
-10      9 Chirodzo 2016-11-16 00:00:00 uuid:846103d2-b1db-4055-b502-9cd510bb7b37
+ 1     49 Chirodzo 2016-11-16 00:00:00 uuid:2303ebc1-2b3c-475a-8916-b322ebf18440
+ 2     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
+ 3     52 Chirodzo 2016-11-16 00:00:00 uuid:6db55cb4-a853-4000-9555-757b7fae2bcf
+ 4     70 Chirodzo 2016-11-16 00:00:00 uuid:1feb0108-4599-4bf9-8a07-1f5e66a50a0a
+ 5    200 Chirodzo 2017-06-04 00:00:00 uuid:aa77a0d7-7142-41c8-b494-483a5b68d8a7
+ 6     57 Chirodzo 2016-11-16 00:00:00 uuid:a7184e55-0615-492d-9835-8f44f3b03a71
+ 7     69 Chirodzo 2016-11-16 00:00:00 uuid:f86933a5-12b8-4427-b821-43c5b039401d
+ 8    199 Chirodzo 2017-06-04 00:00:00 uuid:ffc83162-ff24-4a87-8709-eff17abc0b3b
+ 9     43 Chirodzo 2016-11-17 00:00:00 uuid:b4dff49f-ef27-40e5-a9d1-acf287b47358
+10     51 Chirodzo 2016-11-16 00:00:00 uuid:18ac8e77-bdaf-47ab-85a2-e4c947c9d3ce
 ~~~
 {: .output}
 
