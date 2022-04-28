@@ -95,7 +95,7 @@ and this [one about **`tidyr`**](https://raw.githubusercontent.com/rstudio/cheat
 >
 > There are alternatives to the `tidyverse` packages for data wrangling, including
 > the package [`data.table`](https://rdatatable.gitlab.io/data.table/). See this 
-> [comparison](https://mgimond.github.io/rug_2019_12/Index.htm://mgimond.github.io/rug_2019_12/Index.html)
+> [comparison](https://mgimond.github.io/rug_2019_12/Index.html)
 > for example to get a sense of the differences between using `base`, `tidyverse`, and 
 > `data.table`.
 {: .callout}
