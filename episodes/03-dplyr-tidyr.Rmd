@@ -693,7 +693,7 @@ To recreate our original dataframe, we will use the following:
 
 
 ```{r, purl = FALSE}
-interviews_wide %>%
+interviews_long <- interviews_wide %>%
   pivot_longer(cols = c("muddaub", "cement", "sunbricks", "burntbricks"),
                names_to = "respondent_wall_type",
                values_to = "wall_type_logical")
