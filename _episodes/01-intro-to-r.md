@@ -510,25 +510,25 @@ length(respondent_wall_type)
 {: .output}
 
 An important feature of a vector, is that all of the elements are the same type of data.
-The function `class()` indicates the class (the type of element) of an object:
+The function `typeof()` indicates the type of an object:
 
 
 ~~~
-class(hh_members)
+typeof(hh_members)
 ~~~
 {: .language-r}
 
 
 
 ~~~
-[1] "numeric"
+[1] "double"
 ~~~
 {: .output}
 
 
 
 ~~~
-class(respondent_wall_type)
+typeof(respondent_wall_type)
 ~~~
 {: .language-r}
 
