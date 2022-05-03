@@ -325,11 +325,11 @@ length(respondent_wall_type)
 ```
 
 An important feature of a vector, is that all of the elements are the same type of data.
-The function `class()` indicates the class (the type of element) of an object:
+The function `typeof()` indicates the type of an object:
 
 ```{r, purl=FALSE}
-class(hh_members)
-class(respondent_wall_type)
+typeof(hh_members)
+typeof(respondent_wall_type)
 ```
 
 The function `str()` provides an overview of the structure of an object and its
