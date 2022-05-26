@@ -153,7 +153,9 @@ area_hectares <- 50
 
 ## Comments
 
-All programming languages allow the programmer to include comments in their code. To do this in R we use the `#` character.
+All programming languages allow the programmer to include comments in their code. Including comments to your code has many advantages: it helps you explain your reasoning and it forces you to be tidy. A commented code is also a great tool not only to your collaborators, but to your future self. Comments are the key to a reproducible analysis. 
+
+To do this in R we use the `#` character.
 Anything to the right of the `#` sign and up to the end of the line is treated as a comment and is ignored by R. You can start lines with comments
 or include them after any code on the line.
 
