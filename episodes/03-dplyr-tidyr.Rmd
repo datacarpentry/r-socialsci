@@ -238,15 +238,15 @@ interviews %>%
 
 In the above code, we use the pipe to send the `interviews` dataset first
 through `filter()` to keep rows where `village` is "Chirodzo", then through
-`select()` to keep only the `no_membrs` and `years_liv` columns. Since `%>%`
+`select()` to keep only the `village` unto `respondent_wall_type` columns. Since `%>%`
 takes the object on its left and passes it as the first argument to the function
 on its right, we don't need to explicitly include the dataframe as an argument
 to the `filter()` and `select()` functions any more.
 
 Some may find it helpful to read the pipe like the word "then". For instance,
 in the above example, we take the dataframe `interviews`, *then* we `filter`
-for rows with `village == "Chirodzo"`, *then* we `select` columns `no_membrs` and
-`years_liv`. The **`dplyr`** functions by themselves are somewhat simple,
+for rows with `village == "Chirodzo"`, *then* we `select` columns `village:respondent_wall_type`.
+The **`dplyr`** functions by themselves are somewhat simple,
 but by combining them into linear workflows with the pipe, we can accomplish
 more complex data wrangling operations.
 
