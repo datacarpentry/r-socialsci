@@ -238,7 +238,7 @@ interviews %>%
 
 In the above code, we use the pipe to send the `interviews` dataset first
 through `filter()` to keep rows where `village` is "Chirodzo", then through
-`select()` to keep only the `village` unto `respondent_wall_type` columns. Since `%>%`
+`select()` to keep only the columns from `village` to `respondent_wall_type`. Since `%>%`
 takes the object on its left and passes it as the first argument to the function
 on its right, we don't need to explicitly include the dataframe as an argument
 to the `filter()` and `select()` functions any more.
