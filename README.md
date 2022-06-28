@@ -13,5 +13,3 @@ The [instructor notes page](https://datacarpentry.org/r-socialsci/guide/index.ht
 
 Maintainers:
 * [Juan Fung](https://github.com/juanfung)
-* [Allison Theobold](https://github.com/atheobold)
-* [Kelsey Gonzalez](https://github.com/kelseygonzalez)
