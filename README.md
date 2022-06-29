@@ -13,3 +13,5 @@ The [instructor notes page](https://datacarpentry.org/r-socialsci/guide/index.ht
 
 Maintainers:
 * [Juan Fung](https://github.com/juanfung)
+* [Eirini Zormpa](https://github.com/eirini-zormpa)
+* [Jesse Sadler](https://github.com/jessesadler)
