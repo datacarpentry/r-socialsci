@@ -413,6 +413,10 @@ levels(respondent_floor_type)
 
 respondent_floor_type <- fct_recode(respondent_floor_type, brick = "cement")
 
+## as an alternative, we could change the "cement" level directly using the
+## levels() function, but we have to remember that "cement" is the second level
+# levels(respondent_floor_type)[2] <- "brick"
+
 levels(respondent_floor_type)
 
 respondent_floor_type
