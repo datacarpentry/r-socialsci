@@ -404,12 +404,18 @@ informative than integers because factors are self describing: `"cement"`,
 wouldn't be able to tell just from the integer data. Factors, on the other hand,
 have this information built in. It is particularly helpful when there are many
 levels. It also makes renaming levels easier. Let's say we made a mistake and
-need to recode "cement" to "brick".
+need to recode "cement" to "brick". We can do this using the `fct_recode()`
+function from the **`forcats`** package (included in the **`tidyverse`**) which
+provides some extra tools to work with factors.
 
 ```{r, results = TRUE, purl = FALSE}
 levels(respondent_floor_type)
 
-levels(respondent_floor_type)[2] <- "brick"
+respondent_floor_type <- fct_recode(respondent_floor_type, brick = "cement")
+
+## as an alternative, we could change the "cement" level directly using the
+## levels() function, but we have to remember that "cement" is the second level
+# levels(respondent_floor_type)[2] <- "brick"
 
 levels(respondent_floor_type)
 
@@ -524,8 +530,9 @@ plot(memb_assoc)
 > > ## Solution
 > >
 > > ```{r factor-plot-exercise, fig.alt = "bar graph showing number of individuals who are members of irrigation association, including undetermined option"}
-> > ## Rename levels. Note we need to keep the original level ordering when renaming.
-> > levels(memb_assoc) <- c("No", "Undetermined", "Yes")
+> > ## Rename levels.
+> > memb_assoc <- fct_recode(memb_assoc, No = "no",
+> >                          Undetermined = "undetermined", Yes = "yes")
 > > ## Reorder levels. Note we need to use the new level names.
 > > memb_assoc <- factor(memb_assoc, levels = c("No", "Yes", "Undetermined"))
 > > plot(memb_assoc)
