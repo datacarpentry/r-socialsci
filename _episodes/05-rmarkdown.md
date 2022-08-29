@@ -41,7 +41,7 @@ The **rmarkdown** package comes pre-installed with RStudio, so no action is
 necessary.
 
 <figure>
-<img src="../fig/rmarkdown_wizards.png" title="R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst" alt="R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst" width="100%" style="display: block; margin: auto;" />
+<img src="../fig/rmarkdown_wizards.png" alt="R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst" width="100%" style="display: block; margin: auto;" />
 <figcaption>
 Image credit: <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a>
 </figcaption>
@@ -351,7 +351,7 @@ uses one backtick (``` `r` ```), whereas code chunks use three backticks
 (&#96;&#96;&#96; r &#96;&#96;&#96;). 
 
 For example, today's date is &#96;r Sys.Date()&#96;, will be rendered as: 
-today's date is 2022-07-15.  
+today's date is 2022-08-29.  
 The code will display today's date in the output document (well, technically the 
 date the document was last knitted).
 
@@ -439,7 +439,7 @@ interviews_plotting <- interviews %>%
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-06-my-fancy-plot-1.png" title="plot of chunk my-fancy-plot" alt="plot of chunk my-fancy-plot" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-06-my-fancy-plot-1.png" alt="plot of chunk my-fancy-plot" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -465,7 +465,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-06-caption-plot-1.png" title="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!" alt="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-06-caption-plot-1.png" alt="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!" width="612" style="display: block; margin: auto;" />
 
 
 ## Other output options

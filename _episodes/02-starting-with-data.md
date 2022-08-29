@@ -102,7 +102,7 @@ subdirectories.  This is an important contrast to using `setwd()`, which
 depends on the way you order your files on your computer. 
 
 <figure>
-<img src="../fig/here_horst.png" title="Monsters at a fork in the road, with signs saying here, and not here. One direction, not here, leads to a scary dark forest with spiders and absolute filepaths, while the other leads to a sunny, green meadow, and a city below a rainbow and a world free of absolute filepaths. Art by Allison Horst" alt="Monsters at a fork in the road, with signs saying here, and not here. One direction, not here, leads to a scary dark forest with spiders and absolute filepaths, while the other leads to a sunny, green meadow, and a city below a rainbow and a world free of absolute filepaths. Art by Allison Horst" width="100%" style="display: block; margin: auto;" />
+<img src="../fig/here_horst.png" alt="Monsters at a fork in the road, with signs saying here, and not here. One direction, not here, leads to a scary dark forest with spiders and absolute filepaths, while the other leads to a sunny, green meadow, and a city below a rainbow and a world free of absolute filepaths. Art by Allison Horst" width="100%" style="display: block; margin: auto;" />
 <figcaption>
 Image credit: <a href="https://github.com/allisonhorst/stats-illustrations">Allison Horst</a>
 </figcaption>
@@ -172,21 +172,22 @@ interviews
 
 ~~~
 # A tibble: 131 × 14
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
- 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
- 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
- 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
- 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
- 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
-10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 7 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>
+   key_ID village  interview_date      no_membrs years_liv respo…¹ rooms memb_…²
+    <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>   <dbl> <chr>  
+ 1      1 God      2016-11-17 00:00:00         3         4 muddaub     1 <NA>   
+ 2      1 God      2016-11-17 00:00:00         7         9 muddaub     1 yes    
+ 3      3 God      2016-11-17 00:00:00        10        15 burntb…     1 <NA>   
+ 4      4 God      2016-11-17 00:00:00         7         6 burntb…     1 <NA>   
+ 5      5 God      2016-11-17 00:00:00         7        40 burntb…     1 <NA>   
+ 6      6 God      2016-11-17 00:00:00         3         3 muddaub     1 <NA>   
+ 7      7 God      2016-11-17 00:00:00         6        38 muddaub     1 no     
+ 8      8 Chirodzo 2016-11-16 00:00:00        12        70 burntb…     3 yes    
+ 9      9 Chirodzo 2016-11-16 00:00:00         8         6 burntb…     1 no     
+10     10 Chirodzo 2016-12-16 00:00:00        12        23 burntb…     5 no     
+# … with 121 more rows, 6 more variables: affect_conflicts <chr>,
+#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
+#   instanceID <chr>, and abbreviated variable names ¹​respondent_wall_type,
+#   ²​memb_assoc
 ~~~
 {: .output}
 
@@ -404,12 +405,13 @@ interviews[3, ]
 
 ~~~
 # A tibble: 1 × 14
-  key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
-   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
-1      3 God     2016-11-17 00:00:00        10        15 burntbricks           1
-# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
-#   instanceID <chr>
+  key_ID village interview_date      no_membrs years_liv respond…¹ rooms memb_…²
+   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>     <dbl> <chr>  
+1      3 God     2016-11-17 00:00:00        10        15 burntbri…     1 <NA>   
+# … with 6 more variables: affect_conflicts <chr>, liv_count <dbl>,
+#   items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
+#   instanceID <chr>, and abbreviated variable names ¹​respondent_wall_type,
+#   ²​memb_assoc
 ~~~
 {: .output}
 
@@ -436,21 +438,22 @@ interviews[, -1]          # The whole tibble, except the first column
 
 ~~~
 # A tibble: 131 × 13
-   village  interview_date      no_membrs years_liv respondent_wall_type rooms
-   <chr>    <dttm>                  <dbl>     <dbl> <chr>                <dbl>
- 1 God      2016-11-17 00:00:00         3         4 muddaub                  1
- 2 God      2016-11-17 00:00:00         7         9 muddaub                  1
- 3 God      2016-11-17 00:00:00        10        15 burntbricks              1
- 4 God      2016-11-17 00:00:00         7         6 burntbricks              1
- 5 God      2016-11-17 00:00:00         7        40 burntbricks              1
- 6 God      2016-11-17 00:00:00         3         3 muddaub                  1
- 7 God      2016-11-17 00:00:00         6        38 muddaub                  1
- 8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks              3
- 9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks              1
-10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks              5
-# … with 121 more rows, and 7 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>
+   village  interview_date      no_membrs years_…¹ respo…² rooms memb_…³ affec…⁴
+   <chr>    <dttm>                  <dbl>    <dbl> <chr>   <dbl> <chr>   <chr>  
+ 1 God      2016-11-17 00:00:00         3        4 muddaub     1 <NA>    <NA>   
+ 2 God      2016-11-17 00:00:00         7        9 muddaub     1 yes     once   
+ 3 God      2016-11-17 00:00:00        10       15 burntb…     1 <NA>    <NA>   
+ 4 God      2016-11-17 00:00:00         7        6 burntb…     1 <NA>    <NA>   
+ 5 God      2016-11-17 00:00:00         7       40 burntb…     1 <NA>    <NA>   
+ 6 God      2016-11-17 00:00:00         3        3 muddaub     1 <NA>    <NA>   
+ 7 God      2016-11-17 00:00:00         6       38 muddaub     1 no      never  
+ 8 Chirodzo 2016-11-16 00:00:00        12       70 burntb…     3 yes     never  
+ 9 Chirodzo 2016-11-16 00:00:00         8        6 burntb…     1 no      never  
+10 Chirodzo 2016-12-16 00:00:00        12       23 burntb…     5 no      never  
+# … with 121 more rows, 5 more variables: liv_count <dbl>, items_owned <chr>,
+#   no_meals <dbl>, months_lack_food <chr>, instanceID <chr>, and abbreviated
+#   variable names ¹​years_liv, ²​respondent_wall_type, ³​memb_assoc,
+#   ⁴​affect_conflicts
 ~~~
 {: .output}
 
@@ -465,17 +468,18 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 
 ~~~
 # A tibble: 6 × 14
-  key_ID village interview_date      no_membrs years_liv respondent_wall_… rooms
-   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>             <dbl>
-1      1 God     2016-11-17 00:00:00         3         4 muddaub               1
-2      1 God     2016-11-17 00:00:00         7         9 muddaub               1
-3      3 God     2016-11-17 00:00:00        10        15 burntbricks           1
-4      4 God     2016-11-17 00:00:00         7         6 burntbricks           1
-5      5 God     2016-11-17 00:00:00         7        40 burntbricks           1
-6      6 God     2016-11-17 00:00:00         3         3 muddaub               1
-# … with 7 more variables: memb_assoc <chr>, affect_conflicts <chr>,
-#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
-#   instanceID <chr>
+  key_ID village interview_date      no_membrs years_liv respond…¹ rooms memb_…²
+   <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>     <dbl> <chr>  
+1      1 God     2016-11-17 00:00:00         3         4 muddaub       1 <NA>   
+2      1 God     2016-11-17 00:00:00         7         9 muddaub       1 yes    
+3      3 God     2016-11-17 00:00:00        10        15 burntbri…     1 <NA>   
+4      4 God     2016-11-17 00:00:00         7         6 burntbri…     1 <NA>   
+5      5 God     2016-11-17 00:00:00         7        40 burntbri…     1 <NA>   
+6      6 God     2016-11-17 00:00:00         3         3 muddaub       1 <NA>   
+# … with 6 more variables: affect_conflicts <chr>, liv_count <dbl>,
+#   items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
+#   instanceID <chr>, and abbreviated variable names ¹​respondent_wall_type,
+#   ²​memb_assoc
 ~~~
 {: .output}
 
@@ -841,7 +845,7 @@ plot(memb_assoc)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-factor-plot-default-order-1.png" title="Yes/no bar graph showing number of individuals who are members of irrigation association" alt="Yes/no bar graph showing number of individuals who are members of irrigation association" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-factor-plot-default-order-1.png" alt="Yes/no bar graph showing number of individuals who are members of irrigation association" width="612" style="display: block; margin: auto;" />
 
 Looking at the plot compared to the output of the vector, we can see that in
 addition to "no"s and "yes"s, there are some respondents for which the
@@ -909,7 +913,7 @@ plot(memb_assoc)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-factor-plot-reorder-1.png" title="plot of chunk factor-plot-reorder" alt="plot of chunk factor-plot-reorder" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-factor-plot-reorder-1.png" alt="plot of chunk factor-plot-reorder" width="612" style="display: block; margin: auto;" />
 
 
 > ## Exercise
@@ -933,7 +937,7 @@ plot(memb_assoc)
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-02-factor-plot-exercise-1.png" title="bar graph showing number of individuals who are members of irrigation association, including undetermined option" alt="bar graph showing number of individuals who are members of irrigation association, including undetermined option" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-02-factor-plot-exercise-1.png" alt="bar graph showing number of individuals who are members of irrigation association, including undetermined option" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -1006,22 +1010,22 @@ interviews
 
 ~~~
 # A tibble: 131 × 17
-   key_ID village interview_date      no_membrs years_liv respondent_wall… rooms
-    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>            <dbl>
- 1      1 God     2016-11-17 00:00:00         3         4 muddaub              1
- 2      1 God     2016-11-17 00:00:00         7         9 muddaub              1
- 3      3 God     2016-11-17 00:00:00        10        15 burntbricks          1
- 4      4 God     2016-11-17 00:00:00         7         6 burntbricks          1
- 5      5 God     2016-11-17 00:00:00         7        40 burntbricks          1
- 6      6 God     2016-11-17 00:00:00         3         3 muddaub              1
- 7      7 God     2016-11-17 00:00:00         6        38 muddaub              1
- 8      8 Chirod… 2016-11-16 00:00:00        12        70 burntbricks          3
- 9      9 Chirod… 2016-11-16 00:00:00         8         6 burntbricks          1
-10     10 Chirod… 2016-12-16 00:00:00        12        23 burntbricks          5
-# … with 121 more rows, and 10 more variables: memb_assoc <chr>,
-#   affect_conflicts <chr>, liv_count <dbl>, items_owned <chr>, no_meals <dbl>,
-#   months_lack_food <chr>, instanceID <chr>, day <int>, month <dbl>,
-#   year <dbl>
+   key_ID village  interview_date      no_membrs years_liv respo…¹ rooms memb_…²
+    <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>   <dbl> <chr>  
+ 1      1 God      2016-11-17 00:00:00         3         4 muddaub     1 <NA>   
+ 2      1 God      2016-11-17 00:00:00         7         9 muddaub     1 yes    
+ 3      3 God      2016-11-17 00:00:00        10        15 burntb…     1 <NA>   
+ 4      4 God      2016-11-17 00:00:00         7         6 burntb…     1 <NA>   
+ 5      5 God      2016-11-17 00:00:00         7        40 burntb…     1 <NA>   
+ 6      6 God      2016-11-17 00:00:00         3         3 muddaub     1 <NA>   
+ 7      7 God      2016-11-17 00:00:00         6        38 muddaub     1 no     
+ 8      8 Chirodzo 2016-11-16 00:00:00        12        70 burntb…     3 yes    
+ 9      9 Chirodzo 2016-11-16 00:00:00         8         6 burntb…     1 no     
+10     10 Chirodzo 2016-12-16 00:00:00        12        23 burntb…     5 no     
+# … with 121 more rows, 9 more variables: affect_conflicts <chr>,
+#   liv_count <dbl>, items_owned <chr>, no_meals <dbl>, months_lack_food <chr>,
+#   instanceID <chr>, day <int>, month <dbl>, year <dbl>, and abbreviated
+#   variable names ¹​respondent_wall_type, ²​memb_assoc
 ~~~
 {: .output}
 

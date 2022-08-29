@@ -161,7 +161,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-first-ggplot-1.png" title="plot of chunk first-ggplot" alt="plot of chunk first-ggplot" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-first-ggplot-1.png" alt="plot of chunk first-ggplot" width="612" style="display: block; margin: auto;" />
 
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
@@ -220,7 +220,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-create-ggplot-object-1.png" title="plot of chunk create-ggplot-object" alt="plot of chunk create-ggplot-object" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-create-ggplot-object-1.png" alt="plot of chunk create-ggplot-object" width="612" style="display: block; margin: auto;" />
 
 Then, we start modifying this plot to extract more information from it. For
 instance, when inspecting the plot we notice that points only appear at the 
@@ -252,11 +252,11 @@ opposed to lighter gray):
 ~~~
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_point(alpha = 0.5)
+    geom_point(alpha = 0.3)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-transparency-1.png" title="plot of chunk adding-transparency" alt="plot of chunk adding-transparency" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-transparency-1.png" alt="plot of chunk adding-transparency" width="612" style="display: block; margin: auto;" />
 
 That only helped a little bit with the overplotting problem, so let's try option
 two. We can jitter the points on the plot, so that we can see each point in the
@@ -277,7 +277,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-jitter-1.png" title="plot of chunk adding-jitter" alt="plot of chunk adding-jitter" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-jitter-1.png" alt="plot of chunk adding-jitter" width="612" style="display: block; margin: auto;" />
 The `geom_jitter()` function allows for us to specify the amount of random
 motion in the jitter, using the `width` and `height` arguments. When we don't 
 specify values for `width` and `height`, `geom_jitter()` defaults to 40% of the
@@ -289,13 +289,13 @@ between 0.1 and 0.4. Experiment with the values to see how your plot changes.
 ~~~
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5,
+    geom_jitter(alpha = 0.3,
                 width = 0.2,
                 height = 0.2)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-width-height-1.png" title="plot of chunk adding-width-height" alt="plot of chunk adding-width-height" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-width-height-1.png" alt="plot of chunk adding-width-height" width="612" style="display: block; margin: auto;" />
 
 For our final change, we can also add colours for all the points by specifying 
 a `color` argument inside the `geom_jitter()` function:
@@ -304,14 +304,14 @@ a `color` argument inside the `geom_jitter()` function:
 ~~~
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.5,
+    geom_jitter(alpha = 0.3,
                 color = "blue",
                 width = 0.2,
                 height = 0.2)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-colors-1.png" title="plot of chunk adding-colors" alt="plot of chunk adding-colors" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-colors-1.png" alt="plot of chunk adding-colors" width="612" style="display: block; margin: auto;" />
 
 To colour each village in the plot differently, you could use a vector as an input 
 to the argument **`color`**.  However, because we are now mapping features of the
@@ -331,11 +331,11 @@ of the observation:
 ~~~
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
+    geom_jitter(aes(color = village), alpha = 0.3, width = 0.2, height = 0.2)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-color-by-species-1.png" title="plot of chunk color-by-species" alt="plot of chunk color-by-species" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-color-by-species-1.png" alt="plot of chunk color-by-species" width="612" style="display: block; margin: auto;" />
 
 There appears to be a positive trend between number of household
 members and number of items owned (from the list provided). Additionally, 
@@ -358,7 +358,7 @@ this trend does not appear to be different by village.
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-color-by-species-notes-1.png" title="plot of chunk color-by-species-notes" alt="plot of chunk color-by-species-notes" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-color-by-species-notes-1.png" alt="plot of chunk color-by-species-notes" width="612" style="display: block; margin: auto;" />
 
 {: .callout}
 
@@ -376,13 +376,13 @@ this trend does not appear to be different by village.
 > > interviews_plotting %>%
 > >     ggplot(aes(x = village, y = rooms)) +
 > >     geom_jitter(aes(color = respondent_wall_type),
-> > 		    alpha = 0.5,
+> > 		    alpha = 0.3,
 > > 		    width = 0.2,
 > > 		    height = 0.2)
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-scatter-challenge-1.png" title="plot of chunk scatter-challenge" alt="plot of chunk scatter-challenge" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-scatter-challenge-1.png" alt="plot of chunk scatter-challenge" width="612" style="display: block; margin: auto;" />
 > >
 > > This is not a great way to show this type of data because it is difficult to
 > > distinguish between villages. What other plot types could help you visualize
@@ -404,7 +404,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-boxplot-1.png" title="plot of chunk boxplot" alt="plot of chunk boxplot" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-boxplot-1.png" alt="plot of chunk boxplot" width="612" style="display: block; margin: auto;" />
 
 By adding points to a boxplot, we can have a better idea of the number of
 measurements and of their distribution:
@@ -414,14 +414,14 @@ measurements and of their distribution:
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
     geom_boxplot(alpha = 0) +
-    geom_jitter(alpha = 0.5,
+    geom_jitter(alpha = 0.3,
     		color = "tomato",
     		width = 0.2,
     		height = 0.2)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-boxplot-with-jitter-1.png" title="plot of chunk boxplot-with-jitter" alt="plot of chunk boxplot-with-jitter" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-boxplot-with-jitter-1.png" alt="plot of chunk boxplot-with-jitter" width="612" style="display: block; margin: auto;" />
 
 We can see that muddaub houses and sunbrick houses tend to be smaller than
 burntbrick houses.
@@ -456,7 +456,7 @@ change in the code to put the boxplot layer in front of the jitter layer?
 > > ~~~
 > > {: .warning}
 > > 
-> > <img src="../fig/rmd-04-violin-plot-1.png" title="plot of chunk violin-plot" alt="plot of chunk violin-plot" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-violin-plot-1.png" alt="plot of chunk violin-plot" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 >
 > So far, we've looked at the distribution of room number within wall type. Try
@@ -476,7 +476,7 @@ change in the code to put the boxplot layer in front of the jitter layer?
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-boxplot-exercise-1.png" title="plot of chunk boxplot-exercise" alt="plot of chunk boxplot-exercise" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-boxplot-exercise-1.png" alt="plot of chunk boxplot-exercise" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 >
 > - Add colour to the data points on your boxplot according to whether the
@@ -492,7 +492,7 @@ change in the code to put the boxplot layer in front of the jitter layer?
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-boxplot-exercise-factor-1.png" title="plot of chunk boxplot-exercise-factor" alt="plot of chunk boxplot-exercise-factor" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-boxplot-exercise-factor-1.png" alt="plot of chunk boxplot-exercise-factor" width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -510,7 +510,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-1-1.png" title="plot of chunk barplot-1" alt="plot of chunk barplot-1" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-1-1.png" alt="plot of chunk barplot-1" width="612" style="display: block; margin: auto;" />
 
 We can use the `fill` aesthetic for the `geom_bar()` geom to colour bars by
 the portion of each count that is from each village.
@@ -523,7 +523,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-stack-1.png" title="plot of chunk barplot-stack" alt="plot of chunk barplot-stack" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-stack-1.png" alt="plot of chunk barplot-stack" width="612" style="display: block; margin: auto;" />
 
 This creates a stacked bar chart. These are generally more difficult to read
 than side-by-side bars. We can separate the portions of the stacked bar that
@@ -539,7 +539,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-dodge-1.png" title="plot of chunk barplot-dodge" alt="plot of chunk barplot-dodge" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-dodge-1.png" alt="plot of chunk barplot-dodge" width="612" style="display: block; margin: auto;" />
 
 This is a nicer graphic, but we're more likely to be interested in the
 proportion of each housing type in each village than in the actual count of
@@ -572,7 +572,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-wall-type-1.png" title="plot of chunk barplot-wall-type" alt="plot of chunk barplot-wall-type" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-wall-type-1.png" alt="plot of chunk barplot-wall-type" width="612" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
@@ -599,7 +599,7 @@ percent_wall_type %>%
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-barplot-memb-assoc-1.png" title="plot of chunk barplot-memb-assoc" alt="plot of chunk barplot-memb-assoc" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-barplot-memb-assoc-1.png" alt="plot of chunk barplot-memb-assoc" width="612" style="display: block; margin: auto;" />
 > >
 > > Ruaca had the lowest proportion of members in an irrigation association.
 > {: .solution}
@@ -634,7 +634,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-wall-types-labeled-1.png" title="plot of chunk barplot-wall-types-labeled" alt="plot of chunk barplot-wall-types-labeled" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-wall-types-labeled-1.png" alt="plot of chunk barplot-wall-types-labeled" width="612" style="display: block; margin: auto;" />
 
 ## Faceting
 
@@ -662,7 +662,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-faceting-1.png" title="plot of chunk barplot-faceting" alt="plot of chunk barplot-faceting" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-faceting-1.png" alt="plot of chunk barplot-faceting" width="612" style="display: block; margin: auto;" />
 
 Click the "Zoom" button in your RStudio plots pane to view a larger
 version of this plot.
@@ -685,7 +685,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-theme-bw-1.png" title="plot of chunk barplot-theme-bw" alt="plot of chunk barplot-theme-bw" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-theme-bw-1.png" alt="plot of chunk barplot-theme-bw" width="612" style="display: block; margin: auto;" />
 
 What if we wanted to see the proportion of respondents in each village
 who owned a particular item? We can calculate the percent of people
@@ -734,7 +734,7 @@ percent_items %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-percent-items-barplot-1.png" title="plot of chunk percent-items-barplot" alt="plot of chunk percent-items-barplot" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-percent-items-barplot-1.png" alt="plot of chunk percent-items-barplot" width="612" style="display: block; margin: auto;" />
 
 ## **`ggplot2`** themes
 
@@ -780,7 +780,7 @@ percent_items %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-ggplot-customization-1.png" title="plot of chunk ggplot-customization" alt="plot of chunk ggplot-customization" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-customization-1.png" alt="plot of chunk ggplot-customization" width="612" style="display: block; margin: auto;" />
 
 The axes have more informative names, but their readability can be improved by
 increasing the font size:
@@ -799,7 +799,7 @@ percent_items %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-ggplot-customization-font-size-1.png" title="plot of chunk ggplot-customization-font-size" alt="plot of chunk ggplot-customization-font-size" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-customization-font-size-1.png" alt="plot of chunk ggplot-customization-font-size" width="612" style="display: block; margin: auto;" />
 
 Note that it is also possible to change the fonts of your plots. If you are on
 Windows, you may have to install the [**`extrafont`**
@@ -830,7 +830,7 @@ percent_items %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-ggplot-customization-label-orientation-1.png" title="plot of chunk ggplot-customization-label-orientation" alt="plot of chunk ggplot-customization-label-orientation" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-customization-label-orientation-1.png" alt="plot of chunk ggplot-customization-label-orientation" width="612" style="display: block; margin: auto;" />
 
 If you like the changes you created better than the default theme, you can save
 them as an object to be able to easily apply them to other plots you may create.
@@ -858,7 +858,7 @@ percent_items %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-ggplot-custom-themes-1.png" title="plot of chunk ggplot-custom-themes" alt="plot of chunk ggplot-custom-themes" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-custom-themes-1.png" alt="plot of chunk ggplot-custom-themes" width="612" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
