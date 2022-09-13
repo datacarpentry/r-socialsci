@@ -913,7 +913,7 @@ plot(memb_assoc)
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-02-factor-plot-reorder-1.png" alt="plot of chunk factor-plot-reorder" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-02-factor-plot-reorder-1.png" alt="Bar plot of association membership, showing missing responses." width="612" style="display: block; margin: auto;" />
 
 
 > ## Exercise

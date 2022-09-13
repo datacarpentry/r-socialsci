@@ -500,7 +500,7 @@ been recorded, and encoded as missing data. They do not appear on the plot.
 Let's encode them differently so they can counted and visualized in our plot.
 
 
-```{r factor-plot-reorder, purl = TRUE}
+```{r factor-plot-reorder, fig.alt = "Bar plot of association membership, showing missing responses.", purl = TRUE}
 ## Let's recreate the vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
 
