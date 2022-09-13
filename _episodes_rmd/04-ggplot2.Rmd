@@ -212,7 +212,7 @@ While the overplotting isn't solved, adding transparency begins to address this
 problem, as the points where there are overlapping observations are darker (as 
 opposed to lighter gray):
 
-```{r adding-transparency, purl=FALSE}
+```{r adding-transparency, fig.alt = "Scatter plot of number of items owned versus number of household members, with transparency added to points.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_point(alpha = 0.3)
@@ -229,7 +229,7 @@ plot won't dramatically change.
 We can jitter our points using the `geom_jitter()` function instead of the
 `geom_point()`  function, as seen below:
 
-```{r adding-jitter, purl=FALSE}
+```{r adding-jitter, fig.alt = "Scatter plot of number of items owned versus number of household members, showing jitter.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter()
@@ -241,7 +241,7 @@ resolution of the data (the smallest change that can be measured). Hence, if we
 would like *less* spread in our jitter than was default, we should pick values 
 between 0.1 and 0.4. Experiment with the values to see how your plot changes.
 
-```{r adding-width-height, purl=FALSE}
+```{r adding-width-height, fig.alt = "Scatter plot of number of items owned versus number of household members, with jitter and transparency.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter(alpha = 0.3,
@@ -252,7 +252,7 @@ interviews_plotting %>%
 For our final change, we can also add colours for all the points by specifying 
 a `color` argument inside the `geom_jitter()` function:
 
-```{r adding-colors, purl=FALSE}
+```{r adding-colors, fig.alt = "Scatter plot of number of items owned versus number of household members, showing points as blue.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter(alpha = 0.3,
@@ -411,7 +411,7 @@ Barplots are also useful for visualizing categorical data. By default,
 `geom_bar` accepts a variable for x, and plots the number of instances each
 value of x (in this case, wall type) appears in the dataset.
 
-```{r barplot-1}
+```{r barplot-1, fig.alt = "Bar plot showing counts of respondent wall types."}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type)) +
     geom_bar()
@@ -420,7 +420,7 @@ interviews_plotting %>%
 We can use the `fill` aesthetic for the `geom_bar()` geom to colour bars by
 the portion of each count that is from each village.
 
-```{r barplot-stack}
+```{r barplot-stack, fig.alt = "Stacked bar plot of wall types showing each village as a different color."}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type)) +
     geom_bar(aes(fill = village))
@@ -432,7 +432,7 @@ correspond to each village and put them side-by-side by using the `position`
 argument for `geom_bar()` and setting it to "dodge".
 
 
-```{r barplot-dodge}
+```{r barplot-dodge, fig.alt = "Bar plot of respondent wall types with each village as a separate bar."}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type)) +
     geom_bar(aes(fill = village), position = "dodge")
@@ -459,7 +459,7 @@ percent_wall_type <- interviews_plotting %>%
 Now we can use this new data frame to create our plot showing the
 percentage of each house type in each village.
 
-```{r barplot-wall-type}
+```{r barplot-wall-type, fig.alt = "Side by side bar plot showing percent of respondents in each village with each wall type."}
 percent_wall_type %>%
     ggplot(aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge")
@@ -475,7 +475,7 @@ percent_wall_type %>%
 >
 > > ## Solution
 > >
-> > ```{r barplot-memb-assoc}
+> > ```{r barplot-memb-assoc, fig.alt = "Bar plot showing percent of respondents in each village who were part of association."}
 > > percent_memb_assoc <- interviews_plotting %>%
 > >   filter(!is.na(memb_assoc)) %>%
 > >   count(village, memb_assoc) %>%
@@ -533,7 +533,7 @@ in the dataset. We will use it to split our barplot of housing type
 proportion by village so that each village has its own panel in a 
 multi-panel plot:
 
-```{r barplot-faceting}
+```{r barplot-faceting, fig.alt = "Bar plot showing percent of each wall type in each village."}
 percent_wall_type %>%
     ggplot(aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -550,7 +550,7 @@ Usually plots with white background look more readable when printed.  We can set
 the background to white using the function `theme_bw()`. Additionally, you can remove
 the grid:
 
-```{r barplot-theme-bw, purl=FALSE}
+```{r barplot-theme-bw, fig.alt = "Bar plot showing percent of each wall type in each village, with black and white theme applied.", purl=FALSE}
 percent_wall_type %>%
     ggplot(aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
