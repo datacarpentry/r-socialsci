@@ -256,7 +256,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-transparency-1.png" alt="plot of chunk adding-transparency" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-transparency-1.png" alt="Scatter plot of number of items owned versus number of household members, with transparency added to points." width="612" style="display: block; margin: auto;" />
 
 That only helped a little bit with the overplotting problem, so let's try option
 two. We can jitter the points on the plot, so that we can see each point in the
@@ -277,7 +277,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-jitter-1.png" alt="plot of chunk adding-jitter" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-jitter-1.png" alt="Scatter plot of number of items owned versus number of household members, showing jitter." width="612" style="display: block; margin: auto;" />
 The `geom_jitter()` function allows for us to specify the amount of random
 motion in the jitter, using the `width` and `height` arguments. When we don't 
 specify values for `width` and `height`, `geom_jitter()` defaults to 40% of the
@@ -295,7 +295,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-width-height-1.png" alt="plot of chunk adding-width-height" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-width-height-1.png" alt="Scatter plot of number of items owned versus number of household members, with jitter and transparency." width="612" style="display: block; margin: auto;" />
 
 For our final change, we can also add colours for all the points by specifying 
 a `color` argument inside the `geom_jitter()` function:
@@ -311,7 +311,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-adding-colors-1.png" alt="plot of chunk adding-colors" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-adding-colors-1.png" alt="Scatter plot of number of items owned versus number of household members, showing points as blue." width="612" style="display: block; margin: auto;" />
 
 To colour each village in the plot differently, you could use a vector as an input 
 to the argument **`color`**.  However, because we are now mapping features of the
@@ -510,7 +510,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-1-1.png" alt="plot of chunk barplot-1" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-1-1.png" alt="Bar plot showing counts of respondent wall types." width="612" style="display: block; margin: auto;" />
 
 We can use the `fill` aesthetic for the `geom_bar()` geom to colour bars by
 the portion of each count that is from each village.
@@ -523,7 +523,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-stack-1.png" alt="plot of chunk barplot-stack" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-stack-1.png" alt="Stacked bar plot of wall types showing each village as a different color." width="612" style="display: block; margin: auto;" />
 
 This creates a stacked bar chart. These are generally more difficult to read
 than side-by-side bars. We can separate the portions of the stacked bar that
@@ -539,7 +539,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-dodge-1.png" alt="plot of chunk barplot-dodge" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-dodge-1.png" alt="Bar plot of respondent wall types with each village as a separate bar." width="612" style="display: block; margin: auto;" />
 
 This is a nicer graphic, but we're more likely to be interested in the
 proportion of each housing type in each village than in the actual count of
@@ -572,7 +572,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-wall-type-1.png" alt="plot of chunk barplot-wall-type" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-wall-type-1.png" alt="Side by side bar plot showing percent of respondents in each village with each wall type." width="612" style="display: block; margin: auto;" />
 
 > ## Exercise
 >
@@ -599,7 +599,7 @@ percent_wall_type %>%
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-barplot-memb-assoc-1.png" alt="plot of chunk barplot-memb-assoc" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-barplot-memb-assoc-1.png" alt="Bar plot showing percent of respondents in each village who were part of association." width="612" style="display: block; margin: auto;" />
 > >
 > > Ruaca had the lowest proportion of members in an irrigation association.
 > {: .solution}
@@ -662,7 +662,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-faceting-1.png" alt="plot of chunk barplot-faceting" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-faceting-1.png" alt="Bar plot showing percent of each wall type in each village." width="612" style="display: block; margin: auto;" />
 
 Click the "Zoom" button in your RStudio plots pane to view a larger
 version of this plot.
@@ -685,7 +685,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-theme-bw-1.png" alt="plot of chunk barplot-theme-bw" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-theme-bw-1.png" alt="Bar plot showing percent of each wall type in each village, with black and white theme applied." width="612" style="display: block; margin: auto;" />
 
 What if we wanted to see the proportion of respondents in each village
 who owned a particular item? We can calculate the percent of people
