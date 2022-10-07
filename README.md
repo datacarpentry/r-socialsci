@@ -5,6 +5,8 @@
 
 # r-socialsci
 
+NOTE: This is a test for ZHIAN
+
 Lesson on R for social scientists. Please see [https://datacarpentry.org/r-socialsci/](https://datacarpentry.org/r-socialsci/) for a rendered version of this lesson. 
 
 This is an introduction to R designed for participants with no programming experience. These lessons can be taught in a day (~ 6 hours). The lessons cover some basic information about R syntax, the RStudio interface, and move through how to import CSV files, the structure of data frames, how to deal with factors, how to add/remove rows and columns, how to calculate summary statistics from a data frame, and a brief introduction to plotting.
