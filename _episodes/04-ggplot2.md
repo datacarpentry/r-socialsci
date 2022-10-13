@@ -830,7 +830,7 @@ percent_items %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-ggplot-customization-label-orientation-1.png" alt="plot of chunk ggplot-customization-label-orientation" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-ggplot-customization-label-orientation-1.png" alt="Multi-panel bar charts showing percent of respondents in each village and who owned each item, with grids behind the bars." width="612" style="display: block; margin: auto;" />
 
 If you like the changes you created better than the default theme, you can save
 them as an object to be able to easily apply them to other plots you may create.
