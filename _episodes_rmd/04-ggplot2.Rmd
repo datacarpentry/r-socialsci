@@ -341,7 +341,7 @@ interviews_plotting %>%
 By adding points to a boxplot, we can have a better idea of the number of
 measurements and of their distribution:
 
-```{r boxplot-with-jitter, fig. alt = "Previous plot with dot plot added as additional layer to show individual values. Boxplot layer is transparent." purl=FALSE}
+```{r boxplot-with-jitter, fig. alt = "Previous plot with dot plot added as additional layer to show individual values. Boxplot layer is transparent.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
     geom_boxplot(alpha = 0) +
