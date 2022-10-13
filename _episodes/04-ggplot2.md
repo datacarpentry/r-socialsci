@@ -358,7 +358,7 @@ this trend does not appear to be different by village.
 > ~~~
 > {: .language-r}
 > 
-> <img src="../fig/rmd-04-color-by-species-notes-1.png" alt="plot of chunk color-by-species-notes" width="612" style="display: block; margin: auto;" />
+> <img src="../fig/rmd-04-color-by-species-notes-1.png" alt="Previous plot with dots colored by village." width="612" style="display: block; margin: auto;" />
 
 {: .callout}
 
@@ -492,7 +492,7 @@ change in the code to put the boxplot layer in front of the jitter layer?
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-boxplot-exercise-factor-1.png" alt="plot of chunk boxplot-exercise-factor" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-boxplot-exercise-factor-1.png" alt="Previous plot with dots colored based on whether respondent was a member of an irrigation association." width="612" style="display: block; margin: auto;" />
 > {: .solution}
 {: .challenge}
 
@@ -634,7 +634,7 @@ percent_wall_type %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-barplot-wall-types-labeled-1.png" alt="plot of chunk barplot-wall-types-labeled" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-barplot-wall-types-labeled-1.png" alt="Previous plot with plot title and labells added." width="612" style="display: block; margin: auto;" />
 
 ## Faceting
 
