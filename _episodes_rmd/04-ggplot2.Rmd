@@ -332,7 +332,7 @@ this trend does not appear to be different by village.
 We can use boxplots to visualize the distribution of rooms for each
 wall type:
 
-```{r boxplot, purl=FALSE}
+```{r boxplot, fig.alt = "Box plot of number of rooms by wall type.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
     geom_boxplot()

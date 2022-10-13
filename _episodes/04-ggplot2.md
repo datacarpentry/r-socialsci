@@ -404,7 +404,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-boxplot-1.png" alt="plot of chunk boxplot" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-boxplot-1.png" alt="Box plot of number of rooms by wall type." width="612" style="display: block; margin: auto;" />
 
 By adding points to a boxplot, we can have a better idea of the number of
 measurements and of their distribution:
