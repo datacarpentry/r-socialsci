@@ -294,7 +294,7 @@ this trend does not appear to be different by village.
 > of that type and the legend gives point sizes associated to particular 
 > numbers of items. 
 >
-> ```{r color-by-species-notes, fig. alt = "Previous plot with dots colored by village." purl=FALSE}
+> ```{r color-by-species-notes, fig. alt = "Previous plot with dots colored by village.", purl=FALSE}
 > interviews_plotting %>% 
 >    ggplot(aes(x = no_membrs, y = number_items, color = village)) +
 >    geom_count()
