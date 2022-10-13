@@ -674,7 +674,7 @@ angle, or experiment to find the appropriate angle for diagonally oriented
 labels. With a larger font, the title also runs off. We can add "\n" in the string
 for the title to insert a new line:
 
-```{r ggplot-customization-label-orientation, fig. alt = "Multi-panel bar charts showing percent of respondents in each village and who owned each item, with grids behind the bars." purl=FALSE}
+```{r ggplot-customization-label-orientation, fig. alt = "Multi-panel bar charts showing percent of respondents in each village and who owned each item, with grids behind the bars.", purl=FALSE}
 percent_items %>%
     ggplot(aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
