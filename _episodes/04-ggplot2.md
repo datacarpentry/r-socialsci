@@ -421,7 +421,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-boxplot-with-jitter-1.png" alt="plot of chunk boxplot-with-jitter" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-boxplot-with-jitter-1.png" alt="Previous plot with dot plot added as additional layer to show individual values. Boxplot layer is transparent." width="612" style="display: block; margin: auto;" />
 
 We can see that muddaub houses and sunbrick houses tend to be smaller than
 burntbrick houses.
