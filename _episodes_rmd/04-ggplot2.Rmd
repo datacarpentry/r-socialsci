@@ -396,7 +396,7 @@ change in the code to put the boxplot layer in front of the jitter layer?
 >   respondent is a member of an irrigation association (`memb_assoc`).
 >
 > > ## Solution
-> > ```{r boxplot-exercise-factor, fig. alt = "Previous plot with dots colored based on whether respondent was a member of an irrigation association."}
+> > ```{r boxplot-exercise-factor, fig.alt = "Previous plot with dots colored based on whether respondent was a member of an irrigation association."}
 > > interviews_plotting %>%
 > >   ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >   geom_boxplot(alpha = 0) +
