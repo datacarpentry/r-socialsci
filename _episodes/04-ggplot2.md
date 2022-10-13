@@ -476,7 +476,7 @@ change in the code to put the boxplot layer in front of the jitter layer?
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-boxplot-exercise-1.png" alt="plot of chunk boxplot-exercise" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-boxplot-exercise-1.png" alt="Box plot of number of livestock owned by wall type, with dot plot added as additional layer to show individual values." width="612" style="display: block; margin: auto;" />
 > {: .solution}
 >
 > - Add colour to the data points on your boxplot according to whether the
