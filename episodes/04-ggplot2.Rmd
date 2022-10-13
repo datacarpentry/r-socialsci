@@ -384,7 +384,7 @@ change in the code to put the boxplot layer in front of the jitter layer?
 >   layer on a jitter layer to show actual measurements.
 >
 > > ## Solution
-> > ```{r boxplot-exercise}
+> > ```{r boxplot-exercise, fig.alt = "Box plot of number of livestock owned by wall type, with dot plot added as additional layer to show individual values."}
 > > interviews_plotting %>%
 > >    ggplot(aes(x = respondent_wall_type, y = liv_count)) +
 > >    geom_boxplot(alpha = 0) +
