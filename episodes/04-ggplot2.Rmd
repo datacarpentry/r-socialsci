@@ -509,7 +509,7 @@ The `labs` function takes the following arguments:
 - `...` -- any pair of name and value for aesthetics used in the plot (e.g., 
 `x`, `y`, `fill`, `color`, `size`)
 
-```{r barplot-wall-types-labeled, fig. alt = "Previous plot with plot title and labells added."}
+```{r barplot-wall-types-labeled, fig.alt = "Previous plot with plot title and labells added."}
 percent_wall_type %>%
     ggplot(aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
