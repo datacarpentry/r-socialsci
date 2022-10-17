@@ -596,7 +596,7 @@ in its own column, so a `pivot_longer()` is required to transform the table into
 an easier format for plotting. Using this data frame, we can now create a 
 multi-paneled bar plot.
 
-```{r percent-items-barplot}
+```{r percent-items-barplot, fig.alt = "Multi-panel bar chart showing percent  of respondents in each village and who owned each item, with no grids behid bars."}
 percent_items %>%
     ggplot(aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
