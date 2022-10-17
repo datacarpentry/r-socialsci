@@ -220,7 +220,7 @@ interviews_plotting %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-create-ggplot-object-1.png" alt="plot of chunk create-ggplot-object" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-create-ggplot-object-1.png" alt="Scatter plot of number of items owned versus number of household members." width="612" style="display: block; margin: auto;" />
 
 Then, we start modifying this plot to extract more information from it. For
 instance, when inspecting the plot we notice that points only appear at the 
@@ -734,7 +734,7 @@ percent_items %>%
 ~~~
 {: .language-r}
 
-<img src="../fig/rmd-04-percent-items-barplot-1.png" alt="plot of chunk percent-items-barplot" width="612" style="display: block; margin: auto;" />
+<img src="../fig/rmd-04-percent-items-barplot-1.png" alt="Multi-panel bar chart showing percent  of respondents in each village and who owned each item, with no grids behid bars." width="612" style="display: block; margin: auto;" />
 
 ## **`ggplot2`** themes
 
