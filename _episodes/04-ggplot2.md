@@ -382,7 +382,7 @@ this trend does not appear to be different by village.
 > > ~~~
 > > {: .language-r}
 > > 
-> > <img src="../fig/rmd-04-scatter-challenge-1.png" alt="plot of chunk scatter-challenge" width="612" style="display: block; margin: auto;" />
+> > <img src="../fig/rmd-04-scatter-challenge-1.png" alt="Scatter plot showing positive trend between number of household members and number of items owned." width="612" style="display: block; margin: auto;" />
 > >
 > > This is not a great way to show this type of data because it is difficult to
 > > distinguish between villages. What other plot types could help you visualize
