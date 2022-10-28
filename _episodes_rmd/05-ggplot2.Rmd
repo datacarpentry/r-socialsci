@@ -311,7 +311,7 @@ this trend does not appear to be different by village.
 >
 > > ## Solution
 > >
-> > ```{r scatter-challenge, answer=TRUE, purl=FALSE}
+> > ```{r scatter-challenge, fig.alt = "Scatter plot showing positive trend between number of household members and number of items owned.", answer=TRUE, purl=FALSE}
 > > interviews_plotting %>%
 > >     ggplot(aes(x = village, y = rooms)) +
 > >     geom_jitter(aes(color = respondent_wall_type),
