@@ -14,7 +14,10 @@ title: "R for Social Scientists"
 
 # Life cycle stage of the lesson
 # possible values: "pre-alpha", "alpha", "beta", "stable"
-life_cycle: "stable"
+life_cycle: "transition-step-1"
+transition_date_prebeta: '2022-10-31'
+transition_date_beta: '2022-11-28'
+transition_date_prerelease: '2023-02-06'
 
 
 #------------------------------------------------------------
