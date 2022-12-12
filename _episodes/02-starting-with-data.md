@@ -1082,7 +1082,7 @@ as_date(char_dates, format = "%m/%d/%y")
 
 
 ~~~
-[1] "2020-07-31" "2020-08-09" "2020-04-30"
+[1] "2012-07-31" "2014-08-09" "2016-04-30"
 ~~~
 {: .output}
 
@@ -1101,7 +1101,14 @@ as_date(char_dates, format = "%d/%m/%y")
 
 
 ~~~
-[1] NA           "2020-09-08" NA          
+Warning: 2 failed to parse.
+~~~
+{: .warning}
+
+
+
+~~~
+[1] NA           "2014-09-08" NA          
 ~~~
 {: .output}
 

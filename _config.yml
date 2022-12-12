@@ -16,8 +16,8 @@ title: "R for Social Scientists"
 # possible values: "pre-alpha", "alpha", "beta", "stable"
 life_cycle: "transition-step-1"
 transition_date_prebeta: '2022-10-31'
-transition_date_beta: '2022-11-28'
-transition_date_prerelease: '2023-02-06'
+transition_date_beta: '2023-02-06'
+transition_date_prerelease: '2023-04-03'
 
 
 #------------------------------------------------------------
