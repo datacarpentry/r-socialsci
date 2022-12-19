@@ -58,6 +58,13 @@ There are essentially three rules that define a "tidy" dataset:
 2. Each observation has its own row
 3. Each value must have its own cell
 
+This graphic visually represents the three rules that define a "tidy" dataset:
+
+![](../fig/tidy-data-wickham.png)
+*R for Data Science*, Wickham H and Grolemund G (https://r4ds.had.co.nz/index.html)
+© Wickham, Grolemund 2017 
+This image is licenced under Attribution-NonCommercial-NoDerivs 3.0 United States (CC-BY-NC-ND 3.0 US)
+
 In this section we will explore how these rules are linked to the different
 data formats researchers are often interested in: "wide" and "long". This
 tutorial will help you efficiently transform your data shape regardless of
