@@ -198,7 +198,7 @@ open without them interfering with each other.
 
 Let's take a quick tour of RStudio.
 
-![RStudio_startup](../fig/R_00_Rstudio_01.png)
+![Screenshot of the RStudio_startup screen](../fig/R_00_Rstudio_01.png)
 
 RStudio is divided into four "panes". The placement of these
 panes and their content can be customized (see menu, Tools -> Global Options ->
@@ -361,7 +361,7 @@ You can see if you have a package installed by looking in the `packages` tab
 (on the lower-right by default). You can also type the command
 `installed.packages()` into the console and examine the output.
 
-![Packages pane](../fig/packages_pane.png)
+![Screenshot of Packages pane](../fig/packages_pane.png)
 
 Additional packages can be installed from the ‘packages’ tab.
 On the packages tab, click the ‘Install’ icon and start typing the
@@ -369,7 +369,7 @@ name of the package you want in the text box. As you type, packages
 matching your starting characters will be displayed in a drop-down
 list so that you can select them.
 
-![Install Packages Window](../fig/R_00_Rstudio_03.png)
+![Screenshot of Install Packages Window](../fig/R_00_Rstudio_03.png)
 
 At the bottom of the Install Packages window is a check box to
 ‘Install’ dependencies. This is ticked by default, which is usually
