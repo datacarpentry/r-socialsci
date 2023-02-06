@@ -1082,7 +1082,14 @@ as_date(char_dates, format = "%m/%d/%y")
 
 
 ~~~
-[1] "2012-07-31" "2014-08-09" "2016-04-30"
+Warning: 3 failed to parse.
+~~~
+{: .warning}
+
+
+
+~~~
+[1] NA NA NA
 ~~~
 {: .output}
 
@@ -1101,14 +1108,14 @@ as_date(char_dates, format = "%d/%m/%y")
 
 
 ~~~
-Warning: 2 failed to parse.
+Warning: 3 failed to parse.
 ~~~
 {: .warning}
 
 
 
 ~~~
-[1] NA           "2014-09-08" NA          
+[1] NA NA NA
 ~~~
 {: .output}
 
