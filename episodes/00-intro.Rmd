@@ -5,8 +5,8 @@ exercises: 15
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("../bin/download_data.R")
+```{r setup, include=FALSE}
+source("data/download_data.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -122,7 +122,7 @@ freely available to extend R's native capabilities.
 
 <div class="col-md-6">
 
-```{r rstudio-analogy, echo = FALSE, fig.show = "hold", out.width = "100%", fig.alt = "RStudio extends what R can do, and makes it easier to write R code and interact with R."}
+```{r rstudio-analogy, echo=FALSE, fig.show="hold", out.width="100%", fig.alt="RStudio extends what R can do, and makes it easier to write R code and interact with R."}
 knitr::include_graphics("fig/r-manual.jpeg")
 ```
 
@@ -130,7 +130,7 @@ knitr::include_graphics("fig/r-manual.jpeg")
 
 <div class="col-md-6">
 
-```{r rstudio-analogy-2, echo = FALSE, fig.show = "hold", fig.alt = "automatic car gear shift representing the ease of RStudio", out.width="100%"}
+```{r rstudio-analogy-2, echo=FALSE, fig.show="hold", fig.alt="automatic car gear shift representing the ease of RStudio", out.width="100%"}
 knitr::include_graphics("fig/r-automatic.jpeg")
 ```
 
@@ -407,8 +407,6 @@ proceeds, messages relating to its progress will be written to the console.
 You will be able to see all of the packages which are actually being
 installed.
 
-
-
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -431,8 +429,6 @@ install.packages("tidyverse")
 was written to the console before the start of the installation messages.
 
 You could also have installed the **`tidyverse`** packages by running this command directly at the R terminal.
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

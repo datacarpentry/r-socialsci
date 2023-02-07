@@ -5,8 +5,8 @@ exercises: 15
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("../bin/download_data.R")
+```{r setup, include=FALSE}
+source("data/download_data.R")
 library(tidyverse)
 ```
 
@@ -152,8 +152,6 @@ You can also write out the individual nested dataframes to a csv. For example:
 write_csv(json_data$F_liv[[1]], file = "data_output/F_liv_row1.csv")
 
 ```
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

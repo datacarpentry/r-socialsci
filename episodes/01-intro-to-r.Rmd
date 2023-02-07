@@ -5,8 +5,8 @@ exercises: 30
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("../bin/download_data.R")
+```{r setup, include=FALSE}
+source("data/download_data.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -104,7 +104,6 @@ have drastically different meanings. However, in this lesson, the two words
 are used synonymously. For more information see:
 [https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 When assigning a value to an object, R does not print anything. You
@@ -159,8 +158,6 @@ What do you think is the current content of the object `area_acres`? 123.5 or
 The value of `area_acres` is still 6.175 because you have not
 re-run the line `area_acres <- 2.47 * area_hectares` since
 changing the value of `area_hectares`.
-
-
 
 :::::::::::::::::::::::::
 
@@ -306,7 +303,6 @@ Type in `?round` at the console and then look at the output in the Help pane.
 What other functions exist that are similar to `round`?
 How do you use the `digits` parameter in the round function?
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Vectors and data types
@@ -414,7 +410,6 @@ single vector?
 
 R implicitly converts them to all be the same type.
 
-
 :::::::::::::::::::::::::
 
 What will happen in each of these examples? (hint: use `class()`
@@ -437,7 +432,6 @@ Vectors can be of only one data type. R tries to
 convert (coerce) the content of this vector to find a "common
 denominator" that doesn't lose any information.
 
-
 :::::::::::::::::::::::::
 
 How many values in `combined_logical` are `"TRUE"` (as a character) in the
@@ -459,7 +453,6 @@ first time the vector is evaluated. Therefore, the `TRUE` in
 `num_logical`
 gets converted into a `1` before it gets converted into `"1"` in
 `combined_logical`.
-
 
 :::::::::::::::::::::::::
 
@@ -604,10 +597,10 @@ Recall that you can use the `typeof()` function to find the type of your atomic 
 ## Exercise
 
 1. Using this vector of rooms, create a new vector with the NAs removed.
-  
-  ```r
-  rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
-  ```
+
+```r
+rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
+```
 
 2. Use the function `median()` to calculate the median of the `rooms` vector.
 
@@ -636,8 +629,6 @@ length(rooms_above_2)
 Now that we have learned how to write scripts, and the basics of R's data
 structures, we are ready to start working with the SAFI dataset we have been
 using in the other lessons, and learn about data frames.
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

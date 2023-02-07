@@ -18,21 +18,19 @@ keypoints:
 - "First key point."
 ---
 
-
 ```{r, include=FALSE}
 source("../bin/chunk-options.R")
 knitr_fig_path("06-")
 source("../bin/download_data.R")
 ```
 
-
 ## Introduction
 
-A common problem with R in that all operations are conducted in-memory. Here, "memory" means a computer 
-drive called Random Access Memory (RAM for short) which is phsically installed on your computer. RAM 
+A common problem with R in that all operations are conducted in-memory. Here, "memory" means a computer
+drive called Random Access Memory (RAM for short) which is phsically installed on your computer. RAM
 allows for data to be read in nearly the same amount of time regardless of its physical location
 inside the memory. This is in stark contrast to the speed data could be read from CDs, DVDs, or other
-storage media, where the speed of transfer depended on how quickly the drive could rotate or the 
+storage media, where the speed of transfer depended on how quickly the drive could rotate or the
 arm could move. Unfortunately, your computer has a limited amount of RAM, so the amount of data you
 can work with is limited by the available memory. So far, we have used small datasets that can
 easily fit into your computer's memory. But what about datasets that are too large for your
@@ -47,11 +45,9 @@ Once we have made the connection to the database, much of what we do will look f
 
 In this lesson, we will be connecting to an SQLite database, which allows us to send strings containing SQL statements directly from R to the database and recieve the results. In addition, we will be connecting to the database in such a way that we can use 'dplyr' functions to operate directly on the database tables.
 
-
 ## Prelminaries
 
 First, install and load the neccessary packages. You can install the `RSQLite` package with
-
 
 ```{r, eval=FALSE}
 install.packages("RSQLite")
@@ -141,18 +137,22 @@ data
 dbClearResult(results)
 ```
 
-> ## Exercise
->
-> What happens if you send invalid SQL syntax?
->
-> > ## Solution
-> >
-> > An error message is returned from SQLite.
-> > Notice that R is just the conduit; it cannot check the SQL syntax.
-> >
-> >
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Exercise
+
+What happens if you send invalid SQL syntax?
+
+:::::::::::::::  solution
+
+## Solution
+
+An error message is returned from SQLite.
+Notice that R is just the conduit; it cannot check the SQL syntax.
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We can also create a new database and add tables to it. Let's base this new dataframe on the Question1 table that can be found in our existing database.
 
@@ -213,7 +213,7 @@ SN7577_d %>%
   summarize(avg_age = mean(numage))
 ```
 
-Notice that on the `nrow` command we get NA rather than a count of rows. Thisis because `dplyr` doesn't hold the full table even after the 'Select * ...'
+Notice that on the `nrow` command we get NA rather than a count of rows. Thisis because `dplyr` doesn't hold the full table even after the 'Select \* ...'
 
 If you need the row count you can use
 
@@ -222,25 +222,32 @@ SN7577_d %>%
   tally()
 ```
 
-> ## Exercise
->
-> Store the SN7577 table as an object for `dplyr` use.
->
-> Write a query using `dplyr` functions that will return the average age (`numage`) by sex for all records where
-> the response for Q2 is missing (missing values are indicated by a value of -1).
->
-> > ## Solution
-> >
-> > ```{r}
-> > SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
-> >
-> > SN7577_d %>%
-> >   filter(Q2 == -1)   %>%
-> >   group_by(sex)   %>%
-> >   summarize(avg_age = mean(numage))
-> > ```
-> >
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Exercise
+
+Store the SN7577 table as an object for `dplyr` use.
+
+Write a query using `dplyr` functions that will return the average age (`numage`) by sex for all records where
+the response for Q2 is missing (missing values are indicated by a value of -1).
+
+:::::::::::::::  solution
+
+## Solution
+
+```{r}
+SN7577_d <- tbl(mydb_dplyr, sql("SELECT * FROM SN7577"))
+
+SN7577_d %>%
+  filter(Q2 == -1)   %>%
+  group_by(sex)   %>%
+  summarize(avg_age = mean(numage))
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 {% include links.md %}
+
+

@@ -5,8 +5,8 @@ exercises: 35
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("../bin/download_data.R")
+```{r setup, include=FALSE}
+source("data/download_data.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -152,17 +152,21 @@ interviews_plot +
     geom_point()
 ```
 
-> ## Notes
-> 
-> - Anything you put in the `ggplot()` function can be seen by any geom layers
->   that you add (i.e., these are universal plot settings). This includes the x-
->   and y-axis mapping you set up in `aes()`.
-> - You can also specify mappings for a given geom independently of the mapping
->   defined globally in the `ggplot()` function.
-> - The `+` sign used to add new layers must be placed at the end of the line
->   containing the *previous* layer. If, instead, the `+` sign is added at the
->   beginning of the line containing the new layer, **`ggplot2`** will not add
->   the new layer and will return an error message.
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Notes
+
+- Anything you put in the `ggplot()` function can be seen by any geom layers
+  that you add (i.e., these are universal plot settings). This includes the x-
+  and y-axis mapping you set up in `aes()`.
+- You can also specify mappings for a given geom independently of the mapping
+  defined globally in the `ggplot()` function.
+- The `+` sign used to add new layers must be placed at the end of the line
+  containing the *previous* layer. If, instead, the `+` sign is added at the
+  beginning of the line containing the new layer, **`ggplot2`** will not add
+  the new layer and will return an error message.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r ggplot-with-plus-position, eval=FALSE, purl=FALSE}
 ## This is the correct syntax for adding layers
@@ -285,20 +289,24 @@ There appears to be a positive trend between number of household
 members and number of items owned (from the list provided). Additionally,
 this trend does not appear to be different by village.
 
-> ## Notes
-> 
-> As you will learn, there are multiple ways to plot the a relationship
-> between variables. Another way to plot data with overlapping points is
-> to use the `geom_count` plotting function. The `geom_count()`  function
-> makes the size of each point representative of the number of data items
-> of that type and the legend gives point sizes associated to particular
-> numbers of items.
-> 
-> ```{r color-by-species-notes, fig.alt="Previous plot with dots colored by village.", purl=FALSE}
-> interviews_plotting %>%
->    ggplot(aes(x = no_membrs, y = number_items, color = village)) +
->    geom_count()
-> ```
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Notes
+
+As you will learn, there are multiple ways to plot the a relationship
+between variables. Another way to plot data with overlapping points is
+to use the `geom_count` plotting function. The `geom_count()`  function
+makes the size of each point representative of the number of data items
+of that type and the legend gives point sizes associated to particular
+numbers of items.
+
+```{r color-by-species-notes, fig.alt="Previous plot with dots colored by village.", purl=FALSE}
+interviews_plotting %>%
+   ggplot(aes(x = no_membrs, y = number_items, color = village)) +
+   geom_count()
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -325,8 +333,6 @@ interviews_plotting %>%
 This is not a great way to show this type of data because it is difficult to
 distinguish between villages. What other plot types could help you visualize
 this relationship better?
-
-
 
 :::::::::::::::::::::::::
 
@@ -511,8 +517,6 @@ percent_memb_assoc %>%
 
 Ruaca had the lowest proportion of members in an irrigation association.
 
-
-
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -653,7 +657,6 @@ themes.
 Experiment with at least two different themes. Build the previous plot
 using each of those themes. Which do you like best?
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Customization
@@ -753,7 +756,6 @@ for inspiration. Here are some ideas:
 - See if you can make the bars white with black outline.
 - Try using a different colour palette (see
   [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\(ggplot2\)/)).
-  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -782,8 +784,6 @@ ggsave("fig_output/name_of_file.png", my_plot, width = 15, height = 10)
 ```
 
 Note: The parameters `width` and `height` also determine the font size in the saved plot.
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

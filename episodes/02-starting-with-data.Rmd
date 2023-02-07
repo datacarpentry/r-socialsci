@@ -5,8 +5,8 @@ exercises: 30
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("../bin/download_data.R")
+```{r setup, include=FALSE}
+source("data/download_data.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -181,7 +181,6 @@ the help for `read_csv()` by typing `?read_csv` to learn more. There is also
 the `read_tsv()` for tab-separated data files, and `read_delim()` allows you
 to specify more details about the structure of your file.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 Note that `read_csv()` actually loads the data as a tibble.
@@ -259,7 +258,6 @@ Different ways of specifying these coordinates can lead to results with
 different classes. This is covered in the Software Carpentry lesson
 [R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/).
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```{r, purl=FALSE}
@@ -320,12 +318,12 @@ names of the columns.
   row 100 of the `interviews` dataset.
 
 2. Notice how `nrow()` gave you the number of rows in the tibble?
-  
-  - Use that number to pull out just that last row in the tibble.
-  - Compare that with what you see as the last row using `tail()` to make
-    sure it's meeting expectations.
-  - Pull out that last row using `nrow()` instead of the row number.
-  - Create a new tibble (`interviews_last`) from that last row.
+
+- Use that number to pull out just that last row in the tibble.
+- Compare that with what you see as the last row using `tail()` to make
+  sure it's meeting expectations.
+- Pull out that last row using `nrow()` instead of the row number.
+- Create a new tibble (`interviews_last`) from that last row.
 
 3. Using the number of rows in the interviews dataset that you found in
   question 2, extract the row that is in the middle of the dataset. Store
@@ -654,8 +652,6 @@ variables to date.
 ```{r, purl=FALSE}
 mdy(char_dates)
 ```
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

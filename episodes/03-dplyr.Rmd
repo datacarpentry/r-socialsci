@@ -5,8 +5,8 @@ exercises: 15
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("../bin/download_data.R")
+```{r setup, include=FALSE}
+source("data/download_data.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -46,7 +46,6 @@ variants of different function and option names. For this lesson, we utilize
 the American spellings of different functions; however, feel free to use
 the regional variant for where you are teaching.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## What is an R package?
@@ -78,7 +77,6 @@ the package [`data.table`](https://rdatatable.gitlab.io/data.table/). See this
 [comparison](https://mgimond.github.io/rug_2019_12/Index.html)
 for example to get a sense of the differences between using `base`, `tidyverse`, and
 `data.table`.
-
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -503,8 +501,6 @@ interviews %>%
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

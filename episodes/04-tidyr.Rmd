@@ -5,8 +5,8 @@ exercises: 15
 source: Rmd
 ---
 
-```{r, include=FALSE}
-source("../bin/download_data.R")
+```{r setup, include=FALSE}
+source("data/download_data.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -484,8 +484,6 @@ write_csv (interviews_plotting, file = "data_output/interviews_plotting.csv")
 if (!dir.exists("data_output")) dir.create("data_output")
 write_csv(interviews_plotting, "data_output/interviews_plotting.csv")
 ```
-
-
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 

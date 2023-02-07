@@ -9,7 +9,7 @@ source: Rmd
 ---
 
 ```{r setup, include=FALSE}
-source("../bin/download_data.R")
+source("data/download_data.R")
 ```
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -135,7 +135,7 @@ and, if you're feeling bold (pun intended), you can also use a combination of
 asterisks and underscores, `**_really_**`, `**_really_**`.
 
 To create `code-type` font, surround the word with backticks,
-\`code-type\`.
+`code-type`.
 
 Now that we've learned a couple of things, it might be useful to implement them:
 
@@ -256,7 +256,6 @@ relative to the .Rmd document, **not** the project root.
 As suggested in the Starting with Data episode, we highly recommend the use of
 the `here()` function to keep the file paths consistent within your project.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Insert table
@@ -317,7 +316,6 @@ commas, e.g. `{r chunk-name, eval = FALSE, echo = TRUE}`.
   `knitr::opts_chunk$set()`,
 - Entering `knitr::opts_chunk$set(echo = FALSE)` will change the default of
   value of `echo` to `FALSE` for **every** code chunk in the document.
-  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -342,8 +340,6 @@ nor show the code in the knitted document. The code chunk essentially
 doesn't exist in the knitted document as it was never run. Whereas
 `include = FALSE` will run the code and store the output for later use.
 
-
-
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -354,10 +350,10 @@ Now we will use some in-line R code to present some descriptive statistics.
 To use in-line R-code, we use the same backticks that we used in the Markdown
 section, with an `r` to specify that we are generating R-code. The difference
 between in-line code and a code chunk is the number of backticks. In-line R code
-uses one backtick (```r```), whereas code chunks use three backticks
-(\`\`\` r \`\`\`).
+uses one backtick (`r`), whereas code chunks use three backticks
+(``` r ```).
 
-For example, today's date is \`r Sys.Date()\`, will be rendered as:
+For example, today's date is ``` ``r "r Sys.Date()"`` ```, will be rendered as:
 today's date is `r Sys.Date()`.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
@@ -381,7 +377,7 @@ Now we can make an informative statement on the means of each village, and inclu
 the mean values as in-line R-code. For example:
 
 The average household size in the village of Chirodzo is
-\`r round(mean\_chirodzo$mean\_no\_membrs, 2)\`
+``` ``r "r round(mean_chirodzo$mean_no_membrs, 2)"`` ```
 
 becomes...
 
