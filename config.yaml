@@ -90,3 +90,5 @@ profiles:
 
 url: https://preview.carpentries.org/r-socialsci
 workbench-beta: 'true'
+beta-date: '2023-02-06'
+old-url: 'https://datacarpentry.github.io/r-socialsci'
