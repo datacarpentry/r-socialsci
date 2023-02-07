@@ -1,33 +1,32 @@
 ---
-title: "Data Visualisation with ggplot2"
+title: Data Visualisation with ggplot2
 teaching: 80
 exercises: 35
-questions:
-  - "What are the components of a ggplot?"
-  - "How do I create scatterplots, boxplots, and barplots?"
-  - "How can I change the aesthetics (ex. colour, transparency) of my plot?"
-  - "How can I create multiple plots at once?"
-objectives:
-   - "Produce scatter plots, boxplots, and barplots using ggplot."
-   - "Set universal plot settings."
-   - "Describe what faceting is and apply faceting in ggplot."
-   - "Modify the aesthetics of an existing ggplot plot (including axis labels and colour)."
-   - "Build complex and customized plots from data in a data frame."
-keypoints:
-   - "`ggplot2` is a flexible and useful tool for creating plots in R."
-   - "The data set and coordinate system can be defined using the `ggplot` function."
-   - "Additional layers, including geoms, are added using the `+` operator."
-   - "Boxplots are useful for visualizing the distribution of a continuous variable."
-   - "Barplots are useful for visualizing categorical data."
-   - "Faceting allows you to generate multiple plots based on a categorical variable."
 source: Rmd
 ---
 
 ```{r, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("05-")
 source("../bin/download_data.R")
 ```
+
+::::::::::::::::::::::::::::::::::::::: objectives
+
+- Produce scatter plots, boxplots, and barplots using ggplot.
+- Set universal plot settings.
+- Describe what faceting is and apply faceting in ggplot.
+- Modify the aesthetics of an existing ggplot plot (including axis labels and colour).
+- Build complex and customized plots from data in a data frame.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::: questions
+
+- What are the components of a ggplot?
+- How do I create scatterplots, boxplots, and barplots?
+- How can I change the aesthetics (ex. colour, transparency) of my plot?
+- How can I create multiple plots at once?
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 We start by loading the required package. **`ggplot2`** is also included in the
 **`tidyverse`** package.
@@ -38,7 +37,6 @@ library(tidyverse)
 
 If not still in the workspace, load the data we saved in the previous lesson.
 
-
 ```{r load-data, purl=FALSE}
 interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 ```
@@ -46,7 +44,7 @@ interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 If you were unable to complete the previous lesson or did not save the data,
 then you can create it now.
 
-```{r, purl = FALSE, eval = FALSE}
+```{r, purl=FALSE, eval=FALSE}
 ## Not run, but can be used to load in data from previous lesson!
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
@@ -87,14 +85,16 @@ this fashion allows for extensive flexibility and customization of plots.
 
 Each chart built with ggplot2 must include the following
 
-* Data
-* Aesthetic mapping (aes)
+- Data
 
-  + Describes how variables are mapped onto graphical attributes
-  + Visual attribute of data including x-y axes, color, fill, shape, and alpha
-* Geometric objects (geom)
+- Aesthetic mapping (aes)
+  
+  - Describes how variables are mapped onto graphical attributes
+  - Visual attribute of data including x-y axes, color, fill, shape, and alpha
 
-  + Determines how values are rendered graphically, as bars (`geom_bar`), scatterplot (`geom_point`), line (`geom_line`), etc.
+- Geometric objects (geom)
+  
+  - Determines how values are rendered graphically, as bars (`geom_bar`), scatterplot (`geom_point`), line (`geom_line`), etc.
 
 Thus, the template for graphic in ggplot2 is:
 
@@ -103,6 +103,7 @@ Thus, the template for graphic in ggplot2 is:
     ggplot(aes(<MAPPINGS>)) +
     <GEOM_FUNCTION>()
 ```
+
 Remember from the last lesson that the pipe operator `%>%` places the result of the previous line(s) into the first argument of the function. **`ggplot`** is a function that expects a data frame to be the first argument. This allows for us to change from specifying the `data =` argument within the `ggplot` function and instead pipe the data into the function.
 
 - use the `ggplot()` function and bind the plot to a specific data frame.
@@ -120,12 +121,12 @@ interviews_plotting %>%
 ```
 
 - add 'geoms' – graphical representations of the data in the plot (points,
-lines, bars). **`ggplot2`** offers many different geoms; we will use some
-common ones today, including:
-
-	* `geom_point()` for scatter plots, dot plots, etc.
-	* `geom_boxplot()` for, well, boxplots!
-	* `geom_line()` for trend lines, time series, etc.
+  lines, bars). **`ggplot2`** offers many different geoms; we will use some
+  common ones today, including:
+  
+  - `geom_point()` for scatter plots, dot plots, etc.
+  - `geom_boxplot()` for, well, boxplots!
+  - `geom_line()` for trend lines, time series, etc.
 
 To add a geom to the plot use the `+` operator. Because we have two continuous variables, let's use `geom_point()` first:
 
@@ -141,7 +142,7 @@ templates and conveniently explore different types of plots, so the above plot
 can also be generated with code like this, similar to the "intermediate steps"
 approach in the previous lesson:
 
-```{r first-ggplot-with-plus, fig.alt = "Scatter plot of number of items owned versus number of household members.", eval=FALSE, purl=FALSE}
+```{r first-ggplot-with-plus, fig.alt="Scatter plot of number of items owned versus number of household members.", eval=FALSE, purl=FALSE}
 # Assign plot to a variable
 interviews_plot <- interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items))
@@ -152,7 +153,7 @@ interviews_plot +
 ```
 
 > ## Notes
->
+> 
 > - Anything you put in the `ggplot()` function can be seen by any geom layers
 >   that you add (i.e., these are universal plot settings). This includes the x-
 >   and y-axis mapping you set up in `aes()`.
@@ -162,8 +163,6 @@ interviews_plot +
 >   containing the *previous* layer. If, instead, the `+` sign is added at the
 >   beginning of the line containing the new layer, **`ggplot2`** will not add
 >   the new layer and will return an error message.
-
-{: .callout}
 
 ```{r ggplot-with-plus-position, eval=FALSE, purl=FALSE}
 ## This is the correct syntax for adding layers
@@ -180,7 +179,7 @@ interviews_plot
 Building plots with **`ggplot2`** is typically an iterative process. We start by
 defining the dataset we'll use, lay out the axes, and choose a geom:
 
-```{r create-ggplot-object, fig.alt = "Scatter plot of number of items owned versus number of household members.", purl=FALSE}
+```{r create-ggplot-object, fig.alt="Scatter plot of number of items owned versus number of household members.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_point()
@@ -195,6 +194,7 @@ observations plotted on top of each other (e.g. three observations where
 `no_membrs` is 3 and `number_items` is 1).
 
 There are two main ways to alleviate overplotting issues:
+
 1. changing the transparency of the points
 2. jittering the location of the points
 
@@ -212,7 +212,7 @@ While the overplotting isn't solved, adding transparency begins to address this
 problem, as the points where there are overlapping observations are darker (as
 opposed to lighter gray):
 
-```{r adding-transparency, fig.alt = "Scatter plot of number of items owned versus number of household members, with transparency added to points.", purl=FALSE}
+```{r adding-transparency, fig.alt="Scatter plot of number of items owned versus number of household members, with transparency added to points.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_point(alpha = 0.3)
@@ -229,11 +229,12 @@ plot won't dramatically change.
 We can jitter our points using the `geom_jitter()` function instead of the
 `geom_point()`  function, as seen below:
 
-```{r adding-jitter, fig.alt = "Scatter plot of number of items owned versus number of household members, showing jitter.", purl=FALSE}
+```{r adding-jitter, fig.alt="Scatter plot of number of items owned versus number of household members, showing jitter.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter()
 ```
+
 The `geom_jitter()` function allows for us to specify the amount of random
 motion in the jitter, using the `width` and `height` arguments. When we don't
 specify values for `width` and `height`, `geom_jitter()` defaults to 40% of the
@@ -241,7 +242,7 @@ resolution of the data (the smallest change that can be measured). Hence, if we
 would like *less* spread in our jitter than was default, we should pick values
 between 0.1 and 0.4. Experiment with the values to see how your plot changes.
 
-```{r adding-width-height, fig.alt = "Scatter plot of number of items owned versus number of household members, with jitter and transparency.", purl=FALSE}
+```{r adding-width-height, fig.alt="Scatter plot of number of items owned versus number of household members, with jitter and transparency.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter(alpha = 0.3,
@@ -252,7 +253,7 @@ interviews_plotting %>%
 For our final change, we can also add colours for all the points by specifying
 a `color` argument inside the `geom_jitter()` function:
 
-```{r adding-colors, fig.alt = "Scatter plot of number of items owned versus number of household members, showing points as blue.", purl=FALSE}
+```{r adding-colors, fig.alt="Scatter plot of number of items owned versus number of household members, showing points as blue.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter(alpha = 0.3,
@@ -274,7 +275,6 @@ American English spellings for colour, i.e., you can use either `color`
 or `colour`. Here is an example where we color points by the **`village`**
 of the observation:
 
-
 ```{r color-by-species, purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
@@ -286,53 +286,58 @@ members and number of items owned (from the list provided). Additionally,
 this trend does not appear to be different by village.
 
 > ## Notes
->
+> 
 > As you will learn, there are multiple ways to plot the a relationship
 > between variables. Another way to plot data with overlapping points is
 > to use the `geom_count` plotting function. The `geom_count()`  function
 > makes the size of each point representative of the number of data items
 > of that type and the legend gives point sizes associated to particular
 > numbers of items.
->
-> ```{r color-by-species-notes, fig.alt = "Previous plot with dots colored by village.", purl=FALSE}
+> 
+> ```{r color-by-species-notes, fig.alt="Previous plot with dots colored by village.", purl=FALSE}
 > interviews_plotting %>%
 >    ggplot(aes(x = no_membrs, y = number_items, color = village)) +
 >    geom_count()
 > ```
 
-{: .callout}
+:::::::::::::::::::::::::::::::::::::::  challenge
 
-> ## Exercise
->
-> Use what you just learned to create a scatter plot of `rooms` by `village`
-> with the `respondent_wall_type` showing in different colours. Does this
-> seem like a good way to display the relationship between these variables?
-> What other kinds of plots might you use to show this type of data?
->
-> > ## Solution
-> >
-> > ```{r scatter-challenge, fig.alt = "Scatter plot showing positive trend between number of household members and number of items owned.", answer=TRUE, purl=FALSE}
-> > interviews_plotting %>%
-> >     ggplot(aes(x = village, y = rooms)) +
-> >     geom_jitter(aes(color = respondent_wall_type),
-> >		    alpha = 0.3,
-> > 		    width = 0.2,
-> > 		    height = 0.2)
-> > ```
-> >
-> > This is not a great way to show this type of data because it is difficult to
-> > distinguish between villages. What other plot types could help you visualize
-> > this relationship better?
-> {: .solution}
-{: .challenge}
+## Exercise
 
+Use what you just learned to create a scatter plot of `rooms` by `village`
+with the `respondent_wall_type` showing in different colours. Does this
+seem like a good way to display the relationship between these variables?
+What other kinds of plots might you use to show this type of data?
+
+:::::::::::::::  solution
+
+## Solution
+
+```{r scatter-challenge, fig.alt="Scatter plot showing positive trend between number of household members and number of items owned.", answer=TRUE, purl=FALSE}
+interviews_plotting %>%
+    ggplot(aes(x = village, y = rooms)) +
+    geom_jitter(aes(color = respondent_wall_type),
+	    alpha = 0.3,
+		    width = 0.2,
+		    height = 0.2)
+```
+
+This is not a great way to show this type of data because it is difficult to
+distinguish between villages. What other plot types could help you visualize
+this relationship better?
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Boxplot
 
 We can use boxplots to visualize the distribution of rooms for each
 wall type:
 
-```{r boxplot, fig.alt = "Box plot of number of rooms by wall type.", purl=FALSE}
+```{r boxplot, fig.alt="Box plot of number of rooms by wall type.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
     geom_boxplot()
@@ -341,7 +346,7 @@ interviews_plotting %>%
 By adding points to a boxplot, we can have a better idea of the number of
 measurements and of their distribution:
 
-```{r boxplot-with-jitter, fig.alt = "Previous plot with dot plot added as additional layer to show individual values. Boxplot layer is transparent.", purl=FALSE}
+```{r boxplot-with-jitter, fig.alt="Previous plot with dot plot added as additional layer to show individual values. Boxplot layer is transparent.", purl=FALSE}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
     geom_boxplot(alpha = 0) +
@@ -357,53 +362,67 @@ burntbrick houses.
 Notice how the  boxplot layer is behind the jitter layer? What do you need to
 change in the code to put the boxplot layer in front of the jitter layer?
 
-> ## Exercise
->
-> Boxplots are useful summaries, but hide the *shape* of the distribution. For
-> example, if the distribution is bimodal, we would not see it in a
-> boxplot. An alternative to the boxplot is the violin plot, where the shape
-> (of the density of points) is drawn.
->
-> - Replace the box plot with a violin plot; see `geom_violin()`.
->
-> > ## Solution
-> >
-> > ```{r violin-plot}
-> > interviews_plotting %>%
-> >   ggplot(aes(x = respondent_wall_type, y = rooms)) +
-> >   geom_violin(alpha = 0) +
-> >   geom_jitter(alpha = 0.5, color = "tomato")
-> > ```
-> {: .solution}
->
-> So far, we've looked at the distribution of room number within wall type. Try
-> making a new plot to explore the distribution of another variable within wall
-> type.
->
-> - Create a boxplot for `liv_count` for each wall type. Overlay the boxplot
->   layer on a jitter layer to show actual measurements.
->
-> > ## Solution
-> > ```{r boxplot-exercise, fig.alt = "Box plot of number of livestock owned by wall type, with dot plot added as additional layer to show individual values."}
-> > interviews_plotting %>%
-> >    ggplot(aes(x = respondent_wall_type, y = liv_count)) +
-> >    geom_boxplot(alpha = 0) +
-> >    geom_jitter(alpha = 0.5, width = 0.2, height = 0.2)
-> > ```
-> {: .solution}
->
-> - Add colour to the data points on your boxplot according to whether the
->   respondent is a member of an irrigation association (`memb_assoc`).
->
-> > ## Solution
-> > ```{r boxplot-exercise-factor, fig.alt = "Previous plot with dots colored based on whether respondent was a member of an irrigation association."}
-> > interviews_plotting %>%
-> >   ggplot(aes(x = respondent_wall_type, y = liv_count)) +
-> >   geom_boxplot(alpha = 0) +
-> >   geom_jitter(aes(color = memb_assoc), alpha = 0.5, width = 0.2, height = 0.2)
-> > ```
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise
+
+Boxplots are useful summaries, but hide the *shape* of the distribution. For
+example, if the distribution is bimodal, we would not see it in a
+boxplot. An alternative to the boxplot is the violin plot, where the shape
+(of the density of points) is drawn.
+
+- Replace the box plot with a violin plot; see `geom_violin()`.
+
+:::::::::::::::  solution
+
+## Solution
+
+```{r violin-plot}
+interviews_plotting %>%
+  ggplot(aes(x = respondent_wall_type, y = rooms)) +
+  geom_violin(alpha = 0) +
+  geom_jitter(alpha = 0.5, color = "tomato")
+```
+
+:::::::::::::::::::::::::
+
+So far, we've looked at the distribution of room number within wall type. Try
+making a new plot to explore the distribution of another variable within wall
+type.
+
+- Create a boxplot for `liv_count` for each wall type. Overlay the boxplot
+  layer on a jitter layer to show actual measurements.
+
+:::::::::::::::  solution
+
+## Solution
+
+```{r boxplot-exercise, fig.alt="Box plot of number of livestock owned by wall type, with dot plot added as additional layer to show individual values."}
+interviews_plotting %>%
+   ggplot(aes(x = respondent_wall_type, y = liv_count)) +
+   geom_boxplot(alpha = 0) +
+   geom_jitter(alpha = 0.5, width = 0.2, height = 0.2)
+```
+
+:::::::::::::::::::::::::
+
+- Add colour to the data points on your boxplot according to whether the
+  respondent is a member of an irrigation association (`memb_assoc`).
+
+:::::::::::::::  solution
+
+## Solution
+
+```{r boxplot-exercise-factor, fig.alt="Previous plot with dots colored based on whether respondent was a member of an irrigation association."}
+interviews_plotting %>%
+  ggplot(aes(x = respondent_wall_type, y = liv_count)) +
+  geom_boxplot(alpha = 0) +
+  geom_jitter(aes(color = memb_assoc), alpha = 0.5, width = 0.2, height = 0.2)
+```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Barplots
 
@@ -411,7 +430,7 @@ Barplots are also useful for visualizing categorical data. By default,
 `geom_bar` accepts a variable for x, and plots the number of instances each
 value of x (in this case, wall type) appears in the dataset.
 
-```{r barplot-1, fig.alt = "Bar plot showing counts of respondent wall types."}
+```{r barplot-1, fig.alt="Bar plot showing counts of respondent wall types."}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type)) +
     geom_bar()
@@ -420,7 +439,7 @@ interviews_plotting %>%
 We can use the `fill` aesthetic for the `geom_bar()` geom to colour bars by
 the portion of each count that is from each village.
 
-```{r barplot-stack, fig.alt = "Stacked bar plot of wall types showing each village as a different color."}
+```{r barplot-stack, fig.alt="Stacked bar plot of wall types showing each village as a different color."}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type)) +
     geom_bar(aes(fill = village))
@@ -431,8 +450,7 @@ than side-by-side bars. We can separate the portions of the stacked bar that
 correspond to each village and put them side-by-side by using the `position`
 argument for `geom_bar()` and setting it to "dodge".
 
-
-```{r barplot-dodge, fig.alt = "Bar plot of respondent wall types with each village as a separate bar."}
+```{r barplot-dodge, fig.alt="Bar plot of respondent wall types with each village as a separate bar."}
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type)) +
     geom_bar(aes(fill = village), position = "dodge")
@@ -446,7 +464,6 @@ new data frame (`percent_wall_type`) with a new column named "percent"
 representing the percent of each house type in each village. We will remove
 houses with cement walls, as there was only one in the dataset.
 
-
 ```{r wall-type-data}
 percent_wall_type <- interviews_plotting %>%
     filter(respondent_wall_type != "cement") %>%
@@ -459,39 +476,46 @@ percent_wall_type <- interviews_plotting %>%
 Now we can use this new data frame to create our plot showing the
 percentage of each house type in each village.
 
-```{r barplot-wall-type, fig.alt = "Side by side bar plot showing percent of respondents in each village with each wall type."}
+```{r barplot-wall-type, fig.alt="Side by side bar plot showing percent of respondents in each village with each wall type."}
 percent_wall_type %>%
     ggplot(aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge")
 ```
 
-> ## Exercise
->
-> Create a bar plot showing the proportion of respondents in each
-> village who are or are not part of an irrigation association
-> (`memb_assoc`). Include only respondents who answered that question
-> in the calculations and plot. Which village had the lowest proportion of
-> respondents in an irrigation association?
->
-> > ## Solution
-> >
-> > ```{r barplot-memb-assoc, fig.alt = "Bar plot showing percent of respondents in each village who were part of association."}
-> > percent_memb_assoc <- interviews_plotting %>%
-> >   filter(!is.na(memb_assoc)) %>%
-> >   count(village, memb_assoc) %>%
-> >   group_by(village) %>%
-> >   mutate(percent = (n / sum(n)) * 100) %>%
-> >   ungroup()
-> >
-> > percent_memb_assoc %>%
-> >    ggplot(aes(x = village, y = percent, fill = memb_assoc)) +
-> >     geom_bar(stat = "identity", position = "dodge")
-> > ```
-> >
-> > Ruaca had the lowest proportion of members in an irrigation association.
-> {: .solution}
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
 
+## Exercise
+
+Create a bar plot showing the proportion of respondents in each
+village who are or are not part of an irrigation association
+(`memb_assoc`). Include only respondents who answered that question
+in the calculations and plot. Which village had the lowest proportion of
+respondents in an irrigation association?
+
+:::::::::::::::  solution
+
+## Solution
+
+```{r barplot-memb-assoc, fig.alt="Bar plot showing percent of respondents in each village who were part of association."}
+percent_memb_assoc <- interviews_plotting %>%
+  filter(!is.na(memb_assoc)) %>%
+  count(village, memb_assoc) %>%
+  group_by(village) %>%
+  mutate(percent = (n / sum(n)) * 100) %>%
+  ungroup()
+
+percent_memb_assoc %>%
+   ggplot(aes(x = village, y = percent, fill = memb_assoc)) +
+    geom_bar(stat = "identity", position = "dodge")
+```
+
+Ruaca had the lowest proportion of members in an irrigation association.
+
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Adding Labels and Titles
 
@@ -507,9 +531,9 @@ The `labs` function takes the following arguments:
 - `subtitle` -- to produce a plot subtitle (smaller text placed beneath the title)
 - `caption` -- a caption for the plot
 - `...` -- any pair of name and value for aesthetics used in the plot (e.g.,
-`x`, `y`, `fill`, `color`, `size`)
+  `x`, `y`, `fill`, `color`, `size`)
 
-```{r barplot-wall-types-labeled, fig.alt = "Previous plot with plot title and labells added."}
+```{r barplot-wall-types-labeled, fig.alt="Previous plot with plot title and labells added."}
 percent_wall_type %>%
     ggplot(aes(x = village, y = percent, fill = respondent_wall_type)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -533,7 +557,7 @@ in the dataset. We will use it to split our barplot of housing type
 proportion by village so that each village has its own panel in a
 multi-panel plot:
 
-```{r barplot-faceting, fig.alt = "Bar plot showing percent of each wall type in each village."}
+```{r barplot-faceting, fig.alt="Bar plot showing percent of each wall type in each village."}
 percent_wall_type %>%
     ggplot(aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -550,7 +574,7 @@ Usually plots with white background look more readable when printed.  We can set
 the background to white using the function `theme_bw()`. Additionally, you can remove
 the grid:
 
-```{r barplot-theme-bw, fig.alt = "Bar plot showing percent of each wall type in each village, with black and white theme applied.", purl=FALSE}
+```{r barplot-theme-bw, fig.alt="Bar plot showing percent of each wall type in each village, with black and white theme applied.", purl=FALSE}
 percent_wall_type %>%
     ggplot(aes(x = respondent_wall_type, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -586,17 +610,18 @@ Combining `summarize()` with `across()` allows us to specify first, the columns
 to be summarized (`bicycle:no_listed_items`) and then the calculation. Because
 our calculation is a bit more complex than is available in a built-in function,
 we define a new formula:
-* `~` indicates that we are defining a formula,
-* `sum(.x)` gives the number of people owning that item by counting the number of `TRUE`
-values (`.x` is shorthand for the column being operated on),
-* and `n()` gives the current group size.
+
+- `~` indicates that we are defining a formula,
+- `sum(.x)` gives the number of people owning that item by counting the number of `TRUE`
+  values (`.x` is shorthand for the column being operated on),
+- and `n()` gives the current group size.
 
 After the `summarize()` operation, we have a table of percentages with each item
 in its own column, so a `pivot_longer()` is required to transform the table into
 an easier format for plotting. Using this data frame, we can now create a
 multi-paneled bar plot.
 
-```{r percent-items-barplot, fig.alt = "Multi-panel bar chart showing percent  of respondents in each village and who owned each item, with no grids behid bars."}
+```{r percent-items-barplot, fig.alt="Multi-panel bar chart showing percent  of respondents in each village and who owned each item, with no grids behid bars."}
 percent_items %>%
     ggplot(aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -610,7 +635,7 @@ percent_items %>%
 In addition to `theme_bw()`, which changes the plot background to white,
 **`ggplot2`** comes with several other themes which can be useful to quickly
 change the look of your visualization. The complete list of themes is available
-at <https://ggplot2.tidyverse.org/reference/ggtheme.html>. `theme_minimal()` and
+at [https://ggplot2.tidyverse.org/reference/ggtheme.html](https://ggplot2.tidyverse.org/reference/ggtheme.html). `theme_minimal()` and
 `theme_light()` are popular, and `theme_void()` can be useful as a starting
 point to create a new hand-crafted theme.
 
@@ -621,11 +646,15 @@ package provides a wide variety of options (including an Excel 2003 theme). The
 of packages that extend the capabilities of **`ggplot2`**, including additional
 themes.
 
-> ## Exercise
->
-> Experiment with at least two different themes. Build the previous plot
-> using each of those themes. Which do you like best?
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise
+
+Experiment with at least two different themes. Build the previous plot
+using each of those themes. Which do you like best?
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Customization
 
@@ -671,10 +700,10 @@ After our manipulations, you may notice that the values on the x-axis are still
 not properly readable. Let's change the orientation of the labels and adjust
 them vertically and horizontally so they don't overlap. You can use a 90-degree
 angle, or experiment to find the appropriate angle for diagonally oriented
-labels. With a larger font, the title also runs off. We can add "\n" in the string
+labels. With a larger font, the title also runs off. We can add "\\n" in the string
 for the title to insert a new line:
 
-```{r ggplot-customization-label-orientation, fig.alt = "Multi-panel bar charts showing percent of respondents in each village and who owned each item, with grids behind the bars.", purl=FALSE}
+```{r ggplot-customization-label-orientation, fig.alt="Multi-panel bar charts showing percent of respondents in each village and who owned each item, with grids behind the bars.", purl=FALSE}
 percent_items %>%
     ggplot(aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -692,7 +721,6 @@ percent_items %>%
 If you like the changes you created better than the default theme, you can save
 them as an object to be able to easily apply them to other plots you may create.
 We can also add `plot.title = element_text(hjust = 0.5)` to centre the title:
-
 
 ```{r ggplot-custom-themes, purl=FALSE}
 grey_theme <- theme(axis.text.x = element_text(colour = "grey20", size = 12,
@@ -713,17 +741,21 @@ percent_items %>%
     grey_theme
 ```
 
-> ## Exercise
->
-> With all of this information in hand, please take another five minutes to
-> either improve one of the plots generated in this exercise or create a
-> beautiful graph of your own. Use the RStudio [**`ggplot2`** cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
-> for inspiration. Here are some ideas:
->
-> * See if you can make the bars white with black outline.
-> * Try using a different colour palette (see
->   [http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/](http://www.cookbook-r.com/Graphs/Colors_(ggplot2)/)).
-{: .challenge}
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise
+
+With all of this information in hand, please take another five minutes to
+either improve one of the plots generated in this exercise or create a
+beautiful graph of your own. Use the RStudio [**`ggplot2`** cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+for inspiration. Here are some ideas:
+
+- See if you can make the bars white with black outline.
+- Try using a different colour palette (see
+  [http://www.cookbook-r.com/Graphs/Colors\_(ggplot2)/](https://www.cookbook-r.com/Graphs/Colors_\(ggplot2\)/)).
+  
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 After creating your plot, you can save it to a file in your favourite format. The Export tab in the **Plot** pane in RStudio will save your plots at low resolution, which will not be accepted by many journals and will not scale well for posters.
 
@@ -751,4 +783,17 @@ ggsave("fig_output/name_of_file.png", my_plot, width = 15, height = 10)
 
 Note: The parameters `width` and `height` also determine the font size in the saved plot.
 
-{% include links.md %}
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- `ggplot2` is a flexible and useful tool for creating plots in R.
+- The data set and coordinate system can be defined using the `ggplot` function.
+- Additional layers, including geoms, are added using the `+` operator.
+- Boxplots are useful for visualizing the distribution of a continuous variable.
+- Barplots are useful for visualizing categorical data.
+- Faceting allows you to generate multiple plots based on a categorical variable.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
