@@ -46,8 +46,8 @@ and to meet some of our community members.
 ## Where to Contribute
 
 1.  If you wish to change this lesson,
-    please work in <https://github.com/datacarpentry/r-socialsci>,
-    which can be viewed at <https://datacarpentry.github.io/r-socialsci>.
+    please work in <https://github.com/swcarpentry/shell-novice>,
+    which can be viewed at <https://swcarpentry.github.io/shell-novice>.
 
 2.  If you wish to change the example lesson,
     please work in <https://github.com/carpentries/lesson-example>,
@@ -69,7 +69,7 @@ and to meet some of our community members.
 There are many ways to contribute,
 from writing new exercises and improving existing ones
 to updating or filling in the documentation
-and and submitting [bug reports][issues]
+and submitting [bug reports][issues]
 about things that don't work, aren't clear, or are missing.
 If you are looking for ideas,
 please see [the list of issues for this repository][issues],
@@ -95,7 +95,7 @@ The first encourages contributors to be honest about requirements;
 the second, to think hard about priorities.
 
 We are also not looking for exercises or other material that only run on one platform.
-Our workshops typically contain a mixture of Windows, Mac OS X, and Linux users;
+Our workshops typically contain a mixture of Windows, macOS, and Linux users;
 in order to be usable,
 our lessons must run equally well on all three.
 
@@ -106,19 +106,19 @@ you may want to look at
 [How to Contribute to an Open Source Project on GitHub][how-contribute].
 In brief:
 
-1.  The published copy of the lesson is in the `main` branch of the repository
+1.  The published copy of the lesson is in the `gh-pages` branch of the repository
     (so that GitHub will regenerate it automatically).
     Please create all branches from that,
-    and merge the [main repository][repo]'s `main` branch into your `main` branch
+    and merge the [master repository][repo]'s `gh-pages` branch into your `gh-pages` branch
     before starting work.
-    Please do *not* work directly in your `main` branch,
+    Please do *not* work directly in your `gh-pages` branch,
     since that will make it difficult for you to work on other contributions.
 
 2.  We use [GitHub flow][github-flow] to manage changes:
     1.  Create a new branch in your desktop copy of this repository for each significant change.
     2.  Commit the change in that branch.
     3.  Push that branch to your fork of this repository on GitHub.
-    4.  Submit a pull request from that branch to the [main repository][repo].
+    4.  Submit a pull request from that branch to the [master repository][repo].
     5.  If you receive feedback,
         make changes on your desktop and push to your branch on GitHub:
         the pull request will update automatically.
@@ -143,9 +143,9 @@ You can also [reach us by email][contact].
 [github]: http://github.com
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-join]: https://github.com/join
-[how-contribute]: https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github
-[issues]: https://github.com/datacarpentry/r-socialsci/issues/
-[repo]: https://github.com/datacarpentry/r-socialsci
+[how-contribute]: https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github
+[issues]: https://github.com/swcarpentry/shell-novice/issues/
+[repo]: https://github.com/swcarpentry/shell-novice/
 [swc-issues]: https://github.com/issues?q=user%3Aswcarpentry
 [swc-lessons]: http://software-carpentry.org/lessons/
 [swc-site]: http://software-carpentry.org/
