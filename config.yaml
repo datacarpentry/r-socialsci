@@ -27,7 +27,7 @@ life_cycle: 'transition-step-2'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/fishtree-attempt/r-socialsci/'
+source: 'https://github.com/datacarpentry/r-socialsci/'
 
 # Default branch of your lesson
 branch: 'main'
