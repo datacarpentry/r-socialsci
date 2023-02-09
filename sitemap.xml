@@ -31,10 +31,16 @@
     <loc>https://preview.carpentries.org/r-socialsci/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://preview.carpentries.org/r-socialsci/aio.html</loc>
+  </url>
+  <url>
     <loc>https://preview.carpentries.org/r-socialsci/data-visualisation-handout.html</loc>
   </url>
   <url>
     <loc>https://preview.carpentries.org/r-socialsci/data-wrangling-handout.html</loc>
+  </url>
+  <url>
+    <loc>https://preview.carpentries.org/r-socialsci/images.html</loc>
   </url>
   <url>
     <loc>https://preview.carpentries.org/r-socialsci/index.html</loc>
@@ -70,16 +76,28 @@
     <loc>https://preview.carpentries.org/r-socialsci/instructor/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://preview.carpentries.org/r-socialsci/instructor/aio.html</loc>
+  </url>
+  <url>
     <loc>https://preview.carpentries.org/r-socialsci/instructor/data-visualisation-handout.html</loc>
   </url>
   <url>
     <loc>https://preview.carpentries.org/r-socialsci/instructor/data-wrangling-handout.html</loc>
   </url>
   <url>
+    <loc>https://preview.carpentries.org/r-socialsci/instructor/images.html</loc>
+  </url>
+  <url>
     <loc>https://preview.carpentries.org/r-socialsci/instructor/index.html</loc>
   </url>
   <url>
+    <loc>https://preview.carpentries.org/r-socialsci/instructor/instructor-notes.html</loc>
+  </url>
+  <url>
     <loc>https://preview.carpentries.org/r-socialsci/instructor/intro-R-handout.html</loc>
+  </url>
+  <url>
+    <loc>https://preview.carpentries.org/r-socialsci/instructor/key-points.html</loc>
   </url>
   <url>
     <loc>https://preview.carpentries.org/r-socialsci/instructor/profiles.html</loc>
@@ -91,7 +109,13 @@
     <loc>https://preview.carpentries.org/r-socialsci/instructor/starting-with-data-handout.html</loc>
   </url>
   <url>
+    <loc>https://preview.carpentries.org/r-socialsci/instructor-notes.html</loc>
+  </url>
+  <url>
     <loc>https://preview.carpentries.org/r-socialsci/intro-R-handout.html</loc>
+  </url>
+  <url>
+    <loc>https://preview.carpentries.org/r-socialsci/key-points.html</loc>
   </url>
   <url>
     <loc>https://preview.carpentries.org/r-socialsci/profiles.html</loc>
