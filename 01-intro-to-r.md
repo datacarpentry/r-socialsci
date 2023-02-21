@@ -16,7 +16,7 @@ source: Rmd
 - Solve simple arithmetic operations in R.
 - Call functions and use arguments to change their default options.
 - Inspect the content of vectors and manipulate their content.
-- Subset and extract values from vectors.
+- Subset values from vectors.
 - Analyze vectors with missing data.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -599,8 +599,7 @@ these data types are coerced?
 
 ## Subsetting vectors
 
-If we want to extract one or several values from a vector, we must provide one
-or several indices in square brackets. For instance:
+Subsetting (sometimes referred to as extracting or indexing) involves accessing out one or more values based on their numeric placement or "index" within a vector. If we want to subset one or several values from a vector, we must provide one index or several indices in square brackets.  For instance:
 
 
 ```r

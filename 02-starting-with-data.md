@@ -12,7 +12,7 @@ source: Rmd
 - Describe what a data frame is.
 - Load external data from a .csv file into a data frame.
 - Summarize the contents of a data frame.
-- Subset and extract values from data frames.
+- Subset values from data frames.
 - Describe the difference between a factor and a string.
 - Convert between strings and factors.
 - Reorder and rename factors.
@@ -262,20 +262,20 @@ Summary:
 Note: most of these functions are "generic." They can be used on other types of
 objects besides data frames or tibbles.
 
-## Indexing and subsetting data frames
+## Subsetting data frames
 
 Our `interviews` data frame has rows and columns (it has 2 dimensions).
 In practice, we may not need the entire data frame; for instance, we may only
 be interested in a subset of the observations (the rows) or a particular set
 of variables (the columns). If we want to
-extract some specific data from it, we need to specify the "coordinates" we
+access some specific data from it, we need to specify the "coordinates" (i.e., indices) we
 want from it. Row numbers come first, followed by column numbers.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Tip
 
-Indexing a `tibble` with `[` always results in a `tibble`.
+Subsetting a `tibble` with `[` always results in a `tibble`.
 However, note this is not true in general for data frames, so be careful!
 Different ways of specifying these coordinates can lead to results with
 different classes. This is covered in the Software Carpentry lesson
