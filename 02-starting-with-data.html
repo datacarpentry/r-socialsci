@@ -187,7 +187,7 @@
 <li><a href="#presentation-of-the-safi-data">Presentation of the SAFI Data</a></li>
 <li><a href="#importing-data">Importing data</a></li>
 <li><a href="#inspecting-data-frames">Inspecting data frames</a></li>
-<li><a href="#indexing-and-subsetting-data-frames">Indexing and subsetting data frames</a></li>
+<li><a href="#subsetting-data-frames">Subsetting data frames</a></li>
 <li><a href="#factors">Factors</a></li>
 <li><a href="#formatting-dates">Formatting Dates</a></li>
         </ul></div><!--/div.accordion-body-->
@@ -327,7 +327,7 @@
 <ul><li>Describe what a data frame is.</li>
 <li>Load external data from a .csv file into a data frame.</li>
 <li>Summarize the contents of a data frame.</li>
-<li>Subset and extract values from data frames.</li>
+<li>Subset values from data frames.</li>
 <li>Describe the difference between a factor and a string.</li>
 <li>Convert between strings and factors.</li>
 <li>Reorder and rename factors.</li>
@@ -599,14 +599,15 @@ function so you need to have the <code>dplyr</code> or
 <code>tibble</code> packages loaded to be able to execute it.</li>
 </ul><p>Note: most of these functions are “generic.” They can be used on
 other types of objects besides data frames or tibbles.</p>
-</section><section id="indexing-and-subsetting-data-frames"><h2 class="section-heading">Indexing and subsetting data frames<a class="anchor" aria-label="anchor" href="#indexing-and-subsetting-data-frames"></a>
+</section><section id="subsetting-data-frames"><h2 class="section-heading">Subsetting data frames<a class="anchor" aria-label="anchor" href="#subsetting-data-frames"></a>
 </h2>
 <hr class="half-width"><p>Our <code>interviews</code> data frame has rows and columns (it has 2
 dimensions). In practice, we may not need the entire data frame; for
 instance, we may only be interested in a subset of the observations (the
 rows) or a particular set of variables (the columns). If we want to
-extract some specific data from it, we need to specify the “coordinates”
-we want from it. Row numbers come first, followed by column numbers.</p>
+access some specific data from it, we need to specify the “coordinates”
+(i.e., indices) we want from it. Row numbers come first, followed by
+column numbers.</p>
 <div id="callout2" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -615,8 +616,8 @@ we want from it. Row numbers come first, followed by column numbers.</p>
 <h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout2"></a>
 </h3>
 <div class="callout-content">
-<p>Indexing a <code>tibble</code> with <code>[</code> always results in
-a <code>tibble</code>. However, note this is not true in general for
+<p>Subsetting a <code>tibble</code> with <code>[</code> always results
+in a <code>tibble</code>. However, note this is not true in general for
 data frames, so be careful! Different ways of specifying these
 coordinates can lead to results with different classes. This is covered
 in the Software Carpentry lesson <a href="https://swcarpentry.github.io/r-novice-gapminder/" class="external-link">R for
@@ -852,7 +853,7 @@ dataset.</p></li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1229,7 +1230,7 @@ you recreate the barplot such that “Undetermined” is last (after
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1486,7 +1487,7 @@ cannot be parsed.</p>
   "creativeWorkStatus": "active",
   "url": "https://preview.carpentries.org/r-socialsci/02-starting-with-data.html",
   "identifier": "https://preview.carpentries.org/r-socialsci/02-starting-with-data.html",
-  "dateCreated": "2023-02-09",
+  "dateCreated": "2023-02-21",
   "dateModified": "2023-02-21",
   "datePublished": "2023-02-21"
 }
