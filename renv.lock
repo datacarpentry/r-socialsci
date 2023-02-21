@@ -29,7 +29,7 @@
       "Package": "MASS",
       "Version": "7.3-58.2",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "CRAN",
       "Hash": "e02d1a0f6122fd3e634b25b433704344",
       "Requirements": []
     },
@@ -759,7 +759,7 @@
       "Package": "nlme",
       "Version": "3.1-161",
       "Source": "Repository",
-      "Repository": "CRAN",
+      "Repository": "RSPM",
       "Hash": "b49e163093c0ef46fbbfc40bcb87916c",
       "Requirements": [
         "lattice"
