@@ -839,20 +839,6 @@ What was the largest household interviewed in each month?
 ```r
 # if not already included, add month, year, and day columns
 library(lubridate) # load lubridate if not already loaded
-```
-
-```{.output}
-
-Attaching package: 'lubridate'
-```
-
-```{.output}
-The following objects are masked from 'package:base':
-
-    date, intersect, setdiff, union
-```
-
-```r
 interviews %>%
     mutate(month = month(interview_date),
            day = day(interview_date),
