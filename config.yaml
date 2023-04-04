@@ -14,14 +14,14 @@ carpentry: 'dc'
 title: 'R for Social Scientists'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
-created: ~
+created: '2017-05-25'
 
 # Comma-separated list of keywords for the lesson
 keywords: 'software, data, lesson, The Carpentries'
 
 # Life cycle stage of the lesson
 # possible values: pre-alpha, alpha, beta, stable
-life_cycle: 'transition-step-2'
+life_cycle: 'stable'
 
 # License of the lesson
 license: 'CC-BY 4.0'
@@ -88,7 +88,4 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
-url: https://preview.carpentries.org/r-socialsci
-workbench-beta: 'true'
-beta-date: '2023-02-06'
-old-url: 'https://datacarpentry.github.io/r-socialsci'
+url: 'https://datacarpentry.org/r-socialsci'
