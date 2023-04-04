@@ -22,24 +22,6 @@
     </div>
     <div class="selector-container ">
       
-      <div class="beta-alert alert alert-light alert-dismissable fade show" role="alert">
-        
-        
-        <abbr class="icon" title="This lesson is in the Workbench Beta Phase (beta stage). Click here to visit a snapshot of the styles version from 2023-02-06." style="text-decoration: unset">
-            <span class="visually-hidden">This lesson is in the Workbench Beta Phase (beta stage).</span>
-          <a href="https://datacarpentry.github.io/r-socialsci" class="external-link alert-link" style="color: #383838">
-            <i aria-hidden="true" class="icon" data-feather="alert-circle" style="background: #719eff; border-radius: 5px"></i>
-            <span class="visually-hidden">Visit a snapshot of the styles version from 2023-02-06</span>
-          </a>
-        </abbr>
-        
-        
-        Workbench Beta | 
-        <a href="https://carpentries.typeform.com/to/KRBl4IZM" class="external-link alert-link" style="text-decoration: wavy overline">Give Feedback</a> | 
-        <a href="https://carpentries.github.io/workbench/beta-phase.html" class="external-link alert-link">Learn More</a>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-      
       
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -292,9 +274,9 @@
         <h1>Introduction to R</h1>
         <p> Last updated on 2023-04-04 | 
         
-        
-        
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/01-intro-to-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+        
+        
         
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right"> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -524,7 +506,7 @@ acres in a new object, <code>area_acres</code>:</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The value of <code>area_acres</code> is still 6.175 because you have
 not re-run the line <code>area_acres &lt;- 2.47 * area_hectares</code>
@@ -592,7 +574,7 @@ of <code>r_area</code>.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -946,7 +928,7 @@ types in a single vector?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>R implicitly converts them to all be the same type.</p>
 </div>
@@ -983,7 +965,7 @@ types in a single vector?</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Vectors can be of only one data type. R tries to convert (coerce) the
 content of this vector to find a “common denominator” that doesn’t lose
@@ -1020,7 +1002,7 @@ any information.</p>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Only one. There is no memory of past data types, and the coercion
 happens the first time the vector is evaluated. Therefore, the
@@ -1372,7 +1354,7 @@ the <code>rooms</code> vector.</p></li>
   Show me the solution
   </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb95">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1443,9 +1425,6 @@ data.</li>
 				<p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
         
-	
-        
-        
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/01-intro-to-r.Rmd" class="external-link">Edit on GitHub</a>
         
 	
@@ -1472,15 +1451,15 @@ data.</li>
     {
   "@context": "https://schema.org",
   "@type": "TrainingMaterial",
-  "@id": "https://preview.carpentries.org/r-socialsci/01-intro-to-r.html",
+  "@id": "https://datacarpentry.org/r-socialsci/01-intro-to-r.html",
   "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "software, data, lesson, The Carpentries",
   "name": "Introduction to R",
   "creativeWorkStatus": "active",
-  "url": "https://preview.carpentries.org/r-socialsci/01-intro-to-r.html",
-  "identifier": "https://preview.carpentries.org/r-socialsci/01-intro-to-r.html",
-  "dateCreated": "2023-04-04",
+  "url": "https://datacarpentry.org/r-socialsci/01-intro-to-r.html",
+  "identifier": "https://datacarpentry.org/r-socialsci/01-intro-to-r.html",
+  "dateCreated": "2017-05-25",
   "dateModified": "2023-04-04",
   "datePublished": "2023-04-04"
 }
