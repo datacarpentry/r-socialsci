@@ -109,7 +109,8 @@ installr::updateR(TRUE)
 
 `download.file("https://ndownloader.figshare.com/files/11492171","data/SAFI_clean.csv", mode = "wb")`
 
-- The [json episode](https://datacarpentry.org/r-socialsci/06-json/index.html) uses
-  `SAFI.json`. The downlink link is [https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json](https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json).
+- The [json episode](https://datacarpentry.org/r-socialsci/07-json.html) uses
+  `SAFI.json`. The file is available on GitHub
+  [here](https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI.json).
 
 
