@@ -274,7 +274,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Starting with Data</h1>
-        <p> Last updated on 2023-04-04 | 
+        <p> Last updated on 2023-04-18 | 
         
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/02-starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -399,6 +399,32 @@ of packages <a href="https://www.tidyverse.org/" class="external-link">here</a>.
 (<code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code>), the core packages (the packages used
 in most data analyses) get loaded, including
 <strong><code>readr</code></strong>.</p>
+<p>Before proceeding, however, this is a good opportunity to talk about
+conflicts. Certain packages we load can end up introducing function
+names that are already in use by pre-loaded R packages. For instance,
+when we load the tidyverse package below, we will introduce two
+conflicting functions: <code>filter()</code> and <code>lag()</code>.
+This happens because <code>filter</code> and <code>lag</code> are
+already functions used by the stats package (already pre-loaded in R).
+What will happen now is that if we, for example, call the
+<code>filter()</code> function, R will use the
+<code>dplyr::filter()</code> version and not the
+<code>stats::filter()</code> one. This happens because, if conflicted,
+by default R uses the function from the most recently loaded package.
+Conflicted functions may cause you some trouble in the future, so it is
+important that we are aware of them so that we can properly handle them,
+if we want.</p>
+<p>To do so, we just need the following functions from the conflicted
+package:</p>
+<ul><li>
+<code>conflicted::conflict_scout()</code>: Shows us any conflicted
+functions.<br></li>
+<li>
+<code>conflict_prefer("function", "package_prefered")</code>: Allows
+us to choose the default function we want from now on.</li>
+</ul><p>It is also important to know that we can, at any time, just call the
+function directly from the package we want, such as
+<code>stats::filter()</code>.</p>
 <p>Even with the use of an RStudio project, it can be difficult to learn
 how to specify paths to file locations. Enter the <strong>here</strong>
 package! The here package creates paths relative to the top-level
@@ -1465,7 +1491,7 @@ cannot be parsed.</p>
   "url": "https://datacarpentry.org/r-socialsci/02-starting-with-data.html",
   "identifier": "https://datacarpentry.org/r-socialsci/02-starting-with-data.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2023-04-04",
+  "dateModified": "2023-04-18",
   "datePublished": "2023-04-18"
 }
 
