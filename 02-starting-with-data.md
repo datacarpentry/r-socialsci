@@ -94,6 +94,27 @@ more about the **`tidyverse`** collection of packages
 When you load  the **`tidyverse`** (`library(tidyverse)`), the core packages
 (the packages used in most data analyses) get loaded, including **`readr`**.
 
+Before proceeding, however, this is a good opportunity to talk about conflicts.
+Certain packages we load can end up introducing function names that are already
+in use by pre-loaded R packages. For instance, when we load the tidyverse 
+package below, we will introduce two conflicting functions: `filter()` and `lag()`.
+This happens because `filter` and `lag` are already functions used by the stats
+package (already pre-loaded in R). What will happen now is that if we, for
+example, call the `filter()` function, R will use the `dplyr::filter()` version
+and not the `stats::filter()` one. This happens because, if conflicted, by 
+default R uses the function from the most recently loaded package. Conflicted
+functions may cause you some trouble in the future, so it is important that we
+are aware of them so that we can properly handle them, if we want.
+
+To do so, we just need the following functions from the conflicted package:  
+
+- `conflicted::conflict_scout()`: Shows us any conflicted functions.  
+- `conflict_prefer("function", "package_prefered")`:  Allows us to choose the
+default function we want from now on.  
+
+It is also important to know that we can, at any time, just call the function
+directly from the package we want, such as `stats::filter()`.
+
 Even with the use of an RStudio project, it can be difficult to learn how to
 specify paths to file locations. Enter the **here** package! The here package
 creates paths relative to the top-level directory (your RStudio project). These
