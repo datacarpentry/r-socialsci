@@ -99,7 +99,7 @@ When you load  the **`tidyverse`** (`library(tidyverse)`), the core packages
 Before proceeding, however, this is a good opportunity to talk about conflicts.
 Certain packages we load can end up introducing function names that are already
 in use by pre-loaded R packages. For instance, when we load the tidyverse 
-package below, we will create two conflicting functions: `filter()` and `lag()`.
+package below, we will introduce two conflicting functions: `filter()` and `lag()`.
 This happens because filter and lag are already functions used by the stats
 package (already pre-loaded in R). What will happen now is that if we, for
 example, call the `filter()` function, R will use the `dplyr::filter()` version
