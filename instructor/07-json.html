@@ -270,7 +270,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Processing JSON data (Optional)</h1>
-        <p> Last updated on 2023-04-04 | 
+        <p> Last updated on 2023-04-26 | 
         
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/07-json.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -361,26 +361,41 @@ data</li>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">jsonlite</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="fu">read_json</span><span class="op">(</span>path<span class="op">=</span><span class="st">'https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json'</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="kw">library</span><span class="op">(</span><span class="va">jsonlite</span><span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">WARNING<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<p>As with reading in a CSV, you have a couple of options for how to
+access the JSON file.</p>
+<p>You can read the JSON file directly into R with
+<code>read_json()</code> or the comparable <code>fromJSON()</code>
+function, though this does not download the file.</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="warning" tabindex="0"><code>Warning in open.connection(con, "rb"): cannot open URL
-'https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json':
-HTTP status was '404 Not Found'</code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="fu">read_json</span><span class="op">(</span></span>
+<span>  <span class="st">"https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI.json"</span></span>
+<span>  <span class="op">)</span></span></code></pre>
 </div>
-<div class="codewrapper">
-<h3 class="code-label">ERROR<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<p>To download the file you can copy and paste the contents of the file
+on <a href="https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI.json" class="external-link">GitHub</a>,
+creating a <code>SAFI.json</code> file in your <code>data</code>
+directory, or you can download the file with R.</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="error" tabindex="0"><code>Error in open.connection(con, "rb"): cannot open the connection to 'https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json'</code></pre>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">download.file</span><span class="op">(</span></span>
+<span>  <span class="st">"https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI.json"</span>,</span>
+<span>   <span class="st">"data/SAFI.json"</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>If you’ve already downloaded the data to your <code>data</code>
-directory, simply run</p>
-<p>`{r eval=FALSE} json_data &lt;- read_json(path=‘data/SAFI.json’)</p>
-<p>````</p>
+<p>Once you have the data downloaded, you can read it into R with
+<code>read_json()</code>:</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="fu">read_json</span><span class="op">(</span><span class="st">"data/SAFI.json"</span><span class="op">)</span></span></code></pre>
+</div>
 <p>We can see that a new object called json_data has appeared in our
 Environment. It is described as a Large list (131 elements). In this
 current form, our data is messy. You can have a glimpse of it with the
@@ -393,17 +408,17 @@ simplify vectors is set to FALSE. This means that the default setting
 does not simplify nested lists into vectors and data frames. However, we
 can set this to TRUE, and our data will be read directly as a
 dataframe:</p>
-<div class="codewrapper sourceCode" id="cb4">
+<div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="fu">read_json</span><span class="op">(</span>path<span class="op">=</span><span class="st">'data/SAFI.json'</span>, simplifyVector <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="fu">read_json</span><span class="op">(</span><span class="st">"data/SAFI.json"</span>, simplifyVector <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Now we can see we have this json data in a dataframe format. For
 consistency with the rest of the lesson, let’s coerce it to be a tibble
 and use <code>glimpse</code> to take a peek inside (these functions were
 loaded by <code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code>):</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -502,7 +517,7 @@ we use single bracket, but you could also use double bracket
 (<code>[[</code>). The <code>[[</code> form allows only a single element
 to be selected using integer or character indices, whereas
 <code>[</code> allows indexing by vectors.</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -518,11 +533,11 @@ to be selected using integer or character indices, whereas
 <p>We can also choose to view the nested dataframes at all the rows of
 our main dataframe where a particular condition is met (for example
 where the value for the variable <em>C06_rooms</em> is equal to 4):</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">json_data</span><span class="op">$</span><span class="va">F_liv</span><span class="op">[</span><span class="fu">which</span><span class="op">(</span><span class="va">json_data</span><span class="op">$</span><span class="va">C06_rooms</span><span class="op">==</span><span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">json_data</span><span class="op">$</span><span class="va">F_liv</span><span class="op">[</span><span class="fu">which</span><span class="op">(</span><span class="va">json_data</span><span class="op">$</span><span class="va">C06_rooms</span> <span class="op">==</span> <span class="fl">4</span><span class="op">)</span><span class="op">]</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -556,32 +571,32 @@ data frame with 0 columns and 0 rows
 </section><section id="write-the-json-file-to-csv"><h2 class="section-heading">Write the JSON file to csv<a class="anchor" aria-label="anchor" href="#write-the-json-file-to-csv"></a>
 </h2>
 <hr class="half-width"><p>If we try to write our json_data dataframe to a csv as we would
-usuall in a regular dataframe, we will get an error that tells us we
+usually in a regular dataframe, we will get an error that tells us we
 have an “unimplemented type ‘list’ in ‘EncodeElement’”. This is because
 of the columns in our dataframes which are lists, or nested dataframes.
 You can try yourself:</p>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">json_data</span>, file <span class="op">=</span> <span class="st">"SAFI_from_JSON.csv"</span><span class="op">)</span></span></code></pre>
-</div>
-<p>To write out as a csv, we will need to “flatten” these columns. One
-thing you can do to achieve this is to turn all of the columns of your
-dataframe to “character” types.</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">flattened_json_data</span> <span class="op">&lt;-</span> <span class="fu">apply</span><span class="op">(</span><span class="va">json_data</span>,<span class="fl">2</span>,<span class="va">as.character</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">json_data</span>, <span class="st">"SAFI_from_JSON.csv"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Now you can write this to a csv file:</p>
+<p>To write out as a csv, we will need to “flatten” these columns. One
+thing you can do to achieve this is to turn all of the columns of your
+dataframe to “character” types.</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">flattened_json_data</span>, file <span class="op">=</span> <span class="st">"data_output/SAFI_from_JSON.csv"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">flattened_json_data</span> <span class="op">&lt;-</span> <span class="fu">apply</span><span class="op">(</span><span class="va">json_data</span>, <span class="fl">2</span>, <span class="va">as.character</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+</div>
+<p>Now you can write this to a csv file:</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">flattened_json_data</span>, <span class="st">"data_output/SAFI_from_JSON.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 <p>Note: this means that when you read this csv back into R, the column
 of the nested dataframes will now be read in as a character vector.
@@ -590,11 +605,11 @@ it is probably better to keep storing these data in a JSON format if you
 will have to do this.</p>
 <p>You can also write out the individual nested dataframes to a csv. For
 example:</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">json_data</span><span class="op">$</span><span class="va">F_liv</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, file <span class="op">=</span> <span class="st">"data_output/F_liv_row1.csv"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">write_csv</span><span class="op">(</span><span class="va">json_data</span><span class="op">$</span><span class="va">F_liv</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>, <span class="st">"data_output/F_liv_row1.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
@@ -666,8 +681,8 @@ csv file</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/07-json.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/07-json.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2023-04-04",
-  "datePublished": "2023-04-25"
+  "dateModified": "2023-04-26",
+  "datePublished": "2023-04-26"
 }
 
   </script><script>
