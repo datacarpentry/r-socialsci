@@ -58,34 +58,45 @@ Because detailed surveys are by nature nested structures making it possible to r
 
 ```r
 library(jsonlite)
-
-json_data <- read_json(path='https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json')
 ```
 
-```{.warning}
-Warning in open.connection(con, "rb"): cannot open URL
-'https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json':
-HTTP status was '404 Not Found'
+As with reading in a CSV, you have a couple of options for how to access the JSON file.
+
+You can read the JSON file directly into R with `read_json()` or the comparable `fromJSON()`
+function, though this does not download the file.
+
+
+```r
+json_data <- read_json(
+  "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI.json"
+  )
 ```
 
-```{.error}
-Error in open.connection(con, "rb"): cannot open the connection to 'https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/data/SAFI.json'
+To download the file you can copy and paste the contents of the file on
+[GitHub](https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI.json),
+creating a `SAFI.json` file in your `data` directory, or you can download the file with R.
+
+
+```r
+download.file(
+  "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI.json",
+   "data/SAFI.json", mode = "wb")
 ```
 
-If you've already downloaded the data to your `data` directory, simply run
+Once you have the data downloaded, you can read it into R with `read_json()`:
 
-\`{r eval=FALSE}
-json\_data \<- read\_json(path='data/SAFI.json')
 
-````
+```r
+json_data <- read_json("data/SAFI.json")
+```
 
-We can see that a new object called json_data has appeared in our Environment. It is described as a Large list (131 elements). In this current form, our data is messy. You can have a glimpse of it with the `head()` or `view()` functions. It will look not much more structured than if you were to open the JSON file with a text editor.
+We can see that a new object called json\_data has appeared in our Environment. It is described as a Large list (131 elements). In this current form, our data is messy. You can have a glimpse of it with the `head()` or `view()` functions. It will look not much more structured than if you were to open the JSON file with a text editor.
 
 This is because, by default, the `read_json()` function's parameter `simplifyVector`, which specifies whether or not to simplify vectors is set to FALSE. This means that the default setting does not simplify nested lists into vectors and data frames. However, we can set this to TRUE, and our data will be read directly as a dataframe:
 
 
 ```r
-json_data <- read_json(path='data/SAFI.json', simplifyVector = TRUE)
+json_data <- read_json("data/SAFI.json", simplifyVector = TRUE)
 ```
 
 Now we can see we have this json data in a dataframe format. For consistency with the rest of
@@ -196,7 +207,7 @@ We can also choose to view the nested dataframes at all the rows of our main dat
 
 
 ```r
-json_data$F_liv[which(json_data$C06_rooms==4)]
+json_data$F_liv[which(json_data$C06_rooms == 4)]
 ```
 
 ```{.output}
@@ -229,18 +240,18 @@ data frame with 0 columns and 0 rows
 
 ## Write the JSON file to csv
 
-If we try to write our json\_data dataframe to a csv as we would usuall in a regular dataframe, we will get an error that tells us we have an "unimplemented type 'list' in 'EncodeElement'". This is because of the columns in our dataframes which are lists, or nested dataframes. You can try yourself:
+If we try to write our json\_data dataframe to a csv as we would usually in a regular dataframe, we will get an error that tells us we have an "unimplemented type 'list' in 'EncodeElement'". This is because of the columns in our dataframes which are lists, or nested dataframes. You can try yourself:
 
 
 ```r
-write_csv(json_data, file = "SAFI_from_JSON.csv")
+write_csv(json_data, "SAFI_from_JSON.csv")
 ```
 
 To write out as a csv, we will need to "flatten" these columns. One thing you can do to achieve this is to turn all of the columns of your dataframe to "character" types.
 
 
 ```r
-flattened_json_data <- apply(json_data,2,as.character) %>%
+flattened_json_data <- apply(json_data, 2, as.character) %>%
   as_tibble()
 ```
 
@@ -248,7 +259,7 @@ Now you can write this to a csv file:
 
 
 ```r
-write_csv(flattened_json_data, file = "data_output/SAFI_from_JSON.csv")
+write_csv(flattened_json_data, "data_output/SAFI_from_JSON.csv")
 ```
 
 Note: this means that when you read this csv back into R, the column of the nested dataframes will now be read in as a character vector. Converting it back to list to extract elements might be complicated, so it is probably better to keep storing these data in a JSON format if you will have to do this.
@@ -257,7 +268,7 @@ You can also write out the individual nested dataframes to a csv. For example:
 
 
 ```r
-write_csv(json_data$F_liv[[1]], file = "data_output/F_liv_row1.csv")
+write_csv(json_data$F_liv[[1]], "data_output/F_liv_row1.csv")
 ```
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
