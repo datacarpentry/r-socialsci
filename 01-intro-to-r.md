@@ -91,7 +91,7 @@ doubt, check the help to see if the name is already in use. It's also best to
 avoid dots (`.`) within an object name as in `my.dataset`. There are many
 objects in R with dots in their names for historical reasons, but because dots
 have a special meaning in R (for methods) and other programming languages, it's
-best to avoid them. The recommended writing style it's called snake\_case, which
+best to avoid them. The recommended writing style is called snake\_case, which
 implies using only lowercaseletters and numbers and separating each word with
 underscores (e.g., animals\_weight, average\_income). It is also recommended to use nouns for object names, and
 verbs for function names. It's important to be consistent in the styling of your
