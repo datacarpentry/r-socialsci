@@ -381,7 +381,7 @@ uses one backtick (`r`), whereas code chunks use three backticks
 (``` r ```).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2023-04-26.  
+today's date is 2023-05-01.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
@@ -527,6 +527,27 @@ software (you'll only need to do this once) and then when you **Knit** to pdf `t
 will automatically detect and install any additional LaTeX packages that are needed to
 produce the pdf document. Visit the [tinytex website](https://yihui.org/tinytex/)
 for more information.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Note: Inserting citations into an R Markdown file
+
+It is possible to insert citations into an R Markdown file using the
+editor toolbar. The editor toolbar includes commonly seen formatting
+buttons generally seen in text editors (e.g., bold and italic
+buttons). The toolbar is accessible by using the settings dropdown
+menu (next to the 'Knit' dropdown menu) to select 'Use Visual Editor',
+also accessible through the shortcut 'Crtl+Shift+F4'. From here,
+clicking 'Insert' allows 'Citation' to be selected (shortcut:
+'Crtl+Shift+F8'). For example, searching '10.1007/978-3-319-24277-4'
+in 'From DOI' and inserting will provide the citation for `ggplot2`
+[@wickham2016]. This will also save the citation(s) in
+'references.bib' in the current working directory. Visit the [R Studio
+website](https://rstudio.github.io/visual-markdown-editing/) for more
+information. Tip: obtaining citation information from relevant
+packages can be done by using `citation("package")`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
