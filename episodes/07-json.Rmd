@@ -108,7 +108,15 @@ glimpse(json_data)
 
 Looking good, but you might notice that actually we have a variable, *F\_liv* that is a list of dataframes! It is very important to know what you are expecting from your data to be able to look for things like this. For example, if you are getting your JSON from an API, have a look at the API documentation, so you know what to look for.
 
-So what can we do about this column of dataframes? Well first things first, we can access each one. For  example to access the dataframe in the first row, we can use the  bracket (`[`) subsetting. Here we use single bracket, but you could also use double bracket (`[[`). The `[[` form allows only a single element to be selected using integer or character indices, whereas `[` allows indexing by vectors.
+Often when we have a very large number of columns, it can become difficult to determine all the variables which may require some special attention, like lists. Fortunately, we can use special verbs like `where` to quickly select all the list columns.
+
+```{r}
+json_data %>%
+    select(where(is.list)) %>%
+    glimpse()
+```
+
+So what can we do about *F\_liv*, the column of dataframes? Well first things first, we can access each one. For  example to access the dataframe in the first row, we can use the  bracket (`[`) subsetting. Here we use single bracket, but you could also use double bracket (`[[`). The `[[` form allows only a single element to be selected using integer or character indices, whereas `[` allows indexing by vectors.
 
 ```{r}
 json_data$F_liv[1]
@@ -122,23 +130,25 @@ json_data$F_liv[which(json_data$C06_rooms == 4)]
 
 ## Write the JSON file to csv
 
-If we try to write our json\_data dataframe to a csv as we would usually in a regular dataframe, we will get an error that tells us we have an "unimplemented type 'list' in 'EncodeElement'". This is because of the columns in our dataframes which are lists, or nested dataframes. You can try yourself:
+If we try to write our json\_data dataframe to a csv as we would usually in a regular dataframe, we won't get the desired result. Using the `write_csv` function from the `{readr}` package won't give you an error for list columns, but you'll only see missing (i.e. `NA`) values in these columns. Let's try it out to confirm:
 
 ```{r, eval=FALSE}
-write_csv(json_data, "SAFI_from_JSON.csv")
+write_csv(json_data, "json_data_with_list_columns.csv")
+read_csv("json_data_with_list_columns.csv")
 ```
 
-To write out as a csv, we will need to "flatten" these columns. One thing you can do to achieve this is to turn all of the columns of your dataframe to "character" types.
+To write out as a csv while maintaining the data within the list columns, we will need to "flatten" these columns. One way to do this is to convert these list columns into character types. (However, we don't want to change the data types for any of the other columns). Here's one way to do this using tidyverse. This command only applies the `as.character` command to those columns 'where' `is.list` is `TRUE`.
 
 ```{r}
-flattened_json_data <- apply(json_data, 2, as.character) %>%
-  as_tibble()
+flattened_json_data <- json_data %>% 
+  mutate(across(where(is.list), as.character))
+flattened_json_data
 ```
 
 Now you can write this to a csv file:
 
 ```{r, eval=FALSE}
-write_csv(flattened_json_data, "data_output/SAFI_from_JSON.csv")
+write_csv(flattened_json_data, "data_output/json_data_with_flattened_list_columns.csv")
 ```
 
 Note: this means that when you read this csv back into R, the column of the nested dataframes will now be read in as a character vector. Converting it back to list to extract elements might be complicated, so it is probably better to keep storing these data in a JSON format if you will have to do this.
