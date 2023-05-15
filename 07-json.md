@@ -190,7 +190,35 @@ $ `_members_count`               <chr> "3", "7", "10", "7", "7", "3", "6", "12�
 
 Looking good, but you might notice that actually we have a variable, *F\_liv* that is a list of dataframes! It is very important to know what you are expecting from your data to be able to look for things like this. For example, if you are getting your JSON from an API, have a look at the API documentation, so you know what to look for.
 
-So what can we do about this column of dataframes? Well first things first, we can access each one. For  example to access the dataframe in the first row, we can use the  bracket (`[`) subsetting. Here we use single bracket, but you could also use double bracket (`[[`). The `[[` form allows only a single element to be selected using integer or character indices, whereas `[` allows indexing by vectors.
+Often when we have a very large number of columns, it can become difficult to determine all the variables which may require some special attention, like lists. Fortunately, we can use special verbs like `where` to quickly select all the list columns.
+
+
+```r
+json_data %>%
+    select(where(is.list)) %>%
+    glimpse()
+```
+
+```{.output}
+Rows: 131
+Columns: 14
+$ F_liv                  <list> [<data.frame[1 x 2]>], [<data.frame[3 x 2]>], …
+$ `_remitters`           <list> [<data.frame[0 x 0]>], [<data.frame[0 x 0]>], …
+$ E18_months_no_water    <list> <NULL>, <"Aug", "Sept">, <NULL>, <NULL>, <NULL…
+$ F05_money_source       <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL>…
+$ E_yes_group            <list> [<data.frame[0 x 0]>], [<data.frame[3 x 14]>],…
+$ D_plots                <list> [<data.frame[2 x 8]>], [<data.frame[3 x 8]>], …
+$ F_items                <list> [<data.frame[3 x 3]>], [<data.frame[2 x 3]>], …
+$ F10_liv_owned          <list> "poultry", <"oxen", "cows", "goats">, "none", …
+$ F14_items_owned        <list> <"bicycle", "television", "solar_panel", "tabl…
+$ G02_months_lack_food   <list> "Jan", <"Jan", "Sept", "Oct", "Nov", "Dec">, <…
+$ E22_res_change         <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL>…
+$ `_members`             <list> [<data.frame[3 x 12]>], [<data.frame[7 x 12]>]…
+$ G03_no_food_mitigation <list> <"na", "rely_less_food", "reduce_meals", "day_…
+$ E_no_group             <list> [<data.frame[2 x 6]>], [<data.frame[0 x 0]>], …
+```
+
+So what can we do about *F\_liv*, the column of dataframes? Well first things first, we can access each one. For  example to access the dataframe in the first row, we can use the  bracket (`[`) subsetting. Here we use single bracket, but you could also use double bracket (`[[`). The `[[` form allows only a single element to be selected using integer or character indices, whereas `[` allows indexing by vectors.
 
 
 ```r
@@ -240,26 +268,51 @@ data frame with 0 columns and 0 rows
 
 ## Write the JSON file to csv
 
-If we try to write our json\_data dataframe to a csv as we would usually in a regular dataframe, we will get an error that tells us we have an "unimplemented type 'list' in 'EncodeElement'". This is because of the columns in our dataframes which are lists, or nested dataframes. You can try yourself:
+If we try to write our json\_data dataframe to a csv as we would usually in a regular dataframe, we won't get the desired result. Using the `write_csv` function from the `{readr}` package won't give you an error for list columns, but you'll only see missing (i.e. `NA`) values in these columns. Let's try it out to confirm:
 
 
 ```r
-write_csv(json_data, "SAFI_from_JSON.csv")
+write_csv(json_data, "json_data_with_list_columns.csv")
+read_csv("json_data_with_list_columns.csv")
 ```
 
-To write out as a csv, we will need to "flatten" these columns. One thing you can do to achieve this is to turn all of the columns of your dataframe to "character" types.
+To write out as a csv while maintaining the data within the list columns, we will need to "flatten" these columns. One way to do this is to convert these list columns into character types. (However, we don't want to change the data types for any of the other columns). Here's one way to do this using tidyverse. This command only applies the `as.character` command to those columns 'where' `is.list` is `TRUE`.
 
 
 ```r
-flattened_json_data <- apply(json_data, 2, as.character) %>%
-  as_tibble()
+flattened_json_data <- json_data %>% 
+  mutate(across(where(is.list), as.character))
+flattened_json_data
+```
+
+```{.output}
+# A tibble: 131 × 74
+   C06_rooms B19_grand_liv A08_ward E01_water_use B18_sp_parents_liv
+       <int> <chr>         <chr>    <chr>         <chr>             
+ 1         1 no            ward2    no            yes               
+ 2         1 yes           ward2    yes           yes               
+ 3         1 no            ward2    no            no                
+ 4         1 no            ward2    no            no                
+ 5         1 yes           ward2    no            no                
+ 6         1 no            ward2    no            no                
+ 7         1 yes           ward2    yes           no                
+ 8         3 yes           ward1    yes           yes               
+ 9         1 yes           ward2    yes           no                
+10         5 no            ward2    yes           no                
+# ℹ 121 more rows
+# ℹ 69 more variables: B16_years_liv <int>, E_yes_group_count <chr>,
+#   F_liv <chr>, `_note2` <lgl>, instanceID <chr>, B20_sp_grand_liv <chr>,
+#   F10_liv_owned_other <lgl>, `_note1` <lgl>, F12_poultry <chr>,
+#   D_plots_count <chr>, C02_respondent_wall_type_other <lgl>,
+#   C02_respondent_wall_type <chr>, C05_buildings_in_compound <int>,
+#   `_remitters` <chr>, E18_months_no_water <chr>, F07_use_income <chr>, …
 ```
 
 Now you can write this to a csv file:
 
 
 ```r
-write_csv(flattened_json_data, "data_output/SAFI_from_JSON.csv")
+write_csv(flattened_json_data, "data_output/json_data_with_flattened_list_columns.csv")
 ```
 
 Note: this means that when you read this csv back into R, the column of the nested dataframes will now be read in as a character vector. Converting it back to list to extract elements might be complicated, so it is probably better to keep storing these data in a JSON format if you will have to do this.
