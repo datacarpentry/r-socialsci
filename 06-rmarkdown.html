@@ -278,7 +278,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Getting started with R Markdown (Optional)</h1>
-        <p> Last updated on 2023-05-02 | 
+        <p> Last updated on 2023-05-16 | 
         
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/06-rmarkdown.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -466,28 +466,34 @@ by using the keyboard shortcuts
 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>I</kbd> on Windows and Linux, and
 <kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd> on Mac.</p>
 <p>The syntax of a code chunk is:</p>
-<pre>
-```{r chunk-name}
-Here is where you place the R code that you want to run.
-```
-</pre>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r chunk-name}</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">Here is where you place the R code that you want to run.</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre>
+</div>
 <p>An R Markdown document knows that this text is not part of the report
-from the <code>&amp;#96;&amp;#96;&amp;#96</code> that begins and ends
-the chunk. It also knows that the code inside of the chunk is R code
-from the <code>r</code> inside of the curly braces (<code>{}</code>).
-After the <code>r</code> you can add a name for the code chunk . Naming
-a chunk is optional, but recommended. Each chunk name must be unique,
-and only contain alphanumeric characters and <code>-</code>.</p>
+from the <code>```</code> that begins and ends the chunk. It also knows
+that the code inside of the chunk is R code from the <code>r</code>
+inside of the curly braces (<code>{}</code>). After the <code>r</code>
+you can add a name for the code chunk . Naming a chunk is optional, but
+recommended. Each chunk name must be unique, and only contain
+alphanumeric characters and <code>-</code>.</p>
 <p>To load <strong>tidyverse</strong> and our
 <code>SAFI_clean.csv</code> file, we will insert a chunk and call it
 ‘setup’. Since we don’t want this code or the output to show in our
 knitted HTML document, we add an <code>include = FALSE</code> option
 after the code chunk name (<code>{r setup, include = FALSE}</code>).</p>
-<pre>
-```{r setup, include = FALSE}
-library(tidyverse)
-library(here)
-interviews 
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include = FALSE}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(here)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">interviews &lt;- read_csv(here("data/SAFI_clean.csv"), na = "NULL")</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre>
+</div>
 <div id="callout1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -500,12 +506,12 @@ interviews
 are relative to the .Rmd document, <strong>not</strong> the project
 root.</p>
 <p>As suggested in the Starting with Data episode, we highly recommend
-the use of the <code><span><span class="fu">here</span><span class="op">(</span><span class="op">)</span></span></code> function to keep the file paths
+the use of the <code>here()</code> function to keep the file paths
 consistent within your project.</p>
 </div>
 </div>
 </div>
-</pre></section><section id="insert-table"><h2 class="section-heading">Insert table<a class="anchor" aria-label="anchor" href="#insert-table"></a>
+</section><section id="insert-table"><h2 class="section-heading">Insert table<a class="anchor" aria-label="anchor" href="#insert-table"></a>
 </h2>
 <hr class="half-width"><p>Next, we will re-create a table from the Data Wrangling episode which
 shows the average household size grouped by <code>village</code> and
@@ -525,7 +531,7 @@ the output of your R code and knits it into a nice looking HTML table.
 You can also specify different aspects of the table, e.g. the column
 names, a caption, etc.</p>
 <p>Run the code chunk to make sure you get the desired output.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -750,7 +756,7 @@ the output.</p>
   Solution to Exercise
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Create a chunk with <code>{r eval = FALSE, echo = FALSE}</code>, then
 create another chunk with <code>{r include = FALSE}</code> to compare.
@@ -773,14 +779,14 @@ chunk is the number of backticks. In-line R code uses one backtick
 (<code>r</code>), whereas code chunks use three backticks
 (<code>r</code>).</p>
 <p>For example, today’s date is <code>`r Sys.Date()`</code>, will be
-rendered as: today’s date is 2023-05-02.<br>
+rendered as: today’s date is 2023-05-16.<br>
 The code will display today’s date in the output document (well,
 technically the date the document was last knitted).</p>
 <p>The best way to use in-line R code, is to minimise the amount of code
 you need to produce the in-line output by preparing the output in code
 chunks. Let’s say we’re interested in presenting the average household
 size in a village.</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -809,7 +815,7 @@ more colourful and a little less boring. We will use the
 <code>interview_plotting</code> data from the previous episode.</p>
 <p>If you were unable to complete the previous lesson or did not save
 the data, then you can create it in a new code chunk.</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -856,9 +862,9 @@ the <code>interviews_plotting</code> data frame.</p>
   Solution to Exercise
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -872,14 +878,16 @@ the <code>interviews_plotting</code> data frame.</p>
 </div>
 <p>We can also create a caption with the chunk option
 <code>fig.cap</code>.</p>
-<pre>
-```{r chunk-name, fig.cap = "I made this plot while attending an
-awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
-Code for plot
-```
-</pre>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r chunk-name, fig.cap = "I made this plot while attending an</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">awesome Data Carpentries workshop where I learned a ton of cool stuff!"}</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">Code for plot</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre>
+</div>
 <p>…or, ideally, something more informative.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1043,7 +1051,7 @@ document</li>
   "url": "https://datacarpentry.org/r-socialsci/06-rmarkdown.html",
   "identifier": "https://datacarpentry.org/r-socialsci/06-rmarkdown.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2023-05-02",
+  "dateModified": "2023-05-16",
   "datePublished": "2023-05-16"
 }
 
