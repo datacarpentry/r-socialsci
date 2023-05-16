@@ -211,14 +211,15 @@ and <kbd>Cmd</kbd>\+<kbd>Option</kbd>\+<kbd>I</kbd> on Mac.
 
 The syntax of a code chunk is:
 
-<pre>
-&#96;&#96;&#96;{r chunk-name}
+
+````markdown
+```{r chunk-name}
 Here is where you place the R code that you want to run.
-&#96;&#96;&#96;
-</pre>
+```
+````
 
 An R Markdown document knows that this text is not part of the report from the
-`&#96;&#96;&#96` that begins and ends the chunk. It also knows that the code
+```` ``` ```` that begins and ends the chunk. It also knows that the code
 inside of the chunk is R code from the `r` inside of the curly braces (`{}`).
 After the `r` you can add a name for the code chunk . Naming a chunk is
 optional, but recommended. Each chunk name must be unique, and only contain
@@ -231,14 +232,14 @@ call it 'setup'. Since we don't want this code or the output to show in our
 knitted HTML document, we add an `include = FALSE` option after the code chunk
 name (`{r setup, include = FALSE}`).
 
-<pre>
-&#96;&#96;&#96;{r setup, include = FALSE}
+
+````markdown
+```{r setup, include = FALSE}
 library(tidyverse)
 library(here)
 interviews <- read_csv(here("data/SAFI_clean.csv"), na = "NULL")
-&#96;&#96;&#96;
-</pre>
-
+```
+````
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Important Note!
@@ -381,7 +382,7 @@ uses one backtick (`r`), whereas code chunks use three backticks
 (``` r ```).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2023-05-02.  
+today's date is 2023-05-16.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
@@ -478,12 +479,13 @@ interviews_plotting %>%
 
 We can also create a caption with the chunk option `fig.cap`.
 
-<pre>
-&#96;&#96;&#96;{r chunk-name, fig.cap = "I made this plot while attending an
+
+````markdown
+```{r chunk-name, fig.cap = "I made this plot while attending an
 awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
 Code for plot
-&#96;&#96;&#96;
-</pre>
+```
+````
 
 ...or, ideally, something more informative.
 
