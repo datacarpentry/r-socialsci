@@ -238,14 +238,13 @@ call it 'setup'. Since we don't want this code or the output to show in our
 knitted HTML document, we add an `include = FALSE` option after the code chunk
 name (`{r setup, include = FALSE}`).
 
-<pre>
-&#96;&#96;&#96;{r setup, include = FALSE}
+````{verbatim, lang = "markdown"}
+```{r setup, include = FALSE}
 library(tidyverse)
 library(here)
 interviews <- read_csv(here("data/SAFI_clean.csv"), na = "NULL")
-&#96;&#96;&#96;
-</pre>
-
+```
+````
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Important Note!
