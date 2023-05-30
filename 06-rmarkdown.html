@@ -194,7 +194,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Getting started with R Markdown (Optional)
+        7. Getting started with R Markdown (Optional)
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -332,7 +332,7 @@ you will be able to recompile the report without making any changes in
 the actual document.</p>
 <p>The <strong>rmarkdown</strong> package comes pre-installed with
 RStudio, so no action is necessary.</p>
-<figure><img src="fig/rmarkdown_wizards.png" alt="R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst" width="100%" style="display: block; margin: auto;" class="figure mx-auto d-block"><figcaption>
+<figure><img src="fig/rmarkdown_wizards.png" alt="R Markdown wizard monsters creating a R Markdown document from a recipe. Art by Allison Horst" width="100%" style="display: block; margin: auto;" class="figure"><figcaption>
 Image credit:
 <a href="https://github.com/allisonhorst/stats-illustrations" class="external-link">Allison
 Horst</a>
@@ -494,12 +494,12 @@ after the code chunk name (<code>{r setup, include = FALSE}</code>).</p>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">interviews &lt;- read_csv(here("data/SAFI_clean.csv"), na = "NULL")</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="important-note" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="important-note" class="callout-inner">
-<h3 class="callout-title">Important Note!<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Important Note!<a class="anchor" aria-label="anchor" href="#important-note"></a>
 </h3>
 <div class="callout-content">
 <p>The file paths you give in a .Rmd document, e.g. to load a .csv file,
@@ -714,12 +714,12 @@ messages produced by your code.</td>
 </td>
 <td>Where the figure from your R code chunk should be output on the
 page</td>
-</tr></tbody></table><div id="callout2" class="callout callout">
+</tr></tbody></table><div id="tip" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <ul><li>The default settings for the above chunk options are all
@@ -732,12 +732,12 @@ for <strong>every</strong> code chunk in the document.</li>
 </ul></div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="exercise" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise"></a>
 </h3>
 <div class="callout-content">
 <p>Play around with the different options in the chunk with the code for
@@ -839,12 +839,12 @@ the data, then you can create it in a new code chunk.</p>
 <span>  <span class="fu">mutate</span><span class="op">(</span>number_months_lack_food <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">.</span>, <span class="va">Jan</span><span class="op">:</span><span class="va">May</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>number_items <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">.</span>, <span class="va">bicycle</span><span class="op">:</span><span class="va">car</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="challenge2" class="callout challenge">
+<div id="exercise-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-1" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-1"></a>
 </h3>
 <div class="callout-content">
 <p>Create a new code chunk for the plot, and copy the code from any of
@@ -913,12 +913,12 @@ author: "Emmet Brickowski"
 date: ""
 output: word_document
 ---</code></pre>
-<div id="callout3" class="callout callout">
+<div id="note-creating-pdf-documents" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="note-creating-pdf-documents" class="callout-inner">
-<h3 class="callout-title">Note: Creating PDF documents<a class="anchor" aria-label="anchor" href="#callout3"></a>
+<h3 class="callout-title">Note: Creating PDF documents<a class="anchor" aria-label="anchor" href="#note-creating-pdf-documents"></a>
 </h3>
 <div class="callout-content">
 <p>Creating .pdf documents may require installation of some extra
@@ -933,13 +933,13 @@ information.</p>
 </div>
 </div>
 </div>
-<div id="callout4" class="callout callout">
+<div id="note-inserting-citations-into-an-r-markdown-file" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="note-inserting-citations-into-an-r-markdown-file" class="callout-inner">
 <h3 class="callout-title">Note: Inserting citations into an R Markdown
-file<a class="anchor" aria-label="anchor" href="#callout4"></a>
+file<a class="anchor" aria-label="anchor" href="#note-inserting-citations-into-an-r-markdown-file"></a>
 </h3>
 <div class="callout-content">
 <p>It is possible to insert citations into an R Markdown file using the
@@ -1028,9 +1028,9 @@ document</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1052,7 +1052,7 @@ document</li>
   "identifier": "https://datacarpentry.org/r-socialsci/06-rmarkdown.html",
   "dateCreated": "2017-05-25",
   "dateModified": "2023-05-16",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>

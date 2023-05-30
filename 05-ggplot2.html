@@ -185,7 +185,7 @@
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
-        Data Visualisation with ggplot2
+        6. Data Visualisation with ggplot2
         </span>
       </button>
     </div><!--/div.accordion-header-->
@@ -476,12 +476,12 @@ above plot can also be generated with code like this, similar to the
 <span><span class="va">interviews_plot</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="callout1" class="callout callout">
+<div id="notes" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="notes" class="callout-inner">
-<h3 class="callout-title">Notes<a class="anchor" aria-label="anchor" href="#callout1"></a>
+<h3 class="callout-title">Notes<a class="anchor" aria-label="anchor" href="#notes"></a>
 </h3>
 <div class="callout-content">
 <ul><li>Anything you put in the <code>ggplot()</code> function can be seen
@@ -637,12 +637,12 @@ observation:</p>
 <figure><img src="fig/05-ggplot2-rendered-color-by-species-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>There appears to be a positive trend between number of household
 members and number of items owned (from the list provided).
 Additionally, this trend does not appear to be different by village.</p>
-<div id="callout2" class="callout callout">
+<div id="notes-1" class="callout callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="notes-1" class="callout-inner">
-<h3 class="callout-title">Notes<a class="anchor" aria-label="anchor" href="#callout2"></a>
+<h3 class="callout-title">Notes<a class="anchor" aria-label="anchor" href="#notes-1"></a>
 </h3>
 <div class="callout-content">
 <p>As you will learn, there are multiple ways to plot the a relationship
@@ -662,12 +662,12 @@ gives point sizes associated to particular numbers of items.</p>
 <figure><img src="fig/05-ggplot2-rendered-color-by-species-notes-1.png" alt="Previous plot with dots colored by village." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure></div>
 </div>
 </div>
-<div id="challenge1" class="callout challenge">
+<div id="exercise" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#challenge1"></a>
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise"></a>
 </h3>
 <div class="callout-content">
 <p>Use what you just learned to create a scatter plot of
@@ -737,12 +737,12 @@ than burntbrick houses.</p>
 <p>Notice how the boxplot layer is behind the jitter layer? What do you
 need to change in the code to put the boxplot layer in front of the
 jitter layer?</p>
-<div id="challenge2" class="callout challenge">
+<div id="exercise-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-1" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#challenge2"></a>
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-1"></a>
 </h3>
 <div class="callout-content">
 <p>Boxplots are useful summaries, but hide the <em>shape</em> of the
@@ -781,12 +781,12 @@ where the shape (of the density of points) is drawn.</p>
 </div>
 </div>
 </div>
-<div id="challenge3" class="callout challenge">
+<div id="exercise-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-1" class="callout-inner">
-<h3 class="callout-title">Exercise<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge3"></a>
+<h3 class="callout-title">Exercise<em> (continued)</em><a class="anchor" aria-label="anchor" href="#exercise-1"></a>
 </h3>
 <div class="callout-content">
 <p>So far, we’ve looked at the distribution of room number within wall
@@ -820,12 +820,12 @@ measurements.</li>
 </div>
 </div>
 </div>
-<div id="challenge4" class="callout challenge">
+<div id="exercise-1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-1" class="callout-inner">
-<h3 class="callout-title">Exercise<em> (continued)</em><a class="anchor" aria-label="anchor" href="#challenge4"></a>
+<h3 class="callout-title">Exercise<em> (continued)</em><a class="anchor" aria-label="anchor" href="#exercise-1"></a>
 </h3>
 <div class="callout-content">
 <ul><li>Add colour to the data points on your boxplot according to whether
@@ -924,12 +924,12 @@ percentage of each house type in each village.</p>
 <span>    <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">village</span>, y <span class="op">=</span> <span class="va">percent</span>, fill <span class="op">=</span> <span class="va">respondent_wall_type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span></span></code></pre>
 </div>
-<figure><img src="fig/05-ggplot2-rendered-barplot-wall-type-1.png" alt="Side by side bar plot showing percent of respondents in each village with each wall type." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="challenge5" class="callout challenge">
+<figure><img src="fig/05-ggplot2-rendered-barplot-wall-type-1.png" alt="Side by side bar plot showing percent of respondents in each village with each wall type." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="exercise-2" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-2" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#challenge5"></a>
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-2"></a>
 </h3>
 <div class="callout-content">
 <p>Create a bar plot showing the proportion of respondents in each
@@ -1112,12 +1112,12 @@ theme). The <a href="https://exts.ggplot2.tidyverse.org/" class="external-link">
 extensions website</a> provides a list of packages that extend the
 capabilities of <strong><code>ggplot2</code></strong>, including
 additional themes.</p>
-<div id="discussion1" class="callout discussion">
+<div id="exercise-3" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="exercise-3" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#discussion1"></a>
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-3"></a>
 </h3>
 <div class="callout-content">
 <p>Experiment with at least two different themes. Build the previous
@@ -1214,12 +1214,12 @@ title:</p>
 <span>         y <span class="op">=</span> <span class="st">"Percent of Respondents"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="va">grey_theme</span></span></code></pre>
 </div>
-<figure><img src="fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="discussion2" class="callout discussion">
+<figure><img src="fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><div id="exercise-4" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div id="exercise-4" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#discussion2"></a>
+<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-4"></a>
 </h3>
 <div class="callout-content">
 <p>With all of this information in hand, please take another five
@@ -1316,9 +1316,9 @@ categorical variable.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.11.16" class="external-link">sandpaper (0.11.16)</a>,
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.2" class="external-link">sandpaper (0.12.2)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/carpentries/varnish/tree/0.2.17" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1340,7 +1340,7 @@ categorical variable.</li>
   "identifier": "https://datacarpentry.org/r-socialsci/05-ggplot2.html",
   "dateCreated": "2017-05-25",
   "dateModified": "2023-05-02",
-  "datePublished": "2023-05-16"
+  "datePublished": "2023-05-30"
 }
 
   </script><script>
