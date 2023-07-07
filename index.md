@@ -37,12 +37,12 @@ everything *before* working through this lesson.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
+::::::::::::::::::::::::::::::::::::::::::  instructor
 
 ## For Instructors
 
 If you are teaching this lesson in a workshop, please see the
-[Instructor notes](guide/).
+[Instructor notes](https://datacarpentry.org/r-socialsci/instructor/instructor-notes.html)https://datacarpentry.org/r-socialsci/instructor/instructor-notes.html).
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
