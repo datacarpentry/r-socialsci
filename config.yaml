@@ -71,10 +71,7 @@ episodes:
 # Information for Learners
 learners: 
 - reference.md
-- intro-R-handout.Rmd
-- starting-with-data-handout.Rmd
-- data-wrangling-handout.Rmd
-- data-visualisation-handout.Rmd
+- R-handout.Rmd
 
 # Information for Instructors
 instructors: 
