@@ -311,7 +311,10 @@
       "Package": "curl",
       "Version": "5.0.1",
       "Source": "Repository",
-      "Repository": "RSPM",
+      "Repository": "https://carpentries.r-universe.dev",
+      "RemoteUrl": "https://github.com/jeroen/curl",
+      "RemoteRef": "v5.0.1",
+      "RemoteSha": "ffd6536ef3732b924e141afbc6d2fd5a85a58f18",
       "Requirements": [
         "R"
       ],
@@ -874,6 +877,12 @@
       "Version": "0.12",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemoteType": "standard",
+      "RemotePkgRef": "mime",
+      "RemoteRef": "mime",
+      "RemoteRepos": "https://cran.rstudio.com",
+      "RemotePkgPlatform": "source",
+      "RemoteSha": "0.12",
       "Requirements": [
         "tools"
       ],
@@ -927,10 +936,14 @@
       "Version": "2.0.6",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemoteType": "repository",
+      "RemoteUrl": "https://github.com/jeroen/openssl",
+      "RemoteRef": "v2.0.6",
+      "RemoteSha": "72aa50a79b99bb1eb57a2668b1c437b1adecbabb",
       "Requirements": [
         "askpass"
       ],
-      "Hash": "0f7cd2962e3044bb940cca4f4b5cecbe"
+      "Hash": "51976e7d0fcabbadb3c1baec93103756"
     },
     "palmerpenguins": {
       "Package": "palmerpenguins",
@@ -1549,11 +1562,15 @@
       "Version": "1.3.4",
       "Source": "Repository",
       "Repository": "RSPM",
+      "RemoteType": "repository",
+      "RemoteUrl": "https://github.com/r-lib/xml2",
+      "RemoteRef": "v1.3.4",
+      "RemoteSha": "c64689836e7e610dff94687241113a4f5d86a174",
       "Requirements": [
         "R",
         "methods"
       ],
-      "Hash": "7dc765ac9b909487326a7d471fdd3821"
+      "Hash": "6fa99d3c1ed845155a10aed3812ad92b"
     },
     "yaml": {
       "Package": "yaml",
