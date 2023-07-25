@@ -474,6 +474,8 @@ names of the columns.
 1. Create a tibble (`interviews_100`) containing only the data in
   row 100 of the `interviews` dataset.
 
+Now, continue using `interviews` for each of the following activities: 
+
 2. Notice how `nrow()` gave you the number of rows in the tibble?
 
 - Use that number to pull out just that last row in the tibble.
