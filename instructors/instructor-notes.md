@@ -49,7 +49,7 @@ Then restart RStudio.
 - The main goal here is to help the learners be comfortable with the RStudio
   interface. We use RStudio because it helps make using R more organized and
   user friendly.
-- Go very slowly in the "Getting setup" section. Make sure everyone is following
+- Go very slowly in the "Getting set up" section. Make sure everyone is following
   along (remind learners to use the stickies). Plan with the helpers at this
   point to go around the room, and be available to help. It's important to make
   sure that learners are in the correct working directory, and that they create
