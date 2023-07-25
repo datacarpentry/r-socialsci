@@ -324,13 +324,13 @@ other with "solar panel" in the `items_owned` column.
 separate_rows(items_owned, sep = ";") %>%
 ```
 
-You may notice that one of the columns is called `´NA´`. This is because some
-of the respondents did not own any of the items that was in the interviewer's
-list. We can use the `replace_na()` function to change these `NA` values to
-something more meaningful. The `replace_na()` function expects for you to give
-it a `list()` of columns that you would like to replace the `NA` values in,
-and the value that you would like to replace the `NA`s. This ends up looking
-like this:
+You may notice that the `items_owned` column contains `NA` values. 
+This is because some of the respondents did not own any of the items that was in
+the interviewer's list. We can use the `replace_na()` function to change these
+`NA` values to something more meaningful. The `replace_na()` function expects
+for you to give it a `list()` of columns that you would like to replace the `NA`
+values in, and the value that you would like to replace the `NA`s. This ends up
+looking like this:
 
 ```{r, eval=FALSE}
 replace_na(list(items_owned = "no_listed_items")) %>%
