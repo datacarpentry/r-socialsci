@@ -293,7 +293,7 @@ we did previously with `wall_type`).
 
 ```{r, purl=FALSE}
 interviews_items_owned <- interviews %>%
-  separate_rows(items_owned, sep = ";") %>%
+  separate_longer_delim(items_owned, delim = ";") %>%
   replace_na(list(items_owned = "no_listed_items")) %>%
   mutate(items_owned_logical = TRUE) %>%
     pivot_wider(names_from = items_owned,
@@ -311,7 +311,7 @@ the `interviews` dataframe.
 interviews_items_owned <- interviews %>%
 ```
 
-Then we use the new function `separate_rows()` from the **`tidyr`** package to
+Then we use the new function `separate_longer_delim()` from the **`tidyr`** package to
 separate the values of `items_owned` based on the presence of semi-colons (`;`).
 The values of this variable were multiple items separated by semi-colons, so
 this action creates a row for each item listed in a household's possession.
@@ -321,7 +321,7 @@ panel, that respondent will now have two rows, one with "television" and the
 other with "solar panel" in the `items_owned` column.
 
 ```{r, eval=FALSE}
-separate_rows(items_owned, sep = ";") %>%
+separate_longer_delim(items_owned, delim = ";") %>%
 ```
 
 You may notice that the `items_owned` column contains `NA` values. 
@@ -403,7 +403,7 @@ interviews_items_owned %>%
 
 ```{r}
 interviews_months_lack_food <- interviews %>%
-  separate_rows(months_lack_food, sep = ";") %>%
+  separate_longer_delim(months_lack_food, delim = ";") %>%
   mutate(months_lack_food_logical  = TRUE) %>%
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
@@ -456,7 +456,7 @@ this, we will use `pivot_wider` to expand the `months_lack_food` and
 ```{r, purl=FALSE}
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
-  separate_rows(items_owned, sep = ";") %>%
+  separate_longer_delim(items_owned, delim = ";") %>%
   ## if there were no items listed, changing NA to no_listed_items
   replace_na(list(items_owned = "no_listed_items")) %>%
   mutate(items_owned_logical = TRUE) %>%
@@ -464,7 +464,7 @@ interviews_plotting <- interviews %>%
               values_from = items_owned_logical,
               values_fill = list(items_owned_logical = FALSE)) %>%
   ## pivot wider by months_lack_food
-  separate_rows(months_lack_food, sep = ";") %>%
+  separate_longer_delim(months_lack_food, delim = ";") %>%
   mutate(months_lack_food_logical = TRUE) %>%
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
