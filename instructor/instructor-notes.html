@@ -323,31 +323,6 @@
 <p>The data used for this lesson are in the figshare repository at: <a href="https://figshare.com/articles/SAFI_Survey_Results/6262019" class="external-link">https://figshare.com/articles/SAFI_Survey_Results/6262019</a>.</p>
 <p>This lesson uses <code>SAFI_clean.csv</code>. The direct download
 link for this file is: <a href="https://ndownloader.figshare.com/files/11492171" class="external-link">https://ndownloader.figshare.com/files/11492171</a>.</p>
-<p>When time comes in the lesson to use this file, we recommend that the
-instructors place the <code>download.file()</code> command in the
-Etherpad, and that the learners copy and paste it in their scripts to
-download the file directly from figshare in their working directory. If
-the learners haven’t created the <code>data/</code> directory and/or are
-not in the correct working directory, the <code>download.file()</code>
-command will produce an error. Therefore, it is important to use the
-stickies at this point.</p>
-</section><section id="rstudio-and-multiple-r-installs"><h2 class="section-heading">RStudio and Multiple R Installs<a class="anchor" aria-label="anchor" href="#rstudio-and-multiple-r-installs"></a>
-</h2>
-<hr class="half-width">
-<p>Some learners may have previous R installations. On Mac, if a new
-install is performed, the learner’s system will create a symbolic link,
-pointing to the new install as ‘Current.’ Sometimes this process does
-not occur, and, even though a new R is installed and can be accessed via
-the R console, RStudio does not find it. The net result of this is that
-the learner’s RStudio will be running an older R install. This will
-cause package installations to fail. This can be fixed at the terminal.
-First, check for the appropriate R installation in the library:</p>
-<pre><code>ls -l /Library/Frameworks/R.framework/Versions/</code></pre>
-<p>We are currently using R &gt;=3.2. If it isn’t there, they will need
-to install it. If it is present, you will need to set the symbolic link
-to Current to point to the R &gt;=3.2 directory:</p>
-<pre><code>ln -s /Library/Frameworks/R.framework/Versions/3.x.y /Library/Frameworks/R.framework/Version/Current</code></pre>
-<p>Then restart RStudio.</p>
 </section><section id="narrative"><h2 class="section-heading">Narrative<a class="anchor" aria-label="anchor" href="#narrative"></a>
 </h2>
 <hr class="half-width">
@@ -356,8 +331,7 @@ to Current to point to the R &gt;=3.2 directory:</p>
 </h3>
 <ul>
 <li>The main goal here is to help the learners be comfortable with the
-RStudio interface. We use RStudio because it helps make using R more
-organized and user friendly.</li>
+RStudio interface.</li>
 <li>Go very slowly in the “Getting set up” section. Make sure everyone
 is following along (remind learners to use the stickies). Plan with the
 helpers at this point to go around the room, and be available to help.
@@ -369,27 +343,6 @@ subfolder.</li>
 <div class="section level3">
 <h3 id="intro-to-r">Intro to R<a class="anchor" aria-label="anchor" href="#intro-to-r"></a>
 </h3>
-<ul>
-<li>Why use assignment arrows (&lt;-) over equal signs? Historically,
-the assignment arrow dates back to S. In S, the &lt;- was inspired by
-APL, which had a key for &lt;-. At that time, &lt;- was used for
-variable assignment, because == didn’t exist for equality comparisons.
-Instead, equality was tested with =. So, you needed a different variable
-for assignment.</li>
-</ul>
-<p>Fast forward to today, there really are only a few mechanical reasons
-why &lt;- is preferred over =. Assignment ranks higher in operator
-precedence than =. If you wish to perform variable assignment inside a
-function, &lt;- is the only option.</p>
-<ul>
-<li>When going over the section on assignments, make sure to pause for
-at least 30 seconds when asking “What do you think is the current
-content of the object <code>area_acres</code>? 123.5 or 6.175?”. For
-learners with no programming experience, this is a new and important
-concept.</li>
-<li>Given that the concept of missing data is an important feature of
-the R language, it is worth spending enough time on it.</li>
-</ul>
 </div>
 <div class="section level3">
 <h3 id="starting-with-data">Starting with data<a class="anchor" aria-label="anchor" href="#starting-with-data"></a>
@@ -416,18 +369,7 @@ pipes.</li>
 <li>There is also sometimes some confusion on what the arguments of
 <code>group_by</code> should be, and when to use <code>filter()</code>
 and <code>select()</code>.</li>
-<li>If the code that generates the output for the table
-<code>interviews_plotting</code> (which is used in the following
-episode) causes the following error:</li>
 </ul>
-<blockquote>
-<p>Error: Can’t rename columns that don’t exist.<br>
-x Column NA doesn’t exist.</p>
-</blockquote>
-<p>Make sure you have read in the CSV file with the option that
-interprets the <code>"NULL"</code> string as <code>NA</code>, like
-so:</p>
-<pre><code><span><span class="va">interviews</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"data/SAFI_clean.csv"</span>, na <span class="op">=</span> <span class="st">"NULL"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="visualizing-data-with-ggplot2">Visualizing data with ggplot2<a class="anchor" aria-label="anchor" href="#visualizing-data-with-ggplot2"></a>
@@ -477,18 +419,9 @@ from ZIP file:</p>
 <ul>
 <li>Tools &gt; Install Packages &gt; set to ‘from Zip/TAR’</li>
 </ul>
-<p>It is important that R, and the R packages be installed locally, not
-on a network drive. If a learner is using a machine with multiple users
-where their account is not based locally this can create a variety of
-issues (this often happens on university computers). Hopefully the
-learner will realize these issues beforehand, but depending on the
-machine and how the IT folks that service the computer have things set
-up, it may be very difficult to impossible to make R work without their
-help.</p>
-<p>If learners are having issues with one package, they may have issues
-with another. It’s often easier to make sure they have all the needed
-packages installed at one time, rather than deal with these issues over
-and over. <a href="https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R" class="external-link">Here
+<p>It’s often easier to make sure they have all the needed packages
+installed at one time, rather than deal with these issues over and over.
+<a href="https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R" class="external-link">Here
 is a list of all necessary packages for these lessons.</a></p>
 <p><strong><code>|</code> character on Spanish keyboards:</strong> The
 Spanish Mac keyboard does not have a <code>|</code> key. This character
@@ -560,8 +493,8 @@ Hadley Wickham and Garrett Grolemund.</p>
   "url": "https://datacarpentry.org/r-socialsci/instructor/instructor-notes.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/instructor-notes.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2023-08-08",
-  "datePublished": "2023-08-08"
+  "dateModified": "2023-08-10",
+  "datePublished": "2023-08-10"
 }
 
   </script><script>
