@@ -71,7 +71,7 @@ function, though this does not download the file.
 json_data <- read_json(
   "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI.json"
   )
-````
+```
 
 To download the file you can copy and paste the contents of the file on
 [GitHub](https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI.json),
@@ -87,7 +87,7 @@ Once you have the data downloaded, you can read it into R with `read_json()`:
 
 ```{r eval=FALSE}
 json_data <- read_json("data/SAFI.json")
-````
+```
 
 We can see that a new object called json\_data has appeared in our Environment. It is described as a Large list (131 elements). In this current form, our data is messy. You can have a glimpse of it with the `head()` or `view()` functions. It will look not much more structured than if you were to open the JSON file with a text editor.
 
