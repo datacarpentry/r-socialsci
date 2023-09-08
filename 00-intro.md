@@ -297,17 +297,18 @@ dir.create("data_output")
 dir.create("fig_output")
 ```
 
-Go to the Figshare page for this curriculum and download the dataset called
-"`SAFI_clean.csv`". The direct download link is:
-[https://ndownloader.figshare.com/files/11492171](https://ndownloader.figshare.com/files/11492171). Place this downloaded file in
-the `data/` you just created. You can do this directly from R by copying and
-pasting this in your terminal (your instructor can place this chunk of code in
-the Etherpad):
+You can either download the data used for this lesson from GitHub or with R.
+You can copy the data from this [GitHub link](https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI_clean.csv)
+and paste it into a file called `SAFI_clean.csv` in the `data/` directory you just created.
+Or you can do this directly from R by copying and pasting this in your terminal
+(your instructor can place this chunk of code in the Etherpad):
 
 
 ```r
-download.file("https://ndownloader.figshare.com/files/11492171",
-              "data/SAFI_clean.csv", mode = "wb")
+download.file(
+  "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI_clean.csv",
+  "data/SAFI_clean.csv", mode = "wb"
+  )
 ```
 
 ## Interacting with R
