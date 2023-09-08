@@ -579,18 +579,20 @@ interface by clicking on the “New Folder” button in the file pane
 <span><span class="fu">dir.create</span><span class="op">(</span><span class="st">"data_output"</span><span class="op">)</span></span>
 <span><span class="fu">dir.create</span><span class="op">(</span><span class="st">"fig_output"</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Go to the Figshare page for this curriculum and download the dataset
-called “<code>SAFI_clean.csv</code>”. The direct download link is: <a href="https://ndownloader.figshare.com/files/11492171" class="external-link">https://ndownloader.figshare.com/files/11492171</a>.
-Place this downloaded file in the <code>data/</code> you just created.
-You can do this directly from R by copying and pasting this in your
-terminal (your instructor can place this chunk of code in the
-Etherpad):</p>
+<p>You can either download the data used for this lesson from GitHub or
+with R. You can copy the data from this <a href="https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI_clean.csv" class="external-link">GitHub
+link</a> and paste it into a file called <code>SAFI_clean.csv</code> in
+the <code>data/</code> directory you just created. Or you can do this
+directly from R by copying and pasting this in your terminal (your
+instructor can place this chunk of code in the Etherpad):</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">download.file</span><span class="op">(</span><span class="st">"https://ndownloader.figshare.com/files/11492171"</span>,</span>
-<span>              <span class="st">"data/SAFI_clean.csv"</span>, mode <span class="op">=</span> <span class="st">"wb"</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="fu">download.file</span><span class="op">(</span></span>
+<span>  <span class="st">"https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI_clean.csv"</span>,</span>
+<span>  <span class="st">"data/SAFI_clean.csv"</span>, mode <span class="op">=</span> <span class="st">"wb"</span></span>
+<span>  <span class="op">)</span></span></code></pre>
 </div>
 </div>
 </section><section id="interacting-with-r"><h2 class="section-heading">Interacting with R<a class="anchor" aria-label="anchor" href="#interacting-with-r"></a>
