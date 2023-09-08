@@ -443,6 +443,13 @@ was written to the console before the start of the installation messages.
 
 You could also have installed the **`tidyverse`** packages by running this command directly at the R terminal.
 
+We will be using another package called **`here`** throughout the workshop to manage paths and directories. We will discuss it more detail in a later episode, but we will install it now in the console:
+
+
+```r
+install.packages("here")
+```
+
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - Use RStudio to write and run R programs.
