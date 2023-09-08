@@ -4,10 +4,12 @@ title: Instructor Notes
 
 ## Dataset
 
-The data used for this lesson are in the figshare repository at: [https://figshare.com/articles/SAFI\_Survey\_Results/6262019](https://figshare.com/articles/SAFI_Survey_Results/6262019).
+The data used for this lesson are a slightly cleaned up version of the
+SAFI Survey Results available on GitHub. The original data is on
+[figshare](https://figshare.com/articles/dataset/SAFI_Survey_Results/6262019).
 
-This lesson uses `SAFI_clean.csv`. The direct download link for this file is:
-[https://ndownloader.figshare.com/files/11492171](https://ndownloader.figshare.com/files/11492171).
+This lesson uses `SAFI_clean.csv`. The direct download link for the data file is:
+[https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI_clean.csv](https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI_clean.csv).
 
 ## Narrative
 

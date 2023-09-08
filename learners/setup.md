@@ -104,10 +104,11 @@ installr::updateR(TRUE)
   `install.packages("here")` followed by the enter key. Both packages should now be installed.
 
 - For reference, the lesson uses `SAFI_clean.csv`. The direct download link for
-  this file is: [https://ndownloader.figshare.com/files/11492171](https://ndownloader.figshare.com/files/11492171). To download
-  from `R`:
-
-`download.file("https://ndownloader.figshare.com/files/11492171","data/SAFI_clean.csv", mode = "wb")`
+  this file is: [https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI_clean.csv](https://github.com/datacarpentry/r-socialsci/blob/main/episodes/data/SAFI_clean.csv).
+  This data is a slightly cleaned up version of the SAFI Survey Results available on
+  [figshare](https://figshare.com/articles/dataset/SAFI_Survey_Results/6262019).
+  Instructions for downloading the data with R are provided in the
+  [Before we start episode](https://datacarpentry.org/r-socialsci/00-intro.html).
 
 - The [json episode](https://datacarpentry.org/r-socialsci/07-json.html) uses
   `SAFI.json`. The file is available on GitHub
