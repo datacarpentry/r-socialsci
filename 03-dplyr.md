@@ -284,15 +284,15 @@ selecting).
 
 The last option, *pipes*, are a recent addition to R. Pipes let you take the
 output of one function and send it directly to the next, which is useful when
-you need to do many things to the same dataset. Pipes in R look like `%>%` and
-are made available via the **`magrittr`** package, installed automatically with
-**`dplyr`**. If you use RStudio, you can type the pipe with:
+you need to do many things to the same dataset. There are two Pipes in R: 1) `%>%` (called magrittr pipe; made available via the **`magrittr`** package, installed automatically with
+**`dplyr`**) or 2) `|>` (called native R pipe and it comes preinstalled with R v4.1.0 onwards). Both the pipes are, by and large, function similarly with a few differences (For more information, check: https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/). The choice of which pipe to be used can be changed in the Global settings in R studio and once that is done, you can type the pipe with:
 
 - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> +
   <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
 
 
 ```r
+# the following example is run using magrittr pipe but the output will be same with the native pipe
 interviews %>%
     filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
@@ -313,6 +313,12 @@ interviews %>%
  9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
 10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
 # ℹ 29 more rows
+```
+
+```r
+#interviews |>
+#   filter(village == "Chirodzo") |>
+#   select(village:respondent_wall_type)
 ```
 
 In the above code, we use the pipe to send the `interviews` dataset first
@@ -422,7 +428,7 @@ interviews %>%
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
  1      1 God      2016-11-17 00:00:00         3         4 muddaub             
- 2      1 God      2016-11-17 00:00:00         7         9 muddaub             
+ 2      2 God      2016-11-17 00:00:00         7         9 muddaub             
  3      3 God      2016-11-17 00:00:00        10        15 burntbricks         
  4      4 God      2016-11-17 00:00:00         7         6 burntbricks         
  5      5 God      2016-11-17 00:00:00         7        40 burntbricks         
@@ -457,7 +463,7 @@ interviews %>%
 # A tibble: 92 × 15
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
- 1      1 God      2016-11-17 00:00:00         7         9 muddaub             
+ 1      2 God      2016-11-17 00:00:00         7         9 muddaub             
  2      7 God      2016-11-17 00:00:00         6        38 muddaub             
  3      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
  4      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
