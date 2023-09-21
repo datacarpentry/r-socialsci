@@ -214,7 +214,7 @@ The syntax of a code chunk is:
 
 ````markdown
 ```{r chunk-name}
-Here is where you place the R code that you want to run.
+"Here is where you place the R code that you want to run."
 ```
 ````
 
@@ -382,7 +382,7 @@ uses one backtick (`r`), whereas code chunks use three backticks
 (``` r ```).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2023-09-05.  
+today's date is 2023-09-21.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
