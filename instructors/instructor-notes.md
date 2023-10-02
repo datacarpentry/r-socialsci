@@ -69,6 +69,29 @@ The two main goals for this lessons are:
 - Note that his lesson was community-contributed and remains a work in progress. As such, it could
   benefit from feedback from instructors and/or workshop participants.
 
+## Lesson Plans
+
+The lesson contains much more material than can be taught in a day. Instructors will 
+need to pick an appropriate subset of episodes to use in a standard one day course.
+
+Suggested path for half-day course:
+
+- Before we Start
+- Introduction to R
+- Starting with Data
+
+Suggested path for full-day course:
+
+- Before we Start
+- Introduction to R
+- Starting with Data
+- Data Wranging with dplyr
+- (OPTIONAL) Data Wrangling with tidyr
+- Data Visualisation with ggplot2
+
+For a two-day workshop, it may be possible to cover all of the episodes. Feedback from
+the community on successful lesson plans is always appreciated!
+
 ## Technical Tips and Tricks
 
 Show how to use the 'zoom' button to blow up graphs without constantly resizing
