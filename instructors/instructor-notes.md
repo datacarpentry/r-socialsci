@@ -2,7 +2,9 @@
 title: Instructor Notes
 ---
 
-## Dataset
+## Narrative
+
+### Dataset
 
 The data used for this lesson are a slightly cleaned up version of the
 SAFI Survey Results available on GitHub. The original data is on
@@ -10,8 +12,6 @@ SAFI Survey Results available on GitHub. The original data is on
 
 This lesson uses `SAFI_clean.csv`. The direct download link for the data file is:
 [https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI_clean.csv](https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI_clean.csv).
-
-## Narrative
 
 ### Before we start
 
@@ -24,6 +24,12 @@ This lesson uses `SAFI_clean.csv`. The direct download link for the data file is
   a `data` (all lowercase) subfolder.
 
 ### Intro to R
+
+- The main goal is to introduce users to the various objects in R, from atomic types
+  to creating your own objects.
+- While this epsiode is foundational, be careful not to get caught in the weeds as the
+  variety of types and operations can be overwhelming for new users, especially before
+  they understand how this fits into their own "workflow."
 
 ### Starting with data
 
