@@ -8,8 +8,10 @@ less time, and with less pain. The lessons below were designed for
 those interested in working with social sciences data in R.
 
 This is an introduction to R designed for participants with no
-programming experience. These lessons can be taught in a day (~ 6
-hours). They start with some basic information about R syntax, the
+programming experience. These lessons can be taught in a half-day,
+full-day, or over a two-day workshop (see
+[Instructor Notes](https://datacarpentry.org/r-socialsci/instructor/instructor-notes.html).
+They start with some basic information about R syntax, the
 RStudio interface, and move through how to import CSV files, the
 structure of data frames, how to deal with factors, how to add/remove
 rows and columns, how to calculate summary statistics from a data
