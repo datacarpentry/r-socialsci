@@ -23,7 +23,7 @@ This lesson uses `SAFI_clean.csv`. The direct download link for the data file is
   sure that learners are in the correct working directory, and that they create
   a `data` (all lowercase) subfolder.
 
-### Intro to R
+### Introduction to R
 
 - The main goal is to introduce users to the various objects in R, from atomic types
   to creating your own objects.
