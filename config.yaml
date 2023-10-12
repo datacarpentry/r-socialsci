@@ -71,10 +71,10 @@ episodes:
 # Information for Learners
 learners: 
 - reference.md
-- R-handout.Rmd
 
 # Information for Instructors
 instructors: 
+- instructor-notes.md
 
 # Learner Profiles
 profiles: 
