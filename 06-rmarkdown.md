@@ -10,6 +10,14 @@ source: Rmd
 
 
 
+:::: instructor
+
+- This is an optional lesson intended to introduce learners to R Markdown.
+- While it is listed after the core lessons, some instructors may prefer to teach it early
+  in the workshop, depending on the audience.
+
+::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Create a .Rmd document containing R code, text, and plots

@@ -7,6 +7,14 @@ source: Rmd
 
 
 
+:::: instructor
+
+- This lesson is a broad overview of ggplot2 and focuses on (1) getting familiar
+  with the layering system of ggplot2, (2) using the argument `group` in the
+  `aes()` function, (3) basic customization of the plots.
+
+::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Produce scatter plots, boxplots, and barplots using ggplot.

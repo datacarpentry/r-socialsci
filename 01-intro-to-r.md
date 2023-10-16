@@ -7,6 +7,16 @@ source: Rmd
 
 
 
+:::: instructor
+
+- The main goal is to introduce users to the various objects in R, from atomic types
+  to creating your own objects.
+- While this epsiode is foundational, be careful not to get caught in the weeds as the
+  variety of types and operations can be overwhelming for new users, especially before
+  they understand how this fits into their own "workflow."
+
+::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Define the following terms as they relate to R: object, assign, call, function, arguments, options.

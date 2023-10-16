@@ -7,6 +7,20 @@ source: Rmd
 
 
 
+:::: instructor
+
+The two main goals for this lessons are:
+
+- To make sure that learners are comfortable with working with data frames, and
+  can use the bracket notation to select slices/columns.
+- To expose learners to factors. Their behavior is not necessarily intuitive,
+  and so it is important that they are guided through it the first time they are
+  exposed to it. The content of the lesson should be enough for learners to
+  avoid common mistakes with them.
+
+
+::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Describe what a data frame is.

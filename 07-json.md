@@ -7,6 +7,15 @@ source: Rmd
 
 
 
+:::: instructor
+
+- This is an optional lessons intended to introduce learners to JSON data, as well as how to
+  read JSON data into R and how to convert the data into a data frame or array.
+- Note that his lesson was community-contributed and remains a work in progress. As such, it could
+  benefit from feedback from instructors and/or workshop participants.
+
+::::::::::::
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Describe the JSON data format
