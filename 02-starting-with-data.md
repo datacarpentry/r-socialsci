@@ -191,7 +191,7 @@ interviews
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
  1      1 God      2016-11-17 00:00:00         3         4 muddaub             
- 2      1 God      2016-11-17 00:00:00         7         9 muddaub             
+ 2      2 God      2016-11-17 00:00:00         7         9 muddaub             
  3      3 God      2016-11-17 00:00:00        10        15 burntbricks         
  4      4 God      2016-11-17 00:00:00         7         6 burntbricks         
  5      5 God      2016-11-17 00:00:00         7        40 burntbricks         
@@ -335,9 +335,9 @@ interviews[[1]]
 ```
 
 ```{.output}
-  [1]   1   1   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+  [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
- [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  21  54
+ [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71 127
  [73] 133 152 153 155 178 177 180 181 182 186 187 195 196 197 198 201 202  72
  [91]  73  76  83  85  89 101 103 102  78  80 104 105 106 109 110 113 118 125
@@ -355,7 +355,7 @@ interviews[1]
    key_ID
     <dbl>
  1      1
- 2      1
+ 2      2
  3      3
  4      4
  5      5
@@ -440,7 +440,7 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
   key_ID village interview_date      no_membrs years_liv respondent_wall_type
    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>               
 1      1 God     2016-11-17 00:00:00         3         4 muddaub             
-2      1 God     2016-11-17 00:00:00         7         9 muddaub             
+2      2 God     2016-11-17 00:00:00         7         9 muddaub             
 3      3 God     2016-11-17 00:00:00        10        15 burntbricks         
 4      4 God     2016-11-17 00:00:00         7         6 burntbricks         
 5      5 God     2016-11-17 00:00:00         7        40 burntbricks         
@@ -903,7 +903,7 @@ interviews
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
  1      1 God      2016-11-17 00:00:00         3         4 muddaub             
- 2      1 God      2016-11-17 00:00:00         7         9 muddaub             
+ 2      2 God      2016-11-17 00:00:00         7         9 muddaub             
  3      3 God      2016-11-17 00:00:00        10        15 burntbricks         
  4      4 God      2016-11-17 00:00:00         7         6 burntbricks         
  5      5 God      2016-11-17 00:00:00         7        40 burntbricks         
