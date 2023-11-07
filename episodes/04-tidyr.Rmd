@@ -384,6 +384,7 @@ by village.
 
 ```{r, purl=FALSE}
 interviews_items_owned %>%
+    select(-no_listed_items) %>% 
     mutate(number_items = rowSums(select(., bicycle:car))) %>%
     group_by(village) %>%
     summarize(mean_items = mean(number_items))
