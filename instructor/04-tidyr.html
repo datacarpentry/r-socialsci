@@ -187,7 +187,7 @@
         <ul><li><a href="#reshaping-with-pivot_wider-and-pivot_longer">Reshaping with pivot_wider() and pivot_longer()</a></li>
 <li><a href="#pivoting-wider">Pivoting wider</a></li>
 <li><a href="#pivoting-longer">Pivoting longer</a></li>
-<li><a href="#applying-pivot_wider-to-clean-our-data">Applying <code>pivot_wider()</code> to clean our data</a></li>
+<li><a href="#applying-what-we-learned-to-clean-our-data">Applying what we learned to clean our data</a></li>
 <li><a href="#exporting-data">Exporting data</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -280,7 +280,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with tidyr</h1>
-        <p> Last updated on 2023-11-07 | 
+        <p> Last updated on 2023-11-15 | 
         
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/04-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -301,7 +301,7 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>How can I reformat a dataframe to meet my needs?</li>
+<ul><li>How can I reformat a data frame to meet my needs?</li>
 </ul></div>
 </div>
 </div>
@@ -423,16 +423,16 @@ row in the dataframe.</p>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 4
    key_ID village  interview_date      instanceID                               
     &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;              &lt;chr&gt;                                    
- 1     50 Chirodzo 2016-11-16 00:00:00 uuid:4267c33c-53a7-46d9-8bd6-b96f58a4f92c
- 2     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
- 3     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
- 4     48 Chirodzo 2016-11-16 00:00:00 uuid:e180899c-7614-49eb-a97c-40ed013a38a2
- 5    127 Chirodzo 2016-11-16 00:00:00 uuid:f6d04b41-b539-4e00-868a-0f62b427587d
- 6     44 Chirodzo 2016-11-17 00:00:00 uuid:f9fadf44-d040-4fca-86c1-2835f79c4952
- 7     49 Chirodzo 2016-11-16 00:00:00 uuid:2303ebc1-2b3c-475a-8916-b322ebf18440
- 8     54 Chirodzo 2016-11-16 00:00:00 uuid:273ab27f-9be3-4f3b-83c9-d3e1592de919
- 9     68 Chirodzo 2016-11-16 00:00:00 uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9
-10     70 Chirodzo 2016-11-16 00:00:00 uuid:1feb0108-4599-4bf9-8a07-1f5e66a50a0a</code></pre>
+ 1     67 Chirodzo 2016-11-16 00:00:00 uuid:6c15d667-2860-47e3-a5e7-7f679271e419
+ 2     36 Chirodzo 2016-11-17 00:00:00 uuid:c90eade0-1148-4a12-8c0e-6387a36f45b1
+ 3     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
+ 4     54 Chirodzo 2016-11-16 00:00:00 uuid:273ab27f-9be3-4f3b-83c9-d3e1592de919
+ 5     50 Chirodzo 2016-11-16 00:00:00 uuid:4267c33c-53a7-46d9-8bd6-b96f58a4f92c
+ 6     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
+ 7     68 Chirodzo 2016-11-16 00:00:00 uuid:ef04b3eb-b47d-412e-9b09-4f5e08fc66f9
+ 8     62 Chirodzo 2016-11-16 00:00:00 uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6
+ 9     59 Chirodzo 2016-11-16 00:00:00 uuid:1936db62-5732-45dc-98ff-9b3ac7a22518
+10     56 Chirodzo 2016-11-16 00:00:00 uuid:973c4ac6-f887-48e7-aeaf-4476f2cfab76</code></pre>
 </div>
 <p>We notice that the layout or format of the <code>interviews</code>
 data is in a format that adheres to rules 1-3, where</p>
@@ -470,17 +470,15 @@ with each record (the unit), values such as the village of the
 respondent, the number of household members, or the type of wall their
 house had. This format allows for us to make comparisons across
 individual surveys, but what if we wanted to look at differences in
-households grouped by different types of housing construction
-materials?</p>
+households grouped by different types of items owned?</p>
 <p>To facilitate this comparison we would need to create a new table
 where each row (the unit) was comprised of values of variables
-associated with housing material (e.g. the
-<code>respondent_wall_type</code>). In practical terms this means the
-values of the wall construction materials in
-<code>respondent_wall_type</code> (e.g. muddaub, burntbricks, cement,
-sunbricks) would become the names of column variables and the cells
-would contain values of <code>TRUE</code> or <code>FALSE</code>, for
-whether that house had a wall made of that material.</p>
+associated with items owned (i.e., <code>items_owned</code>). In
+practical terms this means the values of the items in
+<code>items_owned</code> (e.g. bicycle, radio, table, etc.) would become
+the names of column variables and the cells would contain values of
+<code>TRUE</code> or <code>FALSE</code>, for whether that household had
+that item.</p>
 <p>Once we we’ve created this new table, we can explore the relationship
 within and between villages. The key point here is that we are still
 following a tidy data structure, but we have <strong>reshaped</strong>
@@ -491,7 +489,7 @@ irrigation conflicts have changed over time. This would require for the
 interview date to be included in a single column rather than spread
 across multiple columns. Thus, we would need to transform the column
 names into values of a variable.</p>
-<p>We can do both these of transformations with two <code>tidyr</code>
+<p>We can do both of these transformations with two <code>tidyr</code>
 functions, <code>pivot_wider()</code> and
 <code>pivot_longer()</code>.</p>
 </div>
@@ -506,160 +504,21 @@ new column variables.</li>
 </ol><p>Further arguments include <code>values_fill</code> which, if set,
 fills in missing values with the value provided.</p>
 <p>Let’s use <code>pivot_wider()</code> to transform interviews to
-create new columns for each type of wall construction material. We will
-make use of the pipe operator as have done before. Because both the
-<code>names_from</code> and <code>values_from</code> parameters must
-come from column values, we will create a dummy column (we’ll name it
-<code>wall_type_logical</code>) to hold the value <code>TRUE</code>,
-which we will then place into the appropriate column that corresponds to
-the wall construction material for that respondent. When using
-<code>mutate()</code> if you give a single value, it will be used for
-all observations in the dataset.</p>
-<p>For each row in our newly pivoted table, only one of the newly
-created wall type columns will have a value of <code>TRUE</code>, since
-each house can only be made of one wall type. The default value that
-<code>pivot_wider</code> uses to fill the other wall types is
-<code>NA</code>.</p>
-<figure><img src="../fig/pivot_long_to_wide.png" class="figure mx-auto d-block"></figure><p>If instead of the default value being <code>NA</code>, we wanted
-these values to be <code>FALSE</code>, we can insert a default value
-into the <code>values_fill</code> argument. By including
-<code>values_fill = list(wall_type_logical = FALSE)</code> inside
-<code>pivot_wider()</code>, we can fill the remainder of the wall type
-columns for that row with the value <code>FALSE</code>.</p>
+create new columns for each item owned by a household. There are a
+couple of new concepts in this transformation, so let’s walk through it
+line by line. First we create a new object
+(<code>interviews_items_owned</code>) based on the
+<code>interviews</code> data frame.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_wide</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">mutate</span><span class="op">(</span>wall_type_logical <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">respondent_wall_type</span>,</span>
-<span>                values_from <span class="op">=</span> <span class="va">wall_type_logical</span>,</span>
-<span>                values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>wall_type_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>interviews_items_owned <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span></code></pre>
 </div>
-<p>View the <code>interviews_wide</code> dataframe and notice that there
-is no longer a column titled <code>respondent_wall_type</code>. This is
-because there is a default parameter in <code>pivot_wider()</code> that
-drops the original column. The values that were in that column have now
-become columns named <code>muddaub</code>, <code>burntbricks</code>,
-<code>sunbricks</code>, and <code>cement</code>. You can use
-<code>dim(interviews)</code> and <code>dim(interviews_wide)</code> to
-see how the number of columns has changed between the two datasets.</p>
-</section><section id="pivoting-longer"><h2 class="section-heading">Pivoting longer<a class="anchor" aria-label="anchor" href="#pivoting-longer"></a>
-</h2>
-<hr class="half-width"><p>The opposing situation could occur if we had been provided with data
-in the form of <code>interviews_wide</code>, where the building
-materials are column names, but we wish to treat them as values of a
-<code>respondent_wall_type</code> variable instead.</p>
-<p>In this situation we are gathering these columns turning them into a
-pair of new variables. One variable includes the column names as values,
-and the other variable contains the values in each cell previously
-associated with the column names. We will do this in two steps to make
-this process a bit clearer.</p>
-<p><code>pivot_longer()</code> takes four principal arguments:</p>
-<ol style="list-style-type: decimal"><li>the data</li>
-<li>
-<em>cols</em> are the names of the columns we use to fill the a new
-values variable (or to drop).</li>
-<li>the <em>names_to</em> column variable we wish to create from the
-<em>cols</em> provided.</li>
-<li>the <em>values_to</em> column variable we wish to create and fill
-with values associated with the <em>cols</em> provided.</li>
-</ol><p>To recreate our original dataframe, we will use the following:</p>
-<ol style="list-style-type: decimal"><li>the data - <code>interviews_wide</code>
-</li>
-<li>a list of <em>cols</em> (columns) that are to be reshaped; these can
-be specified using a <code>:</code> if the columns to be reshaped are in
-one area of the dataframe, or with a vector (<code>c()</code>) command
-if the columns are spread throughout the dataframe.</li>
-<li>the <em>names_to</em> column will be a character string of the name
-the column these columns will be collapsed into
-(“respondent_wall_type”).</li>
-<li>the <em>values_to</em> column will be a character string of the name
-of the column the values of the collapsed columns will be inserted into
-(“wall_type_logical”). This column will be populated with values of
-<code>TRUE</code> or <code>FALSE</code>.</li>
-</ol><div class="codewrapper sourceCode" id="cb7">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">&lt;-</span> <span class="va">interviews_wide</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="st">"muddaub"</span>, <span class="st">"cement"</span>, <span class="st">"sunbricks"</span>, <span class="st">"burntbricks"</span><span class="op">)</span>,</span>
-<span>               names_to <span class="op">=</span> <span class="st">"respondent_wall_type"</span>,</span>
-<span>               values_to <span class="op">=</span> <span class="st">"wall_type_logical"</span><span class="op">)</span></span></code></pre>
-</div>
-<figure><img src="../fig/pivot_wide_to_long.png" class="figure mx-auto d-block"></figure><p>This creates a dataframe with 524 rows (4 rows per interview
-respondent). The four rows for each respondent differ only in the value
-of the “respondent_wall_type” and “wall_type_logical” columns. View the
-data to see what this looks like.</p>
-<p>Only one row for each interview respondent is informative–we know
-that if the house walls are made of “sunbrick” they aren’t made of any
-other the other materials. Therefore, it would make sense to filter our
-dataset to only keep values where <code>wall_type_logical</code> is
-<code>TRUE</code>. Because <code>wall_type_logical</code> is already
-either <code>TRUE</code> or <code>FALSE</code>, when passing the column
-name to <code>filter()</code>, it will automatically already only keep
-rows where this column has the value <code>TRUE</code>. We can then
-remove the <code>wall_type_logical</code> column.</p>
-<p>We do all of these steps together in the next chunk of code:</p>
-<div class="codewrapper sourceCode" id="cb8">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">&lt;-</span> <span class="va">interviews_wide</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="fu">c</span><span class="op">(</span><span class="va">burntbricks</span>, <span class="va">cement</span>, <span class="va">muddaub</span>, <span class="va">sunbricks</span><span class="op">)</span>,</span>
-<span>                 names_to <span class="op">=</span> <span class="st">"respondent_wall_type"</span>,</span>
-<span>                 values_to <span class="op">=</span> <span class="st">"wall_type_logical"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">wall_type_logical</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">wall_type_logical</span><span class="op">)</span></span></code></pre>
-</div>
-<p>View both <code>interviews_long</code> and
-<code>interviews_wide</code> and compare their structure.</p>
-</section><section id="applying-pivot_wider-to-clean-our-data"><h2 class="section-heading">Applying <code>pivot_wider()</code> to clean our data<a class="anchor" aria-label="anchor" href="#applying-pivot_wider-to-clean-our-data"></a>
-</h2>
-<hr class="half-width"><p>Now that we’ve learned about <code>pivot_longer()</code> and
-<code>pivot_wider()</code> we’re going to put these functions to use to
-fix a problem with the way that our data is structured. In the
-spreadsheets lesson, we learned that it’s best practice to have only a
-single piece of information in each cell of your spreadsheet. In this
-dataset, we have several columns which contain multiple pieces of
-information. For example, the <code>items_owned</code> column contains
-information about whether our respondents owned a fridge, a television,
-etc. To make this data easier to analyze, we will split this column and
-create a new column for each item. Each cell in that column will either
-be <code>TRUE</code> or <code>FALSE</code> and will indicate whether
-that interview respondent owned that item (similar to what we did
-previously with <code>wall_type</code>).</p>
-<div class="codewrapper sourceCode" id="cb9">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">items_owned</span>,</span>
-<span>                values_from <span class="op">=</span> <span class="va">items_owned_logical</span>,</span>
-<span>                values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">nrow</span><span class="op">(</span><span class="va">interviews_items_owned</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code>[1] 131</code></pre>
-</div>
-<p>There are a couple of new concepts in this code chunk, so let’s walk
-through it line by line. First we create a new object
-(<code>interviews_items_owned</code>) based on the
-<code>interviews</code> dataframe.</p>
-<div class="codewrapper sourceCode" id="cb11">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>interviews_items_owned <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span></code></pre>
-</div>
-<p>Then we use the new function <code>separate_longer_delim()</code>
-from the <strong><code>tidyr</code></strong> package to separate the
-values of <code>items_owned</code> based on the presence of semi-colons
+<p>Then we will actually need to make our data frame longer, because we
+have multiple items in a single cell. We will use a new function,
+<code>separate_longer_delim()</code>, from the
+<strong><code>tidyr</code></strong> package to separate the values of
+<code>items_owned</code> based on the presence of semi-colons
 (<code>;</code>). The values of this variable were multiple items
 separated by semi-colons, so this action creates a row for each item
 listed in a household’s possession. Thus, we end up with a long format
@@ -667,45 +526,45 @@ version of the dataset, with multiple rows for each respondent. For
 example, if a respondent has a television and a solar panel, that
 respondent will now have two rows, one with “television” and the other
 with “solar panel” in the <code>items_owned</code> column.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_longer_delim</span>(items_owned, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate_longer_delim</span>(items_owned, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">%&gt;%</span></span></code></pre>
 </div>
-<p>You may notice that the <code>items_owned</code> column contains
-<code>NA</code> values. This is because some of the respondents did not
-own any of the items that was in the interviewer’s list. We can use the
-<code>replace_na()</code> function to change these <code>NA</code>
-values to something more meaningful. The <code>replace_na()</code>
-function expects for you to give it a <code>list()</code> of columns
-that you would like to replace the <code>NA</code> values in, and the
-value that you would like to replace the <code>NA</code>s. This ends up
-looking like this:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<p>After this transformation, you may notice that the
+<code>items_owned</code> column contains <code>NA</code> values. This is
+because some of the respondents did not own any of the items that was in
+the interviewer’s list. We can use the <code>replace_na()</code>
+function to change these <code>NA</code> values to something more
+meaningful. The <code>replace_na()</code> function expects for you to
+give it a <code>list()</code> of columns that you would like to replace
+the <code>NA</code> values in, and the value that you would like to
+replace the <code>NA</code>s. This ends up looking like this:</p>
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">items_owned =</span> <span class="st">"no_listed_items"</span>)) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">items_owned =</span> <span class="st">"no_listed_items"</span>)) <span class="sc">%&gt;%</span></span></code></pre>
 </div>
 <p>Next, we create a new variable named
 <code>items_owned_logical</code>, which has one value
 (<code>TRUE</code>) for every row. This makes sense, since each item in
 every row was owned by that household. We are constructing this variable
-so that when spread the <code>items_owned</code> across multiple
+so that when we spread the <code>items_owned</code> across multiple
 columns, we can fill the values of those columns with logical values
 describing whether the household did (<code>TRUE</code>) or didn’t
 (<code>FALSE</code>) own that particular item.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">items_owned_logical =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">items_owned_logical =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span></code></pre>
 </div>
-<p>Lastly, we use <code>pivot_wider()</code> to switch from long format
+<figure><img src="../fig/separate_longer.png" alt="Two tables shown side-by-side. The first row of the left table is highlighted in blue, and the first four rows of the right table are also highlighted in blue to show how each of the values of 'items owned' are given their own row with the separate longer delim function. The 'items owned logical' column is highlighted in yellow on the right table to show how the mutate function adds a new column." class="figure mx-auto d-block"></figure><p>Lastly, we use <code>pivot_wider()</code> to switch from long format
 to wide format. This creates a new column for each of the unique values
 in the <code>items_owned</code> column, and fills those columns with the
 values of <code>items_owned_logical</code>. We also declare that for
 items that are missing, we want to fill those cells with the value of
 <code>FALSE</code> instead of <code>NA</code>.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -713,13 +572,33 @@ items that are missing, we want to fill those cells with the value of
 <span>            values_from <span class="op">=</span> <span class="va">items_owned_logical</span>,</span>
 <span>            values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>View the <code>interviews_items_owned</code> dataframe. It should
+<figure><img src="../fig/pivot_wider.png" alt="Two tables shown side-by-side. The 'items owned' column is highlighted in blue on the left table, and the column names are highlighted in blue on the right table to show how the values of the 'items owned' become the column names in the output of the pivot wider function. The 'items owned logical' column is highlighted in yellow on the left table, and the values of the bicycle, television, and solar panel columns are highlighted in yellow on the right table to show how the values of the 'items owned logical' column became the values of all three of the aforementioned columns." class="figure mx-auto d-block"></figure><p>Combining the above steps, the chunk looks like this:</p>
+<div class="codewrapper sourceCode" id="cb11">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">interviews_items_owned</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">items_owned</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">replace_na</span><span class="op">(</span><span class="fu">list</span><span class="op">(</span>items_owned <span class="op">=</span> <span class="st">"no_listed_items"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">mutate</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">items_owned</span>,</span>
+<span>              values_from <span class="op">=</span> <span class="va">items_owned_logical</span>,</span>
+<span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>items_owned_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+<p>View the <code>interviews_items_owned</code> data frame. It should
 have 131 rows (the same number of rows you had originally), but extra
-columns for each item. How many columns were added?</p>
+columns for each item. How many columns were added? Notice that there is
+no longer a column titled <code>items_owned</code>. This is because
+there is a default parameter in <code>pivot_wider()</code> that drops
+the original column. The values that were in that column have now become
+columns named <code>television</code>, <code>solar_panel</code>,
+<code>table</code>, etc. You can use <code>dim(interviews)</code> and
+<code>dim(interviews_wide)</code> to see how the number of columns has
+changed between the two datasets.</p>
 <p>This format of the data allows us to do interesting things, like make
 a table showing the number of respondents in each village who owned a
 particular item:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -747,7 +626,7 @@ row, hence its name. Note that we replaced <code>NA</code> values with
 the value <code>no_listed_items</code>, so we must exclude this value in
 the aggregation. We then group the data by villages and calculate the
 mean number of items, so each average is grouped by village.</p>
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -767,6 +646,37 @@ mean number of items, so each average is grouped by village.</p>
 2 God            3.98
 3 Ruaca          5.57</code></pre>
 </div>
+</section><section id="pivoting-longer"><h2 class="section-heading">Pivoting longer<a class="anchor" aria-label="anchor" href="#pivoting-longer"></a>
+</h2>
+<hr class="half-width"><p>The opposing situation could occur if we had been provided with data
+in the form of <code>interviews_wide</code>, where the items owned are
+column names, but we wish to treat them as values of an
+<code>items_owned</code> variable instead.</p>
+<p>In this situation we are gathering these columns turning them into a
+pair of new variables. One variable includes the column names as values,
+and the other variable contains the values in each cell previously
+associated with the column names. We will do this in two steps to make
+this process a bit clearer.</p>
+<p><code>pivot_longer()</code> takes four principal arguments:</p>
+<ol style="list-style-type: decimal"><li>the data</li>
+<li>
+<em>cols</em> are the names of the columns we use to fill the a new
+values variable (or to drop).</li>
+<li>the <em>names_to</em> column variable we wish to create from the
+<em>cols</em> provided.</li>
+<li>the <em>values_to</em> column variable we wish to create and fill
+with values associated with the <em>cols</em> provided.</li>
+</ol><div class="codewrapper sourceCode" id="cb16">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">&lt;-</span> <span class="va">interviews_items_owned</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">bicycle</span><span class="op">:</span><span class="va">car</span>,</span>
+<span>               names_to <span class="op">=</span> <span class="st">"items_owned"</span>,</span>
+<span>               values_to <span class="op">=</span> <span class="st">"items_owned_logical"</span><span class="op">)</span></span></code></pre>
+</div>
+<p>View both <code>interviews_long</code> and
+<code>interviews_items_owned</code> and compare their structure.</p>
 <div id="exercise" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -775,10 +685,15 @@ mean number of items, so each average is grouped by village.</p>
 <h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise"></a>
 </h3>
 <div class="callout-content">
-<ol style="list-style-type: decimal"><li>Create a new dataframe (named
-<code>interviews_months_lack_food</code>) that has one column for each
-month and records <code>TRUE</code> or <code>FALSE</code> for whether
-each interview respondent was lacking food in that month.</li>
+<p>We created some summary tables on <code>interviews_items_owned</code>
+using <code>count</code> and <code>summarise</code>. We can create the
+same tables on <code>interviews_long</code>, but this will require a
+different process.</p>
+<ol style="list-style-type: decimal"><li>Make a table showing showing the number of respondents in each
+village who owned a particular item, and include all items. The
+difference between this format and the wide format is that you can now
+<code>count</code> all the items using the <code>items_owned</code>
+variable.</li>
 </ol></div>
 </div>
 </div>
@@ -791,16 +706,33 @@ each interview respondent was lacking food in that month.</li>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_months_lack_food</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">separate_longer_delim</span><span class="op">(</span><span class="va">months_lack_food</span>, delim <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>months_lack_food_logical  <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">months_lack_food</span>,</span>
-<span>              values_from <span class="op">=</span> <span class="va">months_lack_food_logical</span>,</span>
-<span>              values_fill <span class="op">=</span> <span class="fu">list</span><span class="op">(</span>months_lack_food_logical <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">items_owned_logical</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">items_owned</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code># A tibble: 47 × 3
+# Groups:   village [3]
+   village  items_owned         n
+   &lt;chr&gt;    &lt;chr&gt;           &lt;int&gt;
+ 1 Chirodzo bicycle            17
+ 2 Chirodzo computer            2
+ 3 Chirodzo cow_cart            6
+ 4 Chirodzo cow_plough         20
+ 5 Chirodzo electricity         1
+ 6 Chirodzo fridge              1
+ 7 Chirodzo lorry               1
+ 8 Chirodzo mobile_phone       25
+ 9 Chirodzo motorcyle          13
+10 Chirodzo no_listed_items     3
+# ℹ 37 more rows</code></pre>
 </div>
 </div>
 </div>
@@ -814,9 +746,16 @@ each interview respondent was lacking food in that month.</li>
 <h3 class="callout-title">Exercise<em> (continued)</em><a class="anchor" aria-label="anchor" href="#exercise"></a>
 </h3>
 <div class="callout-content">
-<ol start="2" style="list-style-type: decimal"><li>How many months (on average) were respondents without food if they
-did belong to an irrigation association? What about if they didn’t?</li>
-</ol></div>
+<ol start="2" style="list-style-type: decimal"><li>Calculate the average number of items from the list owned by
+respondents in each village. If you remove rows where
+<code>items_owned_logical</code> is <code>FALSE</code> you will have a
+data frame where the number of rows per household is equal to the number
+of items owned. You can use that to calculate the mean number of items
+per village.</li>
+</ol><p>Remember, you need to make sure we don’t count
+<code>no_listed_items</code>, since this is not an actual item, but
+rather the absence thereof.</p>
+</div>
 </div>
 </div>
 <div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
@@ -828,54 +767,49 @@ did belong to an irrigation association? What about if they didn’t?</li>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_months_lack_food</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">mutate</span><span class="op">(</span>number_months <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">.</span>, <span class="va">Jan</span><span class="op">:</span><span class="va">May</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">summarize</span><span class="op">(</span>mean_months <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">number_months</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">interviews_long</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">filter</span><span class="op">(</span><span class="va">items_owned_logical</span>,</span>
+<span>         <span class="va">items_owned</span> <span class="op">!=</span> <span class="st">"no_listed_items"</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="co"># to keep information per household, we count key_ID</span></span>
+<span>  <span class="fu">count</span><span class="op">(</span><span class="va">key_ID</span>, <span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># we want to also keep the village variable</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
+<span>  <span class="fu">summarise</span><span class="op">(</span>mean_items <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 3 × 2
-  memb_assoc mean_months
-  &lt;chr&gt;            &lt;dbl&gt;
-1 no                2   
-2 yes               2.30
-3 &lt;NA&gt;              2.82</code></pre>
+  village  mean_items
+  &lt;chr&gt;         &lt;dbl&gt;
+1 Chirodzo       4.92
+2 God            4.38
+3 Ruaca          5.93</code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section><section id="exporting-data"><h2 class="section-heading">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
+</section><section id="applying-what-we-learned-to-clean-our-data"><h2 class="section-heading">Applying what we learned to clean our data<a class="anchor" aria-label="anchor" href="#applying-what-we-learned-to-clean-our-data"></a>
 </h2>
-<hr class="half-width"><p>Now that you have learned how to use
-<strong><code>dplyr</code></strong> and
-<strong><code>tidyr</code></strong> to wrangle your raw data, you may
-want to export these new data sets to share them with your collaborators
-or for archival purposes.</p>
-<p>Similar to the <code>read_csv()</code> function used for reading CSV
-files into R, there is a <code>write_csv()</code> function that
-generates CSV files from dataframes.</p>
-<p>Before using <code>write_csv()</code>, we are going to create a new
-folder, <code>data_output</code>, in our working directory that will
-store this generated dataset. We don’t want to write generated datasets
-in the same directory as our raw data. It’s good practice to keep them
-separate. The <code>data</code> folder should only contain the raw,
-unaltered data, and should be left alone to make sure we don’t delete or
-modify it. In contrast, our script will generate the contents of the
-<code>data_output</code> directory, so even if the files it contains are
-deleted, we can always re-generate them.</p>
-<p>In preparation for our next lesson on plotting, we are going to
-create a version of the dataset where each of the columns includes only
-one data value. To do this, we will use <code>pivot_wider</code> to
-expand the <code>months_lack_food</code> and <code>items_owned</code>
-columns. We will also create a couple of summary columns.</p>
-<div class="codewrapper sourceCode" id="cb23">
+<hr class="half-width"><p>Now we have simultaneously learned about <code>pivot_longer()</code>
+and <code>pivot_wider()</code>, and fixed a problem in the way our data
+is structured. In the spreadsheets lesson, we learned that it’s best
+practice to have only a single piece of information in each cell of your
+spreadsheet. In this dataset, we have another column that stores
+multiple values in a single cell. Some of the cells in the
+<code>months_lack_food</code> column contain multiple months which, as
+before, are separated by semi-colons (<code>;</code>).</p>
+<p>To create a data frame where each of the columns contain only one
+value per cell, we can repeat the steps we applied to
+<code>items_owned</code> and apply them to
+<code>months_lack_food</code>. Since we will be using this data frame
+for the next episode, we will call it
+<code>interviews_plotting</code>.</p>
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -898,9 +832,30 @@ columns. We will also create a couple of summary columns.</p>
 <span>  <span class="fu">mutate</span><span class="op">(</span>number_months_lack_food <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">.</span>, <span class="va">Jan</span><span class="op">:</span><span class="va">May</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>number_items <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">.</span>, <span class="va">bicycle</span><span class="op">:</span><span class="va">car</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
-<p>Now we can save this dataframe to our <code>data_output</code>
+</section><section id="exporting-data"><h2 class="section-heading">Exporting data<a class="anchor" aria-label="anchor" href="#exporting-data"></a>
+</h2>
+<hr class="half-width"><p>Now that you have learned how to use
+<strong><code>dplyr</code></strong> and
+<strong><code>tidyr</code></strong> to wrangle your raw data, you may
+want to export these new datasets to share them with your collaborators
+or for archival purposes.</p>
+<p>Similar to the <code>read_csv()</code> function used for reading CSV
+files into R, there is a <code>write_csv()</code> function that
+generates CSV files from data frames.</p>
+<p>Before using <code>write_csv()</code>, we are going to create a new
+folder, <code>data_output</code>, in our working directory that will
+store this generated dataset. We don’t want to write generated datasets
+in the same directory as our raw data. It’s good practice to keep them
+separate. The <code>data</code> folder should only contain the raw,
+unaltered data, and should be left alone to make sure we don’t delete or
+modify it. In contrast, our script will generate the contents of the
+<code>data_output</code> directory, so even if the files it contains are
+deleted, we can always re-generate them.</p>
+<p>In preparation for our next lesson on plotting, we created a version
+of the dataset where each of the columns includes only one data value.
+Now we can save this data frame to our <code>data_output</code>
 directory.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -914,8 +869,8 @@ directory.</p>
 <h3 class="callout-title">Keypoints<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
 </h3>
 <div class="callout-content">
-<ul><li>Use the <code>tidyr</code> package to change the layout of
-dataframes.</li>
+<ul><li>Use the <code>tidyr</code> package to change the layout of data
+frames.</li>
 <li>Use <code>pivot_wider()</code> to go from long to wide format.</li>
 <li>Use <code>pivot_longer()</code> to go from wide to long format.</li>
 </ul></div>
@@ -980,8 +935,8 @@ dataframes.</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/04-tidyr.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/04-tidyr.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2023-11-07",
-  "datePublished": "2023-11-14"
+  "dateModified": "2023-11-15",
+  "datePublished": "2023-11-15"
 }
 
   </script><script>
