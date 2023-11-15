@@ -218,7 +218,7 @@ with logical values describing whether the household did (`TRUE`) or didn't
 mutate(items_owned_logical = TRUE) %>%
 ```
 
-![](fig/separate_longer.png)
+![](fig/separate_longer.png){alt="Two tables shown side-by-side. The first row of the left table is highlighted in blue, and the first four rows of the right table are also highlighted in blue to show how each of the values of 'items owned' are given their own row with the separate longer delim function. The 'items owned logical' column is highlighted in yellow on the right table to show how the mutate function adds a new column."}
 
 Lastly, we use `pivot_wider()` to switch from long format to wide format. This
 creates a new column for each of the unique values in the `items_owned` column,
@@ -233,7 +233,7 @@ pivot_wider(names_from = items_owned,
 
 ```
 
-![](fig/pivot_wider.png)
+![](fig/pivot_wider.png){alt="Two tables shown side-by-side. The 'items owned' column is highlighted in blue on the left table, and the column names are highlighted in blue on the right table to show how the values of the 'items owned' become the column names in the output of the pivot wider function. The 'items owned logical' column is highlighted in yellow on the left table, and the values of the bicycle, television, and solar panel columns are highlighted in yellow on the right table to show how the values of the 'items owned logical' column became the values of all three of the aforementioned columns."}
 
 Combining the above steps, the chunk looks like this:
 
