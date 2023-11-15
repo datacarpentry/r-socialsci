@@ -218,6 +218,8 @@ with logical values describing whether the household did (`TRUE`) or didn't
 mutate(items_owned_logical = TRUE) %>%
 ```
 
+![](fig/separate_longer.png)
+
 Lastly, we use `pivot_wider()` to switch from long format to wide format. This
 creates a new column for each of the unique values in the `items_owned` column,
 and fills those columns with the values of `items_owned_logical`. We also
@@ -231,6 +233,8 @@ pivot_wider(names_from = items_owned,
 
 ```
 
+![](fig/pivot_wider.png)
+
 Combining the above steps, the chunk looks like this:
 
 ```{r}
@@ -242,8 +246,6 @@ interviews_items_owned <- interviews %>%
               values_from = items_owned_logical,
               values_fill = list(items_owned_logical = FALSE))
 ```
-
-![](fig/pivot_long_to_wide.png)
 
 View the `interviews_items_owned` data frame. It should have
 `r nrow(interviews)` rows (the same number of rows you had originally), but
@@ -355,7 +357,7 @@ interviews_long %>%
   filter(items_owned_logical,
          items_owned != "no_listed_items") %>% 
   # to keep information per household, we count key_ID
-  count(key_ID, village) #%>% # we want to also keep the village variable
+  count(key_ID, village) %>% # we want to also keep the village variable
   group_by(village) %>% 
   summarise(mean_items = mean(n))
 ```
