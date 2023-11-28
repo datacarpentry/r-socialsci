@@ -263,7 +263,9 @@ locations where there are overlapping points. Jittering introduces a little bit
 of randomness into the position of our points. You can think of this process as
 taking the overplotted graph and giving it a tiny shake. The points will move a
 little bit side-to-side and up-and-down, but their position from the original
-plot won't dramatically change.
+plot won't dramatically change. Note that this solution is suitable for plotting 
+integer figures, while for numeric figures with decimals, geom_jitter() becomes 
+inappropriate because it obscures the true value of the observation.
 
 We can jitter our points using the `geom_jitter()` function instead of the
 `geom_point()`  function, as seen below:
