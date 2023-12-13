@@ -765,10 +765,10 @@ plot(memb_assoc)
 <img src="fig/02-starting-with-data-rendered-factor-plot-default-order-1.png" alt="Yes/no bar graph showing number of individuals who are members of irrigation association" style="display: block; margin: auto;" />
 
 Looking at the plot compared to the output of the vector, we can see that in
-addition to "no"s and "yes"s, there are some respondents for which the
+addition to "no"s and "yes"s, there are some respondents for whom the
 information about whether they were part of an irrigation association hasn't
-been recorded, and encoded as missing data. They do not appear on the plot.
-Let's encode them differently so they can counted and visualized in our plot.
+been recorded, and encoded as missing data. These respondents do not appear on the plot.
+Let's encode them differently so they can be counted and visualized in our plot.
 
 
 ```r
