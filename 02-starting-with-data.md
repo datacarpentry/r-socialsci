@@ -870,11 +870,10 @@ convert those dates into three separate columns.
 str(interviews)
 ```
 
-We are going to use the package **`lubridate`**, which is included in the
-**`tidyverse`** installation but not loaded by default, so we have to load
-it explicitly with `library(lubridate)`.
+We are going to use the package **`lubridate`**, , which is included in the **`tidyverse`** installation and should be loaded by default. 
+However, if we deal with older versions of tidyverse (2022 and ealier), we can manually load it by typing `library(lubridate)`.
 
-Start by loading the required package:
+If necessary, start by loading the required package:
 
 
 ```r
