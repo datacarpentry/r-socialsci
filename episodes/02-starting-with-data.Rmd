@@ -605,7 +605,7 @@ str(interviews)
 ```
 
 We are going to use the package **`lubridate`**, , which is included in the **`tidyverse`** installation and should be loaded by default. 
-However, if we deal with older versions of tidyverse (before 2023), we can manually load it by typing `library(lubridate)`.
+However, if we deal with older versions of tidyverse (2022 and ealier), we can manually load it by typing `library(lubridate)`.
 
 If necessary, start by loading the required package:
 
