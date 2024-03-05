@@ -479,9 +479,9 @@ by using the keyboard shortcuts
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r chunk-name}</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="in">"Here is where you place the R code that you want to run."</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="in">```{r chunk-name}</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="in">"Here is where you place the R code that you want to run."</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="in">```</span></span></code></pre>
 </div>
 <p>An R Markdown document knows that this text is not part of the report
 from the <code>```</code> that begins and ends the chunk. It also knows
@@ -498,19 +498,18 @@ after the code chunk name (<code>{r setup, include = FALSE}</code>).</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup, include = FALSE}</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in">library(here)</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">interviews &lt;- read_csv(here("data/SAFI_clean.csv"), na = "NULL")</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="in">```{r setup, include = FALSE}</span></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="in">library(tidyverse)</span></span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="in">library(here)</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="in">interviews &lt;- read_csv(here("data/SAFI_clean.csv"), na = "NULL")</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="in">```</span></span></code></pre>
 </div>
-<div id="important-note" class="callout callout">
+<div id="callout1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="important-note" class="callout-inner">
-<h3 class="callout-title">Important Note!<a class="anchor" aria-label="anchor" href="#important-note"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="important-note">Important Note!<a class="anchor" aria-label="anchor" href="#important-note"></a></h3>
 <div class="callout-content">
 <p>The file paths you give in a .Rmd document, e.g. to load a .csv file,
 are relative to the .Rmd document, <strong>not</strong> the project
@@ -724,13 +723,12 @@ messages produced by your code.</td>
 </td>
 <td>Where the figure from your R code chunk should be output on the
 page</td>
-</tr></tbody></table><div id="tip" class="callout callout">
+</tr></tbody></table><div id="callout2" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="tip">Tip<a class="anchor" aria-label="anchor" href="#tip"></a></h3>
 <div class="callout-content">
 <ul><li>The default settings for the above chunk options are all
 <code>TRUE</code>.</li>
@@ -764,7 +762,7 @@ the output.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Solution to Exercise</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Create a chunk with <code>{r eval = FALSE, echo = FALSE}</code>, then
 create another chunk with <code>{r include = FALSE}</code> to compare.
@@ -868,7 +866,7 @@ the <code>interviews_plotting</code> data frame.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Solution to Exercise</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -887,10 +885,10 @@ the <code>interviews_plotting</code> data frame.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">MARKDOWN<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r chunk-name, fig.cap = "I made this plot while attending an</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">awesome Data Carpentries workshop where I learned a ton of cool stuff!"}</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in">Code for plot</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre>
+<pre class="sourceCode markdown" tabindex="0"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="in">```{r chunk-name, fig.cap = "I made this plot while attending an</span></span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="in">awesome Data Carpentries workshop where I learned a ton of cool stuff!"}</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="in">Code for plot</span></span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="in">```</span></span></code></pre>
 </div>
 <p>…or, ideally, something more informative.</p>
 <div class="codewrapper sourceCode" id="cb15">
@@ -919,13 +917,12 @@ author: "Emmet Brickowski"
 date: ""
 output: word_document
 ---</code></pre>
-<div id="note-creating-pdf-documents" class="callout callout">
+<div id="callout3" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="note-creating-pdf-documents" class="callout-inner">
-<h3 class="callout-title">Note: Creating PDF documents<a class="anchor" aria-label="anchor" href="#note-creating-pdf-documents"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="note-creating-pdf-documents">Note: Creating PDF documents<a class="anchor" aria-label="anchor" href="#note-creating-pdf-documents"></a></h3>
 <div class="callout-content">
 <p>Creating .pdf documents may require installation of some extra
 software. The R package <code>tinytex</code> provides some tools to help
@@ -939,14 +936,13 @@ information.</p>
 </div>
 </div>
 </div>
-<div id="note-inserting-citations-into-an-r-markdown-file" class="callout callout">
+<div id="callout4" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div id="note-inserting-citations-into-an-r-markdown-file" class="callout-inner">
-<h3 class="callout-title">Note: Inserting citations into an R Markdown
-file<a class="anchor" aria-label="anchor" href="#note-inserting-citations-into-an-r-markdown-file"></a>
-</h3>
+<div class="section level3 callout-title callout-inner">
+<h3 class="callout-title" id="note-inserting-citations-into-an-r-markdown-file">Note: Inserting citations into an R Markdown
+file<a class="anchor" aria-label="anchor" href="#note-inserting-citations-into-an-r-markdown-file"></a></h3>
 <div class="callout-content">
 <p>It is possible to insert citations into an R Markdown file using the
 editor toolbar. The editor toolbar includes commonly seen formatting
@@ -1063,7 +1059,7 @@ document</li>
   "identifier": "https://datacarpentry.org/r-socialsci/06-rmarkdown.html",
   "dateCreated": "2017-05-25",
   "dateModified": "2024-02-27",
-  "datePublished": "2024-02-27"
+  "datePublished": "2024-03-05"
 }
 
   </script><script>
