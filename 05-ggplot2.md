@@ -453,7 +453,8 @@ interviews_plotting %>%
 ```
 
 ```{.warning}
-Warning: Groups with fewer than two data points have been dropped.
+Warning: Groups with fewer than two datapoints have been dropped.
+ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
 <img src="fig/05-ggplot2-rendered-violin-plot-1.png" style="display: block; margin: auto;" />
