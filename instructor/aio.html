@@ -338,7 +338,7 @@
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <ul>
 <li>The main goal here is to help the learners be comfortable with the
@@ -782,7 +782,7 @@ the tidyverse installed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Scroll through packages tab down to ‘tidyverse’. You can also type a
 few characters into the searchbox. The ‘tidyverse’ package is really a
@@ -860,7 +860,7 @@ episode, but we will install it now in the console:</p>
   <h3 class="accordion-header" id="headingInstructor1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div>Instructor Note</h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <ul>
 <li>The main goal is to introduce users to the various objects in R,
@@ -996,12 +996,12 @@ very comprehensive and may seem overwhelming at first. You can install
 the <a href="https://github.com/jimhester/lintr" class="external-link"><strong><code>lintr</code></strong></a>
 package to automatically check for issues in the styling of your
 code.</p>
-<div id="callout1" class="callout">
+<div id="objects-vs.-variables" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="objects-vs--variables">Objects vs. variables<a class="anchor" aria-label="anchor" href="#objects-vs--variables"></a>
+<div id="objects-vs.-variables" class="callout-inner">
+<h3 class="callout-title">Objects vs. variables<a class="anchor" aria-label="anchor" href="#objects-vs.-variables"></a>
 </h3>
 <div class="callout-content">
 <p>What are known as <code>objects</code> in <code>R</code> are known as
@@ -1099,7 +1099,7 @@ acres in a new object, <code>area_acres</code>:</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The value of <code>area_acres</code> is still 6.175 because you have
 not re-run the line <code>area_acres &lt;- 2.47 * area_hectares</code>
@@ -1166,7 +1166,7 @@ of <code>r_area</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1522,7 +1522,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>R implicitly converts them to all be the same type.</p>
 </div>
@@ -1557,7 +1557,7 @@ types in a single vector?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Vectors can be of only one data type. R tries to convert (coerce) the
 content of this vector to find a “common denominator” that doesn’t lose
@@ -1592,7 +1592,7 @@ any information.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>Only one. There is no memory of past data types, and the coercion
 happens the first time the vector is evaluated. Therefore, the
@@ -1949,7 +1949,7 @@ the <code>rooms</code> vector.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb95">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2312,12 +2312,12 @@ can see the contents of the data frame by typing its name:
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
 #   instanceID &lt;chr&gt;</code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="note" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>
+<div id="note" class="callout-inner">
+<h3 class="callout-title">Note<a class="anchor" aria-label="anchor" href="#note"></a>
 </h3>
 <div class="callout-content">
 <p><code>read_csv()</code> assumes that fields are delimited by commas.
@@ -2421,12 +2421,12 @@ rows) or a particular set of variables (the columns). If we want to
 access some specific data from it, we need to specify the “coordinates”
 (i.e., indices) we want from it. Row numbers come first, followed by
 column numbers.</p>
-<div id="callout2" class="callout">
+<div id="tip" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
+<div id="tip" class="callout-inner">
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <p>Subsetting a <code>tibble</code> with <code>[</code> always results
@@ -3343,12 +3343,12 @@ combined to extract and summarize insights from your data.</p>
 <strong><code>dplyr</code></strong> is a part of the tidyverse. These
 packages were loaded in R’s memory when we called
 <code><a href="https://tidyverse.tidyverse.org" class="external-link">library(tidyverse)</a></code> earlier.</p>
-<div id="callout1" class="callout">
+<div id="note" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a>
+<div id="note" class="callout-inner">
+<h3 class="callout-title">Note<a class="anchor" aria-label="anchor" href="#note"></a>
 </h3>
 <div class="callout-content">
 <p>The packages in the tidyverse, namely
@@ -3385,12 +3385,12 @@ use <code><a href="https://rdrr.io/pkg/package_name/man" class="external-link">h
 workshop, you may want to check out this <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf" class="external-link">handy
 data transformation with <strong><code>dplyr</code></strong>
 cheatsheet</a>.</p>
-<div id="callout2" class="callout">
+<div id="note-1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="note-1">Note<a class="anchor" aria-label="anchor" href="#note-1"></a>
+<div id="note-1" class="callout-inner">
+<h3 class="callout-title">Note<a class="anchor" aria-label="anchor" href="#note-1"></a>
 </h3>
 <div class="callout-content">
 <p>There are alternatives to the <code>tidyverse</code> packages for
@@ -5197,12 +5197,12 @@ above plot can also be generated with code like this, similar to the
 <span><span class="va">interviews_plot</span> <span class="op">+</span></span>
 <span>    <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="notes" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="notes">Notes<a class="anchor" aria-label="anchor" href="#notes"></a>
+<div id="notes" class="callout-inner">
+<h3 class="callout-title">Notes<a class="anchor" aria-label="anchor" href="#notes"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -5366,12 +5366,12 @@ observation:</p>
 <figure><img src="../fig/05-ggplot2-rendered-color-by-species-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>There appears to be a positive trend between number of household
 members and number of items owned (from the list provided).
 Additionally, this trend does not appear to be different by village.</p>
-<div id="callout2" class="callout">
+<div id="notes-1" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="notes-1">Notes<a class="anchor" aria-label="anchor" href="#notes-1"></a>
+<div id="notes-1" class="callout-inner">
+<h3 class="callout-title">Notes<a class="anchor" aria-label="anchor" href="#notes-1"></a>
 </h3>
 <div class="callout-content">
 <p>As you will learn, there are multiple ways to plot the a relationship
@@ -6271,12 +6271,12 @@ after the code chunk name (<code>{r setup, include = FALSE}</code>).</p>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="in">interviews &lt;- read_csv(here("data/SAFI_clean.csv"), na = "NULL")</span></span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="in">```</span></span></code></pre>
 </div>
-<div id="callout1" class="callout">
+<div id="important-note" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="important-note">Important Note!<a class="anchor" aria-label="anchor" href="#important-note"></a>
+<div id="important-note" class="callout-inner">
+<h3 class="callout-title">Important Note!<a class="anchor" aria-label="anchor" href="#important-note"></a>
 </h3>
 <div class="callout-content">
 <p>The file paths you give in a .Rmd document, e.g. to load a .csv file,
@@ -6574,12 +6574,12 @@ page</td>
 </tr>
 </tbody>
 </table>
-<div id="callout2" class="callout">
+<div id="tip" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="tip">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
+<div id="tip" class="callout-inner">
+<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
 </h3>
 <div class="callout-content">
 <ul>
@@ -6775,12 +6775,12 @@ author: "Emmet Brickowski"
 date: ""
 output: word_document
 ---</code></pre>
-<div id="callout3" class="callout">
+<div id="note-creating-pdf-documents" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="note-creating-pdf-documents">Note: Creating PDF documents<a class="anchor" aria-label="anchor" href="#note-creating-pdf-documents"></a>
+<div id="note-creating-pdf-documents" class="callout-inner">
+<h3 class="callout-title">Note: Creating PDF documents<a class="anchor" aria-label="anchor" href="#note-creating-pdf-documents"></a>
 </h3>
 <div class="callout-content">
 <p>Creating .pdf documents may require installation of some extra
@@ -6795,12 +6795,12 @@ information.</p>
 </div>
 </div>
 </div>
-<div id="callout4" class="callout">
+<div id="note-inserting-citations-into-an-r-markdown-file" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
 </div>
-<div class="section level3 callout-title callout-inner">
-<h3 class="callout-title" id="note-inserting-citations-into-an-r-markdown-file">Note: Inserting citations into an R Markdown
+<div id="note-inserting-citations-into-an-r-markdown-file" class="callout-inner">
+<h3 class="callout-title">Note: Inserting citations into an R Markdown
 file<a class="anchor" aria-label="anchor" href="#note-inserting-citations-into-an-r-markdown-file"></a>
 </h3>
 <div class="callout-content">
@@ -7341,7 +7341,7 @@ csv file</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
         
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.2" class="external-link">sandpaper (0.16.2)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.3" class="external-link">sandpaper (0.16.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.4" class="external-link">pegboard (0.7.4)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.1" class="external-link">varnish (1.0.1)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -7364,8 +7364,8 @@ csv file</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/aio.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/aio.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2024-03-12",
-  "datePublished": "2024-03-12"
+  "dateModified": "2024-03-19",
+  "datePublished": "2024-03-19"
 }
 
   </script><script>
