@@ -72,18 +72,25 @@ how they relate to these different types of data formats.
 ### Long and wide data formats
 
 In the `interviews` data, each row contains the values of variables associated
-with each record collected (each interview in the villages), where it is stated
+with each record collected (each interview in the villages). It is stated
 that the `key_ID` was "added to provide a unique Id for each observation"
-and the `instance_ID` "does this as well but it is not as convenient to use."
+and the `instanceID` "does this as well but it is not as convenient to use."
 
-However, with some inspection, we notice that there are more than one row in the
-dataset with the same `key_ID` (as seen below). However, the `instanceID`s
-associated with these duplicate `key_ID`s are not the same. Thus, we should
-think of `instanceID` as the unique identifier for observations!
+Once we have established that `key_ID` and `instanceID` are both unique we can use 
+either variable as an identifier corresponding to the 131 interview records.
 
 ```{r, purl=FALSE}
-interviews %>%
-  select(key_ID, village, interview_date, instanceID)
+interviews %>% 
+  select(key_ID) %>% 
+  distinct() %>% 
+  count()
+```
+
+```{r, purl=FALSE}
+interviews %>% 
+  select(instanceID) %>% 
+  distinct() %>% 
+  count()
 ```
 
 As seen in the code below, for each interview date in each village no
