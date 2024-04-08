@@ -49,8 +49,8 @@ file:
 - Tools > Install Packages > set to 'from Zip/TAR'
 
 It's often easier to make sure they have all the needed packages installed at one
-time, rather than deal with these issues over and over.
-[Here is a list of all necessary packages for these lessons.](https://github.com/datacarpentry/R-ecology-lesson/blob/master/needed_packages.R)
+time, rather than deal with these issues over and over. See the "Setup instructions"
+section on the homepage of the course website for package installation instructions.
 
 **`|` character on Spanish keyboards:** The Spanish Mac keyboard does not have a `|` key.
 This character can be created using:
