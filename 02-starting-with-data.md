@@ -200,7 +200,7 @@ interviews
 ## head(interviews)
 ```
 
-```{.output}
+```output
 # A tibble: 131 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -246,7 +246,7 @@ the data is read using `read_csv()`, it is stored in an object of class
 class(interviews)
 ```
 
-```{.output}
+```output
 [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" 
 ```
 
@@ -324,7 +324,7 @@ different classes. This is covered in the Software Carpentry lesson
 interviews[1, 1]
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 1
   key_ID
    <dbl>
@@ -336,7 +336,7 @@ interviews[1, 1]
 interviews[1, 6]
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 1
   respondent_wall_type
   <chr>               
@@ -348,7 +348,7 @@ interviews[1, 6]
 interviews[[1]]
 ```
 
-```{.output}
+```output
   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
@@ -364,7 +364,7 @@ interviews[[1]]
 interviews[1]
 ```
 
-```{.output}
+```output
 # A tibble: 131 × 1
    key_ID
     <dbl>
@@ -386,7 +386,7 @@ interviews[1]
 interviews[1:3, 7]
 ```
 
-```{.output}
+```output
 # A tibble: 3 × 1
   rooms
   <dbl>
@@ -400,7 +400,7 @@ interviews[1:3, 7]
 interviews[3, ]
 ```
 
-```{.output}
+```output
 # A tibble: 1 × 14
   key_ID village interview_date      no_membrs years_liv respondent_wall_type
    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>               
@@ -425,7 +425,7 @@ You can also exclude certain indices of a data frame using the "`-`" sign:
 interviews[, -1]          # The whole tibble, except the first column
 ```
 
-```{.output}
+```output
 # A tibble: 131 × 13
    village  interview_date      no_membrs years_liv respondent_wall_type rooms
    <chr>    <dttm>                  <dbl>     <dbl> <chr>                <dbl>
@@ -449,7 +449,7 @@ interviews[, -1]          # The whole tibble, except the first column
 interviews[-c(7:131), ]   # Equivalent to head(interviews)
 ```
 
-```{.output}
+```output
 # A tibble: 6 × 14
   key_ID village interview_date      no_membrs years_liv respondent_wall_type
    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>               
@@ -566,7 +566,7 @@ the number of levels using `nlevels()`:
 levels(respondent_floor_type)
 ```
 
-```{.output}
+```output
 [1] "cement" "earth" 
 ```
 
@@ -574,7 +574,7 @@ levels(respondent_floor_type)
 nlevels(respondent_floor_type)
 ```
 
-```{.output}
+```output
 [1] 2
 ```
 
@@ -589,7 +589,7 @@ vector would be:
 respondent_floor_type # current order
 ```
 
-```{.output}
+```output
 [1] earth  cement cement earth 
 Levels: cement earth
 ```
@@ -601,7 +601,7 @@ respondent_floor_type <- factor(respondent_floor_type,
 respondent_floor_type # after re-ordering
 ```
 
-```{.output}
+```output
 [1] earth  cement cement earth 
 Levels: earth cement
 ```
@@ -621,7 +621,7 @@ provides some extra tools to work with factors.
 levels(respondent_floor_type)
 ```
 
-```{.output}
+```output
 [1] "earth"  "cement"
 ```
 
@@ -635,7 +635,7 @@ respondent_floor_type <- fct_recode(respondent_floor_type, brick = "cement")
 levels(respondent_floor_type)
 ```
 
-```{.output}
+```output
 [1] "earth" "brick"
 ```
 
@@ -643,7 +643,7 @@ levels(respondent_floor_type)
 respondent_floor_type
 ```
 
-```{.output}
+```output
 [1] earth brick brick earth
 Levels: earth brick
 ```
@@ -663,7 +663,7 @@ respondent_floor_type_ordered <- factor(respondent_floor_type,
 respondent_floor_type_ordered # after setting as ordered factor
 ```
 
-```{.output}
+```output
 [1] earth brick brick earth
 Levels: earth < brick
 ```
@@ -678,7 +678,7 @@ If you need to convert a factor to a character vector, you use
 as.character(respondent_floor_type)
 ```
 
-```{.output}
+```output
 [1] "earth" "brick" "brick" "earth"
 ```
 
@@ -696,7 +696,7 @@ year_fct <- factor(c(1990, 1983, 1977, 1998, 1990))
 as.numeric(year_fct)                     # Wrong! And there is no warning...
 ```
 
-```{.output}
+```output
 [1] 3 2 1 4 3
 ```
 
@@ -704,7 +704,7 @@ as.numeric(year_fct)                     # Wrong! And there is no warning...
 as.numeric(as.character(year_fct))       # Works...
 ```
 
-```{.output}
+```output
 [1] 1990 1983 1977 1998 1990
 ```
 
@@ -712,7 +712,7 @@ as.numeric(as.character(year_fct))       # Works...
 as.numeric(levels(year_fct))[year_fct]   # The recommended way.
 ```
 
-```{.output}
+```output
 [1] 1990 1983 1977 1998 1990
 ```
 
@@ -743,7 +743,7 @@ memb_assoc <- as.factor(memb_assoc)
 memb_assoc
 ```
 
-```{.output}
+```output
   [1] <NA> yes  <NA> <NA> <NA> <NA> no   yes  no   no   <NA> yes  no   <NA> yes 
  [16] <NA> <NA> <NA> <NA> <NA> no   <NA> <NA> no   no   no   <NA> no   yes  <NA>
  [31] <NA> yes  no   yes  yes  yes  <NA> yes  <NA> yes  <NA> no   no   <NA> no  
@@ -785,7 +785,7 @@ memb_assoc <- as.factor(memb_assoc)
 memb_assoc
 ```
 
-```{.output}
+```output
   [1] undetermined yes          undetermined undetermined undetermined
   [6] undetermined no           yes          no           no          
  [11] undetermined yes          no           undetermined yes         
@@ -894,7 +894,7 @@ dates <- interviews$interview_date
 str(dates)
 ```
 
-```{.output}
+```output
  POSIXct[1:131], format: "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" ...
 ```
 
@@ -911,7 +911,7 @@ interviews$year <- year(dates)
 interviews
 ```
 
-```{.output}
+```output
 # A tibble: 131 × 17
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -946,7 +946,7 @@ char_dates <- c("7/31/2012", "8/9/2014", "4/30/2016")
 str(char_dates)
 ```
 
-```{.output}
+```output
  chr [1:3] "7/31/2012" "8/9/2014" "4/30/2016"
 ```
 
@@ -957,7 +957,7 @@ We can convert this vector to dates as :
 as_date(char_dates, format = "%m/%d/%Y")
 ```
 
-```{.output}
+```output
 [1] "2012-07-31" "2014-08-09" "2016-04-30"
 ```
 
@@ -973,11 +973,11 @@ case Y for the year.
 as_date(char_dates, format = "%m/%d/%y")
 ```
 
-```{.warning}
+```warning
 Warning: 3 failed to parse.
 ```
 
-```{.output}
+```output
 [1] NA NA NA
 ```
 
@@ -992,11 +992,11 @@ elements of the format are switched.
 as_date(char_dates, format = "%d/%m/%y")
 ```
 
-```{.warning}
+```warning
 Warning: 3 failed to parse.
 ```
 
-```{.output}
+```output
 [1] NA NA NA
 ```
 
@@ -1011,7 +1011,7 @@ variables to date.
 mdy(char_dates)
 ```
 
-```{.output}
+```output
 [1] "2012-07-31" "2014-08-09" "2016-04-30"
 ```
 

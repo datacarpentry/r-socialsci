@@ -52,7 +52,7 @@ You can get output from R simply by typing math in the console:
 3 + 5
 ```
 
-```{.output}
+```output
 [1] 8
 ```
 
@@ -60,7 +60,7 @@ You can get output from R simply by typing math in the console:
 12 / 7
 ```
 
-```{.output}
+```output
 [1] 1.714286
 ```
 
@@ -137,7 +137,7 @@ area_hectares <- 1.0    # doesn't print anything
 (area_hectares <- 1.0)  # putting parenthesis around the call prints the value of `area_hectares`
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -145,7 +145,7 @@ area_hectares <- 1.0    # doesn't print anything
 area_hectares         # and so does typing the name of the object
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -157,7 +157,7 @@ instance, we may want to convert this area into acres (area in acres is 2.47 tim
 2.47 * area_hectares
 ```
 
-```{.output}
+```output
 [1] 2.47
 ```
 
@@ -169,7 +169,7 @@ area_hectares <- 2.5
 2.47 * area_hectares
 ```
 
-```{.output}
+```output
 [1] 6.175
 ```
 
@@ -223,7 +223,7 @@ area_acres <- area_hectares * 2.47	# convert to acres
 area_acres				# print land area in acres.
 ```
 
-```{.output}
+```output
 [1] 2.47
 ```
 
@@ -259,7 +259,7 @@ r_area <- r_length * r_width
 r_area
 ```
 
-```{.output}
+```output
 [1] 8
 ```
 
@@ -271,7 +271,7 @@ r_width <- 6.5
 r_area
 ```
 
-```{.output}
+```output
 [1] 8
 ```
 
@@ -319,7 +319,7 @@ Let's try a function that can take multiple arguments: `round()`.
 round(3.14159)
 ```
 
-```{.output}
+```output
 [1] 3
 ```
 
@@ -334,7 +334,7 @@ help for this function using `?round`.
 args(round)
 ```
 
-```{.output}
+```output
 function (x, digits = 0) 
 NULL
 ```
@@ -352,7 +352,7 @@ type `digits=2` or however many we want.
 round(3.14159, digits = 2)
 ```
 
-```{.output}
+```output
 [1] 3.14
 ```
 
@@ -364,7 +364,7 @@ don't have to name them:
 round(3.14159, 2)
 ```
 
-```{.output}
+```output
 [1] 3.14
 ```
 
@@ -375,7 +375,7 @@ And if you do name the arguments, you can switch their order:
 round(digits = 2, x = 3.14159)
 ```
 
-```{.output}
+```output
 [1] 3.14
 ```
 
@@ -412,7 +412,7 @@ hh_members <- c(3, 7, 10, 6)
 hh_members
 ```
 
-```{.output}
+```output
 [1]  3  7 10  6
 ```
 
@@ -426,7 +426,7 @@ respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
 respondent_wall_type
 ```
 
-```{.output}
+```output
 [1] "muddaub"     "burntbricks" "sunbricks"  
 ```
 
@@ -442,7 +442,7 @@ vector. `length()` tells you how many elements are in a particular vector:
 length(hh_members)
 ```
 
-```{.output}
+```output
 [1] 4
 ```
 
@@ -450,7 +450,7 @@ length(hh_members)
 length(respondent_wall_type)
 ```
 
-```{.output}
+```output
 [1] 3
 ```
 
@@ -462,7 +462,7 @@ The function `typeof()` indicates the type of an object:
 typeof(hh_members)
 ```
 
-```{.output}
+```output
 [1] "double"
 ```
 
@@ -470,7 +470,7 @@ typeof(hh_members)
 typeof(respondent_wall_type)
 ```
 
-```{.output}
+```output
 [1] "character"
 ```
 
@@ -483,7 +483,7 @@ objects:
 str(hh_members)
 ```
 
-```{.output}
+```output
  num [1:4] 3 7 10 6
 ```
 
@@ -491,7 +491,7 @@ str(hh_members)
 str(respondent_wall_type)
 ```
 
-```{.output}
+```output
  chr [1:3] "muddaub" "burntbricks" "sunbricks"
 ```
 
@@ -505,7 +505,7 @@ possessions <- c("car", possessions) # add to the beginning of the vector
 possessions
 ```
 
-```{.output}
+```output
 [1] "car"          "bicycle"      "radio"        "television"   "mobile_phone"
 ```
 
@@ -617,7 +617,7 @@ respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
 respondent_wall_type[2]
 ```
 
-```{.output}
+```output
 [1] "burntbricks"
 ```
 
@@ -625,7 +625,7 @@ respondent_wall_type[2]
 respondent_wall_type[c(3, 2)]
 ```
 
-```{.output}
+```output
 [1] "sunbricks"   "burntbricks"
 ```
 
@@ -638,7 +638,7 @@ more_respondent_wall_type <- respondent_wall_type[c(1, 2, 3, 2, 1, 3)]
 more_respondent_wall_type
 ```
 
-```{.output}
+```output
 [1] "muddaub"     "burntbricks" "sunbricks"   "burntbricks" "muddaub"    
 [6] "sunbricks"  
 ```
@@ -659,7 +659,7 @@ hh_members <- c(3, 7, 10, 6)
 hh_members[c(TRUE, FALSE, TRUE, TRUE)]
 ```
 
-```{.output}
+```output
 [1]  3 10  6
 ```
 
@@ -672,7 +672,7 @@ values above 5:
 hh_members > 5    # will return logicals with TRUE for the indices that meet the condition
 ```
 
-```{.output}
+```output
 [1] FALSE  TRUE  TRUE  TRUE
 ```
 
@@ -681,7 +681,7 @@ hh_members > 5    # will return logicals with TRUE for the indices that meet the
 hh_members[hh_members > 5]
 ```
 
-```{.output}
+```output
 [1]  7 10  6
 ```
 
@@ -693,7 +693,7 @@ You can combine multiple tests using `&` (both conditions are true, AND) or `|`
 hh_members[hh_members < 4 | hh_members > 7]
 ```
 
-```{.output}
+```output
 [1]  3 10
 ```
 
@@ -701,7 +701,7 @@ hh_members[hh_members < 4 | hh_members > 7]
 hh_members[hh_members >= 4 & hh_members <= 7]
 ```
 
-```{.output}
+```output
 [1] 7 6
 ```
 
@@ -721,7 +721,7 @@ possessions <- c("car", "bicycle", "radio", "television", "mobile_phone")
 possessions[possessions == "car" | possessions == "bicycle"] # returns both car and bicycle
 ```
 
-```{.output}
+```output
 [1] "car"     "bicycle"
 ```
 
@@ -733,7 +733,7 @@ The function `%in%` allows you to test if any of the elements of a search vector
 possessions %in% c("car", "bicycle")
 ```
 
-```{.output}
+```output
 [1]  TRUE  TRUE FALSE FALSE FALSE
 ```
 
@@ -747,7 +747,7 @@ in the search vector that appear in your target vector:
 possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")
 ```
 
-```{.output}
+```output
 [1]  TRUE  TRUE FALSE FALSE FALSE
 ```
 
@@ -755,7 +755,7 @@ possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")
 possessions[possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")]
 ```
 
-```{.output}
+```output
 [1] "car"     "bicycle"
 ```
 
@@ -777,7 +777,7 @@ rooms <- c(2, 1, 1, NA, 7)
 mean(rooms)
 ```
 
-```{.output}
+```output
 [1] NA
 ```
 
@@ -785,7 +785,7 @@ mean(rooms)
 max(rooms)
 ```
 
-```{.output}
+```output
 [1] NA
 ```
 
@@ -793,7 +793,7 @@ max(rooms)
 mean(rooms, na.rm = TRUE)
 ```
 
-```{.output}
+```output
 [1] 2.75
 ```
 
@@ -801,7 +801,7 @@ mean(rooms, na.rm = TRUE)
 max(rooms, na.rm = TRUE)
 ```
 
-```{.output}
+```output
 [1] 7
 ```
 
@@ -816,7 +816,7 @@ examples.
 rooms[!is.na(rooms)]
 ```
 
-```{.output}
+```output
 [1] 2 1 1 7
 ```
 
@@ -826,7 +826,7 @@ rooms[!is.na(rooms)]
 sum(is.na(rooms))
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -835,7 +835,7 @@ sum(is.na(rooms))
 na.omit(rooms)
 ```
 
-```{.output}
+```output
 [1] 2 1 1 7
 attr(,"na.action")
 [1] 4
@@ -848,7 +848,7 @@ attr(,"class")
 rooms[complete.cases(rooms)]
 ```
 
-```{.output}
+```output
 [1] 2 1 1 7
 ```
 
@@ -882,7 +882,7 @@ rooms_no_na <- na.omit(rooms)
 median(rooms, na.rm = TRUE)
 ```
 
-```{.output}
+```output
 [1] 1
 ```
 
@@ -892,7 +892,7 @@ rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
 length(rooms_above_2)
 ```
 
-```{.output}
+```output
 [1] 4
 ```
 

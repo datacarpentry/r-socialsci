@@ -118,7 +118,7 @@ json_data <- json_data %>% as_tibble()
 glimpse(json_data)
 ```
 
-```{.output}
+```output
 Rows: 131
 Columns: 74
 $ C06_rooms                      <int> 1, 1, 1, 1, 1, 1, 1, 3, 1, 5, 1, 3, 1, …
@@ -208,7 +208,7 @@ json_data %>%
     glimpse()
 ```
 
-```{.output}
+```output
 Rows: 131
 Columns: 14
 $ F_liv                  <list> [<data.frame[1 x 2]>], [<data.frame[3 x 2]>], …
@@ -234,7 +234,7 @@ So what can we do about *F\_liv*, the column of dataframes? Well first things fi
 json_data$F_liv[1]
 ```
 
-```{.output}
+```output
 [[1]]
   F11_no_owned F_curr_liv
 1            1    poultry
@@ -247,7 +247,7 @@ We can also choose to view the nested dataframes at all the rows of our main dat
 json_data$F_liv[which(json_data$C06_rooms == 4)]
 ```
 
-```{.output}
+```output
 [[1]]
   F11_no_owned F_curr_liv
 1            3       oxen
@@ -294,7 +294,7 @@ flattened_json_data <- json_data %>%
 flattened_json_data
 ```
 
-```{.output}
+```output
 # A tibble: 131 × 74
    C06_rooms B19_grand_liv A08_ward E01_water_use B18_sp_parents_liv
        <int> <chr>         <chr>    <chr>         <chr>             

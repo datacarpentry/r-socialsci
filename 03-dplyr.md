@@ -147,7 +147,7 @@ dataframe to adhere to (e.g. village name is Chirodzo):
 filter(interviews, village == "Chirodzo")
 ```
 
-```{.output}
+```output
 # A tibble: 39 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -183,7 +183,7 @@ filter(interviews, village == "Chirodzo",
                    no_meals > 2)
 ```
 
-```{.output}
+```output
 # A tibble: 10 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -213,7 +213,7 @@ filter(interviews, village == "Chirodzo" &
                    no_meals > 2)
 ```
 
-```{.output}
+```output
 # A tibble: 10 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -242,7 +242,7 @@ To form "or" statements we use the logical operator for "or," which is the verti
 filter(interviews, village == "Chirodzo" | village == "Ruaca")
 ```
 
-```{.output}
+```output
 # A tibble: 88 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -308,7 +308,7 @@ interviews %>%
     select(village:respondent_wall_type)
 ```
 
-```{.output}
+```output
 # A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
    <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -357,7 +357,7 @@ interviews_ch <- interviews %>%
 interviews_ch
 ```
 
-```{.output}
+```output
 # A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
    <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -397,7 +397,7 @@ interviews %>%
     select(affect_conflicts, liv_count, no_meals)
 ```
 
-```{.output}
+```output
 # A tibble: 33 × 3
    affect_conflicts liv_count no_meals
    <chr>                <dbl>    <dbl>
@@ -433,7 +433,7 @@ interviews %>%
     mutate(people_per_room = no_membrs / rooms)
 ```
 
-```{.output}
+```output
 # A tibble: 131 × 15
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -469,7 +469,7 @@ interviews %>%
     mutate(people_per_room = no_membrs / rooms)
 ```
 
-```{.output}
+```output
 # A tibble: 92 × 15
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -546,7 +546,7 @@ interviews %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
-```{.output}
+```output
 # A tibble: 3 × 2
   village  mean_no_membrs
   <chr>             <dbl>
@@ -567,12 +567,12 @@ interviews %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 9 × 3
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs
@@ -599,12 +599,12 @@ interviews %>%
     ungroup()
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 9 × 3
   village  memb_assoc mean_no_membrs
   <chr>    <chr>               <dbl>
@@ -631,12 +631,12 @@ interviews %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 6 × 3
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs
@@ -663,12 +663,12 @@ interviews %>%
               min_membrs = min(no_membrs))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
@@ -695,12 +695,12 @@ interviews %>%
     arrange(min_membrs)
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
@@ -726,12 +726,12 @@ interviews %>%
     arrange(desc(min_membrs))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
@@ -757,7 +757,7 @@ interviews %>%
     count(village)
 ```
 
-```{.output}
+```output
 # A tibble: 3 × 2
   village      n
   <chr>    <int>
@@ -775,7 +775,7 @@ interviews %>%
     count(village, sort = TRUE)
 ```
 
-```{.output}
+```output
 # A tibble: 3 × 2
   village      n
   <chr>    <int>
@@ -802,7 +802,7 @@ interviews %>%
    count(no_meals)
 ```
 
-```{.output}
+```output
 # A tibble: 2 × 2
   no_meals     n
      <dbl> <int>
@@ -832,7 +832,7 @@ interviews %>%
   )
 ```
 
-```{.output}
+```output
 # A tibble: 3 × 5
   village  mean_no_membrs min_no_membrs max_no_membrs     n
   <chr>             <dbl>         <dbl>         <dbl> <int>
@@ -861,12 +861,12 @@ interviews %>%
     summarize(max_no_membrs = max(no_membrs))
 ```
 
-```{.output}
+```output
 `summarise()` has grouped output by 'year'. You can override using the
 `.groups` argument.
 ```
 
-```{.output}
+```output
 # A tibble: 5 × 3
 # Groups:   year [2]
    year month max_no_membrs

@@ -49,7 +49,7 @@ If not still in the workspace, load the data we saved in the previous lesson.
 interviews_plotting <- read_csv("data_output/interviews_plotting.csv")
 ```
 
-```{.output}
+```output
 Rows: 131 Columns: 45
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
@@ -452,7 +452,7 @@ interviews_plotting %>%
   geom_jitter(alpha = 0.5, color = "tomato")
 ```
 
-```{.warning}
+```warning
 Warning: Groups with fewer than two datapoints have been dropped.
 ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
