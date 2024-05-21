@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.3",
+    "Version": "4.4.0",
     "Repositories": [
       {
         "Name": "carpentries",
@@ -1039,7 +1039,7 @@
       "Package": "ragg",
       "Version": "1.3.1",
       "Source": "Repository",
-      "Repository": "https://carpentries.r-universe.dev",
+      "Repository": "CRAN",
       "Requirements": [
         "systemfonts",
         "textshaping"
@@ -1264,7 +1264,7 @@
       "Package": "stringi",
       "Version": "1.8.4",
       "Source": "Repository",
-      "Repository": "https://carpentries.r-universe.dev",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "stats",
