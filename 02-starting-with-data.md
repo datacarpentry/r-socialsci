@@ -46,7 +46,7 @@ The two main goals for this lessons are:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## What are data frames and tibbles?
+## What are data frames?
 
 Data frames are the *de facto* data structure for tabular data in `R`, and what
 we use for data processing, statistics, and plotting.
@@ -180,7 +180,7 @@ function is different from the `read_csv()` function, as it is included in the
 similar to `read_csv()`, with a few notable differences. First, `read.csv()`
 coerces column names with spaces and/or special characters to different names
 (e.g. `interview date` becomes `interview.date`). Second, `read.csv()`
-stores data as a `data.frame`, where `read_csv()` stores data as a `tibble`.
+stores data as a `data.frame`, where `read_csv()` stores data as a different kind of data frame called a `tibble`.
 We prefer tibbles because they have nice printing properties among other
 desirable qualities. Read more about tibbles
 [here](https://tibble.tidyverse.org/).
