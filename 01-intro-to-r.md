@@ -335,7 +335,7 @@ args(round)
 ```
 
 ```output
-function (x, digits = 0) 
+function (x, digits = 0, ...) 
 NULL
 ```
 
