@@ -152,7 +152,7 @@ We'll tell it to the function, so R will automatically convert all the "NULL"
 entries in the dataset into `NA`.
 
 
-```r
+``` r
 library(tidyverse)
 library(here)
 
@@ -193,14 +193,14 @@ has been loaded, we can see the contents of the data frame by typing its name:
 `interviews` in the console.
 
 
-```r
+``` r
 interviews
 ## Try also
 ## view(interviews)
 ## head(interviews)
 ```
 
-```output
+``` output
 # A tibble: 131 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -242,11 +242,11 @@ the data is read using `read_csv()`, it is stored in an object of class
 `tbl_df`, `tbl`,  and `data.frame`. You can see the class of an object with
 
 
-```r
+``` r
 class(interviews)
 ```
 
-```output
+``` output
 [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame" 
 ```
 
@@ -319,36 +319,36 @@ different classes. This is covered in the Software Carpentry lesson
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-```r
+``` r
 ## first element in the first column of the tibble
 interviews[1, 1]
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   key_ID
    <dbl>
 1      1
 ```
 
-```r
+``` r
 ## first element in the 6th column of the tibble 
 interviews[1, 6]
 ```
 
-```output
+``` output
 # A tibble: 1 × 1
   respondent_wall_type
   <chr>               
 1 muddaub             
 ```
 
-```r
+``` r
 ## first column of the tibble (as a vector)
 interviews[[1]]
 ```
 
-```output
+``` output
   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
@@ -359,12 +359,12 @@ interviews[[1]]
 [127] 126 193 194 199 200
 ```
 
-```r
+``` r
 ## first column of the tibble
 interviews[1]
 ```
 
-```output
+``` output
 # A tibble: 131 × 1
    key_ID
     <dbl>
@@ -381,12 +381,12 @@ interviews[1]
 # ℹ 121 more rows
 ```
 
-```r
+``` r
 ## first three elements in the 7th column of the tibble
 interviews[1:3, 7]
 ```
 
-```output
+``` output
 # A tibble: 3 × 1
   rooms
   <dbl>
@@ -395,12 +395,12 @@ interviews[1:3, 7]
 3     1
 ```
 
-```r
+``` r
 ## the 3rd row of the tibble
 interviews[3, ]
 ```
 
-```output
+``` output
 # A tibble: 1 × 14
   key_ID village interview_date      no_membrs years_liv respondent_wall_type
    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>               
@@ -410,7 +410,7 @@ interviews[3, ]
 #   instanceID <chr>
 ```
 
-```r
+``` r
 ## equivalent to head_interviews <- head(interviews)
 head_interviews <- interviews[1:6, ]
 ```
@@ -421,11 +421,11 @@ or decreasing order, test `1:10` and `10:1` for instance.
 You can also exclude certain indices of a data frame using the "`-`" sign:
 
 
-```r
+``` r
 interviews[, -1]          # The whole tibble, except the first column
 ```
 
-```output
+``` output
 # A tibble: 131 × 13
    village  interview_date      no_membrs years_liv respondent_wall_type rooms
    <chr>    <dttm>                  <dbl>     <dbl> <chr>                <dbl>
@@ -445,11 +445,11 @@ interviews[, -1]          # The whole tibble, except the first column
 #   instanceID <chr>
 ```
 
-```r
+``` r
 interviews[-c(7:131), ]   # Equivalent to head(interviews)
 ```
 
-```output
+``` output
 # A tibble: 6 × 14
   key_ID village interview_date      no_membrs years_liv respondent_wall_type
    <dbl> <chr>   <dttm>                  <dbl>     <dbl> <chr>               
@@ -468,7 +468,7 @@ interviews[-c(7:131), ]   # Equivalent to head(interviews)
 calling their column names directly:
 
 
-```r
+``` r
 interviews["village"]       # Result is a tibble
 
 interviews[, "village"]     # Result is a tibble
@@ -514,7 +514,7 @@ Now, continue using `interviews` for each of the following activities:
 ## Solution
 
 
-```r
+``` r
 ## 1.
 interviews_100 <- interviews[100, ]
 ## 2.
@@ -552,7 +552,7 @@ Once created, factors can only contain a pre-defined set of values, known as
 instance, if you have a factor with 2 levels:
 
 
-```r
+``` r
 respondent_floor_type <- factor(c("earth", "cement", "cement", "earth"))
 ```
 
@@ -562,19 +562,19 @@ R will assign `1` to the level `"cement"` and `2` to the level `"earth"`
 the number of levels using `nlevels()`:
 
 
-```r
+``` r
 levels(respondent_floor_type)
 ```
 
-```output
+``` output
 [1] "cement" "earth" 
 ```
 
-```r
+``` r
 nlevels(respondent_floor_type)
 ```
 
-```output
+``` output
 [1] 2
 ```
 
@@ -585,23 +585,23 @@ analysis. Here, one way to reorder our levels in the `respondent_floor_type`
 vector would be:
 
 
-```r
+``` r
 respondent_floor_type # current order
 ```
 
-```output
+``` output
 [1] earth  cement cement earth 
 Levels: cement earth
 ```
 
-```r
+``` r
 respondent_floor_type <- factor(respondent_floor_type, 
                                 levels = c("earth", "cement"))
 
 respondent_floor_type # after re-ordering
 ```
 
-```output
+``` output
 [1] earth  cement cement earth 
 Levels: earth cement
 ```
@@ -617,15 +617,15 @@ function from the **`forcats`** package (included in the **`tidyverse`**) which
 provides some extra tools to work with factors.
 
 
-```r
+``` r
 levels(respondent_floor_type)
 ```
 
-```output
+``` output
 [1] "earth"  "cement"
 ```
 
-```r
+``` r
 respondent_floor_type <- fct_recode(respondent_floor_type, brick = "cement")
 
 ## as an alternative, we could change the "cement" level directly using the
@@ -635,15 +635,15 @@ respondent_floor_type <- fct_recode(respondent_floor_type, brick = "cement")
 levels(respondent_floor_type)
 ```
 
-```output
+``` output
 [1] "earth" "brick"
 ```
 
-```r
+``` r
 respondent_floor_type
 ```
 
-```output
+``` output
 [1] earth brick brick earth
 Levels: earth brick
 ```
@@ -656,14 +656,14 @@ ordered version below. Ordered levels use the less than sign `<` to denote
 level ranking.
 
 
-```r
+``` r
 respondent_floor_type_ordered <- factor(respondent_floor_type, 
                                         ordered = TRUE)
 
 respondent_floor_type_ordered # after setting as ordered factor
 ```
 
-```output
+``` output
 [1] earth brick brick earth
 Levels: earth < brick
 ```
@@ -674,11 +674,11 @@ If you need to convert a factor to a character vector, you use
 `as.character(x)`.
 
 
-```r
+``` r
 as.character(respondent_floor_type)
 ```
 
-```output
+``` output
 [1] "earth" "brick" "brick" "earth"
 ```
 
@@ -690,29 +690,29 @@ One method to avoid this is to convert factors to characters, and then to
 numbers. Another method is to use the `levels()` function. Compare:
 
 
-```r
+``` r
 year_fct <- factor(c(1990, 1983, 1977, 1998, 1990))
 
 as.numeric(year_fct)                     # Wrong! And there is no warning...
 ```
 
-```output
+``` output
 [1] 3 2 1 4 3
 ```
 
-```r
+``` r
 as.numeric(as.character(year_fct))       # Works...
 ```
 
-```output
+``` output
 [1] 1990 1983 1977 1998 1990
 ```
 
-```r
+``` r
 as.numeric(levels(year_fct))[year_fct]   # The recommended way.
 ```
 
-```output
+``` output
 [1] 1990 1983 1977 1998 1990
 ```
 
@@ -732,7 +732,7 @@ factor, and use it to look at the number of interview respondents who were or
 were not members of an irrigation association:
 
 
-```r
+``` r
 ## create a vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
 
@@ -743,7 +743,7 @@ memb_assoc <- as.factor(memb_assoc)
 memb_assoc
 ```
 
-```output
+``` output
   [1] <NA> yes  <NA> <NA> <NA> <NA> no   yes  no   no   <NA> yes  no   <NA> yes 
  [16] <NA> <NA> <NA> <NA> <NA> no   <NA> <NA> no   no   no   <NA> no   yes  <NA>
  [31] <NA> yes  no   yes  yes  yes  <NA> yes  <NA> yes  <NA> no   no   <NA> no  
@@ -756,7 +756,7 @@ memb_assoc
 Levels: no yes
 ```
 
-```r
+``` r
 ## bar plot of the number of interview respondents who were
 ## members of irrigation association:
 plot(memb_assoc)
@@ -771,7 +771,7 @@ been recorded, and encoded as missing data. These respondents do not appear on t
 Let's encode them differently so they can be counted and visualized in our plot.
 
 
-```r
+``` r
 ## Let's recreate the vector from the data frame column "memb_assoc"
 memb_assoc <- interviews$memb_assoc
 
@@ -785,7 +785,7 @@ memb_assoc <- as.factor(memb_assoc)
 memb_assoc
 ```
 
-```output
+``` output
   [1] undetermined yes          undetermined undetermined undetermined
   [6] undetermined no           yes          no           no          
  [11] undetermined yes          no           undetermined yes         
@@ -816,7 +816,7 @@ memb_assoc
 Levels: no undetermined yes
 ```
 
-```r
+``` r
 ## bar plot of the number of interview respondents who were
 ## members of irrigation association:
 plot(memb_assoc)
@@ -839,7 +839,7 @@ plot(memb_assoc)
 ## Solution
 
 
-```r
+``` r
 ## Rename levels.
 memb_assoc <- fct_recode(memb_assoc, No = "no",
                          Undetermined = "undetermined", Yes = "yes")
@@ -866,7 +866,7 @@ year, month, and day that the interview was conducted. Let's
 convert those dates into three separate columns.
 
 
-```r
+``` r
 str(interviews)
 ```
 
@@ -876,7 +876,7 @@ However, if we deal with older versions of tidyverse (2022 and ealier), we can m
 If necessary, start by loading the required package:
 
 
-```r
+``` r
 library(lubridate)
 ```
 
@@ -889,12 +889,12 @@ as "YYYY-MM-DD".
 Let's extract our `interview_date` column and inspect the structure:
 
 
-```r
+``` r
 dates <- interviews$interview_date
 str(dates)
 ```
 
-```output
+``` output
  POSIXct[1:131], format: "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" "2016-11-17" ...
 ```
 
@@ -904,14 +904,14 @@ functions to extract this information from the date, and create new columns in
 our data frame to store it:
 
 
-```r
+``` r
 interviews$day <- day(dates)
 interviews$month <- month(dates)
 interviews$year <- year(dates)
 interviews
 ```
 
-```output
+``` output
 # A tibble: 131 × 17
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -941,23 +941,23 @@ them to the appropriate `Date/POSIXct`format.
 Let's say we have a vector of dates in character format:
 
 
-```r
+``` r
 char_dates <- c("7/31/2012", "8/9/2014", "4/30/2016")
 str(char_dates)
 ```
 
-```output
+``` output
  chr [1:3] "7/31/2012" "8/9/2014" "4/30/2016"
 ```
 
 We can convert this vector to dates as :
 
 
-```r
+``` r
 as_date(char_dates, format = "%m/%d/%Y")
 ```
 
-```output
+``` output
 [1] "2012-07-31" "2014-08-09" "2016-04-30"
 ```
 
@@ -969,15 +969,15 @@ For example, observe what happens when we use a lower case y instead of upper
 case Y for the year.
 
 
-```r
+``` r
 as_date(char_dates, format = "%m/%d/%y")
 ```
 
-```warning
+``` warning
 Warning: 3 failed to parse.
 ```
 
-```output
+``` output
 [1] NA NA NA
 ```
 
@@ -988,15 +988,15 @@ Or in the following example, observe what happens when the month and day
 elements of the format are switched.
 
 
-```r
+``` r
 as_date(char_dates, format = "%d/%m/%y")
 ```
 
-```warning
+``` warning
 Warning: 3 failed to parse.
 ```
 
-```output
+``` output
 [1] NA NA NA
 ```
 
@@ -1007,11 +1007,11 @@ We can also use functions `ymd()`, `mdy()` or `dmy()` to convert character
 variables to date.
 
 
-```r
+``` r
 mdy(char_dates)
 ```
 
-```output
+``` output
 [1] "2012-07-31" "2014-08-09" "2016-04-30"
 ```
 

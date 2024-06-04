@@ -65,7 +65,7 @@ Because detailed surveys are by nature nested structures making it possible to r
 ## Use the JSON package to read a JSON file
 
 
-```r
+``` r
 library(jsonlite)
 ```
 
@@ -75,7 +75,7 @@ You can read the JSON file directly into R with `read_json()` or the comparable 
 function, though this does not download the file.
 
 
-```r
+``` r
 json_data <- read_json(
   "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI.json"
   )
@@ -86,7 +86,7 @@ To download the file you can copy and paste the contents of the file on
 creating a `SAFI.json` file in your `data` directory, or you can download the file with R.
 
 
-```r
+``` r
 download.file(
   "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI.json",
    "data/SAFI.json", mode = "wb")
@@ -95,7 +95,7 @@ download.file(
 Once you have the data downloaded, you can read it into R with `read_json()`:
 
 
-```r
+``` r
 json_data <- read_json("data/SAFI.json")
 ```
 
@@ -104,7 +104,7 @@ We can see that a new object called json\_data has appeared in our Environment. 
 This is because, by default, the `read_json()` function's parameter `simplifyVector`, which specifies whether or not to simplify vectors is set to FALSE. This means that the default setting does not simplify nested lists into vectors and data frames. However, we can set this to TRUE, and our data will be read directly as a dataframe:
 
 
-```r
+``` r
 json_data <- read_json("data/SAFI.json", simplifyVector = TRUE)
 ```
 
@@ -113,12 +113,12 @@ the lesson, let's coerce it to be a tibble and use `glimpse` to take a peek
 inside (these functions were loaded by `library(tidyverse)`):
 
 
-```r
+``` r
 json_data <- json_data %>% as_tibble()
 glimpse(json_data)
 ```
 
-```output
+``` output
 Rows: 131
 Columns: 74
 $ C06_rooms                      <int> 1, 1, 1, 1, 1, 1, 1, 3, 1, 5, 1, 3, 1, …
@@ -202,13 +202,13 @@ Looking good, but you might notice that actually we have a variable, *F\_liv* th
 Often when we have a very large number of columns, it can become difficult to determine all the variables which may require some special attention, like lists. Fortunately, we can use special verbs like `where` to quickly select all the list columns.
 
 
-```r
+``` r
 json_data %>%
     select(where(is.list)) %>%
     glimpse()
 ```
 
-```output
+``` output
 Rows: 131
 Columns: 14
 $ F_liv                  <list> [<data.frame[1 x 2]>], [<data.frame[3 x 2]>], …
@@ -230,11 +230,11 @@ $ E_no_group             <list> [<data.frame[2 x 6]>], [<data.frame[0 x 0]>], �
 So what can we do about *F\_liv*, the column of dataframes? Well first things first, we can access each one. For  example to access the dataframe in the first row, we can use the  bracket (`[`) subsetting. Here we use single bracket, but you could also use double bracket (`[[`). The `[[` form allows only a single element to be selected using integer or character indices, whereas `[` allows indexing by vectors.
 
 
-```r
+``` r
 json_data$F_liv[1]
 ```
 
-```output
+``` output
 [[1]]
   F11_no_owned F_curr_liv
 1            1    poultry
@@ -243,11 +243,11 @@ json_data$F_liv[1]
 We can also choose to view the nested dataframes at all the rows of our main dataframe where a particular condition is met (for example where the value for the variable *C06\_rooms* is equal to 4):
 
 
-```r
+``` r
 json_data$F_liv[which(json_data$C06_rooms == 4)]
 ```
 
-```output
+``` output
 [[1]]
   F11_no_owned F_curr_liv
 1            3       oxen
@@ -280,7 +280,7 @@ data frame with 0 columns and 0 rows
 If we try to write our json\_data dataframe to a csv as we would usually in a regular dataframe, we won't get the desired result. Using the `write_csv` function from the `{readr}` package won't give you an error for list columns, but you'll only see missing (i.e. `NA`) values in these columns. Let's try it out to confirm:
 
 
-```r
+``` r
 write_csv(json_data, "json_data_with_list_columns.csv")
 read_csv("json_data_with_list_columns.csv")
 ```
@@ -288,13 +288,13 @@ read_csv("json_data_with_list_columns.csv")
 To write out as a csv while maintaining the data within the list columns, we will need to "flatten" these columns. One way to do this is to convert these list columns into character types. (However, we don't want to change the data types for any of the other columns). Here's one way to do this using tidyverse. This command only applies the `as.character` command to those columns 'where' `is.list` is `TRUE`.
 
 
-```r
+``` r
 flattened_json_data <- json_data %>% 
   mutate(across(where(is.list), as.character))
 flattened_json_data
 ```
 
-```output
+``` output
 # A tibble: 131 × 74
    C06_rooms B19_grand_liv A08_ward E01_water_use B18_sp_parents_liv
        <int> <chr>         <chr>    <chr>         <chr>             
@@ -320,7 +320,7 @@ flattened_json_data
 Now you can write this to a csv file:
 
 
-```r
+``` r
 write_csv(flattened_json_data, "data_output/json_data_with_flattened_list_columns.csv")
 ```
 
@@ -329,7 +329,7 @@ Note: this means that when you read this csv back into R, the column of the nest
 You can also write out the individual nested dataframes to a csv. For example:
 
 
-```r
+``` r
 write_csv(json_data$F_liv[[1]], "data_output/F_liv_row1.csv")
 ```
 

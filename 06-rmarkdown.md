@@ -220,7 +220,7 @@ and <kbd>Cmd</kbd>\+<kbd>Option</kbd>\+<kbd>I</kbd> on Mac.
 The syntax of a code chunk is:
 
 
-````markdown
+```` markdown
 ```{r chunk-name}
 "Here is where you place the R code that you want to run."
 ```
@@ -241,7 +241,7 @@ knitted HTML document, we add an `include = FALSE` option after the code chunk
 name (`{r setup, include = FALSE}`).
 
 
-````markdown
+```` markdown
 ```{r setup, include = FALSE}
 library(tidyverse)
 library(here)
@@ -283,7 +283,7 @@ caption, etc.
 Run the code chunk to make sure you get the desired output.
 
 
-```r
+``` r
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
@@ -390,7 +390,7 @@ uses one backtick (`r`), whereas code chunks use three backticks
 (``` r ```).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2024-05-21.  
+today's date is 2024-06-04.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
@@ -399,7 +399,7 @@ to produce the in-line output by preparing the output in code chunks. Let's say
 we're interested in presenting the average household size in a village.
 
 
-```r
+``` r
 # create a summary data frame with the mean household size by village
 mean_household <- interviews %>%
     group_by(village) %>%
@@ -435,7 +435,7 @@ If you were unable to complete the previous lesson or did not save the data,
 then you can create it in a new code chunk.
 
 
-```r
+``` r
 ## Not run, but can be used to load in data from previous lesson!
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
@@ -473,7 +473,7 @@ If you are feeling adventurous, you can also create a new plot with the
 ## Solution to Exercise
 
 
-```r
+``` r
 interviews_plotting %>%
   ggplot(aes(x = respondent_wall_type)) +
   geom_bar(aes(fill = village))
@@ -488,7 +488,7 @@ interviews_plotting %>%
 We can also create a caption with the chunk option `fig.cap`.
 
 
-````markdown
+```` markdown
 ```{r chunk-name, fig.cap = "I made this plot while attending an
 awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
 Code for plot
@@ -498,7 +498,7 @@ Code for plot
 ...or, ideally, something more informative.
 
 
-```r
+``` r
 interviews_plotting %>%
   ggplot(aes(x = respondent_wall_type)) +
   geom_bar(aes(fill = village), position = "dodge") + 

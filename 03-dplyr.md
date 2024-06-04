@@ -94,7 +94,7 @@ To make sure everyone will use the same dataset for this lesson, we'll read
 again the SAFI dataset that we downloaded earlier.
 
 
-```r
+``` r
 ## load the tidyverse
 library(tidyverse)
 library(here)
@@ -128,7 +128,7 @@ the past using subsetting. `select()` is essentially doing the same thing as
 subsetting, using a package (`dplyr`) instead of R's base functions.
 
 
-```r
+``` r
 # to select columns throughout the dataframe
 select(interviews, village, no_membrs, months_lack_food)
 # to do the same thing with subsetting
@@ -142,12 +142,12 @@ The argument after the dataframe is the condition we want our final
 dataframe to adhere to (e.g. village name is Chirodzo):
 
 
-```r
+``` r
 # filters observations where village name is "Chirodzo"
 filter(interviews, village == "Chirodzo")
 ```
 
-```output
+``` output
 # A tibble: 39 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -175,7 +175,7 @@ our desired conditions as arguments in the `filter()` function, separated by
 commas:
 
 
-```r
+``` r
 # filters observations with "and" operator (comma)
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo",
@@ -183,7 +183,7 @@ filter(interviews, village == "Chirodzo",
                    no_meals > 2)
 ```
 
-```output
+``` output
 # A tibble: 10 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -205,7 +205,7 @@ filter(interviews, village == "Chirodzo",
 We can also form "and" statements with the `&` operator instead of commas:
 
 
-```r
+``` r
 # filters observations with "&" logical operator
 # output dataframe satisfies ALL specified conditions
 filter(interviews, village == "Chirodzo" &
@@ -213,7 +213,7 @@ filter(interviews, village == "Chirodzo" &
                    no_meals > 2)
 ```
 
-```output
+``` output
 # A tibble: 10 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -236,13 +236,13 @@ In an "or" statement, observations must meet *at least one* of the specified con
 To form "or" statements we use the logical operator for "or," which is the vertical bar (|):
 
 
-```r
+``` r
 # filters observations with "|" logical operator
 # output dataframe satisfies AT LEAST ONE of the specified conditions
 filter(interviews, village == "Chirodzo" | village == "Ruaca")
 ```
 
-```output
+``` output
 # A tibble: 88 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -271,7 +271,7 @@ With intermediate steps, you create a temporary dataframe and use
 that as input to the next function, like this:
 
 
-```r
+``` r
 interviews2 <- filter(interviews, village == "Chirodzo")
 interviews_ch <- select(interviews2, village:respondent_wall_type)
 ```
@@ -283,7 +283,7 @@ track of.
 You can also nest functions (i.e. one function inside of another), like this:
 
 
-```r
+``` r
 interviews_ch <- select(filter(interviews, village == "Chirodzo"),
                          village:respondent_wall_type)
 ```
@@ -301,14 +301,14 @@ you need to do many things to the same dataset. There are two Pipes in R: 1) `%>
   <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
 
 
-```r
+``` r
 # the following example is run using magrittr pipe but the output will be same with the native pipe
 interviews %>%
     filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
 ```
 
-```output
+``` output
 # A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
    <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -325,7 +325,7 @@ interviews %>%
 # ℹ 29 more rows
 ```
 
-```r
+``` r
 #interviews |>
 #   filter(village == "Chirodzo") |>
 #   select(village:respondent_wall_type)
@@ -349,7 +349,7 @@ If we want to create a new object with this smaller version of the data, we
 can assign it a new name:
 
 
-```r
+``` r
 interviews_ch <- interviews %>%
     filter(village == "Chirodzo") %>%
     select(village:respondent_wall_type)
@@ -357,7 +357,7 @@ interviews_ch <- interviews %>%
 interviews_ch
 ```
 
-```output
+``` output
 # A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
    <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -391,13 +391,13 @@ where respondents were members of an irrigation association
 ## Solution
 
 
-```r
+``` r
 interviews %>%
     filter(memb_assoc == "yes") %>%
     select(affect_conflicts, liv_count, no_meals)
 ```
 
-```output
+``` output
 # A tibble: 33 × 3
    affect_conflicts liv_count no_meals
    <chr>                <dbl>    <dbl>
@@ -428,12 +428,12 @@ We might be interested in the ratio of number of household members
 to rooms used for sleeping (i.e. avg number of people per room):
 
 
-```r
+``` r
 interviews %>%
     mutate(people_per_room = no_membrs / rooms)
 ```
 
-```output
+``` output
 # A tibble: 131 × 15
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -463,13 +463,13 @@ These cases are recorded as "NULL" in the dataset.
 To remove these cases, we could insert a `filter()` in the chain:
 
 
-```r
+``` r
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     mutate(people_per_room = no_membrs / rooms)
 ```
 
-```output
+``` output
 # A tibble: 92 × 15
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
     <dbl> <chr>    <dttm>                  <dbl>     <dbl> <chr>               
@@ -513,7 +513,7 @@ frame!
 ## Solution
 
 
-```r
+``` r
 interviews_total_meals <- interviews %>%
     mutate(total_meals = no_membrs * no_meals) %>%
     filter(total_meals > 20) %>%
@@ -540,13 +540,13 @@ to calculate the summary statistics. So to compute the average household size by
 village:
 
 
-```r
+``` r
 interviews %>%
     group_by(village) %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
-```output
+``` output
 # A tibble: 3 × 2
   village  mean_no_membrs
   <chr>             <dbl>
@@ -561,18 +561,18 @@ screen anymore. It's one of the advantages of `tbl_df` over dataframe.
 You can also group by multiple columns:
 
 
-```r
+``` r
 interviews %>%
     group_by(village, memb_assoc) %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 9 × 3
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs
@@ -592,19 +592,19 @@ Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
 `ungroup` function:
 
 
-```r
+``` r
 interviews %>%
     group_by(village, memb_assoc) %>%
     summarize(mean_no_membrs = mean(no_membrs)) %>%
     ungroup()
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 9 × 3
   village  memb_assoc mean_no_membrs
   <chr>    <chr>               <dbl>
@@ -624,19 +624,19 @@ respondents who did not specify whether they were a member of an irrigation
 association. We can exclude those data from our table using a filter step.
 
 
-```r
+``` r
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 6 × 3
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs
@@ -655,7 +655,7 @@ column indicating the minimum household size for each village for each group
 (members of an irrigation association vs not):
 
 
-```r
+``` r
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
@@ -663,12 +663,12 @@ interviews %>%
               min_membrs = min(no_membrs))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
@@ -686,7 +686,7 @@ For instance, we can sort on `min_membrs` to put the group with the smallest
 household first:
 
 
-```r
+``` r
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
@@ -695,12 +695,12 @@ interviews %>%
     arrange(min_membrs)
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
@@ -717,7 +717,7 @@ To sort in descending order, we need to add the `desc()` function. If we want to
 sort the results by decreasing order of minimum household size:
 
 
-```r
+``` r
 interviews %>%
     filter(!is.na(memb_assoc)) %>%
     group_by(village, memb_assoc) %>%
@@ -726,12 +726,12 @@ interviews %>%
     arrange(desc(min_membrs))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'village'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 6 × 4
 # Groups:   village [3]
   village  memb_assoc mean_no_membrs min_membrs
@@ -752,12 +752,12 @@ for each factor or combination of factors. For this task, **`dplyr`** provides
 each village, we would do:
 
 
-```r
+``` r
 interviews %>%
     count(village)
 ```
 
-```output
+``` output
 # A tibble: 3 × 2
   village      n
   <chr>    <int>
@@ -770,12 +770,12 @@ For convenience, `count()` provides the `sort` argument to get results in
 decreasing order:
 
 
-```r
+``` r
 interviews %>%
     count(village, sort = TRUE)
 ```
 
-```output
+``` output
 # A tibble: 3 × 2
   village      n
   <chr>    <int>
@@ -797,12 +797,12 @@ of meals represented?
 ## Solution
 
 
-```r
+``` r
 interviews %>%
    count(no_meals)
 ```
 
-```output
+``` output
 # A tibble: 2 × 2
   no_meals     n
      <dbl> <int>
@@ -821,7 +821,7 @@ observations (hint: see `?n`).
 ## Solution
 
 
-```r
+``` r
 interviews %>%
   group_by(village) %>%
   summarize(
@@ -832,7 +832,7 @@ interviews %>%
   )
 ```
 
-```output
+``` output
 # A tibble: 3 × 5
   village  mean_no_membrs min_no_membrs max_no_membrs     n
   <chr>             <dbl>         <dbl>         <dbl> <int>
@@ -850,7 +850,7 @@ What was the largest household interviewed in each month?
 ## Solution
 
 
-```r
+``` r
 # if not already included, add month, year, and day columns
 library(lubridate) # load lubridate if not already loaded
 interviews %>%
@@ -861,12 +861,12 @@ interviews %>%
     summarize(max_no_membrs = max(no_membrs))
 ```
 
-```output
+``` output
 `summarise()` has grouped output by 'year'. You can override using the
 `.groups` argument.
 ```
 
-```output
+``` output
 # A tibble: 5 × 3
 # Groups:   year [2]
    year month max_no_membrs

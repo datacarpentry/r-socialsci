@@ -303,7 +303,7 @@ clicking on the "New Folder" button in the file pane (bottom right), or directly
 from R by typing at console:
 
 
-```r
+``` r
 dir.create("data")
 dir.create("data_output")
 dir.create("fig_output")
@@ -316,7 +316,7 @@ Or you can do this directly from R by copying and pasting this in your terminal
 (your instructor can place this chunk of code in the Etherpad):
 
 
-```r
+``` r
 download.file(
   "https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/SAFI_clean.csv",
   "data/SAFI_clean.csv", mode = "wb"
@@ -448,7 +448,7 @@ If you were watching the console window when you started the
 install of ‘tidyverse', you may have noticed that the line
 
 
-```r
+``` r
 install.packages("tidyverse")
 ```
 
@@ -459,7 +459,7 @@ You could also have installed the **`tidyverse`** packages by running this comma
 We will be using another package called **`here`** throughout the workshop to manage paths and directories. We will discuss it more detail in a later episode, but we will install it now in the console:
 
 
-```r
+``` r
 install.packages("here")
 ```
 

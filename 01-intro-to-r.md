@@ -48,19 +48,19 @@ source: Rmd
 You can get output from R simply by typing math in the console:
 
 
-```r
+``` r
 3 + 5
 ```
 
-```output
+``` output
 [1] 8
 ```
 
-```r
+``` r
 12 / 7
 ```
 
-```output
+``` output
 [1] 1.714286
 ```
 
@@ -69,7 +69,7 @@ However, to do useful and interesting things, we need to assign *values* to
 assignment operator `<-`, and the value we want to give it:
 
 
-```r
+``` r
 area_hectares <- 1.0
 ```
 
@@ -132,20 +132,20 @@ can force R to print the value by using parentheses or by typing
 the object name:
 
 
-```r
+``` r
 area_hectares <- 1.0    # doesn't print anything
 (area_hectares <- 1.0)  # putting parenthesis around the call prints the value of `area_hectares`
 ```
 
-```output
+``` output
 [1] 1
 ```
 
-```r
+``` r
 area_hectares         # and so does typing the name of the object
 ```
 
-```output
+``` output
 [1] 1
 ```
 
@@ -153,23 +153,23 @@ Now that R has `area_hectares` in memory, we can do arithmetic with it. For
 instance, we may want to convert this area into acres (area in acres is 2.47 times the area in hectares):
 
 
-```r
+``` r
 2.47 * area_hectares
 ```
 
-```output
+``` output
 [1] 2.47
 ```
 
 We can also change an object's value by assigning it a new one:
 
 
-```r
+``` r
 area_hectares <- 2.5
 2.47 * area_hectares
 ```
 
-```output
+``` output
 [1] 6.175
 ```
 
@@ -178,14 +178,14 @@ other objects. For example, let's store the plot's area in acres
 in a new object, `area_acres`:
 
 
-```r
+``` r
 area_acres <- 2.47 * area_hectares
 ```
 
 and then change `area_hectares` to 50.
 
 
-```r
+``` r
 area_hectares <- 50
 ```
 
@@ -217,13 +217,13 @@ Anything to the right of the `#` sign and up to the end of the line is treated a
 or include them after any code on the line.
 
 
-```r
+``` r
 area_hectares <- 1.0			# land area in hectares
 area_acres <- area_hectares * 2.47	# convert to acres
 area_acres				# print land area in acres.
 ```
 
-```output
+``` output
 [1] 2.47
 ```
 
@@ -252,18 +252,18 @@ Show that changing the values of either `r_length` and `r_width` does not affect
 ## Solution
 
 
-```r
+``` r
 r_length <- 2.5
 r_width <- 3.2
 r_area <- r_length * r_width
 r_area
 ```
 
-```output
+``` output
 [1] 8
 ```
 
-```r
+``` r
 # change the values of r_length and r_width
 r_length <- 7.0
 r_width <- 6.5
@@ -271,7 +271,7 @@ r_width <- 6.5
 r_area
 ```
 
-```output
+``` output
 [1] 8
 ```
 
@@ -291,7 +291,7 @@ output) is the square root of that number. Executing a function ('running it')
 is called *calling* the function. An example of a function call is:
 
 
-```r
+``` r
 b <- sqrt(a)
 ```
 
@@ -315,11 +315,11 @@ of your choice which will be used instead of the default.
 Let's try a function that can take multiple arguments: `round()`.
 
 
-```r
+``` r
 round(3.14159)
 ```
 
-```output
+``` output
 [1] 3
 ```
 
@@ -330,17 +330,17 @@ information about the `round` function.  We can use `args(round)` or look at the
 help for this function using `?round`.
 
 
-```r
+``` r
 args(round)
 ```
 
-```output
+``` output
 function (x, digits = 0, ...) 
 NULL
 ```
 
 
-```r
+``` r
 ?round
 ```
 
@@ -348,11 +348,11 @@ We see that if we want a different number of digits, we can
 type `digits=2` or however many we want.
 
 
-```r
+``` r
 round(3.14159, digits = 2)
 ```
 
-```output
+``` output
 [1] 3.14
 ```
 
@@ -360,22 +360,22 @@ If you provide the arguments in the exact same order as they are defined you
 don't have to name them:
 
 
-```r
+``` r
 round(3.14159, 2)
 ```
 
-```output
+``` output
 [1] 3.14
 ```
 
 And if you do name the arguments, you can switch their order:
 
 
-```r
+``` r
 round(digits = 2, x = 3.14159)
 ```
 
-```output
+``` output
 [1] 3.14
 ```
 
@@ -407,12 +407,12 @@ members for the households we've interviewed and assign
 it to a new object `hh_members`:
 
 
-```r
+``` r
 hh_members <- c(3, 7, 10, 6)
 hh_members
 ```
 
-```output
+``` output
 [1]  3  7 10  6
 ```
 
@@ -421,12 +421,12 @@ a vector of the building material used to construct our
 interview respondents' walls (`respondent_wall_type`):
 
 
-```r
+``` r
 respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
 respondent_wall_type
 ```
 
-```output
+``` output
 [1] "muddaub"     "burntbricks" "sunbricks"  
 ```
 
@@ -438,19 +438,19 @@ There are many functions that allow you to inspect the content of a
 vector. `length()` tells you how many elements are in a particular vector:
 
 
-```r
+``` r
 length(hh_members)
 ```
 
-```output
+``` output
 [1] 4
 ```
 
-```r
+``` r
 length(respondent_wall_type)
 ```
 
-```output
+``` output
 [1] 3
 ```
 
@@ -458,19 +458,19 @@ An important feature of a vector, is that all of the elements are the same type 
 The function `typeof()` indicates the type of an object:
 
 
-```r
+``` r
 typeof(hh_members)
 ```
 
-```output
+``` output
 [1] "double"
 ```
 
-```r
+``` r
 typeof(respondent_wall_type)
 ```
 
-```output
+``` output
 [1] "character"
 ```
 
@@ -479,33 +479,33 @@ elements. It is a useful function when working with large and complex
 objects:
 
 
-```r
+``` r
 str(hh_members)
 ```
 
-```output
+``` output
  num [1:4] 3 7 10 6
 ```
 
-```r
+``` r
 str(respondent_wall_type)
 ```
 
-```output
+``` output
  chr [1:3] "muddaub" "burntbricks" "sunbricks"
 ```
 
 You can use the `c()` function to add other elements to your vector:
 
 
-```r
+``` r
 possessions <- c("bicycle", "radio", "television")
 possessions <- c(possessions, "mobile_phone") # add to the end of the vector
 possessions <- c("car", possessions) # add to the beginning of the vector
 possessions
 ```
 
-```output
+``` output
 [1] "car"          "bicycle"      "radio"        "television"   "mobile_phone"
 ```
 
@@ -555,7 +555,7 @@ What will happen in each of these examples? (hint: use `class()`
 to check the data type of your objects):
 
 
-```r
+``` r
 num_char <- c(1, 2, 3, "a")
 num_logical <- c(1, 2, 3, TRUE)
 char_logical <- c("a", "b", "c", TRUE)
@@ -578,7 +578,7 @@ How many values in `combined_logical` are `"TRUE"` (as a character) in the
 following example:
 
 
-```r
+``` r
 num_logical <- c(1, 2, 3, TRUE)
 char_logical <- c("a", "b", "c", TRUE)
 combined_logical <- c(num_logical, char_logical)
@@ -612,20 +612,20 @@ these data types are coerced?
 Subsetting (sometimes referred to as extracting or indexing) involves accessing out one or more values based on their numeric placement or "index" within a vector. If we want to subset one or several values from a vector, we must provide one index or several indices in square brackets.  For instance:
 
 
-```r
+``` r
 respondent_wall_type <- c("muddaub", "burntbricks", "sunbricks")
 respondent_wall_type[2]
 ```
 
-```output
+``` output
 [1] "burntbricks"
 ```
 
-```r
+``` r
 respondent_wall_type[c(3, 2)]
 ```
 
-```output
+``` output
 [1] "sunbricks"   "burntbricks"
 ```
 
@@ -633,12 +633,12 @@ We can also repeat the indices to create an object with more elements than the
 original one:
 
 
-```r
+``` r
 more_respondent_wall_type <- respondent_wall_type[c(1, 2, 3, 2, 1, 3)]
 more_respondent_wall_type
 ```
 
-```output
+``` output
 [1] "muddaub"     "burntbricks" "sunbricks"   "burntbricks" "muddaub"    
 [6] "sunbricks"  
 ```
@@ -654,12 +654,12 @@ Another common way of subsetting is by using a logical vector. `TRUE` will
 select the element with the same index, while `FALSE` will not:
 
 
-```r
+``` r
 hh_members <- c(3, 7, 10, 6)
 hh_members[c(TRUE, FALSE, TRUE, TRUE)]
 ```
 
-```output
+``` output
 [1]  3 10  6
 ```
 
@@ -668,20 +668,20 @@ other functions or logical tests. For instance, if you wanted to select only the
 values above 5:
 
 
-```r
+``` r
 hh_members > 5    # will return logicals with TRUE for the indices that meet the condition
 ```
 
-```output
+``` output
 [1] FALSE  TRUE  TRUE  TRUE
 ```
 
-```r
+``` r
 ## so we can use this to select only the values above 5
 hh_members[hh_members > 5]
 ```
 
-```output
+``` output
 [1]  7 10  6
 ```
 
@@ -689,19 +689,19 @@ You can combine multiple tests using `&` (both conditions are true, AND) or `|`
 (at least one of the conditions is true, OR):
 
 
-```r
+``` r
 hh_members[hh_members < 4 | hh_members > 7]
 ```
 
-```output
+``` output
 [1]  3 10
 ```
 
-```r
+``` r
 hh_members[hh_members >= 4 & hh_members <= 7]
 ```
 
-```output
+``` output
 [1] 7 6
 ```
 
@@ -716,12 +716,12 @@ A common task is to search for certain strings in a vector.  One could use the
 become tedious.
 
 
-```r
+``` r
 possessions <- c("car", "bicycle", "radio", "television", "mobile_phone")
 possessions[possessions == "car" | possessions == "bicycle"] # returns both car and bicycle
 ```
 
-```output
+``` output
 [1] "car"     "bicycle"
 ```
 
@@ -729,11 +729,11 @@ The function `%in%` allows you to test if any of the elements of a search vector
 (on the left hand side) are found in the target vector (on the right hand side):
 
 
-```r
+``` r
 possessions %in% c("car", "bicycle")
 ```
 
-```output
+``` output
 [1]  TRUE  TRUE FALSE FALSE FALSE
 ```
 
@@ -743,19 +743,19 @@ somewhere in the target vector. Thus, you can use `%in%` to select the elements
 in the search vector that appear in your target vector:
 
 
-```r
+``` r
 possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")
 ```
 
-```output
+``` output
 [1]  TRUE  TRUE FALSE FALSE FALSE
 ```
 
-```r
+``` r
 possessions[possessions %in% c("car", "bicycle", "motorcycle", "truck", "boat", "bus")]
 ```
 
-```output
+``` output
 [1] "car"     "bicycle"
 ```
 
@@ -772,36 +772,36 @@ You can add the argument `na.rm=TRUE` to calculate the result while ignoring
 the missing values.
 
 
-```r
+``` r
 rooms <- c(2, 1, 1, NA, 7)
 mean(rooms)
 ```
 
-```output
+``` output
 [1] NA
 ```
 
-```r
+``` r
 max(rooms)
 ```
 
-```output
+``` output
 [1] NA
 ```
 
-```r
+``` r
 mean(rooms, na.rm = TRUE)
 ```
 
-```output
+``` output
 [1] 2.75
 ```
 
-```r
+``` r
 max(rooms, na.rm = TRUE)
 ```
 
-```output
+``` output
 [1] 7
 ```
 
@@ -810,32 +810,32 @@ functions `is.na()`, `na.omit()`, and `complete.cases()`. See below for
 examples.
 
 
-```r
+``` r
 ## Extract those elements which are not missing values.
 ## The ! character is also called the NOT operator
 rooms[!is.na(rooms)]
 ```
 
-```output
+``` output
 [1] 2 1 1 7
 ```
 
-```r
+``` r
 ## Count the number of missing values.
 ## The output of is.na() is a logical vector (TRUE/FALSE equivalent to 1/0) so the sum() function here is effectively counting
 sum(is.na(rooms))
 ```
 
-```output
+``` output
 [1] 1
 ```
 
-```r
+``` r
 ## Returns the object with incomplete cases removed. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 na.omit(rooms)
 ```
 
-```output
+``` output
 [1] 2 1 1 7
 attr(,"na.action")
 [1] 4
@@ -843,12 +843,12 @@ attr(,"class")
 [1] "omit"
 ```
 
-```r
+``` r
 ## Extract those elements which are complete cases. The returned object is an atomic vector of type `"numeric"` (or `"double"`).
 rooms[complete.cases(rooms)]
 ```
 
-```output
+``` output
 [1] 2 1 1 7
 ```
 
@@ -873,7 +873,7 @@ rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
 ## Solution
 
 
-```r
+``` r
 rooms <- c(1, 2, 1, 1, NA, 3, 1, 3, 2, 1, 1, 8, 3, 1, NA, 1)
 rooms_no_na <- rooms[!is.na(rooms)]
 # or
@@ -882,17 +882,17 @@ rooms_no_na <- na.omit(rooms)
 median(rooms, na.rm = TRUE)
 ```
 
-```output
+``` output
 [1] 1
 ```
 
-```r
+``` r
 # 3.
 rooms_above_2 <- rooms_no_na[rooms_no_na > 2]
 length(rooms_above_2)
 ```
 
-```output
+``` output
 [1] 4
 ```
 
