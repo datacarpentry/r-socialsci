@@ -46,7 +46,7 @@
             </li>
           </ul></li>
       </div>
-      
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Instructor View <i data-feather="chevron-down"></i>
@@ -170,7 +170,7 @@
                 </div><!--/div.accordion-flush-->
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
-      
+
             <hr></div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordionFlush11">
@@ -189,7 +189,7 @@
     <div class="accordion-header" id="flush-heading1">
         <a href="index.html">Summary and Schedule</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -198,7 +198,7 @@
     <div class="accordion-header" id="flush-heading2">
         <a href="00-intro.html">1. Before we Start</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -207,7 +207,7 @@
     <div class="accordion-header" id="flush-heading3">
         <a href="01-intro-to-r.html">2. Introduction to R</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -216,7 +216,7 @@
     <div class="accordion-header" id="flush-heading4">
         <a href="02-starting-with-data.html">3. Starting with Data</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -230,7 +230,7 @@
         </span>
       </button>
     </div><!--/div.accordion-header-->
-        
+
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#what-is-an-r-package">What is an R package?</a></li>
@@ -241,7 +241,7 @@
 <li><a href="#split-apply-combine-data-analysis-and-the-summarize-function">Split-apply-combine data analysis and the summarize() function</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -250,7 +250,7 @@
     <div class="accordion-header" id="flush-heading6">
         <a href="04-tidyr.html">5. Data Wrangling with tidyr</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -259,7 +259,7 @@
     <div class="accordion-header" id="flush-heading7">
         <a href="05-ggplot2.html">6. Data Visualisation with ggplot2</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -268,7 +268,7 @@
     <div class="accordion-header" id="flush-heading8">
         <a href="06-rmarkdown.html">7. Getting started with R Markdown (Optional)</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -277,7 +277,7 @@
     <div class="accordion-header" id="flush-heading9">
         <a href="07-json.html">8. Processing JSON data (Optional)</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -309,10 +309,10 @@
               </div>
             </div>
             <hr class="half-width resources"><a href="../instructor/aio.html">See all in one page</a>
-            
+
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
-            
+
             </div>
           </div><!-- /div.accordion -->
         </div><!-- /div.sidebar-inner -->
@@ -333,20 +333,20 @@
           Previous: Starting with Data
         </a>
         <a class="chapter-link float-end" href="../instructor/04-tidyr.html" rel="next">
-          Next: Data Wrangling with... 
+          Next: Data Wrangling with...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with dplyr</h1>
         <p>Last updated on 2024-07-02 |
-        
+
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/03-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-        
-        
-        
+
+
+
         <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
-        
+
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -438,8 +438,8 @@ teaching.</p>
 </div>
 </div>
 </div>
-<section id="what-is-an-r-package"><h2 class="section-heading">What is an R package?<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a>
-</h2>
+<section><h2 class="section-heading" id="what-is-an-r-package">What is an R package?<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a>
+<a class="anchor" aria-label="anchor" href="#what-is-an-r-package"></a></h2>
 <hr class="half-width"><p>The package <strong><code>dplyr</code></strong> provides easy tools
 for the most common data wrangling tasks. It is built to work directly
 with dataframes, with many common tasks optimized by being written in a
@@ -477,8 +477,8 @@ for example to get a sense of the differences between using
 </div>
 </div>
 </div>
-</section><section id="learning-dplyr"><h2 class="section-heading">Learning <strong><code>dplyr</code></strong><a class="anchor" aria-label="anchor" href="#learning-dplyr"></a>
-</h2>
+</section><section><h2 class="section-heading" id="learning-dplyr">Learning <strong><code>dplyr</code></strong><a class="anchor" aria-label="anchor" href="#learning-dplyr"></a>
+<a class="anchor" aria-label="anchor" href="#learning-dplyr"></a></h2>
 <hr class="half-width"><p>To make sure everyone will use the same dataset for this lesson,
 we’ll read again the SAFI dataset that we downloaded earlier.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -513,8 +513,8 @@ statistics on grouped data</li>
 <code>arrange()</code>: sort results</li>
 <li>
 <code>count()</code>: count discrete values</li>
-</ul></section><section id="selecting-columns-and-filtering-rows"><h2 class="section-heading">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a>
-</h2>
+</ul></section><section><h2 class="section-heading" id="selecting-columns-and-filtering-rows">Selecting columns and filtering rows<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a>
+<a class="anchor" aria-label="anchor" href="#selecting-columns-and-filtering-rows"></a></h2>
 <hr class="half-width"><p>To select columns of a dataframe, use <code>select()</code>. The
 first argument to this function is the dataframe
 (<code>interviews</code>), and the subsequent arguments are the columns
@@ -551,17 +551,17 @@ Chirodzo):</p>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 39 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4     34 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5     35 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6     36 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7     37 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8     43 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9     44 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10     45 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
+    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks
+ 2      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks
+ 3     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
+ 4     34 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks
+ 5     35 Chirodzo 2016-11-17 00:00:00         5        45 muddaub
+ 6     36 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks
+ 7     37 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks
+ 8     43 Chirodzo 2016-11-17 00:00:00         7        29 muddaub
+ 9     44 Chirodzo 2016-11-17 00:00:00         2         6 muddaub
+10     45 Chirodzo 2016-11-17 00:00:00         9         7 muddaub
 # ℹ 29 more rows
 # ℹ 8 more variables: rooms &lt;dbl&gt;, memb_assoc &lt;chr&gt;, affect_conflicts &lt;chr&gt;,
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
@@ -589,17 +589,17 @@ function, separated by commas:</p>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 2     49 Chirodzo 2016-11-16 00:00:00         6        26 burntbricks         
- 3     52 Chirodzo 2016-11-16 00:00:00        11        15 burntbricks         
- 4     56 Chirodzo 2016-11-16 00:00:00        12        23 burntbricks         
- 5     65 Chirodzo 2016-11-16 00:00:00         8        20 burntbricks         
- 6     66 Chirodzo 2016-11-16 00:00:00        10        37 burntbricks         
- 7     67 Chirodzo 2016-11-16 00:00:00         5        31 burntbricks         
- 8     68 Chirodzo 2016-11-16 00:00:00         8        52 burntbricks         
- 9    199 Chirodzo 2017-06-04 00:00:00         7        17 burntbricks         
-10    200 Chirodzo 2017-06-04 00:00:00         8        20 burntbricks         
+    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
+ 2     49 Chirodzo 2016-11-16 00:00:00         6        26 burntbricks
+ 3     52 Chirodzo 2016-11-16 00:00:00        11        15 burntbricks
+ 4     56 Chirodzo 2016-11-16 00:00:00        12        23 burntbricks
+ 5     65 Chirodzo 2016-11-16 00:00:00         8        20 burntbricks
+ 6     66 Chirodzo 2016-11-16 00:00:00        10        37 burntbricks
+ 7     67 Chirodzo 2016-11-16 00:00:00         5        31 burntbricks
+ 8     68 Chirodzo 2016-11-16 00:00:00         8        52 burntbricks
+ 9    199 Chirodzo 2017-06-04 00:00:00         7        17 burntbricks
+10    200 Chirodzo 2017-06-04 00:00:00         8        20 burntbricks
 # ℹ 8 more variables: rooms &lt;dbl&gt;, memb_assoc &lt;chr&gt;, affect_conflicts &lt;chr&gt;,
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
 #   instanceID &lt;chr&gt;</code></pre>
@@ -621,17 +621,17 @@ operator instead of commas:</p>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 2     49 Chirodzo 2016-11-16 00:00:00         6        26 burntbricks         
- 3     52 Chirodzo 2016-11-16 00:00:00        11        15 burntbricks         
- 4     56 Chirodzo 2016-11-16 00:00:00        12        23 burntbricks         
- 5     65 Chirodzo 2016-11-16 00:00:00         8        20 burntbricks         
- 6     66 Chirodzo 2016-11-16 00:00:00        10        37 burntbricks         
- 7     67 Chirodzo 2016-11-16 00:00:00         5        31 burntbricks         
- 8     68 Chirodzo 2016-11-16 00:00:00         8        52 burntbricks         
- 9    199 Chirodzo 2017-06-04 00:00:00         7        17 burntbricks         
-10    200 Chirodzo 2017-06-04 00:00:00         8        20 burntbricks         
+    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
+ 2     49 Chirodzo 2016-11-16 00:00:00         6        26 burntbricks
+ 3     52 Chirodzo 2016-11-16 00:00:00        11        15 burntbricks
+ 4     56 Chirodzo 2016-11-16 00:00:00        12        23 burntbricks
+ 5     65 Chirodzo 2016-11-16 00:00:00         8        20 burntbricks
+ 6     66 Chirodzo 2016-11-16 00:00:00        10        37 burntbricks
+ 7     67 Chirodzo 2016-11-16 00:00:00         5        31 burntbricks
+ 8     68 Chirodzo 2016-11-16 00:00:00         8        52 burntbricks
+ 9    199 Chirodzo 2017-06-04 00:00:00         7        17 burntbricks
+10    200 Chirodzo 2017-06-04 00:00:00         8        20 burntbricks
 # ℹ 8 more variables: rooms &lt;dbl&gt;, memb_assoc &lt;chr&gt;, affect_conflicts &lt;chr&gt;,
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
 #   instanceID &lt;chr&gt;</code></pre>
@@ -652,24 +652,24 @@ operator for “or,” which is the vertical bar (|):</p>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 88 × 14
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4     23 Ruaca    2016-11-21 00:00:00        10        20 burntbricks         
- 5     24 Ruaca    2016-11-21 00:00:00         6         4 burntbricks         
- 6     25 Ruaca    2016-11-21 00:00:00        11         6 burntbricks         
- 7     26 Ruaca    2016-11-21 00:00:00         3        20 burntbricks         
- 8     27 Ruaca    2016-11-21 00:00:00         7        36 burntbricks         
- 9     28 Ruaca    2016-11-21 00:00:00         2         2 muddaub             
-10     29 Ruaca    2016-11-21 00:00:00         7        10 burntbricks         
+    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks
+ 2      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks
+ 3     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
+ 4     23 Ruaca    2016-11-21 00:00:00        10        20 burntbricks
+ 5     24 Ruaca    2016-11-21 00:00:00         6         4 burntbricks
+ 6     25 Ruaca    2016-11-21 00:00:00        11         6 burntbricks
+ 7     26 Ruaca    2016-11-21 00:00:00         3        20 burntbricks
+ 8     27 Ruaca    2016-11-21 00:00:00         7        36 burntbricks
+ 9     28 Ruaca    2016-11-21 00:00:00         2         2 muddaub
+10     29 Ruaca    2016-11-21 00:00:00         7        10 burntbricks
 # ℹ 78 more rows
 # ℹ 8 more variables: rooms &lt;dbl&gt;, memb_assoc &lt;chr&gt;, affect_conflicts &lt;chr&gt;,
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
 #   instanceID &lt;chr&gt;</code></pre>
 </div>
-</section><section id="pipes"><h2 class="section-heading">Pipes<a class="anchor" aria-label="anchor" href="#pipes"></a>
-</h2>
+</section><section><h2 class="section-heading" id="pipes">Pipes<a class="anchor" aria-label="anchor" href="#pipes"></a>
+<a class="anchor" aria-label="anchor" href="#pipes"></a></h2>
 <hr class="half-width"><p>What if you want to select and filter at the same time? There are
 three ways to do this: use intermediate steps, nested functions, or
 pipes.</p>
@@ -728,17 +728,17 @@ Mac.</li>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
-   &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
+   &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks
+ 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks
+ 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
+ 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks
+ 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub
+ 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks
+ 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks
+ 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub
+ 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub
+10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub
 # ℹ 29 more rows</code></pre>
 </div>
 <div class="codewrapper sourceCode" id="cb15">
@@ -783,17 +783,17 @@ data, we can assign it a new name:</p>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 39 × 5
    village  interview_date      no_membrs years_liv respondent_wall_type
-   &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks         
- 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub             
- 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks           
- 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks         
- 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub             
- 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub             
-10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub             
+   &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks
+ 2 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks
+ 3 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
+ 4 Chirodzo 2016-11-17 00:00:00         8        18 burntbricks
+ 5 Chirodzo 2016-11-17 00:00:00         5        45 muddaub
+ 6 Chirodzo 2016-11-17 00:00:00         6        23 sunbricks
+ 7 Chirodzo 2016-11-17 00:00:00         3         8 burntbricks
+ 8 Chirodzo 2016-11-17 00:00:00         7        29 muddaub
+ 9 Chirodzo 2016-11-17 00:00:00         2         6 muddaub
+10 Chirodzo 2016-11-17 00:00:00         9         7 muddaub
 # ℹ 29 more rows</code></pre>
 </div>
 <p>Note that the final dataframe (<code>interviews_ch</code>) is the
@@ -851,8 +851,8 @@ interviews where respondents were members of an irrigation association
 </div>
 </div>
 </div>
-</section><section id="mutate"><h2 class="section-heading">Mutate<a class="anchor" aria-label="anchor" href="#mutate"></a>
-</h2>
+</section><section><h2 class="section-heading" id="mutate">Mutate<a class="anchor" aria-label="anchor" href="#mutate"></a>
+<a class="anchor" aria-label="anchor" href="#mutate"></a></h2>
 <hr class="half-width"><p>Frequently you’ll want to create new columns based on the values in
 existing columns, for example to do unit conversions, or to find the
 ratio of values in two columns. For this we’ll use
@@ -871,17 +871,17 @@ rooms used for sleeping (i.e. avg number of people per room):</p>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 131 × 15
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1      1 God      2016-11-17 00:00:00         3         4 muddaub             
- 2      2 God      2016-11-17 00:00:00         7         9 muddaub             
- 3      3 God      2016-11-17 00:00:00        10        15 burntbricks         
- 4      4 God      2016-11-17 00:00:00         7         6 burntbricks         
- 5      5 God      2016-11-17 00:00:00         7        40 burntbricks         
- 6      6 God      2016-11-17 00:00:00         3         3 muddaub             
- 7      7 God      2016-11-17 00:00:00         6        38 muddaub             
- 8      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 9      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
-10     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
+    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1      1 God      2016-11-17 00:00:00         3         4 muddaub
+ 2      2 God      2016-11-17 00:00:00         7         9 muddaub
+ 3      3 God      2016-11-17 00:00:00        10        15 burntbricks
+ 4      4 God      2016-11-17 00:00:00         7         6 burntbricks
+ 5      5 God      2016-11-17 00:00:00         7        40 burntbricks
+ 6      6 God      2016-11-17 00:00:00         3         3 muddaub
+ 7      7 God      2016-11-17 00:00:00         6        38 muddaub
+ 8      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks
+ 9      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks
+10     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
 # ℹ 121 more rows
 # ℹ 9 more variables: rooms &lt;dbl&gt;, memb_assoc &lt;chr&gt;, affect_conflicts &lt;chr&gt;,
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
@@ -908,17 +908,17 @@ chain:</p>
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 92 × 15
    key_ID village  interview_date      no_membrs years_liv respondent_wall_type
-    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;               
- 1      2 God      2016-11-17 00:00:00         7         9 muddaub             
- 2      7 God      2016-11-17 00:00:00         6        38 muddaub             
- 3      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks         
- 4      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks         
- 5     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks         
- 6     12 God      2016-11-21 00:00:00         7        20 burntbricks         
- 7     13 God      2016-11-21 00:00:00         6         8 burntbricks         
- 8     15 God      2016-11-21 00:00:00         5        30 sunbricks           
- 9     21 God      2016-11-21 00:00:00         8        20 burntbricks         
-10     24 Ruaca    2016-11-21 00:00:00         6         4 burntbricks         
+    &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;                  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;
+ 1      2 God      2016-11-17 00:00:00         7         9 muddaub
+ 2      7 God      2016-11-17 00:00:00         6        38 muddaub
+ 3      8 Chirodzo 2016-11-16 00:00:00        12        70 burntbricks
+ 4      9 Chirodzo 2016-11-16 00:00:00         8         6 burntbricks
+ 5     10 Chirodzo 2016-12-16 00:00:00        12        23 burntbricks
+ 6     12 God      2016-11-21 00:00:00         7        20 burntbricks
+ 7     13 God      2016-11-21 00:00:00         6         8 burntbricks
+ 8     15 God      2016-11-21 00:00:00         5        30 sunbricks
+ 9     21 God      2016-11-21 00:00:00         8        20 burntbricks
+10     24 Ruaca    2016-11-21 00:00:00         6         4 burntbricks
 # ℹ 82 more rows
 # ℹ 9 more variables: rooms &lt;dbl&gt;, memb_assoc &lt;chr&gt;, affect_conflicts &lt;chr&gt;,
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
@@ -970,8 +970,8 @@ to produce this data frame!</p>
 </div>
 </div>
 </div>
-</section><section id="split-apply-combine-data-analysis-and-the-summarize-function"><h2 class="section-heading">Split-apply-combine data analysis and the summarize() function<a class="anchor" aria-label="anchor" href="#split-apply-combine-data-analysis-and-the-summarize-function"></a>
-</h2>
+</section><section><h2 class="section-heading" id="split-apply-combine-data-analysis-and-the-summarize-function">Split-apply-combine data analysis and the summarize() function<a class="anchor" aria-label="anchor" href="#split-apply-combine-data-analysis-and-the-summarize-function"></a>
+<a class="anchor" aria-label="anchor" href="#split-apply-combine-data-analysis-and-the-summarize-function"></a></h2>
 <hr class="half-width"><p>Many data analysis tasks can be approached using the
 <em>split-apply-combine</em> paradigm: split the data into groups, apply
 some analysis to each group, and then combine the results.
@@ -1032,10 +1032,10 @@ run off the screen anymore. It’s one of the advantages of
 2 Chirodzo yes                  7.82
 3 Chirodzo &lt;NA&gt;                 5.08
 4 God      no                   7.13
-5 God      yes                  8   
-6 God      &lt;NA&gt;                 6   
+5 God      yes                  8
+6 God      &lt;NA&gt;                 6
 7 Ruaca    no                   7.18
-8 Ruaca    yes                  9.5 
+8 Ruaca    yes                  9.5
 9 Ruaca    &lt;NA&gt;                 6.22</code></pre>
 </div>
 <p>Note that the output is a grouped tibble. To obtain an ungrouped
@@ -1065,10 +1065,10 @@ tibble, use the <code>ungroup</code> function:</p>
 2 Chirodzo yes                  7.82
 3 Chirodzo &lt;NA&gt;                 5.08
 4 God      no                   7.13
-5 God      yes                  8   
-6 God      &lt;NA&gt;                 6   
+5 God      yes                  8
+6 God      &lt;NA&gt;                 6
 7 Ruaca    no                   7.18
-8 Ruaca    yes                  9.5 
+8 Ruaca    yes                  9.5
 9 Ruaca    &lt;NA&gt;                 6.22</code></pre>
 </div>
 <p>When grouping both by <code>village</code> and
@@ -1100,7 +1100,7 @@ We can exclude those data from our table using a filter step.</p>
 1 Chirodzo no                   8.06
 2 Chirodzo yes                  7.82
 3 God      no                   7.13
-4 God      yes                  8   
+4 God      yes                  8
 5 Ruaca    no                   7.18
 6 Ruaca    yes                  9.5 </code></pre>
 </div>
@@ -1425,7 +1425,7 @@ with subsets of data.</li>
           Previous: Starting with Data
         </a>
         <a class="chapter-link float-end" href="../instructor/04-tidyr.html" rel="next">
-          Next: Data Wrangling with... 
+          Next: Data Wrangling with...
           <i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i>
         </a>
       </div>
@@ -1436,18 +1436,18 @@ with subsets of data.</li>
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
-        
+
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/03-dplyr.Rmd" class="external-link">Edit on GitHub</a>
-        
+
 	
         | <a href="https://github.com/datacarpentry/r-socialsci/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/datacarpentry/r-socialsci/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/datacarpentry/r-socialsci/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
-        
+
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
-        
+
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
@@ -1472,7 +1472,7 @@ with subsets of data.</li>
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/03-dplyr.html",
   "dateCreated": "2017-05-25",
   "dateModified": "2024-07-02",
-  "datePublished": "2024-07-02"
+  "datePublished": "2024-07-09"
 }
 
   </script><script>

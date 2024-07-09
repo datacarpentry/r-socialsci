@@ -46,7 +46,7 @@
             </li>
           </ul></li>
       </div>
-      
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Instructor View <i data-feather="chevron-down"></i>
@@ -170,7 +170,7 @@
                 </div><!--/div.accordion-flush-->
               </div><!--div.sidenav-view-selector -->
             </div><!--/div.col -->
-      
+
             <hr></div><!--/div.mobile-row -->
 
           <div class="accordion accordion-flush" id="accordionFlush11">
@@ -189,7 +189,7 @@
     <div class="accordion-header" id="flush-heading1">
         <a href="index.html">Summary and Schedule</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -198,7 +198,7 @@
     <div class="accordion-header" id="flush-heading2">
         <a href="00-intro.html">1. Before we Start</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -207,7 +207,7 @@
     <div class="accordion-header" id="flush-heading3">
         <a href="01-intro-to-r.html">2. Introduction to R</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -216,7 +216,7 @@
     <div class="accordion-header" id="flush-heading4">
         <a href="02-starting-with-data.html">3. Starting with Data</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -225,7 +225,7 @@
     <div class="accordion-header" id="flush-heading5">
         <a href="03-dplyr.html">4. Data Wrangling with dplyr</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -234,7 +234,7 @@
     <div class="accordion-header" id="flush-heading6">
         <a href="04-tidyr.html">5. Data Wrangling with tidyr</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -243,7 +243,7 @@
     <div class="accordion-header" id="flush-heading7">
         <a href="05-ggplot2.html">6. Data Visualisation with ggplot2</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -252,7 +252,7 @@
     <div class="accordion-header" id="flush-heading8">
         <a href="06-rmarkdown.html">7. Getting started with R Markdown (Optional)</a>
     </div><!--/div.accordion-header-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -266,7 +266,7 @@
         </span>
       </button>
     </div><!--/div.accordion-header-->
-        
+
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#the-json-data-format">The JSON data format</a></li>
@@ -274,7 +274,7 @@
 <li><a href="#write-the-json-file-to-csv">Write the JSON file to csv</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
-        
+
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
 
@@ -306,10 +306,10 @@
               </div>
             </div>
             <hr class="half-width resources"><a href="../instructor/aio.html">See all in one page</a>
-            
+
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
-            
+
             </div>
           </div><!-- /div.accordion -->
         </div><!-- /div.sidebar-inner -->
@@ -337,13 +337,13 @@
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Processing JSON data (Optional)</h1>
         <p>Last updated on 2024-07-02 |
-        
+
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/07-json.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-        
-        
-        
+
+
+
         <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
-        
+
         <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -398,8 +398,8 @@ csv file</li>
 </div>
 </div>
 </div>
-<section id="the-json-data-format"><h2 class="section-heading">The JSON data format<a class="anchor" aria-label="anchor" href="#the-json-data-format"></a>
-</h2>
+<section><h2 class="section-heading" id="the-json-data-format">The JSON data format<a class="anchor" aria-label="anchor" href="#the-json-data-format"></a>
+<a class="anchor" aria-label="anchor" href="#the-json-data-format"></a></h2>
 <hr class="half-width"><p>The JSON data format was designed as a way of allowing different
 machines or processes within machines to communicate with each other by
 sending messages constructed in a well defined format. JSON is now the
@@ -438,8 +438,8 @@ file</li>
 <li>Can be more difficult to process and display than csv formatted
 data</li>
 </ul></div>
-</section><section id="use-the-json-package-to-read-a-json-file"><h2 class="section-heading">Use the JSON package to read a JSON file<a class="anchor" aria-label="anchor" href="#use-the-json-package-to-read-a-json-file"></a>
-</h2>
+</section><section><h2 class="section-heading" id="use-the-json-package-to-read-a-json-file">Use the JSON package to read a JSON file<a class="anchor" aria-label="anchor" href="#use-the-json-package-to-read-a-json-file"></a>
+<a class="anchor" aria-label="anchor" href="#use-the-json-package-to-read-a-json-file"></a></h2>
 <hr class="half-width"><div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -683,8 +683,8 @@ data frame with 0 columns and 0 rows
   F11_no_owned F_curr_liv
 1            2       cows</code></pre>
 </div>
-</section><section id="write-the-json-file-to-csv"><h2 class="section-heading">Write the JSON file to csv<a class="anchor" aria-label="anchor" href="#write-the-json-file-to-csv"></a>
-</h2>
+</section><section><h2 class="section-heading" id="write-the-json-file-to-csv">Write the JSON file to csv<a class="anchor" aria-label="anchor" href="#write-the-json-file-to-csv"></a>
+<a class="anchor" aria-label="anchor" href="#write-the-json-file-to-csv"></a></h2>
 <hr class="half-width"><p>If we try to write our json_data dataframe to a csv as we would
 usually in a regular dataframe, we won’t get the desired result. Using
 the <code>write_csv</code> function from the <a href="https://readr.tidyverse.org" class="external-link">readr</a>
@@ -718,17 +718,17 @@ way to do this using tidyverse. This command only applies the
 </h3>
 <pre class="output" tabindex="0"><code># A tibble: 131 × 74
    C06_rooms B19_grand_liv A08_ward E01_water_use B18_sp_parents_liv
-       &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;             
- 1         1 no            ward2    no            yes               
- 2         1 yes           ward2    yes           yes               
- 3         1 no            ward2    no            no                
- 4         1 no            ward2    no            no                
- 5         1 yes           ward2    no            no                
- 6         1 no            ward2    no            no                
- 7         1 yes           ward2    yes           no                
- 8         3 yes           ward1    yes           yes               
- 9         1 yes           ward2    yes           no                
-10         5 no            ward2    yes           no                
+       &lt;int&gt; &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;
+ 1         1 no            ward2    no            yes
+ 2         1 yes           ward2    yes           yes
+ 3         1 no            ward2    no            no
+ 4         1 no            ward2    no            no
+ 5         1 yes           ward2    no            no
+ 6         1 no            ward2    no            no
+ 7         1 yes           ward2    yes           no
+ 8         3 yes           ward1    yes           yes
+ 9         1 yes           ward2    yes           no
+10         5 no            ward2    yes           no
 # ℹ 121 more rows
 # ℹ 69 more variables: B16_years_liv &lt;int&gt;, E_yes_group_count &lt;chr&gt;,
 #   F_liv &lt;chr&gt;, `_note2` &lt;lgl&gt;, instanceID &lt;chr&gt;, B20_sp_grand_liv &lt;chr&gt;,
@@ -797,18 +797,18 @@ csv file</li>
       		<footer class="row footer mx-md-3"><hr><div class="col-md-6">
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
-        
+
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/07-json.Rmd" class="external-link">Edit on GitHub</a>
-        
+
 	
         | <a href="https://github.com/datacarpentry/r-socialsci/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/datacarpentry/r-socialsci/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/datacarpentry/r-socialsci/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:team@carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
-        
+
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
-        
+
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
@@ -833,7 +833,7 @@ csv file</li>
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/07-json.html",
   "dateCreated": "2017-05-25",
   "dateModified": "2024-07-02",
-  "datePublished": "2024-07-02"
+  "datePublished": "2024-07-09"
 }
 
   </script><script>
