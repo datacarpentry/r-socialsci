@@ -143,7 +143,7 @@ and, if you're feeling bold (pun intended), you can also use a combination of
 asterisks and underscores, `**_really_**`, `**_really_**`.
 
 To create `code-type` font, surround the word with backticks,
-`code-type`.
+`` `code-type` ``.
 
 Now that we've learned a couple of things, it might be useful to implement them:
 
