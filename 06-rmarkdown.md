@@ -139,7 +139,7 @@ and, if you're feeling bold (pun intended), you can also use a combination of
 asterisks and underscores, `**_really_**`, `**_really_**`.
 
 To create `code-type` font, surround the word with backticks,
-`code-type`.
+`` `code-type` ``.
 
 Now that we've learned a couple of things, it might be useful to implement them:
 
@@ -390,7 +390,7 @@ uses one backtick (`r`), whereas code chunks use three backticks
 (``` r ```).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2024-08-06.  
+today's date is 2024-08-23.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
