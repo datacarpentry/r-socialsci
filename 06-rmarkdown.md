@@ -331,7 +331,7 @@ Many different R packages can be used to generate tables. Some of the more commo
 We mentioned using `include = FALSE` in a code chunk to prevent the code and
 output from printing in the knitted document. There are additional options
 available to customise how the code-chunks are presented in the output document.
-The options are entered in the code chunk after `chunk-name`and separated by
+The options are entered in the code chunk after `chunk-name` and separated by
 commas, e.g. `{r chunk-name, eval = FALSE, echo = TRUE}`.
 
 | Option | Options | Output                                                                                                    | 
@@ -386,11 +386,11 @@ Now we will use some in-line R code to present some descriptive statistics.
 To use in-line R-code, we use the same backticks that we used in the Markdown
 section, with an `r` to specify that we are generating R-code. The difference
 between in-line code and a code chunk is the number of backticks. In-line R code
-uses one backtick (`r`), whereas code chunks use three backticks
-(``` r ```).
+uses one backtick (`` `r` ``), whereas code chunks use three backticks
+(`` ```r``` ``).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2024-08-23.  
+today's date is 2024-08-27.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
