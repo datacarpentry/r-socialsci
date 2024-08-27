@@ -290,10 +290,10 @@
               </div>
             </div>
 
-            <hr class="half-width"><div class="accordion accordion-flush resources" id="accordionFlush12">
+            <hr class="half-width"><div class="accordion accordion-flush lesson-resources" id="accordionFlush12">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwelve">
-                  <button class="accordion-button collapsed" id="resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
                     RESOURCES
                   </button>
                 </h2>
@@ -313,7 +313,7 @@
                 </div>
               </div>
             </div>
-            <hr class="half-width resources"><a href="aio.html">See all in one page</a>
+            <hr class="half-width lesson-resources"><a href="aio.html">See all in one page</a>
 
 
             <hr class="d-none d-sm-block d-md-none"><div class="d-grid gap-1">
@@ -344,7 +344,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Getting started with R Markdown (Optional)</h1>
-        <p>Last updated on 2024-08-23 |
+        <p>Last updated on 2024-08-27 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/06-rmarkdown.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -385,8 +385,7 @@ documents</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="r-markdown">R Markdown<a class="anchor" aria-label="anchor" href="#r-markdown"></a>
-<a class="anchor" aria-label="anchor" href="#r-markdown"></a></h2>
+<section><h2 class="section-heading" id="r-markdown">R Markdown<a class="anchor" aria-label="anchor" href="#r-markdown"></a></h2>
 <hr class="half-width"><p>R Markdown is a flexible type of document that allows you to
 seamlessly combine executable R code, and its output, with text in a
 single document. These documents can be readily converted to multiple
@@ -403,15 +402,13 @@ RStudio, so no action is necessary.</p>
 Image credit:
 <a href="https://github.com/allisonhorst/stats-illustrations" class="external-link">Allison
 Horst</a>
-</figcaption></figure></section><section><h2 class="section-heading" id="creating-an-r-markdown-file">Creating an R Markdown file<a class="anchor" aria-label="anchor" href="#creating-an-r-markdown-file"></a>
-<a class="anchor" aria-label="anchor" href="#creating-an-r-markdown-file"></a></h2>
+</figcaption></figure></section><section><h2 class="section-heading" id="creating-an-r-markdown-file">Creating an R Markdown file<a class="anchor" aria-label="anchor" href="#creating-an-r-markdown-file"></a></h2>
 <hr class="half-width"><p>To create a new R Markdown document in RStudio, click File -&gt; New
 File -&gt; R Markdown:</p>
 <figure><img src="fig/new-rmd.png" alt="Screenshot of the New R Markdown file dialogue box in RStudio" class="figure mx-auto d-block"></figure><p>Then click on ‘Create Empty Document’. Normally you could enter the
 title of your document, your name (Author), and select the type of
 output, but we will be learning how to start from a blank document.</p>
-</section><section><h2 class="section-heading" id="basic-components-of-r-markdown">Basic components of R Markdown<a class="anchor" aria-label="anchor" href="#basic-components-of-r-markdown"></a>
-<a class="anchor" aria-label="anchor" href="#basic-components-of-r-markdown"></a></h2>
+</section><section><h2 class="section-heading" id="basic-components-of-r-markdown">Basic components of R Markdown<a class="anchor" aria-label="anchor" href="#basic-components-of-r-markdown"></a></h2>
 <hr class="half-width"><p>To control the output, a YAML (YAML Ain’t Markup Language) header is
 needed:</p>
 <pre><code>---
@@ -431,8 +428,7 @@ discuss the other options later.</p>
 <p>The rest of the fields can be deleted, if you don’t need them. After
 the header, to begin the body of the document, you start typing after
 the end of the YAML header (i.e. after the second <code>---</code>).</p>
-</section><section><h2 class="section-heading" id="markdown-syntax">Markdown syntax<a class="anchor" aria-label="anchor" href="#markdown-syntax"></a>
-<a class="anchor" aria-label="anchor" href="#markdown-syntax"></a></h2>
+</section><section><h2 class="section-heading" id="markdown-syntax">Markdown syntax<a class="anchor" aria-label="anchor" href="#markdown-syntax"></a></h2>
 <hr class="half-width"><p>Markdown is a popular markup language that allows you to add
 formatting elements to text, such as <strong>bold</strong>,
 <em>italics</em>, and <code>code</code>. The formatting will not be
@@ -519,8 +515,7 @@ or use the keyboard shortcut
 <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>K</kbd> on Mac. If you haven’t
 saved the document yet, you will be prompted to do so when you
 <strong>Knit</strong> for the first time.</p>
-<figure><img src="fig/rmd-rmd_to_html.png" alt="The 'knitting' process: First, R Markdown is converted to Markdown, which is then converted (via pandoc) to .html, .pdf, .docx, etc." class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="writing-an-r-markdown-report">Writing an R Markdown report<a class="anchor" aria-label="anchor" href="#writing-an-r-markdown-report"></a>
-<a class="anchor" aria-label="anchor" href="#writing-an-r-markdown-report"></a></h2>
+<figure><img src="fig/rmd-rmd_to_html.png" alt="The 'knitting' process: First, R Markdown is converted to Markdown, which is then converted (via pandoc) to .html, .pdf, .docx, etc." class="figure mx-auto d-block"></figure></section><section><h2 class="section-heading" id="writing-an-r-markdown-report">Writing an R Markdown report<a class="anchor" aria-label="anchor" href="#writing-an-r-markdown-report"></a></h2>
 <hr class="half-width"><p>Now we will add some R code from our previous data wrangling and
 visualisation, which means we need to make sure
 <strong>tidyverse</strong> is loaded. It is not enough to load
@@ -566,8 +561,7 @@ after the code chunk name (<code>{r setup, include = FALSE}</code>).</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="important-note" class="callout-inner">
-<h3 class="callout-title">Important Note!<a class="anchor" aria-label="anchor" href="#important-note"></a>
-</h3>
+<h3 class="callout-title">Important Note!</h3>
 <div class="callout-content">
 <p>The file paths you give in a .Rmd document, e.g. to load a .csv file,
 are relative to the .Rmd document, <strong>not</strong> the project
@@ -578,8 +572,7 @@ consistent within your project.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="insert-table">Insert table<a class="anchor" aria-label="anchor" href="#insert-table"></a>
-<a class="anchor" aria-label="anchor" href="#insert-table"></a></h2>
+</section><section><h2 class="section-heading" id="insert-table">Insert table<a class="anchor" aria-label="anchor" href="#insert-table"></a></h2>
 <hr class="half-width"><p>Next, we will re-create a table from the Data Wrangling episode which
 shows the average household size grouped by <code>village</code> and
 <code>memb_assoc</code>. We can do this by creating a new code chunk and
@@ -733,13 +726,12 @@ al. (2019)</a></td>
 <td>Makes zebra-striped tables (tables with alternating row colors) in
 LaTeX and HTML formats easily from a data.frame, matrix, lm, aov, anova,
 glm, coxph, nls, fitdistr, mytable and cbind.mytable objects.</td>
-</tr></tbody></table></section><section><h2 class="section-heading" id="customising-chunk-output">Customising chunk output<a class="anchor" aria-label="anchor" href="#customising-chunk-output"></a>
-<a class="anchor" aria-label="anchor" href="#customising-chunk-output"></a></h2>
+</tr></tbody></table></section><section><h2 class="section-heading" id="customising-chunk-output">Customising chunk output<a class="anchor" aria-label="anchor" href="#customising-chunk-output"></a></h2>
 <hr class="half-width"><p>We mentioned using <code>include = FALSE</code> in a code chunk to
 prevent the code and output from printing in the knitted document. There
 are additional options available to customise how the code-chunks are
 presented in the output document. The options are entered in the code
-chunk after <code>chunk-name</code>and separated by commas,
+chunk after <code>chunk-name</code> and separated by commas,
 e.g. <code>{r chunk-name, eval = FALSE, echo = TRUE}</code>.</p>
 <table class="table"><colgroup><col width="5%"><col width="5%"><col width="88%"></colgroup><thead><tr class="header"><th>Option</th>
 <th>Options</th>
@@ -786,8 +778,7 @@ page</td>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="tip" class="callout-inner">
-<h3 class="callout-title">Tip<a class="anchor" aria-label="anchor" href="#tip"></a>
-</h3>
+<h3 class="callout-title">Tip</h3>
 <div class="callout-content">
 <ul><li>The default settings for the above chunk options are all
 <code>TRUE</code>.</li>
@@ -804,8 +795,7 @@ for <strong>every</strong> code chunk in the document.</li>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise"></a>
-</h3>
+<h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
 <p>Play around with the different options in the chunk with the code for
 the table, and re-<strong>Knit</strong> to see what each option does to
@@ -821,7 +811,7 @@ the output.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Solution to Exercise </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Create a chunk with <code>{r eval = FALSE, echo = FALSE}</code>, then
 create another chunk with <code>{r include = FALSE}</code> to compare.
@@ -834,17 +824,16 @@ store the output for later use.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="in-line-r-code">In-line R code<a class="anchor" aria-label="anchor" href="#in-line-r-code"></a>
-<a class="anchor" aria-label="anchor" href="#in-line-r-code"></a></h2>
+</section><section><h2 class="section-heading" id="in-line-r-code">In-line R code<a class="anchor" aria-label="anchor" href="#in-line-r-code"></a></h2>
 <hr class="half-width"><p>Now we will use some in-line R code to present some descriptive
 statistics. To use in-line R-code, we use the same backticks that we
 used in the Markdown section, with an <code>r</code> to specify that we
 are generating R-code. The difference between in-line code and a code
 chunk is the number of backticks. In-line R code uses one backtick
-(<code>r</code>), whereas code chunks use three backticks
-(<code>r</code>).</p>
+(<code>`r`</code>), whereas code chunks use three backticks
+(<code>```r```</code>).</p>
 <p>For example, today’s date is <code>`r Sys.Date()`</code>, will be
-rendered as: today’s date is 2024-08-23.<br>
+rendered as: today’s date is 2024-08-27.<br>
 The code will display today’s date in the output document (well,
 technically the date the document was last knitted).</p>
 <p>The best way to use in-line R code, is to minimise the amount of code
@@ -873,8 +862,7 @@ village, and include the mean values as in-line R-code. For example:</p>
 <p>Because we are using in-line R code instead of the actual values, we
 have created a dynamic document that will automatically update if we
 make changes to the dataset and/or code chunks.</p>
-</section><section><h2 class="section-heading" id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a>
-<a class="anchor" aria-label="anchor" href="#plots"></a></h2>
+</section><section><h2 class="section-heading" id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a></h2>
 <hr class="half-width"><p>Finally, we will also include a plot, so our document is a little
 more colourful and a little less boring. We will use the
 <code>interview_plotting</code> data from the previous episode.</p>
@@ -909,8 +897,7 @@ the data, then you can create it in a new code chunk.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="exercise-1" class="callout-inner">
-<h3 class="callout-title">Exercise<a class="anchor" aria-label="anchor" href="#exercise-1"></a>
-</h3>
+<h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
 <p>Create a new code chunk for the plot, and copy the code from any of
 the plots we created in the previous episode to produce a plot in the
@@ -925,7 +912,7 @@ the <code>interviews_plotting</code> data frame.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Solution to Exercise </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -963,8 +950,7 @@ the <code>interviews_plotting</code> data frame.</p>
 <figure style="text-align: center"><img src="fig/06-rmarkdown-rendered-caption-plot-1.png" alt="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!" class="figure mx-auto d-block"><figcaption>
 I made this plot while attending an awesome Data Carpentries workshop
 where I learned a ton of cool stuff!
-</figcaption></figure></section><section><h2 class="section-heading" id="other-output-options">Other output options<a class="anchor" aria-label="anchor" href="#other-output-options"></a>
-<a class="anchor" aria-label="anchor" href="#other-output-options"></a></h2>
+</figcaption></figure></section><section><h2 class="section-heading" id="other-output-options">Other output options<a class="anchor" aria-label="anchor" href="#other-output-options"></a></h2>
 <hr class="half-width"><p>You can convert R Markdown to a PDF or a Word document (among
 others). Click the little triangle next to the <strong>Knit</strong>
 button to get a drop-down menu. Or you could put
@@ -981,8 +967,7 @@ output: word_document
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="note-creating-pdf-documents" class="callout-inner">
-<h3 class="callout-title">Note: Creating PDF documents<a class="anchor" aria-label="anchor" href="#note-creating-pdf-documents"></a>
-</h3>
+<h3 class="callout-title">Note: Creating PDF documents</h3>
 <div class="callout-content">
 <p>Creating .pdf documents may require installation of some extra
 software. The R package <code>tinytex</code> provides some tools to help
@@ -1001,8 +986,7 @@ information.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="note-inserting-citations-into-an-r-markdown-file" class="callout-inner">
-<h3 class="callout-title">Note: Inserting citations into an R Markdown file<a class="anchor" aria-label="anchor" href="#note-inserting-citations-into-an-r-markdown-file"></a>
-</h3>
+<h3 class="callout-title">Note: Inserting citations into an R Markdown file</h3>
 <div class="callout-content">
 <p>It is possible to insert citations into an R Markdown file using the
 editor toolbar. The editor toolbar includes commonly seen formatting
@@ -1021,8 +1005,7 @@ information from relevant packages can be done by using
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="resources">Resources<a class="anchor" aria-label="anchor" href="#resources"></a>
-<a class="anchor" aria-label="anchor" href="#resources"></a></h2>
+</section><section><h2 class="section-heading" id="resources">Resources<a class="anchor" aria-label="anchor" href="#resources"></a></h2>
 <hr class="half-width"><ul><li><a href="https://kbroman.org/knitr_knutshell" class="external-link">Knitr in a knutshell
 tutorial</a></li>
 <li>
@@ -1050,8 +1033,7 @@ Bookdown</a></li>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul><li>R Markdown is a useful language for creating reproducible documents
 combining text and executable R-code.</li>
@@ -1096,7 +1078,7 @@ document</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1118,8 +1100,8 @@ document</li>
   "url": "https://datacarpentry.org/r-socialsci/06-rmarkdown.html",
   "identifier": "https://datacarpentry.org/r-socialsci/06-rmarkdown.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2024-08-23",
-  "datePublished": "2024-08-23"
+  "dateModified": "2024-08-27",
+  "datePublished": "2024-08-27"
 }
 
   </script><script>
