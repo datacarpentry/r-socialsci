@@ -24,24 +24,19 @@ source("data/download_data.R")
 - Describe what faceting is and apply faceting in ggplot.
 - Modify the aesthetics of an existing ggplot plot (including axis labels and colour).
 - Build complex and customized plots from data in a data frame.
+- Recognize the differences between base R, lattice, and ggplot visualizations.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - What are the components of a ggplot?
+- What are the main differences between R base plots, lattice, and ggplot?
 - How do I create scatterplots, boxplots, and barplots?
 - How can I change the aesthetics (ex. colour, transparency) of my plot?
 - How can I create multiple plots at once?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-We start by loading the required package. **`ggplot2`** is also included in the
-**`tidyverse`** package.
-
-```{r load-package, message=FALSE, purl=FALSE}
-library(tidyverse)
-```
 
 If not still in the workspace, load the data we saved in the previous lesson.
 
@@ -74,6 +69,46 @@ interviews_plotting <- interviews %>%
   mutate(number_items = rowSums(select(., bicycle:car)))
 ```
 
+## Visualization Options in R
+
+Before we start with **`ggplot2`**, it's helpful to know that there are several ways to create visualizations in R. While **`ggplot2`** is great for building complex and highly customizable plots, there are simpler and quicker alternatives that you might encounter or use depending on the context. Let's briefly explore a few of them:
+
+### R Base Plots
+Base R plots are the simplest form of visualization and are great for quick, exploratory analysis. You can create plots with very little code, but customizing them can be cumbersome compared to **`ggplot2`**.
+
+Example of a simple scatterplot in base R using the `no_membrs` and `liv_count` variables:
+
+```{r, purl=FALSE}
+plot(interviews_plotting$no_membrs, interviews_plotting$liv_count,
+     main = "Base R Scatterplot",
+     xlab = "Number of Household Members",
+     ylab = "Number of Livestock Owned")
+```
+
+### **`Lattice`**
+Lattice is another plotting system in R, which allows for creating multi-panel plots easily. It’s different from ggplot2 because you define the entire plot in a single function call, and modifications after plotting are limited.
+
+Example of a lattice plot using `no_membrs` and `liv_count` split by `village`:
+
+```{r load-package, message=FALSE, purl=FALSE}
+library(lattice)
+```
+```{r, purl=FALSE}
+xyplot(liv_count ~ no_membrs | village, data = interviews_plotting,
+       main = "Lattice Plot: Livestock Count by Household Members",
+       xlab = "Number of Household Members",
+       ylab = "Number of Livestock Owned")
+```
+
+
+## Let's now start with **`ggplot2`**
+
+We start by loading the required package. **`ggplot2`** is also included in the
+**`tidyverse`** package.
+
+```{r load-package, message=FALSE, purl=FALSE}
+library(tidyverse)
+```
 ## Plotting with **`ggplot2`**
 
 **`ggplot2`** is a plotting package that makes it simple to create complex plots
@@ -794,6 +829,15 @@ ggsave("fig_output/name_of_file.png", my_plot, width = 15, height = 10)
 ```
 
 Note: The parameters `width` and `height` also determine the font size in the saved plot.
+
+Before we finish the discussion and demonstration on **`ggplot2`**, let us introduce another function in **`ggplot2`**, that is `qplot()`. `qplot()` is a quick and easy way to make plots using **`ggplot2`** without having to specify all the components. It’s ideal when you want to create a fast visualization but still use some of the power of **`ggplot2`**.
+
+Here is an example using `qplot()` with `no_membrs`, `liv_count`, and color by `village`:
+
+```{r, purl=FALSE, eval=FALSE}
+qplot(no_membrs, liv_count, data = interviews_plotting, color = village,
+      main = "Quick ggplot2 Plot: Livestock Count by Household Members")
+```
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
