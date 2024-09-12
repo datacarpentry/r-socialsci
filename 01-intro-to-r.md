@@ -20,7 +20,7 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Define the following terms as they relate to R: object, assign, call, function, arguments, options.
-- Assign values to objects in R.
+- Assign values to names in R.
 - Learn how to name objects.
 - Use comments to inform script.
 - Solve simple arithmetic operations in R.
@@ -35,7 +35,7 @@ source: Rmd
 
 - What data types are available in R?
 - What is an object?
-- How can values be initially assigned to variables of different data types?
+- How can objects of different data types be assigned to names?
 - What arithmetic and logical operators can be used?
 - How can subsets be extracted from vectors?
 - How does R treat missing values?
@@ -64,16 +64,16 @@ You can get output from R simply by typing math in the console:
 [1] 1.714286
 ```
 
-However, to do useful and interesting things, we need to assign *values* to
-*objects*. To create an object, we need to give it a name followed by the
-assignment operator `<-`, and the value we want to give it:
+Everything that exists in `R` is an objects: from simple numerical values, to strings, to more complex objects like vectors, matrices, and lists. Even expressions and functions are objects in `R`.
+
+However, to do useful and interesting things, we need to name objects. To do so, we need to give a *name* followed by the assignment operator `<-`, and the *object* we want to be named:
 
 
 ``` r
 area_hectares <- 1.0
 ```
 
-`<-` is the assignment operator. It assigns values on the right to objects on
+`<-` is the assignment operator. It assigns values (objects) on the right to names (also called *symbols*) on
 the left. So, after executing `x <- 3`, the value of `x` is `3`. The arrow can
 be read as 3 **goes into** `x`.  For historical reasons, you can also use `=`
 for assignments, but not in every context. Because of the
@@ -119,15 +119,16 @@ for issues in the styling of your code.
 
 ## Objects vs. variables
 
-What are known as `objects` in `R` are known as `variables` in many other
-programming languages. Depending on the context, `object` and `variable` can
+The naming of objects in `R` is somehow related to `variables` in many other
+programming languages. In many programming languages, a variable has three aspects: a name, a memory location, and the current value stored in this location. `R` abstracts from modifiable memory locations. In `R` we only have objects which cn be named.
+Depending on the context, `name (of an object)` and `variable` can
 have drastically different meanings. However, in this lesson, the two words
 are used synonymously. For more information see:
 [https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-When assigning a value to an object, R does not print anything. You
+When assigning an value to a name, R does not print anything. You
 can force R to print the value by using parentheses or by typing
 the object name:
 
@@ -161,7 +162,7 @@ instance, we may want to convert this area into acres (area in acres is 2.47 tim
 [1] 2.47
 ```
 
-We can also change an object's value by assigning it a new one:
+We can also change an the value assigned to an name by assigning it a new one:
 
 
 ``` r
@@ -173,16 +174,16 @@ area_hectares <- 2.5
 [1] 6.175
 ```
 
-This means that assigning a value to one object does not change the values of
-other objects. For example, let's store the plot's area in acres
-in a new object, `area_acres`:
+This means that assigning a value to one name does not change the values of
+other names. For example, let's name the plot's area in acres
+`area_acres`:
 
 
 ``` r
 area_acres <- 2.47 * area_hectares
 ```
 
-and then change `area_hectares` to 50.
+and then change (reassign) `area_hectares` to 50.
 
 
 ``` r
@@ -193,7 +194,7 @@ area_hectares <- 50
 
 ## Exercise
 
-What do you think is the current content of the object `area_acres`? 123.5 or
+What do you think is the current value of `area_acres`? 123.5 or
 6\.175?
 
 :::::::::::::::  solution
@@ -297,7 +298,7 @@ b <- sqrt(a)
 
 Here, the value of `a` is given to the `sqrt()` function, the `sqrt()` function
 calculates the square root, and returns the value which is then assigned to
-the object `b`. This function is very simple, because it takes just one argument.
+the name `b`. This function is very simple, because it takes just one argument.
 
 The return 'value' of a function need not be numerical (like that of `sqrt()`),
 and it also does not need to be a single item: it can be a set of things, or
@@ -404,7 +405,7 @@ the workhorse of R. A vector is composed by a series of values, which can be
 either numbers or characters. We can assign a series of values to a vector using
 the `c()` function. For example we can create a vector of the number of household
 members for the households we've interviewed and assign
-it to a new object `hh_members`:
+it to `hh_members`:
 
 
 ``` r
@@ -431,7 +432,7 @@ respondent_wall_type
 ```
 
 The quotes around "muddaub", etc. are essential here. Without the quotes R
-will assume there are objects called `muddaub`, `burntbricks` and `sunbricks`. As these objects
+will assume there are objects called `muddaub`, `burntbricks` and `sunbricks`. As these names
 don't exist in R's memory, there will be an error message.
 
 There are many functions that allow you to inspect the content of a
