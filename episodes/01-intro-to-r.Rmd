@@ -54,6 +54,7 @@ You can get output from R simply by typing math in the console:
 12 / 7
 ```
 
+Everything that exists in `R` is an objects: from simple numerical values, to strings, to more complex objects like vectors, matrices, and lists. Even expressions and functions are objects in `R`.
 
 However, to do useful and interesting things, we need to name objects. To do so, we need to give a *name* followed by the assignment operator `<-`, and the *object* we want to be named:
 
