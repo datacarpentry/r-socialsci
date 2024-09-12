@@ -338,7 +338,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Introduction to R</h1>
-        <p>Last updated on 2024-09-04 |
+        <p>Last updated on 2024-09-12 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/01-intro-to-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -378,8 +378,7 @@ own “workflow.”</li>
 <h3 class="card-title">Questions</h3>
 <ul><li>What data types are available in R?</li>
 <li>What is an object?</li>
-<li>How can values be initially assigned to variables of different data
-types?</li>
+<li>How can objects of different data types be assigned to names?</li>
 <li>What arithmetic and logical operators can be used?</li>
 <li>How can subsets be extracted from vectors?</li>
 <li>How does R treat missing values?</li>
@@ -393,7 +392,7 @@ types?</li>
 <h3 class="card-title">Objectives</h3>
 <ul><li>Define the following terms as they relate to R: object, assign,
 call, function, arguments, options.</li>
-<li>Assign values to objects in R.</li>
+<li>Assign values to names in R.</li>
 <li>Learn how to name objects.</li>
 <li>Use comments to inform script.</li>
 <li>Solve simple arithmetic operations in R.</li>
@@ -431,22 +430,27 @@ options.</li>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 1.714286</code></pre>
 </div>
-<p>However, to do useful and interesting things, we need to assign
-<em>values</em> to <em>objects</em>. To create an object, we need to
-give it a name followed by the assignment operator <code>&lt;-</code>,
-and the value we want to give it:</p>
+<p>Everything that exists in <code>R</code> is an objects: from simple
+numerical values, to strings, to more complex objects like vectors,
+matrices, and lists. Even expressions and functions are objects in
+<code>R</code>.</p>
+<p>However, to do useful and interesting things, we need to name
+objects. To do so, we need to give a <em>name</em> followed by the
+assignment operator <code>&lt;-</code>, and the <em>object</em> we want
+to be named:</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">area_hectares</span> <span class="op">&lt;-</span> <span class="fl">1.0</span></span></code></pre>
 </div>
-<p><code>&lt;-</code> is the assignment operator. It assigns values on
-the right to objects on the left. So, after executing
-<code>x &lt;- 3</code>, the value of <code>x</code> is <code>3</code>.
-The arrow can be read as 3 <strong>goes into</strong> <code>x</code>.
-For historical reasons, you can also use <code>=</code> for assignments,
-but not in every context. Because of the <a href="https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html" class="external-link">slight
+<p><code>&lt;-</code> is the assignment operator. It assigns values
+(objects) on the right to names (also called <em>symbols</em>) on the
+left. So, after executing <code>x &lt;- 3</code>, the value of
+<code>x</code> is <code>3</code>. The arrow can be read as 3
+<strong>goes into</strong> <code>x</code>. For historical reasons, you
+can also use <code>=</code> for assignments, but not in every context.
+Because of the <a href="https://blog.revolutionanalytics.com/2008/12/use-equals-or-arrow-for-assignment.html" class="external-link">slight
 differences</a> in syntax, it is good practice to always use
 <code>&lt;-</code> for assignments. More generally we prefer the
 <code>&lt;-</code> syntax over <code>=</code> because it makes it clear
@@ -492,17 +496,21 @@ code.</p>
 <div id="objects-vs.-variables" class="callout-inner">
 <h3 class="callout-title">Objects vs. variables</h3>
 <div class="callout-content">
-<p>What are known as <code>objects</code> in <code>R</code> are known as
-<code>variables</code> in many other programming languages. Depending on
-the context, <code>object</code> and <code>variable</code> can have
+<p>The naming of objects in <code>R</code> is somehow related to
+<code>variables</code> in many other programming languages. In many
+programming languages, a variable has three aspects: a name, a memory
+location, and the current value stored in this location. <code>R</code>
+abstracts from modifiable memory locations. In <code>R</code> we only
+have objects which cn be named. Depending on the context,
+<code>name (of an object)</code> and <code>variable</code> can have
 drastically different meanings. However, in this lesson, the two words
 are used synonymously. For more information see: <a href="https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects" class="external-link">https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Objects</a></p>
 </div>
 </div>
 </div>
-<p>When assigning a value to an object, R does not print anything. You
-can force R to print the value by using parentheses or by typing the
-object name:</p>
+<p>When assigning an value to a name, R does not print anything. You can
+force R to print the value by using parentheses or by typing the object
+name:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -540,7 +548,8 @@ acres (area in acres is 2.47 times the area in hectares):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 2.47</code></pre>
 </div>
-<p>We can also change an object’s value by assigning it a new one:</p>
+<p>We can also change an the value assigned to an name by assigning it a
+new one:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -553,16 +562,16 @@ acres (area in acres is 2.47 times the area in hectares):</p>
 </h3>
 <pre class="output" tabindex="0"><code>[1] 6.175</code></pre>
 </div>
-<p>This means that assigning a value to one object does not change the
-values of other objects. For example, let’s store the plot’s area in
-acres in a new object, <code>area_acres</code>:</p>
+<p>This means that assigning a value to one name does not change the
+values of other names. For example, let’s name the plot’s area in acres
+<code>area_acres</code>:</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">area_acres</span> <span class="op">&lt;-</span> <span class="fl">2.47</span> <span class="op">*</span> <span class="va">area_hectares</span></span></code></pre>
 </div>
-<p>and then change <code>area_hectares</code> to 50.</p>
+<p>and then change (reassign) <code>area_hectares</code> to 50.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -576,8 +585,8 @@ acres in a new object, <code>area_acres</code>:</p>
 <div id="exercise" class="callout-inner">
 <h3 class="callout-title">Exercise</h3>
 <div class="callout-content">
-<p>What do you think is the current content of the object
-<code>area_acres</code>? 123.5 or 6.175?</p>
+<p>What do you think is the current value of <code>area_acres</code>?
+123.5 or 6.175?</p>
 </div>
 </div>
 </div>
@@ -705,9 +714,8 @@ function. An example of a function call is:</p>
 </div>
 <p>Here, the value of <code>a</code> is given to the <code>sqrt()</code>
 function, the <code>sqrt()</code> function calculates the square root,
-and returns the value which is then assigned to the object
-<code>b</code>. This function is very simple, because it takes just one
-argument.</p>
+and returns the value which is then assigned to the name <code>b</code>.
+This function is very simple, because it takes just one argument.</p>
 <p>The return ‘value’ of a function need not be numerical (like that of
 <code>sqrt()</code>), and it also does not need to be a single item: it
 can be a set of things, or even a dataset. We’ll see that when we read
@@ -824,7 +832,7 @@ much the workhorse of R. A vector is composed by a series of values,
 which can be either numbers or characters. We can assign a series of
 values to a vector using the <code>c()</code> function. For example we
 can create a vector of the number of household members for the
-households we’ve interviewed and assign it to a new object
+households we’ve interviewed and assign it to
 <code>hh_members</code>:</p>
 <div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -855,7 +863,7 @@ respondents’ walls (<code>respondent_wall_type</code>):</p>
 </div>
 <p>The quotes around “muddaub”, etc. are essential here. Without the
 quotes R will assume there are objects called <code>muddaub</code>,
-<code>burntbricks</code> and <code>sunbricks</code>. As these objects
+<code>burntbricks</code> and <code>sunbricks</code>. As these names
 don’t exist in R’s memory, there will be an error message.</p>
 <p>There are many functions that allow you to inspect the content of a
 vector. <code>length()</code> tells you how many elements are in a
@@ -1526,8 +1534,8 @@ data.</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/01-intro-to-r.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/01-intro-to-r.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2024-09-04",
-  "datePublished": "2024-09-10"
+  "dateModified": "2024-09-12",
+  "datePublished": "2024-09-12"
 }
 
   </script><script>
