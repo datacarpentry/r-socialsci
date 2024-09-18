@@ -45,7 +45,7 @@ if (! file.exists("data/interviews_plotting.csv")) {
     mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
     mutate(number_items = rowSums(select(., bicycle:car)))
 
-  write.csv(df, "data/interviews_plotting.csv", row.names = FALSE)
+  write.csv(interviews_plotting, "data/interviews_plotting.csv", row.names = FALSE)
 }
 
 
