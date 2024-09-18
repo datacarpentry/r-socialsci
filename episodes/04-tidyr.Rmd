@@ -435,7 +435,7 @@ dataset where each of the columns includes only one data value. Now we can save
 this data frame to our `data_output` directory.
 
 ```{r, purl=FALSE, eval=FALSE}
-write_csv (interviews_plotting, file = "data_output/interviews_plotting.csv")
+write_csv(interviews_plotting, file = "data_output/interviews_plotting.csv")
 ```
 
 ```{r, purl=FALSE, eval=TRUE, echo=FALSE}
