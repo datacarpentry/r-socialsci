@@ -9,9 +9,16 @@ source: Rmd
 
 :::: instructor
 
-- This lesson is a broad overview of ggplot2 and focuses on (1) getting familiar
-  with the layering system of ggplot2, (2) using the argument `group` in the
-  `aes()` function, (3) basic customization of the plots.
+- This episode is a broad overview of ggplot2 and focuses on (1) getting
+  familiar with the layering system of ggplot2, (2) using the argument `group`
+  in the `aes()` function, (3) basic customization of the plots.
+- The episode depends on data created in the Data Wrangling with tidyr
+  episode. If you did not get to or through all of the tidyr episode,
+  you can have the learners access the data by either downloading it or
+  quickly creating it using the tidyr code below. You will probably want to
+  copy the code into the Etherpad.
+- If you did skip the tidyr episode, you might want to go over the exporting
+  data section in that episode.
 
 ::::::::::::
 
@@ -63,11 +70,23 @@ dttm  (1): interview_date
 ```
 
 If you were unable to complete the previous lesson or did not save the data,
-then you can create it now.
+then you can create it now. Either download it using `read_csv()` (Option 1)
+or create it with the **dplyr** and **tidyr** code (Option 2).
+
+::: tab
+
+### Option 1: Download the data
 
 
 ``` r
-## Not run, but can be used to load in data from previous lesson!
+interviews_plotting <- read_csv("https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/interviews_plotting.csv")
+```
+
+### Option 2: Create the data
+
+
+``` r
+## Can be used to load in data from previous lesson!
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
   separate_rows(items_owned, sep = ";") %>%
@@ -87,6 +106,8 @@ interviews_plotting <- interviews %>%
   mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
   mutate(number_items = rowSums(select(., bicycle:car)))
 ```
+
+:::
 
 ## Plotting with **`ggplot2`**
 
