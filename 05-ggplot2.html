@@ -341,7 +341,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Visualisation with ggplot2</h1>
-        <p>Last updated on 2024-09-04 |
+        <p>Last updated on 2024-09-26 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/05-ggplot2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -416,12 +416,37 @@ dttm  (1): interview_date
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <p>If you were unable to complete the previous lesson or did not save
-the data, then you can create it now.</p>
+the data, then you can create it now. Either download it using
+<code>read_csv()</code> (Option 1) or create it with the
+<strong>dplyr</strong> and <strong>tidyr</strong> code (Option 2).</p>
+<div class="tabs">
+<nav><div id="nav-tab-1" class="nav nav-tabs" role="tablist">
+<button class="nav-link active" id="nav-tab-1-1" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-1" type="button" role="tab" aria-controls="nav-tabpanel-1-1" aria-selected="true">
+  <h3 class="tab-header" id="nav-tab-heading-1-1">
+  Option 1: Download the data
+  </h3>
+</button>
+<button class="nav-link" id="nav-tab-1-2" data-bs-toggle="tab" data-bs-target="#nav-tabpanel-1-2" type="button" role="tab" aria-controls="nav-tabpanel-1-2" aria-selected="false">
+  <h3 class="tab-header" id="nav-tab-heading-1-2">
+  Option 2: Create the data
+  </h3>
+</button>
+</div>
+</nav><div id="nav-tabContent-1" class="tab-content">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## Not run, but can be used to load in data from previous lesson!</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/interviews_plotting.csv"</span><span class="op">)</span></span></code></pre>
+</div>
+</div>
+<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Can be used to load in data from previous lesson!</span></span>
 <span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="co">## pivot wider by items_owned</span></span>
 <span>  <span class="fu">separate_rows</span><span class="op">(</span><span class="va">items_owned</span>, sep <span class="op">=</span> <span class="st">";"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
@@ -440,6 +465,9 @@ the data, then you can create it now.</p>
 <span>  <span class="co">## add some summary columns</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>number_months_lack_food <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">.</span>, <span class="va">Jan</span><span class="op">:</span><span class="va">May</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
 <span>  <span class="fu">mutate</span><span class="op">(</span>number_items <span class="op">=</span> <span class="fu">rowSums</span><span class="op">(</span><span class="fu">select</span><span class="op">(</span><span class="va">.</span>, <span class="va">bicycle</span><span class="op">:</span><span class="va">car</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre>
+</div>
+</div>
+</div>
 </div>
 <section><h2 class="section-heading" id="plotting-with-ggplot2">Plotting with <strong><code>ggplot2</code></strong>
 <a class="anchor" aria-label="anchor" href="#plotting-with-ggplot2"></a></h2>
@@ -485,7 +513,7 @@ within the <code>ggplot</code> function and instead pipe the data into
 the function.</p>
 <ul><li>use the <code>ggplot()</code> function and bind the plot to a
 specific data frame.</li>
-</ul><div class="codewrapper sourceCode" id="cb6">
+</ul><div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -496,7 +524,7 @@ specific data frame.</li>
 by selecting the variables to be plotted and specifying how to present
 them in the graph, e.g. as x/y positions or characteristics such as
 size, shape, color, etc.</li>
-</ul><div class="codewrapper sourceCode" id="cb7">
+</ul><div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -517,7 +545,7 @@ different geoms; we will use some common ones today, including:</p>
 </ul><p>To add a geom to the plot use the <code>+</code> operator. Because we
 have two continuous variables, let’s use <code>geom_point()</code>
 first:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -531,7 +559,7 @@ package is particularly useful because it allows you to modify existing
 templates and conveniently explore different types of plots, so the
 above plot can also be generated with code like this, similar to the
 “intermediate steps” approach in the previous lesson:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -564,7 +592,7 @@ layer and will return an error message.</li>
 </ul></div>
 </div>
 </div>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -580,7 +608,7 @@ layer and will return an error message.</li>
 <hr class="half-width"><p>Building plots with <strong><code>ggplot2</code></strong> is
 typically an iterative process. We start by defining the dataset we’ll
 use, lay out the axes, and choose a geom:</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -614,7 +642,7 @@ fix the overplotting. While the overplotting isn’t solved, adding
 transparency begins to address this problem, as the points where there
 are overlapping observations are darker (as opposed to lighter
 gray):</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -636,7 +664,7 @@ of the observation.</p>
 <p>We can jitter our points using the <code>geom_jitter()</code>
 function instead of the <code>geom_point()</code> function, as seen
 below:</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -652,7 +680,7 @@ defaults to 40% of the resolution of the data (the smallest change that
 can be measured). Hence, if we would like <em>less</em> spread in our
 jitter than was default, we should pick values between 0.1 and 0.4.
 Experiment with the values to see how your plot changes.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -665,7 +693,7 @@ Experiment with the values to see how your plot changes.</p>
 <figure><img src="fig/05-ggplot2-rendered-adding-width-height-1.png" alt="Scatter plot of number of items owned versus number of household members, with jitter and transparency." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>For our final change, we can also add colours for all the points by
 specifying a <code>color</code> argument inside the
 <code>geom_jitter()</code> function:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -694,7 +722,7 @@ and American English spellings for colour, i.e., you can use either
 <code>color</code> or <code>colour</code>. Here is an example where we
 color points by the <strong><code>village</code></strong> of the
 observation:</p>
-<div class="codewrapper sourceCode" id="cb16">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -718,7 +746,7 @@ to use the <code>geom_count</code> plotting function. The
 <code>geom_count()</code> function makes the size of each point
 representative of the number of data items of that type and the legend
 gives point sizes associated to particular numbers of items.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -752,7 +780,7 @@ data?</p>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb18">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -773,7 +801,7 @@ help you visualize this relationship better?</p>
 </section><section><h2 class="section-heading" id="boxplot">Boxplot<a class="anchor" aria-label="anchor" href="#boxplot"></a></h2>
 <hr class="half-width"><p>We can use boxplots to visualize the distribution of rooms for each
 wall type:</p>
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -783,7 +811,7 @@ wall type:</p>
 </div>
 <figure><img src="fig/05-ggplot2-rendered-boxplot-1.png" alt="Box plot of number of rooms by wall type." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>By adding points to a boxplot, we can have a better idea of the
 number of measurements and of their distribution:</p>
-<div class="codewrapper sourceCode" id="cb20">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -823,7 +851,7 @@ where the shape (of the density of points) is drawn.</p>
 </button>
 <div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -866,7 +894,7 @@ measurements.</li>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -900,7 +928,7 @@ the respondent is a member of an irrigation association
 </button>
 <div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -918,7 +946,7 @@ the respondent is a member of an irrigation association
 default, <code>geom_bar</code> accepts a variable for x, and plots the
 number of instances each value of x (in this case, wall type) appears in
 the dataset.</p>
-<div class="codewrapper sourceCode" id="cb25">
+<div class="codewrapper sourceCode" id="cb26">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -929,7 +957,7 @@ the dataset.</p>
 <figure><img src="fig/05-ggplot2-rendered-barplot-1-1.png" alt="Bar plot showing counts of respondent wall types." style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>We can use the <code>fill</code> aesthetic for the
 <code>geom_bar()</code> geom to colour bars by the portion of each count
 that is from each village.</p>
-<div class="codewrapper sourceCode" id="cb26">
+<div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -942,7 +970,7 @@ to read than side-by-side bars. We can separate the portions of the
 stacked bar that correspond to each village and put them side-by-side by
 using the <code>position</code> argument for <code>geom_bar()</code> and
 setting it to “dodge”.</p>
-<div class="codewrapper sourceCode" id="cb27">
+<div class="codewrapper sourceCode" id="cb28">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -959,7 +987,7 @@ proportions, we will first create a new data frame
 representing the percent of each house type in each village. We will
 remove houses with cement walls, as there was only one in the
 dataset.</p>
-<div class="codewrapper sourceCode" id="cb28">
+<div class="codewrapper sourceCode" id="cb29">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -972,7 +1000,7 @@ dataset.</p>
 </div>
 <p>Now we can use this new data frame to create our plot showing the
 percentage of each house type in each village.</p>
-<div class="codewrapper sourceCode" id="cb29">
+<div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1002,7 +1030,7 @@ proportion of respondents in an irrigation association?</p>
 </button>
 <div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb30">
+<div class="codewrapper sourceCode" id="cb31">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1043,7 +1071,7 @@ placed beneath the title)</li>
 <code>...</code> – any pair of name and value for aesthetics used in
 the plot (e.g., <code>x</code>, <code>y</code>, <code>fill</code>,
 <code>color</code>, <code>size</code>)</li>
-</ul><div class="codewrapper sourceCode" id="cb31">
+</ul><div class="codewrapper sourceCode" id="cb32">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1066,7 +1094,7 @@ side-by-side bars will become more difficult to read.</p>
 plots based on a factor included in the dataset. We will use it to split
 our barplot of housing type proportion by village so that each village
 has its own panel in a multi-panel plot:</p>
-<div class="codewrapper sourceCode" id="cb32">
+<div class="codewrapper sourceCode" id="cb33">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1083,7 +1111,7 @@ version of this plot.</p>
 <p>Usually plots with white background look more readable when printed.
 We can set the background to white using the function
 <code>theme_bw()</code>. Additionally, you can remove the grid:</p>
-<div class="codewrapper sourceCode" id="cb33">
+<div class="codewrapper sourceCode" id="cb34">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1103,7 +1131,7 @@ people in each village who own each item and then create a faceted
 series of bar plots where each plot is a particular item. First we need
 to calculate the percentage of people in each village who own each
 item:</p>
-<div class="codewrapper sourceCode" id="cb34">
+<div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1136,7 +1164,7 @@ percentages with each item in its own column, so a
 <code>pivot_longer()</code> is required to transform the table into an
 easier format for plotting. Using this data frame, we can now create a
 multi-paneled bar plot.</p>
-<div class="codewrapper sourceCode" id="cb35">
+<div class="codewrapper sourceCode" id="cb36">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1179,7 +1207,7 @@ plot using each of those themes. Which do you like best?</p>
 cheat sheet</a>, and think of ways you could improve the plot.</p>
 <p>Now, let’s change names of axes to something more informative than
 ‘village’ and ‘percent’ and add a title to the figure:</p>
-<div class="codewrapper sourceCode" id="cb36">
+<div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1194,7 +1222,7 @@ cheat sheet</a>, and think of ways you could improve the plot.</p>
 </div>
 <figure><img src="fig/05-ggplot2-rendered-ggplot-customization-1.png" style="display: block; margin: auto;" class="figure mx-auto d-block"></figure><p>The axes have more informative names, but their readability can be
 improved by increasing the font size:</p>
-<div class="codewrapper sourceCode" id="cb37">
+<div class="codewrapper sourceCode" id="cb38">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1219,7 +1247,7 @@ overlap. You can use a 90-degree angle, or experiment to find the
 appropriate angle for diagonally oriented labels. With a larger font,
 the title also runs off. We can add “\n” in the string for the title to
 insert a new line:</p>
-<div class="codewrapper sourceCode" id="cb38">
+<div class="codewrapper sourceCode" id="cb39">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1241,7 +1269,7 @@ you can save them as an object to be able to easily apply them to other
 plots you may create. We can also add
 <code>plot.title = element_text(hjust = 0.5)</code> to centre the
 title:</p>
-<div class="codewrapper sourceCode" id="cb39">
+<div class="codewrapper sourceCode" id="cb40">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1288,7 +1316,7 @@ appropriate arguments (<code>width</code>, <code>height</code> and
 <code>dpi</code>).</p>
 <p>Make sure you have the <code>fig_output/</code> folder in your
 working directory.</p>
-<div class="codewrapper sourceCode" id="cb40">
+<div class="codewrapper sourceCode" id="cb41">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -1390,8 +1418,8 @@ categorical variable.</li>
   "url": "https://datacarpentry.org/r-socialsci/05-ggplot2.html",
   "identifier": "https://datacarpentry.org/r-socialsci/05-ggplot2.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2024-09-04",
-  "datePublished": "2024-09-24"
+  "dateModified": "2024-09-26",
+  "datePublished": "2024-09-26"
 }
 
   </script><script>
