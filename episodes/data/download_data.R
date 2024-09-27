@@ -31,6 +31,10 @@ library(dplyr)
 if (! file.exists("data/interviews_plotting.csv")) {
   # Copy code from ggplot episode to create data
   interviews_plotting <- df %>%
+    # Need to turn NULL to NA
+    mutate(memb_assoc = na_if(memb_assoc, "NULL"),
+           affect_conflicts = na_if(affect_conflicts, "NULL"),
+           items_owned = na_if(items_owned, "NULL")) %>%
     separate_rows(items_owned, sep = ";") %>%
     replace_na(list(items_owned = "no_listed_items")) %>%
     mutate(items_owned_logical = TRUE) %>%
