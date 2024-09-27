@@ -74,7 +74,7 @@ interviews_plotting <- read_csv("https://raw.githubusercontent.com/datacarpentry
 ## Can be used to load in data from previous lesson!
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
-  separate_rows(items_owned, sep = ";") %>%
+  separate_longer_delim(items_owned, delim = ";") %>%
   ## if there were no items listed, changing NA to no_listed_items
   replace_na(list(items_owned = "no_listed_items")) %>%
   mutate(items_owned_logical = TRUE) %>%
