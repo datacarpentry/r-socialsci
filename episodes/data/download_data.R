@@ -35,19 +35,23 @@ if (! file.exists("data/interviews_plotting.csv")) {
     mutate(memb_assoc = na_if(memb_assoc, "NULL"),
            affect_conflicts = na_if(affect_conflicts, "NULL"),
            items_owned = na_if(items_owned, "NULL")) %>%
-    separate_rows(items_owned, sep = ";") %>%
-    replace_na(list(items_owned = "no_listed_items")) %>%
-    mutate(items_owned_logical = TRUE) %>%
-    pivot_wider(names_from = items_owned,
-                values_from = items_owned_logical,
-                values_fill = list(items_owned_logical = FALSE)) %>%
-    separate_rows(months_lack_food, sep = ";") %>%
-    mutate(months_lack_food_logical = TRUE) %>%
-    pivot_wider(names_from = months_lack_food,
-                values_from = months_lack_food_logical,
-                values_fill = list(months_lack_food_logical = FALSE)) %>%
-    mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
-    mutate(number_items = rowSums(select(., bicycle:car)))
+      ## pivot wider by items_owned
+      separate_longer_delim(items_owned, delim = ";") %>%
+      replace_na(list(items_owned = "no_listed_items")) %>%
+      ## Use of grouped mutate to find number of rows
+      group_by(key_ID) %>%
+      mutate(items_owned_logical = TRUE,
+             number_items = if_else(items_owned == "no_listed_items", 0, n())) %>%
+      pivot_wider(names_from = items_owned,
+                  values_from = items_owned_logical,
+                  values_fill = list(items_owned_logical = FALSE)) %>%
+      ## pivot wider by months_lack_food
+      separate_longer_delim(months_lack_food, delim = ";") %>%
+      mutate(months_lack_food_logical = TRUE,
+             number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
+      pivot_wider(names_from = months_lack_food,
+                  values_from = months_lack_food_logical,
+                  values_fill = list(months_lack_food_logical = FALSE))
 
   write.csv(interviews_plotting, "data/interviews_plotting.csv", row.names = FALSE)
 }
