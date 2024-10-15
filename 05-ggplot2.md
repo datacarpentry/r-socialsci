@@ -92,21 +92,21 @@ interviews_plotting <- read_csv("https://raw.githubusercontent.com/datacarpentry
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
   separate_longer_delim(items_owned, delim = ";") %>%
-  ## if there were no items listed, changing NA to no_listed_items
   replace_na(list(items_owned = "no_listed_items")) %>%
-  mutate(items_owned_logical = TRUE) %>%
+  ## Use of grouped mutate to find number of rows
+  group_by(key_ID) %>% 
+  mutate(items_owned_logical = TRUE,
+         number_items = if_else(items_owned == "no_listed_items", 0, n())) %>% 
   pivot_wider(names_from = items_owned,
               values_from = items_owned_logical,
-              values_fill = list(items_owned_logical = FALSE)) %>%
+              values_fill = list(items_owned_logical = FALSE)) %>% 
   ## pivot wider by months_lack_food
-  separate_rows(months_lack_food, sep = ";") %>%
-  mutate(months_lack_food_logical = TRUE) %>%
+  separate_longer_delim(months_lack_food, delim = ";") %>%
+  mutate(months_lack_food_logical = TRUE,
+         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
-              values_fill = list(months_lack_food_logical = FALSE)) %>%
-  ## add some summary columns
-  mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
-  mutate(number_items = rowSums(select(., bicycle:car)))
+              values_fill = list(months_lack_food_logical = FALSE))
 ```
 
 :::
@@ -314,7 +314,7 @@ opposed to lighter gray):
 ``` r
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_point(alpha = 0.3)
+    geom_point(alpha = 0.5)
 ```
 
 <img src="fig/05-ggplot2-rendered-adding-transparency-1.png" alt="Scatter plot of number of items owned versus number of household members, with transparency added to points." style="display: block; margin: auto;" />
@@ -352,7 +352,7 @@ between 0.1 and 0.4. Experiment with the values to see how your plot changes.
 ``` r
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.3,
+    geom_jitter(alpha = 0.5,
                 width = 0.2,
                 height = 0.2)
 ```
@@ -366,7 +366,7 @@ a `color` argument inside the `geom_jitter()` function:
 ``` r
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(alpha = 0.3,
+    geom_jitter(alpha = 0.5,
                 color = "blue",
                 width = 0.2,
                 height = 0.2)
@@ -391,7 +391,7 @@ of the observation:
 ``` r
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
-    geom_jitter(aes(color = village), alpha = 0.3, width = 0.2, height = 0.2)
+    geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
 ```
 
 <img src="fig/05-ggplot2-rendered-color-by-species-1.png" style="display: block; margin: auto;" />
@@ -440,7 +440,7 @@ What other kinds of plots might you use to show this type of data?
 interviews_plotting %>%
     ggplot(aes(x = village, y = rooms)) +
     geom_jitter(aes(color = respondent_wall_type),
-	    alpha = 0.3,
+	    alpha = 0.5,
 		    width = 0.2,
 		    height = 0.2)
 ```
@@ -477,7 +477,7 @@ measurements and of their distribution:
 interviews_plotting %>%
     ggplot(aes(x = respondent_wall_type, y = rooms)) +
     geom_boxplot(alpha = 0) +
-    geom_jitter(alpha = 0.3,
+    geom_jitter(alpha = 0.5,
     		color = "tomato",
     		width = 0.2,
     		height = 0.2)
