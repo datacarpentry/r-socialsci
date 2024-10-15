@@ -29,12 +29,14 @@ source: Rmd
 - Describe what faceting is and apply faceting in ggplot.
 - Modify the aesthetics of an existing ggplot plot (including axis labels and colour).
 - Build complex and customized plots from data in a data frame.
+- Recognize the differences between base R, lattice, and ggplot visualizations.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
 - What are the components of a ggplot?
+- What are the main differences between R base plots, lattice, and ggplot?
 - How do I create scatterplots, boxplots, and barplots?
 - How can I change the aesthetics (ex. colour, transparency) of my plot?
 - How can I create multiple plots at once?
@@ -108,6 +110,45 @@ interviews_plotting <- interviews %>%
 ```
 
 :::
+
+## Visualization Options in R
+
+Before we start with **`ggplot2`**, it's helpful to know that there are several ways to create visualizations in R. While **`ggplot2`** is great for building complex and highly customizable plots, there are simpler and quicker alternatives that you might encounter or use depending on the context. Let's briefly explore a few of them:
+
+### R Base Plots
+Base R plots are the simplest form of visualization and are great for quick, exploratory analysis. You can create plots with very little code, but customizing them can be cumbersome compared to **`ggplot2`**.
+
+Example of a simple scatterplot in base R using the `no_membrs` and `liv_count` variables:
+
+
+``` r
+plot(interviews_plotting$no_membrs, interviews_plotting$liv_count,
+     main = "Base R Scatterplot",
+     xlab = "Number of Household Members",
+     ylab = "Number of Livestock Owned")
+```
+
+<img src="fig/05-ggplot2-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+
+### **`Lattice`**
+Lattice is another plotting system in R, which allows for creating multi-panel plots easily. It’s different from ggplot2 because you define the entire plot in a single function call, and modifications after plotting are limited.
+
+Example of a lattice plot using `no_membrs` and `liv_count` split by `village`:
+
+
+``` r
+library(lattice)
+```
+
+``` r
+xyplot(liv_count ~ no_membrs | village, data = interviews_plotting,
+       main = "Lattice Plot: Livestock Count by Household Members",
+       xlab = "Number of Household Members",
+       ylab = "Number of Livestock Owned")
+```
+
+<img src="fig/05-ggplot2-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+
 
 ## Plotting with **`ggplot2`**
 
