@@ -849,15 +849,6 @@ ggsave("fig_output/name_of_file.png", my_plot, width = 15, height = 10)
 
 Note: The parameters `width` and `height` also determine the font size in the saved plot.
 
-Before we finish the discussion and demonstration on **`ggplot2`**, let us introduce another function in **`ggplot2`**, that is `qplot()`. `qplot()` is a quick and easy way to make plots using **`ggplot2`** without having to specify all the components. It’s ideal when you want to create a fast visualization but still use some of the power of **`ggplot2`**.
-
-Here is an example using `qplot()` with `no_membrs`, `liv_count`, and color by `village`:
-
-```{r, purl=FALSE, eval=FALSE}
-qplot(no_membrs, liv_count, data = interviews_plotting, color = village,
-      main = "Quick ggplot2 Plot: Livestock Count by Household Members")
-```
-
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
 - `ggplot2` is a flexible and useful tool for creating plots in R.
