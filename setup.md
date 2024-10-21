@@ -42,7 +42,7 @@ installr::updateR(TRUE)
 - Download R from
   the [CRAN website](http://cran.r-project.org/bin/windows/base/release.htm).
 - Run the `.exe` file that was just downloaded.
-- Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download).
+- Go to the [RStudio download page](https://posit.co/download/rstudio-desktop/).
 - Under *Installers* select **RStudio x.yy.zzz - Windows.
   Vista/7/8/10** (where x, y, and z represent version numbers).
 - Double click the file to install it.
@@ -69,7 +69,7 @@ installr::updateR(TRUE)
 - Double click on the downloaded file to install R.
 - It is also a good idea to install [XQuartz](https://www.xquartz.org/) (needed
   by some packages).
-- Go to the [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download).
+- Go to the [RStudio download page](https://posit.co/download/rstudio-desktop/).
 - Under *Installers* select **RStudio x.yy.zzz - Mac OS X 10.6+ (64-bit)**
   (where x, y, and z represent version numbers).
 - Double click the file to install RStudio.
@@ -86,7 +86,7 @@ installr::updateR(TRUE)
   don't recommend this approach as the versions provided by this approach are
   usually out of date. In any case, make sure you have at least R 3.2.
 - Go to the
-  [RStudio download page](https://www.rstudio.com/products/rstudio/download/#download).
+  [RStudio download page](https://posit.co/download/rstudio-desktop/).
 - Under *Installers* select the version that matches your distribution, and
   install it with your preferred method (e.g., with Debian/Ubuntu `sudo dpkg -i rstudio-x.yy.zzz-amd64.deb` at the terminal).
 - Once it's installed, open RStudio to make sure it works and you don't get any
