@@ -390,7 +390,7 @@ We created some summary tables on `interviews_items_owned` using `count` and
 `summarise`. We can create the same tables on `interviews_long`, but this will
 require a different process.
 
-Make a table showing showing the number of respondents in each village whoowned
+Make a table showing showing the number of respondents in each village who owned
 a particular item, and include all items. The difference between this format and
 the wide format is that you can now `count` all the items using the
 `items_owned` variable.
