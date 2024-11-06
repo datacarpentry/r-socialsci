@@ -123,16 +123,16 @@ interviews %>%
 # A tibble: 10 × 4
    key_ID village  interview_date      instanceID                               
     <dbl> <chr>    <dttm>              <chr>                                    
- 1     53 Chirodzo 2016-11-16 00:00:00 uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12
- 2     47 Chirodzo 2016-11-17 00:00:00 uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b
- 3      9 Chirodzo 2016-11-16 00:00:00 uuid:846103d2-b1db-4055-b502-9cd510bb7b37
- 4     51 Chirodzo 2016-11-16 00:00:00 uuid:18ac8e77-bdaf-47ab-85a2-e4c947c9d3ce
- 5     36 Chirodzo 2016-11-17 00:00:00 uuid:c90eade0-1148-4a12-8c0e-6387a36f45b1
- 6     50 Chirodzo 2016-11-16 00:00:00 uuid:4267c33c-53a7-46d9-8bd6-b96f58a4f92c
- 7     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
- 8     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
- 9     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
-10      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
+ 1     48 Chirodzo 2016-11-16 00:00:00 uuid:e180899c-7614-49eb-a97c-40ed013a38a2
+ 2     50 Chirodzo 2016-11-16 00:00:00 uuid:4267c33c-53a7-46d9-8bd6-b96f58a4f92c
+ 3     34 Chirodzo 2016-11-17 00:00:00 uuid:14c78c45-a7cc-4b2a-b765-17c82b43feb4
+ 4     56 Chirodzo 2016-11-16 00:00:00 uuid:973c4ac6-f887-48e7-aeaf-4476f2cfab76
+ 5      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
+ 6     57 Chirodzo 2016-11-16 00:00:00 uuid:a7184e55-0615-492d-9835-8f44f3b03a71
+ 7     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
+ 8     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
+ 9    127 Chirodzo 2016-11-16 00:00:00 uuid:f6d04b41-b539-4e00-868a-0f62b427587d
+10    200 Chirodzo 2017-06-04 00:00:00 uuid:aa77a0d7-7142-41c8-b494-483a5b68d8a7
 ```
 
 We notice that the layout or format of the `interviews` data is in a format that
@@ -237,7 +237,7 @@ separate_longer_delim(items_owned, delim = ";") %>%
 
 After this transformation, you may notice that the `items_owned` column contains
 `NA` values. This is because some of the respondents did not own any of the items
-that was in the interviewer's list. We can use the `replace_na()` function to
+in the interviewer's list. We can use the `replace_na()` function to
 change these `NA` values to something more meaningful. The `replace_na()` function
 expects for you to give it a `list()` of columns that you would like to replace
 the `NA` values in, and the value that you would like to replace the `NA`s. This
@@ -252,7 +252,7 @@ Next, we create a new variable named `items_owned_logical`, which has one value
 (`TRUE`) for every row. This makes sense, since each item in every row was owned
 by that household. We are constructing this variable so that when we spread the
 `items_owned` across multiple columns, we can fill the values of those columns
-with logical values describing whether the household did (`TRUE`) or didn't
+with logical values describing whether the household did (`TRUE`) or did not
 (`FALSE`) own that particular item.
 
 
@@ -260,7 +260,32 @@ with logical values describing whether the household did (`TRUE`) or didn't
 mutate(items_owned_logical = TRUE) %>%
 ```
 
-![](fig/separate_longer.png){alt="Two tables shown side-by-side. The first row of the left table is highlighted in blue, and the first four rows of the right table are also highlighted in blue to show how each of the values of 'items owned' are given their own row with the separate longer delim function. The 'items owned logical' column is highlighted in yellow on the right table to show how the mutate function adds a new column."}
+![](fig/separate_longer.png){alt="Two tables shown side-by-side. The first row
+of the left table is highlighted in blue, and the first four rows of the right
+table are also highlighted in blue to show how each of the values of 'items
+owned' are given their own row with the separate longer delim function. The
+'items owned logical' column is highlighted in yellow on the right table to show
+how the mutate function adds a new column."}
+
+At this point, we can also count the number of items owned by each household,
+which is equivalent to the number of rows per `key_ID`. We can do this with a
+`group_by()` and `mutate()` pipeline that works similar to `group_by()` and
+`summarize()` discussed in the previous episode but instead of creating a
+summary table, we will add another column called `number_items`. We use the
+`n()` function to count the number of rows within each group. However, there is
+one difficulty we need to take into account, namely those households that did
+not list any items. These households now have `"no_listed_items"` under
+`items_owned`. We do not want to count this as an item but instead show zero
+items. We can accomplish this using **`dplyr`'s** `if_else()` function that
+evaluates a condition and returns one value if true and another if false. Here,
+if the `items_owned` column is `"no_listed_items"`, then a 0 is returned,
+otherwise, the number of rows per group is returned using `n()`.
+
+
+``` r
+group_by(key_ID) %>% 
+  mutate(number_items = if_else(items_owned == "no_listed_items", 0, n())) %>% 
+```
 
 Lastly, we use `pivot_wider()` to switch from long format to wide format. This
 creates a new column for each of the unique values in the `items_owned` column,
@@ -275,31 +300,39 @@ pivot_wider(names_from = items_owned,
             values_fill = list(items_owned_logical = FALSE))
 ```
 
-![](fig/pivot_wider.png){alt="Two tables shown side-by-side. The 'items owned' column is highlighted in blue on the left table, and the column names are highlighted in blue on the right table to show how the values of the 'items owned' become the column names in the output of the pivot wider function. The 'items owned logical' column is highlighted in yellow on the left table, and the values of the bicycle, television, and solar panel columns are highlighted in yellow on the right table to show how the values of the 'items owned logical' column became the values of all three of the aforementioned columns."}
+![](fig/pivot_wider.png){alt="Two tables shown side-by-side. The 'items owned'
+column is highlighted in blue on the left table, and the column names are
+highlighted in blue on the right table to show how the values of the 'items
+owned' become the column names in the output of the pivot wider function. The
+'items owned logical' column is highlighted in yellow on the left table, and the
+values of the bicycle, television, and solar panel columns are highlighted in
+yellow on the right table to show how the values of the 'items owned logical'
+column became the values of all three of the aforementioned columns."}
 
-Combining the above steps, the chunk looks like this:
+Combining the above steps, the chunk looks like this. Note that two new columns
+are created within the same `mutate()` call.
 
 
 ``` r
 interviews_items_owned <- interviews %>%
   separate_longer_delim(items_owned, delim = ";") %>%
   replace_na(list(items_owned = "no_listed_items")) %>%
-  mutate(items_owned_logical = TRUE) %>%
+  group_by(key_ID) %>%
+  mutate(items_owned_logical = TRUE,
+         number_items = if_else(items_owned == "no_listed_items", 0, n())) %>%
   pivot_wider(names_from = items_owned,
               values_from = items_owned_logical,
               values_fill = list(items_owned_logical = FALSE))
 ```
 
-View the `interviews_items_owned` data frame. It should have
-131 rows (the same number of rows you had originally), but
-extra columns for each item. How many columns were added?
-Notice that there is no longer a
-column titled `items_owned`. This is because there is a default
+View the `interviews_items_owned` data frame. It should have `r
+nrow(interviews)` rows (the same number of rows you had originally), but extra
+columns for each item. How many columns were added? Notice that there is no
+longer a column titled `items_owned`. This is because there is a default
 parameter in `pivot_wider()` that drops the original column. The values that
 were in that column have now become columns named `television`, `solar_panel`,
-`table`, etc. You can use `dim(interviews)` and
-`dim(interviews_wide)` to see how the number of columns has changed between
-the two datasets.
+`table`, etc. You can use `dim(interviews)` and `dim(interviews_wide)` to see
+how the number of columns has changed between the two datasets.
 
 This format of the data allows us to do interesting things, like make a table
 showing the number of respondents in each village who owned a particular item:
@@ -323,18 +356,12 @@ interviews_items_owned %>%
 ```
 
 Or below we calculate the average number of items from the list owned by
-respondents in each village. This code uses the `rowSums()` function to count
-the number of `TRUE` values in the `bicycle` to `car` columns for each row,
-hence its name. Note that we replaced `NA` values with the value `no_listed_items`,
-so we must exclude this value in the aggregation. We then group the data by
-villages and calculate the mean number of items, so each average is grouped
-by village.
+respondents in each village using the `number_items` column we created to
+count the items listed by each household.
 
 
 ``` r
 interviews_items_owned %>%
-    select(-no_listed_items) %>% 
-    mutate(number_items = rowSums(select(., bicycle:car))) %>%
     group_by(village) %>%
     summarize(mean_items = mean(number_items))
 ```
@@ -347,6 +374,41 @@ interviews_items_owned %>%
 2 God            3.98
 3 Ruaca          5.57
 ```
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Exercise
+
+We created `interviews_items_owned` by reshaping the data: first longer and then
+wider. Replicate this process with the `months_lack_food` column in the
+`interviews` dataframe. Create a new dataframe with columns for each of the
+months filled with logical vectors (`TRUE` or `FALSE`) and a summary column
+called `number_months_lack_food` that calculates the number of months each
+household reported a lack of food.
+
+Note that if the household did not lack food in the previous 12 months, the
+value input was "none".
+
+:::::::::::::::  solution
+
+## Solution
+
+
+``` r
+months_lack_food <- interviews %>%
+  separate_longer_delim(months_lack_food, delim = ";") %>%
+  group_by(key_ID) %>%
+  mutate(months_lack_food_logical = TRUE,
+         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
+  pivot_wider(names_from = months_lack_food,
+              values_from = months_lack_food_logical,
+              values_fill = list(months_lack_food_logical = FALSE))
+```
+
+:::::::::::::::::::::::::
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Pivoting longer
 
@@ -387,10 +449,10 @@ We created some summary tables on `interviews_items_owned` using `count` and
 `summarise`. We can create the same tables on `interviews_long`, but this will
 require a different process.
 
-1. Make a table showing showing the number of respondents in each village who
-  owned a particular item, and include all items. The difference between this
-  format and the wide format is that you can now `count` all the items using the
-  `items_owned` variable.
+Make a table showing the number of respondents in each village who owned
+a particular item, and include all items. The difference between this format and
+the wide format is that you can now `count` all the items using the
+`items_owned` variable.
 
 :::::::::::::::  solution
 
@@ -424,40 +486,6 @@ interviews_long %>%
 
 :::::::::::::::::::::::::
 
-2. Calculate the average number of items from the list owned by
-  respondents in each village. If you remove rows where `items_owned_logical` is
-  `FALSE` you will have a data frame where the number of rows per household is
-  equal to the number of items owned. You can use that to calculate the mean
-  number of items per village.
-
-Remember, you need to make sure we don't count `no_listed_items`, since this is
-not   an actual item, but rather the absence thereof.
-
-:::::::::::::::  solution
-
-## Solution
-
-
-``` r
-interviews_long %>% 
-  filter(items_owned_logical,
-         items_owned != "no_listed_items") %>% 
-  # to keep information per household, we count key_ID
-  count(key_ID, village) %>% # we want to also keep the village variable
-  group_by(village) %>% 
-  summarise(mean_items = mean(n))
-```
-
-``` output
-# A tibble: 3 × 2
-  village  mean_items
-  <chr>         <dbl>
-1 Chirodzo       4.92
-2 God            4.38
-3 Ruaca          5.93
-```
-
-:::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -465,12 +493,10 @@ interviews_long %>%
 ## Applying what we learned to clean our data
 
 Now we have simultaneously learned about `pivot_longer()` and `pivot_wider()`,
-and fixed a problem in the way our data is structured. In the spreadsheets lesson,
-we learned that it's best practice to
-have only a single piece of information in each cell of your spreadsheet. In
-this dataset, we have another column that stores multiple values in a single
-cell. Some of the cells in the `months_lack_food` column contain multiple months
-which, as before, are separated by semi-colons (`;`).
+and fixed a problem in the way our data is structured. In this dataset, we have
+another column that stores multiple values in a single cell. Some of the cells
+in the `months_lack_food` column contain multiple months which, as before, are
+separated by semi-colons (`;`).
 
 To create a data frame where each of the columns contain only one value per cell,
 we can repeat the steps we applied to `items_owned` and apply them to
@@ -479,24 +505,25 @@ we will call it `interviews_plotting`.
 
 
 ``` r
+## Plotting data ##
 interviews_plotting <- interviews %>%
   ## pivot wider by items_owned
   separate_longer_delim(items_owned, delim = ";") %>%
-  ## if there were no items listed, changing NA to no_listed_items
   replace_na(list(items_owned = "no_listed_items")) %>%
-  mutate(items_owned_logical = TRUE) %>%
+  ## Use of grouped mutate to find number of rows
+  group_by(key_ID) %>% 
+  mutate(items_owned_logical = TRUE,
+         number_items = if_else(items_owned == "no_listed_items", 0, n())) %>% 
   pivot_wider(names_from = items_owned,
               values_from = items_owned_logical,
-              values_fill = list(items_owned_logical = FALSE)) %>%
+              values_fill = list(items_owned_logical = FALSE)) %>% 
   ## pivot wider by months_lack_food
   separate_longer_delim(months_lack_food, delim = ";") %>%
-  mutate(months_lack_food_logical = TRUE) %>%
+  mutate(months_lack_food_logical = TRUE,
+         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
-              values_fill = list(months_lack_food_logical = FALSE)) %>%
-  ## add some summary columns
-  mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
-  mutate(number_items = rowSums(select(., bicycle:car)))
+              values_fill = list(months_lack_food_logical = FALSE))
 ```
 
 
