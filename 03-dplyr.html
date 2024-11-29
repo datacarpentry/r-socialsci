@@ -339,7 +339,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with dplyr</h1>
-        <p>Last updated on 2024-11-19 |
+        <p>Last updated on 2024-11-29 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/03-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -543,6 +543,10 @@ Chirodzo):</p>
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
 #   instanceID &lt;chr&gt;</code></pre>
 </div>
+<p>You may also have noticed that the output from these call doesn’t run
+off the screen anymore. It’s one of the advantages of
+<code>tbl_df</code> (also called tibble), the central data class in the
+tidyverse, compared to normal dataframes in R.</p>
 <p>We can also specify multiple conditions within the
 <code>filter()</code> function. We can combine conditions using either
 “and” or “or” statements. In an “and” statement, an observation (row)
@@ -974,9 +978,6 @@ average household size by village:</p>
 2 God                6.86
 3 Ruaca              7.57</code></pre>
 </div>
-<p>You may also have noticed that the output from these calls doesn’t
-run off the screen anymore. It’s one of the advantages of
-<code>tbl_df</code> over dataframe.</p>
 <p>You can also group by multiple columns:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1009,8 +1010,10 @@ run off the screen anymore. It’s one of the advantages of
 8 Ruaca    yes                  9.5
 9 Ruaca    &lt;NA&gt;                 6.22</code></pre>
 </div>
-<p>Note that the output is a grouped tibble. To obtain an ungrouped
-tibble, use the <code>ungroup</code> function:</p>
+<p>Note that the output is a grouped tibble of nine rows by three
+columns which is indicated by the by two first lines with the
+<code>#</code>. To obtain an ungrouped tibble, use the
+<code>ungroup</code> function:</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1042,7 +1045,9 @@ tibble, use the <code>ungroup</code> function:</p>
 8 Ruaca    yes                  9.5
 9 Ruaca    &lt;NA&gt;                 6.22</code></pre>
 </div>
-<p>When grouping both by <code>village</code> and
+<p>Notice that the second line with the <code>#</code> that previously
+indicated the grouping has disappeared and we now only have a 9x3-tibble
+without grouping. When grouping both by <code>village</code> and
 <code>membr_assoc</code>, we see rows in our table for respondents who
 did not specify whether they were a member of an irrigation association.
 We can exclude those data from our table using a filter step.</p>
@@ -1440,8 +1445,8 @@ with subsets of data.</li>
   "url": "https://datacarpentry.org/r-socialsci/03-dplyr.html",
   "identifier": "https://datacarpentry.org/r-socialsci/03-dplyr.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2024-11-19",
-  "datePublished": "2024-11-26"
+  "dateModified": "2024-11-29",
+  "datePublished": "2024-11-29"
 }
 
   </script><script>

@@ -3250,7 +3250,7 @@ cannot be parsed.</p>
 </div>
 </section></section><section id="aio-03-dplyr"><p>Content from <a href="03-dplyr.html">Data Wrangling with dplyr</a></p>
 <hr>
-<p>Last updated on 2024-11-19 |
+<p>Last updated on 2024-11-29 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/03-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -3458,6 +3458,10 @@ Chirodzo):</p>
 #   liv_count &lt;dbl&gt;, items_owned &lt;chr&gt;, no_meals &lt;dbl&gt;, months_lack_food &lt;chr&gt;,
 #   instanceID &lt;chr&gt;</code></pre>
 </div>
+<p>You may also have noticed that the output from these call doesn’t run
+off the screen anymore. It’s one of the advantages of
+<code>tbl_df</code> (also called tibble), the central data class in the
+tidyverse, compared to normal dataframes in R.</p>
 <p>We can also specify multiple conditions within the
 <code>filter()</code> function. We can combine conditions using either
 “and” or “or” statements. In an “and” statement, an observation (row)
@@ -3898,9 +3902,6 @@ average household size by village:</p>
 2 God                6.86
 3 Ruaca              7.57</code></pre>
 </div>
-<p>You may also have noticed that the output from these calls doesn’t
-run off the screen anymore. It’s one of the advantages of
-<code>tbl_df</code> over dataframe.</p>
 <p>You can also group by multiple columns:</p>
 <div class="codewrapper sourceCode" id="cb27">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3933,8 +3934,10 @@ run off the screen anymore. It’s one of the advantages of
 8 Ruaca    yes                  9.5
 9 Ruaca    &lt;NA&gt;                 6.22</code></pre>
 </div>
-<p>Note that the output is a grouped tibble. To obtain an ungrouped
-tibble, use the <code>ungroup</code> function:</p>
+<p>Note that the output is a grouped tibble of nine rows by three
+columns which is indicated by the by two first lines with the
+<code>#</code>. To obtain an ungrouped tibble, use the
+<code>ungroup</code> function:</p>
 <div class="codewrapper sourceCode" id="cb30">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3966,7 +3969,9 @@ tibble, use the <code>ungroup</code> function:</p>
 8 Ruaca    yes                  9.5
 9 Ruaca    &lt;NA&gt;                 6.22</code></pre>
 </div>
-<p>When grouping both by <code>village</code> and
+<p>Notice that the second line with the <code>#</code> that previously
+indicated the grouping has disappeared and we now only have a 9x3-tibble
+without grouping. When grouping both by <code>village</code> and
 <code>membr_assoc</code>, we see rows in our table for respondents who
 did not specify whether they were a member of an irrigation association.
 We can exclude those data from our table using a filter step.</p>
@@ -4736,7 +4741,7 @@ months, the value input was “none”.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4812,7 +4817,7 @@ all the items using the <code>items_owned</code> variable.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -5026,7 +5031,7 @@ the data, then you can create it now. Either download it using
 </button>
 </div>
 </nav><div id="nav-tabContent-1" class="tab-content">
-<div id="nav-tabpanel-1-1" class="tab-pane show active" aria-labelledby="nav-tab-1-1" role="tabpanel">
+<div id="nav-tabpanel-1-1" class="tab-pane show active" role="tabpanel" aria-labelledby="nav-tab-1-1">
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -5034,7 +5039,7 @@ the data, then you can create it now. Either download it using
 <code class="sourceCode R"><span><span class="va">interviews_plotting</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/datacarpentry/r-socialsci/main/episodes/data/interviews_plotting.csv"</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
-<div id="nav-tabpanel-1-2" class="tab-pane" aria-labelledby="nav-tab-1-2" role="tabpanel">
+<div id="nav-tabpanel-1-2" class="tab-pane" role="tabpanel" aria-labelledby="nav-tab-1-2">
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -7345,8 +7350,8 @@ csv file</li>
   "url": "https://datacarpentry.org/r-socialsci/aio.html",
   "identifier": "https://datacarpentry.org/r-socialsci/aio.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2024-11-26",
-  "datePublished": "2024-11-26"
+  "dateModified": "2024-11-29",
+  "datePublished": "2024-11-29"
 }
 
   </script><script>
