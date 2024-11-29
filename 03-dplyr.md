@@ -167,6 +167,10 @@ filter(interviews, village == "Chirodzo")
 #   instanceID <chr>
 ```
 
+You may also have noticed that the output from these call doesn't run off the
+screen anymore. It's one of the advantages of `tbl_df` (also called tibble), 
+the central data class in the tidyverse, compared to normal dataframes in R.
+
 We can also specify multiple conditions within the `filter()` function. We can
 combine conditions using either "and" or "or" statements. In an "and"
 statement, an observation (row) must meet **every** criteria to be included
@@ -555,9 +559,6 @@ interviews %>%
 3 Ruaca              7.57
 ```
 
-You may also have noticed that the output from these calls doesn't run off the
-screen anymore. It's one of the advantages of `tbl_df` over dataframe.
-
 You can also group by multiple columns:
 
 
@@ -588,7 +589,9 @@ interviews %>%
 9 Ruaca    <NA>                 6.22
 ```
 
-Note that the output is a grouped tibble. To obtain an ungrouped tibble, use the
+Note that the output is a grouped tibble of nine rows by three columns 
+which is indicated by the by two first lines with the `#`.
+To obtain an ungrouped tibble, use the
 `ungroup` function:
 
 
@@ -619,6 +622,8 @@ interviews %>%
 9 Ruaca    <NA>                 6.22
 ```
 
+Notice that the second line with the `#` that previously indicated the grouping has 
+disappeared and we now only have a 9x3-tibble without grouping.
 When grouping both by `village` and `membr_assoc`, we see rows in our table for
 respondents who did not specify whether they were a member of an irrigation
 association. We can exclude those data from our table using a filter step.
