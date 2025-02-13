@@ -82,7 +82,8 @@ either variable as an identifier corresponding to the 131 interview records.
 ```{r, purl=FALSE}
 interviews %>% 
   select(key_ID) %>% 
-  n_distinct() 
+  distinct() %>%
+  nrow()
 ```
 
 As seen in the code below, for each interview date in each village no
