@@ -338,7 +338,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with tidyr</h1>
-        <p>Last updated on 2025-02-11 |
+        <p>Last updated on 2025-02-14 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/04-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -440,39 +440,19 @@ identifier corresponding to the 131 interview records.</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span> </span>
 <span>  <span class="fu">select</span><span class="op">(</span><span class="va">key_ID</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="op">)</span></span></code></pre>
+<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">nrow</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># A tibble: 1 × 1
-      n
-  &lt;int&gt;
-1   131</code></pre>
-</div>
-<div class="codewrapper sourceCode" id="cb4">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">instanceID</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">distinct</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> </span>
-<span>  <span class="fu">count</span><span class="op">(</span><span class="op">)</span></span></code></pre>
-</div>
-<div class="codewrapper">
-<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
-</h3>
-<pre class="output" tabindex="0"><code># A tibble: 1 × 1
-      n
-  &lt;int&gt;
-1   131</code></pre>
+<pre class="output" tabindex="0"><code>[1] 131</code></pre>
 </div>
 <p>As seen in the code below, for each interview date in each village no
 <code>instanceID</code>s are the same. Thus, this format is what is
 called a “long” data format, where each observation occupies only one
 row in the dataframe.</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -487,16 +467,16 @@ row in the dataframe.</p>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 4
    key_ID village  interview_date      instanceID
     &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;              &lt;chr&gt;
- 1     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
- 2     65 Chirodzo 2016-11-16 00:00:00 uuid:143f7478-0126-4fbc-86e0-5d324339206b
- 3     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
- 4     44 Chirodzo 2016-11-17 00:00:00 uuid:f9fadf44-d040-4fca-86c1-2835f79c4952
- 5     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
- 6     36 Chirodzo 2016-11-17 00:00:00 uuid:c90eade0-1148-4a12-8c0e-6387a36f45b1
- 7     57 Chirodzo 2016-11-16 00:00:00 uuid:a7184e55-0615-492d-9835-8f44f3b03a71
- 8     34 Chirodzo 2016-11-17 00:00:00 uuid:14c78c45-a7cc-4b2a-b765-17c82b43feb4
- 9     69 Chirodzo 2016-11-16 00:00:00 uuid:f86933a5-12b8-4427-b821-43c5b039401d
-10     35 Chirodzo 2016-11-17 00:00:00 uuid:ff7496e7-984a-47d3-a8a1-13618b5683ce</code></pre>
+ 1      8 Chirodzo 2016-11-16 00:00:00 uuid:d6cee930-7be1-4fd9-88c0-82a08f90fb5a
+ 2     45 Chirodzo 2016-11-17 00:00:00 uuid:e3554d22-35b1-4fb9-b386-dd5866ad5792
+ 3     62 Chirodzo 2016-11-16 00:00:00 uuid:c6597ecc-cc2a-4c35-a6dc-e62c71b345d6
+ 4     47 Chirodzo 2016-11-17 00:00:00 uuid:2d0b1936-4f82-4ec3-a3b5-7c3c8cd6cc2b
+ 5     55 Chirodzo 2016-11-16 00:00:00 uuid:883c0433-9891-4121-bc63-744f082c1fa0
+ 6     60 Chirodzo 2016-11-16 00:00:00 uuid:85465caf-23e4-4283-bb72-a0ef30e30176
+ 7     49 Chirodzo 2016-11-16 00:00:00 uuid:2303ebc1-2b3c-475a-8916-b322ebf18440
+ 8     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
+ 9     70 Chirodzo 2016-11-16 00:00:00 uuid:1feb0108-4599-4bf9-8a07-1f5e66a50a0a
+10     65 Chirodzo 2016-11-16 00:00:00 uuid:143f7478-0126-4fbc-86e0-5d324339206b</code></pre>
 </div>
 <p>We notice that the layout or format of the <code>interviews</code>
 data is in a format that adheres to rules 1-3, where</p>
@@ -572,10 +552,10 @@ couple of new concepts in this transformation, so let’s walk through it
 line by line. First we create a new object
 (<code>interviews_items_owned</code>) based on the
 <code>interviews</code> data frame.</p>
-<div class="codewrapper sourceCode" id="cb8">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>interviews_items_owned <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>interviews_items_owned <span class="ot">&lt;-</span> interviews <span class="sc">%&gt;%</span></span></code></pre>
 </div>
 <p>Then we will actually need to make our data frame longer, because we
 have multiple items in a single cell. We will use a new function,
@@ -589,10 +569,10 @@ version of the dataset, with multiple rows for each respondent. For
 example, if a respondent has a television and a solar panel, that
 respondent will now have two rows, one with “television” and the other
 with “solar panel” in the <code>items_owned</code> column.</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">separate_longer_delim</span>(items_owned, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">separate_longer_delim</span>(items_owned, <span class="at">delim =</span> <span class="st">";"</span>) <span class="sc">%&gt;%</span></span></code></pre>
 </div>
 <p>After this transformation, you may notice that the
 <code>items_owned</code> column contains <code>NA</code> values. This is
@@ -603,10 +583,10 @@ change these <code>NA</code> values to something more meaningful. The
 <code>list()</code> of columns that you would like to replace the
 <code>NA</code> values in, and the value that you would like to replace
 the <code>NA</code>s. This ends up looking like this:</p>
-<div class="codewrapper sourceCode" id="cb10">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">items_owned =</span> <span class="st">"no_listed_items"</span>)) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">replace_na</span>(<span class="fu">list</span>(<span class="at">items_owned =</span> <span class="st">"no_listed_items"</span>)) <span class="sc">%&gt;%</span></span></code></pre>
 </div>
 <p>Next, we create a new variable named
 <code>items_owned_logical</code>, which has one value
@@ -616,10 +596,10 @@ so that when we spread the <code>items_owned</code> across multiple
 columns, we can fill the values of those columns with logical values
 describing whether the household did (<code>TRUE</code>) or did not
 (<code>FALSE</code>) own that particular item.</p>
-<div class="codewrapper sourceCode" id="cb11">
+<div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">items_owned_logical =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">items_owned_logical =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span></code></pre>
 </div>
 <figure><img src="../fig/separate_longer.png" alt="Two tables shown side-by-side. The first row of the left table is highlighted in blue, and the first four rows of the right table are also highlighted in blue to show how each of the values of 'items owned' are given their own row with the separate longer delim function. The 'items owned logical' column is highlighted in yellow on the right table to show how the mutate function adds a new column." class="figure mx-auto d-block"></figure><p>At this point, we can also count the number of items owned by each
 household, which is equivalent to the number of rows per
@@ -639,11 +619,11 @@ one value if true and another if false. Here, if the
 <code>items_owned</code> column is <code>"no_listed_items"</code>, then
 a 0 is returned, otherwise, the number of rows per group is returned
 using <code>n()</code>.</p>
-<div class="codewrapper sourceCode" id="cb12">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="fu">group_by</span>(key_ID) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">number_items =</span> <span class="fu">if_else</span>(items_owned <span class="sc">==</span> <span class="st">"no_listed_items"</span>, <span class="dv">0</span>, <span class="fu">n</span>())) <span class="sc">%&gt;%</span> </span></code></pre>
+<pre class="sourceCode r" tabindex="0"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">group_by</span>(key_ID) <span class="sc">%&gt;%</span> </span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">number_items =</span> <span class="fu">if_else</span>(items_owned <span class="sc">==</span> <span class="st">"no_listed_items"</span>, <span class="dv">0</span>, <span class="fu">n</span>())) <span class="sc">%&gt;%</span> </span></code></pre>
 </div>
 <p>Lastly, we use <code>pivot_wider()</code> to switch from long format
 to wide format. This creates a new column for each of the unique values
@@ -651,7 +631,7 @@ in the <code>items_owned</code> column, and fills those columns with the
 values of <code>items_owned_logical</code>. We also declare that for
 items that are missing, we want to fill those cells with the value of
 <code>FALSE</code> instead of <code>NA</code>.</p>
-<div class="codewrapper sourceCode" id="cb13">
+<div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -661,7 +641,7 @@ items that are missing, we want to fill those cells with the value of
 </div>
 <figure><img src="../fig/pivot_wider.png" alt="Two tables shown side-by-side. The 'items owned' column is highlighted in blue on the left table, and the column names are highlighted in blue on the right table to show how the values of the 'items owned' become the column names in the output of the pivot wider function. The 'items owned logical' column is highlighted in yellow on the left table, and the values of the bicycle, television, and solar panel columns are highlighted in yellow on the right table to show how the values of the 'items owned logical' column became the values of all three of the aforementioned columns." class="figure mx-auto d-block"></figure><p>Combining the above steps, the chunk looks like this. Note that two
 new columns are created within the same <code>mutate()</code> call.</p>
-<div class="codewrapper sourceCode" id="cb14">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -689,7 +669,7 @@ changed between the two datasets.</p>
 <p>This format of the data allows us to do interesting things, like make
 a table showing the number of respondents in each village who owned a
 particular item:</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -712,7 +692,7 @@ particular item:</p>
 <p>Or below we calculate the average number of items from the list owned
 by respondents in each village using the <code>number_items</code>
 column we created to count the items listed by each household.</p>
-<div class="codewrapper sourceCode" id="cb17">
+<div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -755,9 +735,9 @@ months, the value input was “none”.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb19">
+<div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -793,7 +773,7 @@ values variable (or to drop).</li>
 <em>cols</em> provided.</li>
 <li>the <em>values_to</em> column variable we wish to create and fill
 with values associated with the <em>cols</em> provided.</li>
-</ol><div class="codewrapper sourceCode" id="cb20">
+</ol><div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -827,9 +807,9 @@ all the items using the <code>items_owned</code> variable.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
-<div class="codewrapper sourceCode" id="cb21">
+<div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -874,7 +854,7 @@ value per cell, we can repeat the steps we applied to
 <code>months_lack_food</code>. Since we will be using this data frame
 for the next episode, we will call it
 <code>interviews_plotting</code>.</p>
-<div class="codewrapper sourceCode" id="cb23">
+<div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -920,7 +900,7 @@ deleted, we can always re-generate them.</p>
 of the dataset where each of the columns includes only one data value.
 Now we can save this data frame to our <code>data_output</code>
 directory.</p>
-<div class="codewrapper sourceCode" id="cb24">
+<div class="codewrapper sourceCode" id="cb22">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -998,8 +978,8 @@ frames.</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/04-tidyr.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/04-tidyr.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2025-02-11",
-  "datePublished": "2025-02-11"
+  "dateModified": "2025-02-14",
+  "datePublished": "2025-02-14"
 }
 
   </script><script>
