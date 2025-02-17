@@ -28,7 +28,7 @@ source("data/download_data.R")
 convert between different data formats (long vs. wide) for plotting and analysis.
 To learn more about **`tidyr`** after the workshop, you may want to check out this
 [handy data tidying with **`tidyr`**
-cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf).
+cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf).
 
 To make sure everyone will use the same dataset for this lesson, we'll read
 again the SAFI dataset that we downloaded earlier.
