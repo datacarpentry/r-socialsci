@@ -550,7 +550,6 @@ packages can be done by using `citation("package")`.
 - [Markdown tutorial](https://commonmark.org/help/tutorial/)
 - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) (book by Rstudio team)
 - [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
-- [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 - [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
