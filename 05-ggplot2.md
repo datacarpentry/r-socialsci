@@ -828,7 +828,7 @@ using each of those themes. Which do you like best?
 ## Customization
 
 Take a look at the [**`ggplot2`** cheat
-sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf),
+sheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf),
 and think of ways you could improve the plot.
 
 Now, let's change names of axes to something more informative than 'village' and
@@ -928,7 +928,7 @@ percent_items %>%
 
 With all of this information in hand, please take another five minutes to
 either improve one of the plots generated in this exercise or create a
-beautiful graph of your own. Use the RStudio [**`ggplot2`** cheat sheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf)
+beautiful graph of your own. Use the RStudio [**`ggplot2`** cheat sheet](https://github.com/rstudio/cheatsheets/blob/main/data-visualization-2.1.pdf)
 for inspiration. Here are some ideas:
 
 - See if you can make the bars white with black outline.

@@ -390,7 +390,7 @@ uses one backtick (`` `r` ``), whereas code chunks use three backticks
 (`` ```r``` ``).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2025-02-11.  
+today's date is 2025-02-18.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
@@ -571,7 +571,6 @@ packages can be done by using `citation("package")`.
 - [Markdown tutorial](https://commonmark.org/help/tutorial/)
 - [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) (book by Rstudio team)
 - [Reproducible Reporting](https://www.rstudio.com/resources/webinars/reproducible-reporting/)
-- [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 - [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
