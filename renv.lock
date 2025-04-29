@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.4.3",
+    "Version": "4.5.0",
     "Repositories": [
       {
         "Name": "carpentries",
@@ -2880,9 +2880,13 @@
       "RoxygenNote": "7.3.1",
       "SystemRequirements": "freetype2, libpng, libtiff, libjpeg",
       "Config/testthat/edition": "3",
-      "NeedsCompilation": "yes",
-      "Author": "Thomas Lin Pedersen [cre, aut] (<https://orcid.org/0000-0002-5147-4711>), Maxim Shemanarev [aut, cph] (Author of AGG), Tony Juricic [ctb, cph] (Contributor to AGG), Milan Marusinec [ctb, cph] (Contributor to AGG), Spencer Garrett [ctb] (Contributor to AGG), Posit, PBC [cph, fnd]",
-      "Repository": "RSPM"
+      "Roxygen": "list(markdown = TRUE)",
+      "Author": "Thomas Lin Pedersen [cre, aut] (ORCID: <https://orcid.org/0000-0002-5147-4711>), Maxim Shemanarev [aut, cph] (Author of AGG), Tony Juricic [ctb, cph] (Contributor to AGG), Milan Marusinec [ctb, cph] (Contributor to AGG), Spencer Garrett [ctb] (Contributor to AGG), Posit, PBC [cph, fnd]",
+      "RemoteType": "repository",
+      "RemoteUrl": "https://github.com/r-lib/ragg",
+      "RemoteRef": "v1.3.3",
+      "RemoteSha": "6f2279ae8cd0e0d7e9d0e1ede2b742666f9f1d49",
+      "Repository": "carpentries"
     },
     "rappdirs": {
       "Package": "rappdirs",
@@ -3604,6 +3608,7 @@
       ],
       "VignetteBuilder": "knitr",
       "Encoding": "UTF-8",
+      "Roxygen": "list(markdown = TRUE)",
       "RoxygenNote": "7.3.2",
       "SystemRequirements": "fontconfig, freetype2",
       "Config/Needs/website": "tidyverse/tidytemplate",
@@ -3615,10 +3620,13 @@
         "utils"
       ],
       "Config/build/compilation-database": "true",
-      "NeedsCompilation": "yes",
-      "Author": "Thomas Lin Pedersen [aut, cre] (<https://orcid.org/0000-0002-5147-4711>), Jeroen Ooms [aut] (<https://orcid.org/0000-0002-4035-0289>), Devon Govett [aut] (Author of font-manager), Posit, PBC [cph, fnd]",
+      "Author": "Thomas Lin Pedersen [aut, cre] (ORCID: <https://orcid.org/0000-0002-5147-4711>), Jeroen Ooms [aut] (ORCID: <https://orcid.org/0000-0002-4035-0289>), Devon Govett [aut] (Author of font-manager), Posit, PBC [cph, fnd]",
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
-      "Repository": "RSPM"
+      "RemoteType": "repository",
+      "RemoteUrl": "https://github.com/r-lib/systemfonts",
+      "RemoteRef": "v1.2.1",
+      "RemoteSha": "e18b87ce43568e5db727c514e7281df96a06c1aa",
+      "Repository": "carpentries"
     },
     "textshaping": {
       "Package": "textshaping",
