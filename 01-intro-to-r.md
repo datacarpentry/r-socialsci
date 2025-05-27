@@ -938,7 +938,7 @@ You will probably receive some useful guidance by presenting your error message 
 
 However, the way this help is provided by the chatbot is different.
 Answers on Stack Overflow have (probably) been given by a human as a direct response to the question asked.
-But generative AI chatbots, which are based on advanced statistical modeld called Large Language Models (or LLMs), respond by generating the _most likely_ sequence of text that would follow the prompt they are given.
+But generative AI chatbots, which are based on advanced statistical models called Large Language Models (or LLMs), respond by generating the _most likely_ sequence of text that would follow the prompt they are given.
 
 While responses from generative AI tools can often be helpful, they are not always reliable. 
 These tools sometimes generate plausible but incorrect or misleading information, so (just as with an answer found on the internet) it is essential to verify their accuracy.
