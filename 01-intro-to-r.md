@@ -120,7 +120,7 @@ for issues in the styling of your code.
 ## Objects vs. variables
 
 The naming of objects in `R` is somehow related to `variables` in many other
-programming languages. In many programming languages, a variable has three aspects: a name, a memory location, and the current value stored in this location. `R` abstracts from modifiable memory locations. In `R` we only have objects which cn be named.
+programming languages. In many programming languages, a variable has three aspects: a name, a memory location, and the current value stored in this location. `R` abstracts from modifiable memory locations. In `R` we only have objects which can be named.
 Depending on the context, `name (of an object)` and `variable` can
 have drastically different meanings. However, in this lesson, the two words
 are used synonymously. For more information see:
