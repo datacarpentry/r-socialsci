@@ -117,6 +117,21 @@ for issues in the styling of your code.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
+:::: instructor
+### Note on `<-` vs `<` with negative numbers
+
+Learners sometimes type `x<-5` intending a logical test “is `x` less than `-5`?”.  
+In R, `x<-5` is parsed as an **assignment** because `<-` is a single token.  
+
+To resolve this you can either encourage spacing around operators or parentheses to avoid ambiguity:
+
+- Logical test: `x < -5`   (note the space between "<" and the "-" negative)  
+- Assignment:   `x <- 5`
+
+- Alternative for clarity: `x < (-5)` (explicit negative value)  
+
+::::::::::::
+
 ## Objects vs. variables
 
 The naming of objects in `R` is somehow related to `variables` in many other
