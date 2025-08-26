@@ -478,7 +478,24 @@ own “workflow.”</li>
 </ul>
 <hr>
 <br><h3 id="01-intro-to-r-headingInstructor2">
-<a href="01-intro-to-r.html#headingInstructor2">Choose how to teach this section</a><a class="anchor" aria-label="anchor" href="#01-intro-to-r-headingInstructor2"></a>
+<a href="01-intro-to-r.html#headingInstructor2">Note on</a><a class="anchor" aria-label="anchor" href="#01-intro-to-r-headingInstructor2"></a>
+</h3>
+<p>Learners sometimes type <code>x&lt;-5</code> intending a logical test
+“is <code>x</code> less than <code>-5</code>?”.<br>
+In R, <code>x&lt;-5</code> is parsed as an <strong>assignment</strong>
+because <code>&lt;-</code> is a single token.</p>
+<p>To resolve this you can either encourage spacing around operators or
+parentheses to avoid ambiguity:</p>
+<ul>
+<li><p>Logical test: <code>x &lt; -5</code> (note the space between
+“&lt;” and the “-” negative)<br></p></li>
+<li><p>Assignment: <code>x &lt;- 5</code></p></li>
+<li><p>Alternative for clarity: <code>x &lt; (-5)</code> (explicit
+negative value)</p></li>
+</ul>
+<hr>
+<br><h3 id="01-intro-to-r-headingInstructor3">
+<a href="01-intro-to-r.html#headingInstructor3">Choose how to teach this section</a><a class="anchor" aria-label="anchor" href="#01-intro-to-r-headingInstructor3"></a>
 </h3>
 <p>The section on generative AI is intended to be concise but
 Instructors may choose to devote more time to the topic in a workshop.
