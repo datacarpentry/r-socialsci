@@ -2771,14 +2771,12 @@
       "Config/testthat/edition": "3",
       "Roxygen": "list(markdown = TRUE)",
       "Config/build/compilation-database": "true",
-      "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev libfribidi-dev libharfbuzz-dev libjpeg-dev libpng-dev libtiff-dev",
-      "Repository": "https://carpentries.r-universe.dev",
-      "NeedsCompilation": "yes",
       "Author": "Thomas Lin Pedersen [cre, aut] (ORCID: <https://orcid.org/0000-0002-5147-4711>), Maxim Shemanarev [aut, cph] (Author of AGG), Tony Juricic [ctb, cph] (Contributor to AGG), Milan Marusinec [ctb, cph] (Contributor to AGG), Spencer Garrett [ctb] (Contributor to AGG), Posit, PBC [cph, fnd]",
       "RemoteType": "repository",
       "RemoteUrl": "https://github.com/r-lib/ragg",
       "RemoteRef": "v1.4.0",
-      "RemoteSha": "21597be6249709a1570cb272a0cf9b6b09dbd19a"
+      "RemoteSha": "21597be6249709a1570cb272a0cf9b6b09dbd19a",
+      "Repository": "carpentries"
     },
     "rappdirs": {
       "Package": "rappdirs",
@@ -3576,15 +3574,13 @@
       "Roxygen": "list(markdown = TRUE)",
       "RoxygenNote": "7.3.2",
       "SystemRequirements": "freetype2, harfbuzz, fribidi",
-      "Config/pak/sysreqs": "libfontconfig1-dev libfreetype6-dev libfribidi-dev libharfbuzz-dev",
-      "Repository": "https://carpentries.r-universe.dev",
-      "NeedsCompilation": "yes",
       "Author": "Thomas Lin Pedersen [cre, aut] (ORCID: <https://orcid.org/0000-0002-5147-4711>), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
       "RemoteType": "repository",
       "RemoteUrl": "https://github.com/r-lib/textshaping",
       "RemoteRef": "v1.0.2",
-      "RemoteSha": "30946517338aff454a07508ccd84279489730f5c"
+      "RemoteSha": "30946517338aff454a07508ccd84279489730f5c",
+      "Repository": "carpentries"
     },
     "tibble": {
       "Package": "tibble",
