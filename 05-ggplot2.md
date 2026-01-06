@@ -128,7 +128,7 @@ plot(interviews_plotting$no_membrs, interviews_plotting$liv_count,
      ylab = "Number of Livestock Owned")
 ```
 
-<img src="fig/05-ggplot2-rendered-unnamed-chunk-3-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
 
 ### **`Lattice`**
 Lattice is another plotting system in R, which allows for creating multi-panel plots easily. It’s different from ggplot2 because you define the entire plot in a single function call, and modifications after plotting are limited.
@@ -147,7 +147,7 @@ xyplot(liv_count ~ no_membrs | village, data = interviews_plotting,
        ylab = "Number of Livestock Owned")
 ```
 
-<img src="fig/05-ggplot2-rendered-unnamed-chunk-4-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
 
 
 ## Plotting with **`ggplot2`**
@@ -223,7 +223,7 @@ interviews_plotting %>%
     geom_point()
 ```
 
-<img src="fig/05-ggplot2-rendered-first-ggplot-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-first-ggplot-1.png" alt="" style="display: block; margin: auto;" />
 
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
@@ -394,7 +394,7 @@ interviews_plotting %>%
     geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
 ```
 
-<img src="fig/05-ggplot2-rendered-color-by-species-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-color-by-species-1.png" alt="" style="display: block; margin: auto;" />
 
 There appears to be a positive trend between number of household
 members and number of items owned (from the list provided). Additionally,
@@ -519,7 +519,7 @@ Warning: Groups with fewer than two datapoints have been dropped.
 ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
-<img src="fig/05-ggplot2-rendered-violin-plot-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-violin-plot-1.png" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -846,7 +846,7 @@ percent_items %>%
     theme_bw()
 ```
 
-<img src="fig/05-ggplot2-rendered-ggplot-customization-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-ggplot-customization-1.png" alt="" style="display: block; margin: auto;" />
 
 The axes have more informative names, but their readability can be improved by
 increasing the font size:
@@ -864,7 +864,7 @@ percent_items %>%
     theme(text = element_text(size = 16))
 ```
 
-<img src="fig/05-ggplot2-rendered-ggplot-customization-font-size-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-ggplot-customization-font-size-1.png" alt="" style="display: block; margin: auto;" />
 
 Note that it is also possible to change the fonts of your plots. If you are on
 Windows, you may have to install the [**`extrafont`**
@@ -920,7 +920,7 @@ percent_items %>%
     grey_theme
 ```
 
-<img src="fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" alt="" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
