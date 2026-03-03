@@ -569,8 +569,12 @@ interviews %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by village and memb_assoc.
+ℹ Output is grouped by village.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(village, memb_assoc))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -603,8 +607,12 @@ interviews %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by village and memb_assoc.
+ℹ Output is grouped by village.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(village, memb_assoc))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -637,8 +645,12 @@ interviews %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by village and memb_assoc.
+ℹ Output is grouped by village.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(village, memb_assoc))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -669,8 +681,12 @@ interviews %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by village and memb_assoc.
+ℹ Output is grouped by village.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(village, memb_assoc))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -701,8 +717,12 @@ interviews %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by village and memb_assoc.
+ℹ Output is grouped by village.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(village, memb_assoc))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -732,8 +752,12 @@ interviews %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'village'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by village and memb_assoc.
+ℹ Output is grouped by village.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(village, memb_assoc))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
@@ -867,8 +891,12 @@ interviews %>%
 ```
 
 ``` output
-`summarise()` has grouped output by 'year'. You can override using the
-`.groups` argument.
+`summarise()` has regrouped the output.
+ℹ Summaries were computed grouped by year and month.
+ℹ Output is grouped by year.
+ℹ Use `summarise(.groups = "drop_last")` to silence this message.
+ℹ Use `summarise(.by = c(year, month))` for per-operation grouping
+  (`?dplyr::dplyr_by`) instead.
 ```
 
 ``` output
