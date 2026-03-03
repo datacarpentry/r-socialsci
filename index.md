@@ -42,13 +42,10 @@ everything *before* working through this lesson.
 
 ::::::::::::::::::::::::::::::::::::::::::  instructor
 
-## For Instructors
+### For Instructors
 
 If you are teaching this lesson in a workshop, please see the
 [Instructor notes](https://datacarpentry.org/r-socialsci/instructor/instructor-notes.html)
 for helpful tips.
 
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
