@@ -56,7 +56,7 @@ section on the homepage of the course website for package installation instructi
 This character can be created using:
 
 ```
-`alt` + `1`
+alt + 1
 ```
 
 ## Other Resources
