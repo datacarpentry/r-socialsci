@@ -62,9 +62,6 @@ This character can be created using:
 ## Other Resources
 
 If you encounter a problem during a workshop, feel free to contact the
-maintainers by email or [open an
-issue](https://github.com/datacarpentry/r-socialsci/issues/new).
+maintainers by email or [open an issue](https://github.com/datacarpentry/r-socialsci/issues/new).
 
 For a more in-depth coverage of topics of the workshops, you may want to read "[R for Data Science](http://r4ds.had.co.nz/)" by Hadley Wickham and Garrett Grolemund.
-
-
