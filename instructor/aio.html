@@ -386,7 +386,7 @@
         
 <section id="aio-00-intro"><p>Content from <a href="00-intro.html">Before we Start</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/00-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -398,7 +398,7 @@
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <ul>
 <li>The main goal here is to help the learners be comfortable with the
@@ -842,7 +842,7 @@ the tidyverse installed.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Scroll through packages tab down to ‘tidyverse’. You can also type a
 few characters into the searchbox. The ‘tidyverse’ package is really a
@@ -906,7 +906,7 @@ episode, but we will install it now in the console:</p>
 </div>
 </section></section><section id="aio-01-intro-to-r"><p>Content from <a href="01-intro-to-r.html">Introduction to R</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-17 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/01-intro-to-r.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 80 minutes</p>
@@ -1068,18 +1068,19 @@ code.</p>
 <div id="accordionInstructor2" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor2" aria-expanded="false" aria-controls="collapseInstructor2">
-  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Note on </h3></button>
+  <h3 class="accordion-header" id="headingInstructor2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Notes on negative numbers and assignment </h3>
+</button>
 <div id="collapseInstructor2" class="accordion-collapse collapse" aria-labelledby="headingInstructor2" data-bs-parent="#accordionInstructor2">
 <div class="accordion-body">
 <p>Learners sometimes type <code>x&lt;-5</code> intending a logical test
-“is <code>x</code> less than <code>-5</code>?”.<br>
-In R, <code>x&lt;-5</code> is parsed as an <strong>assignment</strong>
-because <code>&lt;-</code> is a single token.</p>
+“is <code>x</code> less than <code>-5</code>?”. In R,
+<code>x&lt;-5</code> is parsed as an <strong>assignment</strong> because
+<code>&lt;-</code> is a single token.</p>
 <p>To resolve this you can either encourage spacing around operators or
 parentheses to avoid ambiguity:</p>
 <ul>
 <li><p>Logical test: <code>x &lt; -5</code> (note the space between
-“&lt;” and the “-” negative)<br></p></li>
+“&lt;” and the “-” negative)</p></li>
 <li><p>Assignment: <code>x &lt;- 5</code></p></li>
 <li><p>Alternative for clarity: <code>x &lt; (-5)</code> (explicit
 negative value)</p></li>
@@ -2222,7 +2223,7 @@ data.</li>
 </div>
 </section></section><section id="aio-02-starting-with-data"><p>Content from <a href="02-starting-with-data.html">Starting with Data</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/02-starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 80 minutes</p>
@@ -2234,7 +2235,7 @@ data.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>The two main goals for this lessons are:</p>
 <ul>
@@ -2325,69 +2326,69 @@ respondent, and the columns represent:</p>
 <col width="13%">
 <col width="86%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>column_name</th>
 <th>description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td>key_id</td>
 <td>Added to provide a unique Id for each observation. (The InstanceID
 field does this as well but it is not as convenient to use)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>village</td>
 <td>Village name</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>interview_date</td>
 <td>Date of interview</td>
 </tr>
-<tr class="even">
+<tr>
 <td>no_membrs</td>
 <td>How many members in the household?</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>years_liv</td>
 <td>How many years have you been living in this village or neighboring
 village?</td>
 </tr>
-<tr class="even">
+<tr>
 <td>respondent_wall_type</td>
 <td>What type of walls does their house have (from list)</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>rooms</td>
 <td>How many rooms in the main house are used for sleeping?</td>
 </tr>
-<tr class="even">
+<tr>
 <td>memb_assoc</td>
 <td>Are you a member of an irrigation association?</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>affect_conflicts</td>
 <td>Have you been affected by conflicts with other irrigators in the
 area?</td>
 </tr>
-<tr class="even">
+<tr>
 <td>liv_count</td>
 <td>Number of livestock owned.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>items_owned</td>
 <td>Which of the following items are owned by the household? (list)</td>
 </tr>
-<tr class="even">
+<tr>
 <td>no_meals</td>
 <td>How many meals do people in your household normally eat in a
 day?</td>
 </tr>
-<tr class="odd">
+<tr>
 <td>months_lack_food</td>
 <td>Indicate which months, In the last 12 months have you faced a
 situation when you did not have enough food to feed the household?</td>
 </tr>
-<tr class="even">
+<tr>
 <td>instanceID</td>
 <td>Unique identifier for the form data submission</td>
 </tr>
@@ -2888,7 +2889,7 @@ dataset.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3270,7 +3271,7 @@ you recreate the barplot such that “Undetermined” is last (after
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3478,7 +3479,7 @@ cannot be parsed.</p>
 </div>
 </section></section><section id="aio-03-dplyr"><p>Content from <a href="03-dplyr.html">Data Wrangling with dplyr</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/03-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -4573,7 +4574,7 @@ with subsets of data.</li>
 </div>
 </section></section><section id="aio-04-tidyr"><p>Content from <a href="04-tidyr.html">Data Wrangling with tidyr</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/04-tidyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 40 minutes</p>
@@ -4704,16 +4705,16 @@ row in the dataframe.</p>
 <pre class="output" tabindex="0"><code># A tibble: 10 × 4
    key_ID village  interview_date      instanceID
     &lt;dbl&gt; &lt;chr&gt;    &lt;dttm&gt;              &lt;chr&gt;
- 1     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
- 2     49 Chirodzo 2016-11-16 00:00:00 uuid:2303ebc1-2b3c-475a-8916-b322ebf18440
- 3     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
- 4    192 Chirodzo 2017-06-03 00:00:00 uuid:f94409a6-e461-4e4c-a6fb-0072d3d58b00
- 5     53 Chirodzo 2016-11-16 00:00:00 uuid:cc7f75c5-d13e-43f3-97e5-4f4c03cb4b12
- 6     67 Chirodzo 2016-11-16 00:00:00 uuid:6c15d667-2860-47e3-a5e7-7f679271e419
- 7     66 Chirodzo 2016-11-16 00:00:00 uuid:a457eab8-971b-4417-a971-2e55b8702816
- 8    200 Chirodzo 2017-06-04 00:00:00 uuid:aa77a0d7-7142-41c8-b494-483a5b68d8a7
- 9     36 Chirodzo 2016-11-17 00:00:00 uuid:c90eade0-1148-4a12-8c0e-6387a36f45b1
-10     50 Chirodzo 2016-11-16 00:00:00 uuid:4267c33c-53a7-46d9-8bd6-b96f58a4f92c</code></pre>
+ 1     69 Chirodzo 2016-11-16 00:00:00 uuid:f86933a5-12b8-4427-b821-43c5b039401d
+ 2     64 Chirodzo 2016-11-16 00:00:00 uuid:28cfd718-bf62-4d90-8100-55fafbe45d06
+ 3     48 Chirodzo 2016-11-16 00:00:00 uuid:e180899c-7614-49eb-a97c-40ed013a38a2
+ 4    127 Chirodzo 2016-11-16 00:00:00 uuid:f6d04b41-b539-4e00-868a-0f62b427587d
+ 5     37 Chirodzo 2016-11-17 00:00:00 uuid:408c6c93-d723-45ef-8dee-1b1bd3fe20cd
+ 6     58 Chirodzo 2016-11-16 00:00:00 uuid:a7a3451f-cd0d-4027-82d9-8dcd1234fcca
+ 7     67 Chirodzo 2016-11-16 00:00:00 uuid:6c15d667-2860-47e3-a5e7-7f679271e419
+ 8     44 Chirodzo 2016-11-17 00:00:00 uuid:f9fadf44-d040-4fca-86c1-2835f79c4952
+ 9     65 Chirodzo 2016-11-16 00:00:00 uuid:143f7478-0126-4fbc-86e0-5d324339206b
+10     49 Chirodzo 2016-11-16 00:00:00 uuid:2303ebc1-2b3c-475a-8916-b322ebf18440</code></pre>
 </div>
 <p>We notice that the layout or format of the <code>interviews</code>
 data is in a format that adheres to rules 1-3, where</p>
@@ -5178,7 +5179,7 @@ frames.</li>
 </div>
 </section></section><section id="aio-05-ggplot2"><p>Content from <a href="05-ggplot2.html">Data Visualisation with ggplot2</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/05-ggplot2.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 115 minutes</p>
@@ -6342,7 +6343,7 @@ categorical variable.</li>
 </div>
 </section></section><section id="aio-06-rmarkdown"><p>Content from <a href="06-rmarkdown.html">Getting started with R Markdown (Optional)</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/06-rmarkdown.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -6354,7 +6355,7 @@ categorical variable.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <ul>
 <li>This is an optional lesson intended to introduce learners to R
@@ -6632,38 +6633,38 @@ names, a caption, etc.</p>
 </div>
 <table class="table">
 <caption>We can also add a caption.</caption>
-<thead><tr class="header">
+<thead><tr>
 <th align="left">Village</th>
 <th align="left">Member Association</th>
 <th align="right">Mean Number of Members</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td align="left">Chirodzo</td>
 <td align="left">no</td>
 <td align="right">8.062500</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">Chirodzo</td>
 <td align="left">yes</td>
 <td align="right">7.818182</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">God</td>
 <td align="left">no</td>
 <td align="right">7.133333</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">God</td>
 <td align="left">yes</td>
 <td align="right">8.000000</td>
 </tr>
-<tr class="odd">
+<tr>
 <td align="left">Ruaca</td>
 <td align="left">no</td>
 <td align="right">7.178571</td>
 </tr>
-<tr class="even">
+<tr>
 <td align="left">Ruaca</td>
 <td align="left">yes</td>
 <td align="right">9.500000</td>
@@ -6678,13 +6679,13 @@ more commonly used options are listed in the table below.</p>
 <col width="19%">
 <col width="59%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Name</th>
 <th>Creator(s)</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><a href="https://condformat.sergioller.com/index.html" class="external-link">condformat</a></td>
 <td><a href="https://cran.rstudio.com/web/packages/condformat/index.html" class="external-link">Oller
 Moreno (2022)</a></td>
@@ -6692,7 +6693,7 @@ Moreno (2022)</a></td>
 renders a data frame with cells formatted according to criteria defined
 by rules, using a tidy evaluation syntax.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="https://rstudio.github.io/DT/" class="external-link">DT</a></td>
 <td><a href="https://cran.r-project.org/web/packages/DT/index.html" class="external-link">Xie
 et al. (2023)</a></td>
@@ -6700,7 +6701,7 @@ et al. (2023)</a></td>
 JavaScript library ‘DataTables’ (typically via R Markdown or Shiny). The
 ‘DataTables’ library has been included in this R package.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://github.com/renkun-ken/formattable" class="external-link">formattable</a></td>
 <td><a href="https://cran.r-project.org/web/packages/formattable/index.html" class="external-link">Ren
 and Russell (2021)</a></td>
@@ -6710,7 +6711,7 @@ data frames are printed with multiple types of formatting in HTML to
 improve the readability of data presented in tabular form rendered on
 web pages.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="https://davidgohel.github.io/flextable/" class="external-link">flextable</a></td>
 <td><a href="https://cran.r-project.org/web/packages/flextable/index.html" class="external-link">Gohel
 and Skintzos (2023)</a></td>
@@ -6719,7 +6720,7 @@ following formats are supported: ‘HTML’, ‘PDF’, ‘RTF’, ‘Microsoft 
 ‘Microsoft PowerPoint’ and R ‘Grid Graphics’. ‘R Markdown’, ‘Quarto’,
 and the package ‘officer’ can be used to produce the result files.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://gt.rstudio.com/" class="external-link">gt</a></td>
 <td><a href="https://cloud.r-project.org/web/packages/gt/index.html" class="external-link">Iannone et
 al. (2022)</a></td>
@@ -6728,7 +6729,7 @@ functions. With its progressive approach, we can construct display
 tables with cohesive table parts. Table values can be formatted using
 any of the included formatting functions.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="https://hughjonesd.github.io/huxtable/" class="external-link">huxtable</a></td>
 <td><a href="https://cran.r-project.org/web/packages/huxtable/index.html" class="external-link">Hugh-Jones
 (2022)</a></td>
@@ -6737,7 +6738,7 @@ RTF, ‘Word’, ‘Excel’, and ‘PowerPoint’. Simple, modern interface to
 manipulate borders, size, position, captions, colours, text styles and
 number formatting.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://rapporter.github.io/pander/" class="external-link">pander</a></td>
 <td><a href="https://cran.r-project.org/web/packages/pander/index.html" class="external-link">Daróczi
 and Tsegelskyi (2022)</a></td>
@@ -6747,7 +6748,7 @@ user specified text elements (e.g., header, paragraph, table, image,
 lists etc.) in ‘pandoc’ markdown or several types of R objects similarly
 automatically transformed to markdown format.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="https://pixiedust.github.io/pixiedust/" class="external-link">pixiedust</a></td>
 <td><a href="https://cran.rstudio.com/web/packages/pixiedust/index.html" class="external-link">Nutter
 and Kretch (2021)</a></td>
@@ -6755,7 +6756,7 @@ and Kretch (2021)</a></td>
 intended to be similar to ’ggplot2’s system of layers with fine-tuned
 control over each cell of the table.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://glin.github.io/reactable/" class="external-link">reactable</a></td>
 <td><a href="https://cran.r-project.org/web/packages/reactable/index.html" class="external-link">Lin
 et al. (2023)</a></td>
@@ -6764,14 +6765,14 @@ library. Provides an HTML widget that can be used in ‘R Markdown’ or
 ‘Quarto’ documents, ‘Shiny’ applications, or viewed from an R
 console.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="http://jrowen.github.io/rhandsontable/" class="external-link">rhandsontable</a></td>
 <td><a href="https://cran.r-project.org/web/packages/rhandsontable/index.html" class="external-link">Owen
 et al. (2021)</a></td>
 <td>An R interface to the ‘Handsontable’ JavaScript library, which is a
 minimalist Excel-like data grid editor.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://github.com/cran/stargazer" class="external-link">stargazer</a></td>
 <td><a href="https://cran.r-project.org/web/packages/stargazer/index.html" class="external-link">Hlavac
 (2022)</a></td>
@@ -6779,7 +6780,7 @@ minimalist Excel-like data grid editor.</td>
 tables that hold regression analysis results from several models
 side-by-side, as well as summary statistics.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="https://github.com/dmurdoch/tables" class="external-link">tables</a></td>
 <td><a href="https://cran.r-project.org/web/packages/tables/index.html" class="external-link">Murdoch
 (2022)</a></td>
@@ -6787,7 +6788,7 @@ side-by-side, as well as summary statistics.</td>
 may be in LaTeX, HTML, plain text, or an R matrix for further
 processing.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://github.com/spgarbet/tangram" class="external-link">tangram</a></td>
 <td><a href="https://cran.r-project.org/web/packages/tangram/index.html" class="external-link">Garbett
 et al. (2023)</a></td>
@@ -6796,13 +6797,13 @@ production quality tables. The processing steps are a formula parser,
 statistical content generation from data defined by a formula, and
 rendering into a table.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><a href="https://github.com/cran/xtable" class="external-link">xtable</a></td>
 <td><a href="https://cran.r-project.org/web/packages/xtable/index.html" class="external-link">Dahl et
 al. (2019)</a></td>
 <td>Coerce data to LaTeX and HTML tables.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><a href="https://github.com/cardiomoon/ztable" class="external-link">ztable</a></td>
 <td><a href="https://cran.r-project.org/web/packages/ztable/index.html" class="external-link">Moon
 (2021)</a></td>
@@ -6826,20 +6827,20 @@ e.g. <code>{r chunk-name, eval = FALSE, echo = TRUE}</code>.</p>
 <col width="5%">
 <col width="88%">
 </colgroup>
-<thead><tr class="header">
+<thead><tr>
 <th>Option</th>
 <th>Options</th>
 <th>Output</th>
 </tr></thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td><code>eval</code></td>
 <td>
 <code>TRUE</code> or <code>FALSE</code>
 </td>
 <td>Whether or not the code within the code chunk should be run.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>echo</code></td>
 <td>
 <code>TRUE</code> or <code>FALSE</code>
@@ -6847,7 +6848,7 @@ e.g. <code>{r chunk-name, eval = FALSE, echo = TRUE}</code>.</p>
 <td>Choose if you want to show your code chunk in the output document.
 <code>echo = TRUE</code> will show the code chunk.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>include</code></td>
 <td>
 <code>TRUE</code> or <code>FALSE</code>
@@ -6856,7 +6857,7 @@ e.g. <code>{r chunk-name, eval = FALSE, echo = TRUE}</code>.</p>
 document. <code>FALSE</code> means that your code will run, but will not
 show up in the document.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>warning</code></td>
 <td>
 <code>TRUE</code> or <code>FALSE</code>
@@ -6864,7 +6865,7 @@ show up in the document.</td>
 <td>Whether or not you want your output document to display potential
 warning messages produced by your code.</td>
 </tr>
-<tr class="odd">
+<tr>
 <td><code>message</code></td>
 <td>
 <code>TRUE</code> or <code>FALSE</code>
@@ -6872,7 +6873,7 @@ warning messages produced by your code.</td>
 <td>Whether or not you want your output document to display potential
 messages produced by your code.</td>
 </tr>
-<tr class="even">
+<tr>
 <td><code>fig.align</code></td>
 <td>
 <code>default</code>, <code>left</code>, <code>right</code>,
@@ -6925,7 +6926,7 @@ the output.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Solution to Exercise </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Create a chunk with <code>{r eval = FALSE, echo = FALSE}</code>, then
 create another chunk with <code>{r include = FALSE}</code> to compare.
@@ -6949,7 +6950,7 @@ chunk is the number of backticks. In-line R code uses one backtick
 (<code>`r`</code>), whereas code chunks use three backticks
 (<code>```r```</code>).</p>
 <p>For example, today’s date is <code>`r Sys.Date()`</code>, will be
-rendered as: today’s date is 2026-01-27.<br>
+rendered as: today’s date is 2026-03-03.<br>
 The code will display today’s date in the output document (well,
 technically the date the document was last knitted).</p>
 <p>The best way to use in-line R code, is to minimise the amount of code
@@ -7031,7 +7032,7 @@ the <code>interviews_plotting</code> data frame.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Solution to Exercise </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -7173,7 +7174,7 @@ document</li>
 </div>
 </section></section><section id="aio-07-json"><p>Content from <a href="07-json.html">Processing JSON data (Optional)</a></p>
 <hr>
-<p>Last updated on 2026-01-27 |
+<p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/07-json.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
@@ -7647,7 +7648,7 @@ csv file</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.4" class="external-link">sandpaper (0.18.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -7670,8 +7671,8 @@ csv file</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/aio.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/aio.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2026-01-27",
-  "datePublished": "2026-01-27"
+  "dateModified": "2026-03-17",
+  "datePublished": "2026-03-17"
 }
 
   </script><script>

@@ -341,7 +341,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Starting with Data</h1>
-        <p>Last updated on 2026-01-27 |
+        <p>Last updated on 2026-03-03 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/02-starting-with-data.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -417,40 +417,40 @@ was produced through cleaning in OpenRefine
 (<code>data/SAFI_clean.csv</code>). In this dataset, the missing data is
 encoded as “NULL”, each row holds information for a single interview
 respondent, and the columns represent:</p>
-<table class="table"><colgroup><col width="13%"><col width="86%"></colgroup><thead><tr class="header"><th>column_name</th>
+<table class="table"><colgroup><col width="13%"><col width="86%"></colgroup><thead><tr><th>column_name</th>
 <th>description</th>
-</tr></thead><tbody><tr class="odd"><td>key_id</td>
+</tr></thead><tbody><tr><td>key_id</td>
 <td>Added to provide a unique Id for each observation. (The InstanceID
 field does this as well but it is not as convenient to use)</td>
-</tr><tr class="even"><td>village</td>
+</tr><tr><td>village</td>
 <td>Village name</td>
-</tr><tr class="odd"><td>interview_date</td>
+</tr><tr><td>interview_date</td>
 <td>Date of interview</td>
-</tr><tr class="even"><td>no_membrs</td>
+</tr><tr><td>no_membrs</td>
 <td>How many members in the household?</td>
-</tr><tr class="odd"><td>years_liv</td>
+</tr><tr><td>years_liv</td>
 <td>How many years have you been living in this village or neighboring
 village?</td>
-</tr><tr class="even"><td>respondent_wall_type</td>
+</tr><tr><td>respondent_wall_type</td>
 <td>What type of walls does their house have (from list)</td>
-</tr><tr class="odd"><td>rooms</td>
+</tr><tr><td>rooms</td>
 <td>How many rooms in the main house are used for sleeping?</td>
-</tr><tr class="even"><td>memb_assoc</td>
+</tr><tr><td>memb_assoc</td>
 <td>Are you a member of an irrigation association?</td>
-</tr><tr class="odd"><td>affect_conflicts</td>
+</tr><tr><td>affect_conflicts</td>
 <td>Have you been affected by conflicts with other irrigators in the
 area?</td>
-</tr><tr class="even"><td>liv_count</td>
+</tr><tr><td>liv_count</td>
 <td>Number of livestock owned.</td>
-</tr><tr class="odd"><td>items_owned</td>
+</tr><tr><td>items_owned</td>
 <td>Which of the following items are owned by the household? (list)</td>
-</tr><tr class="even"><td>no_meals</td>
+</tr><tr><td>no_meals</td>
 <td>How many meals do people in your household normally eat in a
 day?</td>
-</tr><tr class="odd"><td>months_lack_food</td>
+</tr><tr><td>months_lack_food</td>
 <td>Indicate which months, In the last 12 months have you faced a
 situation when you did not have enough food to feed the household?</td>
-</tr><tr class="even"><td>instanceID</td>
+</tr><tr><td>instanceID</td>
 <td>Unique identifier for the form data submission</td>
 </tr></tbody></table></section><section><h2 class="section-heading" id="importing-data">Importing data<a class="anchor" aria-label="anchor" href="#importing-data"></a></h2>
 <hr class="half-width"><p>You are going to load the data in R’s memory using the function
@@ -923,7 +923,7 @@ dataset.</p></li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1297,7 +1297,7 @@ you recreate the barplot such that “Undetermined” is last (after
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb56">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1536,7 +1536,7 @@ cannot be parsed.</p>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.4" class="external-link">sandpaper (0.18.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/" class="external-link">sandpaper (0.20.0)</a>, <a href="https://github.com/carpentries/pegboard/tree/" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1558,8 +1558,8 @@ cannot be parsed.</p>
   "url": "https://datacarpentry.org/r-socialsci/02-starting-with-data.html",
   "identifier": "https://datacarpentry.org/r-socialsci/02-starting-with-data.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2026-01-27",
-  "datePublished": "2026-01-27"
+  "dateModified": "2026-03-03",
+  "datePublished": "2026-03-17"
 }
 
   </script><script>
