@@ -105,7 +105,7 @@ Base R plots are the simplest form of visualization and are great for quick, exp
 
 Example of a basic scatterplot in base R using the `no_membrs` and `liv_count` variables:
 
-```{r, purl=FALSE, fig.alt='a greyscale base R scatterplot of number of household members by number of livestock owned'}
+```{r, purl=FALSE, fig.alt="a greyscale base R scatterplot of number of household members by number of livestock owned"}
 plot(interviews_plotting$no_membrs, interviews_plotting$liv_count,
      main = "Base R Scatterplot",
      xlab = "Number of Household Members",
@@ -120,7 +120,7 @@ Example of a lattice plot using `no_membrs` and `liv_count` split by `village`:
 ```{r lattice, message=FALSE, purl=FALSE}
 library(lattice)
 ```
-```{r, purl=FALSE, fig.alt='A Lattice scatter plot of number of household members by number of livestock owned, with 3 panels, each showing data from one village'}
+```{r, purl=FALSE, fig.alt="A Lattice scatter plot of number of household members by number of livestock owned, with 3 panels, each showing data from one village"}
 xyplot(liv_count ~ no_membrs | village, data = interviews_plotting,
        main = "Lattice Plot: Livestock Count by Household Members",
        xlab = "Number of Household Members",
@@ -192,7 +192,7 @@ interviews_plotting %>%
 
 To add a geom to the plot use the `+` operator. Because we have two continuous variables, let's use `geom_point()` first:
 
-```{r first-ggplot, purl=FALSE, fig.alt='A geom_point scatter plot of the variables `no_membrs` and `number_items` with overplotted points'}
+```{r first-ggplot, purl=FALSE, fig.alt="A geom_point scatter plot of the variables `no_membrs` and `number_items` with overplotted points"}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_point()
@@ -343,7 +343,7 @@ American English spellings for colour, i.e., you can use either `color`
 or `colour`. Here is an example where we color points by the **`village`**
 of the observation:
 
-```{r color-by-village, purl=FALSE, fig.alt='Previous plot with points colored by village and an added legend with color keys for each village'}
+```{r color-by-village, purl=FALSE, fig.alt="Previous plot with points colored by village and an added legend with color keys for each village"}
 interviews_plotting %>%
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
@@ -447,7 +447,7 @@ boxplot. An alternative to the boxplot is the violin plot, where the shape
 
 ## Solution
 
-```{r violin-plot, fig.alt='A violin plot showing number of rooms within homes of each wall type. The points are jittered to avoid overplotting and the width of each vertical segment is determined by the number of points of that wall type with similar number of rooms'}
+```{r violin-plot, fig.alt="A violin plot showing number of rooms within homes of each wall type. The points are jittered to avoid overplotting and the width of each vertical segment is determined by the number of points of that wall type with similar number of rooms"}
 interviews_plotting %>%
   ggplot(aes(x = respondent_wall_type, y = rooms)) +
   geom_violin(alpha = 0) +
@@ -732,7 +732,7 @@ and think of ways you could improve the plot.
 Now, let's change names of axes to something more informative than 'village' and
 'percent' and add a title to the figure:
 
-```{r ggplot-customization, purl=FALSE, fig.alt='Faceted barplot of the percent of respondents in each village who owned each type of item, styled in a black and white theme'}
+```{r ggplot-customization, purl=FALSE, fig.alt="Faceted barplot of the percent of respondents in each village who owned each type of item, styled in a black and white theme"}
 percent_items %>%
     ggplot(aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -746,7 +746,7 @@ percent_items %>%
 The axes have more informative names, but their readability can be improved by
 increasing the font size:
 
-```{r ggplot-customization-font-size, purl=FALSE, fig.alt='Previous plot, but with font size increased from default to 16 points'}
+```{r ggplot-customization-font-size, purl=FALSE, fig.alt="Previous plot, but with font size increased from default to 16 points"}
 percent_items %>%
     ggplot(aes(x = village, y = percent)) +
     geom_bar(stat = "identity", position = "dodge") +
@@ -789,7 +789,7 @@ If you like the changes you created better than the default theme, you can save
 them as an object to be able to easily apply them to other plots you may create.
 We can also add `plot.title = element_text(hjust = 0.5)` to centre the title:
 
-```{r ggplot-custom-themes, purl=FALSE, fig.alt='Identical plot to previous multi-panel bar chart, but with the figure title centered horizontally'}
+```{r ggplot-custom-themes, purl=FALSE, fig.alt="Identical plot to previous multi-panel bar chart, but with the figure title centered horizontally"}
 grey_theme <- theme(axis.text.x = element_text(colour = "grey20", size = 12,
                                                angle = 45, hjust = 0.5,
                                                vjust = 0.5),
