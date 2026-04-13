@@ -364,7 +364,8 @@ makes the size of each point representative of the number of data items
 of that type and the legend gives point sizes associated to particular
 numbers of items.
 
-```{r color-by-village-notes, fig.alt="Previous plot with points colored by village and sized based on the number of cases at each coordinate set. There are two legends, one labeled `n` and one labeled `village`", purl=FALSE}
+```{r color-by-village-notes, fig.alt="Previous plot with points colored by village and sized based on the number of cases at each coordinate set. There are two legends, one labeled 'n' and one labeled 
+'village'", purl=FALSE}
 interviews_plotting %>%
    ggplot(aes(x = no_membrs, y = number_items, color = village)) +
    geom_count()
