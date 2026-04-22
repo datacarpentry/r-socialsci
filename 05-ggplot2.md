@@ -118,7 +118,7 @@ Before we start with **`ggplot2`**, it's helpful to know that there are several 
 ### R Base Plots
 Base R plots are the simplest form of visualization and are great for quick, exploratory analysis. You can create plots with very little code, but customizing them can be cumbersome compared to **`ggplot2`**.
 
-Example of a simple scatterplot in base R using the `no_membrs` and `liv_count` variables:
+Example of a basic scatterplot in base R using the `no_membrs` and `liv_count` variables:
 
 
 ``` r
@@ -128,7 +128,7 @@ plot(interviews_plotting$no_membrs, interviews_plotting$liv_count,
      ylab = "Number of Livestock Owned")
 ```
 
-<img src="fig/05-ggplot2-rendered-unnamed-chunk-3-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-unnamed-chunk-3-1.png" alt="a greyscale base R scatterplot of number of household members by number of livestock owned" style="display: block; margin: auto;" />
 
 ### **`Lattice`**
 Lattice is another plotting system in R, which allows for creating multi-panel plots easily. It’s different from ggplot2 because you define the entire plot in a single function call, and modifications after plotting are limited.
@@ -147,7 +147,7 @@ xyplot(liv_count ~ no_membrs | village, data = interviews_plotting,
        ylab = "Number of Livestock Owned")
 ```
 
-<img src="fig/05-ggplot2-rendered-unnamed-chunk-4-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-unnamed-chunk-4-1.png" alt="A Lattice scatter plot of number of household members by number of livestock owned, with 3 panels, each showing data from one village" style="display: block; margin: auto;" />
 
 
 ## Plotting with **`ggplot2`**
@@ -223,7 +223,7 @@ interviews_plotting %>%
     geom_point()
 ```
 
-<img src="fig/05-ggplot2-rendered-first-ggplot-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-first-ggplot-1.png" alt="A geom_point scatter plot of the variables `no_membrs` and `number_items` with overplotted points" style="display: block; margin: auto;" />
 
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
@@ -394,7 +394,7 @@ interviews_plotting %>%
     geom_jitter(aes(color = village), alpha = 0.5, width = 0.2, height = 0.2)
 ```
 
-<img src="fig/05-ggplot2-rendered-color-by-species-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-color-by-village-1.png" alt="Previous plot with points colored by village and an added legend with color keys for each village" style="display: block; margin: auto;" />
 
 There appears to be a positive trend between number of household
 members and number of items owned (from the list provided). Additionally,
@@ -411,14 +411,12 @@ makes the size of each point representative of the number of data items
 of that type and the legend gives point sizes associated to particular
 numbers of items.
 
-
-``` r
+```{r color-by-village-notes, fig.alt="Previous plot with points colored by village and sized based on the number of cases at each coordinate set. There are two legends, one labeled 'n' and one labeled 
+'village'", purl=FALSE}
 interviews_plotting %>%
    ggplot(aes(x = no_membrs, y = number_items, color = village)) +
    geom_count()
 ```
-
-<img src="fig/05-ggplot2-rendered-color-by-species-notes-1.png" alt="Previous plot with dots colored by village." style="display: block; margin: auto;" />
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -519,7 +517,7 @@ Warning: Groups with fewer than two datapoints have been dropped.
 ℹ Set `drop = FALSE` to consider such groups for position adjustment purposes.
 ```
 
-<img src="fig/05-ggplot2-rendered-violin-plot-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-violin-plot-1.png" alt="A violin plot showing number of rooms within homes of each wall type. The points are jittered to avoid overplotting and the width of each vertical segment is determined by the number of points of that wall type with similar number of rooms" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -846,7 +844,7 @@ percent_items %>%
     theme_bw()
 ```
 
-<img src="fig/05-ggplot2-rendered-ggplot-customization-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-ggplot-customization-1.png" alt="Faceted barplot of the percent of respondents in each village who owned each type of item, styled in a black and white theme" style="display: block; margin: auto;" />
 
 The axes have more informative names, but their readability can be improved by
 increasing the font size:
@@ -864,7 +862,7 @@ percent_items %>%
     theme(text = element_text(size = 16))
 ```
 
-<img src="fig/05-ggplot2-rendered-ggplot-customization-font-size-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-ggplot-customization-font-size-1.png" alt="Previous plot, but with font size increased from default to 16 points" style="display: block; margin: auto;" />
 
 Note that it is also possible to change the fonts of your plots. If you are on
 Windows, you may have to install the [**`extrafont`**
@@ -894,7 +892,7 @@ percent_items %>%
           text = element_text(size = 16))
 ```
 
-<img src="fig/05-ggplot2-rendered-ggplot-customization-label-orientation-1.png" alt="Multi-panel bar charts showing percent of respondents in each village and who owned each item, with grids behind the bars." style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-ggplot-customization-label-orientation-1.png" alt="Multi-panel bar charts showing percent of respondents in each village and who owned each item, with grids behind the bars and village labes displayed at a 45 degree angle to avoid overlapping labels" style="display: block; margin: auto;" />
 
 If you like the changes you created better than the default theme, you can save
 them as an object to be able to easily apply them to other plots you may create.
@@ -920,7 +918,7 @@ percent_items %>%
     grey_theme
 ```
 
-<img src="fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" alt="" style="display: block; margin: auto;" />
+<img src="fig/05-ggplot2-rendered-ggplot-custom-themes-1.png" alt="Identical plot to previous multi-panel bar chart, but with the figure title centered horizontally" style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
