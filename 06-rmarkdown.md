@@ -284,10 +284,10 @@ Run the code chunk to make sure you get the desired output.
 
 
 ``` r
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
-    summarize(mean_no_membrs = mean(no_membrs)) %>%
+interviews |>
+    filter(!is.na(memb_assoc)) |>
+    group_by(village, memb_assoc) |>
+    summarize(mean_no_membrs = mean(no_membrs)) |>
   knitr::kable(caption = "We can also add a caption.", 
                col.names = c("Village", "Member Association", 
                              "Mean Number of Members"))
@@ -390,7 +390,7 @@ uses one backtick (`` `r` ``), whereas code chunks use three backticks
 (`` ```r``` ``).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2026-04-21.  
+today's date is 2026-04-22.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
@@ -401,12 +401,12 @@ we're interested in presenting the average household size in a village.
 
 ``` r
 # create a summary data frame with the mean household size by village
-mean_household <- interviews %>%
-    group_by(village) %>%
+mean_household <- interviews |>
+    group_by(village) |>
     summarize(mean_no_membrs = mean(no_membrs))
 
 # and select the village we want to use
-mean_chirodzo <- mean_household %>%
+mean_chirodzo <- mean_household |>
   filter(village == "Chirodzo")
 ```
 
@@ -437,24 +437,31 @@ then you can create it in a new code chunk.
 
 ``` r
 ## Not run, but can be used to load in data from previous lesson!
-interviews_plotting <- interviews %>%
+interviews_plotting <- interviews |>
   ## pivot wider by items_owned
-  separate_rows(items_owned, sep = ";") %>%
+  separate_rows(items_owned, sep = ";") |>
   ## if there were no items listed, changing NA to no_listed_items
-  replace_na(list(items_owned = "no_listed_items")) %>%
-  mutate(items_owned_logical = TRUE) %>%
+  replace_na(list(items_owned = "no_listed_items")) |>
+  mutate(items_owned_logical = TRUE) |>
   pivot_wider(names_from = items_owned, 
               values_from = items_owned_logical, 
-              values_fill = list(items_owned_logical = FALSE)) %>%
+              values_fill = list(items_owned_logical = FALSE)) |>
   ## pivot wider by months_lack_food
-  separate_rows(months_lack_food, sep = ";") %>%
-  mutate(months_lack_food_logical = TRUE) %>%
+  separate_rows(months_lack_food, sep = ";") |>
+  mutate(months_lack_food_logical = TRUE) |>
   pivot_wider(names_from = months_lack_food, 
               values_from = months_lack_food_logical, 
-              values_fill = list(months_lack_food_logical = FALSE)) %>%
+              values_fill = list(months_lack_food_logical = FALSE)) |>
   ## add some summary columns
-  mutate(number_months_lack_food = rowSums(select(., Jan:May))) %>%
+  mutate(number_months_lack_food = rowSums(select(., Jan:May))) |>
   mutate(number_items = rowSums(select(., bicycle:car)))
+```
+
+``` error
+Error in `mutate()`:
+ℹ In argument: `number_months_lack_food = rowSums(select(., Jan:May))`.
+Caused by error:
+! object '.' not found
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -474,12 +481,15 @@ If you are feeling adventurous, you can also create a new plot with the
 
 
 ``` r
-interviews_plotting %>%
+interviews_plotting |>
   ggplot(aes(x = respondent_wall_type)) +
   geom_bar(aes(fill = village))
 ```
 
-<img src="fig/06-rmarkdown-rendered-my-fancy-plot-1.png" alt="" style="display: block; margin: auto;" />
+``` error
+Error:
+! object 'interviews_plotting' not found
+```
 
 :::::::::::::::::::::::::
 
@@ -499,17 +509,17 @@ Code for plot
 
 
 ``` r
-interviews_plotting %>%
+interviews_plotting |>
   ggplot(aes(x = respondent_wall_type)) +
   geom_bar(aes(fill = village), position = "dodge") + 
   labs(x = "Type of Wall in Home", y = "Count", fill = "Village Name") +
   scale_fill_viridis_d() # add colour deficient friendly palette
 ```
 
-<div class="figure" style="text-align: center">
-<img src="fig/06-rmarkdown-rendered-caption-plot-1.png" alt="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!"  />
-<p class="caption">I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!</p>
-</div>
+``` error
+Error:
+! object 'interviews_plotting' not found
+```
 
 ## Other output options
 

@@ -114,7 +114,7 @@ inside (these functions were loaded by `library(tidyverse)`):
 
 
 ``` r
-json_data <- json_data %>% as_tibble()
+json_data <- json_data |> as_tibble()
 glimpse(json_data)
 ```
 
@@ -203,8 +203,8 @@ Often when we have a very large number of columns, it can become difficult to de
 
 
 ``` r
-json_data %>%
-    select(where(is.list)) %>%
+json_data |>
+    select(where(is.list)) |>
     glimpse()
 ```
 
@@ -289,7 +289,7 @@ To write out as a csv while maintaining the data within the list columns, we wil
 
 
 ``` r
-flattened_json_data <- json_data %>% 
+flattened_json_data <- json_data |> 
   mutate(across(where(is.list), as.character))
 flattened_json_data
 ```

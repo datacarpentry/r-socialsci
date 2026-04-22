@@ -22,7 +22,7 @@ source: Rmd
 - Describe the purpose of an R package and the **`dplyr`** package.
 - Select certain columns in a dataframe with the **`dplyr`** function `select`.
 - Select certain rows in a dataframe according to filtering conditions with the **`dplyr`** function `filter`.
-- Link the output of one **`dplyr`** function to the input of another function with the 'pipe' operator `%>%`.
+- Link the output of one **`dplyr`** function to the input of another function with the 'pipe' operator `|>`.
 - Add new columns to a dataframe that are functions of existing columns with `mutate`.
 - Use the split-apply-combine concept for data analysis.
 - Use `summarize`, `group_by`, and `count` to split a dataframe into groups of observations, apply a summary statistics for each group, and then combine the results.
@@ -168,7 +168,7 @@ filter(interviews, village == "Chirodzo")
 ```
 
 You may also have noticed that the output from these call doesn't run off the
-screen anymore. It's one of the advantages of `tbl_df` (also called tibble), 
+screen anymore. It's one of the advantages of `tbl_df` (also called tibble),
 the central data class in the tidyverse, compared to normal dataframes in R.
 
 We can also specify multiple conditions within the `filter()` function. We can
@@ -298,17 +298,27 @@ selecting).
 
 The last option, *pipes*, are a recent addition to R. Pipes let you take the
 output of one function and send it directly to the next, which is useful when
-you need to do many things to the same dataset. There are two Pipes in R: 1) `%>%` (called magrittr pipe; made available via the **`magrittr`** package, installed automatically with
-**`dplyr`**) or 2) `|>` (called native R pipe and it comes preinstalled with R v4.1.0 onwards). Both the pipes are, by and large, function similarly with a few differences (For more information, check: https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/). The choice of which pipe to be used can be changed in the Global settings in R studio and once that is done, you can type the pipe with:
+you need to do many things to the same dataset. There are two Pipes in R: 1) `|>` (called native pipe and comes preinstalled with R v4.1.0 onwards) or 2) `%>%` (called magrittr pipe and made available via the **`magrittr`** package, installed automatically with
+**`dplyr`** and **`tidyverse`**`). Both the pipes are, by and large, function similarly with a few differences (For more information, check: https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/). The choice of which pipe to be used can be changed in the Global settings in R studio and once that is done, you can type the pipe with:
 
 - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> +
   <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Note
+
+In this lesson, we will use the native pipe `|>` for consistency with modern R (>=4.1.0). However, the magrittr pipe `%>%` (from the **magrittr** package, loaded with **tidyverse**) is a widely used alternative and works similarly.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+
 
 ``` r
 # the following example is run using magrittr pipe but the output will be same with the native pipe
-interviews %>%
-    filter(village == "Chirodzo") %>%
+interviews |>
+    filter(village == "Chirodzo") |>
     select(village:respondent_wall_type)
 ```
 
@@ -337,7 +347,7 @@ interviews %>%
 
 In the above code, we use the pipe to send the `interviews` dataset first
 through `filter()` to keep rows where `village` is "Chirodzo", then through
-`select()` to keep only the columns from `village` to `respondent_wall_type`. Since `%>%`
+`select()` to keep only the columns from `village` to `respondent_wall_type`. Since `|>`
 takes the object on its left and passes it as the first argument to the function
 on its right, we don't need to explicitly include the dataframe as an argument
 to the `filter()` and `select()` functions any more.
@@ -354,8 +364,8 @@ can assign it a new name:
 
 
 ``` r
-interviews_ch <- interviews %>%
-    filter(village == "Chirodzo") %>%
+interviews_ch <- interviews |>
+    filter(village == "Chirodzo") |>
     select(village:respondent_wall_type)
 
 interviews_ch
@@ -396,8 +406,8 @@ where respondents were members of an irrigation association
 
 
 ``` r
-interviews %>%
-    filter(memb_assoc == "yes") %>%
+interviews |>
+    filter(memb_assoc == "yes") |>
     select(affect_conflicts, liv_count, no_meals)
 ```
 
@@ -433,7 +443,7 @@ to rooms used for sleeping (i.e. avg number of people per room):
 
 
 ``` r
-interviews %>%
+interviews |>
     mutate(people_per_room = no_membrs / rooms)
 ```
 
@@ -468,8 +478,8 @@ To remove these cases, we could insert a `filter()` in the chain:
 
 
 ``` r
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
+interviews |>
+    filter(!is.na(memb_assoc)) |>
     mutate(people_per_room = no_membrs / rooms)
 ```
 
@@ -518,9 +528,9 @@ frame!
 
 
 ``` r
-interviews_total_meals <- interviews %>%
-    mutate(total_meals = no_membrs * no_meals) %>%
-    filter(total_meals > 20) %>%
+interviews_total_meals <- interviews |>
+    mutate(total_meals = no_membrs * no_meals) |>
+    filter(total_meals > 20) |>
     select(village, total_meals)
 ```
 
@@ -545,8 +555,8 @@ village:
 
 
 ``` r
-interviews %>%
-    group_by(village) %>%
+interviews |>
+    group_by(village) |>
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
@@ -563,8 +573,8 @@ You can also group by multiple columns:
 
 
 ``` r
-interviews %>%
-    group_by(village, memb_assoc) %>%
+interviews |>
+    group_by(village, memb_assoc) |>
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
@@ -593,16 +603,16 @@ interviews %>%
 9 Ruaca    <NA>                 6.22
 ```
 
-Note that the output is a grouped tibble of nine rows by three columns 
+Note that the output is a grouped tibble of nine rows by three columns
 which is indicated by the by two first lines with the `#`.
 To obtain an ungrouped tibble, use the
 `ungroup` function:
 
 
 ``` r
-interviews %>%
-    group_by(village, memb_assoc) %>%
-    summarize(mean_no_membrs = mean(no_membrs)) %>%
+interviews |>
+    group_by(village, memb_assoc) |>
+    summarize(mean_no_membrs = mean(no_membrs)) |>
     ungroup()
 ```
 
@@ -630,7 +640,7 @@ interviews %>%
 9 Ruaca    <NA>                 6.22
 ```
 
-Notice that the second line with the `#` that previously indicated the grouping has 
+Notice that the second line with the `#` that previously indicated the grouping has
 disappeared and we now only have a 9x3-tibble without grouping.
 When grouping both by `village` and `membr_assoc`, we see rows in our table for
 respondents who did not specify whether they were a member of an irrigation
@@ -638,9 +648,9 @@ association. We can exclude those data from our table using a filter step.
 
 
 ``` r
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+interviews |>
+    filter(!is.na(memb_assoc)) |>
+    group_by(village, memb_assoc) |>
     summarize(mean_no_membrs = mean(no_membrs))
 ```
 
@@ -673,9 +683,9 @@ column indicating the minimum household size for each village for each group
 
 
 ``` r
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+interviews |>
+    filter(!is.na(memb_assoc)) |>
+    group_by(village, memb_assoc) |>
     summarize(mean_no_membrs = mean(no_membrs),
               min_membrs = min(no_membrs))
 ```
@@ -708,11 +718,11 @@ household first:
 
 
 ``` r
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+interviews |>
+    filter(!is.na(memb_assoc)) |>
+    group_by(village, memb_assoc) |>
     summarize(mean_no_membrs = mean(no_membrs),
-              min_membrs = min(no_membrs)) %>%
+              min_membrs = min(no_membrs)) |>
     arrange(min_membrs)
 ```
 
@@ -743,11 +753,11 @@ sort the results by decreasing order of minimum household size:
 
 
 ``` r
-interviews %>%
-    filter(!is.na(memb_assoc)) %>%
-    group_by(village, memb_assoc) %>%
+interviews |>
+    filter(!is.na(memb_assoc)) |>
+    group_by(village, memb_assoc) |>
     summarize(mean_no_membrs = mean(no_membrs),
-              min_membrs = min(no_membrs)) %>%
+              min_membrs = min(no_membrs)) |>
     arrange(desc(min_membrs))
 ```
 
@@ -782,7 +792,7 @@ each village, we would do:
 
 
 ``` r
-interviews %>%
+interviews |>
     count(village)
 ```
 
@@ -800,7 +810,7 @@ decreasing order:
 
 
 ``` r
-interviews %>%
+interviews |>
     count(village, sort = TRUE)
 ```
 
@@ -827,7 +837,7 @@ of meals represented?
 
 
 ``` r
-interviews %>%
+interviews |>
    count(no_meals)
 ```
 
@@ -851,8 +861,8 @@ observations (hint: see `?n`).
 
 
 ``` r
-interviews %>%
-  group_by(village) %>%
+interviews |>
+  group_by(village) |>
   summarize(
       mean_no_membrs = mean(no_membrs),
       min_no_membrs = min(no_membrs),
@@ -882,11 +892,11 @@ What was the largest household interviewed in each month?
 ``` r
 # if not already included, add month, year, and day columns
 library(lubridate) # load lubridate if not already loaded
-interviews %>%
+interviews |>
     mutate(month = month(interview_date),
            day = day(interview_date),
-           year = year(interview_date)) %>%
-    group_by(year, month) %>%
+           year = year(interview_date)) |>
+    group_by(year, month) |>
     summarize(max_no_membrs = max(no_membrs))
 ```
 
