@@ -333,7 +333,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Processing JSON data (Optional)</h1>
-        <p>Last updated on 2026-04-21 |
+        <p>Last updated on 2026-04-22 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/07-json.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -500,7 +500,7 @@ loaded by <code><a href="https://tidyverse.tidyverse.org" class="external-link">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="va">json_data</span> <span class="op">%&gt;%</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">&lt;-</span> <span class="va">json_data</span> <span class="op">|&gt;</span> <span class="fu">as_tibble</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">glimpse</span><span class="op">(</span><span class="va">json_data</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -596,8 +596,8 @@ attention, like lists. Fortunately, we can use special verbs like
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">select</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.list</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">json_data</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">select</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.list</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">glimpse</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -703,7 +703,7 @@ way to do this using tidyverse. This command only applies the
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">flattened_json_data</span> <span class="op">&lt;-</span> <span class="va">json_data</span> <span class="op">%&gt;%</span> </span>
+<code class="sourceCode R"><span><span class="va">flattened_json_data</span> <span class="op">&lt;-</span> <span class="va">json_data</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu">mutate</span><span class="op">(</span><span class="fu">across</span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="va">is.list</span><span class="op">)</span>, <span class="va">as.character</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">flattened_json_data</span></span></code></pre>
 </div>
@@ -827,7 +827,7 @@ csv file</li>
   "url": "https://datacarpentry.org/r-socialsci/instructor/07-json.html",
   "identifier": "https://datacarpentry.org/r-socialsci/instructor/07-json.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2026-04-21",
+  "dateModified": "2026-04-22",
   "datePublished": "2026-04-22"
 }
 

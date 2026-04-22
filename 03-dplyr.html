@@ -336,7 +336,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Data Wrangling with dplyr</h1>
-        <p>Last updated on 2026-04-21 |
+        <p>Last updated on 2026-04-22 |
 
         <a href="https://github.com/datacarpentry/r-socialsci/edit/main/episodes/03-dplyr.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -376,7 +376,7 @@ with the <strong><code>dplyr</code></strong> function
 <code>filter</code>.</li>
 <li>Link the output of one <strong><code>dplyr</code></strong> function
 to the input of another function with the ‘pipe’ operator
-<code>%&gt;%</code>.</li>
+<code>|&gt;</code>.</li>
 <li>Add new columns to a dataframe that are functions of existing
 columns with <code>mutate</code>.</li>
 <li>Use the split-apply-combine concept for data analysis.</li>
@@ -678,13 +678,14 @@ filtering, then selecting).</p>
 <p>The last option, <em>pipes</em>, are a recent addition to R. Pipes
 let you take the output of one function and send it directly to the
 next, which is useful when you need to do many things to the same
-dataset. There are two Pipes in R: 1) <code>%&gt;%</code> (called
-magrittr pipe; made available via the
+dataset. There are two Pipes in R: 1) <code>|&gt;</code> (called native
+pipe and comes preinstalled with R v4.1.0 onwards) or 2)
+<code>%&gt;%</code> (called magrittr pipe and made available via the
 <strong><code>magrittr</code></strong> package, installed automatically
-with <strong><code>dplyr</code></strong>) or 2) <code>|&gt;</code>
-(called native R pipe and it comes preinstalled with R v4.1.0 onwards).
-Both the pipes are, by and large, function similarly with a few
-differences (For more information, check: <a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/" class="external-link uri">https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/</a>).
+with <strong><code>dplyr</code></strong> and
+<strong><code>tidyverse</code></strong>`). Both the pipes are, by and
+large, function similarly with a few differences (For more information,
+check: <a href="https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/" class="external-link uri">https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/</a>).
 The choice of which pipe to be used can be changed in the Global
 settings in R studio and once that is done, you can type the pipe
 with:</p>
@@ -692,13 +693,29 @@ with:</p>
 <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC
 or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a
 Mac.</li>
-</ul><div class="codewrapper sourceCode" id="cb13">
+</ul><div id="note-2" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="note-2" class="callout-inner">
+<h3 class="callout-title">Note</h3>
+<div class="callout-content">
+<p>In this lesson, we will use the native pipe <code>|&gt;</code> for
+consistency with modern R (&gt;=4.1.0). However, the magrittr pipe
+<code>%&gt;%</code> (from the <strong>magrittr</strong> package, loaded
+with <strong>tidyverse</strong>) is a widely used alternative and works
+similarly.</p>
+</div>
+</div>
+</div>
+<div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># the following example is run using magrittr pipe but the output will be same with the native pipe</span></span>
-<span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">village</span><span class="op">:</span><span class="va">respondent_wall_type</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -731,10 +748,10 @@ Mac.</li>
 <code>interviews</code> dataset first through <code>filter()</code> to
 keep rows where <code>village</code> is “Chirodzo”, then through
 <code>select()</code> to keep only the columns from <code>village</code>
-to <code>respondent_wall_type</code>. Since <code>%&gt;%</code> takes
-the object on its left and passes it as the first argument to the
-function on its right, we don’t need to explicitly include the dataframe
-as an argument to the <code>filter()</code> and <code>select()</code>
+to <code>respondent_wall_type</code>. Since <code>|&gt;</code> takes the
+object on its left and passes it as the first argument to the function
+on its right, we don’t need to explicitly include the dataframe as an
+argument to the <code>filter()</code> and <code>select()</code>
 functions any more.</p>
 <p>Some may find it helpful to read the pipe like the word “then”. For
 instance, in the above example, we take the dataframe
@@ -750,8 +767,8 @@ data, we can assign it a new name:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_ch</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_ch</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">village</span> <span class="op">==</span> <span class="st">"Chirodzo"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">village</span><span class="op">:</span><span class="va">respondent_wall_type</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">interviews_ch</span></span></code></pre>
@@ -803,8 +820,8 @@ interviews where respondents were members of an irrigation association
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">memb_assoc</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">memb_assoc</span> <span class="op">==</span> <span class="st">"yes"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">affect_conflicts</span>, <span class="va">liv_count</span>, <span class="va">no_meals</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -840,7 +857,7 @@ rooms used for sleeping (i.e. avg number of people per room):</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span>people_per_room <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">/</span> <span class="va">rooms</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -876,8 +893,8 @@ chain:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span>people_per_room <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">/</span> <span class="va">rooms</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -938,9 +955,9 @@ to produce this data frame!</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews_total_meals</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">mutate</span><span class="op">(</span>total_meals <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">*</span> <span class="va">no_meals</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">total_meals</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews_total_meals</span> <span class="op">&lt;-</span> <span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">mutate</span><span class="op">(</span>total_meals <span class="op">=</span> <span class="va">no_membrs</span> <span class="op">*</span> <span class="va">no_meals</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="va">total_meals</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">select</span><span class="op">(</span><span class="va">village</span>, <span class="va">total_meals</span><span class="op">)</span></span></code></pre>
 </div>
 </div>
@@ -965,8 +982,8 @@ average household size by village:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -984,8 +1001,8 @@ average household size by village:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1023,9 +1040,9 @@ columns which is indicated by the by two first lines with the
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">ungroup</span><span class="op">(</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1064,9 +1081,9 @@ We can exclude those data from our table using a filter step.</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1102,9 +1119,9 @@ not):</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
 <span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
@@ -1139,11 +1156,11 @@ the group with the smallest household first:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="va">min_membrs</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1177,11 +1194,11 @@ household size:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">filter</span><span class="op">(</span><span class="op">!</span><span class="fu">is.na</span><span class="op">(</span><span class="va">memb_assoc</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span>, <span class="va">memb_assoc</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
-<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>              min_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">min_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1220,7 +1237,7 @@ village, we would do:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">count</span><span class="op">(</span><span class="va">village</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1239,7 +1256,7 @@ argument to get results in decreasing order:</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">count</span><span class="op">(</span><span class="va">village</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1277,7 +1294,7 @@ represented?</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>   <span class="fu">count</span><span class="op">(</span><span class="va">no_meals</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1319,8 +1336,8 @@ add the number of observations (hint: see <code>?n</code>).</p>
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
-<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<code class="sourceCode R"><span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">group_by</span><span class="op">(</span><span class="va">village</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">summarize</span><span class="op">(</span></span>
 <span>      mean_no_membrs <span class="op">=</span> <span class="fu">mean</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
 <span>      min_no_membrs <span class="op">=</span> <span class="fu">min</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span>,</span>
@@ -1368,11 +1385,11 @@ add the number of observations (hint: see <code>?n</code>).</p>
 <pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># if not already included, add month, year, and day columns</span></span>
 <span><span class="kw">library</span><span class="op">(</span><span class="va">lubridate</span><span class="op">)</span> <span class="co"># load lubridate if not already loaded</span></span>
-<span><span class="va">interviews</span> <span class="op">%&gt;%</span></span>
+<span><span class="va">interviews</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">mutate</span><span class="op">(</span>month <span class="op">=</span> <span class="fu">month</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
 <span>           day <span class="op">=</span> <span class="fu">day</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span>,</span>
-<span>           year <span class="op">=</span> <span class="fu">year</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
-<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>           year <span class="op">=</span> <span class="fu">year</span><span class="op">(</span><span class="va">interview_date</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">summarize</span><span class="op">(</span>max_no_membrs <span class="op">=</span> <span class="fu">max</span><span class="op">(</span><span class="va">no_membrs</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="codewrapper">
@@ -1479,7 +1496,7 @@ with subsets of data.</li>
   "url": "https://datacarpentry.org/r-socialsci/03-dplyr.html",
   "identifier": "https://datacarpentry.org/r-socialsci/03-dplyr.html",
   "dateCreated": "2017-05-25",
-  "dateModified": "2026-04-21",
+  "dateModified": "2026-04-22",
   "datePublished": "2026-04-22"
 }
 
