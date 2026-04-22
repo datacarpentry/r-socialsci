@@ -111,7 +111,7 @@ the lesson, let's coerce it to be a tibble and use `glimpse` to take a peek
 inside (these functions were loaded by `library(tidyverse)`):
 
 ```{r}
-json_data <- json_data %>% as_tibble()
+json_data <- json_data |> as_tibble()
 glimpse(json_data)
 ```
 
@@ -120,8 +120,8 @@ Looking good, but you might notice that actually we have a variable, *F\_liv* th
 Often when we have a very large number of columns, it can become difficult to determine all the variables which may require some special attention, like lists. Fortunately, we can use special verbs like `where` to quickly select all the list columns.
 
 ```{r}
-json_data %>%
-    select(where(is.list)) %>%
+json_data |>
+    select(where(is.list)) |>
     glimpse()
 ```
 
@@ -149,7 +149,7 @@ read_csv("json_data_with_list_columns.csv")
 To write out as a csv while maintaining the data within the list columns, we will need to "flatten" these columns. One way to do this is to convert these list columns into character types. (However, we don't want to change the data types for any of the other columns). Here's one way to do this using tidyverse. This command only applies the `as.character` command to those columns 'where' `is.list` is `TRUE`.
 
 ```{r}
-flattened_json_data <- json_data %>% 
+flattened_json_data <- json_data |> 
   mutate(across(where(is.list), as.character))
 flattened_json_data
 ```
