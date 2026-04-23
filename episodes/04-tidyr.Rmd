@@ -80,9 +80,9 @@ Once we have established that `key_ID` and `instanceID` are both unique we can u
 either variable as an identifier corresponding to the 131 interview records.
 
 ```{r, purl=FALSE}
-interviews %>% 
-  select(key_ID) %>% 
-  distinct() %>%
+interviews |> 
+  select(key_ID) |> 
+  distinct() |>
   nrow()
 ```
 
@@ -91,9 +91,9 @@ As seen in the code below, for each interview date in each village no
 format, where each observation occupies only one row in the dataframe.
 
 ```{r, purl=FALSE}
-interviews %>%
-  filter(village == "Chirodzo") %>%
-  select(key_ID, village, interview_date, instanceID) %>%
+interviews |>
+  filter(village == "Chirodzo") |>
+  select(key_ID, village, interview_date, instanceID) |>
   sample_n(size = 10)
 ```
 
@@ -177,7 +177,7 @@ it line by line. First we create a new object (`interviews_items_owned`) based o
 the `interviews` data frame.
 
 ```{r, eval=FALSE}
-interviews_items_owned <- interviews %>%
+interviews_items_owned <- interviews |>
 ```
 
 Then we will actually need to make our data frame longer, because we have 
@@ -192,7 +192,7 @@ panel, that respondent will now have two rows, one with "television" and the
 other with "solar panel" in the `items_owned` column.
 
 ```{r, eval=FALSE}
-separate_longer_delim(items_owned, delim = ";") %>%
+separate_longer_delim(items_owned, delim = ";") |>
 ```
 
 After this transformation, you may notice that the `items_owned` column contains
@@ -204,7 +204,7 @@ the `NA` values in, and the value that you would like to replace the `NA`s. This
 ends up looking like this:
 
 ```{r, eval=FALSE}
-replace_na(list(items_owned = "no_listed_items")) %>%
+replace_na(list(items_owned = "no_listed_items")) |>
 ```
 
 Next, we create a new variable named `items_owned_logical`, which has one value
@@ -215,7 +215,7 @@ with logical values describing whether the household did (`TRUE`) or did not
 (`FALSE`) own that particular item.
 
 ```{r, eval=FALSE}
-mutate(items_owned_logical = TRUE) %>%
+mutate(items_owned_logical = TRUE) |>
 ```
 
 ![](fig/separate_longer.png){alt="Two tables shown side-by-side. The first row
@@ -240,8 +240,8 @@ if the `items_owned` column is `"no_listed_items"`, then a 0 is returned,
 otherwise, the number of rows per group is returned using `n()`.
 
 ```{r, eval=FALSE}
-group_by(key_ID) %>% 
-  mutate(number_items = if_else(items_owned == "no_listed_items", 0, n())) %>% 
+group_by(key_ID) |> 
+  mutate(number_items = if_else(items_owned == "no_listed_items", 0, n())) |> 
 
 ```
 
@@ -271,12 +271,12 @@ Combining the above steps, the chunk looks like this. Note that two new columns
 are created within the same `mutate()` call.
 
 ```{r}
-interviews_items_owned <- interviews %>%
-  separate_longer_delim(items_owned, delim = ";") %>%
-  replace_na(list(items_owned = "no_listed_items")) %>%
-  group_by(key_ID) %>%
+interviews_items_owned <- interviews |>
+  separate_longer_delim(items_owned, delim = ";") |>
+  replace_na(list(items_owned = "no_listed_items")) |>
+  group_by(key_ID) |>
   mutate(items_owned_logical = TRUE,
-         number_items = if_else(items_owned == "no_listed_items", 0, n())) %>%
+         number_items = if_else(items_owned == "no_listed_items", 0, n())) |>
   pivot_wider(names_from = items_owned,
               values_from = items_owned_logical,
               values_fill = list(items_owned_logical = FALSE))
@@ -295,9 +295,9 @@ This format of the data allows us to do interesting things, like make a table
 showing the number of respondents in each village who owned a particular item:
 
 ```{r, purl=FALSE}
-interviews_items_owned %>%
-  filter(bicycle) %>%
-  group_by(village) %>%
+interviews_items_owned |>
+  filter(bicycle) |>
+  group_by(village) |>
   count(bicycle)
 ```
 
@@ -306,8 +306,8 @@ respondents in each village using the `number_items` column we created to
 count the items listed by each household.
 
 ```{r, purl=FALSE}
-interviews_items_owned %>%
-    group_by(village) %>%
+interviews_items_owned |>
+    group_by(village) |>
     summarize(mean_items = mean(number_items))
 ```
 
@@ -330,11 +330,11 @@ value input was "none".
 ## Solution
 
 ```{r}
-months_lack_food <- interviews %>%
-  separate_longer_delim(months_lack_food, delim = ";") %>%
-  group_by(key_ID) %>%
+months_lack_food <- interviews |>
+  separate_longer_delim(months_lack_food, delim = ";") |>
+  group_by(key_ID) |>
   mutate(months_lack_food_logical = TRUE,
-         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
+         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) |>
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
               values_fill = list(months_lack_food_logical = FALSE))
@@ -367,7 +367,7 @@ column names. We will do this in two steps to make this process a bit clearer.
 
 
 ```{r, purl=FALSE}
-interviews_long <- interviews_items_owned %>%
+interviews_long <- interviews_items_owned |>
   pivot_longer(cols = bicycle:car,
                names_to = "items_owned",
                values_to = "items_owned_logical")
@@ -393,9 +393,9 @@ the wide format is that you can now `count` all the items using the
 ## Solution
 
 ```{r}
-interviews_long %>%
-  filter(items_owned_logical) %>% 
-  group_by(village) %>% 
+interviews_long |>
+  filter(items_owned_logical) |> 
+  group_by(village) |> 
   count(items_owned)
 ```
 
@@ -420,21 +420,21 @@ we will call it `interviews_plotting`.
 
 ```{r, purl=FALSE}
 ## Plotting data ##
-interviews_plotting <- interviews %>%
+interviews_plotting <- interviews |>
   ## pivot wider by items_owned
-  separate_longer_delim(items_owned, delim = ";") %>%
-  replace_na(list(items_owned = "no_listed_items")) %>%
+  separate_longer_delim(items_owned, delim = ";") |>
+  replace_na(list(items_owned = "no_listed_items")) |>
   ## Use of grouped mutate to find number of rows
-  group_by(key_ID) %>% 
+  group_by(key_ID) |> 
   mutate(items_owned_logical = TRUE,
-         number_items = if_else(items_owned == "no_listed_items", 0, n())) %>% 
+         number_items = if_else(items_owned == "no_listed_items", 0, n())) |> 
   pivot_wider(names_from = items_owned,
               values_from = items_owned_logical,
-              values_fill = list(items_owned_logical = FALSE)) %>% 
+              values_fill = list(items_owned_logical = FALSE)) |> 
   ## pivot wider by months_lack_food
-  separate_longer_delim(months_lack_food, delim = ";") %>%
+  separate_longer_delim(months_lack_food, delim = ";") |>
   mutate(months_lack_food_logical = TRUE,
-         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) %>%
+         number_months_lack_food = if_else(months_lack_food == "none", 0, n())) |>
   pivot_wider(names_from = months_lack_food,
               values_from = months_lack_food_logical,
               values_fill = list(months_lack_food_logical = FALSE))
