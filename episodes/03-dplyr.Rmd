@@ -217,10 +217,18 @@ selecting).
 The last option, *pipes*, are a recent addition to R. Pipes let you take the
 output of one function and send it directly to the next, which is useful when
 you need to do many things to the same dataset. There are two Pipes in R: 1) `|>` (called native pipe and comes preinstalled with R v4.1.0 onwards) or 2) `%>%` (called magrittr pipe and made available via the **`magrittr`** package, installed automatically with
-**`dplyr`** and **`tidyverse`**`). Both the pipes are, by and large, function similarly with a few differences (For more information, check: https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/). The choice of which pipe to be used can be changed in the Global settings in R studio and once that is done, you can type the pipe with:
+**`dplyr`** and **`tidyverse`**`). Both pipes work similarly with a few differences that are unlikely to affect most users. For more information, check out [this blog post](https://www.tidyverse.org/blog/2023/04/base-vs-magrittr-pipe/).
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Note
+
+**RStudio:** The choice of what pipe to use in RStudio can be changed in the Global settings. Once that is set, you can type the pipe with:
 
 - <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> if you have a PC or <kbd>Cmd</kbd> +
   <kbd>Shift</kbd> + <kbd>M</kbd> if you have a Mac.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::::  callout
 
