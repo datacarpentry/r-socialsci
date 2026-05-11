@@ -193,6 +193,7 @@ interviews_plotting |>
 To add a geom to the plot use the `+` operator. Because we have two continuous variables, let's use `geom_point()` first:
 
 ```{r first-ggplot, purl=FALSE, fig.alt="A geom_point scatter plot of the variables `no_membrs` and `number_items` with overplotted points"}
+interviews_plotting |>
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_point()
 ```
