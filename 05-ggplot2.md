@@ -218,17 +218,12 @@ To add a geom to the plot use the `+` operator. Because we have two continuous v
 
 
 ``` r
+interviews_plotting |>
     ggplot(aes(x = no_membrs, y = number_items)) +
     geom_point()
 ```
 
-``` error
-Error in `fortify()`:
-! `data` must be a <data.frame>, or an object coercible by `fortify()`,
-  or a valid <data.frame>-like object coercible by `as.data.frame()`, not a
-  <ggplot2::mapping> object.
-ℹ Did you accidentally pass `aes()` to the `data` argument?
-```
+<img src="fig/05-ggplot2-rendered-first-ggplot-1.png" alt="A geom_point scatter plot of the variables `no_membrs` and `number_items` with overplotted points" style="display: block; margin: auto;" />
 
 The `+` in the **`ggplot2`** package is particularly useful because it allows
 you to modify existing `ggplot` objects. This means you can easily set up plot
