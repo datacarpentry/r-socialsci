@@ -390,7 +390,7 @@ uses one backtick (`` `r` ``), whereas code chunks use three backticks
 (`` ```r``` ``).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2026-08-27.  
+today's date is 2026-09-02.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
@@ -458,7 +458,7 @@ interviews_plotting <- interviews |>
 ```
 
 ``` error
-Error in `mutate()`:
+Error in `mutate()` at dplyr/R/mutate.R:146:3:
 ℹ In argument: `number_months_lack_food = rowSums(select(., Jan:May))`.
 Caused by error:
 ! object '.' not found
