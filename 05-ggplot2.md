@@ -620,8 +620,8 @@ houses with cement walls, as there was only one in the dataset.
 ``` r
 percent_wall_type <- interviews_plotting |>
     filter(respondent_wall_type != "cement") |>
+	group_by(village) |>
     count(village, respondent_wall_type) |>
-    group_by(village) |>
     mutate(percent = (n / sum(n)) * 100) |>
     ungroup()
 ```
