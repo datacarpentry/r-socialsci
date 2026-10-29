@@ -168,7 +168,7 @@ In the above code, we notice the `here()` function takes folder and file names
 as inputs (e.g., `"data"`, `"SAFI_clean.csv"`), each enclosed in quotations
 (`""`) and separated by a comma. The `here()` will accept as many names as are
 necessary to navigate to a particular file
-(e.g., `here("analysis", "data", "surveys", "clean", "SAFI_clean.csv)`).
+(e.g., `here("analysis", "data", "surveys", "clean", "SAFI_clean.csv")`).
 
 The `here()` function can accept the folder and file names in an alternate format,
 using a slash ("/") rather than commas to separate the names. The two methods are
