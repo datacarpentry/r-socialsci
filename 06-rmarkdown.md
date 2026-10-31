@@ -390,7 +390,7 @@ uses one backtick (`` `r` ``), whereas code chunks use three backticks
 (`` ```r``` ``).
 
 For example, today's date is ``` `r Sys.Date()` ```, will be rendered as:
-today's date is 2026-10-08.  
+today's date is 2026-10-31.  
 The code will display today's date in the output document (well, technically the
 date the document was last knitted).
 
@@ -453,15 +453,8 @@ interviews_plotting <- interviews |>
               values_from = months_lack_food_logical, 
               values_fill = list(months_lack_food_logical = FALSE)) |>
   ## add some summary columns
-  mutate(number_months_lack_food = rowSums(select(., Jan:May))) |>
-  mutate(number_items = rowSums(select(., bicycle:car)))
-```
-
-``` error
-Error in `mutate()`:
-ℹ In argument: `number_months_lack_food = rowSums(select(., Jan:May))`.
-Caused by error:
-! object '.' not found
+  mutate(number_months_lack_food = rowSums(pick(Jan:May))) |>
+  mutate(number_items = rowSums(pick(bicycle:car)))
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -486,10 +479,7 @@ interviews_plotting |>
   geom_bar(aes(fill = village))
 ```
 
-``` error
-Error:
-! object 'interviews_plotting' not found
-```
+<img src="fig/06-rmarkdown-rendered-my-fancy-plot-1.png" alt="Stacked bar chart of the number of households by wall type, with bars coloured by village. Burnt brick is the most common wall type (67 households), followed by muddaub (46), sunbricks (17) and cement (1)." style="display: block; margin: auto;" />
 
 :::::::::::::::::::::::::
 
@@ -516,10 +506,10 @@ interviews_plotting |>
   scale_fill_viridis_d() # add colour deficient friendly palette
 ```
 
-``` error
-Error:
-! object 'interviews_plotting' not found
-```
+<div class="figure" style="text-align: center">
+<img src="fig/06-rmarkdown-rendered-caption-plot-1.png" alt="Bar chart of the number of households by type of wall in home, with side-by-side bars for the villages Chirodzo, God and Ruaca. Burnt brick walls are the most common in every village, sunbricks are rare in Chirodzo, and only one household, in Ruaca, has cement walls."  />
+<p class="caption">I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!</p>
+</div>
 
 ## Other output options
 
