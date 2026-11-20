@@ -442,8 +442,8 @@ interviews_plotting <- interviews |>
               values_from = months_lack_food_logical, 
               values_fill = list(months_lack_food_logical = FALSE)) |>
   ## add some summary columns
-  mutate(number_months_lack_food = rowSums(select(., Jan:May))) |>
-  mutate(number_items = rowSums(select(., bicycle:car)))
+  mutate(number_months_lack_food = rowSums(pick(Jan:May))) |>
+  mutate(number_items = rowSums(pick(bicycle:car)))
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -461,7 +461,7 @@ If you are feeling adventurous, you can also create a new plot with the
 
 ## Solution to Exercise
 
-```{r my-fancy-plot, answer=TRUE, purl=FALSE}
+```{r my-fancy-plot, answer=TRUE, purl=FALSE, fig.alt="Stacked bar chart of the number of households by wall type, with bars coloured by village. Burnt brick is the most common wall type (67 households), followed by muddaub (46), sunbricks (17) and cement (1)."}
 interviews_plotting |>
   ggplot(aes(x = respondent_wall_type)) +
   geom_bar(aes(fill = village))
@@ -482,7 +482,7 @@ Code for plot
 
 ...or, ideally, something more informative.
 
-```{r caption-plot, eval=TRUE, fig.cap="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!"}
+```{r caption-plot, eval=TRUE, fig.cap="I made this plot while attending an awesome Data Carpentries workshop where I learned a ton of cool stuff!", fig.alt="Bar chart of the number of households by type of wall in home, with side-by-side bars for the villages Chirodzo, God and Ruaca. Burnt brick walls are the most common in every village, sunbricks are rare in Chirodzo, and only one household, in Ruaca, has cement walls."}
 interviews_plotting |>
   ggplot(aes(x = respondent_wall_type)) +
   geom_bar(aes(fill = village), position = "dodge") + 
